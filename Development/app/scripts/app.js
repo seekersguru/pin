@@ -18,58 +18,27 @@ angular.module('pinApp', [
   })
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
-      .when('/old', {
-        templateUrl: 'partials/main',
-        controller: 'MainCtrl',
-        resolve: {
-          artworks: ['$q', '$route', 'Artwork', function($q, $route, Artwork) {
-            var deferred = $q.defer();
-            Artwork.get({limit:16} , function(artworks) {
-                deferred.resolve(artworks.artworks);
-            },
-            function(err){
-              deferred.reject();
-            });
-            return deferred.promise;
-          }]
-        }
-      })
       .when('/', {
-        templateUrl: 'partials2/main',
-        resolve: {
-
-        }
-
+        templateUrl: 'partials2/main'
+       
       })
       .when('/dashboard', {
-        templateUrl: 'partials2/dashboard',
-        resolve: {
-        }
+        templateUrl: 'partials2/dashboard'
       })
       .when('/chart', {
-        templateUrl: 'partials2/chart',
-        resolve: {
-        }
+        templateUrl: 'partials2/chart'
       })
       .when('/connect', {
-        templateUrl: 'partials2/connect',
-        resolve: {
-        }
+        templateUrl: 'partials2/connect'
       })
       .when('/content-id', {
-        templateUrl: 'partials2/content-id',
-        resolve: {
-        }
+        templateUrl: 'partials2/content-id'
       })
       .when('/login', {
-        templateUrl: 'partials2/login',
-        resolve: {
-        }
+        templateUrl: 'partials2/login'
       })
       .when('/register', {
-        templateUrl: 'partials2/register',
-        resolve: {
-        }
+        templateUrl: 'partials2/register'
       })
       .otherwise({
         redirectTo: '/'
@@ -92,32 +61,32 @@ angular.module('pinApp', [
       };
     }]);
   })
-  .run(function ($rootScope, $location, Auth) {
-    var cartIndex = localStorage.cartIndex;
-    var currentIndex = 3;
-    if (!cartIndex || !(parseInt(cartIndex) >= currentIndex)) {
-      delete localStorage.cart
-      localStorage.cartIndex = String(currentIndex);
-    }
+  // .run(function ($rootScope, $location, Auth) {
+  //   var cartIndex = localStorage.cartIndex;
+  //   var currentIndex = 3;
+  //   if (!cartIndex || !(parseInt(cartIndex) >= currentIndex)) {
+  //     delete localStorage.cart
+  //     localStorage.cartIndex = String(currentIndex);
+  //   }
 
-    // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$routeChangeStart', function (event, next, current) {
+  //   // Redirect to login if route requires auth and you're not logged in
+  //   $rootScope.$on('$routeChangeStart', function (event, next, current) {
 
-      $rootScope.appTitle = 'PaintCollar - Connecting Art with lifeStyle';
-      if (next.title) {
-        $rootScope.appTitle = next.title;
-      }
-      if ($location.path() !== '/login') {
-        $rootScope.redirectPath = $location.path();
-      }
-      $rootScope.ogTitle = "Paintcollar";
-      $rootScope.ogDescription = "Paintcollar lets artists soar by turning their art into amazing merchandize. Buy incredible T-shirts, Laptop skins, Posters and more!";
-      $rootScope.ogImage = "http://i.imgur.com/ZjBS4gJ.jpg";
-      $rootScope.ogUrl =  "http://"+$location.host()+$location.path();
+  //     $rootScope.appTitle = 'PaintCollar - Connecting Art with lifeStyle';
+  //     if (next.title) {
+  //       $rootScope.appTitle = next.title;
+  //     }
+  //     if ($location.path() !== '/login') {
+  //       $rootScope.redirectPath = $location.path();
+  //     }
+  //     $rootScope.ogTitle = "Paintcollar";
+  //     $rootScope.ogDescription = "Paintcollar lets artists soar by turning their art into amazing merchandize. Buy incredible T-shirts, Laptop skins, Posters and more!";
+  //     $rootScope.ogImage = "http://i.imgur.com/ZjBS4gJ.jpg";
+  //     $rootScope.ogUrl =  "http://"+$location.host()+$location.path();
 
-      if (next.authenticate && !Auth.isLoggedIn()) {
-        $location.path('/login');
-      }
-    });
-  })
+  //     if (next.authenticate && !Auth.isLoggedIn()) {
+  //       $location.path('/login');
+  //     }
+  //   });
+  // })
   .constant('scalingFactor', {tshirt: 12, laptop:6.7478, poster:10.844, canvas: 10.844});
