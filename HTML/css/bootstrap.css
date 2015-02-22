@@ -3018,6 +3018,7 @@ fieldset[disabled] .btn {
   color: #fff;
   background-color: #c4a84f;
   border-color: #c4a84f;
+  height:40px; 
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -3151,8 +3152,8 @@ fieldset[disabled] .btn-success.active {
 }
 .btn-info {
   color: #fff;
-  background-color: #5bc0de;
-  border-color: #46b8da;
+  background-color: #96aa49;
+  border-color: #839735;
 }
 .btn-info:hover,
 .btn-info:focus,
@@ -4146,7 +4147,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-fixed-top {
   top: 0;
-  border-width: 0 0 1px;
+  border-width: 0 0 0px;
 }
 .navbar-fixed-bottom {
   bottom: 0;
@@ -4242,8 +4243,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 30px;
-    padding-bottom: 30px; font-size:18px; 
+    padding-top: 15px;
+    padding-bottom: 15px; font-size:18px; 
 	border-left:solid 1px #3d3d3d;
   }
 }
@@ -6046,6 +6047,7 @@ button.close {
 }
 .carousel {
   position: relative;
+  margin-top:50px; 
 }
 .carousel-inner {
   position: relative;
