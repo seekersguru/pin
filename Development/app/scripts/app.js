@@ -41,7 +41,7 @@ angular.module('pinApp', [
         templateUrl: 'partials2/register'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/dashboard'
       });
 
     $locationProvider.html5Mode(true);
