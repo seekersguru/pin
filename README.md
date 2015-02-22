@@ -1,18 +1,40 @@
-# pin
+### PRIVATE NETWORK INVESTER
 
-In Development 
+Go to Development folder then follow below commands
 
-set 
+===========================================================
+###In Development 
 
-Node 
+First Install
 
-npm 
+1 Node 
+
+2 npm 
+
+===============================================================
 
 then
 
-#Install node related dependancy
+================================================================
+#Install node related and bower related dependancy
 
 npm install
+
+bower install
+
+===============================================================
+### RUN PROJECT
+
+grunt develop
+
+===============================================================
+
+
+================================
+(',')   Keep Enjoying (',')
+
+================================
+
 
 
 
