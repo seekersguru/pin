@@ -1,0 +1,29 @@
+{
+  "name": "pin",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "1.2.11",
+    "json3": "~3.2.6",
+    "es5-shim": "~2.1.0",
+    "angular-resource": "1.2.11",
+    "angular-cookies": "1.2.11",
+    "angular-sanitize": "1.2.11",
+    "angular-route": "1.2.11",
+    "angular-bootstrap": "~0.10.0",
+    "bootstrap": "3.0.3",
+    "bootstrap-sass-official": "~3.1.1",
+    "fabric": "1.4.4",
+    "angular-loading-bar": "~0.3.0",
+    "ng-tags-input": "2.0.1",
+    "fontawesome": "~4.1.0",
+    "angular-social": "https://github.com/siddhant3s/angular-social.git#master",
+    "angulartics": "~0.15.20",
+    "angular-scroll": "0.6.1",
+    "ng-file-upload": "~1.6.12"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.11",
+    "angular-scenario": "1.2.11"
+  },
+  "testPath": "test/client/spec"
+}

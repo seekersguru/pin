@@ -1,0 +1,144 @@
+@font-face {
+  font-family: 'ADAM.CG PRO';
+  url: url('/fonts/ADAM.CG%20PRO.otf');
+  src: url('/fonts/adam.cg_pro-webfont.eot');
+  src: url('/fonts/adam.cg_pro-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/adam.cg_pro-webfont.woff') format('woff'),
+  url('/fonts/adam.cg_pro-webfont.ttf') format('truetype'),
+  url('/fonts/adam.cg_pro-webfont.svg#adam.cg_proregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BodoniXT';
+  src: url('/fonts/BodoniXT.ttf');
+  src: url('/fonts/bodonixt-webfont.eot');
+  src: url('/fonts/bodonixt-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/bodonixt-webfont.woff') format('woff'),
+  url('/fonts/bodonixt-webfont.ttf') format('truetype'),
+  url('/fonts/bodonixt-webfont.svg#bodonixtregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Nexa Bold';
+  src: url('/fonts/Nexa%20Bold.otf');
+  src: url('/fonts/nexa_bold-webfont.eot');
+  src: url('/fonts/nexa_bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/nexa_bold-webfont.woff') format('woff'),
+  url('/fonts/nexa_bold-webfont.ttf') format('truetype'),
+  url('/fonts/nexa_bold-webfont.svg#nexa_boldregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Nexa Light';
+  src: url('/fonts/Nexa%20Light.otf'),
+       url('/fonts/nexa_light-webfont.eot');
+  src: url('/fonts/nexa_light-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/nexa_light-webfont.woff') format('woff'),
+  url('/fonts/nexa_light-webfont.ttf') format('truetype'),
+  url('/fonts/nexa_light-webfont.svg#nexa_lightregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Nexa Slab Bold';
+  src: url('/fonts/Nexa%20Slab%20Bold.otf');
+  src: url('/fonts/nexa_slab_bold-webfont.eot');
+  src: url('/fonts/nexa_slab_bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/nexa_slab_bold-webfont.woff') format('woff'),
+  url('/fonts/nexa_slab_bold-webfont.ttf') format('truetype'),
+  url('/fonts/nexa_slab_bold-webfont.svg#nexa_slab_bold_freeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Nexa Slab Regular';
+  src: url('/fonts/Nexa%20Slab%20Regular.otf');
+  src: url('/fonts/nexa_slab_regular-webfont.eot');
+  src: url('/fonts/nexa_slab_regular-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/nexa_slab_regular-webfont.woff') format('woff'),
+  url('/fonts/nexa_slab_regular-webfont.ttf') format('truetype'),
+  url('/fonts/nexa_slab_regular-webfont.svg#nexa_slab_regular_freeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Segoe WP';
+  src: url('/fonts/SegoeWP.ttf');
+  src: url('/fonts/segoewp-webfont.eot');
+  src: url('/fonts/segoewp-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/segoewp-webfont.woff') format('woff'),
+  url('/fonts/segoewp-webfont.ttf') format('truetype'),
+  url('/fonts/segoewp-webfont.svg#segoe_wpregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Segoe WP-Light';
+  src: url('/fonts/SegoeWP-Light.ttf');
+  src: url('/fonts/segoewp-light-webfont.eot');
+  src: url('/fonts/segoewp-light-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/segoewp-light-webfont.woff') format('woff'),
+  url('/fonts/segoewp-light-webfont.ttf') format('truetype'),
+  url('/fonts/segoewp-light-webfont.svg#segoe_wplight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Segoe WP-Semibold';
+  src: url('/fonts/SegoeWP-Semibold.ttf');
+  src: url('/fonts/segoewp-semibold-webfont.eot');
+  src: url('/fonts/segoewp-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/segoewp-semibold-webfont.woff') format('woff'),
+  url('/fonts/segoewp-semibold-webfont.ttf') format('truetype'),
+  url('/fonts/segoewp-semibold-webfont.svg#segoe_wpsemibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+    font-family: 'bebas_neueregular';
+    src: url('/fonts/bebasneue-webfont.eot');
+    src: url('/fonts/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/bebasneue-webfont.woff2') format('woff2'),
+         url('/fonts/bebasneue-webfont.woff') format('woff'),
+         url('/fonts/bebasneue-webfont.ttf') format('truetype'),
+         url('/fonts/bebasneue-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+//Defining classes based on the name of the font-family
+.bebas-neue{
+  font-family: 'bebas_neueregular';
+}
+
+.nexa-slab-bold {
+  font-family: 'Nexa Slab Bold';
+}
+.adam-cg-pro {
+  font-family: 'ADAM.CG PRO';
+}
+.bodoni-xt {
+  font-family: 'BodoniXT';
+}
+.nexa-bold {
+  font-family: 'Nexa Bold';
+}
+.nexa-light {
+  font-family: 'Nexa Light';
+}
+.nexa-slab-regular {
+  font-family: 'Nexa Slab Regular';
+}
+.segoe-wp {
+  font-family: 'Segoe WP';
+}
+.segoe-wp-light {
+  font-family: 'Segoe WP-Light';
+}
+.segoe-wp-semibold {
+  font-family: 'Segoe WP-Semibold';
+}

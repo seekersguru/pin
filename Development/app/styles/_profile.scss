@@ -1,0 +1,73 @@
+.profileScores {
+  height: 200px;
+  background-image: url('/images/profilePageBG-small.png');
+  background-size: cover;
+  > div {
+    height: 70%;
+    position: relative;
+    top: 16%;
+    border-right: 1px solid #fff;
+    &.designs {
+      border-right: none;
+    }
+    .scores{
+      p {
+        color: #fff;
+        font-size: 20px;
+        position: relative;
+        text-transform: uppercase;
+        top: -20%;
+        .fa {
+          font-size: 33px;
+        }
+        &.score {
+          font-size: 45px;
+        }
+      }
+    }
+  }
+}
+.userDetails {
+  font-size: $font-size-base;
+  color: $gray-light;
+  padding: $grid-gutter-width/2;
+  .name {
+    color: $gray;
+    font-size: $font-size-base*1.2
+  }
+  .btn {
+    width: 95%;
+    margin: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .fa {
+    margin-right: 7px;
+  }
+}
+.profileMerch {
+  padding-left: 10%;
+  .merch-type {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .merch-type, input+span {
+    color: $fancy-text-color;
+  }
+  input+span {
+    position: relative;
+    left: 7px;
+    bottom: 2px;
+  }
+  input {
+    margin-left: 10%;
+  }
+}
+.no-artworks {
+  color: $gray-lighter;
+  font-size: $font-size-h1;
+  margin: $grid-gutter-width;
+  a {
+    margin: $grid-gutter-width
+  }
+}

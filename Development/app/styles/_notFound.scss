@@ -1,0 +1,70 @@
+.notfound{
+background: #fff;
+position: relative;
+}
+.pos-relative{
+	position: relative;
+}
+#error-page {
+	
+	margin: 0 auto 0 auto;
+	position: relative;
+	h1 {
+		font-size: 13em;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		text-align: center;
+		color: #fbe6e5;
+	}
+	h2 {
+		font-size: 2em;
+		width: 100%;
+		text-transform: uppercase;
+		position: absolute;
+		top: 70px;
+		left: 50%;
+		transform: translate(-50%, 0);
+		text-align: center;
+		color: #ed3b3b;
+	}
+	p {
+		font-size: 20px;
+		color: #444;
+		margin-bottom: 50px;
+		text-align: center;
+	}
+	.invite-friend-query {
+		background-color: #ededed;
+		font-style: italic;
+		margin-right: 10px;
+		border-radius: 0;
+		box-shadow: none;
+		padding: 0 8px;
+		border: none;
+		width:300px;
+
+	}
+	.error-massege {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+.navbar-form {
+	width: 55%;
+	margin: 0 auto 180px auto;
+}
+.input-friends {
+	margin: 0 auto;
+	max-width: 400px;
+}
+}
+.notfound-img {
+	position: absolute;
+	width: 32%;
+	height: auto;
+	bottom: -50px;
+  z-index: 0;
+	display: block;
+	left: 50%;
+	transform: translate(-50%, 0);
+}

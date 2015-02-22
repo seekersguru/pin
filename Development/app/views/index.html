@@ -1,0 +1,95 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="paintcollarcomApp"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="paintcollarcomApp"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="paintcollarcomApp"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="pinApp"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title ng-bind="appTitle"></title>
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Paintcollar">
+    <meta property="og:url" content="{{ogUrl}}">
+    <meta property="og:title" content="{{ogTitle}}">
+    <meta property="og:description" content="{{ogDescription}}">
+    <meta property="og:image" content="{{ogImage}}">
+    <meta property="fb:admins" content="100003624304113,100000566828426,1128919032" />
+
+    <meta property="article:publisher" content="https://www.facebook.com/paintcollar/">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <% if (!css) { %>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <% }%>
+    <!-- build:css(app) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/src/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/angular-social/angular-social.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <% if (css) { %>
+    <link rel="stylesheet" href="styles/main-new.css">
+    <% } %>
+    <!-- endbuild -->
+    <% if (!css) { %>
+    <link rel="stylesheet" href="styles/main.css">
+    <% } %>
+
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <% if (css) {  %>
+    <div ng-include="'partials2/navbar'"></div>
+    <div ng-view="" autoscroll="true"></div>
+    <div ng-include="'partials2/footer'"></div>
+    <% } else {%>
+    <div class="container" ng-view=""></div>
+    <div ng-include="'partials2/footer'"></div>
+    <% } %>
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- Remove the #_=_ which Facebook attaches -->
+    <script type="text/javascript">
+    if (window.location.hash && window.location.hash == '#_=_') {
+        window.location.hash = '';
+    }
+    </script>
+    <!-- build:js(app) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-loading-bar/src/loading-bar.js"></script>
+    <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
+    <script src="bower_components/angular-social/angular-social.js"></script>
+    <script src="bower_components/angular-scroll/angular-scroll.js"></script>
+    <script src="bower_components/angulartics/src/angulartics.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-ga.js"></script>
+
+    <!-- endbower -->
+    <script src="bower_components/fabric/dist/fabric.js"></script>
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+           <!-- endbuild -->
+
+</body>
+</html>

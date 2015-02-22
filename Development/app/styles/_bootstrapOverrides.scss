@@ -1,0 +1,48 @@
+.navbar-collapse,
+.navbar-form {
+  border-color: darken(#222222, 10%);
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  border-bottom: 1pt solid red;
+}
+
+.navbar-default .navbar-nav > li.active a{
+    background-color: $brand-primary;
+    color:$btn-default-color;
+
+}
+.navbar-default .navbar-nav > li.active > a:hover,
+.navbar-default .navbar-nav > li.active > a:focus {
+  border-bottom: 1pt solid red;
+  background-color: $brand-primary;
+   color:$btn-default-color;
+
+}
+
+.navbar-default .navbar-nav .nounderline > a:hover,
+.navbar-default .navbar-nav .nounderline > a:focus {
+  border-bottom: 0pt;
+}
+
+a{
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+hr {
+  margin-top: 30px;
+}
+$header-bg: #fdfdfd !default;
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    /* Space out the masthead */
+    .header {
+        padding-bottom: 20px;
+        background-color: $header-bg;
+    }
+}
+
+.navbar-default {
+    background-color: $header-bg;
+}               

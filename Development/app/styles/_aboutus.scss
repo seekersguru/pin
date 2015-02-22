@@ -1,0 +1,136 @@
+@mixin nav-styles($margin-top, $margin-left) {
+  margin-top: $margin-top;
+  margin-left: $margin-left;
+  & > li a {
+    color: $gray-dark;
+    font-weight: bold;
+    &:hover, &.active {
+      color: $brand-primary;
+      background-color: transparent;
+    }
+  }
+}
+.aboutus-font {
+  font-family: 'Segoe WP' sans-serif;
+  font-size: floor($font-size-base*1.1);
+}
+.aboutus {
+  &.nav-stacked {
+    @include nav-styles($grid-gutter-width, 0)
+  }
+  .sub-menu .nav-stacked{
+    @include nav-styles(0, $grid-gutter-width/2)
+  }
+  p {
+    @extend .aboutus-font;
+    margin-top: $grid-gutter-width;
+    &.the-team {
+      @extend .nexa-slab-bold;
+      color: darken($gray-lighter, 13%);
+    }
+    &.position {
+      color: $gray-light;
+      margin: 0 0 10px;
+      position: relative;
+      left: -5px;
+      font-style: italic;
+      font-family: serif;
+    }
+  }
+  .mini-guide {
+    span.h4 {
+      font-weight: bold;
+    }
+    .awards-description {
+      padding: $font-size-base;
+      .inner {
+        background: $gray-lighter;
+        padding: 7px 24px 7px 14px;
+        min-height: 218px
+      }
+    }
+  }
+  .main-heading {
+    @extend .nexa-slab-bold;
+    font-size: $font-size-h4;
+    color: $fancy-text-color;
+    text-transform: uppercase;
+  }
+  .name {
+    text-transform: uppercase;
+  }
+  img {
+    margin-top: $grid-gutter-width;
+  }
+}
+.our-products-img {
+  margin-top: $grid-gutter-width;
+  margin-left: 2px;
+  .products-image {
+    background-repeat: no-repeat;
+    height: 240px;
+    float:left;
+    font-size: 30pt;
+    text-align: center;
+    line-height: 240px;
+    transition: all 0.5s ease;
+    &:hover, &.active {
+      a {
+        opacity: 1;
+      }
+    }
+  }
+  a{
+    color: #fff;
+    display: block;
+    opacity:0;
+  }
+  $space : 20px;
+  .second-row {
+    margin-top: $space;
+  }
+  .second-col {
+    margin-left: $space;
+  }
+}
+
+.product-laptop{
+  width:315px;
+  background-image: url('/images/laptop-default.png');
+  &:hover, &.active{
+    background-image: url('/images/laptop-active.png');
+  }
+}
+
+.product-tshirt{
+  width:395px;
+  background-image: url('/images/tshirt-default.png');
+  &:hover, &.active{
+    background-image: url('/images/tshirt-active.png');
+  }
+}
+
+.product-canvas{
+  width:344px;
+  background-image: url('/images/canvas-default.png');
+  &:hover, &.active{
+    background-image: url('/images/canvas-active.png');
+  }
+}
+
+.product-poster{
+  width:262px;
+  background-image: url('/images/posters-default.png');
+  &:hover, &.active{
+    background-image: url('/images/posters-active.png');
+  }
+}
+
+.fancy-text {
+  font-family: 'BodoniXT';
+  font-size: $font-size-h2;
+  color: $fancy-text-color;
+  position: relative;
+  top: 10px;
+  text-transform: uppercase;
+}

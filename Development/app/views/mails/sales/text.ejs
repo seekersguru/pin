@@ -1,0 +1,21 @@
+Dear <%= user.name %>
+
+Congratulations! A customer fell in love with your art and proceeded to purchase it!
+Here is the detail of your sales:
+
+#        Artwork        Merch        Quantity        Amount        Profit
+<% for (var i = 0; i < sales.length; i++) { %>
+<%= i+1 %>        <%= sales[i].title %>          <%= sales[i].merchName %>          <%= sales[i].quantity %>          <%= sales[i].amount %>          <%= sales[i].margin*sales.base/100 %> 
+<% } %>
+
+
+Your accumulated profit for this month will be credited to your account by the mode of payment that you have selected on paintcollar.com.
+
+
+You can rest easy knowing that our team has jumped into action to manufacture and deliver the product to the customer.
+
+
+We wish you best of luck for the future and hope customers will continue to appreciate and buy your work. Once again, congratulations on your sale!
+
+Warm Regards
+Paintcollar Team

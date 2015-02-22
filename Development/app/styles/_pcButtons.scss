@@ -1,0 +1,41 @@
+@mixin pc-button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  text-transform: uppercase;
+  &:hover,
+  &:focus,
+  &:active,
+  &.active
+  {
+    color: $background;
+    background-color: transparent;
+    border-color: $background;
+  }
+}
+
+// Alternate Paintcollar specific buttons
+// --------------------------------------------------
+
+.btn-default {
+  @include pc-button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+}
+.btn-primary {
+  @include pc-button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+// Success
+.btn-success {
+  @include pc-button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+}
+// Info
+.btn-info {
+  @include pc-button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+}
+// Warning
+.btn-warning {
+  @include pc-button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+// Danger and error
+.btn-danger {
+  @include pc-button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}

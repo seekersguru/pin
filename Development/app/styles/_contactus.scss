@@ -1,0 +1,54 @@
+.contactus {
+  .contactus-info {
+    font-family: 'Nexa Slab Regular';
+    font-size: $font-size-large;
+    margin-top: $grid-gutter-width;
+    color: lighten($gray, 8%);
+  }
+  h1, .h1 {
+    font-size: $font-size-h1*1.5;
+    font-family: 'Nexa Bold' sans-serif;
+    font-style: italic;
+    text-transform: uppercase;
+    color: $gray-lighter;
+    font-weight: bolder;  // bad hack
+    letter-spacing: -2px; // to make it look like Nexa Slab Bold.
+  }
+  .box {
+    background: lighten($gray-lighter, 12%);
+    margin-top: $grid-gutter-width/2;
+    margin-bottom: $grid-gutter-width/2;
+    padding: 0 25px 25px 25px;
+    .fa-phone, .fa-envelope, .fa-anchor,.fa-building {
+      margin-right: 25px;
+      padding: 14px;
+      background: $brand-primary;
+      color: #ffffff;
+      font-size: $font-size-large;
+      min-width: 46px;
+    }
+    .heading {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+  }
+  .contact-info {
+    margin: $grid-gutter-width/2 0;
+    @extend .contactus-info;
+    letter-spacing: 4px;        
+    .address {
+      letter-spacing: 0px;
+    }       
+  }
+  .no-font-family {
+    font-family: 'Segoe WP';
+  }
+  a.text-muted:hover {
+    color: $brand-primary;
+  }
+  h4.submit-message {
+    padding: $font-size-large;
+    border: 1px solid;
+    @extend .contactus-info;
+  }
+}
