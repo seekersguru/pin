@@ -38,6 +38,7 @@ exports.login = function (req, res, next) {
 
 };
 
+
 exports.fblogin = function(req, res, next) {
   var redirectPath = req.query.redirectPath || '/';
   redirectPath = (new Buffer(String(redirectPath))).toString('base64');
