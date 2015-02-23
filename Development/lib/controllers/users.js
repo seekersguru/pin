@@ -2,115 +2,15 @@
 
 var mongoose = require('mongoose'),
     User = mongoose.model('User'),
-    InviteMe = mongoose.model('InviteMe'),
     passport = require('passport'),
     Email = require('../email').Email,
-    Order = mongoose.model('Order'),
     ActivationEmail = require('../email').ActivationEmail,
     ForgotPasswordEmail = require('../email').ForgotPasswordEmail,
     _ = require('lodash');
 
 
-exports.sales= function(req, res){
-  var q = Order.find({});
-  var user_id = req.params.id;
-  var arr = [];   
-  
-  User.findById(user_id, function(err, user){
 
-    for(var i = 0; i < user.artworks.length; i++){
-        arr.push(String(user.artworks[i]));
-    }
-             
-    q = q.where("status", "paid").
-      where("cart").elemMatch({"artwork" : {
-      $in: arr
-    }});
-    
-    q.exec(function(err, orders) {
-      if (err) {
-        console.log(err);
-        return res.send(404);
-      } else {
-        for(var i =0 ;i<orders.length; i++){
-          orders[i] = orders[i].saleInfo;
-            for(var j=0; j<orders[i].cart.length; j++){
-              if(arr.indexOf(orders[i].cart[j].artwork) === -1){
-                orders[i].cart.splice(j,1);
-                j--;
-              }
-            }
-          }
-        }
-        return res.json({orders:orders});
-      });
-      
-    });
-};
 
-exports.getAllUsersWithSale = function(req, res){
-  if(req.user.role !== 'admin'){
-    return res.send(404);
-  }else{
-    var u = User.find({});
-    var o = Order.find({});
-    var length, iter=0;
-    
-    //u.populate('artworks', 'public');
-    
-    u.exec(function(err, users){
-      if(err){
-        console.log(err);
-        return res.send(404);
-      }else{
-        length = users.length;
-        var usersObj = {};
-        usersObj.users = [];
-        
-        users.forEach(function(user){
-            var arr = [];
-            
-            for(var i = 0; i < user.artworks.length; i++){
-                arr.push(String(user.artworks[i]));
-            }
-        
-            o = o.where("status", "paid").
-              where("cart").elemMatch({"artwork" : {
-              $in: arr
-            }});
-            
-            o.exec(function(err, orders) {
-              if (err) {
-                console.log(err);
-                return res.send(404);
-              } else {
-                for(var i =0 ;i<orders.length; i++){
-                  orders[i] = orders[i].saleInfo;
-                    for(var j=0; j<orders[i].cart.length; j++){
-                      if(arr.indexOf(orders[i].cart[j].artwork) === -1){
-                        orders[i].cart.splice(j,1);
-                        j--;
-                      }
-                    }
-                  }
-                }
-                
-                var tmp = user.all;
-                tmp.orders = orders;
-                usersObj.users.push(tmp);
-                iter++;
-                if(iter >= length){
-                  return res.send({users:usersObj});
-                }
-            });
-            
-            
-            
-        });  
-      }
-    });
-  }
-};
 
 exports.query = function(req, res){
     var q = User.find({});
@@ -166,19 +66,7 @@ exports.create = function (req, res, next) {
     });
   });
 };
-exports.inviteMe = function(req,res, next) {
-  var invite =  new InviteMe({email: req.body.email, name: req.body.name});
-  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  invite.save(function (err, savedInvite) {
-    if (err) return res.json(400, err);
-    var email = new Email({
-      to: 'contact@paintcollar.com',
-      subject: 'Invite Request from ' + savedInvite.email,
-      text: 'ID: ' + savedInvite._id + '\nEmail:' + savedInvite.email +'\nName:' + savedInvite.name  + '\nIP:' + ip
-    }).send();
-    return res.send(200);
-  });
-};
+
 exports.resend = function (req, res, next) {
   var user_email = req.body.email;
   User.findOne({ $or : [{email:user_email}, {username:user_email}] }, 'name email emailVerification', function(err, user) {

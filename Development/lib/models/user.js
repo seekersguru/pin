@@ -2,7 +2,6 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    Artwork = mongoose.model('Artwork'),
     crypto = require('crypto');
   
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
@@ -36,19 +35,10 @@ var UserSchema = new Schema({
   bio: String,
   following:[{type: Schema.Types.ObjectId, ref:'User'}],
   nFollowers:{type: Number, default: 0},
-  favorites: [{type: Schema.Types.ObjectId, ref:'Artwork'}],
   city:String,
   country: {type:String, default: 'India'},
   showAge: {type:Boolean, default: false},
   dob:{type:Date, default: Date.now},
-  artworks: [{type: Schema.Types.ObjectId, ref:'Artwork'}],
-  NEFTAccName: String,
-  NEFTAccNo : String,
-  NEFTBank : String,
-  NEFTBankIFSC: String,
-  ChequeName: String,
-  ChequeMailingAddress: String,
-  paymentPref: String
 });
 
 /**
@@ -91,7 +81,6 @@ UserSchema
       'role': this.role,
       'city': this.city,
       'country': this.country,
-      'artworks': this.artworks,
       'photo':this.photo,
       'nFollowers': this.nFollowers,
       'username' : this.username
@@ -108,7 +97,6 @@ UserSchema
       'role': this.role,
       'city': this.city,
       'country': this.country,
-      'artworks': this.artworks,
       'photo':this.photo,
       'nFollowers': this.nFollowers,
       'username' : this.username,
@@ -258,67 +246,6 @@ UserSchema.methods = {
         validTill: Date.now() + 24*3600*1000
       };
     }
-  }
-};
-
-UserSchema.statics = {
-  findByIdAndUpdateFollow: function(user_id, artist_id, cb){
-    var self = this;
-    self.findById(user_id, function(err, user){
-      if(err || user.following.indexOf(artist_id) !== -1){
-          return cb(true);
-      }
-      self.findByIdAndUpdate(user_id, {$addToSet: {following: artist_id}}, function(err, user){
-        if(err){
-          cb(err);
-        }
-        return self.findByIdAndUpdate(artist_id, { $inc: { nFollowers: 1 }}, cb);
-      });
-    });
-  },
-  findByIdAndUpdateUnfollow: function(user_id, artist_id, cb){
-    var self  = this;
-    self.findById(user_id, function(err, user){
-      if(err || user.following.indexOf(artist_id) === -1){
-          return cb(true);
-      }
-      self.findByIdAndUpdate(user_id, {$pull: {following: artist_id}}, function(err, user){
-        if(err){
-          cb(err);
-        }
-        return self.findByIdAndUpdate(artist_id, { $inc: { nFollowers: -1 }}, cb);
-      });
-    });
-  },
-  findByIdAndAddFavorite : function(user_id, artwork_id, cb){
-    var self = this;
-    self.findById(user_id, function(err, user){
-      if(err || user.favorites.indexOf(artwork_id) !== -1){
-        return cb(true);
-      }  
-      self.findByIdAndUpdate(user_id, {$addToSet: {favorites: artwork_id}}, function(err, user){
-          if(err){
-            return cb(err);
-          }
-          return Artwork.findByIdAndUpdate(artwork_id, { $inc: { nFavorites: 1 }}, cb);
-      });
-    });
-     
-  },
-  findByIdAndRemoveFavorite: function(user_id, artwork_id, cb){
-    var self = this;
-    
-    self.findById(user_id, function(err, user){
-      if(err || user.favorites.indexOf(artwork_id) === -1) {
-        return cb(true);
-      }
-      self.findByIdAndUpdate(user_id, {$pull: {favorites: artwork_id}}, function(err, user){
-        if(err){
-          return cb(err);
-        }
-        return Artwork.findByIdAndUpdate(artwork_id, { $inc: { nFavorites: -1 }}, cb);
-      });
-    });
   }
 };
 

@@ -1,5 +1,5 @@
        <!-- FIXED NAVBAR START -->
- <nav class="navbar navbar-blue navbar-fixed-top">
+ <nav class="navbar navbar-blue navbar-fixed-top" ng-controller="NavbarCtrl">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -17,20 +17,20 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        
-        
-
-        
+        <li  ng-class="{active: isActive('/home')}"><a href="#">Home</a></li>
       </ul>
-      <form class="navbar-form navbar-right" method="GET" action="dashboard.html" >
-        <div class="form-group">
-          <input type="text" class="form-control" name="username" placeholder="Username">
+      <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate >
+        <div class="form-group" >
+          <input type="text" id="username" name="email" class="form-control" ng-model="user.email" placeholder="Email" required>
+          <p ng-show="form.email.$error.required && (form.email.$dirty || submitted)" class="has-error help-block">Email is required.</p>
+
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="password" placeholder="Password">
+          <input type="password" id="password" name="password" class="form-control" ng-model="user.password" placeholder="Password" required>
+          <p ng-show="form.password.$error.required && (form.password.$dirty || submitted)" class="has-error help-block">Password is required.</p>
+
         </div>
-        <button type="submit" class="btn btn-default">Sign In</button>
+        <button type="submit" class="btn btn-default" ng-disabled="form.$invalid">Sign In</button>
       </form>
     </div><!--/.nav-collapse -->
   </div>

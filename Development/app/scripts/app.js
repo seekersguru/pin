@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('pinApp', [
+var pinApp=angular.module('pinApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -18,7 +18,7 @@ angular.module('pinApp', [
   })
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
-      .when('/', {
+      .when('/home', {
         templateUrl: 'partials2/main'
        
       })
@@ -41,7 +41,7 @@ angular.module('pinApp', [
         templateUrl: 'partials2/register'
       })
       .otherwise({
-        redirectTo: '/dashboard'
+        redirectTo: '/home'
       });
 
     $locationProvider.html5Mode(true);
