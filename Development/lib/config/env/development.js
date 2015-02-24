@@ -6,3 +6,4 @@ module.exports = {
     uri: 'mongodb://localhost/pin-dev'
   }
 };
+ 

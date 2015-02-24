@@ -7,48 +7,48 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-md-12">
-          <form class="register-form"  role="form" novalidate>
-           <div class="form-group">
+          <form class="register-form"  role="form"  name="form" novalidate ng-submit="register(form)">
+           <div class="form-group" ng-class="{'has-error':form.fullname.$dirty && form.fullname.$error.required,'has-success':form.fullname.$valid}">
             <label class="control-label" for="fullName">Family Office or Family Name</label>
-            <input required type="text" name="addr" id="addr" class="form-control" placeholder="Address"/>
+            <input required type="text" name="fullname"  class="form-control" placeholder="Full Name" ng-model="user.fullname"/>
           </div>
 
           <div class="row">
             <div class="col-lg-6">
-              <div class="form-group">
+              <div class="form-group" ng-class="{'has-error':form.name.$dirty && form.name.$error.required,'has-success':form.name.$valid}">
                 <label class="control-label" for="fullName">Name </label>
-                <input required type="text" name="addr" id="addr" class="form-control" placeholder="Address"/>
+                <input required type="text" name="name"  class="form-control" placeholder="Name" ng-model="user.name"/>
               </div>
             </div>
 
             <div class="col-lg-6">
-              <div class="form-group">
+              <div class="form-group" ng-class="{'has-error':form.alias.$dirty && form.alias.$error.required,'has-success':form.alias.$valid}">
                 <label class="control-label" for="fullName">Alias </label>
-                <input required type="text" name="addr" id="addr" class="form-control" placeholder="Address"/>
+                <input required type="text" name="alias"  class="form-control" placeholder="Alias" ng-model="user.alias"/>
               </div>
             </div>
 
           </div>
 
 
-          <div class="form-group">
-            <label class="control-label" for="fullName">Address with street address optional but city/country compulsory</label>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
+          <div class="form-group" ng-class="{'has-error':form.comment.$dirty && form.comment.$error.required,'has-success':form.comment.$valid}">
+            <label class="control-label" for="comment">Address with street address optional but city/country compulsory</label>
+            <textarea class="form-control" required rows="5" name="comment" ng-model="user.comment"></textarea>
           </div>
 
 
           <div class="row">
             <div class="col-lg-6">
-              <div class="form-group">
-                <label class="control-label" for="fullName">Email </label>
-                <input required type="text" name="addr" id="addr" class="form-control" placeholder="Address"/>
+              <div class="form-group" ng-class="{'has-error':form.email.$dirty && form.email.$error.required,'has-success':form.email.$valid}">
+                <label class="control-label" for="email">Email </label>
+                <input required type="email" name="email"  class="form-control" placeholder="Email" ng-model="user.email"/>
               </div>
             </div>
 
             <div class="col-lg-6">
-              <div class="form-group">
-                <label class="control-label" for="fullName">Phone/Mobile </label>
-                <input required type="text" name="addr" id="addr" class="form-control" placeholder="Address"/>
+              <div class="form-group" ng-class="{'has-error':form.phone.$dirty && form.phone.$error.required,'has-success':form.phone.$valid}" >
+                <label class="control-label" for="phone">Phone/Mobile </label>
+                <input required type="text" name="phone"  class="form-control" placeholder="Phone" ng-model="user.phone"/>
               </div>
             </div>
 
@@ -57,13 +57,13 @@
           <div class="form-group">
             <label class="control-label">Member type</label>
             <label class="radio-inline">
-              <input type="radio" name="optradio">Option 1
+              <input type="radio" name="member">Option 1
             </label>
             <label class="radio-inline">
-              <input type="radio" name="optradio">Option 2
+              <input type="radio" name="member">Option 2
             </label>
             <label class="radio-inline">
-              <input type="radio" name="optradio">Option 3
+              <input type="radio" name="member">Option 3
             </label>
           </div>
 
@@ -72,15 +72,15 @@
           <div class="row">
             <div class="col-lg-6">
               <div class="form-group">
-                <label class="control-label" for="fullName">Nominated by  </label>
-                <input required type="text" name="addr" id="addr" class="form-control" placeholder="Address"/>
+                <label class="control-label" for="nominated">Nominated by  </label>
+                <input required type="text" name="nominated"  class="form-control" placeholder="Nominated by" ng-model="user.nominated"/>
               </div>
             </div>
 
             <div class="col-lg-6">
               <div class="form-group">
-                <label class="control-label" for="fullName">Interests </label>
-                <select class="form-control" id="sel1">
+                <label class="control-label" for="interests">Interests </label>
+                <select class="form-control">
                   <option>topics listed in CMS</option>
                   <option>services listed in service directory</option>
                   <option>events type listed in events
@@ -102,7 +102,7 @@
           </div>
 
 
-          <button class="btn btn-info" type="button">
+          <button class="btn btn-info" type="button" ng-disabled="form.$invalid">
 
             Register
           </button>

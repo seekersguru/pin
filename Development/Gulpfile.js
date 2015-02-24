@@ -136,6 +136,7 @@ gulp.task('develop', function () {
   nodemon({ script: 'server.js', ext: 'html js', ignore: ['ignored.js'] })
     // .on('change', ['lint'])
     .on('restart', function () {
+      
       console.log('restarted!');
     });
 });

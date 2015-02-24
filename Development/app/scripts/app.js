@@ -1,6 +1,6 @@
 'use strict';
 
-var pinApp=angular.module('pinApp', [
+angular.module('pinApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -35,10 +35,12 @@ var pinApp=angular.module('pinApp', [
         templateUrl: 'partials2/content-id'
       })
       .when('/login', {
-        templateUrl: 'partials2/login'
+        templateUrl: 'partials2/login',
+        controller:'LoginCtrl'
       })
       .when('/register', {
-        templateUrl: 'partials2/register'
+        templateUrl: 'partials2/register',
+        controller:'RegisterCtrl'
       })
       .otherwise({
         redirectTo: '/home'

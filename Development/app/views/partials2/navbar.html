@@ -19,7 +19,13 @@
       <ul class="nav navbar-nav">
         <li  ng-class="{active: isActive('/home')}"><a href="#">Home</a></li>
       </ul>
-      <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate >
+
+       <ul class="nav navbar-nav navbar-welcome navbar-right" ng-show="loginStatus">
+            <li><a><span>Welcome:</span> dhruv singh</a></li>
+            <li class="active" ng-click="logout()"><a>Log out <span class="sr-only">(current)</span></a></li>
+      </ul>
+
+      <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate ng-show="!loginStatus" >
         <div class="form-group" ng-class="{'has-error':form.email.$dirty && form.email.$invalid}">
           <input type="text" id="username" name="email" class="form-control" ng-model="user.email" placeholder="Email" required>
         </div>
