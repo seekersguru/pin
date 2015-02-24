@@ -7,33 +7,38 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-md-12">
-          <form class="register-form"  role="form"  name="form" novalidate ng-submit="register(form)">
+        <form class="register-form"  role="form"  name="form"  ng-submit="register(form)" novalidate >
            <div class="form-group" ng-class="{'has-error':form.fullname.$dirty && form.fullname.$error.required,'has-success':form.fullname.$valid}">
             <label class="control-label" for="fullName">Family Office or Family Name</label>
             <input required type="text" name="fullname"  class="form-control" placeholder="Full Name" ng-model="user.fullname"/>
+            <p class="help-block" ng-show="form.fullname.$dirty && form.fullname.$error.required">Please fill FullName .</p>
+
           </div>
 
           <div class="row">
             <div class="col-lg-6">
               <div class="form-group" ng-class="{'has-error':form.name.$dirty && form.name.$error.required,'has-success':form.name.$valid}">
-                <label class="control-label" for="fullName">Name </label>
+                <label class="control-label" for="name">Name </label>
                 <input required type="text" name="name"  class="form-control" placeholder="Name" ng-model="user.name"/>
+                <p class="help-block" ng-show="form.name.$dirty && form.name.$error.required">Please fill Name .</p>
               </div>
             </div>
 
             <div class="col-lg-6">
-              <div class="form-group" ng-class="{'has-error':form.alias.$dirty && form.alias.$error.required,'has-success':form.alias.$valid}">
-                <label class="control-label" for="fullName">Alias </label>
+              <div class="form-group"  >
+                <label class="control-label" for="alias">Alias </label>
                 <input required type="text" name="alias"  class="form-control" placeholder="Alias" ng-model="user.alias"/>
+                <p class="help-block" ng-show="form.alias.$dirty && form.alias.$error.required">Please fill Alias.</p>
               </div>
             </div>
 
           </div>
 
 
-          <div class="form-group" ng-class="{'has-error':form.comment.$dirty && form.comment.$error.required,'has-success':form.comment.$valid}">
-            <label class="control-label" for="comment">Address with street address optional but city/country compulsory</label>
-            <textarea class="form-control" required rows="5" name="comment" ng-model="user.comment"></textarea>
+          <div class="form-group" ng-class="{'has-error':form.address.$dirty && form.address.$error.required,'has-success':form.address.$valid}">
+            <label class="control-label" for="address">Address with street address optional but city/country compulsory</label>
+            <textarea class="form-control" required rows="5" name="address" ng-model="user.address"></textarea>
+            <p class="help-block" ng-show="form.address.$dirty && form.address.$error.required">Please fill Address .</p>
           </div>
 
 
@@ -42,6 +47,7 @@
               <div class="form-group" ng-class="{'has-error':form.email.$dirty && form.email.$error.required,'has-success':form.email.$valid}">
                 <label class="control-label" for="email">Email </label>
                 <input required type="email" name="email"  class="form-control" placeholder="Email" ng-model="user.email"/>
+                <p class="help-block" ng-show="form.email.$dirty && form.email.$error.required">Please fill Email .</p>
               </div>
             </div>
 
@@ -49,6 +55,7 @@
               <div class="form-group" ng-class="{'has-error':form.phone.$dirty && form.phone.$error.required,'has-success':form.phone.$valid}" >
                 <label class="control-label" for="phone">Phone/Mobile </label>
                 <input required type="text" name="phone"  class="form-control" placeholder="Phone" ng-model="user.phone"/>
+                <p class="help-block" ng-show="form.phone.$dirty && form.phone.$error.required">Please fill Phone/Mobile.</p>
               </div>
             </div>
 
@@ -71,9 +78,10 @@
 
           <div class="row">
             <div class="col-lg-6">
-              <div class="form-group">
+              <div class="form-group" ng-class="{'has-error':form.nominated.$dirty && form.nominated.$error.required,'has-success':form.nominated.$valid}">
                 <label class="control-label" for="nominated">Nominated by  </label>
                 <input required type="text" name="nominated"  class="form-control" placeholder="Nominated by" ng-model="user.nominated"/>
+                <p class="help-block" ng-show="form.nominated.$dirty && form.nominated.$error.required">Please fill Nominated .</p>
               </div>
             </div>
 
@@ -94,7 +102,7 @@
 
 
           <div class="form-group">
-            <label class="radio-inline">
+            <label class="radio-inline"> 
               <input type="checkbox" name="optradio">Admin will check the nominated by before approving membership; will also put family into a Wealth band (30m+, 5-30m, <5m)
 
             </label>
@@ -102,7 +110,7 @@
           </div>
 
 
-          <button class="btn btn-info" type="button" ng-disabled="form.$invalid">
+          <button class="btn btn-info" type="submit" ng-disabled="form.$invalid">
 
             Register
           </button>

@@ -51,12 +51,12 @@ angular.module('pinApp')
       },
 
       /**
-       * Create a new user
-       * 
+        * 
        * @param  {Object}   user     - user info
        * @param  {Function} callback - optional
        * @return {Promise}            
        */
+ 
       createUser: function(user, callback) {
         var cb = callback || angular.noop;
         return User.save(user,
