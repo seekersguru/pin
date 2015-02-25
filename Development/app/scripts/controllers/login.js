@@ -4,6 +4,7 @@ angular.module('pinApp')
   .controller('LoginCtrl', function ($scope, $location, $rootScope) {
     $scope.user = {};
     $scope.errors = {};
+    $rootScope.changeFooterNishant = 1;
     
     $scope.login = function(form) {
       $scope.submitted = true;

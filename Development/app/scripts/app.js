@@ -22,6 +22,11 @@ angular.module('pinApp', [
         templateUrl: 'partials2/main'
        
       })
+      .when('/nishant', {
+        templateUrl: 'partials2/nishant',
+        controller:'NishantCtrl'
+       
+      })
       .when('/dashboard', {
         templateUrl: 'partials2/dashboard'
       })
