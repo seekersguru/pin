@@ -1,0 +1,41 @@
+<div class="container page">
+  <div class="row">
+      <div class="row">
+      	<form name="someform" novalidate ng-submit='regisetr()'>
+        <div class="col-lg-6">
+          <div class="articles-section">
+            <div class="dash-articales-ead"><h5>Example Validation </h5></div>
+
+            <div class="articles-inner"> 
+              <div class="form-group">
+                <label class="control-label" for="fullName">Email </label>
+                <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="Address">
+              </div>
+           <div class="form-group" ng-class="{'has-error':someform.fullname.$dirty && someform.fullname.$error.required,'has-success':someform.fullname.$valid}">
+            <label class="control-label" for="fullName">Family Office or Family Name</label>
+            <input required type="text" name="fullname"  class="form-control" placeholder="Full Name" ng-model="user.fullname"/>
+            <p class="help-block" ng-show="someform.fullname.$dirty && someform.fullname.$error.required">Please fill FullName .</p>
+
+          </div>
+              <div class="form-group" ng-class="{'has-error':someform.name.$dirty && someform.name.$error.required,'has-success':form.name.$valid}">
+                <label class="control-label" for="fullName">Buy Location </label>
+                <select name="somename" class="form-control" id="sel1">
+                  <option value="">Empty Value</option>
+                  <option value="1">topics listed in CMS</option>
+                  <option value="2">services listed in service directory</option>
+                  <option value="3">events type listed in events</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+
+
+
+
+    </div>
+  </div>
+
+</div>
