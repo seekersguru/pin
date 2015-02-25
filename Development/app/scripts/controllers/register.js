@@ -7,7 +7,7 @@ angular.module('pinApp')
 
      $scope.register = function(form) {
       $scope.submitted = true;
-  
+  		$scope.registerDone=0;
       if(form.$valid) {
         Auth.createUser({
           fullname: $scope.user.fullname,
@@ -21,6 +21,7 @@ angular.module('pinApp')
         .then( function() {
           // Account created, redirect to home
           $scope.emailSent = true;
+          $scope.registerDone=1;
         })
         .catch( function(err) {
           err = err.data;

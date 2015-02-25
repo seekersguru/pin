@@ -25,7 +25,7 @@
             </div>
 
             <div class="col-lg-6">
-              <div class="form-group"  >
+              <div class="form-group" ng-class="{'has-error':form.alias.$dirty && form.alias.$error.required,'has-success':form.alias.$valid}" >
                 <label class="control-label" for="alias">Alias </label>
                 <input required type="text" name="alias"  class="form-control" placeholder="Alias" ng-model="user.alias"/>
                 <p class="help-block" ng-show="form.alias.$dirty && form.alias.$error.required">Please fill Alias.</p>
@@ -52,15 +52,17 @@
             </div>
 
             <div class="col-lg-6">
-              <div class="form-group" ng-class="{'has-error':form.phone.$dirty && form.phone.$error.required,'has-success':form.phone.$valid}" >
-                <label class="control-label" for="phone">Phone/Mobile </label>
-                <input required type="text" name="phone"  class="form-control" placeholder="Phone" ng-model="user.phone"/>
-                <p class="help-block" ng-show="form.phone.$dirty && form.phone.$error.required">Please fill Phone/Mobile.</p>
+              <div class="form-group" ng-class="{'has-error':form.password.$dirty && form.password.$error.required,'has-success':form.password.$valid}" >
+                <label class="control-label" for="password">Password </label>
+                <input required type="text" name="password"  class="form-control" placeholder="password" ng-model="user.password"/>
+                <p class="help-block" ng-show="form.password.$dirty && form.password.$error.required">Please fill Password.</p>
               </div>
             </div>
 
           </div> 
 
+      <div class="row">
+        <div class="col-lg-6">
           <div class="form-group">
             <label class="control-label">Member type</label>
             <label class="radio-inline">
@@ -73,6 +75,16 @@
               <input type="radio" name="member">Option 3
             </label>
           </div>
+          </div>
+          <div class="col-lg-6">
+              <div class="form-group" ng-class="{'has-error':form.phone.$dirty && form.phone.$error.required,'has-success':form.phone.$valid}" >
+                <label class="control-label" for="phone">Phone/Mobile </label>
+                <input required type="text" name="phone"  class="form-control" placeholder="Phone" ng-model="user.phone"/>
+                <p class="help-block" ng-show="form.phone.$dirty && form.phone.$error.required">Please fill Phone/Mobile.</p>
+              </div>
+            </div>
+
+      </div>
 
 
 
@@ -114,6 +126,12 @@
 
             Register
           </button>
+
+          <div class="alert alert-success" role="alert" ng-show="registerDone">
+            You are successfully register. For Login Please <a href="/login"><b>Click Here</b></a>
+          </div>
+
+
         </form>
 
 

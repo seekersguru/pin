@@ -19,6 +19,7 @@ var UserSchema = new Schema({
   phone:String,
   membertype:String,
   nominated:String,
+  password:String,
   interests:String,
   emailVerification: {
       token: String,
