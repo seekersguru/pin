@@ -16,7 +16,8 @@ angular.module('pinApp')
           address: $scope.user.address,
           email: $scope.user.email,
           phone: $scope.user.phone,
-          nominated: $scope.user.nominated
+          nominated: $scope.user.nominated,
+          password:$scope.user.password
         })
         .then( function() {
           // Account created, redirect to home
@@ -36,3 +37,6 @@ angular.module('pinApp')
     };
 
   }]);
+
+
+  

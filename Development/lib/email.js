@@ -93,14 +93,6 @@ var OrderConfirmationEmail = function(locals) {
   this.email.subject = 'Your Paintcollar Order '+ locals.order.orderId + ' has been successfully placed';
 };
 OrderConfirmationEmail.prototype = Object.create(UserEmail.prototype);
-/**
- * Class to send email to invite friends
- */
-var InviteFriendsEmail = function(locals) {
-  UserEmail.call(this, {name: 'Paintcollar invitation from one of your friend', email: 'contact@paintcollar.com'}, 'invitefriend', locals);
-  this.email.subject = 'Your are invited by one of your friends.. !!!';
-};
-InviteFriendsEmail.prototype = Object.create(UserEmail.prototype);
 
 module.exports = {
   Email: Email,
@@ -110,6 +102,5 @@ module.exports = {
   SalesEmail: SalesEmail,
   OrderRecEmail: OrderRecEmail,
   ContactUsEmail: ContactUsEmail,
-  OrderConfirmationEmail: OrderConfirmationEmail,
-  InviteFriendsEmail:InviteFriendsEmail
+  OrderConfirmationEmail: OrderConfirmationEmail
 };

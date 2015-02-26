@@ -27,10 +27,10 @@
 
       <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate ng-show="!loginStatus" >
         <div class="form-group" ng-class="{'has-error':form.email.$dirty && form.email.$invalid}">
-          <input type="text" id="username" name="email" class="form-control" ng-model="user.email" placeholder="Email" required>
+          <input type="text" id="emailnav" name="email" class="form-control" ng-model="user.email" placeholder="Email" required>
         </div>
         <div class="form-group" ng-class="{'has-error':form.password.$dirty && form.password.$invalid}">
-          <input type="password" id="password" name="password" class="form-control" ng-model="user.password" placeholder="Password" required>
+          <input type="password" id="passwordnav" name="password" class="form-control" ng-model="user.password" placeholder="Password" required>
         </div>
         <button type="submit" class="btn btn-default" ng-disabled="form.$invalid">Sign In</button>
       </form>

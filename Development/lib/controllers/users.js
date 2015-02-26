@@ -51,7 +51,7 @@ exports.create = function (req, res, next) {
      name : req.body.name,
      // username : req.body.username,
      email: req.body.email,
-     // password: req.body.password
+     password: req.body.password
   };
   var newUser = new User(data);
   newUser.provider = 'local';

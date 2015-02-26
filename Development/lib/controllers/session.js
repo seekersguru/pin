@@ -21,10 +21,10 @@ exports.login = function (req, res, next) {
   
   var stratergy = 'local';
   
-  if(req.user && req.user.role === 'admin'){  
-    stratergy = 'admin-local';
-    req.logout();
-  }
+  // if(req.user && req.user.role === 'admin'){  
+  //   stratergy = 'admin-local';
+  //   req.logout();
+  // }
   
   passport.authenticate(stratergy ,function(err, user, info) {
     var error = err || info;

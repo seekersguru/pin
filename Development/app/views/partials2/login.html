@@ -30,8 +30,10 @@
 
               <div class="row mar-left">
                 <div class="pull-left">
-                 <button class="btn btn-info" type="button" href="/dashboard">
-                  Sign in</button></div>
+                 <button class="btn btn-info" ng-disabled="form.$invalid" type="submit" >
+                  Sign in
+                  </button>
+                </div>
                   <div class="pull-left forget-pass"><a href="#"> Forgot password?  </a></div>
                 </div>
               </form>
