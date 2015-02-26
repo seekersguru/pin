@@ -1,31 +1,38 @@
 <div class="container page">
   <div class="row">
       <div class="row">
-      	<form name="someform" novalidate ng-submit='regisetr()'>
+      	<form name="someform" novalidate ng-submit='nishant(someform)'>
         <div class="col-lg-6">
           <div class="articles-section">
             <div class="dash-articales-ead"><h5>Example Validation </h5></div>
 
             <div class="articles-inner"> 
-              <div class="form-group">
-                <label class="control-label" for="fullName">Email </label>
-                <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="Address">
+              <div class="form-group" ng-class="{'has-error':someform.email.$dirty && someform.email.$error.required && someform.email.$error.email,'has-success':someform.email.$valid}">
+                <label class="control-label" for="email">Email </label>
+                <input required="" type="email" name="email" id="addr" class="form-control" placeholder="Email" ng-model="user.email">
+               <p class="help-block" ng-show="someform.email.$dirty && someform.email.$error.required">Please fill FullName .</p>
+               <p class="help-block" ng-show="someform.email.$dirty && someform.email.$error.email">Please write Valid Email like test@test.com .</p>
+
               </div>
            <div class="form-group" ng-class="{'has-error':someform.fullname.$dirty && someform.fullname.$error.required,'has-success':someform.fullname.$valid}">
             <label class="control-label" for="fullName">Family Office or Family Name</label>
-            <input required type="text" name="fullname"  class="form-control" placeholder="Full Name" ng-model="user.fullname"/>
+            <input required type="text" name="fullname"  class="form-control" placeholder="Full Name" ng-model="user.fullname"  ng-minlength=3/>
             <p class="help-block" ng-show="someform.fullname.$dirty && someform.fullname.$error.required">Please fill FullName .</p>
+            <p class="help-block" ng-show="someform.fullname.$dirty && someform.fullname.$error.minlength">your name shoud be minimum 3 character long .</p>
 
           </div>
               <div class="form-group" ng-class="{'has-error':someform.name.$dirty && someform.name.$error.required,'has-success':form.name.$valid}">
-                <label class="control-label" for="fullName">Buy Location </label>
-                <select name="somename" class="form-control" id="sel1">
-                  <option value="">Empty Value</option>
+                <label class="control-label" for="location">Buy Location </label>
+                <select name="location" class="form-control" id="sel1" ng-model="user.location">
+                  <option value="">Emptlocationlocationy Value</option>
                   <option value="1">topics listed in CMS</option>
                   <option value="2">services listed in service directory</option>
                   <option value="3">events type listed in events</option>
                 </select>
               </div>
+
+              <div class="alert alert-success" ng-show="status">You have successfully submitted data !!!</div>
+              <button type="submit" ng-disabled="someform.$invalid">Save</button>
             </div>
           </div>
         </div>

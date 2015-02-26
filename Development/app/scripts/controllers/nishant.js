@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-  .controller('NishantCtrl',['$scope','$location','$rootScope','Auth', function ($scope, $location,$rootScope ,Auth) {
+  .controller('NishantCtrl',['$scope','$location','$rootScope','$http', function ($scope, $location,$rootScope ,$http) {
     // $scope.user = {};
     $scope.errors = {};
 
@@ -9,6 +9,17 @@ angular.module('pinApp')
       $scope.submitted = true;
   
       if(form.$valid) {
+      	console.log( $scope.user);
+        $http.post('api/nishant', $scope.user)
+        .success(function(data, status, headers, config){
+
+          $scope.status=data.status;
+
+        })
+        .error(function(data, status, headers, config){
+
+        });
+
 
       }
     };

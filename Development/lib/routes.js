@@ -3,6 +3,8 @@
 var api = require('./controllers/api'),
     index = require('./controllers'),
     users = require('./controllers/users'),
+    nishant = require('./controllers/nishant'),
+
     session = require('./controllers/session');
    
 var middleware = require('./middleware');
@@ -13,6 +15,14 @@ var middleware = require('./middleware');
 module.exports = function(app) {
 
   // Server API Routes
+  
+  //nishant section start
+
+  app.post('/api/nishant', nishant.create);
+  app.get('/api/nishant', nishant.query);
+
+  //nishant section end
+
   app.post('/api/users', users.create);
   app.get('/api/users', users.query);
   
