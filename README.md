@@ -1,47 +1,90 @@
 ### PRIVATE NETWORK INVESTER
 
-Go to Development folder then follow below commands
+ -- -- -- -- -- -- -- -- -- -- -- 
 
 ===========================================================
 ###In Development 
 
-First Install
+sudo apt-get install npm ;
 
-1 Node 
+sudo apt-get install -y mongodb ;
 
-2 npm 
+sudo apt-get install git ;
 
-### Install Tools which will helpful to run bower and gulp
-==============================================
-1 Bower
+sudo apt-get install node ;
 
-sudo npm install -g bower
+sudo apt-get install nodejs-legacy ;
 
+sudo apt-get install npm ;
+ 
 
-2 Gulp
+cd ~ ;
 
-sudo npm install --global gulp
+mkdir projects;
 
-=====================================
+cd projects ;
 
+git clone https://github.com/seekersguru/pin.git ;
 
-===============================================================
+cd pin/Development/
 
-then
+sudo npm install ;
 
-================================================================
-#Install node related and bower related dependancy
+sudo npm install -g bower ;
 
-npm install
-
-bower install
-
+bower install ;
+  
+ 
 ===============================================================
 ### RUN PROJECT
 
-grunt develop
+node server.js
 
+ 
 ===============================================================
+### GRUNT AND GULP
+
+node server.js
+
+
+sudo npm install --global gulp
+
+
+
+###Install Eclipse 
+
+sudo apt-get install eclipse ;
+
+
+http://www.nodeclipse.org/updates/
+=============1
+sudo npm install -g nodeclipse
+sudo npm install -g express-generator
+sudo npm install -g express
+sudo npm install -g coffee-script
+
+============ 2
+http://www.eclipse.org/downloads/
+
+Download PHP ECLIPSE 
+
+http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR1a/eclipse-php-luna-SR1a-linux-gtk.tar.gz
+
+============3
+Drag and drop 
+
+
+===========4
+workspace => upto projects 
+create new project name pin
+
+
+
+
+
+
+
+
 
 
 ================================
