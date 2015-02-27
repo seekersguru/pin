@@ -5,8 +5,6 @@ Go to Development folder then follow below commands
 ===========================================================
 ###In Development 
 
-sudo apt-get install eclipse ;
-
 sudo apt-get install npm ;
 
 sudo apt-get install -y mongodb ;
@@ -52,6 +50,10 @@ node server.js
 sudo npm install --global gulp
 
 
+
+###Install Eclipse 
+
+sudo apt-get install eclipse ;
 ================================
 (',')   Keep Enjoying (',')
 
