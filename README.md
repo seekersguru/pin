@@ -1,6 +1,6 @@
 ### PRIVATE NETWORK INVESTER
 
-Go to Development folder then follow below commands
+ -- -- -- -- -- -- -- -- -- -- -- 
 
 ===========================================================
 ###In Development 
