@@ -54,6 +54,10 @@ sudo npm install --global gulp
 ###Install Eclipse 
 
 sudo apt-get install eclipse ;
+
+
+
+
 ================================
 (',')   Keep Enjoying (',')
 
