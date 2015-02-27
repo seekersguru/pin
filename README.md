@@ -5,43 +5,39 @@ Go to Development folder then follow below commands
 ===========================================================
 ###In Development 
 
-First Install
+sudo apt-get install eclipse 
+sudo apt-get install npm 
+sudo apt-get install -y mongodb
+sudo apt-get install git 
+sudo apt-get install node
+sudo apt-get install nodejs-legacy
+sudo apt-get install npm
+ 
 
-1 Node 
-
-2 npm 
-
-### Install Tools which will helpful to run bower and gulp
-==============================================
-1 Bower
-
-sudo npm install -g bower
-
-
-2 Gulp
-
-sudo npm install --global gulp
-
-=====================================
-
-
-===============================================================
-
-then
-
-================================================================
-#Install node related and bower related dependancy
-
-npm install
-
-bower install
-
+cd ~
+mkdir projects 
+cd projects 
+$ pwd
+/home/arnetworks/projects
+git clone https://github.com/seekersguru/pin.git
+sudo npm install 
+sudo npm install -g bower 
+bower install 
+  
+ 
 ===============================================================
 ### RUN PROJECT
 
-grunt develop
+node server.js
 
+ 
 ===============================================================
+### GRUNT AND GULP
+
+node server.js
+
+
+sudo npm install --global gulp
 
 
 ================================
