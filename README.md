@@ -56,6 +56,35 @@ sudo npm install --global gulp
 sudo apt-get install eclipse ;
 
 
+http://www.nodeclipse.org/updates/
+=============1
+sudo npm install -g nodeclipse
+sudo npm install -g express-generator
+sudo npm install -g express
+sudo npm install -g coffee-script
+
+============ 2
+http://www.eclipse.org/downloads/
+
+Download PHP ECLIPSE 
+
+http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR1a/eclipse-php-luna-SR1a-linux-gtk.tar.gz
+
+============3
+Drag and drop 
+
+
+===========4
+workspace => upto projects 
+create new project name pin
+
+
+
+
+
+
+
+
 
 
 ================================
