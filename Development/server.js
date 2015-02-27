@@ -32,9 +32,10 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 
 // Populate empty DB with sample data
 // require('./lib/config/dummydata');
+    // }));
 
 // Passport Configuration
-// var passport = require('./lib/config/passport');
+var passport = require('./lib/config/passport');
 
 var app = express();
 app.use(require('prerender-node').set('prerenderToken', config.PRERENDER_IO_TOKEN));

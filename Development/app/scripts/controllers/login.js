@@ -9,8 +9,6 @@ angular.module('pinApp')
     $scope.login = function(form) {
 
       $scope.submitted = true;
-      console.log();
-      console.log();
       if(form.$valid) {
         Auth.login({
           // I really hate doing this, I hope Angular JS guys and FF guys can solve this issue.
@@ -24,14 +22,17 @@ angular.module('pinApp')
             $rootScope.redirectPath = undefined;
             $location.path(path);
           } else {
-            $location.path('/');
+            $location.path('/dashboard');
           }
         })
         .catch( function(err) {
           err = err.data;
-          $scope.errors.field = err.message.field;
-          $scope.errors.message = err.message.message;
-          $scope.errors.type = err.message.type;
+          $scope.errors = {};
+          // Update validity of form fields that match the mongoose errors
+          angular.forEach(err, function(error, field) {
+            form[error.field].$setValidity('mongoose', false);
+            $scope.errors[error.field] = error.message;
+          });
         });
       }
     };

@@ -5,15 +5,20 @@ var mongoose = require('mongoose'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy,
+    GoogleStrategy = require('passport-google').Strategy,
+    TwitterStrategy = require('passport-twitter').Strategy,
     config = require('./config');
 
 /**
  * Passport configuration
  */
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-passport.deserializeUser(function(id, done) {
+   // used to serialize the user for the session
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
+    });
+
+    // used to deserialize the user
+    passport.deserializeUser(function(id, done) {
   User.findOne({
     _id: id
   }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
@@ -21,24 +26,21 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+
+
 // add other strategies for more authentication flexibility
 passport.use('local', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password' // this is the virtual field on the model
   },
   function(email, password, done) {
-    User.findOne({
-      $or:[
-        {email: email},
-        {username:email}
-      ]
-    }, function(err, user) {
+    User.findOne({email: email},
+       function(err, user) {
       if (err) return done(err);
-      
-      if (!user) {
+        if (!user) {
         return done(null, false, {
           message : {
-            message: 'This username or email is not registered',
+            message: 'This email is not registered',
             type: 'not_found',
             field: 'email'
           }
@@ -53,7 +55,7 @@ passport.use('local', new LocalStrategy({
           }
         });
       }
-           return done(null, user);
+     return done(null, user);
     });
   }
 ));

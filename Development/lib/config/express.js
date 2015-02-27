@@ -50,10 +50,11 @@ module.exports = function(app) {
         url: config.mongo.uri,
         collection: 'sessions'
       }, function () {
-          console.log("db connection open");
+          console.log("db connection open Hurray PIN");
       })
     }));
 
+    
     //use passport session
     app.use(passport.initialize());
     app.use(passport.session());

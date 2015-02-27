@@ -10,8 +10,10 @@ angular.module('pinApp')
     
     // logout
 	$scope.logout = function() {
-		  $rootScope.loginStatus=0;
-		  $location.path('/login');
+      Auth.logout()
+      .then(function() {
+        $location.path('/login');
+      });   
   };
   
   //login
@@ -31,10 +33,11 @@ angular.module('pinApp')
           $rootScope.redirectPath = undefined;
           $location.path(path);
         } else {
-          $location.path('/');
+          $location.path('/dashboard');
         }
       })
       .catch( function(err) {
+        $location.path('/login');
         err = err.data;
         $scope.errors.field = err.message.field;
         $scope.errors.message = err.message.message;
