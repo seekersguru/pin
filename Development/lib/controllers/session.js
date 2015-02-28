@@ -53,6 +53,7 @@ exports.fblogin = function(req, res, next) {
     scope: ['email', 'public_profile', 'user_friends']
   })(req, res, next);
 };
+
 exports.fbcallback = function (req, res, next) {
   var redirectPath = req.query.redirectPath || '/';
   var redirectTo = (new Buffer(String(redirectPath), 'base64')).toString('ascii');
