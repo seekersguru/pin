@@ -20,12 +20,6 @@ exports.logout = function (req, res) {
 exports.login = function (req, res, next) {
   
   var stratergy = 'local';
-  
-  // if(req.user && req.user.role === 'admin'){  
-  //   stratergy = 'admin-local';
-  //   req.logout();
-  // }
-
   passport.authenticate(stratergy ,function(err, user, info) {
     var error = err || info;
     if (error) return res.json(401, error);    
@@ -36,14 +30,7 @@ exports.login = function (req, res, next) {
     });
   
   })(req, res, next);
-
-// passport.authenticate('local', {
-//         successRedirect : '/', // redirect to the secure profile section
-//         failureRedirect : '/register'
-//     });
-
 };
-
 
 exports.fblogin = function(req, res, next) {
   var redirectPath = req.query.redirectPath || '/';

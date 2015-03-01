@@ -3,7 +3,11 @@
 var express = require('express'),
     path = require('path'),
     fs = require('fs'),
+    io = require('socket.io'),
+    http = require('http'),
     mongoose = require('mongoose');
+
+
 
 /**
  * Main application file
@@ -30,6 +34,8 @@ fs.readdirSync(modelsPath).forEach(function (file) {
   }
 });
 
+
+
 // Populate empty DB with sample data
 // require('./lib/config/dummydata');
     // }));
@@ -37,19 +43,21 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 // Passport Configuration
 var passport = require('./lib/config/passport');
 
+
 var app = express();
-app.use(require('prerender-node').set('prerenderToken', config.PRERENDER_IO_TOKEN));
+
 // Express settings
 require('./lib/config/express')(app);
-
 // Routing
 require('./lib/routes')(app);
 
 // Start server
-app.listen(config.port, function () {
+var server =http.createServer(app);
+// set up our socket server
+var io = require('socket.io').listen(server);
+require('./lib/sockets/base')(io);
+server.listen(config.port, function () {
   console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
 });
-
-
 // Expose app
 exports = module.exports = app;

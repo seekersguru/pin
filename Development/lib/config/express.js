@@ -5,6 +5,7 @@ var express = require('express'),
     config = require('./config'),
     passport = require('passport'),
     mongoStore = require('connect-mongo')(express);
+    
 
 /**
  * Express configuration
@@ -67,4 +68,6 @@ module.exports = function(app) {
   app.configure('development', function(){
     app.use(express.errorHandler());
   });
+
+
 };
