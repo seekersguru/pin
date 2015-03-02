@@ -6,6 +6,8 @@ angular.module('pinApp')
     $scope.errors = {};
     $rootScope.changeFooterNishant = 1;
     
+    $scope.facebookLogin = Auth.facebookLogin;
+    
     $scope.login = function(form) {
 
       $scope.submitted = true;

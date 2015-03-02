@@ -6,14 +6,8 @@ var mongoose = require('mongoose'),
       _ = require('lodash');
 
 
-
-
-
 exports.query = function(req, res){
     var q = User.find({});
-    
-
-    
     if (req.query.array_foll){
       if(typeof req.query.array_foll === typeof {}){
         q = q.where('_id').in(req.query.array_foll);
@@ -24,11 +18,7 @@ exports.query = function(req, res){
     }else if(req.query.foll_limit){
       return res.json(404);
     }
-    
-    if(req.user.role === 'admin'){
-      q.populate('artworks', 'public mainImage');
-    }
-    
+
     q.exec(function(err, users) {
       if (err) {
         console.log(err);
@@ -43,6 +33,7 @@ exports.query = function(req, res){
       }
     });
 };
+
 /**
  * Create user
  */

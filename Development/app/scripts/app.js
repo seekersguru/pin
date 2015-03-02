@@ -12,8 +12,11 @@ angular.module('pinApp', [
   'angulartics',
   'angulartics.google.analytics',
   'duScroll',
-  'angularFileUpload'
-]).config(function( $compileProvider ) {
+  'angularFileUpload',
+  'btford.socket-io'
+])
+.value('nickName', 'anonymous')
+.config(function( $compileProvider ) {
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(http|https|ftp|file|blob):|data:image\//);
   })
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
@@ -30,8 +33,12 @@ angular.module('pinApp', [
       .when('/dashboard', {
         templateUrl: 'partials2/dashboard'
       })
-      .when('/chart', {
-        templateUrl: 'partials2/chart'
+      .when('/chat', {
+        templateUrl: 'partials2/chat'
+      })
+      .when('/chat-start', {
+        templateUrl: 'partials2/chat-start',
+        controller:'SocketCtrl'
       })
       .when('/connect', {
         templateUrl: 'partials2/connect'

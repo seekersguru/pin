@@ -1,10 +1,8 @@
 'use strict';
 
-var api = require('./controllers/api'),
-    index = require('./controllers'),
+var index = require('./controllers'),
     users = require('./controllers/users'),
     nishant = require('./controllers/nishant'),
-
     session = require('./controllers/session');
    
 var middleware = require('./middleware');
