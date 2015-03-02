@@ -55,9 +55,15 @@ require('./lib/routes')(app);
 var server =http.createServer(app);
 // set up our socket server
 var io = require('socket.io').listen(server);
+
 require('./lib/sockets/base')(io);
 server.listen(config.port, function () {
   console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
 });
+
+
+
 // Expose app
+
+
 exports = module.exports = app;

@@ -4,7 +4,7 @@ var index = require('./controllers'),
     users = require('./controllers/users'),
     nishant = require('./controllers/nishant'),
     session = require('./controllers/session'),
-    article = require('./controllers/article');
+    articles = require('./controllers/article');
    
 var middleware = require('./middleware');
 
@@ -21,6 +21,17 @@ module.exports = function(app) {
   app.get('/api/nishant', nishant.query);
 
   //nishant section end
+  
+  /**---(',')--article section start----(',')---**/
+
+  //GET
+  app.get('/api/articles', articles.query);
+  //Create
+  app.post('/api/articles', articles.create);
+
+  
+  /**---(',')--article section stop----(',')---**/
+
 
   app.post('/api/users', users.create);
   app.get('/api/users', users.query);
