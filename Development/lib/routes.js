@@ -3,7 +3,8 @@
 var index = require('./controllers'),
     users = require('./controllers/users'),
     nishant = require('./controllers/nishant'),
-    session = require('./controllers/session');
+    session = require('./controllers/session'),
+    article = require('./controllers/article');
    
 var middleware = require('./middleware');
 

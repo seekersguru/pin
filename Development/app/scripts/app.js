@@ -54,6 +54,10 @@ angular.module('pinApp', [
         templateUrl: 'partials2/register',
         controller:'RegisterCtrl'
       })
+      .when('/post-article', {
+        templateUrl: 'partials2/post-article',
+        controller:'ArticleCtrl'
+      })
       .otherwise({
         redirectTo: '/home'
       });

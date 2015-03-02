@@ -1,0 +1,40 @@
+<div class="container page">
+  <div class="row">
+    <div class="col-lg-12">
+    <h1>Add New Article</h1>
+    <form novalidate ng-submit="saveArticle(form)" name="form">
+      <div class="dashboard-section">
+        <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
+          <label class="control-label" for="title">Title</label>
+          <input type="text" class="form-control" name="title" ng-model="article.title" required ng-minlength=5>
+          <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill title.</p>
+          <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.minlength">your title shoud be minimum 5 character long .</p>
+          <p class="text-danger" ng-show="form.title.$error.mongoose">{{ errors.title }} </p>
+
+        </div>
+
+        <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
+          <label class="control-label" for="description">Description</label>
+          <textarea class="form-control" rows="5"  name="description" ng-model="article.desccription" required ng-minlength=20></textarea >
+          <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.required">Please fill description.</p>
+          <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.minlength">your description shoud be minimum 20 character long .</p>
+          <p class="text-danger" ng-show="form.description.$error.mongoose">{{ errors.description }} </p>
+        </div>
+
+        <div class="form-group">
+                <label for="tags">Tags</label>
+                <div tooltip="Add about three to four tags for better discoveribility of your article">
+                <tags-input
+                     display-property=""
+                     class="tags-input"
+                     ng-model="article.tags"
+                     placeholder="Add a tag and press enter (min length 3 characters)"
+                     replace-spaces-with-dashes="false">
+                </tags-input>
+                </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
