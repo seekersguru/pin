@@ -1,0 +1,57 @@
+  <div class="container">
+    <!-- Articles section -->
+    <div class="member-us-section article-inner">
+      <h1 class="text-center">Articles</h1>
+    </div>
+
+    <!-- article listing Start-->
+    <div class="row">
+
+      <div class="col-lg-4" ng-repeat="(key,value) in articles ">
+        <div class="articles-section">
+          <img src="images/articels001.jpg" class="img-responsive"> 
+          <div class="articles-inner"> 
+            <h3 class="articles-head"><a href="#">{{value.title}}</a></h3>
+            <p>{{value.description | limitTo:descriptionLimit}}</p>
+              <div class="btn-gold"><a href="#">Readmore</a></div>
+              <a href="/articles/edit/{{value._id}}">Edit</a>
+              <bu
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+    
+
+    </div>
+
+    <!-- article listing Stop-->
+
+                <!--end-->
+    <div class="row-fluid" style="margin-top:20px;text-align:center" >
+        <div class="col-xs-12" style="margin-top:30px;">
+            <a href="#sorter" du-smooth-scroll class="btn btn-default" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1;changePage()">
+                Previous
+            </a>
+            <a href="#sorter" du-smooth-scroll  ng-repeat = "t in [-4,-3,-2,-1,0]" ng-disabled = "currentPage+t <= 0" style = "margin:1px; currentPage+t <=0 ? background:white:background:red; " ng-click = "navigation_control(currentPage+t-1)">
+                <span ng-if = "currentPage + t > 0" class="btn btn-default nexa-bold">
+                    {{currentPage+t}}
+                </span>
+            </a>
+            <span class="nexa-bold btn">
+                {{currentPage+1}}
+            </span>
+            <a href="#sorter" du-smooth-scroll  ng-repeat = "t in [2,3,4,5,6]" ng-disabled = "currentPage+t > numberOfPages()" style = "margin:1px"  ng-click = "navigation_control(currentPage + t-1)">
+                <span ng-if ="currentPage + t <= numberOfPages()" class = "btn btn-default nexa-bold">
+                    {{currentPage+t}}
+                </span>
+                <span ng-if = "currentPage + t > numberOfPages()" class = "btn nexa-bold">
+                .
+                </span>
+            </a>
+            <a href="#sorter" du-smooth-scroll class="btn btn-default" ng-disabled="currentPage >= artworks.length/pageSize - 1" ng-click="currentPage=currentPage+1;changePage()">
+                Next
+            </a>
+        </div>
+    </div>
+                <!-- /container -->
+              </div>

@@ -14,55 +14,116 @@ angular.module('pinApp', [
   'duScroll',
   'angularFileUpload',
   'btford.socket-io'
-])
+  ])
 .value('nickName', 'anonymous')
 .config(function( $compileProvider ) {
-    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(http|https|ftp|file|blob):|data:image\//);
-  })
-  .config(function ($routeProvider, $locationProvider, $httpProvider) {
-    $routeProvider
-      .when('/home', {
-        templateUrl: 'partials2/main'
-       
-      })
-      .when('/nishant', {
-        templateUrl: 'partials2/nishant',
-        controller:'NishantCtrl'
-       
-      })
-      .when('/dashboard', {
-        templateUrl: 'partials2/dashboard'
-      })
-      .when('/chat', {
-        templateUrl: 'partials2/chat'
-      })
-      .when('/chat-start', {
-        templateUrl: 'partials2/chat-start',
-        controller:'SocketCtrl'
-      })
-      .when('/connect', {
-        templateUrl: 'partials2/connect'
-      })
-      .when('/content-id', {
-        templateUrl: 'partials2/content-id'
-      })
-      .when('/login', {
-        templateUrl: 'partials2/login',
-        controller:'LoginCtrl'
-      })
-      .when('/register', {
-        templateUrl: 'partials2/register',
-        controller:'RegisterCtrl'
-      })
-      .when('/post-article', {
-        templateUrl: 'partials2/post-article',
-        controller:'ArticleCtrl'
-      })
-      .otherwise({
-        redirectTo: '/home'
-      });
+  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(http|https|ftp|file|blob):|data:image\//);
+})
+.config(function ($routeProvider, $locationProvider, $httpProvider) {
+  $routeProvider
+  .when('/home', {
+    templateUrl: 'partials2/main'
 
-    $locationProvider.html5Mode(true);
+  })
+  .when('/nishant', {
+    templateUrl: 'partials2/nishant',
+    controller:'NishantCtrl'
+
+  })
+  .when('/dashboard', {
+    templateUrl: 'partials2/dashboard'
+  })
+  .when('/chat', {
+    templateUrl: 'partials2/chat'
+  })
+  .when('/chat-start', {
+    templateUrl: 'partials2/chat-start',
+    controller:'SocketCtrl'
+  })
+  .when('/connect', {
+    templateUrl: 'partials2/connect'
+  })
+  .when('/content-id', {
+    templateUrl: 'partials2/content-id'
+  })
+  .when('/login', {
+    templateUrl: 'partials2/login',
+    controller:'LoginCtrl'
+  })
+  .when('/register', {
+    templateUrl: 'partials2/register',
+    controller:'RegisterCtrl'
+  })
+  .when('/post-article', {
+    templateUrl: 'partials2/post-article',
+    controller:'ArticleCtrl'
+  })  
+  .when('/articles/:pageno', {
+    templateUrl: 'partials2/articles',
+    controller:'ArticleCtrl',
+    resolve:{
+      articles: ['$q', '$route', 'Article', function($q, $route, article) {
+      var deferred = $q.defer();
+      var query = angular.copy($route.current.params);
+      query.limit=6;
+      article.get(query, function(articles) {
+        deferred.resolve(articles.articles);
+      },
+      function(err){
+        deferred.reject();
+      });
+      return deferred.promise;
+    }]
+
+  }
+})
+  .when('/articles/edit/:id', {
+    templateUrl: 'partials2/update-article',
+    controller:'ArticleCtrl',
+    resolve:{
+      articles: ['$q', '$route', 'Article','$rootScope','$routeParams', function($q, $route, article,$rootScope,$routeParams) {
+      var deferred = $q.defer();
+      var query = angular.copy($route.current.params);
+      query.limit=6;
+      query.author=$rootScope.user;
+      query._id=$routeParams.id;
+      article.get(query, function(articles) {
+        deferred.resolve(articles.articles);
+      },
+      function(err){
+        deferred.reject();
+      });
+      return deferred.promise;
+    }]
+
+  }
+
+  })
+  .when('/myarticles/:pageno', {
+    templateUrl: 'partials2/myarticle',
+    controller:'ArticleCtrl',
+    resolve:{
+      articles: ['$q', '$route', 'Article','$rootScope', function($q, $route, article,$rootScope) {
+      var deferred = $q.defer();
+      var query = angular.copy($route.current.params);
+      query.limit=6;
+      query.author=$rootScope.user;
+      article.get(query, function(articles) {
+        deferred.resolve(articles.articles);
+      },
+      function(err){
+        deferred.reject();
+      });
+      return deferred.promise;
+    }]
+
+  }
+})
+  .otherwise({
+    redirectTo: '/home'
+  });
+
+  $locationProvider.html5Mode(true);
 
     // Intercept 401s and redirect you to login
     $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
@@ -107,4 +168,4 @@ angular.module('pinApp', [
   //     }
   //   });
   // })
-  .constant('scalingFactor', {tshirt: 12, laptop:6.7478, poster:10.844, canvas: 10.844});
+.constant('scalingFactor', {tshirt: 12, laptop:6.7478, poster:10.844, canvas: 10.844});

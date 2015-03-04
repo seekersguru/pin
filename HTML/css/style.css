@@ -117,7 +117,7 @@ margin-right: 10px; }
 .social-icon ul li{margin: 0px; list-style:none;  padding: 0px; float: left;}
 .social-icon ul li a{margin: 0px; padding: 0px; font-size: 24px; color:#e6c55d;}
 .social-icon ul li a:hover{margin: 0px; padding: 0px; color: #444;}
-
+.article-inner{margin-top:88px !important; }
 .member-us-section{display:block; border: solid 1px #d8d8d8; padding:15px; margin-top:35px;  background-color:#fff;}
 .member-us-section h1{font-family: 'tff_franklin_gothic_demi'; text-transform:uppercase; margin-top:8px;   color:#171717; font-size:36px;}
 .member-us-section h4{font-family: 'tff_franklin_gothic_demi'; text-transform:uppercase; margin-top:8px;   color:#171717; font-size:18px;}
@@ -457,4 +457,61 @@ background-color: #d9534f;
 .actionBox {
     border-top:1px dotted #bbb;
     padding:10px;
+}
+
+
+.input-group {
+position: relative;
+display: table;
+border-collapse: separate;
+}
+.input-group .form-control, .input-group-addon, .input-group-btn {
+display: table-cell; height: 40px;
+}
+
+.file-caption-ellipsis {
+position: absolute;
+right: 10px;
+margin-top: -6px;
+font-size: 1.2em;
+display: none;
+font-weight: 700;
+cursor: default;
+}
+
+.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
+margin-left: -1px;
+height: 40px;
+}
+
+.file-caption-name {
+display: inline-block;
+overflow: hidden;
+max-height: 20px;
+padding-right: 10px;
+word-break: break-all;
+}
+
+.input-group-btn {
+position: relative;
+font-size: 0;
+white-space: nowrap;
+}
+
+.btn-file input[type=file] {
+position: absolute;
+top: 0;
+right: 0;
+min-width: 100%;
+min-height: 100%;
+text-align: right;
+filter: alpha(opacity=0);
+opacity: 0;
+background: none repeat scroll 0 0 transparent;
+cursor: inherit;
+display: block;
+}
+
+input[type=file] {
+display: block;
 }

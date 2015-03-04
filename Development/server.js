@@ -51,15 +51,13 @@ require('./lib/config/express')(app);
 // Routing
 require('./lib/routes')(app);
 
-// Start server
-var server =http.createServer(app);
-// set up our socket server
-var io = require('socket.io').listen(server);
-
-require('./lib/sockets/base')(io);
-server.listen(config.port, function () {
-  console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
-});
+ var server =http.createServer(app);
+ // set up our socket server
+var io=require('socket.io').listen(server);
+ require('./lib/sockets/base')(io);
+ server.listen(config.port, function () {
+   console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
+ });
 
 
 

@@ -26,6 +26,7 @@ module.exports = function(app) {
 
   //GET
   app.get('/api/articles', articles.query);
+
   //Create
   app.post('/api/articles', articles.create);
 
