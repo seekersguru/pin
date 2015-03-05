@@ -82,17 +82,16 @@ angular.module('pinApp', [
     templateUrl: 'partials2/article-detail',
     controller:'ArticleCtrl',
     resolve:{
-      articles: ['$q', '$route', 'Article', function($q, $route, article) {
-      var deferred = $q.defer();
-      var query = angular.copy($route.current.params);
-      article.get(query, function(articles) {
-        deferred.resolve(articles.articles);
-      },
-      function(err){
-        deferred.reject();
-      });
-      return deferred.promise;
-    }]
+      articles: ['$q', '$route', 'Article', function($q, $route, Article) {
+            var deferred = $q.defer();
+            Article.get({articleId: $route.current.params.articleid}, function(article) {
+              deferred.resolve(article);
+            },
+            function(err){
+              deferred.reject();
+            });
+            return deferred.promise;
+          }]
 
   }
 })
