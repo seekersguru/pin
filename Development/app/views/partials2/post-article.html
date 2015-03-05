@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-lg-12">
     <h1>Add New Article</h1>
-    <form novalidate ng-submit="updateArticle(form)" name="form" role='form'>
+    <form novalidate ng-submit="saveArticle(form)" name="form" role='form'>
       <div class="dashboard-section">
         <div class="alert alert-success" role="alert" ng-show="articleDone">
-         You have successfully written new Article see article here  <a href="/post-article"><b>Click Here</b></a>
+         You have successfully written new Article see article here  <a ng-href="/articles/view/{{articleResponse.article._id}}"><b>Click Here</b></a>
         </div>
         <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
           <label class="control-label" for="title">Title</label>

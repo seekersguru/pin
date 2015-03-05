@@ -316,3 +316,11 @@ padding-top: 0px;
        -o-filter: none;
           filter: none;
 }
+
+.post_meta_author,.post_meta_date{float:left; margin-bottom:7px; }
+.post_meta_cats,.post_meta_views{float:right; }
+.post_meta_author .fa,.post_meta_date .fa,.post_meta_cats .fa,.post_meta_views .fa{margin-right:6px; }
+
+.post-meta-info-inner .post_meta_author,.post-meta-info-inner .post_meta_date,.post-meta-info-inner .post_meta_cats,.post-meta-info-inner .post_meta_views{display: inline-block; margin-right:5%;  float:none;  }
+.articles-inner2{padding:15px 15px 0 15px; }
+.articale-img-inner{margin-bottom: 15px;}

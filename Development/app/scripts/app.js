@@ -54,10 +54,6 @@ angular.module('pinApp', [
     templateUrl: 'partials2/register',
     controller:'RegisterCtrl'
   })
-  .when('/post-article', {
-    templateUrl: 'partials2/post-article',
-    controller:'ArticleCtrl'
-  })  
   .when('/articles/:pageno', {
     templateUrl: 'partials2/articles',
     controller:'ArticleCtrl',
@@ -77,16 +73,18 @@ angular.module('pinApp', [
 
   }
 })
-  .when('/articles/edit/:id', {
-    templateUrl: 'partials2/update-article',
+  .when('/post-article', {
+    templateUrl: 'partials2/post-article',
+    controller:'ArticleAddCtrl'
+
+  })  
+  .when('/articles/view/:articleid', {
+    templateUrl: 'partials2/article-detail',
     controller:'ArticleCtrl',
     resolve:{
-      articles: ['$q', '$route', 'Article','$rootScope','$routeParams', function($q, $route, article,$rootScope,$routeParams) {
+      articles: ['$q', '$route', 'Article', function($q, $route, article) {
       var deferred = $q.defer();
       var query = angular.copy($route.current.params);
-      query.limit=6;
-      query.author=$rootScope.user;
-      query._id=$routeParams.id;
       article.get(query, function(articles) {
         deferred.resolve(articles.articles);
       },
@@ -97,7 +95,23 @@ angular.module('pinApp', [
     }]
 
   }
-
+})
+  .when('/articles/edit/:id', {
+    templateUrl: 'partials2/update-article',
+    controller:'ArticleViewEditCtrl',
+    resolve: {
+          article: ['$q', '$route', 'Article', function($q, $route, Article) {
+            var deferred = $q.defer();
+            Article.get({articleId: $route.current.params.id}, function(article) {
+              article.author = article.author._id;
+              deferred.resolve(article);
+            },
+            function(err){
+              deferred.reject();
+            });
+            return deferred.promise;
+          }]
+        }
   })
   .when('/myarticles/:pageno', {
     templateUrl: 'partials2/myarticle',

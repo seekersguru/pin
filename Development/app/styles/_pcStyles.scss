@@ -317,7 +317,6 @@ ul.nav.navbar-nav.navbar-welcome.navbar-right > li > a {
   display: block;
   border: solid 1px #d8d8d8;
   border-bottom: solid 2px #e6c55d;
-  margin-top: 35px;
   background-color: #fff;
 }
 
@@ -740,6 +739,13 @@ input[type="checkbox"] {
   width: 100%;
 }
 
+.dash-articales-ead-details h5 {
+  font-size: 30px;
+  font-family: 'tff_franklin_gothic_demi';
+  padding-left: 0px;
+  text-transform: uppercase;
+}
+
 .dash-articales-ead h5 {
   font-size: 30px;
   font-family: 'tff_franklin_gothic_demi';
@@ -1037,4 +1043,33 @@ input[type="checkbox"] {
 
 input[type=file] {
   display: block;
+}
+
+.post_meta_author, .post_meta_date {
+  float: left;
+  margin-bottom: 7px;
+}
+
+.post_meta_cats, .post_meta_views {
+  float: right;
+}
+
+.post_meta_author .fa, .post_meta_date .fa, .post_meta_cats .fa, .post_meta_views .fa {
+  margin-right: 6px;
+}
+
+.post-meta-info-inner {
+  .post_meta_author, .post_meta_date, .post_meta_cats, .post_meta_views {
+    display: inline-block;
+    margin-right: 5%;
+    float: none;
+  }
+}
+
+.articles-inner2 {
+  padding: 15px 15px 0 15px;
+}
+
+.articale-img-inner {
+  margin-bottom: 15px;
 }

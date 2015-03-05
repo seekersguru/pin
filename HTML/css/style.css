@@ -147,7 +147,7 @@ margin-right: 10px; }
     padding-left: 5px;
 }
 
-.articles-section{display:block; border: solid 1px #d8d8d8; border-bottom:solid 2px #e6c55d; margin-top:35px;   background-color:#fff;}
+.articles-section{display:block; border: solid 1px #d8d8d8; margin-top: 35px; border-bottom:solid 2px #e6c55d; background-color:#fff;}
 .articles-inner{padding: 15px;}
 .articles-head a{color:#000;}
 .articles-head a:hover{color:#444; text-decoration:none; }
@@ -318,6 +318,8 @@ background-color: #d9534f;
 .sidebar ul li a:hover{margin: 0px; color: #ddd;   text-decoration:none; }
 
 .articles-section img,.articles-section-2 img,.articles-section-3 img{width:100%; }
+
+.dash-articales-ead-details h5{font-size:30px; font-family: 'tff_franklin_gothic_demi'; padding-left:0px;  text-transform:uppercase; }
 .dash-articales-ead h5{font-size:30px; font-family: 'tff_franklin_gothic_demi'; padding-left:12px;  text-transform:uppercase; }
 .dashboard-section .input-group-addon{background-color: #171717; color:#fff; border:0px; border-radius:0px; }
 .dashboard-section input,.articles-inner input{border-radius:0px; font-size:18px; box-shadow:0px;  border:solid 1px #ddd; background-color:#fff;  height: 40px;}
@@ -515,3 +517,16 @@ display: block;
 input[type=file] {
 display: block;
 }
+
+.post_meta_author,.post_meta_date{float:left; margin-bottom:7px; }
+.post_meta_cats,.post_meta_views{float:right; }
+.post_meta_author .fa,.post_meta_date .fa,.post_meta_cats .fa,.post_meta_views .fa{margin-right:6px; }
+
+.post-meta-info-inner .post_meta_author,.post-meta-info-inner .post_meta_date,.post-meta-info-inner .post_meta_cats,.post-meta-info-inner .post_meta_views{display: inline-block; margin-right:5%;  float:none;  }
+.articles-inner2{padding:15px 15px 0 15px; }
+.articale-img-inner{margin-bottom: 15px;}
+
+.edit-icon{font-size:12px; margin-top: 8px; font-family: 'franklingothicregular'; }
+.edit-icon a i {font-size:15px; margin-top: 8px; color: #333333; margin-right: 5px;  }
+.edit-icon a  {font-size:15px; margin-top: 8px; color: #333333; margin-right: 5px;  }
+.edit-icon a:hover{font-size:15px; margin-top: 8px; }
