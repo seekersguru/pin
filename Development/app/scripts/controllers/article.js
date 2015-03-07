@@ -1,6 +1,6 @@
 'use strict';
 angular.module('pinApp')
-.controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles) {
+.controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles,$upload) {
   $scope.article={};
   $scope.articles=articles;
   $scope.descriptionLimit=100;

@@ -4,8 +4,8 @@ var express = require('express'),
     path = require('path'),
     config = require('./config'),
     passport = require('passport'),
-    mongoStore = require('connect-mongo')(express);
-    
+    mongoStore = require('connect-mongo')(express),
+    multipart = require('connect-multiparty');
 
 /**
  * Express configuration
@@ -27,6 +27,10 @@ module.exports = function(app) {
     app.use(express.static(path.join(config.root, '.tmp')));
     app.use(express.static(path.join(config.root, 'app')));
     app.set('views', config.root + '/app/views');
+
+    app.use(multipart({
+         uploadDir: config.tmp
+    }));
   });
 
   app.configure('production', function(){

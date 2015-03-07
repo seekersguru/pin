@@ -13,7 +13,8 @@ angular.module('pinApp', [
   'angulartics.google.analytics',
   'duScroll',
   'angularFileUpload',
-  'btford.socket-io'
+  'btford.socket-io',
+  'textAngular'
   ])
 .value('nickName', 'anonymous')
 .config(function( $compileProvider ) {

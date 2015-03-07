@@ -26,7 +26,7 @@
                 </div>
               </div> 
               <h3 class="articles-head"><a href="#">{{value.title}}</a></h3>
-              <p>{{value.description | limitTo:descriptionLimit}}</p>
+              <p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml"></p>
               <div class="btn-gold"><a ng-href="/articles/view/{{value._id}}">Readmore</a></div>
               <div class="clearfix"></div>
             </div>
