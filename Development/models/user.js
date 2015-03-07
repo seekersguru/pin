@@ -141,9 +141,11 @@ UserSchema.methods ={
 			var userObj= new  User(data_dict);
 			userObj.save(function (err) {
 				userObj.error =  err;
+				console.log(err);
 			});
-			if (userObj.error ) return {"error": userObj.error};
-			return userObj
+			// console.log(this.error);
+			// if (userObj.error ) return {"error": userObj.error};
+			// return userObj
 			
 		},
 		approve_user:function(){console.log("approve_user")},
