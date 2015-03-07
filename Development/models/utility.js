@@ -6,24 +6,34 @@ function add_record(Model,values){
 }
 
 //Update single record
-function update_record(Model, unique_constraint, new_updated_values){ 
-	Model.findOneAndUpdate(unique_constraint, 
-			new_updated_values, {upsert:true}, 
-			function(err, doc){
-				if (err) return {"error":err ,"doc"doc
-			};
-	    return {"success":"Record succesfully updated" };
-	});
+function update_one_record(Model, unique_constraint, new_updated_values){ 
+		Model.Company.findOneAndUpdate(
+		unique_constraint, 
+		{upsert: true}, 
+		function(err, new_updated_values, raw){
+	    console.log(err, new_updated_values, raw)
+	})
 }
-
-//Model
-//var unique_constraint = {'family_office':"The familly office name "};
-//new_updated_values   {'family_office':"The familly office name changed "}
-var validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
-};
-
+	
+function get_one_record(Model ,constraint){
+	var error=null;
+	var obj=	Model.findOne(constraint, 
+				function(err,obj) { 
+					return  {"error":err,"obj":obj} ;
+				}
+		);
+	
+	return obj;
+}
+var onerror=
 exports.add_record = add_record;
-exports.update_record = update_record;
-exports.validateEmail = validateEmail;
+exports.update_one_record = update_one_record;
+exports.get_one_record = get_one_record;
+
+/*
+var utility = require('./utility.js');
+var utility_add_record = utility.add_record;
+var utility_update_one_record = utility.update_one_record;
+var utility_get_one_record = utility.get_one_record;
+
+*/
