@@ -124,7 +124,9 @@ UserSchema
 .set(function(password) {
   this._password = password;
   this.salt = this.makeSalt();
+  // console.log(password);
   this.hashedPassword = this.encryptPassword(password);
+  console.log(this.hashedPassword);
 })
 .get(function() {
   return this._password;
@@ -165,6 +167,7 @@ UserSchema.methods ={
 		encryptPassword: function(password) {
 			if (!password || !this.salt) return '';
 			var salt = new Buffer(this.salt, 'base64');
+			// console.log(crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64'));
 			return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
 		},
 		generateNewEmailVerification : function () {
