@@ -128,21 +128,20 @@ UserSchema
 UserSchema.methods ={
 		create_user:function(data_dict){
 			var err=null;
-				
 			var userObj= new  User(data_dict);
 			userObj.save(function (err) {
 				userObj.error =  err;
 				console.log(err);
 			});
 			return userObj;
-			// console.log(this.error);
-			// if (userObj.error ) return {"error": userObj.error};
-			// return userObj
-			
 		},
-		approve_user:function(){console.log("approve_user")},
-		block_user:function(){console.log("block_user")},
-		get_user:function(){console.log("get_user")},
+		get_user:function(constraint){
+			return utility_get_one_record(User,constraint)
+		},
+		approve_user:function(userObj){
+			console.log("approve_user")
+		},
+		block_user:function(constraint){console.log("block_user")},
 		forgot_password:function(){console.log("forgot_password")},
 		change_password:function(){console.log("change_password")},
 		authenticate: function(plainText) {
