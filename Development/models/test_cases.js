@@ -2,6 +2,16 @@ var user = require('./user.js');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/api');
 UserSchema = user.UserSchema;
+
+uo  =UserSchema.methods.create_user(
+		{"status":"email_verification_pending" , 
+			"password":"nishu" , 
+			"address.country":"coun","family_office":"my famile" ,
+			"address.city":"city address" ,
+			"real_name":"real_namess" ,
+			"email":"myemail@gm.com"});
+
+
 uo  =UserSchema.methods.create_user({})
 
 

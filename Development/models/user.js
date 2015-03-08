@@ -58,6 +58,7 @@ var UserSchema = new Schema({
 	  country : {type: String,required:true,label:"Country",help_text:"Country you resides most"}
   },
   phonemobile:{type:String},
+  salt: String,
   hashedPassword: {type:String , required:true },
   alias_name_chat:{type: String,label:"Alias",help_text:"Alias  - to be used for chats"},
   created_at    : { type: Date },
@@ -143,6 +144,7 @@ UserSchema.methods ={
 				userObj.error =  err;
 				console.log(err);
 			});
+			return userObj;
 			// console.log(this.error);
 			// if (userObj.error ) return {"error": userObj.error};
 			// return userObj
