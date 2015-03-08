@@ -80,6 +80,7 @@ exports.show=function(req,res){
 // show all articles with paging
 exports.query = function(req, res) {
 
+	console.log(req);
 	var limit=req.query.limit;
 
 	var q=Article.find({});
