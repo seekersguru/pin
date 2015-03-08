@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
  */
 var ArticleSchema = new Schema({
   title: {type:String, required:true},
-  author: { type: ObjectId, ref: 'User', required: true },
+  author: { type: ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now },
   public: { type: Boolean, default: false },
   mainImage: String,
@@ -22,7 +22,13 @@ var ArticleSchema = new Schema({
   comments: [{ poster: { type: ObjectId, ref: 'User' },
                post: String,
                posted: {type: Date, default: Date.now}
-             }]
+             }],
+  media:{extension:String,      
+
+               name:String,
+                path:String,
+                originalName:String
+              }
 });
 
 mongoose.model('Article', ArticleSchema);

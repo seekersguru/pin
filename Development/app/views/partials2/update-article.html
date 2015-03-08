@@ -5,7 +5,7 @@
     <form novalidate  name="form" role='form'>
       <div class="dashboard-section">
         <div class="alert alert-success" role="alert" ng-show="updateStatus">
-         You have successfully updated your Article see article here  <a ng-href="/articles/views/{{article._id}}"><b>Click Here</b></a>
+         You have successfully updated your Article see article here  <a ng-href="/articles/view/{{article._id}}"><b>Click Here</b></a>
         </div>
          <div class="alert alert-success" role="alert" ng-show="deleteStatus">
          You have successfully deleted your Article. Go to your Articles <a href="/myarticles/01"><b>Click Here</b></a>
@@ -21,7 +21,8 @@
 
         <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
           <label class="control-label" for="description">Description</label>
-          <textarea class="form-control" rows="5"  name="description" ng-model="article.description" required ng-minlength=20></textarea >
+           <text-angular  name="description" ng-model="article.description" required ng-minlength=20> </text-angular>
+
           <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.required">Please fill description.</p>
           <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.minlength">your description shoud be minimum 20 character long .</p>
           <p class="text-danger" ng-show="form.description.$error.mongoose">{{ errors.description }} </p>

@@ -2,6 +2,8 @@
   <div class="row">
     <div class="col-lg-12">
     <!-- <h1>Add New Article</h1> -->
+    <!--  -->
+    <!--  -->
     <!-- ng-submit="saveArticle(form)" -->
     <form novalidate  name="form" role='form' enctype= 'multipart/form-data' >
       <div class="dashboard-section">
@@ -42,24 +44,28 @@
           </div>
         </div>
         
-        <br/>
-        
+  <div class="form-group">
+   <label class="control-label" for="fullName">Media </label>
+   <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file" accept="image/*"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
 
-        Profile Picture: <input type="file" ng-file-select="" ng-model="picFile" name="file" accept="image/*" ng-file-change="generateThumb(picFile[0], $files)"  required="">
-        <i class="text-danger" ng-show="form.file.$error.required">*required</i>
+
+ <!--        Profile Picture: <input type="file" ng-file-select=""  ng-model="picFile" name="file" accept="image/*" ng-file-change="generateThumb(picFile[0], $files)"  required="">
+ -->        <i class="text-danger" ng-show="form.file.$error.required">*required</i>
         <br/>
-         <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" class="thumb">  
+         <img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
+         height:100px;width: 100px">  
         <br/>
-        <span class="progress" ng-show="picFile[0].progress >= 0">    
-          <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'" class="ng-binding"></div>
+        <span class="progress" ng-show="mainFIle[0].progress >= 0">    
+          <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
         </span> 
-        <span ng-show="picFile[0].result">Upload Successful</span>
-        <button ng-disabled="!form.$valid" ng-click="uploadPic(picFile)">Submit</button>
+        <span ng-show="mainFIle[0].result">Upload Successful</span>
+        <button ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)">Submit</button>
 
+    
+  </div>
         <!-- <button type="submit" ng-disabled="form.$invalid" class='btn btn-success' >Add</button>  -->
         <button type="reset(form)" class='btn btn-warning'>Reset</button> 
         <a  href="/dashboard" class='btn btn-danger'>Cancel</a> 
-
       </form>
     </div>
   </div>

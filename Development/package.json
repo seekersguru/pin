@@ -19,7 +19,8 @@
     "socket.io": "~1.3.4",
     "mongoose-unique-validator": "~0.4.1",
     "connect-multiparty": "~1.2.5",
-    "mongoose-assert": "~1.0.2"
+    "mongoose-assert": "~1.0.2",
+    "es5-shim": "~4.1.0"
   },
   "devDependencies": {
     "gulp": "3.8.11",

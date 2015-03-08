@@ -9,7 +9,8 @@
 
       <div class="col-lg-4" ng-repeat="(key,value) in articles ">
         <div class="articles-section">
-          <img src="images/articels001.jpg" class="img-responsive"> 
+          <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}"> 
+          <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}"> 
           <div class="articles-inner">
             <div class="post-meta-info">
               <div>
@@ -26,7 +27,7 @@
                 </div>
               </div> 
               <h3 class="articles-head"><a href="#">{{value.title}}</a></h3>
-              <p>{{value.description | limitTo:descriptionLimit}}</p>
+              <p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml"></p>
               <div class="pull-left edit-icon"><a ng-href="/articles/edit/{{value._id}}"> <i class="fa fa-edit"></i>Edit</a></div>
               <div class="btn-gold"><a ng-href="/articles/view/{{value._id}}">Readmore</a></div>
               <div class="clearfix"></div>

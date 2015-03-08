@@ -128,41 +128,61 @@ angular.module('pinApp')
 .controller('ArticleAddCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,$upload,$timeout) {
   
   $scope.article={};
+  // $scope.usingFlash = FileAPI && FileAPI.upload != null;
+  $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
+
 
   $scope.uploadPic = function(files) {
     $scope.formUpload = true;
-    if (files != null) {
-      generateThumbAndUpload(files[0])
+    if ($scope.mainFIle[0] !== null) {
+      generateThumbAndUpload($scope.mainFIle[0])
     }
   };
   
-
   function generateThumbAndUpload(file) {
     $scope.errorMsg = null;
     $scope.generateThumb(file);
-    uploadUsing$upload(file);
+     uploadUsing$upload(file);
     
   }
 
   function uploadUsing$upload(file) {
+    
+    $scope.article.author= $rootScope.currentUser._id;
+    
+    var original=$scope.article.tags;
+    $scope.article.tags=[];
+      for (var t = 0; t < original.length; t++) {
+        $scope.article.tags[t] = original[t].text;
+      }
+
     file.upload = $upload.upload({
-      url: '/api/upload' + $scope.getReqParams(),
+      url: '/api/articles',
       method: 'POST',
-      headers: {
-        'my-header' : 'my-header-value'
-      },
-      fields: {username: $rootScope.currentUser._id},
-      file: file,
-      fileFormDataName: 'myFile',
+      // headers: {
+      //   'Content-Type': 'multipart/form-data'
+      // },
+      data:$scope.article,
+      file: file
     });
 
     file.upload.then(function(response) {
       $timeout(function() {
+        console.log(response);
         file.result = response.data;
+        $scope.article={};
+        $scope.articleDone=1;
+        $scope.articleResponse=response.data;
+        $scope.form.$setPristine();
       });
     }, function(response) {
       if (response.status > 0)
         $scope.errorMsg = response.status + ': ' + response.data;
+        $scope.article={};
+        $scope.articleDone=1;
+        $scope.articleResponse=response.data;
+        $scope.form.$setPristine();
+
     });
 
     file.upload.progress(function(evt) {
@@ -192,14 +212,43 @@ $scope.generateThumb = function(file) {
     }
   };
 
+  $scope.setFiles = function(element) {
+    var file=element.files[0];
+    $scope.$apply(function($scope) {
+      console.log('files:', element.files);
+      if ($scope.fileReaderSupported && file.type.indexOf('image') > -1) {
+        $timeout(function() {
+          var fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+          fileReader.onload = function(e) {
+            $timeout(function() {
+              element.files[0].dataUrl = e.target.result;
+              $scope.mainFIle=element.files;
+            });
+          };
+        });
+      }
+      // Turn the FileList object into an Array
+        $scope.files = [];
+        for (var i = 0; i < element.files.length; i++) {
+          $scope.files.push(element.files[i]);
+        }
+      $scope.progressVisible = false;
+      });
+  };
+
   $scope.saveArticle=function(form){
     //     var str = "abc'sddf khdfkjdf dflkfdlkfd fdkjfdk test#s";
     // alert(str.replace(/[^a-zA-Z ]/g, "").replace(/ /g,"-"));
+
+
     if(form.$valid)
     {
+      // var formData = new FormData();
+      // formData.append("file", $scope.article.file);
+      // console.log(formData);
+      
       $scope.article.author=$rootScope.currentUser._id;
-      console.log($scope.article.tags);
-      console.log($scope.article);
       var original=$scope.article.tags;
       for (var t = 0; t < original.length; t++) {
         $scope.article.tags[t] = original[t].text;

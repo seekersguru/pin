@@ -7,6 +7,8 @@ var index = require('./controllers'),
     articles = require('./controllers/article');
    
 var middleware = require('./middleware');
+var multipart = require('connect-multiparty'),
+    multipartMiddleware = multipart();
 
 /**
  * Application routes
@@ -26,16 +28,19 @@ module.exports = function(app) {
 
   //GET
   app.get('/api/articles', articles.query);
+  
   // Get Only One
   app.get('/api/articles/:articleid', articles.show);
+  
   //Create
-  app.post('/api/articles', articles.create);
+  app.post('/api/articles',  multipartMiddleware, articles.create);
+
   //update
   app.put('/api/articles/:articleid', articles.update);
+  
   //remove
   app.del('/api/articles/:articleid', articles.remove);
 
-  
   /**---(',')--article section stop----(',')---**/
 
 
