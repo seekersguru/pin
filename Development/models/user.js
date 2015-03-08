@@ -65,19 +65,7 @@ var UserSchema = new Schema({
   updated_at    : { type: Date },
   status: {type: String,required:true , enum: ['email_verification_pending','pending', 'approved', 'blocked']},
 });
-/**
- * Virtuals
- */
-UserSchema
-  .virtual('password')
-  .set(function(password) {
-    this._password = password;
-    this.salt = this.makeSalt();
-    this.hashedPassword = this.encryptPassword(password);
-  })
-  .get(function() {
-    return this._password;
-  });
+
 UserSchema.plugin(uniqueValidator, { message:
 '{PATH} {VALUE} already  exists'}) //e.g. email abc@xyz.com already exists
 
