@@ -9,7 +9,7 @@ uo  =UserSchema.methods.create_user(
 			"address.country":"coun","family_office":"my famile" ,
 			"address.city":"city address" ,
 			"real_name":"real_namess" ,
-			"email":"myemail@gm.com"});
+			"email":"isit@gm.com"});
 
 
 uo  =UserSchema.methods.create_user({})
