@@ -1,8 +1,9 @@
 <div class="container page">
   <div class="row">
     <div class="col-lg-12">
-    <h1>Add New Article</h1>
-    <form novalidate ng-submit="saveArticle(form)" name="form" role='form'>
+    <!-- <h1>Add New Article</h1> -->
+    <!-- ng-submit="saveArticle(form)" -->
+    <form novalidate  name="form" role='form' enctype= 'multipart/form-data' >
       <div class="dashboard-section">
         <div class="alert alert-success" role="alert" ng-show="articleDone">
          You have successfully written new Article see article here  <a ng-href="/articles/view/{{articleResponse.article._id}}"><b>Click Here</b></a>
@@ -42,17 +43,20 @@
         </div>
         
         <br/>
+        
 
-      <input type="file" ng-file-select="" ng-model="picFile " name="file" accept="image/*" ng-file-change="generateThumb(picFile[0], $files)" required="">
-      <i ng-show="form.file.$error.required">*required</i>
-   <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" class="thumb">
-    <span class="progress" ng-show="picFile[0].progress >= 0">    
-      <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'" class="ng-binding"></div>
-    </span> 
-    <span ng-show="picFile[0].result">Upload Successful</span>
+        Profile Picture: <input type="file" ng-file-select="" ng-model="picFile" name="file" accept="image/*" ng-file-change="generateThumb(picFile[0], $files)"  required="">
+        <i class="text-danger" ng-show="form.file.$error.required">*required</i>
         <br/>
+         <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" class="thumb">  
+        <br/>
+        <span class="progress" ng-show="picFile[0].progress >= 0">    
+          <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'" class="ng-binding"></div>
+        </span> 
+        <span ng-show="picFile[0].result">Upload Successful</span>
+        <button ng-disabled="!form.$valid" ng-click="uploadPic(picFile)">Submit</button>
 
-        <button type="submit" ng-disabled="form.$invalid" class='btn btn-success' >Add</button> 
+        <!-- <button type="submit" ng-disabled="form.$invalid" class='btn btn-success' >Add</button>  -->
         <button type="reset(form)" class='btn btn-warning'>Reset</button> 
         <a  href="/dashboard" class='btn btn-danger'>Cancel</a> 
 
