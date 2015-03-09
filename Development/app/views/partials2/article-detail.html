@@ -21,79 +21,28 @@
                 <h3 class="widget-head">Recent Posts</h3>
                 <div class="widget-content"> 
                   <ul>
-                    <li>
+                    <li ng-repeat="(key,value) in latestcomments">
                      <div class="post-img">
                       <a href="#">
-                        <img width="150" height="150" src="images/31-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="this is a test caption image for the post gallery image"></a>
+  
+                        <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" width="150" height="150" src="images/31-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="{{value.title}}">
+
+                         <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}" width="150" height="150"> 
+  
+                        </a>
+
                       </div>
 
                       <div class="widget-post-info">
                         <h4>
-                          <a href="#">New Blog Post Created For Revolution Slider</a>
+                          <a href="#">{{value.title}}</a>
                         </h4>
                         <div class="meta">
-                         <span class="wid_post-date"><i class="fa fa-clock-o"></i>January 11, 2013</span>
-                         <span class="wid_comments"><i class="fa fa-comments"></i><span>Comments Off</span></span>
+                         <span class="wid_post-date"><i class="fa fa-clock-o"></i>{{ value.createdAt | date:"d MMMM yyyy" }}</span>
+                         <!-- <span class="wid_comments"><i class="fa fa-comments"></i><span>Comments Off</span></span> -->
                        </div>
                      </div>       
                    </li>
-
-
-                   <li>
-                     <div class="post-img">
-                      <a href="#">
-                        <img width="150" height="150" src="images/23-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="this is a test caption image for the post gallery image"></a>
-                      </div>
-
-                      <div class="widget-post-info">
-                        <h4>
-                          <a href="#">New Blog Post Created For Revolution Slider</a>
-                        </h4>
-                        <div class="meta">
-                         <span class="wid_post-date"><i class="fa fa-clock-o"></i>January 11, 2013</span>
-                         <span class="wid_comments"><i class="fa fa-comments"></i><span>Comments Off</span></span>
-                       </div>
-                     </div>       
-                   </li>
-
-
-
-
-                   <li>
-                     <div class="post-img">
-                      <a href="#">
-                        <img width="150" height="150" src="images/11-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="this is a test caption image for the post gallery image"></a>
-                      </div>
-
-                      <div class="widget-post-info">
-                        <h4>
-                          <a href="#">New Blog Post Created For Revolution Slider</a>
-                        </h4>
-                        <div class="meta">
-                         <span class="wid_post-date"><i class="fa fa-clock-o"></i>January 11, 2013</span>
-                         <span class="wid_comments"><i class="fa fa-comments"></i><span>Comments Off</span></span>
-                       </div>
-                     </div>       
-                   </li>
-
-
-
-                   <li>
-                     <div class="post-img">
-                      <a href="#">
-                        <img width="150" height="150" src="images/131-1170x450-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="this is a test caption image for the post gallery image"></a>
-                      </div>
-
-                      <div class="widget-post-info">
-                        <h4>
-                          <a href="#">New Blog Post Created For Revolution Slider</a>
-                        </h4>
-                        <div class="meta">
-                         <span class="wid_post-date"><i class="fa fa-clock-o"></i>January 11, 2013</span>
-                         <span class="wid_comments"><i class="fa fa-comments"></i><span>Comments Off</span></span>
-                       </div>
-                     </div>       
-                   </li>   
                  </ul>
                </div>
              </li>
@@ -102,7 +51,7 @@
 
              <!--category area start-->
 
-             <li class="widget widget_categories">
+             <!-- <li class="widget widget_categories">
               <h3 class="widget-head">Categories</h3>
               <div class="widget-content">
                 <ul>
@@ -121,11 +70,11 @@
                 </ul>
               </div>
             </li>
-
+ -->
             <!--end-->
 
             <!--comment area start-->
-            <li class="widget widget_recent_comments">
+            <!-- <li class="widget widget_recent_comments">
               <h3 class="widget-head">Recent Comments</h3>
               <div class="widget-content">
                 <ul id="recentcomments">
@@ -150,12 +99,12 @@
                   </li></ul>
                 </div>
               </li>
-
+ -->
               <!--end-->
 
               <!--tag area start-->
 
-              <li class="widget widget_tag_cloud">
+              <!-- <li class="widget widget_tag_cloud">
                 <h3 class="widget-head">Tag Cloud</h3>
                 <div class="widget-content">
                   <div class="tagcloud">
@@ -170,7 +119,7 @@
                     <a href="" class="tag-link-5" title="" style="font-size: 8pt;">Web</a>
                     <a href="" class="tag-link-7" title="" style="font-size: 8pt;">WordPress</a></div>
                   </div>
-                </li>
+                </li> -->
 
                 <!--end-->
               </ul>
@@ -229,6 +178,7 @@
                             </div>
                             <div class="commentText">
                               <p class="">{{ value.post}}</p> <span class="date sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
+                              <div class="pull-left edit-icon"><a ng-href="/articles/edit/{{value._id}}"> <i class="fa fa-edit"></i>Edit</a></div>
                             </div>
                           </li>
                         </ul>

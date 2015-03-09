@@ -9,6 +9,25 @@ angular.module('pinApp')
   $scope.numberOfPage=25;
 
   $scope.comments=articles.comments;
+
+
+  $scope.getLatest=function(){
+
+    $http({ method: 'GET', url: 'api/articles?limit=5&pageno=01' }).
+      success(function (data, status, headers, config) {
+        
+        $scope.latestcomments=data.articles;
+
+      }).
+      error(function (data, status, headers, config) {
+
+      });
+
+  };
+
+  $scope.getLatest();
+
+
   
   $scope.addComment=function(form){
     
