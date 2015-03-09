@@ -241,6 +241,15 @@ exports.comment_query=function(req, res){
   exports.comment_update=function(req, res){
   	var article_id = req.params.articleid,
   	comment_id = req.params.commentid;
+  	Article.update({'comments._id': comment_id}, {'$set': {
+    'comments.$.post': req.body.post,
+	   }}, function(err,model) {
+	   	if(err){
+        	console.log(err);
+        	return res.send(err);
+        }
+        return res.json(model);
+	  });
 
   };
   
@@ -248,6 +257,16 @@ exports.comment_query=function(req, res){
   exports.comment_remove=function(req, res){
   	var article_id = req.params.articleid,
   	comment_id = req.params.commentid;
+  
+  Article.findByIdAndUpdate(
+    article_id,
+   { $pull: { 'comments': {  _id: comment_id } } },function(err,model){
+ 	   if(err){
+        	console.log(err);
+        	return res.send(err);
+        }
+        return res.json(model);
+  });
 
   };
 

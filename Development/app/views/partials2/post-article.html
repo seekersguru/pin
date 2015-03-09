@@ -59,11 +59,12 @@
           <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
         </span> 
         <span ng-show="mainFIle[0].result">Upload Successful</span>
-        <button ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)">Submit</button>
+        <!-- <button >Submit</button> -->
 
     
   </div>
         <!-- <button type="submit" ng-disabled="form.$invalid" class='btn btn-success' >Add</button>  -->
+        <button  class='btn btn-success' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Add</button> 
         <button type="reset(form)" class='btn btn-warning'>Reset</button> 
         <a  href="/dashboard" class='btn btn-danger'>Cancel</a> 
       </form>

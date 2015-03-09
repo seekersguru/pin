@@ -6,14 +6,14 @@
                <ul class="sidebar_widgets">
 
                 <!--Search area start-->
-                <li class="widget fx widget_search animated fadeInRight">
+            <!--     <li class="widget fx widget_search animated fadeInRight">
                   <h3 class="widget-head">Search</h3><div class="widget-content">
                   <form role="search" method="get" action="#">
                     <input type="text" value="" name="s" class="txt-box" placeholder="Enter search keyword here...">
                     <button type="submit" class="btn main-bg"><i class="fa fa-search"></i></button>
                   </form>
                 </div>
-              </li>        
+              </li>         -->
               <!--end-->
 
               <!--Recent post area start-->
@@ -23,7 +23,7 @@
                   <ul>
                     <li ng-repeat="(key,value) in latestcomments">
                      <div class="post-img">
-                      <a href="#">
+                      <a ng-href="/articles/view/{{value._id}}">
   
                         <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" width="150" height="150" src="images/31-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="{{value.title}}">
 
@@ -178,7 +178,8 @@
                             </div>
                             <div class="commentText">
                               <p class="">{{ value.post}}</p> <span class="date sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
-                              <div class="pull-left edit-icon"><a ng-href="/articles/edit/{{value._id}}"> <i class="fa fa-edit"></i>Edit</a></div>
+                              <div class="pull-left edit-icon"><a ng-click="editComment(value._id,value.post)"> <i class="fa fa-edit"></i>Edit</a></div>
+                              <div class="pull-left trash-o-icon"><a ng-click="deleteComment(value._id)"> <i class="fa fa-trash-o"></i>Delete</a></div>
                             </div>
                           </li>
                         </ul>
@@ -190,7 +191,8 @@
                             <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
                           </div> 
                           <div class="form-group">
-                            <button class="btn btn-default" type="submit" ng-disabled="form.$invalid">Add</button>
+                            <button class="btn btn-default" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid">Add</button>
+                            <button class="btn btn-default" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid">Edit</button>
                           </div>
                         </form>
                       </div>

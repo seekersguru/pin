@@ -28,33 +28,94 @@ angular.module('pinApp')
   $scope.getLatest();
 
 
-  
+  $scope.deleteComment=function(commentId){
+
+    var yes=confirm('Are you sure you want to delete this Comment?');
+    if(yes)
+    {
+      $http({
+        method:"DELETE",
+        url:'/api/comments/'+articles._id+"/"+commentId
+      }).
+      success(function (data,status,headers,config){
+        $scope.deleteStatus=1;
+        
+        var removeIndex = $scope.comments
+                        .map(function(item)
+                        { 
+                          return item._id;
+                         })
+                       .indexOf(commentId);
+
+        $scope.comments.splice(removeIndex, 1);
+
+      })
+      .error(function (data,status,headers,config){
+
+      });
+    }
+
+  };
+
+
   $scope.addComment=function(form){
     
      if(form.$valid)
     {
-      var comment={ user: $rootScope.currentUser._id , post: $scope.article.comment};  
+      if($scope.editcomment_id)
+      {
+        var comment={ post: $scope.article.comment};  
+        
+        $http({ method: 'PUT', url: '/api/comments/'+articles._id+"/"+$scope.editcomment_id,data:comment}).
+        success(function (data, status, headers, config) {
+          // $scope.form.$setPristine();
 
-      $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
-      success(function (data, status, headers, config) {
-        // ...
-        comment.posted=new Date(); 
-        $scope.comments.push(comment);
+          var removeIndex = $scope.comments
+                        .map(function(item)
+                        { 
+                          return item._id;
+                         })
+                       .indexOf($scope.editcomment_id);
+                       
+         $scope.comments[removeIndex].post= $scope.article.comment;
+         $scope.editcomment_id=0;
+         $scope.article={};
+        }).
+        error(function (data, status, headers, config) {
+          $scope.article={};
+        });
+ 
+
+      }else{
+        var comment={ user: $rootScope.currentUser._id , post: $scope.article.comment};  
         
-        $scope.article={};
-        
-        $scope.form.$setPristine();
-        
-      }).
-      error(function (data, status, headers, config) {
-        $scope.article={};
-      });
+        $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
+        success(function (data, status, headers, config) {
+          // ...
+          comment.posted=new Date(); 
+          $scope.comments.push(comment);
+          
+          $scope.article={};
+          
+          $scope.form.$setPristine();
+          
+        }).
+        error(function (data, status, headers, config) {
+          $scope.article={};
+        });
+      }
 
 
     }
 
   };
 
+  $scope.editComment=function(commentId,comment){
+
+    $scope.article.comment=comment;
+    $scope.editcomment_id=commentId;
+
+  };
 
   $scope.numberOfPages = function(){
     // return Math.ceil($scope.articles.length/$scope.pageSize);                
