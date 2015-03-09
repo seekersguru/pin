@@ -1,8 +1,11 @@
 var user = require('./user.js');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/api');
+mongoose.connect('mongodb://localhost/pin-dev');
 UserSchema = user.UserSchema;
+User  = user.User ;
+uo=UserSchema.methods.get_user({"email":"nishu.saxena@gmail.com"})
 
+// Test case create User 
 uo  =UserSchema.methods.create_user(
 		{"status":"email_verification_pending" , 
 			"password":"nishu" , 
@@ -10,6 +13,10 @@ uo  =UserSchema.methods.create_user(
 			"address.city":"city address" ,
 			"real_name":"real_namess" ,
 			"email":"isit@gm.com"});
+
+//Test case get User 
+uo=UserSchema.methods.get_user({"email":"nishu.saxena@gmail.com"})
+
 
 
 uo  =UserSchema.methods.create_user({})
