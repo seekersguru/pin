@@ -8,6 +8,35 @@ angular.module('pinApp')
   $scope.pageSize = 20;
   $scope.numberOfPage=25;
 
+  $scope.comments=articles.comments;
+  
+  $scope.addComment=function(form){
+    
+     if(form.$valid)
+    {
+      var comment={ user: $rootScope.currentUser._id , post: $scope.article.comment};  
+
+      $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
+      success(function (data, status, headers, config) {
+        // ...
+        comment.posted=new Date(); 
+        $scope.comments.push(comment);
+        
+        $scope.article={};
+        
+        $scope.form.$setPristine();
+        
+      }).
+      error(function (data, status, headers, config) {
+        $scope.article={};
+      });
+
+
+    }
+
+  };
+
+
   $scope.numberOfPages = function(){
     // return Math.ceil($scope.articles.length/$scope.pageSize);                
   };

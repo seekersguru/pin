@@ -43,6 +43,27 @@ module.exports = function(app) {
 
   /**---(',')--article section stop----(',')---**/
 
+   
+  /**---(',')--article comments section start----(',')---**/
+
+  //GET
+  app.get('/api/comments/:articleid', articles.comment_query);
+  
+  // Get Only One
+  app.get('/api/comments/:articleid/:commentid', articles.comment_show);
+  
+  //Create
+  app.post('/api/comments/:articleid',  articles.comment_create);
+
+  //update
+  app.put('/api/comments/:articleid/:commentid', articles.comment_update);
+  
+  //remove
+  app.del('/api/comments/:articleid/:commentid', articles.comment_remove);
+
+  /**---(',')--article comments section stop----(',')---**/
+
+  
 
   app.post('/api/users', users.create);
   app.get('/api/users', users.query);

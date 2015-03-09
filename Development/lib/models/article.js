@@ -19,7 +19,7 @@ var ArticleSchema = new Schema({
   tags: [String],
   keywords: [String],
   merchs: {},
-  comments: [{ poster: { type: ObjectId, ref: 'User' },
+  comments: [{ user: { type: ObjectId, ref: 'User' },
                post: String,
                posted: {type: Date, default: Date.now}
              }],
