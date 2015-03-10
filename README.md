@@ -81,10 +81,18 @@ create new project name pin
 
 
 
+============================================
+###VIDEO SECTION
+===============================
+
+go to video folder
+
+1)Sudo npm install
+
+2)run node app.js
 
 
-
-
+then see at http:/0.0.0.0:3001   
 
 
 ================================
