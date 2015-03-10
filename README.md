@@ -85,7 +85,7 @@ create new project name pin
 ###VIDEO SECTION
 ===============================
 
-go to video folder
+go to video-demo folder
 
 1)Sudo npm install
 
