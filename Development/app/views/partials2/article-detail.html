@@ -178,8 +178,8 @@
                             </div>
                             <div class="commentText">
                               <p class="">{{ value.post}}</p> <span class="date sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
-                              <div class="pull-left edit-icon"><a ng-click="editComment(value._id,value.post)"> <i class="fa fa-edit"></i>Edit</a></div>
-                              <div class="pull-left trash-o-icon"><a ng-click="deleteComment(value._id)"> <i class="fa fa-trash-o"></i>Delete</a></div>
+                              <div ng-if="currentUser._id" class="pull-left edit-icon"><a ng-click="editComment(value._id,value.post)"> <i class="fa fa-edit"></i>Edit</a></div>
+                              <div ng-if="currentUser._id" class="pull-left trash-o-icon"><a ng-click="deleteComment(value._id)"> <i class="fa fa-trash-o"></i>Delete</a></div>
                             </div>
                           </li>
                         </ul>
