@@ -94,7 +94,7 @@ exports.update = function(req, res) {
 // show particluar one article 
 exports.show=function(req,res){
 	var articleid=req.params.articleid;
-	Article.find({_id:articleid})
+	Article.findById(articleid).populate('author','name email')
 	.exec(function(err,article){
 		if(err){
 			console.log(err);
@@ -106,7 +106,7 @@ exports.show=function(req,res){
 		}
 		if(article)
 		{
-			return res.json(article[0]);
+			return res.json(article);
 		}
 		return res.send(403);
 
@@ -117,7 +117,6 @@ exports.show=function(req,res){
 // show all articles with paging
 exports.query = function(req, res) {
 
-	console.log(req);
 	var limit=req.query.limit;
 
 	var q=Article.find({});
@@ -136,7 +135,7 @@ exports.query = function(req, res) {
 	q.sort('createdAt');
 
 	/** finally execute */
-	q.exec(function(err, articles) {
+	q.populate('author','name email').exec(function(err, articles) {
 		if (err) {
 			console.log(err);
 			return res.send(404);

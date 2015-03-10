@@ -35,11 +35,11 @@
 
                       <div class="widget-post-info">
                         <h4>
-                          <a href="#">{{value.title}}</a>
+                          <a ng-href="/articles/view/{{value._id}}">{{value.title}}</a>
                         </h4>
                         <div class="meta">
                          <span class="wid_post-date"><i class="fa fa-clock-o"></i>{{ value.createdAt | date:"d MMMM yyyy" }}</span>
-                         <!-- <span class="wid_comments"><i class="fa fa-comments"></i><span>Comments Off</span></span> -->
+                         <span class="wid_comments"><i class="fa fa-comments"></i><span>{{ value.comments.length }} Comments</span></span>
                        </div>
                      </div>       
                    </li>
@@ -144,9 +144,9 @@
                   <div class="post-meta-info-inner">
 
                     <div class="post_meta_author"><i class="fa fa-user"></i>
-                      Rituraj Ratan</div>
+                      {{articles.author.name | uppercase}}</div>
                       <div class="post_meta_cats"><i class="fa fa-clock-o"></i>{{articles.createdAt | date:"d MMMM yyyy" }}</div>
-                      <div class="post_meta_date"><i class="fa fa-comment"></i>0 Comments</div>
+                      <div class="post_meta_date"><i class="fa fa-comment"></i>{{articles.comments.length}} Comments</div>
                       <div class="post_meta_views"><i class="fa fa-tag"></i>{{articles.tags.toString()}}</div>
                     </div>
                   </div>
