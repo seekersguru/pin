@@ -7,5 +7,5 @@ heroku
 /views
 dist
 app/uploads
-video/node_modules
-video/videos
+../video/node_modules
+../video/videos
