@@ -1,0 +1,28 @@
+1) After fresh install had to install following 
+
+npm install socket.io
+
+npm install mongoose
+ 
+ sudo npm install bso 
+
+2) Trying mongo express for mongo admin as developers
+
+sudo npm install mongo-express
+
+
+3) Useful links for video streaming etc.
+ (Ignore for now, reference for future)
+
+https://www.npmjs.com/package/web-media-player
+
+https://www.npmjs.com/package/streaming-s3   (Amazon s3 we will be using to upload.)
+
+What video code (http://www.olindata.com/blog/2014/01/file-uploading-and-streaming-binaryjs)
+is using (Can be used in other scenarios)
+http://binaryjs.com/
+
+
+
+
+4) 
