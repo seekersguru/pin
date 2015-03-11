@@ -55,6 +55,9 @@ angular.module('pinApp', [
     templateUrl: 'partials2/register',
     controller:'RegisterCtrl'
   })
+  .when('/video', {
+    templateUrl: 'partials2/video'
+  })
   .when('/articles/:pageno', {
     templateUrl: 'partials2/articles',
     controller:'ArticleCtrl',
@@ -120,7 +123,7 @@ angular.module('pinApp', [
       articles: ['$q', '$route', 'Article','$rootScope', function($q, $route, article,$rootScope) {
       var deferred = $q.defer();
       var query = angular.copy($route.current.params);
-      query.limit=6;
+      query.limit=25;
       query.author=$rootScope.user;
       article.get(query, function(articles) {
         deferred.resolve(articles.articles);

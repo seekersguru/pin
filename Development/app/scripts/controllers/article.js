@@ -173,7 +173,8 @@ angular.module('pinApp')
         console.log(data);
         $scope.article={};
         $scope.articleDone=1;
-        $scope.articleResponse=data;
+        $scope.articleResponse=data.article._id;
+        $location.path('articles/view/'+data.article._id)
         
       }).
       error(function (data, status, headers, config) {
@@ -278,6 +279,7 @@ angular.module('pinApp')
     file.upload.then(function(response) {
       $timeout(function() {
         console.log(response);
+        $location.path('articles/view/'+response.data.article._id);
         file.result = response.data;
         $scope.article={};
         $scope.articleDone=1;
@@ -290,6 +292,7 @@ angular.module('pinApp')
         $scope.article={};
         $scope.articleDone=1;
         $scope.articleResponse=response.data;
+        $location.path('articles/view/'+response.data.article._id);
         $scope.form.$setPristine();
 
     });
