@@ -29,6 +29,9 @@ app.use(express.methodOverride());
 //app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+// @@@@@@@ @RITURAJ DO NOT WHY IT NOT WORKED IF WRITTEN IN CHAT SECTION AT END 
+// EVEN AFTER module.exports to end
+app.use('/angular-dev', express.static(__dirname  + '/angular-frontend/app'));
 //development only
 if ('development' == app.get('env')) {
  app.use(express.errorHandler());
@@ -106,11 +109,6 @@ require('./lib/routes')(app);
 
 
 
-// Expose app
-
-
-exports = module.exports = app;
-
 
 
 
@@ -141,10 +139,96 @@ bs.on('connection', function (client) {
 /* Video Code start part 3 (last)  Ends*/
 
 
+///   CHAT STARTS *********************** 
+//@Rituraj comment1 
+//'use strict';
+
+//define globals
+//@Rituraj comment2
+//var express = require('express'),
+var  io = require('socket.io'),
+//@Rituraj comment3
+ //http = require('http'),
+//@Rituraj comment4
+ //app = express(),
+ server = http.createServer(app),
+ io = io.listen(server),
+//@Rituraj comment5
+ //path = require('path'),
+ favicon = require('static-favicon'),
+ logger = require('morgan'),
+ cookieParser = require('cookie-parser'),
+ bodyParser = require('body-parser');
+
+//set up our JSON API for later
+//require('./routes/api')(app);
+
+//set up our socket server
+require('./sockets/base')(io);
+
+//start the server
+server.listen(config.port);
+
+//optional - set socket.io logging level
+io.set('log level', 1000);
 
 
 
+//middleware settings
+app.use(favicon());
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(cookieParser());
 
+//@Rituraj Commented as public is not relevant we working for angular 
+//app.use(require('stylus').middleware(path.join(__dirname, 'public')));
+
+//for production
+//app.use(express.static(__dirname +  '/public'));
+
+//for development purposes, access during
+//iterative development as /angular-dev
+//see below if you want to add back the development env
+app.use('/angular-dev', express.static(__dirname  + '/angular-frontend/app'));
+
+/// catch 404 and forwarding to error handler
+app.use(function (req, res, next) {
+var err = new Error('Not Found');
+err.status = 404;
+next(err);
+});
+
+/// error handlers
+
+//development error handler
+//will print stacktrace
+if (app.get('env') === 'development') {
+app.use(function (err, req, res, next) {
+ res.status(err.status || 500);
+ res.render('error', {
+   message: err.message,
+   error: err
+ });
+});
+}
+
+//production error handler
+//no stacktraces leaked to user
+app.use(function (err, req, res, next) {
+res.status(err.status || 500);
+res.render('error', {
+ message: err.message,
+ error: {}
+});
+});
+
+
+ 
+//// CHAT ENDS  *************************
+
+
+/*Comment the main app code as above pasting chat server code directly than  
 //Modved the code at the end to avoid any confusion 
 var server =http.createServer(app);
 // set up our socket server
@@ -153,3 +237,18 @@ var server =http.createServer(app);
 server.listen(config.port, function () {
   console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
 });
+*/
+
+//Expose app
+
+
+exports = module.exports = app;
+
+
+
+
+
+
+
+
+

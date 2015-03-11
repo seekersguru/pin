@@ -12,7 +12,9 @@ uploadPath     = __dirname + '/../videos';
 supportedTypes = [
     'video/mp4',
     'video/webm',
-    'video/ogg'
+    'video/ogg',
+    'video/x-flv'
+    
 ];
 
 module.exports = {
