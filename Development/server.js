@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // @@@@@@@ @RITURAJ DO NOT WHY IT NOT WORKED IF WRITTEN IN CHAT SECTION AT END 
 // EVEN AFTER module.exports to end
-app.use('/angular-dev', express.static(__dirname  + '/angular-frontend/app'));
+app.use('/chat', express.static(__dirname  + '/angular-frontend/app'));
 //development only
 if ('development' == app.get('env')) {
  app.use(express.errorHandler());
