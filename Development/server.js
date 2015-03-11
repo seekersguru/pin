@@ -53,7 +53,7 @@ Video Code start part 2 # Ends */
 var express = require('express'),
     path = require('path'),
     fs = require('fs'),
-    io = require('socket.io'),
+    //io = require('socket.io'),
     http = require('http'),
     mongoose = require('mongoose');
 
@@ -148,8 +148,8 @@ bs.on('connection', function (client) {
 //Modved the code at the end to avoid any confusion 
 var server =http.createServer(app);
 // set up our socket server
-var io=require('socket.io').listen(server);
-require('./lib/sockets/base')(io);
+//var io=require('socket.io').listen(server);
+//require('./lib/sockets/base')(io);
 server.listen(config.port, function () {
   console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
 });
