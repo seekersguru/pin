@@ -25,4 +25,8 @@ http://binaryjs.com/
 
 
 
-4) 
+4) For admin looked into penguin, drywall etc but following looks promising 
+https://allcountjs.com/
+But Think ng-grid might be very useful as Rituraj has expertise on it. 
+ 
+ 
