@@ -92,7 +92,8 @@ UserSchema.path('address.city')
 	.length(2,150)	
 UserSchema.path('address.country')
 	.length(2,150)	
-
+UserSchema.path('hashedPassword')
+	.length(2,1500)	
 UserSchema.pre('save', function(next){
 	  var now = new Date();
 	  this.updated_at = now;

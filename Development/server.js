@@ -1,5 +1,55 @@
 'use strict';
 
+
+
+
+/* Video Code start part 1*/
+
+//Here comes the video part 
+/**
+* File Uploading and Streaming with BinaryJS
+*/
+'use strict';
+
+var BinaryServer, express, http, path, app, video, server, bs;
+
+BinaryServer = require('binaryjs').BinaryServer;
+express      = require('express');
+http         = require('http');
+path         = require('path');
+app          = express();
+video        = require('./lib/video');
+
+//all environments
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(express.methodOverride());
+//app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
+
+//development only
+if ('development' == app.get('env')) {
+ app.use(express.errorHandler());
+}
+
+/* Video Code start part 1 Ends app*/
+
+/*  Video Code start part 2 # Starts 
+
+server = http.createServer(app);
+
+server.listen(3001, function () {
+ console.log('Video Server started on http://0.0.0.0:3001');
+});
+
+Video Code start part 2 # Ends */
+
+
+
+
+
 var express = require('express'),
     path = require('path'),
     fs = require('fs'),
@@ -43,9 +93,10 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 // Passport Configuration
 var passport = require('./lib/config/passport');
 
+/// @RITURAJ COMMENTED FOLLW TO MAKE VIDEO RUN \\\\\
+//var app = express();
 
-var app = express();
-
+/// @RITURAJ JUST COMMENT THESE TWO LINES (To make Video Run)\\\\\
 // Express settings
 require('./lib/config/express')(app);
 // Routing
@@ -65,3 +116,39 @@ var io=require('socket.io').listen(server);
 
 
 exports = module.exports = app;
+
+
+
+
+/* Video Code start part 3 (last) Starts*/
+bs = new BinaryServer({ port: 9000 });
+
+bs.on('connection', function (client) {
+ client.on('stream', function (stream, meta) {
+     switch(meta.event) {
+         // list available videos
+         case 'list':
+             video.list(stream, meta);
+             break;
+
+         // request for a video
+         case 'request':
+             video.request(client, meta);
+             break;
+
+         // attempt an upload
+         case 'upload':
+         default:
+             video.upload(stream, meta);
+     }
+ });
+});
+
+/* Video Code start part 3 (last)  Ends*/
+
+
+
+
+
+
+
