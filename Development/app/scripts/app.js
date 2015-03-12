@@ -14,7 +14,11 @@ angular.module('pinApp', [
   'duScroll',
   'angularFileUpload',
   'btford.socket-io',
-  'textAngular'
+  'textAngular',
+  'com.2fdevs.videogular',
+  'com.2fdevs.videogular.plugins.controls',
+  'com.2fdevs.videogular.plugins.overlayplay',
+  'com.2fdevs.videogular.plugins.poster'
   ])
 .value('nickName', 'anonymous')
 .config(function( $compileProvider ) {

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('pinApp')
-.controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles) {
+.controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles,$sce) {
   $scope.article={};
   $scope.articles=articles;
   $scope.descriptionLimit=100;
@@ -9,88 +9,102 @@ angular.module('pinApp')
   $scope.numberOfPage=25;
 
   $scope.comments=articles.comments;
-
-
-  $scope.getLatest=function(){
-
-    $http({ method: 'GET', url: 'api/articles?limit=5&pageno=01' }).
-      success(function (data, status, headers, config) {
-        
-        $scope.latestcomments=data.articles;
-
-      }).
-      error(function (data, status, headers, config) {
-
-      });
-
-  };
-
-  $scope.getLatest();
-
-
-  $scope.deleteComment=function(commentId){
-
-    var yes=confirm('Are you sure you want to delete this Comment?');
-    if(yes)
-    {
-      $http({
-        method:"DELETE",
-        url:'/api/comments/'+articles._id+"/"+commentId
-      }).
-      success(function (data,status,headers,config){
-        $scope.deleteStatus=1;
-        
-        var removeIndex = $scope.comments
-                        .map(function(item)
-                        { 
-                          return item._id;
-                         })
-                       .indexOf(commentId);
-
-        $scope.comments.splice(removeIndex, 1);
-
-      })
-      .error(function (data,status,headers,config){
-
-      });
-    }
-
-  };
-
-
-  $scope.addComment=function(form){
+  if($location.path()=="/articles/view/"+articles._id)
+  {
     
-     if(form.$valid)
-    {
-      if($scope.editcomment_id)
-      {
-        var comment={ post: $scope.article.comment};  
-        
-        $http({ method: 'PUT', url: '/api/comments/'+articles._id+"/"+$scope.editcomment_id,data:comment}).
-        success(function (data, status, headers, config) {
+  $scope.config=
+  {  
+    'sources': [
+          {src: $sce.trustAsResourceUrl('../'+articles.media.path), type: 'video/mp4'}
+          ],
+    'theme': 'bower_components/videogular-themes-default/videogular.css',
+  'plugins': {
+    'poster': 'http://www.videogular.com/assets/images/videogular.png'
+  }
+  };
+
+  }  
+
+$scope.getLatest=function(){
+
+  $http({ method: 'GET', url: 'api/articles?limit=5&pageno=01' }).
+  success(function (data, status, headers, config) {
+
+    $scope.latestcomments=data.articles;
+
+  }).
+  error(function (data, status, headers, config) {
+
+  });
+
+};
+
+$scope.getLatest();
+
+
+$scope.deleteComment=function(commentId){
+
+  var yes=confirm('Are you sure you want to delete this Comment?');
+  if(yes)
+  {
+    $http({
+      method:"DELETE",
+      url:'/api/comments/'+articles._id+"/"+commentId
+    }).
+    success(function (data,status,headers,config){
+      $scope.deleteStatus=1;
+
+      var removeIndex = $scope.comments
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(commentId);
+
+      $scope.comments.splice(removeIndex, 1);
+
+    })
+    .error(function (data,status,headers,config){
+
+    });
+  }
+
+};
+
+
+$scope.addComment=function(form){
+
+ if(form.$valid)
+ {
+  if($scope.editcomment_id)
+  {
+    var comment={ post: $scope.article.comment};  
+
+    $http({ method: 'PUT', url: '/api/comments/'+articles._id+"/"+$scope.editcomment_id,data:comment}).
+    success(function (data, status, headers, config) {
           // $scope.form.$setPristine();
 
           var removeIndex = $scope.comments
-                        .map(function(item)
-                        { 
-                          return item._id;
-                         })
-                       .indexOf($scope.editcomment_id);
-                       
-         $scope.comments[removeIndex].post= $scope.article.comment;
-         $scope.editcomment_id=0;
-         $scope.article={};
-        }).
-        error(function (data, status, headers, config) {
-          $scope.article={};
-        });
- 
+          .map(function(item)
+          { 
+            return item._id;
+          })
+          .indexOf($scope.editcomment_id);
 
-      }else{
-        var comment={ user: $rootScope.currentUser._id , post: $scope.article.comment};  
-        
-        $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
-        success(function (data, status, headers, config) {
+          $scope.comments[removeIndex].post= $scope.article.comment;
+          $scope.editcomment_id=0;
+          $scope.article={};
+        }).
+    error(function (data, status, headers, config) {
+      $scope.article={};
+    });
+
+
+  }else{
+    var comment={ user: $rootScope.currentUser._id , post: $scope.article.comment};  
+
+    $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
+    success(function (data, status, headers, config) {
           // ...
           comment.posted=new Date(); 
           $scope.comments.push(comment);
@@ -100,24 +114,24 @@ angular.module('pinApp')
           $scope.form.$setPristine();
           
         }).
-        error(function (data, status, headers, config) {
-          $scope.article={};
-        });
-      }
+    error(function (data, status, headers, config) {
+      $scope.article={};
+    });
+  }
 
 
-    }
+}
 
-  };
+};
 
-  $scope.editComment=function(commentId,comment){
+$scope.editComment=function(commentId,comment){
 
-    $scope.article.comment=comment;
-    $scope.editcomment_id=commentId;
+  $scope.article.comment=comment;
+  $scope.editcomment_id=commentId;
 
-  };
+};
 
-  $scope.numberOfPages = function(){
+$scope.numberOfPages = function(){
     // return Math.ceil($scope.articles.length/$scope.pageSize);                
   };
 
@@ -125,9 +139,9 @@ angular.module('pinApp')
   //   $scope.currentPage = parseInt($routeParams.pageno) - 1;    
   // });
 
-  $scope.changePage = function(){
-    $location.path('/articles/'+$scope.currentPage+1);
-  };
+$scope.changePage = function(){
+  $location.path('/articles/'+$scope.currentPage+1);
+};
 
   // if($routeParams.pageno){      
   //   if($routeParams.pageno > $scope.numberOfPages()){
@@ -151,7 +165,7 @@ angular.module('pinApp')
 
 angular.module('pinApp')
 .controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,article) {
-  
+
   $scope.article=article;
   
   $scope.saveArticle=function(form){
@@ -236,7 +250,7 @@ angular.module('pinApp')
 
 angular.module('pinApp')
 .controller('ArticleAddCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,$upload,$timeout) {
-  
+
   $scope.article={};
   // $scope.usingFlash = FileAPI && FileAPI.upload != null;
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
@@ -252,19 +266,19 @@ angular.module('pinApp')
   function generateThumbAndUpload(file) {
     $scope.errorMsg = null;
     $scope.generateThumb(file);
-     uploadUsing$upload(file);
+    uploadUsing$upload(file);
     
   }
 
   function uploadUsing$upload(file) {
-    
+
     $scope.article.author= $rootScope.currentUser._id;
     
     var original=$scope.article.tags;
     $scope.article.tags=[];
-      for (var t = 0; t < original.length; t++) {
-        $scope.article.tags[t] = original[t].text;
-      }
+    for (var t = 0; t < original.length; t++) {
+      $scope.article.tags[t] = original[t].text;
+    }
 
     file.upload = $upload.upload({
       url: '/api/articles',
@@ -289,11 +303,11 @@ angular.module('pinApp')
     }, function(response) {
       if (response.status > 0)
         $scope.errorMsg = response.status + ': ' + response.data;
-        $scope.article={};
-        $scope.articleDone=1;
-        $scope.articleResponse=response.data;
-        $location.path('articles/view/'+response.data.article._id);
-        $scope.form.$setPristine();
+      $scope.article={};
+      $scope.articleDone=1;
+      $scope.articleResponse=response.data;
+      $location.path('articles/view/'+response.data.article._id);
+      $scope.form.$setPristine();
 
     });
 
@@ -308,9 +322,9 @@ angular.module('pinApp')
   }
 
 
-$scope.generateThumb = function(file) {
+  $scope.generateThumb = function(file) {
     if (file !== null) {
-      if ($scope.fileReaderSupported && file.type.indexOf('image') > -1) {
+      if ($scope.fileReaderSupported && (file.type.indexOf('image') > -1 || file.type.indexOf('video') > -1)) {
         $timeout(function() {
           var fileReader = new FileReader();
           fileReader.readAsDataURL(file);
@@ -328,7 +342,7 @@ $scope.generateThumb = function(file) {
     var file=element.files[0];
     $scope.$apply(function($scope) {
       console.log('files:', element.files);
-      if ($scope.fileReaderSupported && file.type.indexOf('image') > -1) {
+      if ($scope.fileReaderSupported && (file.type.indexOf('image') > -1 || file.type.indexOf('video') > -1)) {
         $timeout(function() {
           var fileReader = new FileReader();
           fileReader.readAsDataURL(file);
@@ -341,12 +355,12 @@ $scope.generateThumb = function(file) {
         });
       }
       // Turn the FileList object into an Array
-        $scope.files = [];
-        for (var i = 0; i < element.files.length; i++) {
-          $scope.files.push(element.files[i]);
-        }
+      $scope.files = [];
+      for (var i = 0; i < element.files.length; i++) {
+        $scope.files.push(element.files[i]);
+      }
       $scope.progressVisible = false;
-      });
+    });
   };
 
   $scope.saveArticle=function(form){

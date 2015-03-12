@@ -25,9 +25,15 @@
                      <div class="post-img">
                       <a ng-href="/articles/view/{{value._id}}">
   
+                       <div ng-if='value.media.extension.indexOf("image") > -1'>
                         <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" width="150" height="150" src="images/31-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="{{value.title}}">
 
                          <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}" width="150" height="150"> 
+                      </div>
+                         <div ng-if='value.media.extension.indexOf("video") > -1'>
+
+                          <img  src="images/video-min.png" class="img-responsive" title="{{value.title}}" width="150" height="150">           
+                          </div>
   
                         </a>
 
@@ -152,10 +158,19 @@
                   </div>
 
                   <div class="articles-inner"> 
-                    <div class="articale-img-inner">
+                    <div class="articale-img-inner" ng-if='articles.media.extension.indexOf("image") > -1'>
                       <img ng-if="!articles.media.path" src="images/articels001.jpg" class="img-responsive" title="{{articles.title}}"> 
 
                       <img ng-if="articles.media.path" ng-src="../{{articles.media.path}}" title="{{articles.title}}">
+                    </div>
+                   <div class="articale-img-inner" ng-if='articles.media.extension.indexOf("video") > -1'>
+                 
+                 <videogular vg-theme='config.theme'>
+                  <vg-media 
+                            vg-src="config.sources" 
+                            vg-native-controls="true"  >
+                  </vg-media>
+                </videogular>
                     </div>
 
                     <p ng-bind-html="articles.description | rawHtml"></p>

@@ -13,12 +13,12 @@
 
 var BinaryServer, express, http, path, app, video, server, bs;
 
-BinaryServer = require('binaryjs').BinaryServer;
+// BinaryServer = require('binaryjs').BinaryServer;
 express      = require('express');
 http         = require('http');
 path         = require('path');
 app          = express();
-video        = require('./lib/video');
+// video        = require('./lib/video');
 
 //all environments
 app.use(express.favicon());
@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 //app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // @@@@@@@ @RITURAJ DO NOT WHY IT NOT WORKED IF WRITTEN IN CHAT SECTION AT END 
 // EVEN AFTER module.exports to end
@@ -113,28 +113,28 @@ require('./lib/routes')(app);
 
 
 /* Video Code start part 3 (last) Starts*/
-bs = new BinaryServer({ port: 9000 });
+// bs = new BinaryServer({ port: 9000 });
 
-bs.on('connection', function (client) {
- client.on('stream', function (stream, meta) {
-     switch(meta.event) {
-         // list available videos
-         case 'list':
-             video.list(stream, meta);
-             break;
+// bs.on('connection', function (client) {
+//  client.on('stream', function (stream, meta) {
+//      switch(meta.event) {
+//          // list available videos
+//          case 'list':
+//              video.list(stream, meta);
+//              break;
 
-         // request for a video
-         case 'request':
-             video.request(client, meta);
-             break;
+//          // request for a video
+//          case 'request':
+//              video.request(client, meta);
+//              break;
 
-         // attempt an upload
-         case 'upload':
-         default:
-             video.upload(stream, meta);
-     }
- });
-});
+//          // attempt an upload
+//          case 'upload':
+//          default:
+//              video.upload(stream, meta);
+//      }
+//  });
+// });
 
 /* Video Code start part 3 (last)  Ends*/
 
