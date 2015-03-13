@@ -105,13 +105,6 @@ require('./lib/config/express')(app);
 // Routing
 require('./lib/routes')(app);
 
-
-
-
-
-
-
-
 /* Video Code start part 3 (last) Starts*/
 // bs = new BinaryServer({ port: 9000 });
 
