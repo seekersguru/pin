@@ -141,6 +141,11 @@ angular.module('pinApp', [
 
   }
 })
+ .when('/admin', {
+        templateUrl: 'partials2/admin/adminpanel',
+        controller: 'AdminPanelCtrl',
+        title: 'Admin Panel'
+      })
   .otherwise({
     redirectTo: '/home'
   });

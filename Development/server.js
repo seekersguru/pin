@@ -1,17 +1,6 @@
 'use strict';
 
-
-
-
-/* Video Code start part 1*/
-
-//Here comes the video part 
-/**
-* File Uploading and Streaming with BinaryJS
-*/
-'use strict';
-
-var BinaryServer, express, http, path, app, video, server, bs;
+var express, http, path, app,  server;
 
 // BinaryServer = require('binaryjs').BinaryServer;
 express      = require('express');
@@ -27,31 +16,11 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 //app.use(app.router);
-// app.use(express.static(path.join(__dirname, 'public')));
 
-// @@@@@@@ @RITURAJ DO NOT WHY IT NOT WORKED IF WRITTEN IN CHAT SECTION AT END 
-// EVEN AFTER module.exports to end
-app.use('/chat', express.static(__dirname  + '/angular-frontend/app'));
 //development only
 if ('development' == app.get('env')) {
- app.use(express.errorHandler());
+  app.use(express.errorHandler());
 }
-
-/* Video Code start part 1 Ends app*/
-
-/*  Video Code start part 2 # Starts 
-
-server = http.createServer(app);
-
-server.listen(3001, function () {
- console.log('Video Server started on http://0.0.0.0:3001');
-});
-
-Video Code start part 2 # Ends */
-
-
-
-
 
 var express = require('express'),
     path = require('path'),
@@ -59,7 +28,6 @@ var express = require('express'),
     //io = require('socket.io'),
     http = require('http'),
     mongoose = require('mongoose');
-
 
 
 /**
@@ -96,65 +64,20 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 // Passport Configuration
 var passport = require('./lib/config/passport');
 
-/// @RITURAJ COMMENTED FOLLW TO MAKE VIDEO RUN \\\\\
-//var app = express();
-
-/// @RITURAJ JUST COMMENT THESE TWO LINES (To make Video Run)\\\\\
 // Express settings
 require('./lib/config/express')(app);
 // Routing
 require('./lib/routes')(app);
 
-/* Video Code start part 3 (last) Starts*/
-// bs = new BinaryServer({ port: 9000 });
 
-// bs.on('connection', function (client) {
-//  client.on('stream', function (stream, meta) {
-//      switch(meta.event) {
-//          // list available videos
-//          case 'list':
-//              video.list(stream, meta);
-//              break;
-
-//          // request for a video
-//          case 'request':
-//              video.request(client, meta);
-//              break;
-
-//          // attempt an upload
-//          case 'upload':
-//          default:
-//              video.upload(stream, meta);
-//      }
-//  });
-// });
-
-/* Video Code start part 3 (last)  Ends*/
-
-
-///   CHAT STARTS *********************** 
-//@Rituraj comment1 
-//'use strict';
-
-//define globals
-//@Rituraj comment2
-//var express = require('express'),
 var  io = require('socket.io'),
-//@Rituraj comment3
- //http = require('http'),
-//@Rituraj comment4
- //app = express(),
  server = http.createServer(app),
  io = io.listen(server),
-//@Rituraj comment5
- //path = require('path'),
  favicon = require('static-favicon'),
  logger = require('morgan'),
  cookieParser = require('cookie-parser'),
  bodyParser = require('body-parser');
 
-//set up our JSON API for later
-//require('./routes/api')(app);
 
 //set up our socket server
 require('./sockets/base')(io);
@@ -173,17 +96,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-
-//@Rituraj Commented as public is not relevant we working for angular 
-//app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-
-//for production
-//app.use(express.static(__dirname +  '/public'));
-
-//for development purposes, access during
-//iterative development as /angular-dev
-//see below if you want to add back the development env
-app.use('/angular-dev', express.static(__dirname  + '/angular-frontend/app'));
 
 /// catch 404 and forwarding to error handler
 app.use(function (req, res, next) {
@@ -217,31 +129,4 @@ res.render('error', {
 });
 
 
- 
-//// CHAT ENDS  *************************
-
-
-/*Comment the main app code as above pasting chat server code directly than  
-//Modved the code at the end to avoid any confusion 
-var server =http.createServer(app);
-// set up our socket server
-//var io=require('socket.io').listen(server);
-//require('./lib/sockets/base')(io);
-server.listen(config.port, function () {
-  console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
-});
-*/
-
-//Expose app
-
-
 exports = module.exports = app;
-
-
-
-
-
-
-
-
-

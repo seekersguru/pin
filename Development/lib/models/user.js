@@ -85,15 +85,9 @@ UserSchema
     return {
       '_id': this._id,
       'name': this.name,
-      'bio': this.bio,
-      'role': this.role,
-      'city': this.city,
-      'country': this.country,
-      'artworks': this.artworks,
-      'photo':this.photo,
-      'nFollowers': this.nFollowers,
-      'username' : this.username
-    };
+      'createdAt':this.createdAt,
+      'email': this.email
+        };
   });
 
 UserSchema
@@ -106,13 +100,10 @@ UserSchema
       'role': this.role,
       'city': this.city,
       'country': this.country,
-      'artworks': this.artworks,
       'photo':this.photo,
-      'nFollowers': this.nFollowers,
       'username' : this.username,
       'favorites': this.favorites,
       'dob': this.dob,
-      'following':this.following,
       'createdAt':this.createdAt,
       'emailVerification': this.emailVerification,
       'email': this.email

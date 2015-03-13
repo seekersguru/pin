@@ -1,0 +1,31 @@
+<div class="container page">
+<div class="row">
+<div class="col-xs-12">
+    <div class="container-fluid text-center">
+        <span class="fancy-text">MENU</span>
+        <br>
+
+        <div class="btn-group" style="margin:10px">
+            <button class="btn btn-primary" ng-click="setSearch('users')">Users</button>
+            <button class="btn btn-primary" ng-click="setSearch('articles')">Articles</button>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<script type="text/ng-template" id="users">
+<div class="gridStyle" ng-grid="gridData">
+
+</div>
+</script>
+
+<script type="text/ng-template" id="articles">
+<div class="gridStyle" ng-grid="gridData">
+
+</div>
+</script>
+
+<div ng-include="mainPage" class="container text-center"></div>
+
+</div>
