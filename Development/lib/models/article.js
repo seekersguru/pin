@@ -31,4 +31,18 @@ var ArticleSchema = new Schema({
               }
 });
 
+// Basic info to identify the current authenticated user in the app
+ArticleSchema
+  .virtual('articleInfo')
+  .get(function() {
+    return {
+      '_id': this._id,
+      'title': this.title,
+      'author': this.author.name,
+      'tags': this.tags.toString(),
+      'comments':this.comments.length,
+      'createdAt':this.createdAt,
+    };
+  });
+
 mongoose.model('Article', ArticleSchema);

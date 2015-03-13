@@ -30,7 +30,7 @@
     "videogular-ima-ads":"1.1.0",
     "videogular-poster":"1.1.0",
     "videogular-themes-default":"1.1.0",
-    "angular-ui-grid":""
+    "ng-grid":"2.0.14"
 
   },
   "devDependencies": {

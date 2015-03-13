@@ -76,11 +76,13 @@ angular.module('pinApp')
   }, 0);
   
   };
-    $scope.gridData = { data: 'gridData' ,
+
+   $scope.gridData = { data: 'gridData' ,
                         showGroupPanel: true ,
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };
+                       
   
 
 });

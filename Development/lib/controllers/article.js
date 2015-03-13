@@ -146,6 +146,30 @@ exports.query = function(req, res) {
 
 
 };
+// show all articles with basic info
+exports.query = function(req, res) {
+
+	var q=Article.find({});
+
+	/** sorting according to date */
+
+	q.sort('-createdAt');
+
+	/** finally execute */
+	q.populate('author','name email').exec(function(err, articles) {
+		if (err) {
+			console.log(err);
+			return res.send(404);
+		} else {
+			  for(var i=0; i<articles.length; i++){
+            articles[i] = articles[i].articleInfo;
+         }
+			return res.json({articles:articles});
+		}
+	});
+
+
+};
 
 exports.remove = function(req, res) {
 	var article_id = req.params.articleid;
