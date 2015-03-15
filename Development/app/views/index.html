@@ -36,8 +36,12 @@
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <% if (css) { %>
-    <link rel="stylesheet" href="styles/main-new.css">
-    <% } %>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+     <link href="css/style.css" rel="stylesheet">
+     <link href="font-awesome-4.3.0/css/font-awesome.css" rel="stylesheet">    <% } %>
     <!-- endbuild -->
     <% if (!css) { %>
     <link rel="stylesheet" href="styles/main.css">

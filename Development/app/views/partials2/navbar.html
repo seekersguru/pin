@@ -1,22 +1,4 @@
-       <!-- FIXED NAVBAR START -->
- <nav class="navbar navbar-blue navbar-fixed-top" ng-controller="NavbarCtrl">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <!--logo area-->    
-      <div class="logo">
-        <h1>Private</h1>
-        <h2>Network Invester </h2>
-      </div>
-      <!--end-->
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+<!-- 
         <li  ng-class="{active: isActive('/home')}"><a href="/home">Home</a></li>
         <li ng-class="{active: isActive('/articles')}"><a href="/articles/01">Articles</a></li>
         <li ng-class="{active: isActive('/chat-start')}"><a href="/chat-start">Chat</a></li>
@@ -37,16 +19,37 @@
   
             <li class="active" ng-click="logout()"><a>Log out <span class="sr-only">(current)</span></a></li>
       </ul>
-
+ -->
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-blue" ng-controller="NavbarCtrl" >
+      <div class="container-head">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+      <!--logo area-->    
+<div class="logo">
+<a href="/"><img src="images/logo.png" alt="Private Investment Network"></a>
+</div>
+<!--end-->
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
       <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate ng-hide="currentUser" >
         <div class="form-group" ng-class="{'has-error':form.email.$dirty && form.email.$invalid}">
           <input type="text" id="emailnav" name="email" class="form-control" ng-model="user.email" placeholder="Email" required>
+          <div class="checkbox">
+  <label><input type="checkbox" value="">Keep me logged in</label>
+</div>
         </div>
         <div class="form-group" ng-class="{'has-error':form.password.$dirty && form.password.$invalid}">
           <input type="password" id="passwordnav" name="password" class="form-control" ng-model="user.password" placeholder="Password" required>
+         <div class="forget-pass"><a href="#">Forgot Password ?</a></div>
         </div>
         <button type="submit" class="btn btn-default" ng-disabled="form.$invalid">Sign In</button>
       </form>
-    </div><!--/.nav-collapse -->
-  </div>
-</nav>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
