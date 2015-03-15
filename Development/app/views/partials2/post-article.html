@@ -46,7 +46,8 @@
         
   <div class="form-group">
    <label class="control-label" for="fullName">Media </label>
-   <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file" accept="image/*"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
+   <!-- <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file" accept="image/*"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" /> -->
+   <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
 
 
  <!--        Profile Picture: <input type="file" ng-file-select=""  ng-model="picFile" name="file" accept="image/*" ng-file-change="generateThumb(picFile[0], $files)"  required="">

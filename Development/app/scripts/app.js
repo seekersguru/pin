@@ -14,7 +14,11 @@ angular.module('pinApp', [
   'duScroll',
   'angularFileUpload',
   'btford.socket-io',
-  'textAngular'
+  'textAngular',
+  'com.2fdevs.videogular',
+  'com.2fdevs.videogular.plugins.controls',
+  'com.2fdevs.videogular.plugins.overlayplay',
+  'com.2fdevs.videogular.plugins.poster'
   ])
 .value('nickName', 'anonymous')
 .config(function( $compileProvider ) {
@@ -54,6 +58,9 @@ angular.module('pinApp', [
   .when('/register', {
     templateUrl: 'partials2/register',
     controller:'RegisterCtrl'
+  })
+  .when('/video', {
+    templateUrl: 'partials2/video'
   })
   .when('/articles/:pageno', {
     templateUrl: 'partials2/articles',
@@ -120,7 +127,7 @@ angular.module('pinApp', [
       articles: ['$q', '$route', 'Article','$rootScope', function($q, $route, article,$rootScope) {
       var deferred = $q.defer();
       var query = angular.copy($route.current.params);
-      query.limit=6;
+      query.limit=25;
       query.author=$rootScope.user;
       article.get(query, function(articles) {
         deferred.resolve(articles.articles);

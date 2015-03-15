@@ -9,10 +9,15 @@
 
       <div class="col-lg-4" ng-repeat="(key,value) in articles ">
         <div class="articles-section">
-          <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}"> 
-          
+        <div ng-if='value.media.extension.indexOf("image") > -1'>
+          <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">           
           <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}">
-          
+          </div>
+          <div ng-if='value.media.extension.indexOf("video") > -1'>
+
+          <img  src="images/video.png" class="img-responsive" title="{{value.title}}">           
+          </div>
+
           <div class="articles-inner">
             <div class="post-meta-info">
               <div>

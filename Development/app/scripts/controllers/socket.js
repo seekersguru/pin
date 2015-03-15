@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('pinApp')
-.controller('SocketCtrl', function ($log, $scope, chatSocket, messageFormatter, nickName) {
+.controller('SocketCtrl', function ($log, $scope, chatSocket, messageFormatter, nickName,$rootScope) {
+  if($rootScope.currentUser)
+  {
+    nickName=$rootScope.currentUser.name;
+  }
   $scope.nickName = nickName;
   $scope.messageLog = 'Ready to chat!';
   $scope.sendMessage = function() {
