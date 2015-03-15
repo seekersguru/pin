@@ -42,6 +42,7 @@ ArticleSchema
       'tags': this.tags.toString(),
       'comments':this.comments.length,
       'createdAt':this.createdAt,
+      'approve':this.public
     };
   });
 

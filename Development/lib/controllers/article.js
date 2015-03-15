@@ -147,7 +147,7 @@ exports.query = function(req, res) {
 
 };
 // show all articles with basic info
-exports.query = function(req, res) {
+exports.basic = function(req, res) {
 
 	var q=Article.find({});
 

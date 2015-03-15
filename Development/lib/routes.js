@@ -29,6 +29,9 @@ module.exports = function(app) {
   //GET
   app.get('/api/articles', articles.query);
   
+  //GET BASIC INFO
+  app.get('/api/articles/basic', articles.basic);
+  
   // Get Only One
   app.get('/api/articles/:articleid', articles.show);
   

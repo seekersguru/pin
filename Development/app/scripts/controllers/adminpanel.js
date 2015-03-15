@@ -1,48 +1,98 @@
 'use strict';
 
 function ngGridFlexibleHeightPlugin (opts) {
-    var self = this;
-    self.grid = null;
-    self.scope = null;
-    self.init = function (scope, grid, services) {
-        self.domUtilityService = services.DomUtilityService;
-        self.grid = grid;
-        self.scope = scope;
-        var recalcHeightForData = function () { setTimeout(innerRecalcForData, 1); };
-        var innerRecalcForData = function () {
-            var gridId = self.grid.gridId;
-            var footerPanelSel = '.' + gridId + ' .ngFooterPanel';
-            var extraHeight = self.grid.$topPanel.height() + $(footerPanelSel).height();
-            var naturalHeight = self.grid.$canvas.height() + 1;
-            if (opts != null) {
-                if (opts.minHeight != null && (naturalHeight + extraHeight) < opts.minHeight) {
-                    naturalHeight = opts.minHeight - extraHeight - 2;
-                }
-            }
+  var self = this;
+  self.grid = null;
+  self.scope = null;
+  self.init = function (scope, grid, services) {
+    self.domUtilityService = services.DomUtilityService;
+    self.grid = grid;
+    self.scope = scope;
+    var recalcHeightForData = function () { setTimeout(innerRecalcForData, 1); };
+    var innerRecalcForData = function () {
+      var gridId = self.grid.gridId;
+      var footerPanelSel = '.' + gridId + ' .ngFooterPanel';
+      var extraHeight = self.grid.$topPanel.height() + $(footerPanelSel).height();
+      var naturalHeight = self.grid.$canvas.height() + 1;
+      if (opts != null) {
+        if (opts.minHeight != null && (naturalHeight + extraHeight) < opts.minHeight) {
+          naturalHeight = opts.minHeight - extraHeight - 2;
+        }
+      }
 
-            var newViewportHeight = naturalHeight + 3;
-            if (!self.scope.baseViewportHeight || self.scope.baseViewportHeight !== newViewportHeight) {
-                self.grid.$viewport.css('height', newViewportHeight + 'px');
-                self.grid.$root.css('height', (newViewportHeight + extraHeight) + 'px');
-                self.scope.baseViewportHeight = newViewportHeight;
-                self.domUtilityService.RebuildGrid(self.scope, self.grid);
-            }
-        };
-        self.scope.catHashKeys = function () {
-            var hash = '',
-                idx;
-            for (idx in self.scope.renderedRows) {
-                hash += self.scope.renderedRows[idx].$$hashKey;
-            }
-            return hash;
-        };
-        self.scope.$watch('catHashKeys()', innerRecalcForData);
-        self.scope.$watch(self.grid.config.data, recalcHeightForData);
+      var newViewportHeight = naturalHeight + 3;
+      if (!self.scope.baseViewportHeight || self.scope.baseViewportHeight !== newViewportHeight) {
+        self.grid.$viewport.css('height', newViewportHeight + 'px');
+        self.grid.$root.css('height', (newViewportHeight + extraHeight) + 'px');
+        self.scope.baseViewportHeight = newViewportHeight;
+        self.domUtilityService.RebuildGrid(self.scope, self.grid);
+      }
     };
+    self.scope.catHashKeys = function () {
+      var hash = '',
+      idx;
+      for (idx in self.scope.renderedRows) {
+        hash += self.scope.renderedRows[idx].$$hashKey;
+      }
+      return hash;
+    };
+    self.scope.$watch('catHashKeys()', innerRecalcForData);
+    self.scope.$watch(self.grid.config.data, recalcHeightForData);
+  };
 }
 
 angular.module('pinApp')
 .controller('AdminPanelCtrl', function($scope, User,Article,$http, $location, $window ,$modal, Auth, $timeout) {
+
+$scope.viewArticle=function(articleId){
+  window.open('/articles/view/'+articleId,'_blank');
+};
+
+$scope.articleStatus=function(articleId){
+      var removeIndex = $scope.gridArticleData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(articleId);
+
+  var setStatus= !$scope.gridArticleData[removeIndex].approve;
+  $http({ method: 'PUT', url: '/api/articles/'+articleId,data:{'public':setStatus}}).
+      success(function (data, status, headers, config) {
+         $scope.gridArticleData[removeIndex].approve=setStatus;   
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+
+};
+
+$scope.deleteArticle=function(articleId){
+  var yes=confirm('Are you sure you want to delete this Article?');
+  if(yes)
+  {
+    $http({
+      method:"DELETE",
+      url:'/api/articles/'+articleId
+    }).
+    success(function (data,status,headers,config){
+      var removeIndex = $scope.gridArticleData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(articleId);
+
+      $scope.gridArticleData.splice(removeIndex, 1);
+
+    })
+    .error(function (data,status,headers,config){
+
+    });
+  }
+
+ };
 
 
  $scope.setSearch = function(search){
@@ -54,15 +104,15 @@ angular.module('pinApp')
     {
       case 'users':
       User.query(function(users){
-        $scope.gridData=users.users;
+        $scope.gridUserData=users.users;
       });
 
       break;
 
       case 'articles':
-        $http({ method: 'GET', url: 'api/articles?limit=5&pageno=01' }).
+        $http({ method: 'GET', url: 'api/articles/basic' }).
           success(function (data, status, headers, config) {
-             $scope.gridData=data.articles;
+             $scope.gridArticleData=data.articles;
           }).
         error(function (data, status, headers, config) {
 
@@ -77,11 +127,28 @@ angular.module('pinApp')
   
   };
 
-   $scope.gridData = { data: 'gridData' ,
+  var editDeleteArticleTemplate = '<a ng-click="deleteArticle(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-click="viewArticle(row.entity._id)"  id="view"  class="btn btn-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a>';
+
+  $scope.articleData = { data: 'gridArticleData' ,
+                        showGroupPanel: true ,
+                        columnDefs: [{ field: '_id' ,displayName:'ID'},
+                                    { field: 'title' ,displayName:'Title' },
+                                    { field: 'author' ,displayName:'Author' },
+                                    { field: 'tags' ,displayName:'Tags' },
+                                    { field: 'comments' ,displayName:'Comments' },
+                                    { field: 'createdAt' ,displayName:'Created Date'},
+                                    { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="articleStatus(row.entity._id)">Approved</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="articleStatus(row.entity._id)">Not Approved</span>'},
+                                    { field: '',displayName:'', cellTemplate: editDeleteArticleTemplate, maxWidth: 100  }],
+                        showFooter: true,
+                        plugins: [new ngGridFlexibleHeightPlugin()]
+                      };
+
+  $scope.userData = { data: 'gridUserData' ,
                         showGroupPanel: true ,
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };
+
                        
   
 
