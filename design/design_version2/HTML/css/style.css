@@ -220,8 +220,86 @@ margin-right: 10px; font-size:13px; height: 27px;font-style:italic; }
 .articles-inner .btn-gold{float: right; margin-top:10px; margin-bottom: 15px; }
 .articles-inner .btn-gold a{font-size:18px; padding:8px 15px 8px 15px;   color:#fff; background-color:#e6c55d;    line-height: 20px;}
 .articles-inner .btn-gold a:hover{font-size:18px; text-decoration:none;  color:#fff; background-color:#171717;   line-height: 20px;}
+.creations-filter a { 
+margin-right: 10px; 
+color:#666;
+text-decoration:none;
+}
+
+.creations-filter a.current { 
+    font-weight:bold;
+}
+
+.creations-filter {
+    text-align: center;
+}
+
+.panel-body {
+    margin:auto;
+}
+
+.creations-container {
+
+}
 
 
+.isotope-item {
+    z-index: 2;
+}
+.isotope-hidden.isotope-item {
+    pointer-events: none;
+    z-index: 1;
+}
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+
+    -webkit-transition-duration: 0.8s;
+    -moz-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+}
+.isotope {
+    -webkit-transition-property: height, width;
+    -moz-transition-property: height, width;
+    transition-property: height, width;
+}
+.isotope .isotope-item {
+    -webkit-transition-property: -webkit-transform, opacity;
+    -moz-transition-property: -moz-transform, opacity;
+    transition-property: transform, opacity;
+}
+
+a.dropdown-toggle{font-size:14px; color:#fff;  }
+li.dropdown{list-style:none; }
+.profile-image{margin-top: 5px; margin-right:8px;} 
+.down-arow{margin-left:5px; 
+}
+
+.navbar-right .dropdown-menu{top:54px; 
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 175px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 0px;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .175);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .175);
+}
   
 .articles-section-2 {display:block; border: solid 1px #d8d8d8; border-bottom:solid 2px #839735; margin-top:35px;   background-color:#fff;}
 .articles-section-2 .btn-gold a{font-size:18px; padding:8px 15px 8px 15px;   color:#fff; background-color:#839735;   line-height: 20px;}
@@ -250,6 +328,8 @@ copy padding-top: 20px; padding-bottom: 10px; margin-top:35px;    background-rep
 .footer-above p{color: #888; font-size:18px; }
 .footer-below{background-color:#1a1a1a; padding-top:10px; padding-bottom: 10px;    }
 .footer-below p{color:#888; font-size:18px;  }
+.panel-info{border:solid 1px #b59759;}
+
 
 .form-signin
 {
@@ -311,7 +391,7 @@ background-color: #fff;
 .new-account
 {
    margin-top: 10px;
-}.panel{border-radius:0px; margin-top:35px;   }
+}.panel{border-radius:0px; margin-top:0px;   }
 .panel-default > .panel-heading{background-color:#fff; border-radius:0px!important; margin-top:6px;  }
 .submit-bt{background-color:#171717; color:#c8c8c8; font-size: 18px; padding:6px 15px 6px 15px;  border-radius:3px; }
 .submit-bt:hover{background-color:#c4a84f; color:#fff;}
@@ -342,8 +422,11 @@ cursor: pointer;}
 label.radio.inline {
 display: inline-block; width:120px; 
 }
-.register-form label{display:block; font-size:18px;    }
-
+.register-form .login-pad{margin-top:25px; }
+.register-form .radio, .checkbox {margin-bottom: 0px; margin-top: 0px;}
+.register-form .forgetpass{font-size:14px; color:#b59759; }
+.register-form .forgetpass a{font-size:14px; color:#273c69; font-style:italic;  }
+.register-form .forgetpass a:hover{font-size:14px; color:#b59759; text-decoration:none;  }
 .radio-inline, .checkbox-inline {
 display: inline-block!important;
 padding-left: 20px;
@@ -355,7 +438,7 @@ cursor: pointer;}
 input[type="checkbox"] {
 margin-left: -19px;
 width: 14px;
-margin-top: -1px;
+margin-top: 4px;
 }
 
 .panel-green {
