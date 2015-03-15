@@ -29,17 +29,37 @@ function get_one_record(Model ,constraint){
 }
 
 
-//Update single record
+// TODO : Handle if objects are modified properly or not 
+//http://stackoverflow.com/questions/29063205/mogoose-findoneandupdate-how-to-know-wether-object-exist-and-if-modified
+// One way is get_one_record({_id:obj.emitted.complete[0]._id}) and see if it has errors, but will cost one query 
 function update_one_record(Model, unique_constraint, new_updated_values){ 
-		Model.findOneAndUpdate(
+	obj=Model.findOneAndUpdate(
 		//Similarly we have findOneAndRemove
 		unique_constraint, 
+		{$set: new_updated_values},
 		{upsert: true}, 
-		function(err, new_updated_values, raw){
-	    console.log(err, new_updated_values, raw)
+		function(err, raw){
+			console.log(err, raw)
 	})
-}
+	return obj
 	
+	
+}
+//obj.emitted.complete[0]._id
+
+/*
+//All good
+update_one_record(User, {email:"isit@gm.com"} , {'family_office':"chngs"})
+//Object exist but condition is an error to update
+// Object not exist 
+update_one_record(User, {email:"isit@gm.com"} , {'status':"status not exist "})
+
+update_one_record(User, {email:"sssjh.com"} , {'family_office':"bakal"})
+
+
+
+*/
+
 
 var onerror=
 exports.add_record = add_record;
