@@ -63,6 +63,15 @@ angular.module('pinApp', [
   .when('/video', {
     templateUrl: 'partials2/video'
   })
+  .when('/who-is-this-site-for', {
+    templateUrl: 'partials2/who.html'
+  })
+  .when('/what-we-do', {
+    templateUrl: 'partials2/what.html'
+  }) 
+ .when('/who-we-are', {
+    templateUrl: 'partials2/about.html'
+  })
   .when('/articles/:pageno', {
     templateUrl: 'partials2/articles',
     controller:'ArticleCtrl',
