@@ -136,13 +136,18 @@ UserSchema.methods ={
 			});
 			return userObj;
 		},
-		get_user:function(constraint){
-			return utility_get_one_record(User,constraint)
+		get_user:function(email){
+			return utility_get_one_record(User,{email:email})
 		},
 		approve_user:function(userObj){
-			console.log("approve_user")
+			return update_one_record(User, {_id:userObj._id}, {"status":"approved"})
 		},
-		block_user:function(constraint){console.log("block_user")},
+		block_user:function(userObj){
+			return update_one_record(User, {_id:userObj._id}, {"status":"block"})
+		},
+		update_user:function(userObj, profile_data){
+			return update_one_record(User, {_id:userObj._id}, profile_data)
+		},		
 		forgot_password:function(){console.log("forgot_password")},
 		change_password:function(){console.log("change_password")},
 		authenticate: function(plainText) {
