@@ -20,6 +20,8 @@
             <li class="active" ng-click="logout()"><a>Log out <span class="sr-only">(current)</span></a></li>
       </ul>
  -->
+
+
     <!-- Fixed navbar -->
     <nav class="navbar navbar-blue" ng-controller="NavbarCtrl" >
       <div class="container-head">
@@ -37,7 +39,8 @@
 <!--end-->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-      <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate ng-hide="currentUser" >
+      <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate  >
+        <div ng-hide="currentUser">
         <div class="form-group" ng-class="{'has-error':form.email.$dirty && form.email.$invalid}">
           <input type="text" id="emailnav" name="email" class="form-control" ng-model="user.email" placeholder="Email" required>
           <div class="checkbox">
@@ -49,6 +52,20 @@
          <div class="forget-pass"><a href="#">Forgot Password ?</a></div>
         </div>
         <button type="submit" class="btn btn-default" ng-disabled="form.$invalid">Sign In</button>
+      </div>
+      <div ng-show="currentUser">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+       <div class="pull-left "> <img src="images/avtar-img.png" class="profile-image"></div>
+       <div class="pull-left"> Welcome,<br>
+    {{currentUser.name}} <b class="down-arow"><img src="images/arow-down.png" alt=""></b></div></a>
+        <ul class="dropdown-menu">
+            <li><a href="#"><i class="fa fa-cog"></i> Account</a></li>
+            <li class="divider"></li>
+            <li><a ng-click="logout()"><i class="fa fa-sign-out"></i> Sign-out</a></li>
+        </ul>
+    </li>  
+      </div>
       </form>
         </div><!--/.nav-collapse -->
       </div>
