@@ -6,30 +6,30 @@ angular.module('pinApp')
     $scope.errors = {};
 
      $scope.checkUsername =function(form){
-      form['alias'].$setValidity('mongoose', true);
-      $scope.errors['alias'] = '';
+      form['username'].$setValidity('mongoose', true);
+      $scope.errors['username'] = '';
 
-      if($scope.user.alias){
+      if($scope.user.username){
        $scope.checkusername=1;
        Auth.checkUsername({
-           username:$scope.user.alias
+           username:$scope.user.username
          })
         .then( function(data) {
           if(data.users)
           {
-             form['alias'].$setValidity('mongoose', false);
-             $scope.errors['alias'] = 'username not available.';
+             form['username'].$setValidity('mongoose', false);
+             $scope.errors['username'] = 'username already available :(';
 
           }else{
-             form['alias'].$setValidity('mongoose', true);
-             $scope.errors['alias'] = 'username available';
+             form['username'].$setValidity('mongoose', true);
+             $scope.errors['username'] = 'Hurrey username available :)';
           }
           $scope.checkusername=0;
         })
         .catch( function(err) {
           err = err.data;
           $scope.errors = {};
-          // Update validity of form fields that match the mongoose errors
+          // Update validity of fPorm fields that match the mongoose errors
           angular.forEach(err.errors, function(error, field) {
             form[field].$setValidity('mongoose', false);
             $scope.errors[field] = error.message;
@@ -37,8 +37,8 @@ angular.module('pinApp')
         });
 
       }else{
-        form['alias'].$setValidity('mongoose', false);
-        $scope.errors['alias'] = 'Please fill your alias name';
+        form['username'].$setValidity('mongoose', false);
+        $scope.errors['username'] = 'Please fill your alias name';
       }
 
 
@@ -53,7 +53,7 @@ angular.module('pinApp')
         if(n && n.length > 16){
           $scope.user.username = o;
         }
-    });    
+      });    
    
 
      $scope.register = function(form) {

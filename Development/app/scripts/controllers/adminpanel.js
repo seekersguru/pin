@@ -48,6 +48,25 @@ $scope.viewArticle=function(articleId){
   window.open('/articles/view/'+articleId,'_blank');
 };
 
+$scope.userStatus=function(userId){
+      var removeIndex = $scope.gridUserData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(userId);
+
+  var setStatus= !$scope.gridUserData[removeIndex].status;
+  $http({ method: 'PUT', url: '/api/users/'+userId,data:{'status':setStatus}}).
+      success(function (data, status, headers, config) {
+         $scope.gridUserData[removeIndex].status=setStatus;   
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+
+};
 $scope.articleStatus=function(articleId){
       var removeIndex = $scope.gridArticleData
       .map(function(item)
@@ -145,6 +164,12 @@ $scope.deleteArticle=function(articleId){
 
   $scope.userData = { data: 'gridUserData' ,
                         showGroupPanel: true ,
+                         columnDefs: [{ field: '_id' ,displayName:'ID'},
+                                    { field: 'name' ,displayName:'Name' },
+                                    { field: 'createdAt' ,displayName:'Created Date' },
+                                    { field: 'email' ,displayName:'Email' },
+                                    { field: 'username' ,displayName:'Username' },
+                                    { field: 'status' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" ng-click="userStatus(row.entity._id)">Approved</span><span ng-if="!row.entity.status" class="label label-danger" ng-click="userStatus(row.entity._id)">Not Approved</span>'}],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };

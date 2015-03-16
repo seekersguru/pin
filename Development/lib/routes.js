@@ -70,6 +70,7 @@ module.exports = function(app) {
 
   app.post('/api/users', users.create);
   app.get('/api/users', users.query);
+  app.put('/api/users/:userid', users.update);
   app.get('/api/users/checkusername/:username',users.checkusername);
   
   app.post('/api/session', session.login);

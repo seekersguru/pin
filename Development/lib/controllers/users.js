@@ -52,6 +52,27 @@ exports.checkusername= function(req, res, next){
   }); 
 };
 
+//update users
+
+exports.update = function(req, res) {
+  var userid = req.params.userid;
+  var user_data = req.body;
+  console.log(req.body);
+  User.findOneAndUpdate({_id: userid}, user_data, function(err, user) {
+    if (err) {
+      console.log(err);
+      return res.json(400, err);
+    }
+    if (!user) {
+      console.log('notfound');
+      return res.send(404);
+    }
+    return res.send(200);
+  });
+
+
+};
+
 /**
  * Create user
  */

@@ -49,6 +49,7 @@ var UserSchema = new Schema({
   nFollowers:{type: Number, default: 0},
   showAge: {type:Boolean, default: false},
   dob:{type:Date, default: Date.now},
+  status:{type: Boolean, default:false},
 });
 
 /**
@@ -89,7 +90,10 @@ UserSchema
       '_id': this._id,
       'name': this.name,
       'createdAt':this.createdAt,
-      'email': this.email
+      'email': this.email,
+      'username': this.username,
+      'status':this.status
+
         };
   });
 
@@ -101,8 +105,8 @@ UserSchema
       'name': this.name,
       'bio': this.bio,
       'role': this.role,
-      'city': this.city,
-      'country': this.country,
+      'city': this.address.city,
+      'country': this.address.country,
       'photo':this.photo,
       'username' : this.username,
       'favorites': this.favorites,
@@ -147,6 +151,21 @@ UserSchema
       respond(true);
     });
 }, 'The specified email address is already in use.');
+
+// Validate username is not taken
+UserSchema
+  .path('username')
+  .validate(function(value, respond) {
+    var self = this;
+    this.constructor.findOne({username: value}, function(err, user) {
+      if(err) throw err;
+      if(user) {
+        if(self.id === user.id) return respond(true);
+        return respond(false);
+      }
+      respond(true);
+    });
+}, 'The specified username is already in use.');
 
 
 /**
