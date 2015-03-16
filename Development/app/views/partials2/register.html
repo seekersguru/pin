@@ -1,62 +1,158 @@
-<div class="container signin-page">
+<div class="container-fluid po-reletive">
+<div class="container-head">
+<div class="row">
+<div class="pull-left">
+<div class="mar-back-img">
+<!-- Become a member section -->
+<div class="tree-container-inner">
+<div id="nav">
+ <ul>
+ <li><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li> 
+ <li><a href="/what-we-do" ng-class="{active: isActive('/what-we-do')}">what</a></li> 
+ <li><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">about</a></li> 
+  <li><a href="/register" ng-class="{active: isActive('/register')}">join</a></li>  
+ </ul> 
+</div>
+</div>
+</div>
+</div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h1 class="panel-title"><h1 class="login-title">Sign up </h1></h1>
-    </div>
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-12">
-        <form class="register-form"  role="form"  name="form"  ng-submit="register(form)" novalidate >
+
+<div class="inner-section">
+ <h1>Register with us</h1> 
+<div class="register-form-hr"></div>
+        <form class="register-form"  role="form"  name="form"  ng-submit="register(form)" novalidate>
+        <div class="alert alert-success" role="alert" ng-show="registerDone">
+            You are successfully register. For Login Please <a href="/login"><b>Click Here</b></a>
+        </div>
+
+        <div class="row">
            <div class="form-group" ng-class="{'has-error':form.fullname.$dirty && form.fullname.$error.required,'has-success':form.fullname.$valid}">
-            <label class="control-label" for="fullName">Family Office or Family Name</label>
-            <input required type="text" name="fullname"  class="form-control" placeholder="Full Name" ng-model="user.fullname"/>
-            <p class="text-danger" ng-show="form.fullname.$dirty && form.fullname.$error.required">Please fill FullName .</p>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group" ng-class="{'has-error':form.name.$dirty && form.name.$error.required,'has-success':form.name.$valid}">
-                <label class="control-label" for="name">Name </label>
-                <input required type="text" name="name"  class="form-control" placeholder="Name" ng-model="user.name"/>
-                <p class="text-danger" ng-show="form.name.$dirty && form.name.$error.required">Please fill Name .</p>
-              </div>
-            </div>
-
-            <div class="col-lg-6">
-              <div class="form-group" ng-class="{'has-error':form.alias.$dirty && form.alias.$error.required,'has-success':form.alias.$valid}" >
-                <label class="control-label" for="alias">Alias </label>
-                <input required type="text" name="alias"  class="form-control" placeholder="Alias" ng-model="user.alias"/>
-                <p class="text-danger" ng-show="form.alias.$dirty && form.alias.$error.required">Please fill Alias.</p>
-              </div>
-            </div>
-
-          </div>
+           <div class="col-lg-6"><input required type="text" name="fullname" class="form-control" placeholder="Family Office / Family Name " ng-model="user.fullname"/>
+           <p class="text-danger" ng-show="form.fullname.$dirty && form.fullname.$error.required">Please fill FullName .</p>
+</div>
+           </div>
+           </div>
 
 
-          <div class="form-group" ng-class="{'has-error':form.address.$dirty && form.address.$error.required,'has-success':form.address.$valid}">
-            <label class="control-label" for="address">Address with street address optional but city/country compulsory</label>
-            <textarea class="form-control" required rows="5" name="address" ng-model="user.address"></textarea>
-            <p class="text-danger" ng-show="form.address.$dirty && form.address.$error.required">Please fill Address .</p>
-          </div>
+            <div class="row">
+           <div class="form-group" ng-class="{'has-error':form.name.$dirty && form.name.$error.required,'has-success':form.name.$valid}">
+           <div class="col-lg-6">
+           <input required type="text" name="name"  class="form-control" ng-model="user.name" placeholder="Name "/>
+           <p class="text-danger" ng-show="form.name.$dirty && form.name.$error.required">Please fill Name .</p>
+</div>
+           </div>
+           </div>
 
 
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group" ng-class="{'has-error':form.email.$dirty && form.email.$error.required,'has-success':form.email.$valid}">
-                <label class="control-label" for="email">Email </label>
-                <input required type="email" name="email"  class="form-control" placeholder="Email" ng-model="user.email" mongoose-error/>
-                <p class="text-danger" ng-show="form.email.$dirty && form.email.$error.required">Please fill Email .</p>
-                  <p class="text-danger" ng-show="form.email.$error.mongoose">
-                    {{ errors.email }}
-                  </p>
+                  <div class="row">
+           <div class="form-group" ng-class="{'has-error':form.username.$dirty && form.username.$error.required,'has-success':form.username.$valid}">
+           <div class="col-lg-6"><input required type="text" name="username" class="form-control" placeholder="Alias " ng-model="user.username"/>
+            <p class="text-danger" ng-show="form.username.$dirty && form.username.$error.required">Please fill Alias.</p>
+            <p class="text-danger" ng-show="form.username.$error.mongoose">
+            {{ errors.username }}
+           </p>
+</div>
+<div class="col-lg-3"> <button class="btn Check-availability" type="button" ng-click="checkUsername(form)" ng-disabled="checkusername">   Check Availability </button></div>
+           </div>
+           </div>
 
-              </div>
-            </div>
 
-            <div class="col-lg-6">
+
+<div class="row register-form-row-pad">
+<div class="col-lg-4 paddingr-7">
+<div class="form-group"  ng-class="{'has-error':form.address.$dirty && form.address.$error.required,'has-success':form.address.$valid}">
+              
+<input required type="text" name="address" ng-model="user.address.street" class="form-control" placeholder="Street Address *"/>
+<p class="text-danger" ng-show="form.address.$dirty && form.address.$error.required">Please fill Street Address .</p>
+
+ </div>
+</div>
+
+<div class="col-lg-4 paddingr-7 paddingl-7">
+<div class="form-group">
+<input type="text" name="city" ng-model="user.address.city" class="form-control" placeholder="City"/>
+
+   </div>
+</div>
+
+<div class="col-lg-4 paddingl-7">
+<div class="form-group">
+<input type="text" name="country" ng-model="user.address.country" class="form-control" placeholder="Country"/>
+  </div>
+</div>
+
+</div>
+
+<div class="row ">
+<div class="col-lg-6 paddingr-7">
+<div class="form-group" ng-class="{'has-error':form.email.$dirty && form.email.$error.required,'has-success':form.email.$valid}">
+   <input required type="email" name="email"  class="form-control" placeholder="Email" ng-model="user.email" mongoose-error/>
+   <p class="text-danger" ng-show="form.email.$dirty && form.email.$error.required">Please fill Email .</p>
+   <p class="text-danger" ng-show="form.email.$error.mongoose">
+    {{ errors.email }}
+   </p>
+   </div>
+</div>
+
+<div class="col-lg-6 paddingl-7">
+<div class="form-group" ng-class="{'has-error':form.phone.$dirty && form.phone.$error.required,'has-success':form.phone.$valid}">
+              <input required type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone"/>
+              <p class="text-danger" ng-show="form.phone.$dirty && form.phone.$error.required">Please fill Phone/Mobile.</p>
+           </div>
+</div>
+
+</div> 
+
+
+
+
+
+<div class="row register-form-row-pad">
+<div class="col-lg-6 paddingr-7">
+<div class="form-group">             
+ <select class="form-control" name="member" ng-model="user.member">
+    <option>Member type </option>
+    <option>services listed in service directory</option>
+    <option>events type listed in events
+</option>
+   
+  </select>
+</div>
+</div>
+
+<div class="col-lg-6 paddingl-7">
+<div class="form-group">
+ <input type="text" name="nominated" class="form-control" placeholder="Nominated by" ng-model="user.nominated"/>
+</div>
+</div>
+
+</div> 
+
+
+<div class="row">
+<div class="col-lg-6 paddingr-7">
+<div class="form-group">             
+ <select class="form-control" name="interests" ng-model="interests">
+    <option>Interests </option>
+    <option>services listed in service directory</option>
+    <option>events type listed in events
+</option>
+   
+  </select>
+</div>
+</div>
+
+<div class="col-lg-6 paddingl-7">
+<div class="form-group">
+ <input type="text" name="other" class="form-control" placeholder="Other *" ng-model="user.other" />
+</div>
+</div>
+
+</div> 
+<div class="row">
+              <div class="col-lg-6">
               <div class="form-group" ng-class="{'has-error':form.password.$dirty && form.password.$error.required,'has-success':form.password.$valid}" >
-                <label class="control-label" for="password">Password </label>
                 <input required type="password" name="password"  class="form-control" placeholder="password" ng-model="user.password" ng-minlength=5 mongoose-error/>
                 <p class="text-danger" ng-show="form.password.$dirty && form.password.$error.required">Please fill   Password.</p>
                 
@@ -69,253 +165,12 @@
               </div>
             </div>
 
-          </div> 
-
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="form-group">
-            <label class="control-label">Member type</label>
-            <label class="radio-inline">
-              <input type="radio" name="member">Option 1
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="member">Option 2
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="member">Option 3
-            </label>
-          </div>
-          </div>
-          <div class="col-lg-6">
-              <div class="form-group" ng-class="{'has-error':form.phone.$dirty && form.phone.$error.required,'has-success':form.phone.$valid}" >
-                <label class="control-label" for="phone">Phone/Mobile </label>
-                <input required type="text" name="phone"  class="form-control" placeholder="Phone" ng-model="user.phone"/>
-                <p class="text-danger" ng-show="form.phone.$dirty && form.phone.$error.required">Please fill Phone/Mobile.</p>
-              </div>
-            </div>
-
-      </div>
-
-
-
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group" ng-class="{'has-error':form.nominated.$dirty && form.nominated.$error.required,'has-success':form.nominated.$valid}">
-                <label class="control-label" for="nominated">Nominated by  </label>
-                <input required type="text" name="nominated"  class="form-control" placeholder="Nominated by" ng-model="user.nominated"/>
-                <p class="text-danger" ng-show="form.nominated.$dirty && form.nominated.$error.required">Please fill Nominated .</p>
-              </div>
-            </div>
-
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label class="control-label" for="interests">Interests </label>
-                <select class="form-control">
-                  <option>topics listed in CMS</option>
-                  <option>services listed in service directory</option>
-                  <option>events type listed in events
-                  </option>
-
-                </select>
-              </div>
-            </div>
-
-          </div> 
-
-
-          <div class="form-group">
-            <label class="radio-inline"> 
-              <input type="checkbox" name="optradio">Admin will check the nominated by before approving membership; will also put family into a Wealth band (30m+, 5-30m, <5m)
-
-            </label>
-
-          </div>
-
-
-          <button class="btn btn-info" type="submit" ng-disabled="form.$invalid">
-
-            Register
-          </button>
-
-          <div class="alert alert-success" role="alert" ng-show="registerDone">
-            You are successfully register. For Login Please <a href="/login"><b>Click Here</b></a>
-          </div>
-
-
-        </form>
-
-
-
-     </div>
-
-
-   </div>
-
- </div>
 </div>
-
-</div>
-
-
----------------------------------
-
-<div class="container-fluid po-reletive">
-<div class="container-head">
-<div class="row">
-<div class="pull-left">
-<div class="mar-back-img">
-<!-- Become a member section -->
-<div class="tree-container-inner">
-<div id="nav">
- <ul>
- <li><a href="#">Who</a></li> 
-  <li><a href="#">what</a></li> 
-   <li><a href="#">about</a></li> 
-    <li><a href="#">join</a></li>  
- </ul> 
-</div>
-</div>
-</div>
-</div>
-
-
-<div class="inner-section">
- <h1>Register with us</h1> 
-<div class="register-form-hr"></div>
-        <form class="register-form"  role="form" novalidate>
-        <div class="row">
-           <div class="form-group">
-           <div class="col-lg-6"><input required type="text" name="addr" id="addr" class="form-control" placeholder="Family Office / Family Name "/>
-</div>
-           </div>
-           </div>
-
-
-            <div class="row">
-           <div class="form-group">
-           <div class="col-lg-6"><input required type="text" name="addr" id="addr" class="form-control" placeholder="Name "/>
-</div>
-           </div>
-           </div>
-
-
-                  <div class="row">
-           <div class="form-group">
-           <div class="col-lg-6"><input required type="text" name="addr" id="addr" class="form-control" placeholder="Alias "/>
-</div>
-<div class="col-lg-3"> <button class="btn Check-availability" type="button">   Check Availability </button></div>
-           </div>
-           </div>
-
-
-
-<div class="row register-form-row-pad">
-<div class="col-lg-4 paddingr-7">
-<div class="form-group">
-              
-              <input required type="text" name="addr" id="addr" class="form-control" placeholder="Street Address *"/>
-           </div>
-</div>
-
-<div class="col-lg-4 paddingr-7 paddingl-7">
-<div class="form-group">
-            
-          <select class="form-control" id="sel1">
-    <option>City</option>
-    <option>services listed in service directory</option>
-    <option>events type listed in events
-</option>
-   
-  </select>
-           </div>
-</div>
-
-<div class="col-lg-4 paddingl-7">
-<div class="form-group">
-             
-            <select class="form-control" id="sel1">
-    <option>Country</option>
-    <option>services listed in service directory</option>
-    <option>events type listed in events
-</option>
-   
-  </select>
-           </div>
-</div>
-
-</div>
-
-
-
-
-
-<div class="row ">
-<div class="col-lg-6 paddingr-7">
-<div class="form-group">
-              
-              <input required type="text" name="addr" id="addr" class="form-control" placeholder="Email"/>
-           </div>
-</div>
-
-<div class="col-lg-6 paddingl-7">
-<div class="form-group">
-              <input required type="text" name="addr" id="addr" class="form-control" placeholder="Phone / Mobile"/>
-           </div>
-</div>
-
-</div> 
-
-
-
-
-
-<div class="row register-form-row-pad">
-<div class="col-lg-6 paddingr-7">
-<div class="form-group">             
- <select class="form-control" id="sel1">
-    <option>Member type </option>
-    <option>services listed in service directory</option>
-    <option>events type listed in events
-</option>
-   
-  </select>
-</div>
-</div>
-
-<div class="col-lg-6 paddingl-7">
-<div class="form-group">
- <input required type="text" name="addr" id="addr" class="form-control" placeholder="Nominated by"/>
-</div>
-</div>
-
-</div> 
-
-
-<div class="row">
-<div class="col-lg-6 paddingr-7">
-<div class="form-group">             
- <select class="form-control" id="sel1">
-    <option>Interests </option>
-    <option>services listed in service directory</option>
-    <option>events type listed in events
-</option>
-   
-  </select>
-</div>
-</div>
-
-<div class="col-lg-6 paddingl-7">
-<div class="form-group">
- <input required type="text" name="addr" id="addr" class="form-control" placeholder="Other *"/>
-</div>
-</div>
-
-</div> 
 <p><span>*</span> Admin will check the nominated by before approving membership;<br> 
    will also put family into a Wealth band (30m+, 5-30m, <5m)</p>
 
 
-   <button class="btn register-bt" type="button">
+   <button class="btn register-bt" type="submit" ng-disabled="form.$invalid">
               
                         Register
                       </button>

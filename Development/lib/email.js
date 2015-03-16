@@ -11,12 +11,13 @@ var templatesDir = config.root + config.emailTemplatesPath;
  */
 var Email = function(email) {
   this.email = email||{};
-  this.email.from = this.email.from ||'Paintcollar <noreply@paintcollar.com>';
+  this.email.from = this.email.from ||'PIN <info@maddyzone.com>';
   this.email.text = this.email.text || this.email.message;
 };
 Email.prototype.send = function(cb) {
   sesTransport.sendMail(this.email, function(e, data) {
     if(cb){
+      console.log(data);
       cb(e, data.messageId);
     }
    });  
@@ -27,7 +28,7 @@ Email.prototype.send = function(cb) {
 var UserEmail = function(user, templateName, locals) {
   Email.call(this);
   this.email.to =  user.name + ' <' + user.email + '>';
-  this.email.subject = 'Greetings from Paintcollar';
+  this.email.subject = 'Greetings from PIN';
   this.templateName  = templateName;
   this.locals = _.merge({user: user}, locals || {});
 };
@@ -49,7 +50,7 @@ UserEmail.prototype.send = function(cb) {
  */
 var ActivationEmail = function(user, locals) {
   UserEmail.call(this, user, 'activation', locals);
-  this.email.subject = 'Please Activate your Paintcollar Account';
+  this.email.subject = 'Please Activate your PIN Account';
 };
 ActivationEmail.prototype = Object.create(UserEmail.prototype);
 
@@ -58,49 +59,23 @@ ActivationEmail.prototype = Object.create(UserEmail.prototype);
  */
 var ForgotPasswordEmail = function(user, locals) {
   UserEmail.call(this, user, 'forgot', locals);
-  this.email.subject = 'Link to reset Paintcollar password';
+  this.email.subject = 'Link to reset PIN password';
 };
 ForgotPasswordEmail.prototype = Object.create(UserEmail.prototype);
+
 /**
- * Class to send email at every sales
- */
-var SalesEmail = function(user, locals) {
-  UserEmail.call(this, user, 'sales', locals);
-  this.email.subject = 'You made a sale at Paintcollar';
-};
-SalesEmail.prototype = Object.create(UserEmail.prototype);
-/**
- * Class to send email to sales@paintcollar when we get an order
- */
-var OrderRecEmail = function(locals) {
-  UserEmail.call(this, {name: 'Paintcollar Order Procesor', email: 'sales@paintcollar.com'}, 'orderrec', locals);
-  this.email.subject = 'New Paintcollar Order: '+ locals.order.orderId;
-};
-OrderRecEmail.prototype = Object.create(UserEmail.prototype);
-/**
- * Class to send email to contact@paintcollar when we get an ContactUs Query
+ * Class to send email to contact@PIN when we get an ContactUs Query
  */
 var ContactUsEmail = function(locals) {
-  UserEmail.call(this, {name: 'Paintcollar ContactUs Query Replier', email: 'contact@paintcollar.com'}, 'contactus', locals);
+  UserEmail.call(this, {name: 'PIN ContactUs Query Replier', email: 'contact@PIN.com'}, 'contactus', locals);
   this.email.subject = 'New ContactUs Query from : '+ locals.contactus.email;
 };
 ContactUsEmail.prototype = Object.create(UserEmail.prototype);
-/**
- * Class to send email to customer after successfully placing the order
- */
-var OrderConfirmationEmail = function(locals) {
-  UserEmail.call(this, {name: locals.order.name, email: locals.order.email}, 'orderconfirmation', locals);
-  this.email.subject = 'Your Paintcollar Order '+ locals.order.orderId + ' has been successfully placed';
-};
-OrderConfirmationEmail.prototype = Object.create(UserEmail.prototype);
 
 module.exports = {
   Email: Email,
   UserEmail: UserEmail,
   ActivationEmail : ActivationEmail,
   ForgotPasswordEmail: ForgotPasswordEmail,
-  SalesEmail: SalesEmail,
-  OrderRecEmail: OrderRecEmail,
-  ContactUsEmail: ContactUsEmail,
-  OrderConfirmationEmail: OrderConfirmationEmail
+  ContactUsEmail: ContactUsEmail
 };

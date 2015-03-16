@@ -42,7 +42,12 @@ angular.module('pinApp')
       all:{
         method: 'GET',
         url: '/api/users/sales/all'
-      }
+      },
+      checkUsername:{
+        method:'GET',
+        url: '/api/users/checkusername/:username'
+
+      },
       
 	});
   });

@@ -122,5 +122,17 @@ angular.module('pinApp')
         var user = $rootScope.currentUser;
         return !!user;
       },
+
+      checkUsername:function(username,callback){
+        var cb = callback || angular.noop;
+        return User.checkUsername({
+          username:username.username},
+          function(user) {
+            return cb(user);
+          },
+          function(err) {
+            return cb(err);
+          }).$promise;
+      },
     };
   });

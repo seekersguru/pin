@@ -13,13 +13,18 @@ var UserSchema = new Schema({
   name: String,
   fullname: String,
   alias: String,
-  address: String,
-  username: { type: String, default: null },
-  email: String,
+  address: {
+    street:String,
+    city:String,
+    country: {type:String, default: 'India'}
+  },
+  username: { type: String,required:true,unique:true },
+  email: { type: String,required:true,unique:true },
   phone:String,
   membertype:String,
   nominated:String,
   interests:String,
+  band:Number,
   emailVerification: {
       token: String,
       verified : {type: Boolean, default:false},
@@ -29,7 +34,7 @@ var UserSchema = new Schema({
     token: String,
     validTill : Date
   },
-  role: {type: String, default: 'user', 'enum' : ['user', 'artist', 'admin']},
+  role: {type: String, default: 'user', 'enum' : ['user','admin']},
   hashedPassword: String,
   provider: String,
   salt: String,
@@ -42,8 +47,6 @@ var UserSchema = new Schema({
   bio: String,
   following:[{type: Schema.Types.ObjectId, ref:'User'}],
   nFollowers:{type: Number, default: 0},
-  city:String,
-  country: {type:String, default: 'India'},
   showAge: {type:Boolean, default: false},
   dob:{type:Date, default: Date.now},
 });
