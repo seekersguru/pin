@@ -3018,8 +3018,8 @@ fieldset[disabled] .btn {
 }
 .btn-default {
   color: #fff;
-  background-color: #c4a84f;
-  border-color: #c4a84f;
+  background-color: #223256;
+  border-color: #2a4070;
   height:40px; 
 }
 .btn-default:hover,
@@ -3199,8 +3199,8 @@ fieldset[disabled] .btn-info.active {
 }
 .btn-warning {
   color: #fff;
-  background-color: #f0ad4e;
-  border-color: #eea236;
+  background-color: #b59759;
+  border-color: #c0a265;
 }
 .btn-warning:hover,
 .btn-warning:focus,
