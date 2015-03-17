@@ -7,6 +7,7 @@ angular.module('pinApp')
   $scope.currentPage = 0;
   $scope.pageSize = 20;
   $scope.numberOfPage=25;
+  $scope.category=['Grow','Protect','Manage','Give'];
 
   $scope.comments=articles.comments;
   if($location.path()=="/articles/view/"+articles._id)
@@ -250,6 +251,7 @@ angular.module('pinApp')
 
 angular.module('pinApp')
 .controller('ArticleAddCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,$upload,$timeout) {
+  $scope.category=['Grow','Protect','Manage','Give'];
 
   $scope.article={};
   // $scope.usingFlash = FileAPI && FileAPI.upload != null;
@@ -293,7 +295,7 @@ angular.module('pinApp')
     file.upload.then(function(response) {
       $timeout(function() {
         console.log(response);
-        $location.path('articles/view/'+response.data.article._id);
+        // $location.path('articles/view/'+response.data.article._id);
         file.result = response.data;
         $scope.article={};
         $scope.articleDone=1;
@@ -306,7 +308,7 @@ angular.module('pinApp')
       $scope.article={};
       $scope.articleDone=1;
       $scope.articleResponse=response.data;
-      $location.path('articles/view/'+response.data.article._id);
+      // $location.path('articles/view/'+response.data.article._id);
       $scope.form.$setPristine();
 
     });

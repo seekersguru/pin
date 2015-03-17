@@ -155,6 +155,7 @@ $scope.deleteArticle=function(articleId){
                                     { field: 'author' ,displayName:'Author' },
                                     { field: 'tags' ,displayName:'Tags' },
                                     { field: 'comments' ,displayName:'Comments' },
+                                    { field: 'category' ,displayName:'Category' },
                                     { field: 'createdAt' ,displayName:'Created Date'},
                                     { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="articleStatus(row.entity._id)">Approved</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="articleStatus(row.entity._id)">Not Approved</span>'},
                                     { field: '',displayName:'', cellTemplate: editDeleteArticleTemplate, maxWidth: 100  }],

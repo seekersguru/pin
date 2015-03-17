@@ -18,6 +18,7 @@ var ArticleSchema = new Schema({
   nFavorites:{ type:Number, default:0},
   tags: [String],
   keywords: [String],
+  category: String,
   merchs: {},
   comments: [{ user: { type: ObjectId, ref: 'User' },
                post: String,
@@ -42,6 +43,7 @@ ArticleSchema
       'tags': this.tags.toString(),
       'comments':this.comments.length,
       'createdAt':this.createdAt,
+      'category':this.category,
       'approve':this.public
     };
   });
