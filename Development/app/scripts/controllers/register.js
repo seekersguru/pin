@@ -8,9 +8,11 @@ angular.module('pinApp')
      $scope.checkUsername =function(form){
       form['username'].$setValidity('mongoose', true);
       $scope.errors['username'] = '';
+      $scope.checkmessage=''; 
 
       if($scope.user.username){
        $scope.checkusername=1;
+       
        Auth.checkUsername({
            username:$scope.user.username
          })
@@ -23,6 +25,7 @@ angular.module('pinApp')
           }else{
              form['username'].$setValidity('mongoose', true);
              $scope.errors['username'] = 'Hurrey username available :)';
+             $scope.checkmessage='Hurrey username available :)'; 
           }
           $scope.checkusername=0;
         })
@@ -44,7 +47,7 @@ angular.module('pinApp')
 
      };
 
-
+    
     $scope.$watch('user.username', function(n, o) {
         if($scope.user.username){
           $scope.user.username = $scope.user.username.replace(/\s/g, "");

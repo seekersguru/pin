@@ -908,3 +908,7 @@ line-height: 1;
 .widget_recent_entries .widget-post-info span span {
 display: inline-block;
 }
+
+.text-danger{
+  color:#a94442;
+}
