@@ -1,28 +1,52 @@
-<footer id="footer-bg">
-        <div class="footer-above">
-            <div class="container-head">
-               <div class="footer-link">
-                 <ul class="clearfix">
-                  <li>
-                   <h2>Who is this site for?</h2>
-                   <p class="read-more"><a href="/who-is-this-site-for">Read More</a></p> 
-                  </li> 
-                       
-                        <li>
-                   <h2>What we do?</h2>
-                   <p class="read-more"><a href="/what-we-do">Read More</a></p> 
-                  </li> 
-                              <li>
-                   <h2>Who we are?</h2>
-                   <p class="read-more"><a href="/who-we-are">Read More</a></p> 
-                  </li> 
-                                    <li>
-                   <h2>Register with us</h2>
-                   <p class="read-more"><a href="/register">Read More</a></p> 
-                  </li>
-                 </ul>
-               </div>
-            </div>
-        </div>
+<footer id="footer-bg" ng-controller="FooterCtrl">
+  <div class="footer-above" ng-hide="currentUser">
+    <div class="container-head">
+     <div class="footer-link">
+       <ul class="clearfix">
+        <li>
+         <h2>Who is this site for?</h2>
+         <p class="read-more"><a href="/who-is-this-site-for">Read More</a></p> 
+       </li> 
 
-    </footer>
+       <li>
+         <h2>What we do?</h2>
+         <p class="read-more"><a href="/what-we-do">Read More</a></p> 
+       </li> 
+       <li>
+         <h2>Who we are?</h2>
+         <p class="read-more"><a href="/who-we-are">Read More</a></p> 
+       </li> 
+       <li>
+         <h2>Register with us</h2>
+         <p class="read-more"><a href="/register">Read More</a></p> 
+       </li>
+     </ul>
+   </div>
+ </div>
+</div>
+
+<div class="footer-learning" ng-show="currentUser">
+    <div class="container-head">
+      <div class="row">
+        <div class=" col-lg-8">
+          <ul>
+            <li><a href="/articles/01">Learn </a></li>
+            <li><a href="#">Share      </a></li>
+            <li><a href="/chat-start"> Chat       </a></li>
+            <li><a href="/connect"> Connect </a></li>
+            <li><a href="/register"> Register for event </a></li>
+          </ul>
+        </div>
+        <div class="pull-right col-lg-4">
+          <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-addon"><button class="btn subscribe-bt"><img src="images/newsletter-arow.png" alt=""></button></span>
+          </div>
+        </div>
+      </div>
+      <p>Copyright © Private Investor Network.</p>
+
+    </div>
+  </div>
+
+</footer>

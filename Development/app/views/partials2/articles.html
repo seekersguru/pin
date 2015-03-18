@@ -1,13 +1,13 @@
-  <div class="container">
+  <!-- <div class="container"> -->
     <!-- Articles section -->
-    <div class="member-us-section article-inner">
+    <!-- <div class="member-us-section article-inner">
       <h1 class="text-center">Articles</h1>
-    </div>
+    </div> -->
 
     <!-- article listing Start-->
-    <div class="row">
+<!--     <div class="row">
 
-      <div class="col-lg-4" ng-repeat="(key,value) in articles ">
+      <div class="col-lg-4" ng-repeat="(key,value) in articles">
         <div class="articles-section">
         <div ng-if='value.media.extension.indexOf("image") > -1'>
           <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">           
@@ -43,6 +43,9 @@
         
 
       </div>
+ -->
+
+
 
       <!-- article listing Stop-->
 
@@ -74,4 +77,106 @@
         </div>
       </div>
  -->      <!-- /container -->
+    <!-- </div> -->
+
+
+
+
+<div class="container-head learning-section">
+
+<div class="row">
+<div class="col-lg-6">
+  <ul class="breadcrumb">
+    <li><a href="/"><i class="fa fa-home"></i></a></li>
+    <li><a class="active" >learn</a></li>
+</ul>
+</div>  
+<div class="col-lg-6">
+  <div class="row ">
+<div class="col-lg-5 paddingr-7">
+<div class="form-group">             
+ <select class="form-control" id="sel1">
+    <option>short By</option>
+    <option>services listed in service directory</option>
+    <option>events type listed in events
+</option>
+   
+  </select>
+</div>
+</div>
+
+<div class="col-lg-7 paddingl-7">
+<div class="form-group">
+ <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="Nominated by">
+</div>
+</div>
+
+</div>
+</div> 
+
+</div>
+
+
+<div class="row">
+<div class="col-lg-9">
+<div class="learn-nav creations-filter">
+ <ul class="clearfix">
+
+  <!-- <li><a href="#Grow" data-filter=".Grow" class="current">Grow</a></li>
+    <li><a href="#Protect" data-filter=".Protect">Protect</a></li> 
+      <li> <a href="#Manage" data-filter=".Manage">Manage</a></li> 
+        <li><a href="#Give" data-filter=".Give">Give</a></li>  
+         --><li><a  data-filter=".Grow" class="current">Grow</a></li>
+    <li><a  data-filter=".Protect">Protect</a></li> 
+      <li> <a  data-filter=".Manage">Manage</a></li> 
+        <li><a  data-filter=".Give">Give</a></li>  
+ </ul> 
+</div>  
+
+
+<div class="creations-container">
+<div class="row">
+ <div  ng-repeat="(key,value) in articles" class="col-lg-6" ng-class="value.category" >
+  <div class="post-box">
+                <div class="" ng-class="color[value.category].caption">
+                   <div><a ng-href="/articles/view/{{value._id}}"><img src="images/post-hover-img.png" alt=""></a></div>
+                   <div class="read-more"><a ng-href="/articles/view/{{value._id}}">Read more</a></div>
+                </div>
+
+<div class="" ng-class="color[value.category].colorclass">
+ <div ng-if='value.media.extension.indexOf("image") > -1'>
+          <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">           
+          <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}">
+          </div>
+          <div ng-if='value.media.extension.indexOf("video") > -1'>
+
+          <img  src="images/video-min.png" class="img-responsive" title="{{value.title}}">           
     </div>
+          <div class="inner-area"> 
+<h3 class="articles-head"><a href="#">{{value.title}}</a></h3>
+<p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml"></p>
+ </div>
+</div>
+</div>
+
+ </div>
+</div>
+<p><button class="btn load-more" type="button">  Load More </button></p>
+</div>
+</div>
+
+
+<div class="col-lg-3">
+  <div class="sidebar" role="navigation">
+            <ul>
+<li><a  class="active" href="/articles/01">Learn</a></li>
+<li><a  href="#">Share </a></li>
+<li><a  href="/chat-start">Chat </a></li>
+<li><a  href="/connect">Connect</a></li>
+<li><a href="#">Meet</a></li>
+            </ul>
+                <!-- /.sidebar-collapse -->
+            </div>
+</div>
+</div>
+</div>

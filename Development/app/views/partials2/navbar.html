@@ -1,49 +1,50 @@
 <!-- Fixed navbar -->
-    <nav class="navbar navbar-blue" ng-controller="NavbarCtrl" >
-      <div class="container-head">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+<nav class="navbar navbar-blue" ng-controller="NavbarCtrl" >
+  <div class="container-head">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <!--logo area-->    
-<div class="logo">
-<a href="/"><img src="images/logo.png" alt="Private Investment Network"></a>
-</div>
-<!--end-->
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
+      <div class="logo">
+        <a href="/"><img src="images/logo.png" alt="Private Investment Network"></a>
+      </div>
+      <!--end-->
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
       <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate  >
         <div ng-hide="currentUser">
-        <div class="form-group" ng-class="{'has-error':form.email.$dirty && form.email.$invalid}">
-          <input type="text" id="emailnav" name="email" class="form-control" ng-model="user.email" placeholder="Email" required>
-          <div class="checkbox">
-  <label><input type="checkbox" value="">Keep me logged in</label>
-</div>
+          <div class="form-group" ng-class="{'has-error':form.email.$dirty && form.email.$invalid}">
+            <input type="text" id="emailnav" name="email" class="form-control" ng-model="user.email" placeholder="Email" required>
+            <div class="checkbox">
+              <label><input type="checkbox" value="">Keep me logged in</label>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error':form.password.$dirty && form.password.$invalid}">
+            <input type="password" id="passwordnav" name="password" class="form-control" ng-model="user.password" placeholder="Password" required>
+            <div class="forget-pass"><a href="#">Forgot Password ?</a></div>
+          </div>
+          <button type="submit" class="btn btn-default" ng-disabled="form.$invalid">Sign In</button>
         </div>
-        <div class="form-group" ng-class="{'has-error':form.password.$dirty && form.password.$invalid}">
-          <input type="password" id="passwordnav" name="password" class="form-control" ng-model="user.password" placeholder="Password" required>
-         <div class="forget-pass"><a href="#">Forgot Password ?</a></div>
-        </div>
-        <button type="submit" class="btn btn-default" ng-disabled="form.$invalid">Sign In</button>
-      </div>
-      <div ng-show="currentUser">
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-       <div class="pull-left "> <img src="images/avtar-img.png" class="profile-image"></div>
-       <div class="pull-left"> Welcome,<br>
-    {{currentUser.name}} <b class="down-arow"><img src="images/arow-down.png" alt=""></b></div></a>
-        <ul class="dropdown-menu">
-            <li><a href="/post-article"><i class="fa fa-cog"></i>Create Article</a></li>
-            <li><a href="/articles/01"><i class="fa fa-cog"></i>View Article</a></li>
-            <li class="divider"></li>
-            <li><a ng-click="logout()"><i class="fa fa-sign-out"></i> Sign-out</a></li>
-        </ul>
-    </li>  
-      </div>
-      </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+        <div ng-show="currentUser">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+             <div class="pull-left "> <img src="images/avtar-img.png" class="profile-image"></div>
+             <div class="pull-left"> Welcome,<br>
+              {{currentUser.name}} <b class="down-arow"><img src="images/arow-down.png" alt=""></b></div></a>
+              <ul class="dropdown-menu">
+                <li><a href="/post-article"><i class="fa fa-pencil-square-o"></i> Create Article</a></li>
+                <li><a href="/articles/01"><i class="fa fa-eye"></i> View Article</a></li>
+                <li class="divider"></li>
+                <li><a href="/admin"><i class="fa fa-wrench"></i> Admin</a></li>
+                <li><a ng-click="logout()"><i class="fa fa-sign-out"></i> Sign-out</a></li>
+              </ul>
+            </li>  
+          </div>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>

@@ -1,104 +1,104 @@
 <div class="container-head learning-section">
 
-<div class="row">
-<div class="col-lg-9">
-  <ul class="breadcrumb">
-    <li><a href="/home"><i class="fa fa-home"></i></a></li>
-    <li class="active">learn</li>
-</ul>
-</div>  
-<div class="col-lg-3">
-  <div class="row ">
-<div class="col-lg-12 ">
-<div class="form-group">
- <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="search">
-</div>
-</div>
+  <div class="row">
+    <div class="col-lg-9">
+      <ul class="breadcrumb">
+        <li><a href="/home"><i class="fa fa-home"></i></a></li>
+        <li class="active">learn</li>
+      </ul>
+    </div>  
+    <div class="col-lg-3">
+      <div class="row ">
+        <div class="col-lg-12 ">
+          <div class="form-group">
+           <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="search">
+         </div>
+       </div>
 
-</div>
-</div> 
+     </div>
+   </div> 
 
-</div>
+ </div>
 
 
-<div class="row">
-<div class="col-lg-9">
+ <div class="row">
+  <div class="col-lg-9">
 
-<div class="submit-articale-section">
- <h1>Submit Your Article</h1> 
-<div class="register-form-hr"></div>
-    <form novalidate  name="form" role='form' enctype= 'multipart/form-data' >
+    <div class="submit-articale-section">
+     <h1>Submit Your Article</h1> 
+     <div class="register-form-hr"></div>
+     <form novalidate  name="form" role='form' enctype= 'multipart/form-data' >
       <div class="dashboard-section">
         <div class="row register-form-row-pad">
-<div class="col-lg-7 paddingr-7">  
-        <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
-          <input type="text" class="form-control" name="title" placeholder="Title"  ng-model="article.title" required ng-minlength=5>
-          <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill title.</p>
-          <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.minlength">your title shoud be minimum 5 character long .</p>
-          <p class="text-danger" ng-show="form.title.$error.mongoose">{{ errors.title }} </p>
+          <div class="col-lg-7 paddingr-7">  
+            <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
+              <input type="text" class="form-control" name="title" placeholder="Title"  ng-model="article.title" required ng-minlength=5>
+              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill title.</p>
+              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.minlength">your title shoud be minimum 5 character long .</p>
+              <p class="text-danger" ng-show="form.title.$error.mongoose">{{ errors.title }} </p>
+
+            </div>
+          </div>
+
+          <div class="col-lg-3  paddingl-7">
+            <div class="form-group">
+              <select ng-model="article.category" ng-options="o as o for o in category" placeholder="choose category"></select>
+            </div>
+          </div>
 
         </div>
-</div>
+        <div class="row ">
+          <div class="col-lg-10">
 
-<div class="col-lg-3  paddingl-7">
-<div class="form-group">
-  <select ng-model="article.category" ng-options="o as o for o in category" placeholder="choose category"></select>
- </div>
-</div>
+            <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
+              <label class="control-label" for="description">Description</label>
+              <text-angular  name="description" ng-model="article.description" required ng-minlength=20> </text-angular>
 
-</div>
-<div class="row ">
-<div class="col-lg-10">
-
-        <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
-          <label class="control-label" for="description">Description</label>
-          <text-angular  name="description" ng-model="article.description" required ng-minlength=20> </text-angular>
-
-          <!-- <text-angular class="form-control" rows="5"  name="description" ng-model="article.description" required ng-minlength=20> </text-angular> -->
-          <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.required">Please fill description.</p>
-          <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.minlength">your description shoud be minimum 20 character long .</p>
-          <p class="text-danger" ng-show="form.description.$error.mongoose">{{ errors.description }} </p>
-        </div>
-</div>
-</div>
-        <div class="form-group">
-                <label for="tags">Tags</label>
-                <div tooltip="Add about three to four tags for better discoveribility of your article">
-                <tags-input
-                     display-property=""
-                     class="tags-input"
-                     min-tags="1"
-                     ng-model="article.tags"
-                     placeholder="Add a tag and press enter (min length 3 characters)"
-                     replace-spaces-with-dashes="false">
-                </tags-input>
-                </div>
+              <!-- <text-angular class="form-control" rows="5"  name="description" ng-model="article.description" required ng-minlength=20> </text-angular> -->
+              <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.required">Please fill description.</p>
+              <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.minlength">your description shoud be minimum 20 character long .</p>
+              <p class="text-danger" ng-show="form.description.$error.mongoose">{{ errors.description }} </p>
+            </div>
           </div>
         </div>
-        
-  <div class="form-group">
-   <label class="control-label" for="fullName">Media </label>
-   <!-- <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file" accept="image/*"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" /> -->
-   <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
+        <div class="form-group">
+          <label for="tags">Tags</label>
+          <div tooltip="Add about three to four tags for better discoveribility of your article">
+            <tags-input
+            display-property=""
+            class="tags-input"
+            min-tags="1"
+            ng-model="article.tags"
+            placeholder="Add a tag and press enter (min length 3 characters)"
+            replace-spaces-with-dashes="false">
+          </tags-input>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+     <label class="control-label" for="fullName">Media </label>
+     <!-- <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file" accept="image/*"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" /> -->
+     <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
 
 
  <!--        Profile Picture: <input type="file" ng-file-select=""  ng-model="picFile" name="file" accept="image/*" ng-file-change="generateThumb(picFile[0], $files)"  required="">
- -->        <i class="text-danger" ng-show="form.file.$error.required">*required</i>
-        <br/>
-         <img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
-         height:100px;width: 100px">  
-        <br/>
-        <span class="progress" ng-show="mainFIle[0].progress >= 0">    
-          <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
-        </span> 
-        <span ng-show="mainFIle[0].result">Upload Successful</span>
-        <!-- <button >Submit</button> -->
+-->        <i class="text-danger" ng-show="form.file.$error.required">*required</i>
+<br/>
+<img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
+height:100px;width: 100px">  
+<br/>
+<span class="progress" ng-show="mainFIle[0].progress >= 0">    
+  <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
+</span> 
+<span ng-show="mainFIle[0].result">Upload Successful</span>
+<!-- <button >Submit</button> -->
 
-    
-  </div>
+
+</div>
 
 <div class="checkbox italic-font">
-  <label><input type="checkbox" required value="">Check box to agree to these submission guide line</label>
+  <label><input type="checkbox" name= "agree" required value="">Check box to agree to these submission guide line</label>
 </div>
 
 <br/>
@@ -107,8 +107,8 @@
 
 
 
-        <!-- <button type="submit" ng-disabled="form.$invalid" class='btn btn-success' >Add</button>  -->
-        <button  class='btn register-bt' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Add</button> 
+<!-- <button type="submit" ng-disabled="form.$invalid" class='btn btn-success' >Add</button>  -->
+<button  class='btn register-bt' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Add</button> 
         <!-- <button  type="reset" ng-click="reset(form)" class='btn btn-warning'>Reset</button> 
         <a  href="/dashboard" class='btn btn-danger'>Cancel</a>  -->
         <p ng-show="articleDone"><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
@@ -116,26 +116,26 @@
 
         <div class="alert alert-success" role="alert" ng-show="articleDone">
          You have successfully written new Article see article here  <a ng-href="/articles/view/{{articleResponse.article._id}}"><b>Click Here</b></a>
-        </div>
+       </div>
 
-      </form>
+     </form>
 
-</div>  
+   </div>  
 
-</div>
+ </div>
 
 
-<div class="col-lg-3">
+ <div class="col-lg-3">
   <div class="sidebar" role="navigation">
-            <ul>
-<li><a class="active" href="dashboard.html">Learn</a></li>
-<li><a href="content-id.html">Share </a></li>
-<li><a href="chat.html">Chat </a></li>
-<li><a href="connect.html">Connect</a></li>
+    <ul>
+<li><a class="active" href="/articles/01">Learn</a></li>
+<li><a href="#">Share </a></li>
+<li><a href="/chat-start">Chat </a></li>
+<li><a href="/connect">Connect</a></li>
 <li><a href="#">Meet</a></li>
-            </ul>
-                <!-- /.sidebar-collapse -->
-            </div>
+    </ul>
+    <!-- /.sidebar-collapse -->
+  </div>
 </div>
 </div>
 </div>
