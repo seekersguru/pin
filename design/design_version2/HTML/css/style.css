@@ -416,6 +416,7 @@ background-color: #fff;
 .register-form-row-pad{margin-top: 20px;}
 .register-pen{position:absolute; right: 0px; bottom: 0px;  }
 .register-form-hr{background-color:#b59759; height: 1px; margin-top:10px; margin-bottom:10px;   }
+.chatlsit-head-hr{background-color:#b59759; height: 1px; margin-top:0px; margin-bottom:18px;}
 .register-form span{color:#ca4f13 }
 .register-form{display:block; /* padding:15px; */padding-top: 15px;}
 .register-form input{width:100%; height: 32px; box-shadow:none;  border-radius:0px; border:solid 1px #ddd;  font-size: 14px;font-style: italic;color: #888888;}
@@ -683,6 +684,29 @@ background-color: #d9534f;
     border:1px solid #bbb;
     margin:50px;
 }*/
+#chat-list-section{display: block;}
+#chat-list-section .chat-icon{width:78px; float: left; margin-right:15px;  }
+#chat-list-section .user-area{float: right; font-family:"Adobe Caslon Pro"; font-size:15px; padding-top:10px; padding-right:15px;   }
+.chat-list-section-footer{font-style:italic;  }
+.chat-list-section-footer span{font-style:italic; color:#ca4f13   }
+.content {
+  overflow: auto;
+  position: relative;
+  max-width: 100%;
+  height: 700px;
+  -webkit-box-sizing: border-box;}
+#chat-list-section .user-area span{ color: #b59759; font-size:15px; }
+#chat-list-section .content-area{width:540px; float: left; }
+#chat-list-section .content-area h2{font-size:20px; padding-top:10px;  font-weight: normal; margin-top: 0px; color:#5e502d;}
+#chat-list-section .content-area h2 a{font-size:20px; padding-top:10px;  font-weight: normal; margin-top: 0px; color:#5f4f2d;}
+#chat-list-section .content-area h2 a:hover{font-size:20px; padding-top:10px; text-decoration:none;  font-weight: normal; margin-top: 0px; color:#1f2f51;}
+#chat-list-section .content-area p{font-size:14px; font-weight: normal; margin-top: 0px; color:#606060;}
+.chat-list-row-even{background-color:#f8f5ee; border-bottom:solid 1px #fff; }
+.chat-list-row-odd{background-color:#f3efe4;border-bottom:solid 1px #fff;}
+.chat-list-row-active{background-color:#f3efe4;border-bottom:solid 1px #fff;}
+
+.chat-list-row-even:hover, .chat-list-row-odd:hover { background-color:#ffffff; color:#1f2f51;}
+
 .titleBox {
     background-color:#fdfdfd;
     padding:10px; color:000; text-transform:uppercase; margin-top:25px;   
