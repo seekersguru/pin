@@ -132,6 +132,7 @@ $scope.deleteArticle=function(articleId){
         $http({ method: 'GET', url: 'api/articles/basic' }).
           success(function (data, status, headers, config) {
              $scope.gridArticleData=data.articles;
+             
           }).
         error(function (data, status, headers, config) {
 
