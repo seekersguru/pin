@@ -129,6 +129,9 @@ exports.query = function(req, res) {
 	if(req.query.pageno){
 		q=q.skip((req.query.pageno-1)*req.query.limit);
 	}
+  
+  /** public true  */
+  q.where('public').equals(true);
 
 	/** sorting according to date */
 
