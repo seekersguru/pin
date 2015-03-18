@@ -25,97 +25,104 @@ angular.module('pinApp')
  },
  'Give':
  { 'caption':'caption-pink',
-   'colorclass':'pinkbox'
- }
+ 'colorclass':'pinkbox'
+}
 };
-  $scope.rightnav="right-nav.html";
+$scope.rightnav="right-nav.html";
 
-  setTimeout(function(){
+setTimeout(function(){
   $('.post-box').hover(
     function(){
             $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideDown(250); //.fadeIn(250)
           },
           function(){
             $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideUp(250); //.fadeOut(205)
-          }
-          ); 
-  },1000);
+          }); 
+
+  $(".filterArticle li").find("a").click(function(){
+
+    var filter = $(this).data("filter");
+    $("#article-container").find(".article-post").fadeOut(205);
+    $("#article-container").find(filter).fadeIn(205);
+
+  }); 
+},1000);
 
 
-  $scope.comments=articles.comments;
-  if($location.path()=="/articles/view/"+articles._id)
+$scope.comments=articles.comments;
+if($location.path()=="/articles/view/"+articles._id)
+{
+
+  $scope.config=
+  {  
+    'sources': [
+    {src: $sce.trustAsResourceUrl('../'+articles.media.path), type: 'video/mp4'}
+    ],
+    'theme': 'bower_components/videogular-themes-default/videogular.css',
+    'plugins': {
+      'poster': 'http://www.videogular.com/assets/images/videogular.png'
+    }
+  };
+
+}  
+
+$scope.getLatest=function(){
+
+  $http({ method: 'GET', url: 'api/articles?limit=5&pageno=01' }).
+  success(function (data, status, headers, config) {
+
+    $scope.latestcomments=data.articles;
+
+  }).
+  error(function (data, status, headers, config) {
+
+  });
+
+};
+
+$scope.getLatest();
+
+
+$scope.deleteComment=function(commentId){
+
+  var yes=confirm('Are you sure you want to delete this Comment?');
+  if(yes)
   {
-
-    $scope.config=
-    {  
-      'sources': [
-      {src: $sce.trustAsResourceUrl('../'+articles.media.path), type: 'video/mp4'}
-      ],
-      'theme': 'bower_components/videogular-themes-default/videogular.css',
-      'plugins': {
-        'poster': 'http://www.videogular.com/assets/images/videogular.png'
-      }
-    };
-
-  }  
-
-  $scope.getLatest=function(){
-
-    $http({ method: 'GET', url: 'api/articles?limit=5&pageno=01' }).
-    success(function (data, status, headers, config) {
-
-      $scope.latestcomments=data.articles;
-
+    $http({
+      method:"DELETE",
+      url:'/api/comments/'+articles._id+"/"+commentId
     }).
-    error(function (data, status, headers, config) {
+    success(function (data,status,headers,config){
+      $scope.deleteStatus=1;
+
+      var removeIndex = $scope.comments
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(commentId);
+
+      $scope.comments.splice(removeIndex, 1);
+
+    })
+    .error(function (data,status,headers,config){
 
     });
+  }
 
-  };
-
-  $scope.getLatest();
-
-
-  $scope.deleteComment=function(commentId){
-
-    var yes=confirm('Are you sure you want to delete this Comment?');
-    if(yes)
-    {
-      $http({
-        method:"DELETE",
-        url:'/api/comments/'+articles._id+"/"+commentId
-      }).
-      success(function (data,status,headers,config){
-        $scope.deleteStatus=1;
-
-        var removeIndex = $scope.comments
-        .map(function(item)
-        { 
-          return item._id;
-        })
-        .indexOf(commentId);
-
-        $scope.comments.splice(removeIndex, 1);
-
-      })
-      .error(function (data,status,headers,config){
-
-      });
-    }
-
-  };
+};
 
 
-  $scope.addComment=function(form){
+$scope.addComment=function(form){
 
-   if(form.$valid)
-   {
-    if($scope.editcomment_id)
-    {
-      var comment={ post: $scope.article.comment};  
+ if(form.$valid)
+ {
+  if($scope.editcomment_id)
+  {
+    var comment={ post: $scope.article.comment};  
 
-      $http({ method: 'PUT', url: '/api/comments/'+articles._id+"/"+$scope.editcomment_id,data:comment}).
-      success(function (data, status, headers, config) {
+    $http({ method: 'PUT', url: '/api/comments/'+articles._id+"/"+$scope.editcomment_id,data:comment}).
+    success(function (data, status, headers, config) {
           // $scope.form.$setPristine();
 
           var removeIndex = $scope.comments
@@ -129,16 +136,16 @@ angular.module('pinApp')
           $scope.editcomment_id=0;
           $scope.article={};
         }).
-      error(function (data, status, headers, config) {
-        $scope.article={};
-      });
+    error(function (data, status, headers, config) {
+      $scope.article={};
+    });
 
 
-    }else{
-      var comment={ user: $rootScope.currentUser._id , post: $scope.article.comment};  
+  }else{
+    var comment={ user: $rootScope.currentUser._id , post: $scope.article.comment};  
 
-      $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
-      success(function (data, status, headers, config) {
+    $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
+    success(function (data, status, headers, config) {
           // ...
           comment.posted=new Date(); 
           $scope.comments.push(comment);
@@ -148,13 +155,13 @@ angular.module('pinApp')
           $scope.form.$setPristine();
           
         }).
-      error(function (data, status, headers, config) {
-        $scope.article={};
-      });
-    }
-
-
+    error(function (data, status, headers, config) {
+      $scope.article={};
+    });
   }
+
+
+}
 
 };
 
@@ -246,7 +253,7 @@ angular.module('pinApp')
         $scope.article.tags[t] = original[t].text;
       }
       $scope.articleDone=1;
-       $scope.form.$setPristine();
+      $scope.form.$setPristine();
       $http({ method: 'PUT', url: '/api/articles/'+$scope.article._id,data:$scope.article }).
       success(function (data, status, headers, config) {
         // ...

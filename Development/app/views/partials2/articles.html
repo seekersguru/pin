@@ -120,7 +120,7 @@
 <div class="row">
 <div class="col-lg-9">
 <div class="learn-nav creations-filter">
- <ul class="clearfix">
+ <ul class="clearfix filterArticle">
 
   <!-- <li><a href="#Grow" data-filter=".Grow" class="current">Grow</a></li>
     <li><a href="#Protect" data-filter=".Protect">Protect</a></li> 
@@ -135,8 +135,8 @@
 
 
 <div class="creations-container">
-<div class="row">
- <div  ng-repeat="(key,value) in articles" class="col-lg-6" ng-class="value.category" >
+<div class="row" id="article-container">
+ <div  ng-repeat="(key,value) in articles" class="col-lg-6 article-post" ng-class="value.category" >
   <div class="post-box">
                 <div class="" ng-class="color[value.category].caption">
                    <div><a ng-href="/articles/view/{{value._id}}"><img src="images/post-hover-img.png" alt=""></a></div>
