@@ -269,6 +269,8 @@ exports.comment_query=function(req, res){
   	comment_id = req.params.commentid;
   	Article.update({'comments._id': comment_id}, {'$set': {
     'comments.$.post': req.body.post,
+    'comments.$.username': req.body.username,
+    'comments.$.user': req.body.user,
 	   }}, function(err,model) {
 	   	if(err){
         	console.log(err);

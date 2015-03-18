@@ -21,6 +21,7 @@ var ArticleSchema = new Schema({
   category: String,
   merchs: {},
   comments: [{ user: { type: ObjectId, ref: 'User' },
+               username:String,
                post: String,
                posted: {type: Date, default: Date.now}
              }],

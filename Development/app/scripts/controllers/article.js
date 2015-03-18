@@ -119,7 +119,7 @@ $scope.addComment=function(form){
  {
   if($scope.editcomment_id)
   {
-    var comment={ post: $scope.article.comment};  
+    var comment={ post: $scope.article.comment,username:$rootScope.currentUser.name,user:$rootScope.currentUser._id};  
 
     $http({ method: 'PUT', url: '/api/comments/'+articles._id+"/"+$scope.editcomment_id,data:comment}).
     success(function (data, status, headers, config) {
@@ -142,7 +142,7 @@ $scope.addComment=function(form){
 
 
   }else{
-    var comment={ user: $rootScope.currentUser._id , post: $scope.article.comment};  
+    var comment={ user: $rootScope.currentUser._id ,username:$rootScope.currentUser.name, post: $scope.article.comment};  
 
     $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
     success(function (data, status, headers, config) {
