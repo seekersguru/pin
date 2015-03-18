@@ -44,7 +44,10 @@
         </div>
         
         <br/>
-
+  <div class="form-group">
+              <select ng-model="article.category" ng-options="o as o for o in category" placeholder="choose category"></select>
+            </div>
+<br/>
         <button ng-click="updateArticle(form)" class='btn btn-success'>Save</button> 
         <a  href="/dashboard" class='btn btn-warning'>Cancel</a> 
         <button ng-click="remove(form)" class='btn btn-danger'>Delete</button> 

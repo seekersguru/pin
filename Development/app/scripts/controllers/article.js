@@ -199,7 +199,7 @@ $scope.changePage = function(){
 
 angular.module('pinApp')
 .controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,article) {
-
+  $scope.category=['Grow','Protect','Manage','Give'];
   $scope.article=article;
   
   $scope.saveArticle=function(form){
@@ -246,11 +246,13 @@ angular.module('pinApp')
         $scope.article.tags[t] = original[t].text;
       }
       $scope.articleDone=1;
-      $scope.form.$setPristine();
+       $scope.form.$setPristine();
       $http({ method: 'PUT', url: '/api/articles/'+$scope.article._id,data:$scope.article }).
       success(function (data, status, headers, config) {
         // ...
+        $location.path('/articles/view/'+$scope.article._id);
         $scope.updateStatus=1;
+
       }).
       error(function (data, status, headers, config) {
         // ...
