@@ -55,6 +55,15 @@ passport.use('local', new LocalStrategy({
           }
         });
       }
+      if (!user.status) {
+        return done(null, false, {
+          message: {
+            message: 'Admin has not approved you.Please wait some time until admin approve you.',
+            type: 'not_verified',
+            field: 'password'
+          }
+        });
+      }
      return done(null, user);
     });
   }

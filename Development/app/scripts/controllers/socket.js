@@ -6,6 +6,7 @@ angular.module('pinApp')
   {
     nickName=$rootScope.currentUser.name;
   }
+  
   $scope.nickName = nickName;
   $scope.messageLog = 'Ready to chat!';
   $scope.sendMessage = function() {

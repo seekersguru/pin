@@ -46,6 +46,11 @@ angular.module('pinApp', [
     templateUrl: 'partials2/chat-start',
     controller:'SocketCtrl'
   })
+  .when('/chat-listing', {
+        templateUrl: 'partials2/chat-listing',
+        controller: 'SocketCtrl',
+        title: 'Chat Listing'
+     })
   .when('/connect', {
     templateUrl: 'partials2/connect'
   })

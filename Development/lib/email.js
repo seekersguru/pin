@@ -1,8 +1,17 @@
 'use strict';
-var sesTransport = require('nodemailer').createTransport('SES'),
+//  sesTransport = require('nodemailer').createTransport('SES'),
+var nodemailer = require('nodemailer'),
     emailTemplates = require('email-templates'),
     config = require('./config/config'),
     _ = require('lodash');
+
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'swatisinghratan@gmail.com',
+        pass: '9887512945'
+    }
+});
 
 var templatesDir = config.root + config.emailTemplatesPath;
 /**
@@ -11,11 +20,19 @@ var templatesDir = config.root + config.emailTemplatesPath;
  */
 var Email = function(email) {
   this.email = email||{};
-  this.email.from = this.email.from ||'PIN <info@maddyzone.com>';
+  this.email.from = this.email.from ||'PIN <info@pin.com>';
   this.email.text = this.email.text || this.email.message;
 };
+var mailOptions = {
+    from: 'PIN ✔ <swatisinghratan@gmail.com>', // sender address
+    to: 'riturajratan@gmail.com', // list of receivers
+    subject: 'Hello ✔', // Subject line
+    text: 'Hello world ✔', // plaintext body
+    html: '<b>Hello world ✔</b>' // html body
+};
+
 Email.prototype.send = function(cb) {
-  sesTransport.sendMail(this.email, function(e, data) {
+  transporter.sendMail(mailOptions, function(e, data) {
     if(cb){
       console.log(data);
       cb(e, data.messageId);

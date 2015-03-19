@@ -27,11 +27,11 @@ exports.query = function(req, res){
       console.log(err);
       return res.send(404);
     } else {
-      if(req.user.role !== 'admin'){
+      // if(req.user.role !== 'admin'){
         for(var i=0; i<users.length; i++){
           users[i] = users[i].profile;
         }
-      }
+      // }
       return res.json({users:users});
     }
   });
@@ -83,11 +83,13 @@ exports.update = function(req, res) {
  newUser.provider = 'local';
  newUser.save(function(err, savedUser) {
  if (err) return res.json(400, err);
-    // var activation_link = [req.headers.host, 'user', savedUser._id,'verify',  savedUser.emailVerification.token].join('/');
-    // (new ActivationEmail(savedUser, {activationLink: activation_link})).send(function(e) {
-    //   return res.send(savedUser.userInfo);
-    // });
-    return res.send(savedUser.userInfo);
+    if (err) return res.json(400, err);
+    console.log(req.headers.host);
+    var activation_link = [req.headers.host, 'user', savedUser._id,'verify',  savedUser.emailVerification.token].join('/');
+    (new ActivationEmail(savedUser, {activationLink: activation_link})).send(function(e) {
+      return res.send(savedUser.userInfo);
+    });
+  // return res.send(savedUser.userInfo);
 });
 
 };
