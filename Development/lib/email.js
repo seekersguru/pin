@@ -5,7 +5,7 @@ var sesTransport = require('nodemailer').createTransport('SES'),
     config = require('./config/config'),
     _ = require('lodash');
 
-var transporter = nodemailer.createTransport({
+var transporter = nodemailer.createTransport("SMTP",{
     service: 'gmail',
     auth: {
         user: 'privateinvestmentnetwork',
