@@ -136,12 +136,12 @@
 
 <div class="creations-container">
 <div class="row" id="article-container">
- <div  ng-repeat="(key,value) in articles" class="col-lg-6 article-post" ng-class="value.category" >
+ <div  ng-repeat="(key,value) in articles" class="article-post"  ng-class="{false:'col-lg-8 {{value.category}}',true:'col-lg-4 {{value.category}}'}[value.media.extension.indexOf('image') > -1]" >
   <div class="post-box">
-                <div class="" ng-class="color[value.category].caption">
-                   <div><a ng-href="/articles/view/{{value._id}}"><img src="images/post-hover-img.png" alt=""></a></div>
-                   <div class="read-more"><a ng-href="/articles/view/{{value._id}}">Read more</a></div>
-                </div>
+      <div class="" ng-class="color[value.category].caption">
+       <div><a ng-href="/articles/view/{{value._id}}"><img src="images/post-hover-img.png" alt=""></a></div>
+       <div class="read-more"><a ng-href="/articles/view/{{value._id}}">Read more</a></div>
+      </div>
 
 <div class="" ng-class="color[value.category].colorclass">
  <div ng-if='value.media.extension.indexOf("image") > -1'>
