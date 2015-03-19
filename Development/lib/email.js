@@ -1,15 +1,15 @@
 'use strict';
-//  sesTransport = require('nodemailer').createTransport('SES'),
-var nodemailer = require('nodemailer'),
+var sesTransport = require('nodemailer').createTransport('SES'),
+    nodemailer = require('nodemailer'),
     emailTemplates = require('email-templates'),
     config = require('./config/config'),
     _ = require('lodash');
 
 var transporter = nodemailer.createTransport({
-    service: 'Gmail',
+    service: 'gmail',
     auth: {
-        user: 'swatisinghratan@gmail.com',
-        pass: '9887512945'
+        user: 'privateinvestmentnetwork',
+        pass: 'networkinvestmentprivate'
     }
 });
 
@@ -20,22 +20,14 @@ var templatesDir = config.root + config.emailTemplatesPath;
  */
 var Email = function(email) {
   this.email = email||{};
-  this.email.from = this.email.from ||'PIN <info@pin.com>';
+  this.email.from = this.email.from ||'Hansi Mehrotra <privateinvestmentnetwork@gmail.com>';
   this.email.text = this.email.text || this.email.message;
 };
-var mailOptions = {
-    from: 'PIN ✔ <swatisinghratan@gmail.com>', // sender address
-    to: 'riturajratan@gmail.com', // list of receivers
-    subject: 'Hello ✔', // Subject line
-    text: 'Hello world ✔', // plaintext body
-    html: '<b>Hello world ✔</b>' // html body
-};
-
 Email.prototype.send = function(cb) {
-  transporter.sendMail(mailOptions, function(e, data) {
+  transporter.sendMail(this.email, function(e, data) {
     if(cb){
       console.log(data);
-      cb(e, data.messageId);
+      cb(e, data);
     }
    });  
 };
@@ -58,6 +50,7 @@ UserEmail.prototype.send = function(cb) {
       if (err) throw err;
       that.email.html = html;
       that.email.text = text;
+      console.log(that.email);
       Email.prototype.send.call(that, cb);
     });
   });

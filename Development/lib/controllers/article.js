@@ -159,12 +159,13 @@ exports.basic = function(req, res) {
 	q.sort('-createdAt');
 
 	/** finally execute */
-	q.populate('author','name email').exec(function(err, articles) {
+		q.populate('author','name email').exec(function(err, articles) {
 		if (err) {
 			console.log(err);
 			return res.send(404);
 		} else {
 			  for(var i=0; i<articles.length; i++){
+			  	
             articles[i] = articles[i].articleInfo;
          }
 			return res.json({articles:articles});

@@ -116,12 +116,15 @@ $scope.deleteArticle=function(articleId){
 
  $scope.setSearch = function(search){
   $location.search(search);
-  
+
+  };
+
   $timeout(function() {
     $scope.mainPage = Object.keys($location.search())[0] || 'users';
     switch($scope.mainPage)
     {
       case 'users':
+      $scope.gridUserData={};
       User.query(function(users){
         $scope.gridUserData=users.users;
       });
@@ -129,6 +132,7 @@ $scope.deleteArticle=function(articleId){
       break;
 
       case 'articles':
+      $scope.gridArticleData={};
         $http({ method: 'GET', url: 'api/articles/basic' }).
           success(function (data, status, headers, config) {
              $scope.gridArticleData=data.articles;
@@ -145,7 +149,6 @@ $scope.deleteArticle=function(articleId){
     }
   }, 0);
   
-  };
 
   var editDeleteArticleTemplate = '<a ng-click="deleteArticle(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-click="viewArticle(row.entity._id)"  id="view"  class="btn btn-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a>';
 
