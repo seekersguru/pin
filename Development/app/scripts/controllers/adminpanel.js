@@ -173,6 +173,7 @@ $scope.deleteArticle=function(articleId){
                                     { field: 'name' ,displayName:'Name' },
                                     { field: 'createdAt' ,displayName:'Created Date' },
                                     { field: 'email' ,displayName:'Email' },
+                                    { field: 'emailVerification' ,displayName:'EmailVerification',cellTemplate:'<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>' },
                                     { field: 'username' ,displayName:'Username' },
                                     { field: 'status' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" ng-click="userStatus(row.entity._id)">Approved</span><span ng-if="!row.entity.status" class="label label-danger" ng-click="userStatus(row.entity._id)">Not Approved</span>'}],
                         showFooter: true,

@@ -72,6 +72,8 @@ module.exports = function(app) {
   app.get('/api/users', users.query);
   app.put('/api/users/:userid', users.update);
   app.get('/api/users/checkusername/:username',users.checkusername);
+  app.get('/user/:id/verify/:token', users.verifyEmail);
+  
   
   app.post('/api/session', session.login);
   app.del('/api/session', session.logout);

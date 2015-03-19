@@ -94,3 +94,24 @@ exports.update = function(req, res) {
 
 };
 
+exports.verifyEmail = function (req, res, next) {
+  var userId = req.params.id;
+  var token = req.params.token;
+  console.log('verifyEmail');
+  User.findById(userId, function(err, user) {
+    if (err) return next(err);
+    if (!user) return res.send(404);
+    if (user.emailVerification.token === token) {
+      user.emailVerification.verified = true;
+      user.save(function(err) {
+        req.logIn(user, function(err) {
+          if (err) return res.send(err);
+          return res.redirect('/settings');
+        });
+      });
+    } else {
+      return res.send(401, 'Invalid Token');
+    }
+  });
+};
+

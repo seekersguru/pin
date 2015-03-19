@@ -44,12 +44,14 @@ angular.module('pinApp', [
   })
   .when('/chat-start', {
     templateUrl: 'partials2/chat-start',
-    controller:'SocketCtrl'
+    controller:'SocketCtrl',
+  authenticate: true
   })
   .when('/chat-listing', {
         templateUrl: 'partials2/chat-listing',
         controller: 'SocketCtrl',
-        title: 'Chat Listing'
+        title: 'Chat Listing',
+       authenticate: true
      })
   .when('/connect', {
     templateUrl: 'partials2/connect'
@@ -94,11 +96,13 @@ angular.module('pinApp', [
       return deferred.promise;
     }]
 
-  }
+  },
+  authenticate: true
 })
   .when('/post-article', {
     templateUrl: 'partials2/post-article',
-    controller:'ArticleAddCtrl'
+    controller:'ArticleAddCtrl',
+    authenticate: true
 
   })  
   .when('/articles/view/:articleid', {
@@ -116,7 +120,8 @@ angular.module('pinApp', [
             return deferred.promise;
           }]
 
-  }
+  },
+  authenticate: true
 })
   .when('/articles/edit/:id', {
     templateUrl: 'partials2/update-article',
@@ -133,7 +138,8 @@ angular.module('pinApp', [
             });
             return deferred.promise;
           }]
-        }
+        },
+    authenticate: true    
   })
   .when('/myarticles/:pageno', {
     templateUrl: 'partials2/myarticle',
@@ -153,13 +159,19 @@ angular.module('pinApp', [
       return deferred.promise;
     }]
 
-  }
+  },
+  authenticate: true
 })
  .when('/admin', {
         templateUrl: 'partials2/admin/adminpanel',
         controller: 'AdminPanelCtrl',
         title: 'Admin Panel'
       })
+.when('/settings', {
+templateUrl: 'partials2/settings',
+// controller: 'SettingsCtrl',
+title: 'Settings'
+})
   .otherwise({
     redirectTo: '/home'
   });
@@ -181,32 +193,32 @@ angular.module('pinApp', [
       };
     }]);
   })
-  // .run(function ($rootScope, $location, Auth) {
-  //   var cartIndex = localStorage.cartIndex;
-  //   var currentIndex = 3;
-  //   if (!cartIndex || !(parseInt(cartIndex) >= currentIndex)) {
-  //     delete localStorage.cart
-  //     localStorage.cartIndex = String(currentIndex);
-  //   }
+  .run(function ($rootScope, $location, Auth) {
+    // var cartIndex = localStorage.cartIndex;
+    // var currentIndex = 3;
+    // if (!cartIndex || !(parseInt(cartIndex) >= currentIndex)) {
+    //   delete localStorage.cart
+    //   localStorage.cartIndex = String(currentIndex);
+    // }
 
-  //   // Redirect to login if route requires auth and you're not logged in
-  //   $rootScope.$on('$routeChangeStart', function (event, next, current) {
+    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.$on('$routeChangeStart', function (event, next, current) {
 
-  //     $rootScope.appTitle = 'PaintCollar - Connecting Art with lifeStyle';
-  //     if (next.title) {
-  //       $rootScope.appTitle = next.title;
-  //     }
-  //     if ($location.path() !== '/login') {
-  //       $rootScope.redirectPath = $location.path();
-  //     }
-  //     $rootScope.ogTitle = "Paintcollar";
-  //     $rootScope.ogDescription = "Paintcollar lets artists soar by turning their art into amazing merchandize. Buy incredible T-shirts, Laptop skins, Posters and more!";
-  //     $rootScope.ogImage = "http://i.imgur.com/ZjBS4gJ.jpg";
-  //     $rootScope.ogUrl =  "http://"+$location.host()+$location.path();
+      $rootScope.appTitle = 'PIN';
+      if (next.title) {
+        $rootScope.appTitle = next.title;
+      }
+      if ($location.path() !== '/login') {
+        $rootScope.redirectPath = $location.path();
+      }
+      $rootScope.ogTitle = "PIN";
+      $rootScope.ogDescription = "PIN Description";
+      $rootScope.ogImage = "";
+      $rootScope.ogUrl =  "http://"+$location.host()+$location.path();
 
-  //     if (next.authenticate && !Auth.isLoggedIn()) {
-  //       $location.path('/login');
-  //     }
-  //   });
-  // })
-.constant('scalingFactor', {tshirt: 12, laptop:6.7478, poster:10.844, canvas: 10.844});
+      if (next.authenticate && !Auth.isLoggedIn()) {
+        $location.path('/login');
+      }
+    });
+  });
+// .constant('scalingFactor', {tshirt: 12, laptop:6.7478, poster:10.844, canvas: 10.844});

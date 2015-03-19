@@ -91,6 +91,7 @@ UserSchema
       'name': this.name,
       'createdAt':this.createdAt,
       'email': this.email,
+      'emailVerification': this.emailVerification.verified,
       'username': this.username,
       'status':this.status
 
@@ -166,6 +167,26 @@ UserSchema
       respond(true);
     });
 }, 'The specified username is already in use.');
+
+var validatePresenceOf = function(value) {
+  return value && value.length;
+};
+
+/**
+ * Pre-save hook
+ */
+UserSchema
+  .pre('save', function(next) {
+    if (!this.emailVerification || !this.emailVerification.verified) {
+      this.emailVerification = this.generateNewEmailVerification();
+    }
+    if (!this.isNew) return next();
+
+    if (!validatePresenceOf(this.hashedPassword) && authTypes.indexOf(this.provider) === -1)
+      next(new Error('Invalid password'));
+    else
+      next();
+  });
 
 
 /**

@@ -55,6 +55,15 @@ passport.use('local', new LocalStrategy({
           }
         });
       }
+      if (!user.emailVerification.verified) {
+        return done(null, false, {
+          message: {
+            message: 'Email not verified',
+            type: 'not_verified',
+            field: 'email'
+          }
+        });
+      }
       if (!user.status) {
         return done(null, false, {
           message: {

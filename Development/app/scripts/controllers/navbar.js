@@ -33,7 +33,7 @@ angular.module('pinApp')
           $rootScope.redirectPath = undefined;
           $location.path(path);
         } else {
-          $location.path('/dashboard');
+          $location.path('/articles/01');
         }
       })
       .catch( function(err) {
