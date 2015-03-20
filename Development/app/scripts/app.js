@@ -104,6 +104,11 @@ angular.module('pinApp', [
     controller:'ArticleAddCtrl',
     authenticate: true
 
+  })
+  .when('/meet', {
+    templateUrl: 'partials2/meet',
+    authenticate: true
+
   })  
   .when('/articles/view/:articleid', {
     templateUrl: 'partials2/article-detail',
@@ -221,5 +226,39 @@ title: 'Settings'
         $location.path('/login');
       }
     });
+  
+    // $rootScope.$on('$routeChangeSuccess', function () {
+    //    var footerHeight = 0,
+    //        footerTop = 0,
+    //        $footer = $("#footer-bg");
+           
+    //    positionFooter();
+       
+    //    function positionFooter() {
+       
+    //             footerHeight = $footer.height();
+    //             footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
+       
+    //            if ( ($(document.body).height()+footerHeight) < $(window).height()) {
+    //                $footer.css({
+    //                     position: "absolute"
+    //                }).animate({
+    //                     top: footerTop
+    //                })
+    //            } else {
+    //                $footer.css({
+    //                     position: "static"
+    //                })
+    //            }
+               
+    //    }
+
+    //    $(window)
+    //            .scroll(positionFooter)
+    //            .resize(positionFooter);
+     
+
+    // });
+  
   });
 // .constant('scalingFactor', {tshirt: 12, laptop:6.7478, poster:10.844, canvas: 10.844});
