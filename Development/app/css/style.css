@@ -962,3 +962,10 @@ display: inline-block;
 .text-danger{
   color:#a94442;
 }
+.text-danger{
+  color: #a94442 !important;
+}
+.text-success{
+
+  color:#3c763d !important;
+}
