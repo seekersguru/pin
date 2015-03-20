@@ -45,7 +45,7 @@ angular.module('pinApp', [
   .when('/chat-start', {
     templateUrl: 'partials2/chat-start',
     controller:'SocketCtrl',
-  authenticate: true
+    authenticate: true
   })
   .when('/chat-listing', {
         templateUrl: 'partials2/chat-listing',
@@ -165,7 +165,8 @@ angular.module('pinApp', [
  .when('/admin', {
         templateUrl: 'partials2/admin/adminpanel',
         controller: 'AdminPanelCtrl',
-        title: 'Admin Panel'
+        title: 'Admin Panel',
+        authenticate: true
       })
 .when('/settings', {
 templateUrl: 'partials2/settings',
@@ -216,7 +217,7 @@ title: 'Settings'
       $rootScope.ogImage = "";
       $rootScope.ogUrl =  "http://"+$location.host()+$location.path();
 
-      if (next.authenticate && !Auth.isLoggedIn()) {
+      if (next.  authenticate && !Auth.isLoggedIn()) {
         $location.path('/login');
       }
     });
