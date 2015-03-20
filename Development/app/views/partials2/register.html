@@ -45,10 +45,10 @@
            </div>
 
 
-                  <div class="row">
+          <div class="row">
            <div class="form-group" ng-class="{'has-error': form.username.$error.required && submitted,'has-success':form.username.$valid && submitted}">
            <div class="col-lg-6"><input required type="text" name="username" class="form-control" placeholder="Alias " ng-model="user.username" ng-keyup="checkUsername(form)"/>
-            <p class="text-danger" ng-show="form.username.$error.required && submitted">Please fill Alias.</p>
+            <p class="text-danger" ng-show="form.username.$error.required && submitted && !form.username.$error.mongoose" >Please fill your alias name.</p>
             <p class="text-danger" ng-show="form.username.$error.mongoose">
             {{ errors.username }}
            </p>
