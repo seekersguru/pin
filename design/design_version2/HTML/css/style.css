@@ -89,7 +89,7 @@ z-index: 5;
 .read-more a:hover{font-size:15px; font-style:italic; color:#193164;}
 
 .footer-learning{background-color:#222222; border-top:solid 7px #b59759;}
-
+#footer-bg{width:100% }
 .footer-learning ul{margin:0px; padding: 0px; list-style:none; clear: both;  }
 .footer-learning ul li {margin:0px; padding: 0px; list-style:none;    float: left; }
 .footer-learning ul li a {margin:0px; padding: 0px; list-style:none; color: #dddddd; padding-left:20px; padding-right:20px;      padding-top: 15px;float: left; }
@@ -104,6 +104,25 @@ z-index: 5;
 .footer-link ul li {margin:0px; padding: 0px; list-style:none;  border-top:solid 5px #b59759; width:23.5%; margin-left: 2%; float: left; }
 .footer-link ul li:hover{margin:0px; padding: 0px; border-top:solid 5px #5e5649; margin-left: 2%;  }
 
+.event-contentarea{width:70%;}
+.event-contentarea p{color: #ffffff; font-size: 14px; margin-top:15px; margin-bottom:10px; padding-left:15px;   }
+.event-contentarea p+p{color: #ffffff; font-size: 15px; text-transform:uppercase;  margin-top:15px; margin-bottom:10px; padding-left:15px;   }
+.event-row-mar{margin-top:30px; }
+.event-bt-mar{margin-top:30px; margin-bottom:30px;  }
+.event-box{border-left:solid 4px #b59759; background-color:#fff; padding:20px;  }
+.event-iocn{float: left; width:50px; margin-right:10px;   }
+.event-content{float: left; width:225px;  }
+.event-box p{font-size:14px; text-transform: uppercase; color: #787878; margin-top:10px; margin-bottom:0px;   }
+.event-box-heading{color:#253862; font-size:18px; }
+.event-box-heading a{color:#253862; font-size:18px; }
+.event-box-heading a:hover{color:#b59759; font-size:18px; }
+.meet-baner-img{background-image:url(../images/meet-baner-img.jpg); height: 281px; width:100%; margin-top:20px; position: relative;}
+.event-title{font-size:30px; top:50px; padding-right: 15px; float: left;  text-transform:uppercase; padding-top: 23px; padding-left:15px;    font-family:"Adobe Caslon Pro"; background-color:#fff; color:#213156; height: 51px; position:relative;    }
+
+.folding-img{background-image:url(../images/white-shadow-folding.png);   float: left;
+  width: 22px;
+  height: 58px;
+  margin-top: 50px; }
 .paddingl-7{padding-left:7px;}
 .paddingr-7{padding-right:7px;}
 .Check-availability{background-color:#b59759; background-position:8px 9px; height: 32px;  background-image:url(../images/arow-reg-bt-1.png); background-repeat:no-repeat;  text-indent:15px; border:solid 1px #a68849;     font-size:12px; color: #fff; font-style:italic;}
