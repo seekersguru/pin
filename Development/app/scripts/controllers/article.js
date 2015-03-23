@@ -50,7 +50,7 @@ setTimeout(function(){
 
 
 $scope.comments=articles.comments;
-if($location.path()=="/articles/view/"+articles._id)
+if($location.path()=="/articles/view/"+articles._id && articles.media)
 {
 
   $scope.config=
@@ -147,7 +147,10 @@ $scope.addComment=function(form){
     $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
     success(function (data, status, headers, config) {
           // ...
-          comment.posted=new Date(); 
+          console.log(data);
+          comment.posted=new Date();
+          comment._id=data.comments[data.comments.length-1]._id;
+
           $scope.comments.push(comment);
           
           $scope.article={};
@@ -384,6 +387,7 @@ angular.module('pinApp')
   };
 
   $scope.setFiles = function(element) {
+    $scope.filearticle=1;
     var file=element.files[0];
     $scope.$apply(function($scope) {
       console.log('files:', element.files);
@@ -420,10 +424,11 @@ angular.module('pinApp')
       // console.log(formData);
       
       $scope.article.author=$rootScope.currentUser._id;
-      var original=$scope.article.tags;
-      for (var t = 0; t < original.length; t++) {
-        $scope.article.tags[t] = original[t].text;
-      }
+       var original=$scope.article.tags;
+        $scope.article.tags=[];
+        for (var t = 0; t < original.length; t++) {
+          $scope.article.tags[t] = original[t].text;
+         }
       $scope.form.$setPristine();
       $http({ method: 'POST', url: '/api/articles',data:$scope.article }).
       success(function (data, status, headers, config) {

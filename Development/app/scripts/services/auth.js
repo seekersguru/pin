@@ -128,10 +128,10 @@ angular.module('pinApp')
        * @return {Boolean}
        */
       isAdmin: function() {
-        if($rootScope.currentUser && $rootScope.currentUser.role === 'user'){
-          return false;
-        }else{
+        if($rootScope.currentUser && $rootScope.currentUser.role == 'admin'){
           return true;
+        }else{
+          return false;
         }
       },
 

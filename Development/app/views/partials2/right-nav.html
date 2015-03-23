@@ -1,9 +1,9 @@
 <div class="sidebar" role="navigation" ng-controller="NavbarCtrl ">
 	<ul>
 		<li><a  href="/articles/01"  ng-class="{active:isActive('/articles/01')}">Learn</a></li>
-		<li><a  href="#" ng-class="{active:isActive('/share')}">Share </a></li>
+		<li><a  ng-if="currentUser.role=='expert'" href="#" ng-class="{active:isActive('/share')}">Share </a></li>
 		<li><a ng-class="{active:isActive('/chat-start')}" href="/chat-start">Chat </a></li>
 		<li><a  ng-class="{active:isActive('/connect')}" href="/connect">Connect</a></li>
 		<li><a ng-class="{active:isActive('/meet')}" href="/meet">Meet</a></li>
 	</ul>
-</div>
+</div>    

@@ -50,6 +50,7 @@ var UserSchema = new Schema({
   showAge: {type:Boolean, default: false},
   dob:{type:Date, default: Date.now},
   status:{type: Boolean, default:false},
+  other:String,
 });
 
 /**

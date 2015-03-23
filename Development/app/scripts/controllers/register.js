@@ -79,7 +79,7 @@ angular.module('pinApp')
           address: $scope.user.address,
           email: $scope.user.email,
           phone: $scope.user.phone,
-          member: $scope.user.member,
+          membertype: $scope.user.member,
           nominated: $scope.user.nominated,
           interests: $scope.user.interests,
           other: $scope.user.other,

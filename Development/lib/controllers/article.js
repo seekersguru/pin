@@ -26,8 +26,12 @@ _ = require('lodash');
 exports.create = function(req, res, next) {
 
 	var data = _.pick(req.body, 'type') ,
-	uploadPath =  '/uploads',
-	file = req.files.file,
+	uploadPath =  '/uploads';
+	console.log(req.files);
+	if(req.files && req.files.file)
+	{
+
+	var file = req.files.file,
 	extension=path.extname(file.name);
 
 	var originalName=Date.now()+extension;
@@ -65,6 +69,21 @@ exports.create = function(req, res, next) {
 
         });
       });
+  }
+  else
+  {
+       	console.log(req.body);
+        	req.body.tags=req.body.tags;
+        	var article=new Article(req.body);
+        	article.save(function(err,article){
+        		if(err){
+        			console.log(err);
+        			return res.json(400, err);
+        		} 
+        		return res.json({article:article});
+        	});
+
+  }
   };
 
 //update

@@ -180,12 +180,16 @@
     <div>
 
       <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
-      <div ng-if='articles.media.extension.indexOf("image") > -1' class="pull-right">
+      <div ng-if='!articles.media' class="pull-right">
+        <img src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
+
+      </div>
+      <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="pull-right">
         <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
 
         <img ng-if="articles.media.path"  ng-src="../{{articles.media.path}}" title="{{articles.title}}" class="img-responsive">
       </div>
-      <div ng-if='articles.media.extension.indexOf("video") > -1' class="pull-right">
+      <div ng-if='articles.media && articles.media.extension.indexOf("video") > -1' class="pull-right">
         <videogular vg-theme='config.theme' >
           <vg-media 
           vg-src="config.sources" 

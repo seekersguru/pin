@@ -108,6 +108,12 @@ angular.module('pinApp', [
     authenticate: true
 
   })
+  .when('/share', {
+    templateUrl: 'partials2/share',
+    controller:'ArticleAddCtrl',
+    authenticate: true
+
+  })
   .when('/meet', {
     templateUrl: 'partials2/meet',
     authenticate: true
@@ -246,14 +252,16 @@ title: 'Settings'
           setTimeout(function(){
   var bodyHeight = $("body").height();
   var vwptHeight = $(window).height();
-  // alert(vwptHeight+"--"+bodyHeight);
-  console.log($("footer#footer-bg"));
-  if (vwptHeight > bodyHeight) {
+  var navHeight=$("nav").height();
+  var footerHeight=$("footer").height();
+  // alert(vwptHeight+"--"+bodyHeight+"--"+navHeight+"--"+footerHeight);
+  // console.log($("footer#footer-bg"));
+  if (vwptHeight-footerHeight > bodyHeight) {
     $("footer#footer-bg").css("position","absolute").css("bottom",0);
   }else{
     $("footer#footer-bg").css("position","relative").css("bottom","");
   }
-  },1000);
+  },100);
     });
   
     $rootScope.$on('$routeChangeSuccess', function () {
@@ -294,3 +302,18 @@ title: 'Settings'
   
   });
 // .constant('scalingFactor', {tshirt: 12, laptop:6.7478, poster:10.844, canvas: 10.844});
+ $(document).ready(function(){
+ setTimeout(function(){
+  var bodyHeight = $("body").height();
+  var vwptHeight = $(window).height();
+  var navHeight=$("nav").height();
+  var footerHeight=$("footer").height();
+  // alert(vwptHeight+"--"+bodyHeight+"--"+navHeight+"--"+footerHeight);
+  // console.log($("footer#footer-bg"));
+  if (vwptHeight-footerHeight > bodyHeight) {
+    $("footer#footer-bg").css("position","absolute").css("bottom",0);
+  }else{
+    $("footer#footer-bg").css("position","relative").css("bottom","");
+  }
+  },100);
+});
