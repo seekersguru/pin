@@ -4,6 +4,14 @@ angular.module('pinApp')
   .controller('RegisterCtrl',['$scope','$location','$rootScope','Auth', function ($scope, $location,$rootScope ,Auth) {
     // $scope.user = {};
     $scope.errors = {};
+    $scope.user={
+
+    'member':'Member type',
+    'interests':'Interests',
+    'address':{
+      'city':''
+    }
+    };
     // $scope.email = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
      $scope.checkUsername =function(form){
       form['username'].$setValidity('mongoose', true);

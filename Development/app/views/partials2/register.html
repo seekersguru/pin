@@ -27,8 +27,9 @@
         </div> -->
 
         <div class="row">
-           <div class="form-group" ng-class="{'has-error':form.fullname.$error.required && submitted,'has-success':form.fullname.$valid && submitted}">
-           <div class="col-lg-6"><input required type="text" name="fullname" class="form-control" placeholder="Family Office / Family Name " ng-model="user.fullname"/>
+           <!-- <div class="form-group" ng-class="{'has-error':form.fullname.$error.required && submitted,'has-success':form.fullname.$valid && submitted}"> -->
+           <div class="form-group" >
+           <div class="col-lg-6"><input type="text" name="fullname" class="form-control" placeholder="Family Office / Family Name " ng-model="user.fullname"/>
            <p class="text-danger" ng-show="form.fullname.$error.required && submitted">Please fill FullName .</p>
        </div>
            </div>
@@ -47,8 +48,8 @@
 
           <div class="row">
            <div class="form-group" ng-class="{'has-error': form.username.$error.required && submitted,'has-success':form.username.$valid && submitted}">
-           <div class="col-lg-6"><input required type="text" name="username" class="form-control" placeholder="Alias " ng-model="user.username" ng-blur="checkUsername(form)"/>
-            <p class="text-danger" ng-show="form.username.$error.required && submitted && !form.username.$error.mongoose" >Please fill your alias name.</p>
+           <div class="col-lg-6"><input required type="text" name="username" class="form-control" placeholder="Alias/Username " ng-model="user.username" ng-blur="checkUsername(form)"/>
+            <p class="text-danger" ng-show="form.username.$error.required && submitted && !form.username.$error.mongoose" >Please fill your alias name or username.</p>
             <p class="text-danger" ng-show="form.username.$error.mongoose">
             {{ errors.username }}
            </p>
@@ -65,19 +66,18 @@
 
 <div class="row register-form-row-pad">
 <div class="col-lg-4 paddingr-7">
-<div class="form-group"  ng-class="{'has-error':form.address.$error.required && submitted,'has-success':form.address.$valid && submitted}">
+<div class="form-group"  >
               
-<input required type="text" name="address" ng-model="user.address.street" class="form-control" placeholder="Street Address *"/>
-<p class="text-danger" ng-show="form.address.$error.required && submitted">Please fill Street Address .</p>
+<input type="text" name="address" ng-model="user.address.street" class="form-control" placeholder="Street Address *"/>
 
  </div>
 </div>
 
 <div class="col-lg-4 paddingr-7 paddingl-7">
-<div class="form-group">
-<input type="text" name="city" ng-model="user.address.city" class="form-control" placeholder="City"/>
-
-   </div>
+<div class="form-group" ng-class="{'has-error':form.city.$error.required && submitted,'has-success':form.city.$valid && submitted}">
+<input type="text" required name="city" ng-model="user.address.city" class="form-control" placeholder="City"/>
+<p class="text-danger" ng-show="form.city.$error.required && submitted">Please fill city name. </p>
+  </div>
 </div>
 
 <div class="col-lg-4 paddingl-7">
@@ -103,9 +103,9 @@
 </div>
 
 <div class="col-lg-6 paddingl-7">
-<div class="form-group" ng-class="{'has-error':form.phone.$error.required && submitted,'has-success':form.phone.$valid && submitted}">
-              <input required type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone"/>
-              <p class="text-danger" ng-show="form.phone.$error.required && submitted">Please fill Phone/Mobile.</p>
+<div class="form-group" >
+              <input  type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone"/>
+              <!-- <p class="text-danger" ng-show="form.phone.$error.required && submitted">Please fill Phone/Mobile.</p> -->
            </div>
 </div>
 
@@ -119,9 +119,9 @@
 <div class="col-lg-6 paddingr-7">
 <div class="form-group">             
  <select class="form-control" name="member" ng-model="user.member">
-    <option>Member type </option>
-    <option>services listed in service directory</option>
-    <option>events type listed in events
+    <option value="Member type">Member type </option>
+    <option value="services listed in service directory">services listed in service directory</option>
+    <option value="events type listed in events">events type listed in events
 </option>
    
   </select>
@@ -129,8 +129,10 @@
 </div>
 
 <div class="col-lg-6 paddingl-7">
-<div class="form-group">
- <input type="text" name="nominated" class="form-control" placeholder="Nominated by" ng-model="user.nominated"/>
+<div class="form-group" ng-class="{'has-error':form.nominated.$error.required && submitted,'has-success':form.nominated.$valid && submitted}">
+ <input type="text" required name="nominated" class="form-control" placeholder="Nominated by" ng-model="user.nominated"/>
+<p class="text-danger" ng-show="form.nominated.$error.required && submitted">Please fill nominated name. </p>
+
 </div>
 </div>
 
@@ -140,10 +142,10 @@
 <div class="row">
 <div class="col-lg-6 paddingr-7">
 <div class="form-group">             
- <select class="form-control" name="interests" ng-model="interests">
-    <option>Interests </option>
-    <option>services listed in service directory</option>
-    <option>events type listed in events
+ <select class="form-control" name="interests" ng-model="user.interests">
+    <option value="Interests">Interests </option>
+    <option value="services listed in service directory">services listed in service directory</option>
+    <option value="events type listed in events">events type listed in events
 </option>
    
   </select>
