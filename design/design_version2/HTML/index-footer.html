@@ -75,6 +75,8 @@
 
 
 
+
+
 <footer id="footer-bg">
         <div class="footer-above">
             <div class="container-head">
@@ -103,45 +105,31 @@
         </div>
 
     </footer>
+<style>
+#footer-bg.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
 
-
+#main-footer {
+    width: 100%;
+    height: 350px;
+    background: #111;
+}
+</style>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript">
-$(window).bind("load", function() { 
-       
-       var footerHeight = 0,
-           footerTop = 0,
-           $footer = $("#footer-bg");
-           
-       positionFooter();
-       
-       function positionFooter() {
-       
-                footerHeight = $footer.height();
-                footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
-       
-               if ( ($(document.body).height()+footerHeight) < $(window).height()) {
-                   $footer.css({
-                        position: "absolute"
-                   }).animate({
-                        top: footerTop
-                   })
-               } else {
-                   $footer.css({
-                        position: "static"
-                   })
-               }
-               
-       }
-
-       $(window)
-               .scroll(positionFooter)
-               .resize(positionFooter)
-               
+$(document).ready(function() {
+  var bodyHeight = $("body").height();
+  var vwptHeight = $(window).height();
+  if (vwptHeight > bodyHeight) {
+    $("footer#footer-bg").css("position","absolute").css("bottom",0);
+  }
 });
     </script>
   
