@@ -171,7 +171,9 @@ angular.module('pinApp', [
         templateUrl: 'partials2/admin/adminpanel',
         controller: 'AdminPanelCtrl',
         title: 'Admin Panel',
-        authenticate: true
+        authenticate: true,
+        admin: true
+
       })
 .when('/settings', {
 templateUrl: 'partials2/settings',
@@ -225,40 +227,60 @@ title: 'Settings'
       if (next.  authenticate && !Auth.isLoggedIn()) {
         $location.path('/login');
       }
+       if (next.  admin && !Auth.isAdmin()) {
+          $location.path('/home');
+        }
+      
+
+
+          setTimeout(function(){
+  var bodyHeight = $("body").height();
+  var vwptHeight = $(window).height();
+  // alert(vwptHeight+"--"+bodyHeight);
+  console.log($("footer#footer-bg"));
+  if (vwptHeight > bodyHeight) {
+    $("footer#footer-bg").css("position","absolute").css("bottom",0);
+  }else{
+    $("footer#footer-bg").css("position","relative").css("bottom","");
+  }
+  },1000);
     });
   
-    // $rootScope.$on('$routeChangeSuccess', function () {
-    //    var footerHeight = 0,
-    //        footerTop = 0,
-    //        $footer = $("#footer-bg");
+    $rootScope.$on('$routeChangeSuccess', function () {
+       // var footerHeight = 0,
+       //     footerTop = 0,
+       //     $footer = $("#footer-bg");
            
-    //    positionFooter();
+       // positionFooter();
        
-    //    function positionFooter() {
+       // function positionFooter() {
        
-    //             footerHeight = $footer.height();
-    //             footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
+       //          footerHeight = $footer.height();
+       //          footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
        
-    //            if ( ($(document.body).height()+footerHeight) < $(window).height()) {
-    //                $footer.css({
-    //                     position: "absolute"
-    //                }).animate({
-    //                     top: footerTop
-    //                })
-    //            } else {
-    //                $footer.css({
-    //                     position: "static"
-    //                })
-    //            }
+       //         if ( ($(document.body).height()+footerHeight) < $(window).height()) {
+       //             $footer.css({
+       //                  position: "absolute"
+       //             }).animate({
+       //                  top: footerTop
+       //             })
+       //         } else {
+       //             $footer.css({
+       //                  position: "static"
+       //             })
+       //         }
                
-    //    }
+       // }
 
-    //    $(window)
-    //            .scroll(positionFooter)
-    //            .resize(positionFooter);
+       // $(window)
+       //         .scroll(positionFooter)
+       //         .resize(positionFooter);
      
 
-    // });
+
+
+
+    });
   
   });
 // .constant('scalingFactor', {tshirt: 12, laptop:6.7478, poster:10.844, canvas: 10.844});

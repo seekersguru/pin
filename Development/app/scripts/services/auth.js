@@ -122,6 +122,18 @@ angular.module('pinApp')
         var user = $rootScope.currentUser;
         return !!user;
       },
+      /**
+       * Simple check to see if a user is logged in
+       * 
+       * @return {Boolean}
+       */
+      isAdmin: function() {
+        if($rootScope.currentUser && $rootScope.currentUser.role === 'user'){
+          return false;
+        }else{
+          return true;
+        }
+      },
 
       checkUsername:function(username,callback){
         var cb = callback || angular.noop;
