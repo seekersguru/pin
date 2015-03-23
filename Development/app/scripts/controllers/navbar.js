@@ -37,7 +37,7 @@ angular.module('pinApp')
         }
       })
       .catch( function(err) {
-        $location.path('/login');
+        $location.path('/login').search({'loginError': 1});
         err = err.data;
         $scope.errors.field = err.message.field;
         $scope.errors.message = err.message.message;

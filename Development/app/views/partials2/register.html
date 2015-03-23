@@ -22,9 +22,9 @@
  <h1>Register with us</h1> 
 <div class="register-form-hr"></div>
         <form class="register-form"  role="form"  name="form"  ng-submit="register(form)" novalidate>
-        <div class="alert alert-success" role="alert" ng-show="registerDone">
+        <!-- <div class="alert alert-success" role="alert" ng-show="registerDone">
             You are successfully register. For Login Please <a href="/login"><b>Click Here</b></a>
-        </div>
+        </div> -->
 
         <div class="row">
            <div class="form-group" ng-class="{'has-error':form.fullname.$error.required && submitted,'has-success':form.fullname.$valid && submitted}">
@@ -58,8 +58,8 @@
            
 </div>
 <div class="col-lg-3"> <button class="btn Check-availability" type="button" id="checkmessage" ng-click="checkUsername(form)" ng-disabled="checkusername">   Check Availability </button></div>
-           </div>
-           </div>
+   </div>
+ </div>
 
 
 
@@ -173,9 +173,9 @@
             </div>
 
 </div>
-<p><span>*</span> Admin will check the nominated by before approving membership;<br> 
+<!-- <p><span>*</span> Admin will check the nominated by before approving membership;<br> 
    will also put family into a Wealth band (30m+, 5-30m, <5m)</p>
-
+ -->
 
    <button class="btn register-bt" type="submit" >
               

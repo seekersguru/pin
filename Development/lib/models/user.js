@@ -34,7 +34,7 @@ var UserSchema = new Schema({
     token: String,
     validTill : Date
   },
-  role: {type: String, default: 'user', 'enum' : ['user','admin']},
+  role: {type: String, default: 'user', 'enum' : ['user','admin','expert']},
   hashedPassword: String,
   provider: String,
   salt: String,

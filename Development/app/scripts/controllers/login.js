@@ -5,8 +5,9 @@ angular.module('pinApp')
     $scope.user = {};
     $scope.errors = {};
     $rootScope.changeFooterNishant = 1;
-    
+    console.log(Object.keys($location.search())[0]);
     $scope.facebookLogin = Auth.facebookLogin;
+    $scope.registerStatus = Object.keys($location.search())[0] || 'test';
     
     $scope.login = function(form) {
 

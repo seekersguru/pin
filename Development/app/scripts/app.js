@@ -61,11 +61,14 @@ angular.module('pinApp', [
   })
   .when('/login', {
     templateUrl: 'partials2/login',
-    controller:'LoginCtrl'
+    controller:'LoginCtrl',
+    authenticate: false
   })
   .when('/register', {
     templateUrl: 'partials2/register',
-    controller:'RegisterCtrl'
+    controller:'RegisterCtrl',
+    authenticate: false
+
   })
   .when('/video', {
     templateUrl: 'partials2/video'
@@ -219,14 +222,21 @@ title: 'Settings'
       if ($location.path() !== '/login') {
         $rootScope.redirectPath = $location.path();
       }
+
       $rootScope.ogTitle = "PIN";
       $rootScope.ogDescription = "PIN Description";
       $rootScope.ogImage = "";
       $rootScope.ogUrl =  "http://"+$location.host()+$location.path();
 
+      if (next.  authenticate == false && Auth.isLoggedIn()) {
+        $location.path('/articles/01');
+      }
+
       if (next.  authenticate && !Auth.isLoggedIn()) {
         $location.path('/login');
       }
+
+      
        if (next.  admin && !Auth.isAdmin()) {
           $location.path('/home');
         }

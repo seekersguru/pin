@@ -81,6 +81,7 @@ angular.module('pinApp')
           // Account created, redirect to home
           $scope.emailSent = true;
           $scope.registerDone=1;
+          $location.path('/login').search({'register': 1});
         })
         .catch( function(err) {
           err = err.data;

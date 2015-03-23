@@ -37,7 +37,7 @@
               {{currentUser.name}} <b class="down-arow"><img src="images/arow-down.png" alt=""></b></div></a>
               <ul class="dropdown-menu">
                 <li ng-if="currentUser.role != 'user'"><a href="/post-article"><i class="fa fa-pencil-square-o"></i> Create Article</a></li>
-                <li ng-if="currentUser.role != 'user'"><a href="/myarticles/01"><i class="fa fa-eye"></i> My Article</a></li>
+                <!-- <li ng-if="currentUser.role != 'user'"><a href="/myarticles/01"><i class="fa fa-eye"></i> My Article</a></li> -->
                 <li><a href="/articles/01"><i class="fa fa-eye"></i> View Article</a></li>
                 <li class="divider"></li>
                 <li ng-if="currentUser.role != 'user'"><a href="/admin"><i class="fa fa-wrench"></i> Admin</a></li>
