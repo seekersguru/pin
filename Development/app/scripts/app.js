@@ -1,13 +1,26 @@
 'use strict';
 function adjust_window_code(){
-	if(window.location.pathname == '/register' || window.location.pathname=='/who-is-this-site-for' ||window.location.pathname == '/what-we-do' ||window.location.pathname=='/who-we-are'  )
-  {
-    $("footer#footer-bg").css("position","relative").css("bottom","");
+	// if(window.location.pathname == '/register' || window.location.pathname=='/who-is-this-site-for' ||window.location.pathname == '/what-we-do' ||window.location.pathname=='/who-we-are'|| window.location.pathname=='/home'  )
+ //  {
+ //    // $("footer#footer-bg").css("position","relative").css("bottom","");
+ //    $("footer#footer-bg").css("position","absolute").css("bottom",0);
+ //  }
+ //  else{
+
+ //  $("#container_div").css("min-height",function(){return $(window).height() - $("nav").height() -$("footer").height();})
+ //  } 
+
+if ($("footer").length){
+    
+    var append_footer=$("footer").html();
+    if (append_footer){
+      alert(append_footer);
+      $("footer").html("");
+      $("#container_div").html(append_footer + $("#container_div").html());
+      alert(1);
+    }
+    //$("#container_div").html(append_footer);
   }
-  else{
-    $("footer#footer-bg").css("position","absolute").css("bottom",0);
-  } 
-  // $("#container_div").css("min-height",function(){return $(window).height() - $("nav").height() -$("footer").height();})
 
   // }
 }
@@ -287,19 +300,33 @@ title: 'Settings'
        if (next.  admin && !Auth.isAdmin()) {
           $location.path('/home');
         }
+setTimeout(function(){
+  var bodyHeight = $("body").height();
+  var vwptHeight = $(window).height();
+  var navHeight=$("nav").height();
+  var footerHeight=$("footer").height();
+  var containerHeight=$("#container_div").height();
+  // alert(vwptHeight+"--"+bodyHeight+"--"+navHeight+"--"+footerHeight+"--"+containerHeight);
+  // console.log($("footer#footer-bg"));
+  if (vwptHeight-footerHeight-navHeight >= containerHeight) {
+    $("footer#footer-bg").css("position","absolute").css("bottom",0);
+  }else{
+    $("footer#footer-bg").css("position","relative").css("bottom","");
+  }
+  },1000);
 
     });
   
     $rootScope.$on('$routeChangeSuccess', function () {
-    	adjust_window()
-    	$(window).resize(
-    			function(){
-    				adjust_window();
+    	// adjust_window()
+    	// $(window).resize(
+    	// 		function(){
+    	// 			adjust_window();
  
-    			}
+    	// 		}
     	
 
-    	);
+    	// );
     });
   
   });
