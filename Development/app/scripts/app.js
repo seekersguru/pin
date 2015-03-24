@@ -4,14 +4,21 @@ function adjust_window_code(){
 }
 function adjust_window(){
 	adjust_window_code();
-	setTimeout(function(){
+	// setTimeout(function(){
 		
-	},1000);
-	setTimeout(function(){
-		adjust_window_code()
+	// },1000);
+  setTimeout(function(){
+    adjust_window_code();
+  },100);
+
+  setTimeout(function(){
+		adjust_window_code();
 	},3000);
 	
 }
+// var tooltipToggle = angular.module('pinApp').Directives.TooltipToggle.directiveSettings();
+// var popoverToggle = angular.module('pinApp').Directives.TooltipToggle.directiveSettings('popover');
+
 angular.module('pinApp', [
   'ngCookies',
   'ngResource',
@@ -33,10 +40,23 @@ angular.module('pinApp', [
   'com.2fdevs.videogular.plugins.poster',
   'ngGrid'
   ])
+// .directive(tooltipToggle.directiveName, tooltipToggle.directive)
+// .config(tooltipToggle.directiveConfig)
+// .directive(popoverToggle.directiveName, popoverToggle.directive)
+// .config(popoverToggle.directiveConfig)
 .value('nickName', 'anonymous')
 .config(function( $compileProvider ) {
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(http|https|ftp|file|blob):|data:image\//);
 })
+.config(['$tooltipProvider', function($tooltipProvider){
+  $tooltipProvider.setTriggers({
+    'mouseenter': 'mouseleave',
+    'click': 'click',
+    'focus': 'blur',
+    'never': 'mouseleave' // <- This ensures the tooltip will go away on mouseleave
+  });
+}])
+
 .config(function ($routeProvider, $locationProvider, $httpProvider) {
   $routeProvider
   .when('/home', {
