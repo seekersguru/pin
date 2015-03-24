@@ -1,6 +1,15 @@
 'use strict';
 function adjust_window_code(){
-	$("#container_div").css("min-height",function(){return $(window).height() - $("nav").height() -$("footer").height();})
+	if(window.location.pathname == '/register' || window.location.pathname=='/who-is-this-site-for' ||window.location.pathname == '/what-we-do' ||window.location.pathname=='/who-we-are'  )
+  {
+    $("footer#footer-bg").css("position","relative").css("bottom","");
+  }
+  else{
+    $("footer#footer-bg").css("position","absolute").css("bottom",0);
+  } 
+  // $("#container_div").css("min-height",function(){return $(window).height() - $("nav").height() -$("footer").height();})
+
+  // }
 }
 function adjust_window(){
 	adjust_window_code();
@@ -286,8 +295,10 @@ title: 'Settings'
     	$(window).resize(
     			function(){
     				adjust_window();
+ 
     			}
     	
+
     	);
     });
   
