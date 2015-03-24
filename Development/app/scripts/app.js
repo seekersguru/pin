@@ -1,6 +1,16 @@
 'use strict';
-function adjust_window(){
+function adjust_window_code(){
 	$("#container_div").css("min-height",function(){return $(window).height() - $("nav").height() -$("footer").height();})
+}
+function adjust_window(){
+	adjust_window_code();
+	setTimeout(function(){
+		
+	},1000);
+	setTimeout(function(){
+		adjust_window_code()
+	},3000);
+	
 }
 angular.module('pinApp', [
   'ngCookies',
