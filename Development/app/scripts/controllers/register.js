@@ -6,8 +6,8 @@ angular.module('pinApp')
     $scope.errors = {};
     $scope.user={
 
-    'member':'Family',
-    'interests':'Topic listed in CMS',
+    'member':'',
+    'interests':'',
     'address':{
       'city':''
     }
