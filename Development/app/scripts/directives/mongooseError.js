@@ -58,3 +58,65 @@ angular
     }
   };
 });
+
+angular.module('pinApp').directive('validationMessage', function () {
+        return {
+            restrict: 'A',
+            priority: 1000,
+            require: '^validationTooltip',
+            link: function (scope, element, attr, ctrl) {
+                ctrl.$addExpression(attr.ngIf || true);
+            }
+        }
+    });
+
+angular.module('pinApp').directive('validationTooltip', function ($timeout) {
+        return {
+            restrict: 'E',
+            transclude: true,
+            require: '^form',
+            scope: {},
+            template: '<span class="label label-danger span1" ng-show="errorCount > 0">hover to show err</span>',
+            controller: function ($scope) {
+                var expressions = [];
+                $scope.errorCount = 0;
+                
+                this.$addExpression = function (expr) {
+                    expressions.push(expr);
+                }
+                $scope.$watch(function () {
+                    var count = 0;
+                    angular.forEach(expressions, function (expr) {
+                        if ($scope.$eval(expr)) {
+                            ++count;
+                        }
+                    });
+                    return count;
+
+                }, function (newVal) {
+                    $scope.errorCount = newVal;
+                });
+
+            },
+            link: function (scope, element, attr, formController, transcludeFn) {
+                scope.$form = formController;
+
+                transcludeFn(scope, function (clone) {
+                    var badge = element.find('.label');
+                    var tooltip = angular.element('<div class="validationMessageTemplate tooltip-danger" />');
+                    tooltip.append(clone);
+                    element.append(tooltip);
+                    $timeout(function () {
+                        scope.$field = formController[attr.target];
+                        badge.tooltip({
+                            placement: 'right',
+                            html: true,
+                            title: clone
+                        });
+
+                    });
+                });
+            }
+
+        }
+    });
