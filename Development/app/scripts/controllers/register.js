@@ -6,8 +6,8 @@ angular.module('pinApp')
     $scope.errors = {};
     $scope.user={
 
-    'member':'Member type',
-    'interests':'Interests',
+    'member':'Family',
+    'interests':'Topic listed in CMS',
     'address':{
       'city':''
     }
@@ -32,8 +32,8 @@ angular.module('pinApp')
 
           }else{
              form['username'].$setValidity('mongoose', true);
-             $scope.errors['username'] = 'Hurrey username available :)';
-             $scope.checkmessage='Hurrey username available :)'; 
+             $scope.errors['username'] = 'Username available. ';
+             $scope.checkmessage='Username available.'; 
           }
           $scope.checkusername=0;
         })
