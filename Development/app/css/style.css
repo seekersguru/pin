@@ -101,7 +101,8 @@ z-index: 5;
 .read-more a:hover{font-size:15px; font-style:italic; color:#193164;}
 
 .footer-learning{background-color:#222222; border-top:solid 7px #b59759;}
-#footer-bg{width:100%; position: absolute; bottom: 0px; }
+#footer-bg{width:100%; position: relative; bottom: 0px; }
+
 .footer-learning ul{margin:0px; padding: 0px; list-style:none; clear: both;  }
 .footer-learning ul li {margin:0px; padding: 0px; list-style:none;    float: left; }
 .footer-learning ul li a {margin:0px; padding: 0px; list-style:none; color: #dddddd; padding-left:20px; padding-right:20px;      padding-top: 15px;float: left; }

@@ -249,19 +249,65 @@ title: 'Settings'
       
 
 
-          setTimeout(function(){
-  var bodyHeight = $("body").height();
-  var vwptHeight = $(window).height();
-  var navHeight=$("nav").height();
-  var footerHeight=$("footer").height();
+  setTimeout(function(){
+//  var bodyHeight = $("body").height();
+//  var vwptHeight = $(window).height();
+//  var navHeight=$("nav").height();// header 
+//  var footerHeight=$("footer").height();
+  //login | noon login g\footerrr
   // alert(vwptHeight+"--"+bodyHeight+"--"+navHeight+"--"+footerHeight);
   // console.log($("footer#footer-bg"));
-  if (vwptHeight-footerHeight > bodyHeight) {
-    $("footer#footer-bg").css("position","absolute").css("bottom",0);
-  }else{
-    $("footer#footer-bg").css("position","relative").css("bottom","");
-  }
-  },100);
+  
+  //$("footer#footer-bg").css("position","relative").css("bottom","");
+//  if (vwptHeight-footerHeight > bodyHeight) {
+//    //$("footer#footer-bg").css("position","absolute").css("bottom",0);
+//  }else{
+//    //$("footer#footer-bg").css("position","relative").css("bottom","");
+//  }
+/*  if ($("#container_div").height() < $("body").height())
+		$("#container_div").height(
+				$("body").height()-$("footer").height()
+				+$("#navbar").height()
+			) 
+ */ 
+  
+   
+//	  var myWidth = 0, myHeight = 0;
+//	  if( typeof( window.innerWidth ) == 'number' ) {
+//	    //Non-IE
+//	    myWidth = window.innerWidth;
+//	    myHeight = window.innerHeight;
+//	  } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+//	    //IE 6+ in 'standards compliant mode'
+//	    myWidth = document.documentElement.clientWidth;
+//	    myHeight = document.documentElement.clientHeight;
+//	  } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+//	    //IE 4 compatible
+//	    myWidth = document.body.clientWidth;
+//	    myHeight = document.body.clientHeight;
+//	  }
+//	  $("#container_div").height(myHeight - $("nav").height() - $("footer").height())
+	 //;  //772
+	 //  //78
+	 // //91
+	 ////548
+	 
+	 //min_height=
+	 alert(1);
+	 console.log($("body").height()); //772  +153
+	 console.log($("nav").height()); //78
+	 console.log($("footer").height());//91
+	 console.log($("#container_div").height());//548
+	 console.log(window.outerHeight);//1000   -25
+	 console.log(screen.height);//1024    - 50
+
+	 $("#container_div").css("min-height",function(){return 975 - $("nav").height() -2*$("footer").height();})
+	 
+	 
+ 
+  
+  
+  },5000);
     });
   
     $rootScope.$on('$routeChangeSuccess', function () {

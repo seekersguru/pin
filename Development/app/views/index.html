@@ -49,6 +49,7 @@
 
   </head>
   <body>
+ 
    <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -56,7 +57,7 @@
     <!-- Add your site or application content here -->
     <% if (css) {  %>
     <div ng-include="'partials2/navbar'"></div>
-    <div ng-view="" autoscroll="true"></div>
+    <div id ='container_div' ng-view="" autoscroll="true"></div>
     <div ng-include="'partials2/footer'"></div>
     <% } else {%>
     <div class="container" ng-view=""></div>
