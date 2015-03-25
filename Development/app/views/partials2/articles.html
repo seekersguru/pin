@@ -139,8 +139,9 @@
  <div  ng-repeat="(key,value) in articles" class="article-post"  ng-class="{false:'col-lg-8 {{value.category}}',true:'col-lg-4 {{value.category}}'}[!value.media || value.media.extension.indexOf('image') > -1]" >
   <div class="post-box">
       <div class="" ng-class="color[value.category].caption">
-       <div><a ng-href="/articles/view/{{value._id}}"><img src="images/post-hover-img.png" alt=""></a></div>
+       <a ng-href="/articles/view/{{value._id}}"><div><img src="images/post-hover-img.png" alt=""></div>
        <div class="read-more"><a ng-href="/articles/view/{{value._id}}">Read more</a></div>
+       </a>
       </div>
 
 <div class="" ng-class="color[value.category].colorclass">
