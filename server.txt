@@ -1,0 +1,11 @@
+chmod 400 pin.pem
+Connect to your instance using its Public IP:
+52.11.107.128
+Example:
+ssh -i pin.pem ubuntu@52.11.107.128
+
+nishusaxena@gmail.com / Nishu@26
+
+
+Site is hosted on 
+pin.innovationguru.in
