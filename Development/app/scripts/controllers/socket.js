@@ -7,6 +7,7 @@ angular.module('pinApp')
     nickName=$rootScope.currentUser.name;
   }
 
+
   $scope.currentDate=new Date().getTime();
   $scope.chatlist=[
   {
@@ -20,6 +21,14 @@ angular.module('pinApp')
   ];
 
  $scope.chatid=$location.search()['cid'] || 'nochat';
+
+  $scope.chatDetail = function(form) {
+    $scope.submitted = true;
+    if(form.$valid) {
+      $location.path('/chat-start').search('cid',$scope.chatid);
+
+    }
+  };
 
   $scope.nickName = nickName;
   $scope.messageLog = 'Ready to chat!';
