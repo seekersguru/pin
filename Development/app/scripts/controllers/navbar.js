@@ -37,11 +37,11 @@ angular.module('pinApp')
         }
       })
       .catch( function(err) {
-        $location.path('/login').search({'loginError': 1});
         err = err.data;
-        $scope.errors.field = err.message.field;
-        $scope.errors.message = err.message.message;
-        $scope.errors.type = err.message.type;
+        $location.path('/login').search({'loginError': err.message.message,'field':err.message.field});
+        // $scope.errors.field = err.message.field;
+        // $scope.errors.message = err.message.message;
+        // $scope.errors.type = err.message.type;
       });
     }
 	};

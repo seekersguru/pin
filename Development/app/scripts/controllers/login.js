@@ -8,7 +8,10 @@ angular.module('pinApp')
     console.log(Object.keys($location.search())[0]);
     $scope.facebookLogin = Auth.facebookLogin;
     $scope.registerStatus = Object.keys($location.search())[0] || 'test';
+    $scope.errormessage=$location.search()[$scope.registerStatus] || '';
+    $scope.field=Object.keys($location.search())[1] || 'field';
     
+
     $scope.login = function(form) {
 
       $scope.submitted = true;
@@ -27,6 +30,7 @@ angular.module('pinApp')
           } else {
             $location.path('/articles/01');
           }
+          $scope.registerStatus='test';
         })
         .catch( function(err) {
           err = err.data;
@@ -36,6 +40,8 @@ angular.module('pinApp')
             form[error.field].$setValidity('mongoose', false);
             $scope.errors[error.field] = error.message;
           });
+          $scope.registerStatus='test';
+          
         });
       }
     };
