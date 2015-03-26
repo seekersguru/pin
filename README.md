@@ -95,6 +95,13 @@ go to video-demo folder
 then see at http:/0.0.0.0:3001   
 
 
+
+During Development make sure best practices 
+e.g.
+https://engineering.gosquared.com/making-dashboard-faster
+
+https://www.airpair.com/node.js/posts/top-10-mistakes-node-developers-make
+
 ================================
 (',')   Keep Enjoying (',')
 
