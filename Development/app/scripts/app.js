@@ -101,6 +101,11 @@ angular.module('pinApp', [
     controller:'SocketCtrl',
     authenticate: true
   })
+  .when('/chat-detail', {
+    templateUrl: 'partials2/chat-detail',
+    controller:'SocketCtrl',
+    authenticate: true
+  })
   .when('/chat-listing', {
         templateUrl: 'partials2/chat-listing',
         controller: 'SocketCtrl',
@@ -238,13 +243,17 @@ angular.module('pinApp', [
         admin: true
 
       })
+ .when('/404', {
+  templateUrl: 'partials2/404',
+  title: 'not Found'
+ })
 .when('/settings', {
 templateUrl: 'partials2/settings',
 // controller: 'SettingsCtrl',
 title: 'Settings'
 })
   .otherwise({
-    redirectTo: '/home'
+    redirectTo: '/404'
   });
 
   $locationProvider.html5Mode(true);

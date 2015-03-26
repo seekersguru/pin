@@ -346,9 +346,11 @@ li.dropdown{list-style:none; }
 .articles-section-2 .btn-gold a{font-size:18px; padding:8px 15px 8px 15px;   color:#fff; background-color:#839735;   line-height: 20px;}
 .articles-section-3{display:block; border: solid 1px #d8d8d8; border-bottom:solid 2px #000000; margin-top:35px;   background-color:#fff;}
 .articles-section-3 .btn-gold a{font-size:18px; padding:8px 15px 8px 15px;   color:#fff; background-color:#000000;   line-height: 20px;}
+.error-text{padding-left:30%; }
+.error-text h1{font-size:148px; color:#131f37; font-family:arial; margin-bottom: 0px;  }
 
-
-
+.error-text h2{font-size:48px; color:#131f37; margin-top: 0px;  }
+.error-text p{font-size:18px; color:#b59759;   }
 
 .footer-above{background: #212d47; /* Old browsers */
 background: -moz-linear-gradient(top, #212d47 0%, #08132a 100%); /* FF3.6+ */
