@@ -73,6 +73,8 @@ module.exports = function(app) {
   app.put('/api/users/:userid', users.update);
   app.get('/api/users/checkusername/:username',users.checkusername);
   app.get('/user/:id/verify/:token', users.verifyEmail);
+  app.post('/api/users/forgot', users.forgot);
+  app.post('/api/users/:id/recover', users.recover);
   
   
   app.post('/api/session', session.login);

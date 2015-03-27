@@ -75,9 +75,29 @@ gulp.task('scripts', function() {
 
 gulp.task('images', function() {
   return gulp.src('app/images/**/*')
-    .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
+    // .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
     .pipe(gulp.dest('dist/assets/img'))
     .pipe(notify({ message: 'Images task complete' }));
+});
+
+
+/**
+ * [Clone View Section]
+ * @param  {[source html]}
+ * @return {[dist html]}
+ */
+
+gulp.task('views', function() {
+  // Get our index.html
+  gulp.src('app/index.html')
+  // And put it in the dist folder
+  .pipe(gulp.dest('dist/'));
+
+  // Any other view files from app/views
+  gulp.src('./app/views/**/*')
+  // Will be put in the dist/views folder
+  .pipe(gulp.dest('dist/views/'))
+  .pipe(notify({ message: 'views task complete' }));
 });
 
 /**
@@ -96,7 +116,7 @@ gulp.task('clean', function(cb) {
  * command "gulp"
  */
 gulp.task('default', ['clean'], function() {
-    gulp.start('styles', 'scripts', 'images');
+    gulp.start('styles', 'scripts', 'images','views');
 });
 
 

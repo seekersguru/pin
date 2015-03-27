@@ -1,0 +1,75 @@
+<!-- ng-click="facebookLogin()" -->
+<div class="container-fluid po-reletive">
+  <div class="container-head">
+    <div class="row">
+      <div class="pull-left">
+        <div class="mar-back-img">
+          <!-- Become a member section -->
+          <div class="tree-container-inner">
+            <div id="nav">
+              <ul>
+               <li><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li>
+               <li><a href="/what-we-do" ng-class="{active: isActive('/what-we-do')}">what</a></li> 
+               <li><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">about</a></li> 
+               <li><a href="/register" ng-class="{active: isActive('/register')}">join</a></li>  
+             </ul> 
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <div class="inner-section">
+      <div class="panel panel-info ">
+        <div class="panel-body">
+          <div class="col-lg-12">     
+          <h1 style="margin-top:0px;">Reset Password</h1>   
+            <div class="register-form-hr"></div>                 
+            <div class="row login-pad">                                   
+              <div class="col-lg-12 ">
+                <p ng-hide="success">Almost there! Please enter your new password</p>
+                <div class="alert alert-success" role="alert" ng-show="success">
+                  <strong>Done!</strong> Your password has been resetted. Please <a href="/login">login</a> with your new password to continue.
+                </div>
+
+                <form ng-hide="success" class="form" name="form" ng-submit="recover(form)" novalidate>
+                  <input type="hidden" name="token" class="form-control" ng-model="token">
+                  <div class="form-group">
+                    <input type="password" placeholder="Password" required ng-minlength="5" name="password" class="form-control" ng-model="password" mongoose-error/>
+                    <p class="text-danger"
+                    ng-show="(form.password.$error.minlength || form.password.$error.required) && (form.password.$dirty || submitted)">
+                    Password must be at least 5 characters.
+                  </p>
+                </div>
+
+                <div class="form-group">
+                  <input type="password" placeholder="Confirm Password" name="Rpassword" class="form-control" ng-model="Rpassword" 
+                  ng-minlength="5"
+                  required/>
+                  <p class="text-danger"
+                  ng-show="(form.Rpassword.$error.minlength || form.Rpassword.$error.required || password != Rpassword) && (form.Rpassword.$dirty || submitted)" >
+                  Passwords are different.
+                </p>
+              </div>
+
+              <div class="form-group has-error">
+                <p class="text-danger" ng-show="errors.invalid">
+                  The forgot password link is invalid.
+                </p>
+                <p class="text-danger" ng-show="errors.expired">
+                  The forgot password link has expired.
+                </p>
+                <p class="text-danger" ng-show="errors.expired || errors.invalid">
+                  Please try <a href="/forgot">resetting your password</a> again.
+                </p>
+              </div>
+
+              <button type="submit" class="btn register-bt"> Reset </button>
+            </form>     </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

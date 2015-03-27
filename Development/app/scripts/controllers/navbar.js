@@ -28,7 +28,7 @@ angular.module('pinApp')
       })
       .then( function() {
         // Logged in, redirect to home
-        if ($rootScope.redirectPath) {
+        if ($rootScope.redirectPath && $rootScope.redirectPath !== '/register' ) {
           var path = $rootScope.redirectPath;
           $rootScope.redirectPath = undefined;
           $location.path(path);
@@ -38,6 +38,7 @@ angular.module('pinApp')
       })
       .catch( function(err) {
         err = err.data;
+        // $location.path('/login').search({'loginError': err.message.message,'field':err.message.field});
         $location.path('/login').search({'loginError': err.message.message,'field':err.message.field});
         // $scope.errors.field = err.message.field;
         // $scope.errors.message = err.message.message;

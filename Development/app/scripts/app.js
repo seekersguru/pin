@@ -10,15 +10,15 @@ function adjust_window_code(){
  //  $("#container_div").css("min-height",function(){return $(window).height() - $("nav").height() -$("footer").height();})
  //  } 
 
-if ($("footer").length){
-    
-    var append_footer=$("footer").html();
-    if (append_footer){
-      alert(append_footer);
-      $("footer").html("");
-      $("#container_div").html(append_footer + $("#container_div").html());
-      alert(1);
-    }
+ if ($("footer").length){
+
+  var append_footer=$("footer").html();
+  if (append_footer){
+    alert(append_footer);
+    $("footer").html("");
+    $("#container_div").html(append_footer + $("#container_div").html());
+    alert(1);
+  }
     //$("#container_div").html(append_footer);
   }
 
@@ -29,14 +29,14 @@ function adjust_window(){
 	// setTimeout(function(){
 		
 	// },1000);
-  setTimeout(function(){
-    adjust_window_code();
-  },100);
+setTimeout(function(){
+  adjust_window_code();
+},100);
 
-  setTimeout(function(){
-		adjust_window_code();
-	},3000);
-	
+setTimeout(function(){
+  adjust_window_code();
+},3000);
+
 }
 // var tooltipToggle = angular.module('pinApp').Directives.TooltipToggle.directiveSettings();
 // var popoverToggle = angular.module('pinApp').Directives.TooltipToggle.directiveSettings('popover');
@@ -85,6 +85,10 @@ angular.module('pinApp', [
     templateUrl: 'partials2/main'
 
   })
+  .when('/', {
+    templateUrl: 'partials2/main'
+
+  })
   .when('/nishant', {
     templateUrl: 'partials2/nishant',
     controller:'NishantCtrl'
@@ -107,11 +111,11 @@ angular.module('pinApp', [
     authenticate: true
   })
   .when('/chat-listing', {
-        templateUrl: 'partials2/chat-listing',
-        controller: 'SocketCtrl',
-        title: 'Chat Listing',
-       authenticate: true
-     })
+    templateUrl: 'partials2/chat-listing',
+    controller: 'SocketCtrl',
+    title: 'Chat Listing',
+    authenticate: true
+  })
   .when('/connect', {
     templateUrl: 'partials2/connect'
   })
@@ -138,7 +142,7 @@ angular.module('pinApp', [
   .when('/what-we-do', {
     templateUrl: 'partials2/what.html'
   }) 
- .when('/who-we-are', {
+  .when('/who-we-are', {
     templateUrl: 'partials2/about.html'
   })
   .when('/articles/:pageno', {
@@ -146,21 +150,21 @@ angular.module('pinApp', [
     controller:'ArticleCtrl',
     resolve:{
       articles: ['$q', '$route', 'Article', function($q, $route, article) {
-      var deferred = $q.defer();
-      var query = angular.copy($route.current.params);
-      query.limit=25;
-      article.get(query, function(articles) {
-        deferred.resolve(articles.articles);
-      },
-      function(err){
-        deferred.reject();
-      });
-      return deferred.promise;
-    }]
+        var deferred = $q.defer();
+        var query = angular.copy($route.current.params);
+        query.limit=25;
+        article.get(query, function(articles) {
+          deferred.resolve(articles.articles);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
 
-  },
-  authenticate: true
-})
+    },
+    authenticate: true
+  })
   .when('/post-article', {
     templateUrl: 'partials2/post-article',
     controller:'ArticleAddCtrl',
@@ -183,35 +187,35 @@ angular.module('pinApp', [
     controller:'ArticleCtrl',
     resolve:{
       articles: ['$q', '$route', 'Article', function($q, $route, Article) {
-            var deferred = $q.defer();
-            Article.get({articleId: $route.current.params.articleid}, function(article) {
-              deferred.resolve(article);
-            },
-            function(err){
-              deferred.reject();
-            });
-            return deferred.promise;
-          }]
+        var deferred = $q.defer();
+        Article.get({articleId: $route.current.params.articleid}, function(article) {
+          deferred.resolve(article);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
 
-  },
-  authenticate: true
-})
+    },
+    authenticate: true
+  })
   .when('/articles/edit/:id', {
     templateUrl: 'partials2/update-article',
     controller:'ArticleViewEditCtrl',
     resolve: {
-          article: ['$q', '$route', 'Article', function($q, $route, Article) {
-            var deferred = $q.defer();
-            Article.get({articleId: $route.current.params.id}, function(article) {
-              article.author = article.author._id;
-              deferred.resolve(article);
-            },
-            function(err){
-              deferred.reject();
-            });
-            return deferred.promise;
-          }]
+      article: ['$q', '$route', 'Article', function($q, $route, Article) {
+        var deferred = $q.defer();
+        Article.get({articleId: $route.current.params.id}, function(article) {
+          article.author = article.author._id;
+          deferred.resolve(article);
         },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+    },
     authenticate: true    
   })
   .when('/myarticles/:pageno', {
@@ -219,61 +223,77 @@ angular.module('pinApp', [
     controller:'ArticleCtrl',
     resolve:{
       articles: ['$q', '$route', 'Article','$rootScope', function($q, $route, article,$rootScope) {
-      var deferred = $q.defer();
-      var query = angular.copy($route.current.params);
-      query.limit=25;
-      query.author=$rootScope.user;
-      article.get(query, function(articles) {
-        deferred.resolve(articles.articles);
-      },
-      function(err){
-        deferred.reject();
-      });
-      return deferred.promise;
-    }]
+        var deferred = $q.defer();
+        var query = angular.copy($route.current.params);
+        query.limit=25;
+        query.author=$rootScope.user;
+        article.get(query, function(articles) {
+          deferred.resolve(articles.articles);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
 
-  },
-  authenticate: true
-})
- .when('/admin', {
-        templateUrl: 'partials2/admin/adminpanel',
-        controller: 'AdminPanelCtrl',
-        title: 'Admin Panel',
-        authenticate: true,
-        admin: true
-
-      })
- .when('/404', {
-  templateUrl: 'partials2/404',
-  title: 'not Found'
- })
-.when('/settings', {
-templateUrl: 'partials2/settings',
-// controller: 'SettingsCtrl',
-title: 'Settings'
-})
-  .otherwise({
-    redirectTo: '/404'
-  });
-
-  $locationProvider.html5Mode(true);
-
-    // Intercept 401s and redirect you to login
-    $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
-      return {
-        'responseError': function(response) {
-          if(response.status === 401) {
-            $location.path('/login');
-            return $q.reject(response);
-          }
-          else {
-            return $q.reject(response);
-          }
-        }
-      };
-    }]);
+    },
+    authenticate: true
   })
-  .run(function ($rootScope, $location, Auth) {
+
+  .when('/admin', {
+      templateUrl: 'partials2/admin/adminpanel',
+      controller: 'AdminPanelCtrl',
+      title: 'Admin Panel',
+      authenticate: true,
+      admin: true
+  })
+
+  .when('/user/:id/recover/:token', {
+    templateUrl: 'partials2/recover',
+    controller: 'RecoverCtrl',
+    title: 'Recover',
+    authenticate: false
+  })
+
+ .when('/404', {
+    templateUrl: 'partials2/404',
+    title: 'not Found'
+ })
+
+  .when('/forgot', {
+      templateUrl: 'partials2/forgot',
+      controller: 'ForgotCtrl',
+      title: 'Forgot Password',
+      authenticate: false
+  })
+
+.when('/settings', {
+  templateUrl: 'partials2/settings',
+  // controller: 'SettingsCtrl',
+  title: 'Settings'
+})
+
+.otherwise({
+    redirectTo: '/404'
+});
+
+$locationProvider.html5Mode(true);
+  // Intercept 401s and redirect you to login
+$httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
+    return {
+      'responseError': function(response) {
+        if(response.status === 401) {
+          $location.path('/login');
+          return $q.reject(response);
+        }
+        else {
+          return $q.reject(response);
+        }
+      }
+    };
+  }]);
+})
+.run(function ($rootScope, $location, Auth) {
     // var cartIndex = localStorage.cartIndex;
     // var currentIndex = 3;
     // if (!cartIndex || !(parseInt(cartIndex) >= currentIndex)) {
@@ -309,19 +329,23 @@ title: 'Settings'
        if (next.  admin && !Auth.isAdmin()) {
           $location.path('/home');
         }
+
 setTimeout(function(){
   var bodyHeight = $("body").height();
   var vwptHeight = $(window).height();
   var navHeight=$("nav").height();
   var footerHeight=$("footer").height();
   var containerHeight=$("#container_div").height();
+  
   // alert(vwptHeight+"--"+bodyHeight+"--"+navHeight+"--"+footerHeight+"--"+containerHeight);
   // console.log($("footer#footer-bg"));
+  
   if (vwptHeight-footerHeight-navHeight >= containerHeight) {
-    $("footer#footer-bg").css("position","absolute").css("bottom",0);
-  }else{
-    $("footer#footer-bg").css("position","relative").css("bottom","");
-  }
+      $("footer#footer-bg").css("position","absolute").css("bottom",0);
+    }else{
+      $("footer#footer-bg").css("position","relative").css("bottom","");
+    }
+    
   },1000);
 
     });

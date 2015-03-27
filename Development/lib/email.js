@@ -65,6 +65,16 @@ var ActivationEmail = function(user, locals) {
 ActivationEmail.prototype = Object.create(UserEmail.prototype);
 
 /**
+ * Class to send activation user approve email 
+ */
+var AdminApproveEmail = function(user, locals) {
+  UserEmail.call(this, user, 'adminapprove', locals);
+  this.email.subject = 'Admin Approved Your PIN Account';
+};
+
+AdminApproveEmail.prototype = Object.create(UserEmail.prototype);
+
+/**
  * Class to send forgot password email
  */
 var ForgotPasswordEmail = function(user, locals) {
@@ -87,5 +97,6 @@ module.exports = {
   UserEmail: UserEmail,
   ActivationEmail : ActivationEmail,
   ForgotPasswordEmail: ForgotPasswordEmail,
-  ContactUsEmail: ContactUsEmail
+  ContactUsEmail: ContactUsEmail,
+  AdminApproveEmail:AdminApproveEmail
 };

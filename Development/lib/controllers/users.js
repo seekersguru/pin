@@ -6,6 +6,7 @@ passport = require('passport'),
 Email = require('../email').Email,
 ActivationEmail = require('../email').ActivationEmail,
 ForgotPasswordEmail = require('../email').ForgotPasswordEmail,
+AdminApproveEmail= require('../email').AdminApproveEmail,
 _ = require('lodash');
 
 
@@ -57,7 +58,7 @@ exports.checkusername= function(req, res, next){
 exports.update = function(req, res) {
   var userid = req.params.userid;
   var user_data = req.body;
-  console.log(req.body);
+  
   User.findOneAndUpdate({_id: userid}, user_data, function(err, user) {
     if (err) {
       console.log(err);
@@ -67,7 +68,21 @@ exports.update = function(req, res) {
       console.log('notfound');
       return res.send(404);
     }
-    return res.send(200);
+    if(user_data.status)
+    {
+      console.log("if");
+      var login_link = [req.headers.host, 'login'].join('/');
+      (new AdminApproveEmail(user, {loginLink: login_link})).send(function(e) {
+        return res.send(200);
+      });
+      
+    }else{
+
+      console.log("else");
+      return res.send(200);
+   
+    }
+    
   });
 
 
@@ -94,24 +109,82 @@ exports.update = function(req, res) {
 
 };
 
-exports.verifyEmail = function (req, res, next) {
+exports.verifyEmail = function (req, res, next) { 
   var userId = req.params.id;
   var token = req.params.token;
-  console.log('verifyEmail');
-  User.findById(userId, function(err, user) {
+    User.findById(userId, function(err, user) {
     if (err) return next(err);
     if (!user) return res.send(404);
     if (user.emailVerification.token === token) {
       user.emailVerification.verified = true;
       user.save(function(err) {
-        req.logIn(user, function(err) {
-          if (err) return res.send(err);
-          return res.redirect('/settings');
-        });
+        // req.logIn(user, function(err) {
+        //   if (err) return res.send(err);
+        //   return res.redirect('/settings');
+        // });
+
+        if (err) return res.send(err);
+        return res.redirect('/settings'); 
+
       });
+
     } else {
       return res.send(401, 'Invalid Token');
     }
   });
 };
 
+/**
+ * forgot description
+ * @param  {[object]}   req  [description]
+ * @param  {[object]}   res  [description]
+ * @param  {Function} next [description]
+ * @return {[mail json]}        [send mail with reset link]
+ */
+exports.forgot = function (req, res, next) {
+  var email = req.body.email;
+  User.findOne({email: email}, function(err, user) {
+    if (err) res.send(400);
+    if (!user) {
+      return res.send(404, 'This user does not exist');
+    }
+    user.setForgotPassword();
+    user.save(function(err, user) {
+      if (err) res.send(400);
+      var forgot_link = [req.headers.host, 'user', user._id, 'recover',  user.forgotPassword.token].join('/');
+      (new ForgotPasswordEmail(user, {forgotLink: forgot_link})).send(function(e) {
+        return res.send(200);
+      });
+    });
+  });
+};
+
+
+/**
+ * recover description
+ * @param  {[object]}   req  [description]
+ * @param  {[object]}   res  [description]
+ * @param  {Function} next [description]
+ * @return {[recover json]}        [recover with reset link]
+ */
+exports.recover = function (req, res, next) {
+  var userId = req.params.id;
+  var token = req.body.token;
+  var new_pass = req.body.newPassword;
+
+  User.findById(userId, function(err, user) {
+    if (err) throw err;
+    if (!user || user.forgotPassword.token !== token) {
+      return res.send(403, 'invalid');
+    }
+    if (user.forgotPassword.validTill < Date.now()) {
+      return res.send(403, 'expired');
+    }
+    user.password = new_pass;
+    user.forgotPassword.validTill = Date.now();
+    user.save(function(err, user) {
+      if (err) return res.send(400);
+      return res.send(200);
+    });
+  });
+};

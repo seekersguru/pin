@@ -1,0 +1,53 @@
+<!-- ng-click="facebookLogin()" -->
+<div class="container-fluid po-reletive">
+  <div class="container-head">
+    <div class="row">
+      <div class="pull-left">
+        <div class="mar-back-img">
+          <!-- Become a member section -->
+          <div class="tree-container-inner">
+            <div id="nav">
+              <ul>
+               <li><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li>
+               <li><a href="/what-we-do" ng-class="{active: isActive('/what-we-do')}">what</a></li> 
+               <li><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">about</a></li> 
+               <li><a href="/register" ng-class="{active: isActive('/register')}">join</a></li>  
+             </ul> 
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <div class="inner-section">
+          <div class="alert alert-success" role="alert" ng-show="success">
+                    <strong>On the way!</strong> We have just sent you an email with a password reset link. Please check your inbox and visit the link to reset your password.
+                  </div>
+
+      <form ng-hide="success" class="form" name="forgotForm" ng-submit="forgotPassword(forgotForm)" novalidate>
+        <div class="panel panel-info ">
+          <div class="panel-body">
+            <div class="col-lg-12">     
+              <h1 style="margin-top:0px;">Forgot Password</h1>   
+              <div class="register-form-hr"></div>                 
+              <div class="row login-pad">                                   
+                <div class="col-lg-12 ">
+                  <p ng-hide="success">Forgot your password? No problem. Just enter your email address and we'll send you a password reset link right away.</p>
+                  <div class="form-group">
+                    <input type="email" name="email" class="form-control" ng-model="email"  placeholder="Email(xyz@example.com)" required mongoose-error/>
+                    <p class="text-danger" ng-show="forgotForm.email.$error.email && submitted">
+                      Doesn't look like a valid email.
+                    </p>
+
+                  </div>
+                  <div class="form-group has-error">
+                    <p class="text-danger" ng-show="forgotForm.email.$error.required  && submitted">
+                     Please enter your email.
+                   </p>              
+                   <p class="text-danger">{{ errors.other }}</p>
+                 </div>
+                 <button ng-disabled="submitDisabled" type="submit" class="btn register-bt"> Submit </button>
+               </form>
+             </div>  
+           </div>
+         </div>
+       </div>
