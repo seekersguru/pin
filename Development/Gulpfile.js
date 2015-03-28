@@ -28,7 +28,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
-    livereload = require('gulp-livereload'),
+    //livereload = require('gulp-livereload'),
     del = require('del');
 
 
@@ -139,10 +139,10 @@ gulp.task('watch', function() {
   gulp.watch('app/images/**/*', ['images']);
 
     // Create LiveReload server
-  livereload.listen();
+  //livereload.listen();
  
   // Watch any files in dist/, reload on change
-  gulp.watch(['app/**']).on('change', livereload.changed);
+  //gulp.watch(['app/**']).on('change', livereload.changed);
 
 });
 
