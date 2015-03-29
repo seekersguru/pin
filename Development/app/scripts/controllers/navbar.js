@@ -28,13 +28,23 @@ angular.module('pinApp')
       })
       .then( function() {
         // Logged in, redirect to home
+       
+          if($rootScope.currentUser.role=='admin')
+            {
+
+            $location.path('/admin').search({'users':1});
+
+            }else{
+          
         if ($rootScope.redirectPath && $rootScope.redirectPath !== '/register' ) {
           var path = $rootScope.redirectPath;
           $rootScope.redirectPath = undefined;
           $location.path(path);
         } else {
-          $location.path('/articles/01');
+        
+            $location.path('/articles/01');
         }
+      }
       })
       .catch( function(err) {
         err = err.data;

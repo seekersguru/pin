@@ -60,7 +60,17 @@ $scope.userStatus=function(userId){
       })
       .indexOf(userId);
 
-  var setStatus= !$scope.gridUserData[removeIndex].status;
+  var setStatus= !$scope.gridUserData[removeIndex].status,
+  messageline="";
+
+  if(setStatus)
+    messageline="You are approving "+$scope.gridUserData[removeIndex].name+" a mail notification will be sent to  mail id "+$scope.gridUserData[removeIndex].email;
+  else
+    messageline="You are blocking "+$scope.gridUserData[removeIndex].name+" , email notification will be sent to him that , some problem in your account please contact admin";
+
+  var yes=confirm(messageline);
+  if(yes)
+  {
   $http({ method: 'PUT', url: '/api/users/'+userId,data:{'status':setStatus}}).
       success(function (data, status, headers, config) {
          $scope.gridUserData[removeIndex].status=setStatus;   
@@ -69,6 +79,10 @@ $scope.userStatus=function(userId){
         // ...
         // $scope.article={};
       });
+  }
+  else{
+
+  }
 
 };
 $scope.articleStatus=function(articleId){
@@ -165,7 +179,7 @@ $scope.deleteArticle=function(articleId){
                                     { field: 'comments' ,displayName:'Comments' },
                                     { field: 'category' ,displayName:'Category' },
                                     { field: 'createdAt' ,displayName:'Created Date'},
-                                    { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="articleStatus(row.entity._id)">Approved</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="articleStatus(row.entity._id)">Not Approved</span>'},
+                                    { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="articleStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="articleStatus(row.entity._id)">NOT APPROVED</span>'},
                                     { field: '',displayName:'', cellTemplate: editDeleteArticleTemplate, maxWidth: 100  }],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
@@ -179,7 +193,8 @@ $scope.deleteArticle=function(articleId){
                                     { field: 'email' ,displayName:'Email' },
                                     { field: 'emailVerification' ,displayName:'EmailVerification',cellTemplate:'<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>' },
                                     { field: 'username' ,displayName:'Username' },
-                                    { field: 'status' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" ng-click="userStatus(row.entity._id)">Approved</span><span ng-if="!row.entity.status" class="label label-danger" ng-click="userStatus(row.entity._id)">Not Approved</span>'}],
+                                    { field: 'status' ,displayName:'Status',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'},
+                                    { field: 'action' ,displayName:'Action',cellTemplate:'<span ng-if="row.entity.status" class="btn btn-info" ng-click="userStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="btn btn-info" ng-click="userStatus(row.entity._id)">Approve</span>'}],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };

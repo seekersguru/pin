@@ -23,12 +23,22 @@ angular.module('pinApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          if ($rootScope.redirectPath) {
-            var path = $rootScope.redirectPath;
-            $rootScope.redirectPath = undefined;
-            $location.path(path);
-          } else {
-            $location.path('/articles/01');
+          if($rootScope.currentUser.role=='admin')
+            {
+
+            $location.path('/admin').search({'users':1});
+
+            }else{
+              if ($rootScope.redirectPath) {
+                var path = $rootScope.redirectPath;
+                $rootScope.redirectPath = undefined;
+                $location.path(path);
+              } else {
+                
+                  
+                $location.path('/articles/01');
+
+              }
           }
           $scope.registerStatus='test';
         })
