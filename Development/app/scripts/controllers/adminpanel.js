@@ -191,6 +191,7 @@ $scope.deleteArticle=function(articleId){
                                     { field: 'name' ,displayName:'Name' },
                                     { field: 'createdAt' ,displayName:'Created Date' },
                                     { field: 'email' ,displayName:'Email' },
+                                    { field: 'band' ,displayName:'Band'},
                                     { field: 'emailVerification' ,displayName:'EmailVerification',cellTemplate:'<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>' },
                                     { field: 'username' ,displayName:'Username' },
                                     { field: 'status' ,displayName:'Status',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'},
