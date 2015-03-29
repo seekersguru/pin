@@ -23,7 +23,9 @@
 
  <div class="row">
   <div class="col-lg-9">
-  <div class="alert alert-success"></div>
+  <div class="alert alert-success" ng-if="currentUser.role == 'admin'">
+    You are admin better you do it from admin panel.
+  </div>
 
     <div class="submit-articale-section">
      <h1>Submit Your Article</h1> 
