@@ -82,11 +82,13 @@ angular.module('pinApp', [
 .config(function ($routeProvider, $locationProvider, $httpProvider) {
   $routeProvider
   .when('/home', {
-    templateUrl: 'partials2/main'
+    templateUrl: 'partials2/main',
+    authenticate: false
 
   })
   .when('/', {
-    templateUrl: 'partials2/main'
+    templateUrl: 'partials2/main',
+    authenticate: false
 
   })
   .when('/nishant', {
