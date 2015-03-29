@@ -157,7 +157,7 @@ $scope.deleteArticle=function(articleId){
   var editDeleteArticleTemplate = '<a ng-click="deleteArticle(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-click="viewArticle(row.entity._id)"  id="view"  class="btn btn-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-click="editArticle(row.entity._id)"  id="view"  class="btn btn-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
   $scope.articleData = { data: 'gridArticleData' ,
-                        showGroupPanel: true ,
+                        // showGroupPanel: true ,
                         columnDefs: [{ field: '_id' ,displayName:'ID'},
                                     { field: 'title' ,displayName:'Title' },
                                     { field: 'author' ,displayName:'Author' },
@@ -172,7 +172,7 @@ $scope.deleteArticle=function(articleId){
                       };
 
   $scope.userData = { data: 'gridUserData' ,
-                        showGroupPanel: true ,
+                        // showGroupPanel: true ,
                          columnDefs: [{ field: '_id' ,displayName:'ID'},
                                     { field: 'name' ,displayName:'Name' },
                                     { field: 'createdAt' ,displayName:'Created Date' },

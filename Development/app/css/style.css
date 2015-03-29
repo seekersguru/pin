@@ -38,16 +38,17 @@
 
 }
 
-/*html,
-body {
-  margin:0;
-  padding:0;
-  height:100%;
-}*/
-#wrapper {
-  min-height:100%;
-  position:relative;
 }
+html, body {
+  height: 100%;
+}
+#wrapper {
+  min-height: 100%;
+  height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+  height: 100%;
+  margin: 0 auto 0px; /* the bottom margin is the negative value of the footer's height */
+}
+#footer-bg{height: 0px; }
 body{font-family:georgia; background-image:url(../images/body-bg.png); background-repeat:repeat;     font-size:14px; line-height:18px; margin:0px; padding:0px;}
 a {
   color:blue;
@@ -99,9 +100,11 @@ z-index: 5;
 
 .read-more a{font-size:15px; font-style:italic; display: inline-block;  color:#ca4f13; background-image:url(../images/arrow-img.png); background-repeat:no-repeat;    background-position: right;padding-right: 32px;/* text-indent: 24px; */}
 .read-more a:hover{font-size:15px; font-style:italic; color:#193164;}
-
+.div1{height:30%; font-size:30px; padding:10px;   }
+.div2{height:30%; font-size:30px; padding:10px;   }
+.div3{height:30%; font-size:30px; padding:10px;   }
+.div4{height:30%; font-size:30px; padding:10px;   }
 .footer-learning{background-color:#222222; border-top:solid 7px #b59759;}
-#footer-bg{width:100%; position: relative; bottom: 0px; }
 
 .footer-learning ul{margin:0px; padding: 0px; list-style:none; clear: both;  }
 .footer-learning ul li {margin:0px; padding: 0px; list-style:none;    float: left; }
@@ -146,7 +149,7 @@ z-index: 5;
 
 .register-bt{background-color:#253863; text-transform:uppercase;   background-position: right 9px; height: 32px;  background-image:url(../images/register-arow.png); background-repeat:no-repeat;  text-indent: 0px; border:solid 1px #2d426f;     font-size:12px; color: #fff; font-style:italic;/* padding-left: 21px; */margin-right: 17px;background-position: 82px;width: 102px;text-align: left;}
 .register-bt:hover{background-color:#b59759; border: solid 1px #a68849; font-size:12px; color: #fff; font-style:italic;   }
-
+.form-error{margin: -5px 0px 0px 0px; position: absolute; bottom:6px;  }
 .search-bt{background-color:#253863; text-transform:uppercase;   background-position: right 9px; height: 32px;   text-indent: 0px; border:solid 1px #2d426f;     font-size:12px; color: #fff; font-style:italic;/* padding-left: 21px; */margin-right: 17px;background-position: 82px;width: 102px;text-align: left;}
 .search-bt:hover{background-color:#b59759; border: solid 1px #a68849; font-size:12px; color: #fff; font-style:italic;   }
 .chat-listing-2-heading{font-size:18px; color:#5f4f2d; margin-left:10px; margin-top:5px;   }
@@ -346,11 +349,9 @@ li.dropdown{list-style:none; }
 .articles-section-2 .btn-gold a{font-size:18px; padding:8px 15px 8px 15px;   color:#fff; background-color:#839735;   line-height: 20px;}
 .articles-section-3{display:block; border: solid 1px #d8d8d8; border-bottom:solid 2px #000000; margin-top:35px;   background-color:#fff;}
 .articles-section-3 .btn-gold a{font-size:18px; padding:8px 15px 8px 15px;   color:#fff; background-color:#000000;   line-height: 20px;}
-.error-text{padding-left:30%; }
-.error-text h1{font-size:148px; color:#131f37; font-family:arial; margin-bottom: 0px;  }
 
-.error-text h2{font-size:48px; color:#131f37; margin-top: 0px;  }
-.error-text p{font-size:18px; color:#b59759;   }
+
+
 
 .footer-above{background: #212d47; /* Old browsers */
 background: -moz-linear-gradient(top, #212d47 0%, #08132a 100%); /* FF3.6+ */
@@ -1022,6 +1023,7 @@ line-height: 1;
 .widget_recent_entries .widget-post-info span span {
 display: inline-block;
 }
+
 .text-danger{
   color: #a94442 !important;
 }

@@ -30,7 +30,7 @@
   </head>
 
   <body>
-
+<div id="wrapper">
     <!-- Fixed navbar -->
     <nav class="navbar navbar-blue">
       <div class="container-head">
@@ -111,6 +111,9 @@
                   <div class="row">
            <div class="form-group">
            <div class="col-lg-6"><input required type="text" name="addr" id="addr" class="form-control" placeholder="Alias "/>
+           <p class="text-danger ng-binding form-error" ng-show="form.username.$error.mongoose">
+            Please fill your alias name
+           </p>
 </div>
 <div class="col-lg-3"> <button class="btn Check-availability" type="button">   Check Availability </button></div>
            </div>
@@ -274,7 +277,7 @@
         </div>
 
     </footer>
-
+</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

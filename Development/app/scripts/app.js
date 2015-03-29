@@ -332,23 +332,23 @@ $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
           $location.path('/home');
         }
 
-setTimeout(function(){
-  var bodyHeight = $("body").height();
-  var vwptHeight = $(window).height();
-  var navHeight=$("nav").height();
-  var footerHeight=$("footer").height();
-  var containerHeight=$("#container_div").height();
+// setTimeout(function(){
+//   var bodyHeight = $("body").height();
+//   var vwptHeight = $(window).height();
+//   var navHeight=$("nav").height();
+//   var footerHeight=$("footer").height();
+//   var containerHeight=$("#container_div").height();
   
-  // alert(vwptHeight+"--"+bodyHeight+"--"+navHeight+"--"+footerHeight+"--"+containerHeight);
-  // console.log($("footer#footer-bg"));
+//   // alert(vwptHeight+"--"+bodyHeight+"--"+navHeight+"--"+footerHeight+"--"+containerHeight);
+//   // console.log($("footer#footer-bg"));
   
-  if (vwptHeight-footerHeight-navHeight >= containerHeight) {
-      $("footer#footer-bg").css("position","absolute").css("bottom",0);
-    }else{
-      $("footer#footer-bg").css("position","relative").css("bottom","");
-    }
+//   if (vwptHeight-footerHeight-navHeight >= containerHeight) {
+//       $("footer#footer-bg").css("position","absolute").css("bottom",0);
+//     }else{
+//       $("footer#footer-bg").css("position","relative").css("bottom","");
+//     }
     
-  },1000);
+//   },1000);
 
     });
   
@@ -366,18 +366,18 @@ setTimeout(function(){
   
   });
 // .constant('scalingFactor', {tshirt: 12, laptop:6.7478, poster:10.844, canvas: 10.844});
- $(document).ready(function(){
- setTimeout(function(){
-  var bodyHeight = $("body").height();
-  var vwptHeight = $(window).height();
-  var navHeight=$("nav").height();
-  var footerHeight=$("footer").height();
-  // alert(vwptHeight+"--"+bodyHeight+"--"+navHeight+"--"+footerHeight);
-  // console.log($("footer#footer-bg"));
-  if (vwptHeight-footerHeight > bodyHeight) {
-    $("footer#footer-bg").css("position","absolute").css("bottom",0);
-  }else{
-    $("footer#footer-bg").css("position","relative").css("bottom","");
-  }
-  },100);
-});
+//  $(document).ready(function(){
+//  setTimeout(function(){
+//   var bodyHeight = $("body").height();
+//   var vwptHeight = $(window).height();
+//   var navHeight=$("nav").height();
+//   var footerHeight=$("footer").height();
+//   // alert(vwptHeight+"--"+bodyHeight+"--"+navHeight+"--"+footerHeight);
+//   // console.log($("footer#footer-bg"));
+//   if (vwptHeight-footerHeight > bodyHeight) {
+//     $("footer#footer-bg").css("position","absolute").css("bottom",0);
+//   }else{
+//     $("footer#footer-bg").css("position","relative").css("bottom","");
+//   }
+//   },100);
+// });

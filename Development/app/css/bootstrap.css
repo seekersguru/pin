@@ -2534,7 +2534,7 @@ output {
   padding: 4px 12px;
   font-size: 14px;
   font-style: italic;
-  margin-bottom: 10px;
+  margin-bottom: 32px;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
@@ -3055,7 +3055,7 @@ fieldset[disabled] .btn-default:active,
 .btn-default.disabled.active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
-  background-color: '';
+  background-color: #fff;
   border-color: #ccc;
 }
 .btn-default .badge {
@@ -4247,7 +4247,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav > li > a {
     padding-top: 15px;
     padding-bottom: 15px; font-size:18px; 
-  border-left:solid 1px #3d3d3d;
+	border-left:solid 1px #3d3d3d;
   }
 }
 .navbar-form {
@@ -5859,7 +5859,7 @@ button.close {
   color: #fff;
   text-align: center;
   text-decoration: none;
-  background-color: #1C2841;
+  background-color: #000;
   border-radius: 4px;
 }
 .tooltip-arrow {
@@ -5874,56 +5874,56 @@ button.close {
   left: 50%;
   margin-left: -5px;
   border-width: 5px 5px 0;
-  border-top-color: #1C2841;
+  border-top-color: #000;
 }
 .tooltip.top-left .tooltip-arrow {
   right: 5px;
   bottom: 0;
   margin-bottom: -5px;
   border-width: 5px 5px 0;
-  border-top-color: #1C2841;
+  border-top-color: #000;
 }
 .tooltip.top-right .tooltip-arrow {
   bottom: 0;
   left: 5px;
   margin-bottom: -5px;
   border-width: 5px 5px 0;
-  border-top-color: #1C2841;
+  border-top-color: #000;
 }
 .tooltip.right .tooltip-arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;
   border-width: 5px 5px 5px 0;
-  border-right-color: #1C2841;
+  border-right-color: #000;
 }
 .tooltip.left .tooltip-arrow {
   top: 50%;
   right: 0;
   margin-top: -5px;
   border-width: 5px 0 5px 5px;
-  border-left-color: #1C2841;
+  border-left-color: #000;
 }
 .tooltip.bottom .tooltip-arrow {
   top: 0;
   left: 50%;
   margin-left: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #1C2841;
+  border-bottom-color: #000;
 }
 .tooltip.bottom-left .tooltip-arrow {
   top: 0;
   right: 5px;
   margin-top: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #1C2841;
+  border-bottom-color: #000;
 }
 .tooltip.bottom-right .tooltip-arrow {
   top: 0;
   left: 5px;
   margin-top: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #1C2841;
+  border-bottom-color: #000;
 }
 .popover {
   position: absolute;
