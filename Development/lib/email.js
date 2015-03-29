@@ -75,6 +75,16 @@ var AdminApproveEmail = function(user, locals) {
 AdminApproveEmail.prototype = Object.create(UserEmail.prototype);
 
 /**
+ * Class to send activation user approve email 
+ */
+var AdminBlockEmail = function(user, locals) {
+  UserEmail.call(this, user, 'adminblock', locals);
+  this.email.subject = 'Admin Block Your PIN Account';
+};
+
+AdminBlockEmail.prototype = Object.create(UserEmail.prototype);
+
+/**
  * Class to send forgot password email
  */
 var ForgotPasswordEmail = function(user, locals) {
@@ -98,5 +108,6 @@ module.exports = {
   ActivationEmail : ActivationEmail,
   ForgotPasswordEmail: ForgotPasswordEmail,
   ContactUsEmail: ContactUsEmail,
-  AdminApproveEmail:AdminApproveEmail
+  AdminApproveEmail:AdminApproveEmail,
+  AdminBlockEmail:AdminBlockEmail
 };

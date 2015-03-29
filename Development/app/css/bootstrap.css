@@ -2534,7 +2534,7 @@ output {
   padding: 4px 12px;
   font-size: 14px;
   font-style: italic;
-  margin-bottom: 32px;
+  margin-bottom:10px;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
@@ -4247,7 +4247,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav > li > a {
     padding-top: 15px;
     padding-bottom: 15px; font-size:18px; 
-	border-left:solid 1px #3d3d3d;
+  border-left:solid 1px #3d3d3d;
   }
 }
 .navbar-form {

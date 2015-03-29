@@ -25,7 +25,9 @@
           tooltip="Please fill Family Office / Family Name." 
           tooltip-placement="bottom"
           />
+          <div class="error-massege"> 
            <p class="text-danger" ng-show="form.fullname.$error.required && submitted">Please fill FullName .</p>
+           </div>
        </div>
            </div>
            </div>
@@ -39,8 +41,9 @@
           tooltip-placement="bottom"
           tooltip-trigger="{{{true: 'focus', false: 'never'}[form.name.$error.required && submitted]}}"
           />
-
+           <div class="error-massege">  
            <p class="text-danger" ng-show="form.name.$error.required && submitted">Please fill Name .</p>
+           </div>
 </div>
            </div>
            </div>
@@ -54,6 +57,7 @@
           tooltip-placement="bottom"
 
            />
+           <div class="error-massege"> 
             <p class="text-danger" ng-show="form.username.$error.required && submitted && !form.username.$error.mongoose" >Please fill your alias name or username.</p>
             <p class="text-danger" ng-show="form.username.$error.mongoose">
             {{ errors.username }}
@@ -61,6 +65,7 @@
            <p class="text-success" ng-show="checkmessage">
             {{ checkmessage }}
            </p>
+           </div>
            
 </div>
 <div class="col-lg-3"> <button class="btn Check-availability" type="button" id="checkmessage" ng-click="checkUsername(form)" ng-disabled="checkusername">   Check Availability </button></div>
@@ -89,7 +94,9 @@
           tooltip-placement="bottom"
           tooltip-trigger="{{{true: 'focus', false: 'never'}[form.city.$error.required && submitted]}}"
           />
+<div class="error-massege">           
 <p class="text-danger" ng-show="form.city.$error.required && submitted">Please fill city name. </p>
+</div>
   </div>
 </div>
 
@@ -114,6 +121,7 @@
           tooltip-placement="bottom"
 
 />
+<div class="error-massege"> 
    <p class="text-danger" ng-show="form.email.$error.required  && submitted">Please fill Email .</p>
    <p class="text-danger" ng-show="form.email.$error.email && submitted">
                   Doesn't look like a valid email.
@@ -121,6 +129,7 @@
    <p class="text-danger" ng-show="form.email.$error.mongoose">
     {{ errors.email }}
    </p>
+   </div>
    </div>
 </div>
 
@@ -163,8 +172,9 @@
           tooltip-placement="bottom"
           tooltip-trigger="{{{true: 'focus', false: 'never'}[form.nominated.$error.required && submitted]}}"
  />
+ <div class="error-massege"> 
 <p class="text-danger" ng-show="form.nominated.$error.required && submitted">Please fill nominated name. </p>
-
+</div>
 </div>
 </div>
 
@@ -204,6 +214,7 @@
           tooltip="Please fill your password." 
           tooltip-placement="bottom"
 />
+                <div class="error-massege"> 
                 <p class="text-danger" ng-show="form.password.$error.required && submitted">Please fill   Password.</p>
                 
                 <p class="text-danger" ng-show="form.password.$error.minlength && submitted">your password shoud be minimum 5 character long .</p>
@@ -211,6 +222,7 @@
                 <p class="text-danger" ng-show="form.password.$error.mongoose">
                  {{ errors.password }}
                 </p>
+                </div>
 
               </div>
             </div>

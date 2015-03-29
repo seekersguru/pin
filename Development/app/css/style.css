@@ -38,18 +38,24 @@
 
 }
 
-}
-html, body {
-  height: 100%;
-}
-#wrapper {
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
   min-height: 100%;
-  height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
-  height: 100%;
-  margin: 0 auto 0px; /* the bottom margin is the negative value of the footer's height */
 }
-#footer-bg{height: 0px; }
-body{font-family:georgia; background-image:url(../images/body-bg.png); background-repeat:repeat;     font-size:14px; line-height:18px; margin:0px; padding:0px;}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
+
+}
+
+
+body{font-family:georgia;   margin-bottom: 140px; background-image:url(../images/body-bg.png); background-repeat:repeat;     font-size:14px; line-height:18px; }
 a {
   color:blue;
   /* First we need to help some browsers along for this to work.
@@ -84,7 +90,10 @@ z-index: 5;
 #nav ul li+li+li+li a { left: 234px;  top: 289px;   }
 #nav ul li a:hover {text-decoration: none;  color:#57544f; background-image:url(../images/nav-img-hover.png);      }
 #nav ul li a.active {text-decoration: none;  color:#57544f; background-image:url(../images/nav-img-hover.png);      }
-
+.error-massege{height:20px; margin-bottom:10px; margin-top:-10px;   }
+.error-massege p{margin: 0px; }
+.massege-show{display: block;}
+.massege-hide{display: none;}
 .tree-container{background-image:url(../images/tree-image.jpg);    background-repeat:no-repeat;   height:548px; background-position: 1px; }
 .welcome-text{display: block; border-left:solid 5px #b59759;  padding-left:15px;  position: absolute;top: 225px;right: 50px;}
 .welcome-text h1{display: block; font-size:49px; color:#193164; margin-top: -7px;text-transform: uppercase;  }
@@ -361,7 +370,7 @@ background: -o-linear-gradient(top, #212d47 0%,#08132a 100%); /* Opera 11.10+ */
 background: -ms-linear-gradient(top, #212d47 0%,#08132a 100%); /* IE10+ */
 background: linear-gradient(to bottom, #212d47 0%,#08132a 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#212d47', endColorstr='#08132a',GradientType=0 ); /* IE6-9 */
-copy padding-top: 20px; padding-bottom: 10px; margin-top:35px;    background-repeat:no-repeat; background-position:bottom;   }
+height: 100px;  }
 .footer-learning p{color: #9d9d9d; padding-top:45px; padding-bottom: 35px; margin: 0px;}
 .footer-learning .input-group{margin-top: 15px; }
 .footer-learning i{margin-right:10px; font-size:24px; color: #888;  }
@@ -1023,7 +1032,6 @@ line-height: 1;
 .widget_recent_entries .widget-post-info span span {
 display: inline-block;
 }
-
 .text-danger{
   color: #a94442 !important;
 }

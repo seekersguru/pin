@@ -7,6 +7,7 @@ Email = require('../email').Email,
 ActivationEmail = require('../email').ActivationEmail,
 ForgotPasswordEmail = require('../email').ForgotPasswordEmail,
 AdminApproveEmail= require('../email').AdminApproveEmail,
+AdminBlockEmail= require('../email').AdminBlockEmail,
 _ = require('lodash');
 
 
@@ -68,6 +69,40 @@ exports.update = function(req, res) {
       console.log('notfound');
       return res.send(404);
     }
+    // if(user_data.status)
+    // {
+    //   console.log("if");
+    //   var login_link = [req.headers.host, 'login'].join('/');
+    //   (new AdminApproveEmail(user, {loginLink: login_link})).send(function(e) {
+    //     return res.send(200);
+    //   });
+      
+    // }else{
+
+    //   console.log("else");
+      return res.send(200);
+   
+    // }
+    
+  });
+
+
+};
+/** update user status  */
+
+exports.updatestatus = function(req, res) {
+  var userid = req.params.userid;
+  var user_data = req.body;
+  
+  User.findOneAndUpdate({_id: userid}, user_data, function(err, user) {
+    if (err) {
+      console.log(err);
+      return res.json(400, err);
+    }
+    if (!user) {
+      console.log('notfound');
+      return res.send(404);
+    }
     if(user_data.status)
     {
       console.log("if");
@@ -79,14 +114,20 @@ exports.update = function(req, res) {
     }else{
 
       console.log("else");
-      return res.send(200);
-   
+
+      var site_link = [req.headers.host].join('/'),
+          mail = "privateinvestmentnetwork@gmail.com";
+      (new AdminBlockEmail(user, {siteLink: site_link,mail:mail})).send(function(e) {
+        return res.send(200);
+      });
+
     }
     
   });
 
 
 };
+
 
 /**
  * Create user

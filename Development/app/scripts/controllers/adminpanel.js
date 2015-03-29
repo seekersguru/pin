@@ -71,7 +71,7 @@ $scope.userStatus=function(userId){
   var yes=confirm(messageline);
   if(yes)
   {
-  $http({ method: 'PUT', url: '/api/users/'+userId,data:{'status':setStatus}}).
+  $http({ method: 'PUT', url: '/api/users/status/'+userId,data:{'status':setStatus}}).
       success(function (data, status, headers, config) {
          $scope.gridUserData[removeIndex].status=setStatus;   
       }).
