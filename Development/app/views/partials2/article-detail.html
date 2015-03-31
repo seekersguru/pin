@@ -177,8 +177,8 @@
 
     <h1>{{articles.title}}</h1>
     <div class="green-hr"></div>
-    <div>
-
+    <div >
+    <div class="articleview">
       <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
       <div ng-if='!articles.media' class="pull-right">
         <img src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
@@ -199,10 +199,10 @@
     </div>
 
     <p>{{articles.createdAt | date:"MMMM d, yyyy" }}</p>
-    <p ng-bind-html="articles.description | rawHtml"></p>
+    <p ng-bind-html="articles.description | rawHtml "></p>
+    </div>
     <a class="btn Check-availability" type="button" href="/articles/01"  >Back To Articles </a>
-  </p>
-
+  
   <div class="comments-hr-top">comments</div>
   <ul class="commentList">
     <li ng-repeat="(key,value) in articles.comments">

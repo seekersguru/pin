@@ -229,6 +229,14 @@ angular.module('pinApp')
       success(function (data, status, headers, config) {
         // ...
         console.log(data);
+        if($rootScope.currentUser.role == 'admin')
+        {
+            $location.path('/admin').search({ 'articles':1});
+        }
+        else{
+            $location.path('/notification').search({ 'type':'article'});
+        }
+
         $scope.article={};
         $scope.articleDone=1;
         $scope.articleResponse=data.article._id;

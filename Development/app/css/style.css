@@ -1047,3 +1047,14 @@ background-color: #808286;
 border-color: #808286;
 height: 40px;
 }
+.articleview .img-responsive{
+  height:205px !important;
+}
+.articleview *{
+  background:transparent !important;
+}
+.preview{
+ border: 2px dashed grey;
+ padding-bottom: 12px;
+
+}
