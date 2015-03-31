@@ -27,7 +27,7 @@
     <div class="submit-articale-section">
      <h1>Submit Your Article</h1> 
      <div class="register-form-hr"></div>
-     <form novalidate  name="form" role='form' enctype= 'multipart/form-data' >
+     <form novalidate  name="form" role='form' enctype= 'multipart/form-data' class="article">
       <div class="dashboard-section">
         <div class="row register-form-row-pad">
           <div class="col-lg-7 paddingr-7">  
@@ -47,7 +47,7 @@
           </div>
 
         </div>
-        <div class="row ">
+<div class="row ">
           <div class="col-lg-10">
 
             <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
@@ -98,8 +98,10 @@ height:100px;width: 100px">
 </div>
 
 <div class="checkbox italic-font">
-  <label><input type="checkbox" name= "agree" required value="">Check box to agree to these submission guide line</label>
+  <label><input type="checkbox" name= "agree" ng-model="article.checked" required value="">Check box to agree to these submission guide line</label>
 </div>
+
+
 
 <br/>
 <br/>
@@ -110,6 +112,7 @@ height:100px;width: 100px">
 <!-- <button type="submit" ng-disabled="form.$invalid" class='btn btn-success' >Add</button>  -->
 <button ng-show="filearticle" class='btn register-bt' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Add</button> 
 <button ng-hide="filearticle" class='btn register-bt' ng-disabled="!form.$valid" ng-click="saveArticle(form)" >Add</button> 
+<button class='btn register-bt' ng-click=" preview = !preview " >Preview</button> 
         <!-- <button  type="reset" ng-click="reset(form)" class='btn btn-warning'>Reset</button> 
         <a  href="/dashboard" class='btn btn-danger'>Cancel</a>  -->
         <p ng-show="articleDone"><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
@@ -119,7 +122,40 @@ height:100px;width: 100px">
          You have successfully written new Article see article here  <a ng-href="/articles/view/{{articleResponse.article._id}}"><b>Click Here</b></a>
        </div> -->
 
+<div class="row" ng-show="preview" >
+  <div class="col-lg-10">
+  
+    <h1>{{article.title}}</h1>
+    <div class="green-hr"></div>
+    <div>
+
+      <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
+      <div ng-if='!article.media' class="pull-right">
+        <img src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+
+      </div>
+      <div ng-show='article.media && article.media.extension.indexOf("image") > -1' class="pull-right">
+        <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+
+        <img ng-show="article.media.path"  ng-src="../{{article.media.path}}" title="{{article.title}}" class="img-responsive">
+      </div>
+      <div ng-show='article.media && article.media.extension.indexOf("video") > -1' class="pull-right">
+        <videogular vg-theme='config.theme' >
+          <vg-media 
+          vg-src="config.sources" 
+          vg-native-controls="true"  >
+        </vg-media>
+      </videogular>
+    </div>
+
+    <p>{{article.createdAt | date:"MMMM d, yyyy" }}</p>
+    <p ng-bind-html="article.description | rawHtml"></p>
+</div>
+
+</div>
+</div>
      </form>
+
 
    </div>  
 

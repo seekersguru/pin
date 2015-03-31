@@ -92,6 +92,8 @@ UserSchema
       'name': this.name,
       'createdAt':this.createdAt,
       'email': this.email,
+      'role': this.role,
+      'band': this.band,
       'emailVerification': this.emailVerification.verified,
       'username': this.username,
       'status':this.status

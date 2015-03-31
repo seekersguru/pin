@@ -299,6 +299,7 @@ angular.module('pinApp')
   $scope.category=['Grow','Protect','Manage','Give'];
 
   $scope.article={};
+  $scope.preview=0;
   $scope.article.category=$scope.category[0];
   // $scope.usingFlash = FileAPI && FileAPI.upload != null;
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
@@ -352,6 +353,16 @@ angular.module('pinApp')
       if (response.status > 0)
         $scope.errorMsg = response.status + ': ' + response.data;
       $scope.article={};
+       if($rootScope.currentUser.role == 'admin')
+        {
+        
+            $location.path('/admin').search({ 'articles':1});
+        
+        }
+        else{
+            $location.path('/notification').search({ 'type':'article'});
+
+        }
       $scope.articleDone=1;
       $scope.articleResponse=response.data;
       // $location.path('articles/view/'+response.data.article._id);
@@ -433,7 +444,17 @@ angular.module('pinApp')
       $http({ method: 'POST', url: '/api/articles',data:$scope.article }).
       success(function (data, status, headers, config) {
         // ...
-        console.log(data);
+        // console.log(data);
+        if($rootScope.currentUser.role == 'admin')
+        {
+        
+            $location.path('/admin').search({ 'articles':1});
+        
+        }
+        else{
+            $location.path('/notification').search({ 'type':'article'});
+        }
+
         $scope.article={};
         $scope.articleDone=1;
         $scope.articleResponse=data;

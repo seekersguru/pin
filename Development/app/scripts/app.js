@@ -262,6 +262,11 @@ angular.module('pinApp', [
     title: 'not Found'
  })
 
+ .when('/notification', {
+    templateUrl: 'partials2/notification',
+    title: 'Notification'
+ })
+
   .when('/forgot', {
       templateUrl: 'partials2/forgot',
       controller: 'ForgotCtrl',

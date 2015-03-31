@@ -157,7 +157,9 @@ z-index: 5;
 .load-more:hover{background-color:#253863; border:solid 1px #2d426f;  font-size:15px; color: #fff;    }
 
 .register-bt{background-color:#253863; text-transform:uppercase;   background-position: right 9px; height: 32px;  background-image:url(../images/register-arow.png); background-repeat:no-repeat;  text-indent: 0px; border:solid 1px #2d426f;     font-size:12px; color: #fff; font-style:italic;/* padding-left: 21px; */margin-right: 17px;background-position: 82px;width: 102px;text-align: left;}
+
 .register-bt:hover{background-color:#b59759; border: solid 1px #a68849; font-size:12px; color: #fff; font-style:italic;   }
+
 .form-error{margin: -5px 0px 0px 0px; position: absolute; bottom:6px;  }
 .search-bt{background-color:#253863; text-transform:uppercase;   background-position: right 9px; height: 32px;   text-indent: 0px; border:solid 1px #2d426f;     font-size:12px; color: #fff; font-style:italic;/* padding-left: 21px; */margin-right: 17px;background-position: 82px;width: 102px;text-align: left;}
 .search-bt:hover{background-color:#b59759; border: solid 1px #a68849; font-size:12px; color: #fff; font-style:italic;   }
@@ -1038,4 +1040,10 @@ display: inline-block;
 .text-success{
 
   color:#3c763d !important;
+}
+.article .btn-default {
+color: #fff;
+background-color: #808286;
+border-color: #808286;
+height: 40px;
 }
