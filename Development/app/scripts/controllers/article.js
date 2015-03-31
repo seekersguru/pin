@@ -352,6 +352,17 @@ angular.module('pinApp')
         console.log(response);
         // $location.path('articles/view/'+response.data.article._id);
         file.result = response.data;
+         if($rootScope.currentUser.role == 'admin')
+        {
+        
+            $location.path('/admin').search({ 'articles':1});
+        
+        }
+        else{
+            $location.path('/notification').search({ 'type':'article'});
+
+        }
+
         $scope.article={};
         $scope.articleDone=1;
         $scope.articleResponse=response.data;

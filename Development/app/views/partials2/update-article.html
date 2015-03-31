@@ -51,6 +51,43 @@
         <button ng-click="updateArticle(form)" class='btn btn-success'>Save</button> 
         <a  href="/articles/01" class='btn btn-warning'>Cancel</a> 
         <button ng-click="remove(form)" class='btn btn-danger'>Delete</button> 
+        <button class='btn register-bt' ng-click=" preview = !preview " >Preview</button> 
+         <br/>
+        <br/>
+
+        <div class="row" ng-show="preview" >
+  <div class="col-lg-10 preview">
+  
+    <h1>{{article.title}}</h1>
+    <div class="green-hr"></div>
+    <div class= "articleview">
+
+      <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
+      <div ng-if='!article.media' class="pull-right">
+        <img src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+
+      </div>
+      <div ng-show='article.media && article.media.extension.indexOf("image") > -1' class="pull-right">
+        <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+
+        <img ng-show="article.media.path"  ng-src="../{{article.media.path}}" title="{{article.title}}" class="img-responsive">
+      </div>
+      <div ng-show='article.media && article.media.extension.indexOf("video") > -1' class="pull-right">
+        <videogular vg-theme='config.theme' >
+          <vg-media 
+          vg-src="config.sources" 
+          vg-native-controls="true"  >
+        </vg-media>
+      </videogular>
+    </div>
+
+    <p>{{article.createdAt | date:"MMMM d, yyyy" }}</p>
+    <p ng-bind-html="article.description | rawHtml"></p>
+</div>
+
+</div>
+</div>
+
 
       </form>
     </div>

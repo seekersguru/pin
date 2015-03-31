@@ -130,22 +130,12 @@ height:100px;width: 100px">
     <div class= "articleview">
 
       <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
-      <div ng-if='!article.media' class="pull-right">
-        <img src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+      <div  class="pull-right">
+        <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
 
-      </div>
-      <div ng-show='article.media && article.media.extension.indexOf("image") > -1' class="pull-right">
-        <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+        <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" >
 
-        <img ng-show="article.media.path"  ng-src="../{{article.media.path}}" title="{{article.title}}" class="img-responsive">
-      </div>
-      <div ng-show='article.media && article.media.extension.indexOf("video") > -1' class="pull-right">
-        <videogular vg-theme='config.theme' >
-          <vg-media 
-          vg-src="config.sources" 
-          vg-native-controls="true"  >
-        </vg-media>
-      </videogular>
+        
     </div>
 
     <p>{{article.createdAt | date:"MMMM d, yyyy" }}</p>
