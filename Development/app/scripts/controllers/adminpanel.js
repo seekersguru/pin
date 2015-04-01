@@ -175,7 +175,7 @@ $scope.deleteArticle=function(articleId){
                         columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
                                     { field: 'title' ,displayName:'Title' },
                                     { field: 'author' ,displayName:'Author' },
-                                    { field: 'tags' ,displayName:'Tags' },
+                                    // { field: 'tags' ,displayName:'Tags' },
                                     { field: 'comments' ,displayName:'Comments' },
                                     { field: 'category' ,displayName:'Category' },
                                     { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
