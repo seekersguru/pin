@@ -57,7 +57,7 @@ exports.create = function(req, res, next) {
         		originalName:file.name
         	};
         	console.log(req.body);
-        	req.body.tags=JSON.parse(req.body.tags);
+        	// req.body.tags=JSON.parse(req.body.tags);
         	var article=new Article(req.body);
         	article.save(function(err,article){
         		if(err){
@@ -73,7 +73,7 @@ exports.create = function(req, res, next) {
   else
   {
        	console.log(req.body);
-        	req.body.tags=req.body.tags;
+        	// req.body.tags=req.body.tags;
         	var article=new Article(req.body);
         	article.save(function(err,article){
         		if(err){
