@@ -110,6 +110,24 @@ exports.update = function(req, res) {
 
 };
 
+//remove media
+exports.removemedia = function(req, res) {
+	var article_id = req.params.articleid;
+	var article_data = {'media':{}};
+	Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
+		if (err) {
+			console.log(err);
+			return res.json(400, err);
+		}
+		if (!article) {
+			console.log('notfound');
+			return res.send(404);
+		}
+		return res.send(200);
+	});
+
+};
+
 // show particluar one article 
 exports.show=function(req,res){
 	var articleid=req.params.articleid;

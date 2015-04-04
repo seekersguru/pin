@@ -126,10 +126,12 @@
     <li><a href="#Protect" data-filter=".Protect">Protect</a></li> 
       <li> <a href="#Manage" data-filter=".Manage">Manage</a></li> 
         <li><a href="#Give" data-filter=".Give">Give</a></li>  
-         --><li><a  data-filter=".Grow" class="current">Grow</a></li>
+    -->
+    <li><a  data-filter=".Grow" class="current">Grow</a></li>
     <li><a  data-filter=".Protect">Protect</a></li> 
-      <li> <a  data-filter=".Manage">Manage</a></li> 
-        <li><a  data-filter=".Give">Give</a></li>  
+    <li> <a  data-filter=".Manage">Manage</a></li> 
+    <li><a  data-filter=".Give">Give</a></li>  
+ 
  </ul> 
 </div>  
 
@@ -137,6 +139,7 @@
 <div class="creations-container">
 <div class="row" id="article-container">
  <div  ng-repeat="(key,value) in articles" class="article-post"  ng-class="{false:'col-lg-8 {{value.category}}',true:'col-lg-4 {{value.category}}'}[!value.media || value.media.extension.indexOf('image') > -1]" >
+  <a ng-href="/articles/view/{{value._id}}">
   <div class="post-box">
       <div class="" ng-class="color[value.category].caption">
        <a ng-href="/articles/view/{{value._id}}"><div><img src="images/post-hover-img.png" alt=""></div>
@@ -145,6 +148,7 @@
       </div>
 
 <div class="" ng-class="color[value.category].colorclass">
+ <a ng-href="/articles/view/{{value._id}}">
  <div ng-if='value.media.extension.indexOf("image") > -1'>
           <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">           
           <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}">
@@ -154,10 +158,12 @@
           <img  src="images/video-play.png" class="img-responsive" title="{{value.title}}">           
     </div>
           <div class="inner-area"> 
-<h3 class="articles-head"><a href="#">{{value.title}}</a></h3>
+<h3 class="articles-head"><a ng-href="/articles/view/{{value._id}}">{{value.title}}</a></h3>
 <p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml"></p>
  </div>
+ </a>
 </div>
+</a>
 </div>
 
  </div>

@@ -44,6 +44,11 @@ module.exports = function(app) {
   //remove
   app.del('/api/articles/:articleid', articles.remove);
 
+
+  //remove media
+
+  app.put('/api/articles/removemedia/:articleid', articles.removemedia);
+
   /**---(',')--article section stop----(',')---**/
 
    

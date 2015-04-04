@@ -31,13 +31,13 @@ angular.module('pinApp')
 $scope.rightnav="right-nav.html";
 
 setTimeout(function(){
-  $('.post-box').hover(
-    function(){
-            $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideDown(250); //.fadeIn(250)
-          },
-          function(){
-            $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideUp(250); //.fadeOut(205)
-          }); 
+  // $('.post-box').hover(
+  //   function(){
+  //           $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideDown(250); //.fadeIn(250)
+  //         },
+  //         function(){
+  //           $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideUp(250); //.fadeOut(205)
+  //         }); 
 
   $(".filterArticle li").find("a").click(function(){
 
@@ -208,9 +208,44 @@ $scope.changePage = function(){
 });
 
 angular.module('pinApp')
-.controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,article) {
+.controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,article,$sce) {
   $scope.category=['Grow','Protect','Manage','Give'];
   $scope.article=article;
+
+if($location.path()=="/articles/edit/"+article._id && article.media)
+{
+
+  $scope.config=
+  {  
+    'sources': [
+    {src: $sce.trustAsResourceUrl('../'+article.media.path), type: 'video/mp4'}
+    ],
+    'theme': 'bower_components/videogular-themes-default/videogular.css',
+    'plugins': {
+      'poster': 'http://www.videogular.com/assets/images/videogular.png'
+    }
+  };
+
+}  
+
+$scope.removeMedia=function(){
+  var remove=confirm("Are you sure you want to remove this Media");
+  if(remove)
+  {
+
+    $http({ method: 'PUT', url: '/api/articles/removemedia/'+$scope.article._id}).
+      success(function (data, status, headers, config) {
+        $scope.article.media={};
+      
+      })
+      .error(function (data, status, headers, config) {
+      
+      alert('There is something technical problem.Please try after some time.');
+      
+      });
+ };
+
+};
   
   $scope.saveArticle=function(form){
     //     var str = "abc'sddf khdfkjdf dflkfdlkfd fdkjfdk test#s";
