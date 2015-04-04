@@ -39,7 +39,7 @@ module.exports = function(app) {
   app.post('/api/articles',  multipartMiddleware, articles.create);
 
   //update
-  app.put('/api/articles/:articleid', articles.update);
+  app.put('/api/articles/:articleid', multipartMiddleware,articles.update);
   
   //remove
   app.del('/api/articles/:articleid', articles.remove);

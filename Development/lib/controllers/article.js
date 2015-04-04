@@ -92,9 +92,60 @@ exports.update = function(req, res) {
 	var article_data = req.body;
 	delete article_data._id;
 	delete article_data.discovered;
-	delete article_data.nFavorite;
+	delete article_data.nFavorites;
 	delete article_data.author;
+	delete article_data.tags;
+	delete article_data.comments;
+
 	console.log(req.body);
+		var data = _.pick(req.body, 'type') ,
+	uploadPath =  '/uploads';
+	console.log(req.files);
+	if(req.files && req.files.file)
+	{
+
+	var file = req.files.file,
+	extension=path.extname(file.name);
+
+	var originalName=Date.now()+extension;
+	  // get the temporary location of the file
+	  var tmp_path = file.path;
+    // set where the file should actually exists - in this case it is in the "images" directory
+    var target_path = './app/uploads/' + originalName,
+    savepath='uploads/' + originalName;
+
+
+    // move the file from the temporary location to the intended location
+    fs.rename(tmp_path, target_path, function(err) {
+    	if (err) throw err;
+        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+        fs.unlink(tmp_path, function() {
+        	if (err) throw err;
+        	console.log('File uploaded to: ' + target_path + ' - ' + file.size + ' bytes');
+
+        	article_data.media={
+        		extension: file.type,
+        		name:file.name,
+        		path:savepath,
+        		originalName:file.name
+        	};
+					Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
+							if (err) {
+								console.log(err);
+								return res.json(400, err);
+							}
+							if (!article) {
+								console.log('notfound');
+								return res.send(404);
+							}
+							return res.send(200);
+						});
+			  });
+      });
+  }
+  else
+  {
+
 	Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
 		if (err) {
 			console.log(err);
@@ -107,6 +158,7 @@ exports.update = function(req, res) {
 		return res.send(200);
 	});
 
+}
 
 };
 
