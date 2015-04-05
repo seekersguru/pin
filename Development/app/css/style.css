@@ -735,7 +735,7 @@ background-color: #d9534f;
 #chat-list-section .chat-icon{width:78px; float: left; margin-right:15px;  }
 #chat-list-section .user-area{float: right; font-family:"Adobe Caslon Pro"; font-size:15px; padding-top:10px; padding-right:15px;   }
 .chat-list-section-footer{font-style:italic;  }
-.chat-list-section-footer span{font-style:italic; color:#ca4f13   }
+.chat-list-section-footer span{font-style:italic; color:#ca4f13 }
 .content {
   overflow: auto;
   position: relative;
