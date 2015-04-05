@@ -22,7 +22,7 @@ function ngGridFlexibleHeightPlugin (opts) {
 
       var newViewportHeight = naturalHeight + 3;
       if (!self.scope.baseViewportHeight || self.scope.baseViewportHeight !== newViewportHeight) {
-        self.grid.$viewport.css('height', newViewportHeight + 'px');
+        self.grid.$viewport.css('height', newViewportHeight +25+ 'px');
         self.grid.$root.css('height', (newViewportHeight + extraHeight) + 'px');
         self.scope.baseViewportHeight = newViewportHeight;
         self.domUtilityService.RebuildGrid(self.scope, self.grid);
@@ -50,6 +50,19 @@ $scope.viewArticle=function(articleId){
 
 $scope.editArticle=function(articleId){
   window.open('/articles/edit/'+articleId,'_blank');
+};
+
+$scope.updateBand=function(data,band){
+   data.band=band;
+   console.log(data);
+   $http({ method: 'PUT', url: '/api/users/'+data._id,data:{'band':band}}).
+      success(function (data, status, headers, config) {
+            
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
 };
 
 $scope.userStatus=function(userId){
@@ -166,11 +179,18 @@ $scope.deleteArticle=function(articleId){
       break;
     }
   }, 0);
-  
+  $scope.filterOptions = {
+    filterText: '',
+    filterColumn: ''    };
+
 
   var editDeleteArticleTemplate = '<a ng-click="deleteArticle(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-click="viewArticle(row.entity._id)"  id="view"  class="btn btn-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-click="editArticle(row.entity._id)"  id="view"  class="btn btn-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
   $scope.articleData = { data: 'gridArticleData' ,
+                        enableCellSelection: true,
+                        enableRowSelection: false,
+                         filterOptions: $scope.filterOptions,
+
                         // showGroupPanel: true ,
                         columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
                                     { field: 'title' ,displayName:'Title' },
@@ -187,16 +207,19 @@ $scope.deleteArticle=function(articleId){
 
   $scope.userData = { data: 'gridUserData' ,
                         // showGroupPanel: true ,
+                         // enableCellSelection: true,
+                         enableRowSelection: false,
+                         filterOptions: $scope.filterOptions,
                          columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
                                     { field: 'name' ,displayName:'Name' },
                                     { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'email' ,displayName:'Email' },
-                                    { field: 'band' ,displayName:'Band'},
+                                    { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'}, 
                                     { field: 'role' ,displayName:'Role'},
                                     { field: 'emailVerification' ,displayName:'EmailVerification',cellTemplate:'<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>' },
                                     { field: 'username' ,displayName:'Username' },
                                     { field: 'status' ,displayName:'Status',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'},
-                                    { field: 'action' ,displayName:'Action',cellTemplate:'<span ng-if="row.entity.status" class="btn btn-info" ng-click="userStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="btn btn-info" ng-click="userStatus(row.entity._id)">Approve</span>'}],
+                                    { field: 'action' ,displayName:'Action',cellTemplate:'<span ng-if="row.entity.status" class="btn btn-info" ng-click="userStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="btn btn-info" ng-click="userStatus(row.entity._id)">Approve</span> '}],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };

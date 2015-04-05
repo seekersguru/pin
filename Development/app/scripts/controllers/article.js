@@ -31,13 +31,13 @@ angular.module('pinApp')
 $scope.rightnav="right-nav.html";
 
 setTimeout(function(){
-  $('.post-box').hover(
-    function(){
-            $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideDown(250); //.fadeIn(250)
-          },
-          function(){
-            $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideUp(250); //.fadeOut(205)
-          }); 
+  // $('.post-box').hover(
+  //   function(){
+  //           $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideDown(250); //.fadeIn(250)
+  //         },
+  //         function(){
+  //           $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideUp(250); //.fadeOut(205)
+  //         }); 
 
   $(".filterArticle li").find("a").click(function(){
 
@@ -208,50 +208,160 @@ $scope.changePage = function(){
 });
 
 angular.module('pinApp')
-.controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,article) {
+.controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,article,$sce,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
   $scope.article=article;
-  
-  $scope.saveArticle=function(form){
-    //     var str = "abc'sddf khdfkjdf dflkfdlkfd fdkjfdk test#s";
-    // alert(str.replace(/[^a-zA-Z ]/g, "").replace(/ /g,"-"));
-    if(form.$valid)
-    {
-      $scope.article.author=$rootScope.currentUser._id;
-      // console.log($scope.article.tags);
-      // console.log($scope.article);
-      // var original=$scope.article.tags;
-      // for (var t = 0; t < original.length; t++) {
-      //   $scope.article.tags[t] = original[t].text;
-      // }
-      $scope.form.$setPristine();
-      $http({ method: 'POST', url: '/api/articles',data:$scope.article }).
-      success(function (data, status, headers, config) {
-        // ...
-        console.log(data);
-        if($rootScope.currentUser.role == 'admin')
-        {
-            $location.path('/admin').search({ 'articles':1});
-        }
-        else{
-            $location.path('/notification').search({ 'type':'article'});
-        }
 
-        $scope.article={};
-        $scope.articleDone=1;
-        $scope.articleResponse=data.article._id;
-        $location.path('articles/view/'+data.article._id)
-        
-      }).
-      error(function (data, status, headers, config) {
-        // ...
-        $scope.article={};
+  $scope.article.tags="";
+  $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
+
+
+if($location.path()=="/articles/edit/"+article._id && article.media)
+{
+
+  $scope.config=
+  {  
+    'sources': [
+    {src: $sce.trustAsResourceUrl('../'+article.media.path), type: 'video/mp4'}
+    ],
+    'theme': 'bower_components/videogular-themes-default/videogular.css',
+    'plugins': {
+      'poster': 'http://www.videogular.com/assets/images/videogular.png'
+    }
+  };
+
+}  
+
+$scope.removeMedia=function(){
+  var remove=confirm("Are you sure you want to remove this Media");
+  if(remove)
+  {
+
+    $http({ method: 'PUT', url: '/api/articles/removemedia/'+$scope.article._id}).
+      success(function (data, status, headers, config) {
+        $scope.article.media="";
+      
+      })
+      .error(function (data, status, headers, config) {
+      
+      alert('There is something technical problem.Please try after some time.');
+      
+      });
+ };
+
+};
+
+$scope.uploadPic = function(files) {
+    $scope.formUpload = true;
+    if ($scope.mainFIle[0] !== null) {
+      generateThumbAndUpload($scope.mainFIle[0])
+    }
+  };
+  
+  function generateThumbAndUpload(file) {
+    $scope.errorMsg = null;
+    $scope.generateThumb(file);
+    uploadUsing$upload(file);
+    
+  }
+
+  function uploadUsing$upload(file) {
+
+    $scope.mainData={
+        author:$rootScope.currentUser._id,
+
+
+    };
+    
+    var original=$scope.article.tags;
+    // $scope.article.tags=[];
+    // for (var t = 0; t < original.length; t++) {
+    //   $scope.article.tags[t] = original[t].text;
+    // }
+
+    $scope.articleput={
+
+      title:$scope.article.title,
+      description:$scope.article.description,
+      category:$scope.article.category
+
+    };
+
+
+    file.upload = $upload.upload({
+      url: '/api/articles/'+article._id,
+      method: 'PUT',
+      // headers: {
+      //   'Content-Type': 'multipart/form-data'
+      // },
+      data:$scope.articleput,
+      file: file
+    });
+
+    file.upload.then(function(response) {
+      $timeout(function() {
+        console.log(response);
+        $location.path('/articles/view/'+$scope.article._id);
+      });
+    }, function(response) {
+      if (response.status > 0)
+        $scope.errorMsg = response.status + ': ' + response.data;
+        $location.path('/articles/view/'+$scope.article._id);
       });
 
+    file.upload.progress(function(evt) {
+      // Math.min is to fix IE which reports 200% sometimes
+      file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+    });
 
+    file.upload.xhr(function(xhr) {
+      // xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
+    });
+  }
+
+
+  $scope.generateThumb = function(file) {
+    if (file !== null) {
+      if ($scope.fileReaderSupported && (file.type.indexOf('image') > -1 || file.type.indexOf('video') > -1)) {
+        $timeout(function() {
+          var fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+          fileReader.onload = function(e) {
+            $timeout(function() {
+              file.dataUrl = e.target.result;
+            });
+          };
+        });
+      }
     }
-
   };
+  
+   $scope.setFiles = function(element) {
+    $scope.filearticle=1;
+    var file=element.files[0];
+    $scope.$apply(function($scope) {
+      console.log('files:', element.files);
+      if ($scope.fileReaderSupported && (file.type.indexOf('image') > -1 || file.type.indexOf('video') > -1)) {
+        $timeout(function() {
+          var fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+          fileReader.onload = function(e) {
+            $timeout(function() {
+              element.files[0].dataUrl = e.target.result;
+              $scope.mainFIle=element.files;
+            });
+          };
+        });
+      }
+      // Turn the FileList object into an Array
+      $scope.files = [];
+      for (var i = 0; i < element.files.length; i++) {
+        $scope.files.push(element.files[i]);
+      }
+      $scope.progressVisible = false;
+    });
+  };
+
   //update
   $scope.updateArticle=function(form){
     if(form.$valid)
@@ -449,6 +559,7 @@ $scope.article.tags=['tag1','tag2'];
             $timeout(function() {
               element.files[0].dataUrl = e.target.result;
               $scope.mainFIle=element.files;
+              
             });
           };
         });
