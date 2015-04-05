@@ -1058,11 +1058,103 @@ height: 40px;
  padding-bottom: 12px;
 
 }
+.desktop-hide{display:none!important;}
 
 
-/*videogular {
-  width: 50% !important;
-  height: 100% !important;
-  position: relative;
-  display: inline !important;
-  }*/
+@media (max-width: 1024px) {}
+@media (min-width: 768px) and (max-width: 979px) {
+.tree-container{background-image:none;  }
+#nav ul li a{left:220px;top:20px;  }
+#nav ul li + li a {
+    left: 320px;
+    top: 20px;
+}
+#nav ul li + li + li + li a {
+    left: 420px;
+    top: 20px;
+}
+
+#nav ul li + li + li a {
+    left: 520px;
+    top:20px;
+}
+.welcome-text {
+    border-left: 5px solid #b59759;
+    display: block;
+    left: 20px;
+    padding-left: 15px;
+    position: absolute;
+    top: 225px;
+}
+.container-head{padding-left:15px; padding-right: 15px; }
+.desktop-hide{display: none!important;}
+}
+
+
+  @media (max-width: 767px) {
+.desktop-hide{display: block!important;}
+    .tree-container{display:none; }
+    .welcome-text{position:relative; left:auto; top:auto; margin-top: 80px; right: auto;   }
+    .mar-back-img{margin-left:auto; }
+    .welcome-text h1 {
+    color: #193164;
+    display: block;
+    font-size:38px;
+    margin-top: -7px;
+    text-transform: uppercase;
+}
+
+.welcome-text h1 span {
+    color: #5e5649;
+    display: block;
+    font-size: 30px;
+}
+.container-head{padding:0 15px 0 15px; 
+  }
+
+.footer-link ul li{width:100%; float:none;     border-top: 1px solid #374259; margin: 0px;  }
+.footer-link ul li:hover{border-top: 1px solid #374259; margin: 0px;}
+.footer-above {
+    /*background-image: url("../images/footer-bg.png");*/
+    background-repeat: repeat-x;
+    height:auto; background-size:100% 100%; 
+}
+
+.navbar-blue {
+    background-image: url("../images/header-bg.png");
+    background-repeat: repeat-x;
+    background-size: 100% 100%;
+    border-radius: 0;
+    height:auto;
+    margin-top: 0;
+    min-height: 70px;
+}
+
+.navbar-blue .navbar-nav > li > a {
+    color: #c8c8c8;
+    border-top: 1px solid #374259;
+}
+.navbar-nav{margin-top:100px; }
+.navbar-blue .navbar-nav > .active > a, .navbar-blue .navbar-nav > .active > a:hover, .navbar-blue .navbar-nav > .active > a:focus {
+    background-color:transparent;
+    color: #fff;
+}
+
+.navbar-form .btn-default {margin-top:5px; }
+.register-form .radio, .checkbox {
+    margin-bottom: 0;
+    margin-top: 35px;
+    position: absolute;
+}
+
+.forget-pass {
+    color: #fff;
+    display: block;
+    font-size: 12px;
+    margin-top: 35px;
+}
+
+.navbar-collapse{box-shadow:none; }
+.navbar-form{box-shadow:none; }
+
+}

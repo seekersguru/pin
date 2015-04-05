@@ -340,7 +340,7 @@ $scope.uploadPic = function(files) {
     $scope.filearticle=1;
     var file=element.files[0];
     $scope.$apply(function($scope) {
-      console.log('files:', element.files);
+      // console.log('files:', element.files);
       if ($scope.fileReaderSupported && (file.type.indexOf('image') > -1 || file.type.indexOf('video') > -1)) {
         $timeout(function() {
           var fileReader = new FileReader();
