@@ -88,7 +88,7 @@
 
           </div>
 
-          <div ng-show='article.media && article.media.extension.indexOf("image") > -1' class="pull-right">
+          <div ng-show='article.media && article.media.extension.indexOf("image") > -1'>
             <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
 
             <img ng-show="article.media.path"  ng-src="../{{article.media.path}}" title="{{article.title}}" class="img-responsive">
@@ -119,7 +119,7 @@
                 </div>
           </div>
         -->        
-        
+
         <br/>
 
         <button ng-show="filearticle" class='btn btn-success' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Update</button> 
@@ -133,7 +133,7 @@
         <!-- <div class="row" ng-show="preview" > -->
         <div class="row">
           <div class="col-lg-10 preview">
-            
+
             <h1>{{article.title}}</h1>
             <div class="green-hr"></div>
             <div class= "articleview">
@@ -160,14 +160,14 @@
 
     </div>
   </div>
-  
+
   <div ng-show="filearticle">
     <div  class="pull-right">
       <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
 
       <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="img-responsive" >
 
-      
+
     </div>
 
     
