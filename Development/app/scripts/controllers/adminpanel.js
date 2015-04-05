@@ -22,7 +22,7 @@ function ngGridFlexibleHeightPlugin (opts) {
 
       var newViewportHeight = naturalHeight + 3;
       if (!self.scope.baseViewportHeight || self.scope.baseViewportHeight !== newViewportHeight) {
-        self.grid.$viewport.css('height', newViewportHeight + 'px');
+        self.grid.$viewport.css('height', newViewportHeight +25+ 'px');
         self.grid.$root.css('height', (newViewportHeight + extraHeight) + 'px');
         self.scope.baseViewportHeight = newViewportHeight;
         self.domUtilityService.RebuildGrid(self.scope, self.grid);
@@ -179,13 +179,18 @@ $scope.deleteArticle=function(articleId){
       break;
     }
   }, 0);
-  
+  $scope.filterOptions = {
+    filterText: '',
+    filterColumn: ''    };
+
 
   var editDeleteArticleTemplate = '<a ng-click="deleteArticle(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-click="viewArticle(row.entity._id)"  id="view"  class="btn btn-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-click="editArticle(row.entity._id)"  id="view"  class="btn btn-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
   $scope.articleData = { data: 'gridArticleData' ,
                         enableCellSelection: true,
                         enableRowSelection: false,
+                         filterOptions: $scope.filterOptions,
+
                         // showGroupPanel: true ,
                         columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
                                     { field: 'title' ,displayName:'Title' },
@@ -204,6 +209,7 @@ $scope.deleteArticle=function(articleId){
                         // showGroupPanel: true ,
                          // enableCellSelection: true,
                          enableRowSelection: false,
+                         filterOptions: $scope.filterOptions,
                          columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
                                     { field: 'name' ,displayName:'Name' },
                                     { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },

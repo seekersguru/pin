@@ -17,6 +17,10 @@
 
 <script type="text/ng-template" id="users">
 <h1>Users</h1>
+  <br/>
+ <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
+      <br/>
+      <br/>
 <div class="gridStyle" ng-grid="userData">
 
 </div>
@@ -24,7 +28,10 @@
 
 <script type="text/ng-template" id="articles">
 <h1>Articles</h1>
-
+ <br/>
+ <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
+      <br/>
+      <br/>
 <div class="gridStyle" ng-grid="articleData">
 
 </div>

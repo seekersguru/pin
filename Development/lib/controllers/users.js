@@ -12,7 +12,7 @@ _ = require('lodash');
 
 
 exports.query = function(req, res){
-  var q = User.find({});
+  var q = User.find({role: {'$ne':'admin' }});
   if (req.query.array_foll){
     if(typeof req.query.array_foll === typeof {}){
       q = q.where('_id').in(req.query.array_foll);
