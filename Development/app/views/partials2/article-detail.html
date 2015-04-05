@@ -133,7 +133,7 @@
       <div class="row">
         <div class="col-lg-6">
           <ul class="breadcrumb">
-            <li><a href="/"><i class="fa fa-home"></i></a></li>
+            <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
             <li><a href="/articles/01">LEARN</a></li>
             <li class="active">{{articles.title | uppercase}}</li>
           </ul>
@@ -202,6 +202,8 @@
     <p ng-bind-html="articles.description | rawHtml "></p>
     </div>
     <a class="btn Check-availability" type="button" href="/articles/01"  >Back To Articles </a>
+    <a ng-if="currentUser.role=='admin'" class="btn btn-warning" type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a>
+
   
   <div class="comments-hr-top">comments</div>
   <ul class="commentList">

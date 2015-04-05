@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-lg-9">
       <ul class="breadcrumb">
-        <li><a href="/home"><i class="fa fa-home"></i></a></li>
+        <li><a href="/home"><i class="fa fa-home fa-lg"></i></a></li>
         <li class="active">LEARN</li>
       </ul>
     </div>  
@@ -20,73 +20,91 @@
    </div> 
 
  </div>
-  <div class="row">
-    <div class="col-lg-9">
+ <div class="row">
+  <div class="col-lg-9">
     <h1>Edit Article</h1>
     <form novalidate  name="form" role='form' enctype= 'multipart/form-data'>
       <div class="dashboard-section">
         <div class="alert alert-success" role="alert" ng-show="updateStatus">
          You have successfully updated your Article see article here  <a ng-href="/articles/view/{{article._id}}"><b>Click Here</b></a>
-        </div>
-         <div class="alert alert-success" role="alert" ng-show="deleteStatus">
-         You have successfully deleted your Article. Go to your Articles <a href="/myarticles/01"><b>Click Here</b></a>
-        </div>
-
-        <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
-          <label class="control-label" for="title">Title</label>
-          <input type="text" class="form-control" name="title" ng-model="article.title" required ng-minlength=5>
-          <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill title.</p>
-          <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.minlength">your title shoud be minimum 5 character long .</p>
-          <p class="text-danger" ng-show="form.title.$error.mongoose">{{ errors.title }} </p>
-        </div>
-
-        <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
-          <label class="control-label" for="description">Description</label>
-           <text-angular  name="description" ng-model="article.description" required ng-minlength=20> </text-angular>
-
-          <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.required">Please fill description.</p>
-          <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.minlength">your description shoud be minimum 20 character long .</p>
-          <p class="text-danger" ng-show="form.description.$error.mongoose">{{ errors.description }} </p>
-        </div>
-
-
-
-
-
-<div class="form-group">
-   <label class="control-label" for="fullName">Media </label>
-   <a ng-click="removeMedia()" ng-show='article.media'>Remove Media</a> 
-    <div ng-show='!article.media' >
-     <!-- <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file" accept="image/*"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" /> -->
-     <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
-      <i class="text-danger" ng-show="form.file.$error.required">*required</i>
-    <br/>
-    <img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
-    height:100px;width: 100px">  
-    <br/>
-    <span class="progress" ng-show="mainFIle[0].progress >= 0">    
-      <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
-    </span> 
-    <span ng-show="mainFIle[0].result">Upload Successful</span>
-
-      </div>
-
-      <div ng-show='article.media && article.media.extension.indexOf("image") > -1' class="pull-right">
-        <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
-
-        <img ng-show="article.media.path"  ng-src="../{{article.media.path}}" title="{{article.title}}" class="img-responsive">
-      </div>
-      <div ng-show='article.media && article.media.extension.indexOf("video") > -1' class="">
-        <videogular vg-theme='config.theme' >
-             <vg-media 
-          vg-src="config.sources" 
-          vg-native-controls="true"  >
-        </vg-media>
-      </videogular>
-    </div>
        </div>
+       <div class="alert alert-success" role="alert" ng-show="deleteStatus">
+         You have successfully deleted your Article. Go to your Articles <a href="/myarticles/01"><b>Click Here</b></a>
+       </div>
+       <div class="row register-form-row-pad">
+        <div class="col-lg-7 paddingr-7"> 
+          <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
+            <!-- <label class="control-label" for="title">Title</label> -->
+            <input type="text" class="form-control" name="title" ng-model="article.title" required ng-minlength=5>
+            <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill title.</p>
+            <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.minlength">your title shoud be minimum 5 character long .</p>
+            <p class="text-danger" ng-show="form.title.$error.mongoose">{{ errors.title }} </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3  paddingl-7">
+
+          <div class="form-group">
+            <select ng-model="article.category" ng-options="o as o for o in category" placeholder="choose category"></select>
+          </div>
+        </div>
+
+      </div>
+      <div class="row ">
+        <div class="col-lg-10">    
+
+          <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
+            <label class="control-label" for="description">Description</label>
+            <text-angular  name="description" ng-model="article.description" required ng-minlength=20> </text-angular>
+
+            <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.required">Please fill description.</p>
+            <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.minlength">your description shoud be minimum 20 character long .</p>
+            <p class="text-danger" ng-show="form.description.$error.mongoose">{{ errors.description }} </p>
+          </div>
+
+        </div>
+      </div>
 
 
+
+      <div class="row ">
+        <div class="col-lg-10">    
+
+          <div class="form-group">
+           <label class="control-label" for="fullName">Media </label>
+           <a ng-click="removeMedia()" ng-show='article.media'>Remove Media</a> 
+           <div ng-show='!article.media' >
+             <!-- <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file" accept="image/*"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" /> -->
+             <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
+             <i class="text-danger" ng-show="form.file.$error.required">*required</i>
+             <br/>
+             <img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
+             height:100px;width: 100px">  
+             <br/>
+             <span class="progress" ng-show="mainFIle[0].progress >= 0">    
+              <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
+            </span> 
+            <span ng-show="mainFIle[0].result">Upload Successful</span>
+
+          </div>
+
+          <div ng-show='article.media && article.media.extension.indexOf("image") > -1' class="pull-right">
+            <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+
+            <img ng-show="article.media.path"  ng-src="../{{article.media.path}}" title="{{article.title}}" class="img-responsive">
+          </div>
+          <div ng-show='article.media && article.media.extension.indexOf("video") > -1' class="">
+            <videogular vg-theme='config.theme' >
+             <vg-media 
+             vg-src="config.sources" 
+             vg-native-controls="true"  >
+           </vg-media>
+         </videogular>
+       </div>
+     </div>
+
+   </div>
+ </div>
         <!-- <div class="form-group">
                 <label for="tags">Tags</label>
                 <div tooltip="Add about three to four tags for better discoveribility of your article">
@@ -100,63 +118,76 @@
                 </tags-input>
                 </div>
           </div>
- -->        
-         
+        -->        
+        
         <br/>
-        <br/>
-  <div class="form-group">
-              <select ng-model="article.category" ng-options="o as o for o in category" placeholder="choose category"></select>
-            </div>
-<br/>
-       <button ng-show="filearticle" class='btn btn-success' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Update</button> 
+
+        <button ng-show="filearticle" class='btn btn-success' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Update</button> 
         <button ng-hide="filearticle" class='btn btn-success' ng-disabled="!form.$valid" ng-click="updateArticle(form)" >Update</button> 
         <a  href="/articles/01" class='btn btn-warning'>Cancel</a> 
         <button ng-click="remove(form)" class='btn btn-danger'>Delete</button> 
-        <button class='btn register-bt' ng-click=" preview = !preview " >Preview</button> 
-         <br/>
+        <!-- <button class='btn register-bt' ng-click=" preview = !preview " >Preview</button>  -->
+        <br/>
         <br/>
 
-        <div class="row" ng-show="preview" >
-  <div class="col-lg-10 preview">
-  
-    <h1>{{article.title}}</h1>
-    <div class="green-hr"></div>
-    <div class= "articleview">
+        <!-- <div class="row" ng-show="preview" > -->
+        <div class="row">
+          <div class="col-lg-10 preview">
+            
+            <h1>{{article.title}}</h1>
+            <div class="green-hr"></div>
+            <div class= "articleview">
 
-      <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
-      <div ng-if='!article.media' class="pull-right">
-        <img src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+              <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
+              <div ng-show="!filearticle">
+                <div ng-if='!article.media' class="pull-right">
+                  <img src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
 
-      </div>
-      <div ng-show='article.media && article.media.extension.indexOf("image") > -1' class="pull-right">
-        <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+                </div>
+                <div ng-show='article.media && article.media.extension.indexOf("image") > -1' class="pull-right">
+                  <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
 
-        <img ng-show="article.media.path"  ng-src="../{{article.media.path}}" title="{{article.title}}" class="img-responsive">
-      </div>
-      <div ng-show='article.media && article.media.extension.indexOf("video") > -1' class="pull-right">
+                  <img ng-show="article.media.path"  ng-src="../{{article.media.path}}" title="{{article.title}}" class="img-responsive">
+                </div>
+                <div ng-show='article.media && article.media.extension.indexOf("video") > -1' class="pull-right">
 <!--         <videogular vg-theme='config.theme' >
           <vg-media 
           vg-src="config.sources" 
           vg-native-controls="true"  >
         </vg-media>
       </videogular> -->
-        <img ng-show="article.media.path"  ng-src="images/video-play.png" title="{{article.title}}" class="img-responsive">
+      <img ng-show="article.media.path"  ng-src="images/video-play.png" title="{{article.title}}" class="img-responsive">
 
     </div>
-
-    <p>{{article.createdAt | date:"MMMM d, yyyy" }}</p>
-    <p ng-bind-html="article.description | rawHtml"></p>
-</div>
-
-</div>
-</div>
-
-
-      </form>
   </div>
+  
+  <div ng-show="filearticle">
+    <div  class="pull-right">
+      <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
+
+      <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="img-responsive" >
+
+      
+    </div>
+
+    
+
+
   </div>
-  <div class="col-lg-3">
+
+  <p>{{article.createdAt | date:"MMMM d, yyyy" }}</p>
+  <p ng-bind-html="article.description | rawHtml"></p>
+</div>
+
+</div>
+</div>
+
+
+</form>
+</div>
+</div>
+<div class="col-lg-3">
   <div ng-include="'partials2/right-nav.html'"> </div>
 </div>
-  </div>
+</div>
 </div>

@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-lg-9">
       <ul class="breadcrumb">
-        <li><a href="/home"><i class="fa fa-home"></i></a></li>
+        <li><a href="/home"><i class="fa fa-home fa-lg"></i></a></li>
         <li class="active">LEARN</li>
       </ul>
     </div>  
@@ -98,9 +98,9 @@ height:100px;width: 100px">
 
 </div>
 
-<div class="checkbox italic-font">
+<!-- <div class="checkbox italic-font">
   <label><input type="checkbox" name= "agree" ng-model="article.checked" required value="">Check box to agree to these submission guide line</label>
-</div>
+</div> -->
 
 
 
@@ -113,7 +113,7 @@ height:100px;width: 100px">
 <!-- <button type="submit" ng-disabled="form.$invalid" class='btn btn-success' >Add</button>  -->
 <button ng-show="filearticle" class='btn register-bt' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Add</button> 
 <button ng-hide="filearticle" class='btn register-bt' ng-disabled="!form.$valid" ng-click="saveArticle(form)" >Add</button> 
-<button class='btn register-bt' ng-click=" preview = !preview " >Preview</button> 
+<!-- <button class='btn register-bt' ng-click=" preview = !preview " >Preview</button>  -->
         <!-- <button  type="reset" ng-click="reset(form)" class='btn btn-warning'>Reset</button> 
         <a  href="/dashboard" class='btn btn-danger'>Cancel</a>  -->
         <p ng-show="articleDone"><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
@@ -123,7 +123,8 @@ height:100px;width: 100px">
          You have successfully written new Article see article here  <a ng-href="/articles/view/{{articleResponse.article._id}}"><b>Click Here</b></a>
        </div> -->
 
-<div class="row" ng-show="preview" >
+<!-- <div class="row" ng-show="preview" > -->
+<div class="row" >
   <div class="col-lg-10 preview">
   
     <h1>{{article.title}}</h1>
@@ -134,7 +135,7 @@ height:100px;width: 100px">
       <div  class="pull-right">
         <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
 
-        <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" >
+        <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="img-responsive" >
 
         
     </div>
