@@ -55,7 +55,7 @@
 
           <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
             <label class="control-label" for="description">Description</label>
-            <text-angular  name="description" ng-model="article.description" required ng-minlength=20> </text-angular>
+            <text-angular  name="description" ng-model="article.description" required ng-minlength=20 ta-toolbar="[ ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],['justifyLeft','justifyCenter','justifyRight','indent','outdent']]"> </text-angular>
 
             <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.required">Please fill description.</p>
             <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.minlength">your description shoud be minimum 20 character long .</p>
