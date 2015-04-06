@@ -1,7 +1,8 @@
+
 'use strict';
 
 angular.module('pinApp')
-.controller('SocketCtrl', function ($log, $scope, chatSocket, messageFormatter, nickName,$rootScope,$location) {
+.controller('SocketCtrl', function ($log, $scope, chatSocket, messageFormatter, nickName,$rootScope,$location,$http) {
   if($rootScope.currentUser)
   {
     nickName=$rootScope.currentUser.name;
@@ -9,6 +10,8 @@ angular.module('pinApp')
 
 
   $scope.currentDate=new Date().getTime();
+
+  $http
   $scope.chatlist=[
   {
     'title':'chat title',
@@ -19,13 +22,38 @@ angular.module('pinApp')
     'topic':'topic name'
   },
   ];
+  $http({ method: 'GET', url: '/api/discussions' }).
+      success(function (data, status, headers, config) {
+        $scope.chatlist=data.discussion;
+      })
+      
+      .error(function (data, status, headers, config) {
+        // $location.path('/chat-start').search('cid',$scope.chatid);
+        
+      });
+
+ $scope.category=['Grow','Protect','Manage','Give'];
+$scope.chat={};
+
 
  $scope.chatid=$location.search()['cid'] || 'nochat';
+
+ $scope.chat={cid : $scope.chatid};
 
   $scope.chatDetail = function(form) {
     $scope.submitted = true;
     if(form.$valid) {
-      $location.path('/chat-start').search('cid',$scope.chatid);
+    $scope.forsubmit=1;
+      $http({ method: 'POST', url: '/api/discussions',data:$scope.chat }).
+      success(function (data, status, headers, config) {
+        $location.path('/discussion-start').search('cid',$scope.chatid);
+        $scope.forsubmit=0;
+
+      })
+      .error(function (data, status, headers, config) {
+        // $location.path('/chat-start').search('cid',$scope.chatid);
+        $scope.forsubmit=0;
+      });
 
     }
   };

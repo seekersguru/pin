@@ -4,7 +4,8 @@ var index = require('./controllers'),
     users = require('./controllers/users'),
     nishant = require('./controllers/nishant'),
     session = require('./controllers/session'),
-    articles = require('./controllers/article');
+    articles = require('./controllers/article'),
+    discussions = require('./controllers/discussion');
    
 var middleware = require('./middleware');
 var multipart = require('connect-multiparty'),
@@ -82,6 +83,11 @@ module.exports = function(app) {
   app.post('/api/users/forgot', users.forgot);
   app.post('/api/users/:id/recover', users.recover);
   
+
+  app.post('/api/discussions', discussions.create);
+  app.get('/api/discussions', discussions.query);
+  app.put('/api/discussions/:discussionid', discussions.update); 
+  app.del('/api/discussions/:discussionid', discussions.remove); 
   
   app.post('/api/session', session.login);
   app.del('/api/session', session.logout);

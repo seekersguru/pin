@@ -4,7 +4,7 @@
 <div class="col-lg-9">
   <ul class="breadcrumb">
     <li><a href="/home"><i class="fa fa-home fa-lg"></i></a></li>
-    <li><a class="active">CHAT</a></li>
+    <li><a class="active">DISCUSSION</a></li>
     </ul>
 </div>  
 <div class="col-lg-3">
@@ -26,14 +26,14 @@
 
 <div class="submit-articale-section">
 <div class="row">
- <div class="col-lg-8"><h1>Chat</h1> </div>
+ <div class="col-lg-8"><h1>Discussion</h1> </div>
 
  <div class="col-lg-4  paddingl-7">
   <!-- <form class="register-form"  role="form" novalidate> -->
 
 <div class="form-group">
 
- <a ng-href="/chat-detail?cid={{currentDate}}" class="btn btn-success" role="button" target="_blank">Start Chat</a>
+ <a ng-href="/chat-detail?cid={{currentDate}}" class="btn btn-success" role="button" target="_blank">Start Discussion</a>
 
 </div>
 
@@ -49,7 +49,7 @@
  <div class="clearfix" ng-repeat="(key , val) in chatlist" ng-class="{0:'chat-list-row-odd',1:'chat-list-row-even'}[key % 2]">
   <div class="chat-icon"><img src="images/chat-iocn.jpg" alt=""></div> 
   <div class="content-area">
- <h2><a href="#">{{val.title}}</a></h2> 
+ <h2><a ng-href="/chat-start?cid={{val.cid}}">{{val.title}}</a></h2> 
    <p>- {{val.topic}}</p>
   </div>
   <div class="user-area">

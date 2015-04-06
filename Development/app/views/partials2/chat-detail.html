@@ -30,7 +30,14 @@
             <div class="col-lg-6  paddingl-7">
               <div class="form-group">
                 
-                <input required type="text" name="topic" class="form-control" ng-model="chat.topic" placeholder="Topic Name"/>
+                <select ng-model="chat.topic" name ="topic" required>
+                  <option  value="">Select Topic</option>
+                  <option  value="Grow">Grow</option>
+                  <option  value="Protect">Protect</option>
+                  <option  value="Manage">Manage</option>
+                  <option  value="Give">Give</option>
+                </select>
+               
                 <p class="text-danger" ng-show="form.topic.$error.required && submitted">Please fill Topic Name.</p>
 
 
@@ -39,8 +46,8 @@
 
           </div>
 
-           <br> <button class="btn register-bt" type="submit">
-          Start Chat
+           <br> <button class="btn register-bt" ng-disabled="forsubmit" type="submit">
+          Start Discussion
         </button>
         <br></br>
         <p><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
