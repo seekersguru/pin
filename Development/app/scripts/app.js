@@ -107,12 +107,17 @@ angular.module('pinApp', [
     controller:'SocketCtrl',
     authenticate: true
   })
-  .when('/chat-detail', {
+  .when('/discussion-start', {
+    templateUrl: 'partials2/discussion-start',
+    controller:'SocketCtrl',
+    authenticate: true
+  })
+  .when('/discussion-detail', {
     templateUrl: 'partials2/chat-detail',
     controller:'SocketCtrl',
     authenticate: true
   })
-  .when('/chat-listing', {
+  .when('/discussion-listing', {
     templateUrl: 'partials2/chat-listing',
     controller: 'SocketCtrl',
     title: 'Chat Listing',
