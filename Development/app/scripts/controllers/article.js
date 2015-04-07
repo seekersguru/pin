@@ -11,21 +11,25 @@ angular.module('pinApp')
   $scope.color={
     'Grow':
     {'caption':'caption',
-    'colorclass':'greenbox'
+    'colorclass':'greenbox',
+    'image':'green-chat.jpg'
   },
   'Protect':
   {
     'caption':'caption-red',
-    'colorclass':'redbox'
+    'colorclass':'redbox',
+    'image':'red-chat.jpg'
   },
   'Manage':
   {
    'caption':'caption-aqua',
-   'colorclass':'aquanbox'
+   'colorclass':'aquanbox',
+    'image':'blue-chat.jpg'
  },
  'Give':
  { 'caption':'caption-pink',
- 'colorclass':'pinkbox'
+ 'colorclass':'pinkbox',
+    'image':'purple-chat.jpg'
 }
 };
 $scope.rightnav="right-nav.html";

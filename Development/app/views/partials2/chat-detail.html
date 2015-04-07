@@ -3,22 +3,25 @@
     <div class="col-lg-6">
       <ul class="breadcrumb">
         <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
-        <li><a  class="active" >DISCUSSION</a></li>
+        <li><a  href="/discussion-listing" >DISCUSSION</a></li>
+        <li class="active">START DISCUSSION</li>
       </ul>
     </div>  
   </div>
 
   <div class="row">
   
-     <div class="col-lg-9">
+     <div class="col-lg-9 col-md-9 col-sm-9">
     
     <div class="submit-articale-section">
-           <h1>Start New Chat</h1> 
+           <h1>Start New Discussion</h1> 
            <div class="register-form-hr"></div>
+           <div class="chat-h2text">Begin New Discussion</div>
+
            <form class="register-form"  name="form" ng-submit="chatDetail(form)" novalidate>
             <div class="row">
             
-            <div class="col-lg-6 paddingr-7">
+            <div class="col-lg-12">
               <div class="form-group">
                 
                 <input required type="text" name="title" class="form-control" ng-model="chat.title" placeholder="Title"/>
@@ -26,11 +29,12 @@
              
               </div>
             </div>
-
-            <div class="col-lg-6  paddingl-7">
+            </div>
+            <div class='row'>
+            <div class="col-lg-6  col-md-6 col-sm-6">
               <div class="form-group">
                 
-                <select ng-model="chat.topic" name ="topic" required>
+                <select ng-model="chat.topic" name ="topic" required id="sel1">
                   <option  value="">Select Topic</option>
                   <option  value="Grow">Grow</option>
                   <option  value="Protect">Protect</option>
@@ -49,10 +53,10 @@
            <br> <button class="btn register-bt" ng-disabled="forsubmit" type="submit">
           Start Discussion
         </button>
-        <br></br>
+<!--         <br></br>
         <p><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
         <br></br>
-
+ -->
 
       </form>
 

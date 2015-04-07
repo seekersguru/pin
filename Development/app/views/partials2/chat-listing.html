@@ -47,14 +47,14 @@
 <div class="content mCustomScrollbar">
  
  <div class="clearfix" ng-repeat="(key , val) in chatlist" ng-class="{0:'chat-list-row-odd',1:'chat-list-row-even'}[key % 2]">
-  <div class="chat-icon"><img src="images/chat-iocn.jpg" alt=""></div> 
+  <div class="chat-icon"><img ng-src="images/{{color[val.topic].image}}" alt="{{val.topic}}"></div> 
   <div class="content-area">
  <h2><a ng-href="/discussion-start?cid={{val.cid}}">{{val.title}}</a></h2> 
    <p>- {{val.topic}}</p>
   </div>
-  <div class="user-area">
+  <!-- <div class="user-area">
    <img src="images/user-icon.png" alt=""> <span>160</span>/325
-  </div>
+  </div> -->
  </div> 
 </div>
 
