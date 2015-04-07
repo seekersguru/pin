@@ -12,12 +12,10 @@ var DiscussionSchema = new Schema({
   title: {type:String, required:true},
   topic: { type: String },
   cid: { type: Number },
-  discussion:[{ from:{
-                id:  { type: ObjectId, ref: 'User' },
-                name: String,
-                },
-               time: {type: Date, default: Date.now},
-               message:String
+  comments: [{ user: { type: ObjectId, ref: 'User' },
+               username:String,
+               post: String,
+               posted: {type: Date, default: Date.now}
              }]           
 });
 

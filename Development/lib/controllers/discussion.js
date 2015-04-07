@@ -23,6 +23,25 @@ exports.query = function(req, res){
 
 };
 
+exports.checkcid = function(req, res){
+	var cid=req.params.cid;
+	var q = Discussion.find({'cid':cid});
+	q.exec(function(err, discussion) {
+		if (err) {
+			console.log(err);
+			return res.send(404);
+		}
+
+		if (!discussion) {
+			console.log('notfound');
+			return res.send(404);
+		}
+ 
+    return res.json({discussion:discussion});
+  });
+
+};
+
 /**
  * Create user
  */
@@ -48,3 +67,118 @@ exports.query = function(req, res){
 
 
  };
+
+
+ /**============Comment Section Start================**/
+
+// get all comments 
+
+exports.comment_query=function(req, res){
+
+	var discussionid = req.params.discussionid;
+
+	Discussion.find({_id:discussionid})
+	.exec(function(err,discussion){
+		if(err){
+			console.log(err);
+			return res.json(404,err);
+		}
+		if (!discussion){
+			console.log('notfound');
+			return res.send(404);
+		}
+		if(discussion)
+		{
+			return res.json(discussion[0].comments);
+		}
+
+			return res.send(403);
+	
+	  });
+	
+	};
+
+
+  // Get Only One comment
+  exports.comment_show=function(req, res){
+  	var discussionid = req.params.discussionid,
+  	comment_id = req.params.commentid;
+
+		Discussion.find({_id:discussionid})
+		.exec(function(err,discussion){
+			if(err){
+				console.log(err);
+				return res.json(404,err);
+			}
+			if (!discussion){
+				console.log('notfound');
+				return res.send(404);
+			}
+			if(discussion)
+			{
+				var comments=discussion[0].comments;
+				  for(var i=0; i<comments.length; i++){
+	           if(comment_id == comments[i]._id){
+	           	return res.json(comments[i]);
+	           }
+           }
+			}
+
+			 return res.send(403);
+		
+		  });
+  };
+  
+  //Create comment
+  exports.comment_create=function(req, res){
+  	var discussion_id = req.params.discussionid;
+  	Discussion.findByIdAndUpdate(
+    discussion_id,
+    {$push: {"comments": req.body}},
+    {safe: true, upsert: true},
+     function(err, model) {
+        if(err){
+        	console.log(err);
+        	return res.send(err);
+        }
+        return res.json(model);
+     }
+	  );
+  };
+
+  //update update comment
+  exports.comment_update=function(req, res){
+  	var discussion_id = req.params.discussionid,
+  	comment_id = req.params.commentid;
+  	Discussion.update({'comments._id': comment_id}, {'$set': {
+    'comments.$.post': req.body.post,
+    'comments.$.username': req.body.username,
+    'comments.$.user': req.body.user,
+	   }}, function(err,model) {
+	   	if(err){
+        	console.log(err);
+        	return res.send(err);
+        }
+        return res.json(model);
+	  });
+
+  };
+  
+  //remove comment
+  exports.comment_remove=function(req, res){
+  	var discussion_id = req.params.discussionid,
+  	comment_id = req.params.commentid;
+  
+  Discussion.findByIdAndUpdate(
+    discussion_id,
+   { $pull: { 'comments': {  _id: comment_id } } },function(err,model){
+ 	   if(err){
+        	console.log(err);
+        	return res.send(err);
+        }
+        return res.json(model);
+  });
+
+  };
+
+  /**========== Comment Section Stop =================**/  
