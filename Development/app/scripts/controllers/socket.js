@@ -8,30 +8,47 @@ angular.module('pinApp')
     nickName=$rootScope.currentUser.name;
   }
 
+$scope.color={
+    'Grow':
+    {'caption':'caption',
+    'colorclass':'greenbox',
+    'image':'green-chat.jpg'
+  },
+  'Protect':
+  {
+    'caption':'caption-red',
+    'colorclass':'redbox',
+    'image':'red-chat.jpg'
+  },
+  'Manage':
+  {
+   'caption':'caption-aqua',
+   'colorclass':'aquanbox',
+    'image':'blue-chat.jpg'
+ },
+ 'Give':
+ { 'caption':'caption-pink',
+ 'colorclass':'pinkbox',
+    'image':'purple-chat.jpg'
+}
+};
  
   $scope.currentDate=new Date().getTime();
 
-  $http({ method: 'GET', url: '/api/discussions' }).
-      success(function (data, status, headers, config) {
-        $scope.chatlist=data.discussion;
-      })
-      
-      .error(function (data, status, headers, config) {
-        // $location.path('/chat-start').search('cid',$scope.chatid);
-        
-      });
-
+ 
  $scope.category=['Grow','Protect','Manage','Give'];
  
  $scope.article={};
  $scope.chat={};
  if($location.search()['cid'])
  {
+ $scope.chatid=$location.search()['cid'];
+ $scope.chat={cid : $scope.chatid};
  $http({ method: 'GET', url: '/api/discussions/'+$location.search()['cid'] }).
       success(function (data, status, headers, config) {
-        $scope.chatid=$location.search()['cid'];
         $scope.discussion=data.discussion[0];
         $scope.comments=$scope.discussion.comments;
+
       })
 
       
@@ -41,12 +58,20 @@ angular.module('pinApp')
  }else{
 
   $scope.chatid=$location.search()['cid'] || 'nochat';
+   $http({ method: 'GET', url: '/api/discussions' }).
+      success(function (data, status, headers, config) {
+        $scope.chatlist=data.discussion;
+      })
+      
+      .error(function (data, status, headers, config) {
+        // $location.path('/chat-start').search('cid',$scope.chatid);
+        
+      });
+
+
  }
 
  
-
-
- $scope.chat={cid : $scope.chatid};
 
 
 

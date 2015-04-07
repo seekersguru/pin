@@ -26,6 +26,7 @@ exports.query = function(req, res){
 exports.checkcid = function(req, res){
 	var cid=req.params.cid;
 	var q = Discussion.find({'cid':cid});
+	console.log(cid);
 	q.exec(function(err, discussion) {
 		if (err) {
 			console.log(err);
