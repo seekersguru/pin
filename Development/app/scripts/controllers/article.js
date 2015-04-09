@@ -1,6 +1,6 @@
 'use strict';
 angular.module('pinApp')
-.controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles,$sce) {
+.controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles,$sce,$timeout) {
   $scope.article={};
   $scope.articles=articles;
   $scope.descriptionLimit=100;
@@ -134,7 +134,7 @@ $scope.addComment=function(form){
           
           $scope.article={};
           
-          $scope.form.$setPristine();
+          // $scope.form.$setPristine();
           
         }).
     error(function (data, status, headers, config) {
@@ -144,7 +144,7 @@ $scope.addComment=function(form){
 
 };
 
-$scope.editComment=function(form,commentId,editcomment){
+$scope.editComment=function(form,commentId,editcomment,key){
 if(form.$valid)
  {
   var comment={ post: editcomment,username:$rootScope.currentUser.name,user:$rootScope.currentUser._id};  
@@ -163,7 +163,13 @@ if(form.$valid)
           $scope.comments[removeIndex].post= editcomment;
           // $scope.editcomment_id=0;
           // $scope.article={};
-           $scope.$parent.showEdit=0;
+        
+        $timeout(function(){
+       
+           angular.element("#"+key+"-a").trigger("click");
+         
+        },200);
+          
         }).
     error(function (data, status, headers, config) {
       // $scope.article={};
