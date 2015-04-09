@@ -131,25 +131,26 @@
         <br/>
 
         <!-- <div class="row" ng-show="preview" > -->
-        <div class="row">
-          <div class="col-lg-10 preview">
-
+      <div class="row" >
+<div class="preview-area">  
+<div class="preview-eye"><i class="fa fa-eye"></i> Preview</div>  
+<div class="preview-shadow">  
             <h1>{{article.title}}</h1>
             <div class="green-hr"></div>
             <div class= "articleview">
 
               <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
               <div ng-show="!filearticle">
-                <div ng-if='!article.media' class="pull-right">
+                <div ng-if='!article.media' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
                   <img src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
 
                 </div>
-                <div ng-show='article.media && article.media.extension.indexOf("image") > -1' class="pull-right">
+                <div ng-show='article.media && article.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
                   <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
 
                   <img ng-show="article.media.path"  ng-src="../{{article.media.path}}" title="{{article.title}}" class="img-responsive">
                 </div>
-                <div ng-show='article.media && article.media.extension.indexOf("video") > -1' class="pull-right">
+                <div ng-show='article.media && article.media.extension.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
 <!--         <videogular vg-theme='config.theme' >
           <vg-media 
           vg-src="config.sources" 
@@ -162,7 +163,7 @@
   </div>
 
   <div ng-show="filearticle">
-    <div  class="pull-right">
+    <div  class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
       <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
 
       <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="img-responsive" >
@@ -178,6 +179,7 @@
   <p>{{article.createdAt | date:"MMMM d, yyyy" }}</p>
   <p ng-bind-html="article.description | rawHtml"></p>
 </div>
+</div>
 
 </div>
 </div>
@@ -186,7 +188,8 @@
 </form>
 </div>
 </div>
-<div class="col-lg-3">
+
+<div class="col-lg-3 col-md-3 col-sm-3">
   <div ng-include="'partials2/right-nav.html'"> </div>
 </div>
 </div>
