@@ -125,14 +125,14 @@ height:100px;width: 100px">
 
 <!-- <div class="row" ng-show="preview" > -->
 <div class="row" >
-  <div class="col-lg-10 preview">
-  
+<div class="preview-area">  
+<div class="preview-eye"><i class="fa fa-eye"></i> Preview</div>  
+<div class="preview-shadow">  
     <h1>{{article.title}}</h1>
     <div class="green-hr"></div>
-    <div class= "articleview">
-
+    
       <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
-      <div  class="pull-right">
+      <div  class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
         <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
 
         <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="img-responsive" >
@@ -142,8 +142,8 @@ height:100px;width: 100px">
 
     <p>{{article.createdAt | date:"MMMM d, yyyy" }}</p>
     <p ng-bind-html="article.description | rawHtml"></p>
-</div>
 
+</div>
 </div>
 </div>
      </form>
@@ -154,7 +154,7 @@ height:100px;width: 100px">
  </div>
 
 
- <div class="col-lg-3">
+ <div class="col-lg-3 col-md-3 col-sm-3">
   <div ng-include="'partials2/right-nav.html'"> </div>
 </div>
 </div>

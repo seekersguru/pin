@@ -130,66 +130,55 @@
     -->
     <div class="container-head learning-section">
 
-      <div class="row">
-        <div class="col-lg-7">
+      <div class="row mar-row45">
+        <div class="col-lg-6 col-md-6 col-sm-6">
           <ul class="breadcrumb">
             <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
             <li><a href="/articles/01">LEARN</a></li>
             <li class="active">{{articles.title | uppercase}}</li>
           </ul>
         </div>  
-        <div class="col-lg-5">
-          <div class="row ">
-            <div class="col-lg-5 paddingr-7">
-              <div class="form-group">             
-               <select class="form-control" id="sel1">
-                <option>Sort By</option>
-                <option>services listed in service directory</option>
-                <option>events type listed in events
-                </option>
+<div class="col-lg-6 col-md-6 col-sm-6">
+  <div class="row ">
+<div class="col-lg-5 col-md-5 col-sm-5 paddingr-7">
+<div class="form-group">             
+ <select class="form-control" id="sel1">
+    <option>sort By</option>
+    <option>services listed in service directory</option>
+    <option>events type listed in events
+</option>
+   
+  </select>
+</div>
+</div>
 
-              </select>
-            </div>
-          </div>
+<div class="col-lg-7 col-md-7 col-sm-7 paddingl-7">
+<div class="form-group">
+ <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="Nominated by">
+</div>
+</div>
 
-          <div class="col-lg-7 paddingl-7">
-            <div class="form-group">
-             <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="Nominated by">
-           </div>
-         </div>
-
-       </div>
-     </div> 
+</div>
+</div> 
 
    </div>
 
 
    <div class="row">
-    <div class="col-lg-9">
-      <!-- <div class="learn-nav">
-       <ul class="clearfix">
-        <li><a href="#">Grow </a></li>
-        <li><a href="#">Protect</a></li> 
-        <li><a href="#">Manage</a></li> 
-        <li><a href="#">Give</a></li>  
-      </ul> 
-    </div>   -->
-
-    <h1>{{articles.title}}</h1>
+    <div class="col-lg-9 col-md-9 col-sm-9 ">
+     <h1>{{articles.title}}</h1>
     <div class="green-hr"></div>
     <div >
-    <div class="articleview">
-      <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
-      <div ng-if='!articles.media' class="pull-right">
+      <div ng-if='!articles.media' class="col-lg-7 col-md-7 col-sm-7 mar-img-l">
         <img src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
 
       </div>
-      <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="pull-right">
+      <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 mar-img-l">
         <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
 
         <img ng-if="articles.media.path"  ng-src="../{{articles.media.path}}" title="{{articles.title}}" class="img-responsive">
       </div>
-      <div ng-if='articles.media && articles.media.extension.indexOf("video") > -1' class="pull-right">
+      <div ng-if='articles.media && articles.media.extension.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 mar-img-l">
         <videogular vg-theme='config.theme' >
           <vg-media 
           vg-src="config.sources" 
@@ -199,52 +188,74 @@
     </div>
 
     <p>{{articles.createdAt | date:"MMMM d, yyyy" }}</p>
-    <p ng-bind-html="articles.description | rawHtml "></p>
-    </div>
-    <a class="btn Check-availability" type="button" href="/articles/01"  >Back To Articles </a>
-    <a ng-if="currentUser.role=='admin'" class="btn btn-warning" type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a>
+    <p class="articleview" ng-bind-html="articles.description | rawHtml "></p>
+    
+    <p><a class="btn Check-availability" type="button" href="/articles/01"  >Back To Articles </a>
+   <a ng-if="currentUser.role=='admin'" class="btn register-bt " type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a></p>
 
   
   <div class="comments-hr-top">comments</div>
   <ul class="commentList">
     <li ng-repeat="(key,value) in articles.comments">
+    <div class="clearfix">
       <div class="commenterImage">
         <img src="images/comment-profile.png">
       </div>
       <div class="commentText">
-       <h3>{{value.username}}</h3>
+      <div class="clearfix">
+      <div class="pull-left">
+      <h3>{{value.username}}</h3>
        <span class="date sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
-       <p class="">{{ value.post}}</p>
+        </div>
+        <div class="pull-right" ng-if="currentUser._id">
+              <ul class="ed-iocn" >
+              <li  ng-click="$parent.showEdit = ! $parent.showEdit"><a  ><i class="fa fa-edit" id="{{key}}-a"></i>Edit</a></li>
+              <li ng-click="deleteComment(value._id)"><a ><i class="fa fa-trash"></i>Delete</a></li>
+              </ul>
+              </div>
+              </div>
+
+       <div><p  ng-hide="showEdit">{{ value.post}}</p></div>
+       
+       <form novalidate  name="form" role='form' ng-submit="editComment(form,value._id,value.post,key)" name="form" ng-show="showEdit">
+
+            <div class="chat-2mar15">
+<textarea class="form-control"  name="comment"id="comment" placeholder="Your comments" ng-model="value.post" required ng-minlength=4></textarea>
+
+    <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
+    <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
+    <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
+            </div>
+       <button class="btn register-bt pull-right" type="submit">
+          
+         Edit
+        </button>
+        </form>
+        <br/>
+        </div>
 
      </div>
-     <br/>
-     <div>
-      <div ng-if="currentUser._id" class="pull-left"><button ng-click="editComment(value._id,value.post)" class="btn btn-info"><i class="fa fa-edit"></i>Edit</button></div>
-      <div ng-if="currentUser._id" class="pull-left btn-mar"><button class="btn btn-warning" ng-click="deleteComment(value._id)"> <i class="fa fa-trash-o"></i>Delete</button></div>
-      <div class="clearfix"></div>
-    </div>
-    <br/>
-  </li>
+    </li>
 </ul>
 <div class="actionBox">
+ <div class="post-comment-hr">Post Your Comment</div>
+ <div class="gray-hr"></div>
  <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" ng-if="currentUser._id" class="form-inline">
-  <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
-    <textarea class="form-control"  name="comment" placeholder="Your comments" ng-model="article.comment" required ng-minlength=4></textarea>
+  <div class="chat-2mar15" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
+    <textarea class="form-control"  name="comment"id="comment" placeholder="Your comments" ng-model="article.comment" required ng-minlength=4></textarea>
     <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
     <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
     <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
   </div> 
-  <div class="form-group">
-    <button class="btn btn-default" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid">Add</button>
-    <button class="btn btn-default" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid">Edit</button>
-  </div>
+    <button class="btn register-bt" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid">Comment</button>
+    <button class="btn register-bt" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid">Edit</button>
 </form>
 </div>
 </div>
 </div>
 
 
-<div class="col-lg-3">
+<div class="col-lg-3 col-md-3 col-sm-3">
   <div ng-include="'partials2/right-nav.html'"> </div>
 </div>
 </div>

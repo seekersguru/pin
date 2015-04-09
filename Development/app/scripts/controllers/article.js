@@ -1,6 +1,6 @@
 'use strict';
 angular.module('pinApp')
-.controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles,$sce) {
+.controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles,$sce,$timeout) {
   $scope.article={};
   $scope.articles=articles;
   $scope.descriptionLimit=100;
@@ -121,31 +121,6 @@ $scope.addComment=function(form){
 
  if(form.$valid)
  {
-  if($scope.editcomment_id)
-  {
-    var comment={ post: $scope.article.comment,username:$rootScope.currentUser.name,user:$rootScope.currentUser._id};  
-
-    $http({ method: 'PUT', url: '/api/comments/'+articles._id+"/"+$scope.editcomment_id,data:comment}).
-    success(function (data, status, headers, config) {
-          // $scope.form.$setPristine();
-
-          var removeIndex = $scope.comments
-          .map(function(item)
-          { 
-            return item._id;
-          })
-          .indexOf($scope.editcomment_id);
-
-          $scope.comments[removeIndex].post= $scope.article.comment;
-          $scope.editcomment_id=0;
-          $scope.article={};
-        }).
-    error(function (data, status, headers, config) {
-      $scope.article={};
-    });
-
-
-  }else{
     var comment={ user: $rootScope.currentUser._id ,username:$rootScope.currentUser.name, post: $scope.article.comment};  
 
     $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
@@ -159,7 +134,7 @@ $scope.addComment=function(form){
           
           $scope.article={};
           
-          $scope.form.$setPristine();
+          // $scope.form.$setPristine();
           
         }).
     error(function (data, status, headers, config) {
@@ -167,16 +142,40 @@ $scope.addComment=function(form){
     });
   }
 
-
-}
-
 };
 
-$scope.editComment=function(commentId,comment){
+$scope.editComment=function(form,commentId,editcomment,key){
+if(form.$valid)
+ {
+  var comment={ post: editcomment,username:$rootScope.currentUser.name,user:$rootScope.currentUser._id};  
 
-  $scope.article.comment=comment;
-  $scope.editcomment_id=commentId;
+    $http({ method: 'PUT', url: '/api/comments/'+articles._id+'/'+commentId,data:comment}).
+    success(function (data, status, headers, config) {
+          // $scope.form.$setPristine();
 
+          var removeIndex = $scope.comments
+          .map(function(item)
+          { 
+            return item._id;
+          })
+          .indexOf(commentId);
+
+          $scope.comments[removeIndex].post= editcomment;
+          // $scope.editcomment_id=0;
+          // $scope.article={};
+        
+        $timeout(function(){
+       
+           angular.element("#"+key+"-a").trigger("click");
+         
+        },200);
+          
+        }).
+    error(function (data, status, headers, config) {
+      // $scope.article={};
+      alert("there is something technical problem please try after some time");
+    });
+}
 };
 
 $scope.numberOfPages = function(){
