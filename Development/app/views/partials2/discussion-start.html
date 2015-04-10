@@ -1,6 +1,7 @@
 <div class="container-head learning-section">
-  <div class="row">
-    <div class="col-lg-6">
+
+  <div class="row mar-row45">
+    <div class="col-lg-9 col-md-9 col-sm-9">
       <ul class="breadcrumb">
         <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
         <li><a  class="active" >DISCUSSION</a></li>
@@ -9,55 +10,104 @@
   </div>
 
   <div class="row">
-  
-    <div class="col-lg-9" ng-if="chatid=='nochat'">
-      <h1>Chat</h1>
-      <div class="green-hr" ></div>
-      <h2 >This is not a valid Discussion url</h2>
-    </div>
 
-    <div class="col-lg-9" ng-show="chatid != 'nochat' ">
-    <h1>Discussion</h1>
-    <h1>{{discussion.title}}</h1>
-    <div class="comments-hr-top">comments</div>
-      <ul class="commentList">
-        <li ng-repeat="(key,value) in discussion.comments">
-          <div class="commenterImage">
-            <img src="images/comment-profile.png">
-          </div>
-          <div class="commentText">
-           <h3>{{value.username}}</h3>
+    <div class="col-lg-9 col-md-9 col-sm-9" ng-if="chatid=='nochat'">
+      <div class="submit-articale-section">
+        <div class="row">
+         <div class="col-lg-8 col-md-8 col-sm-8"><h1>Discussion</h1> </div>
+       </div>
+       <div class="chatlsit-head-hr"></div>
+       <div class="container">
+        <div class="row">
+         <div class="pull-left"><img src="images/chat-listing-2-top.png" alt=""></div> 
+         <div class="pull-left chat-listing-2-heading">This is not a valid Discussion url</div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <div class="col-lg-9 col-md-9 col-sm-9" ng-if="chatid != 'nochat' ">
+  <div class="submit-articale-section">
+    <div class="row">
+     <div class="col-lg-8 col-md-8 col-sm-8"><h1>Discussion</h1></div>
+   </div>
+   <div class="chatlsit-head-hr"></div>
+   <div class="container">
+    <div class="row">
+     <div class="pull-left"><img src="images/chat-listing-2-top.png" alt=""></div>
+     <div class="pull-left chat-listing-2-heading">{{discussion.title}} <span>- Topic Name {{discussion.topic}}</span></div>
+   </div>
+ </div>
+
+ <div class="row chat-2mar15">
+   <div class="col-lg-12">
+     <div id="chat-list-section-2">
+      <div class="content ">
+
+        <div class="chat-list-2-row-even clearfix"  ng-repeat="(key,value) in discussion.comments">
+         <div class="clearfix">
+          <div class="chat-icon"><img src="images/chat-listing-2-user.png" alt=""></div>
+          <div class="chat-2left">
+          <div class="clearfix">
+          <div class="content-area">
+           <h2>{{value.username}}</h2>
            <span class="date sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
-           <p class="">{{ value.post}}</p>
-
+           <p class="" ng-hide="showEdit">{{ value.post}}</p>
          </div>
-         <br/>
-         <div>
-          <div ng-if="currentUser._id" class="pull-left"><button ng-click="editComment(value._id,value.post)" class="btn btn-info"><i class="fa fa-edit"></i>Edit</button></div>
-          <div ng-if="currentUser._id" class="pull-left btn-mar"><button class="btn btn-warning" ng-click="deleteComment(value._id)"> <i class="fa fa-trash-o"></i>Delete</button></div>
-          <div class="clearfix"></div>
+ 
+          <div ng-if="currentUser._id" class="pull-right">
+           <ul class="ed-iocn">
+            <li><a id="{{key}}-a" ng-click="$parent.showEdit = ! $parent.showEdit"><i class="fa fa-edit"></i>Edit</a></li>
+            <li><a ng-click="deleteComment(value._id)"><i class="fa fa-trash"></i>Delete</a></li>
+          </ul>
         </div>
-        <br/>
-      </li>
-    </ul>
-    <div class="actionBox">
-     <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" ng-if="currentUser._id" class="form-inline">
-      <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
-        <textarea class="form-control"  name="comment" placeholder="Your comments" ng-model="article.comment" required ng-minlength=4></textarea>
-        <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
-        <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
-        <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
-      </div> 
-      <div class="form-group">
-        <button class="btn btn-default" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid">Add</button>
-        <button class="btn btn-default" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid">Edit</button>
-      </div>
-    </form>
-    </div>
-    </div>
 
-  <div class="col-lg-3">
-      <div ng-include="'partials2/right-nav.html'"> </div>
-  </div>
-  </div>
+      </div>
+      <form role="form" class="clearfix" ng-submit="editComment(form,value._id,value.post,key)" name="form" ng-show="showEdit">
+        <div class="chat-2mar15">
+         <textarea class="form-control"  name="comment" placeholder="Your comments" ng-model="value.post" required ng-minlength=4></textarea>
+      <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
+      <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
+      <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
+        </div>
+        <button type="submit" class="btn register-bt pull-right">
+
+         Edit
+       </button>
+     </form>
+   </div>
+ </div>
+</div>
+
+</div>
+</div>
+</div> 
+
+</div>
+
+<div class="actionBox">
+  <div class="post-comment-hr">Post Your Comment</div>
+  <div class="gray-hr"></div>
+  <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" ng-if="currentUser._id" class="form-inline">
+    <div class="chat-2mar15" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
+      <textarea class="form-control"  name="comment" placeholder="Your comments" ng-model="article.comment" required ng-minlength=4></textarea>
+      <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
+      <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
+      <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
+    </div> 
+    <!-- <div class="form-group"> -->
+    <button class="btn register-bt" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid">Send</button>
+    <!-- <button class="btn btn-default" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid">Edit</button> -->
+    <!-- </div> -->
+  </form>
+</div>
+
+
+</div>
+</div>
+
+<div class="col-lg-3 col-md-3 col-sm-3">
+  <div ng-include="'partials2/right-nav.html'"> </div>
+</div>
+</div>
 </div>
