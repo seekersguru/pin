@@ -169,16 +169,16 @@
      <h1>{{articles.title}}</h1>
     <div class="green-hr"></div>
     <div >
-      <div ng-if='!articles.media' class="col-lg-7 col-md-7 col-sm-7 mar-img-l">
+      <div ng-if='!articles.media' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
         <img src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
 
       </div>
-      <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 mar-img-l">
+      <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
         <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
 
         <img ng-if="articles.media.path"  ng-src="../{{articles.media.path}}" title="{{articles.title}}" class="img-responsive">
       </div>
-      <div ng-if='articles.media && articles.media.extension.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 mar-img-l">
+      <div ng-if='articles.media && articles.media.extension.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
         <videogular vg-theme='config.theme' >
           <vg-media 
           vg-src="config.sources" 

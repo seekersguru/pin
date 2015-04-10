@@ -12,6 +12,19 @@
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'robotolight';
+    src: url('../fonts/fontsRoboto-Light-webfont.eot');
+    src: url('../fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Roboto-Light-webfont.woff2') format('woff2'),
+         url('../fonts/Roboto-Light-webfont.woff') format('woff'),
+         url('../fonts/Roboto-Light-webfont.ttf') format('truetype'),
+         url('../fonts/Roboto-Light-webfont.svg#robotolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 @font-face {
     font-family: 'ralewaylight';
     src: url('../fonts/Raleway-Light-webfont.eot');
@@ -1832,15 +1845,15 @@ background-color: #d9534f;
   overflow: auto;
   position: relative;
   max-width: 100%;
-  height: 700px; border-bottom:solid 2px #22345b; 
+  max-height: 700px; border-bottom:solid 2px #22345b; 
   -webkit-box-sizing: border-box;}
 #chat-list-section-2 .user-area span{ color: #b59759; font-size:15px; }
-#chat-list-section-2 .content-area{width:90%; float: left; }
+#chat-list-section-2 .content-area{width:65%; float: left; }
 #chat-list-section-2 .content-area h2{font-size:14px; line-height:12px;  padding-top:8px; margin-bottom: 0px;  font-weight: normal; margin-top: 0px; color:#1a3265;}
 #chat-list-section-2 .content-area h2 a{font-size:14px; padding-top:5px; margin-bottom: 0px;  font-weight: normal; margin-top: 0px; color:#1a3265; text-transform: uppercase;}
 #chat-list-section-2 .content-area h2 a:hover{font-size:14px; padding-top:10px; text-decoration:none;  font-weight: normal; margin-top: 0px; color:#1f2f51;}
 #chat-list-section-2 .content-area p{font-size:14px; font-weight: normal; margin-top: 0px; color:#606060;}
-.chat-list-2-row-even{background-color:#faf9f6; border-bottom:solid 1px #e5e5e5; }
+.chat-list-2-row-even{background-color:#faf9f6; padding-bottom:12px;  border-bottom:solid 1px #e5e5e5; }
 .chat-list-2-row-odd{background-color:#eaeaea;border-bottom:solid 1px #fff;}
 .chat-list-2-row-active{background-color:#f3efe4;border-bottom:solid 1px #fff;}
 
@@ -2123,13 +2136,14 @@ height: 40px;
  padding-bottom: 12px;
 
 }
+.chat-2left{width:100%; padding-left:50px;  }
 .desktop-hide{display:none!important;}
 .chat-h2text{font-size: 20px; font-weight:normal;}
 .chat-2mar15{margin-top:15px; }
 .or-hr{background-color:#c7c4bc; height: 1px; position: relative; margin-bottom:45px; margin-top:30px;   }
 .or-text{position: absolute; width:30px; font-size:20px; font-style:italic;   left:0px; right: 0px; margin: 0 auto; top:-10px; text-align: center;   color:#4e4c49; background-color:#f5f2e9;  }
 ul.ed-iocn{
-  list-style: none; float: right;
+  list-style: none; float: right; margin-top:10px; 
 }
 .mar-img-l{margin-right:0px; padding-left: 0px; }
 .post-comment-hr{font-size: 20px; font-weight:normal; border-bottom:solid 1px #c7c4bc; padding-bottom:10px;  }
@@ -2140,13 +2154,21 @@ ul.ed-iocn{
 .ed-iocn > li a:hover{list-style: none; color:#263c65; text-decoration:none;  text-transform:uppercase;  }
 .ed-iocn > li+li a:hover{list-style: none; color:#b0332d; text-transform:uppercase;  }
 .preview-area{position:relative; }
-.preview-shadow{box-shadow:0px 0px 6px 2px #888; padding:10px; margin-top:40px;  margin-bottom:40px; min-height:315px;   }
+.preview-shadow{box-shadow:0px 0px 6px 2px #888; padding:10px; margin-top:40px;  margin-bottom:40px;    }
 .preview-eye{font-size:18px; background-color:#f5f2e9;  position:absolute; left:0px; top:-30px;     text-transform:uppercase;  color:#193164; -webkit-border-top-left-radius: 6px;
 -webkit-border-top-right-radius: 6px;
 -moz-border-radius-topleft: 6px;
 -moz-border-radius-topright: 6px;
 border-top-left-radius: 6px;
 border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; display:inline-block;  }
+
+#error-message{display:block; width:50%; margin-top:60px; margin-bottom:100px; margin-right:auto; margin-left:auto; 
+    }
+#error-message .circle{width:250px; height: 250px; margin:0 auto;  background-color:#cfbb90;   border-radius:50%; position:relative;   }
+#error-message .text{font-family: 'robotolight'; color:#fff; font-size:110px; line-height:250px; text-align:center;   }
+#error-message h2{font-size:20px; color:#4e4c49;}
+.error-not-img{background-image:url(../images/erro-not-img.png); background-repeat:no-repeat; position:absolute; width:16px; height:41px; left:118px; top:106px;     }
+#error-message p{font-size:18px; color:#787878;}
 @media (max-width: 1024px) {
   .container-head{padding:0 15px 0 15px; }
 
@@ -2273,4 +2295,10 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 .navbar-collapse{box-shadow:none; }
 .navbar-form{box-shadow:none; }
 
+}
+
+#chat-list-section-2  .content
+{
+
+  height:auto !important;
 }
