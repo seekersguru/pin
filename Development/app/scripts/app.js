@@ -278,6 +278,11 @@ angular.module('pinApp', [
       title: 'Forgot Password',
       authenticate: false
   })
+  .when('/meet-event', {
+      templateUrl: 'partials2/artical-details-meet',
+      controller: 'MeetCtrl',
+      title: 'Meet Event'
+  })
 
 .when('/settings', {
   templateUrl: 'partials2/settings',
