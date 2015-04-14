@@ -2179,7 +2179,7 @@ ul.ed-iocn{
 .ed-iocn > li a:hover{list-style: none; color:#263c65; text-decoration:none;  text-transform:uppercase;  }
 .ed-iocn > li+li a:hover{list-style: none; color:#b0332d; text-transform:uppercase;  }
 .preview-area{position:relative; }
-.preview-shadow{box-shadow:0px 0px 6px 2px #888; padding:10px; margin-top:40px;  margin-bottom:40px;    }
+.preview-shadow{box-shadow:0px 0px 6px 2px #888; padding:10px; margin-top:40px;  margin-bottom:40px; min-height: 333px;   }
 .preview-eye{font-size:18px; background-color:#f5f2e9;  position:absolute; left:0px; top:-30px;     text-transform:uppercase;  color:#193164; -webkit-border-top-left-radius: 6px;
 -webkit-border-top-right-radius: 6px;
 -moz-border-radius-topleft: 6px;

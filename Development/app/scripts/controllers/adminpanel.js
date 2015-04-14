@@ -52,10 +52,33 @@ $scope.editArticle=function(articleId){
   window.open('/articles/edit/'+articleId,'_blank');
 };
 
+$scope.addFamily=function (size) {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'familymodal.html',
+      controller: 'FamilyCtrl',
+      size: size
+      
+  });
+};
+
 $scope.updateBand=function(data,band){
    data.band=band;
    console.log(data);
    $http({ method: 'PUT', url: '/api/users/'+data._id,data:{'band':band}}).
+      success(function (data, status, headers, config) {
+            
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+};
+
+$scope.updateFamily=function(data,name){
+   data.name=name;
+   console.log(data);
+   $http({ method: 'PUT', url: '/api/family/'+data._id,data:{'name':name}}).
       success(function (data, status, headers, config) {
             
       }).
@@ -145,6 +168,34 @@ $scope.deleteArticle=function(articleId){
  };
 
 
+$scope.deleteFamily=function(familyId){
+  var yes=confirm('Are you sure you want to delete this Family Name ?');
+  if(yes)
+  {
+    $http({
+      method:"DELETE",
+      url:'/api/family/'+familyId
+    }).
+    success(function (data,status,headers,config){
+      var removeIndex = $scope.gridFamilyData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(familyId);
+
+      $scope.gridFamilyData.splice(removeIndex, 1);
+
+    })
+    .error(function (data,status,headers,config){
+
+    });
+  }
+
+ };
+
+ 
+
  $scope.setSearch = function(search){
   $location.search(search);
 
@@ -175,10 +226,24 @@ $scope.deleteArticle=function(articleId){
 
        break;
 
+     case 'family':
+      $scope.gridFamilyData={};
+        $http({ method: 'GET', url: 'api/family' }).
+          success(function (data, status, headers, config) {
+             $scope.gridFamilyData=data.familys;
+             
+          }).
+        error(function (data, status, headers, config) {
+
+        });
+
+       break;
+
       default: 
       break;
     }
   }, 0);
+
   $scope.filterOptions = {
     filterText: '',
     filterColumn: ''    };
@@ -200,7 +265,7 @@ $scope.deleteArticle=function(articleId){
                                     { field: 'category' ,displayName:'Category' },
                                     { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="articleStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="articleStatus(row.entity._id)">NOT APPROVED</span>'},
-                                    { field: '',displayName:'', cellTemplate: editDeleteArticleTemplate, maxWidth: 100  }],
+                                    { field: '',displayName:'Action', cellTemplate: editDeleteArticleTemplate, maxWidth: 100  }],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };
@@ -224,7 +289,69 @@ $scope.deleteArticle=function(articleId){
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };
 
+  var editDeleteFamilyTemplate = '<a ng-click="deleteFamily(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a>';
+
+
+ $scope.familyData = { data: 'gridFamilyData' ,
+                        // showGroupPanel: true ,
+                         // enableCellSelection: true,
+                         enableRowSelection: false,
+                         filterOptions: $scope.filterOptions,
+                         columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
+                                    { field: 'name' ,displayName:'Name',cellTemplate : '<input  type="text" ng-model="row.entity.name" ng-blur="updateFamily(row.entity,row.entity.name)" ng-value="row.entity.name" />' },
+                                    { field: '',displayName:'Action', cellTemplate: editDeleteFamilyTemplate, maxWidth: 100  }],
+                        showFooter: true,
+                        plugins: [new ngGridFlexibleHeightPlugin()]
+                      };
+
                        
   
 
+});
+
+angular.module('pinApp')
+.controller('FamilyCtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller) {
+ $.extend(this, $controller('AdminPanelCtrl', {$scope: $scope}));
+
+$scope.family={};
+  $scope.saveFamily = function () {
+    var familyname=$("#familyname").val();
+    if(familyname)
+    {      
+       var family={name: familyname};  
+
+    $http({ method: 'POST', url: '/api/family/',data:family }).
+    success(function (data, status, headers, config) {
+          // ...
+          
+          $modalInstance.close();
+
+          console.log(data);
+          
+          $scope.gridFamilyData.push(data.family);
+          $window.location.reload();
+          
+          
+          
+          // $scope.form.$setPristine();
+      
+        $modalInstance.close();
+          
+        }).
+    error(function (data, status, headers, config) {
+      $scope.family={};
+      $modalInstance.dismiss('cancel');
+    });
+
+
+
+    }else{
+
+      alert('please fill family name');
+    }
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
 });
