@@ -5,7 +5,8 @@ var index = require('./controllers'),
     nishant = require('./controllers/nishant'),
     session = require('./controllers/session'),
     articles = require('./controllers/article'),
-    discussions = require('./controllers/discussion');
+    discussions = require('./controllers/discussion'),
+    familys = require('./controllers/family');
    
 var middleware = require('./middleware');
 var multipart = require('connect-multiparty'),
@@ -89,6 +90,17 @@ module.exports = function(app) {
   app.get('/api/discussions/:cid', discussions.checkcid);
   app.put('/api/discussions/:discussionid', discussions.update); 
   app.del('/api/discussions/:discussionid', discussions.remove); 
+
+  /**
+   * family section apis
+   */
+  app.post('/api/family', familys.create);
+  app.get('/api/family', familys.query);
+  app.get('/api/family/:familyid', familys.show);
+  app.put('/api/family/:familyid', familys.update); 
+  app.del('/api/family/:familyid', familys.remove); 
+
+
   
     /**---(',')--discussion  comments section start----(',')---**/
 
