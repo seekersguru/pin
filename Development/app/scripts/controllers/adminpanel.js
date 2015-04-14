@@ -298,8 +298,8 @@ $scope.deleteFamily=function(familyId){
                          enableRowSelection: false,
                          filterOptions: $scope.filterOptions,
                          columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
-                                    { field: 'name' ,displayName:'Name',cellTemplate : '<input  type="text" ng-model="row.entity.name" ng-blur="updateFamily(row.entity,row.entity.name)" ng-value="row.entity.name" />' },
-                                    { field: '',displayName:'Action', cellTemplate: editDeleteFamilyTemplate, maxWidth: 100  }],
+                                    { field: 'name' ,displayName:'Name',cellTemplate : '<input  type="text" ng-model="row.entity.name" ng-blur="updateFamily(row.entity,row.entity.name)" ng-value="row.entity.name" />' }],
+                                    // { field: '',displayName:'Action', cellTemplate: editDeleteFamilyTemplate, maxWidth: 100  }],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };
