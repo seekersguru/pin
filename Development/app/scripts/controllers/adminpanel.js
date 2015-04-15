@@ -88,6 +88,19 @@ $scope.updateFamily=function(data,name){
       });
 };
 
+$scope.updateExpert=function(data,name){
+   data.name=name;
+   console.log(data);
+   $http({ method: 'PUT', url: '/api/expert/'+data._id,data:{'name':name}}).
+      success(function (data, status, headers, config) {
+            
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+};
+
 $scope.userStatus=function(userId){
       var removeIndex = $scope.gridUserData
       .map(function(item)
@@ -194,6 +207,32 @@ $scope.deleteFamily=function(familyId){
 
  };
 
+$scope.deleteExpert=function(expertId){
+  var yes=confirm('Are you sure you want to delete this Expert ?');
+  if(yes)
+  {
+    $http({
+      method:"DELETE",
+      url:'/api/expert/'+expertId
+    }).
+    success(function (data,status,headers,config){
+      var removeIndex = $scope.gridExpertData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(expertId);
+
+      $scope.gridExpertData.splice(removeIndex, 1);
+
+    })
+    .error(function (data,status,headers,config){
+
+    });
+  }
+
+ };
+
  
 
  $scope.setSearch = function(search){
@@ -238,7 +277,18 @@ $scope.deleteFamily=function(familyId){
         });
 
        break;
+     case 'expert':
+      $scope.gridFamilyData={};
+        $http({ method: 'GET', url: 'api/expert' }).
+          success(function (data, status, headers, config) {
+             $scope.gridExpertData=data.experts;
+             
+          }).
+        error(function (data, status, headers, config) {
 
+        });
+
+       break;
       default: 
       break;
     }
@@ -303,6 +353,28 @@ $scope.deleteFamily=function(familyId){
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };
+
+
+  var editDeleteExpertTemplate = '<a ng-click="deleteExpert(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a>';
+
+
+$scope.expertData = { data: 'gridExpertData' ,
+// showGroupPanel: true ,
+ // enableCellSelection: true,
+ enableRowSelection: false,
+ filterOptions: $scope.filterOptions,
+ columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
+             { field: 'media' ,displayName:'Profile',cellTemplate:'<img style="height:70px;width:70px;"ng-src="{{row.entity.media.path}}">'}, 
+            { field: 'name' ,displayName:'Name',cellTemplate : '<input  type="text" ng-model="row.entity.name" ng-blur="updateExpert(row.entity,row.entity.name)" ng-value="row.entity.name" />' },
+             { field: 'designation' ,displayName:'Designation'},
+             { field: 'mail' ,displayName:'Mail'},
+             { field: 'linkedin' ,displayName:'Linkedin'},
+             { field: '' ,displayName:'Action',cellTemplate:''},
+            { field: '',displayName:'Action', cellTemplate: editDeleteExpertTemplate, maxWidth: 100  }]
+,
+showFooter: true,
+plugins: [new ngGridFlexibleHeightPlugin()]
+};
 
                        
   

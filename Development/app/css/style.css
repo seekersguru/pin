@@ -2390,14 +2390,14 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
     font-size: 16px;
 }
 
-.rituraj .btn.disabled, .btn[disabled], fieldset[disabled] .btn{
+.rituraj .btn.disabled, .rituraj .btn[disabled],.rituraj fieldset[disabled] .btn{
 background-color: transparent;
    border-color: transparent;
    color: #393b38;
    opacity: 1;
 }
 
-.rituraj .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default{
+.rituraj .btn-default:hover,.rituraj .btn-default:focus,.rituraj .btn-default.focus,.rituraj .btn-default:active,.rituraj .btn-default.active, .open > .dropdown-toggle.btn-default{
 background-color: #fff;
    border-color: #dddad1;
    box-shadow: none;
@@ -2405,7 +2405,7 @@ background-color: #fff;
    height: 32px;
 }
 
-.rituraj .btn-group, .btn-group-vertical {
+.rituraj .btn-group,.rituraj .btn-group-vertical {
    border-right: 1px solid #c1beb5;
    display: inline-block;
    position: relative;
@@ -2413,14 +2413,14 @@ background-color: #fff;
    margin-bottom: 20px;
 }
 
-.rituraj .btn-group:last-child, .btn-group-vertical {
+.rituraj .btn-group:last-child,.rituraj .btn-group-vertical {
    border-right:none;
    display: inline-block;
    position: relative;
    vertical-align: middle;
 }
 
-.rituraj .btn-group:first-child, .btn-group-vertical {
+.rituraj .btn-group:first-child,.rituraj .btn-group-vertical {
    display: inline-block;
    position: relative;
    vertical-align: middle;
