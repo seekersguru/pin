@@ -311,6 +311,7 @@ $scope.deleteFamily=function(familyId){
 
 angular.module('pinApp')
 .controller('FamilyCtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller) {
+
  $.extend(this, $controller('AdminPanelCtrl', {$scope: $scope}));
 
 $scope.family={};
@@ -349,6 +350,7 @@ $scope.family={};
 
       alert('please fill family name');
     }
+
   };
 
   $scope.cancel = function () {

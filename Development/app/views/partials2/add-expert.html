@@ -1,0 +1,88 @@
+<div class="container-head learning-section">
+  <div class="row">
+    <div class="col-lg-9">
+      <ul class="breadcrumb">
+        <li><a href="/home"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="active">ADD EXPERT</li>
+      </ul>
+    </div>  
+    <div class="col-lg-3">
+      <div class="row ">
+        <div class="col-lg-12 ">
+          <div class="form-group">
+           <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="search">
+         </div>
+       </div>
+
+     </div>
+   </div> 
+ </div>
+ <div class="row">
+  <div class="col-lg-9">
+    <div class="submit-articale-section">
+     <h1>Add New Expert</h1> 
+     <div class="register-form-hr"></div>
+     <form novalidate  name="form" role='form' enctype= 'multipart/form-data' class="">
+
+     <div class="dashboard-section">
+        <div class="row register-form-row-pad">
+          <div class="col-lg-7 paddingr-7">  
+            <div class="form-group" ng-class="{'has-error':form.name.$dirty && form.name.$error.required,'has-success':form.name.$valid}">
+              <input type="text" class="form-control" name="name" placeholder="Expert Name"  ng-model="expert.name" required ng-minlength=2>
+              <p class="text-danger" ng-show="form.name.$dirty && form.name.$error.required">Please fill name.</p>
+              <p class="text-danger" ng-show="form.name.$dirty && form.name.$error.minlength">your name shoud be minimum 2 character long .</p>
+              <p class="text-danger" ng-show="form.name.$error.mongoose">{{ errors.name }} </p>
+
+            </div>
+           
+            <div class="form-group" >
+              <input type="text" class="form-control" name="facebook" placeholder="Facebook Url"  ng-model="expert.social.facebook" >
+            
+            </div>
+
+          <div class="form-group" >
+              <input type="text" class="form-control" name="twitter" placeholder="Twitter Url"  ng-model="expert.social.twitter" >
+            
+            </div>
+
+         <div class="form-group" >
+              <input type="text" class="form-control" name="google" placeholder="Google Url"  ng-model="expert.social.google" >
+            
+            </div>
+
+         <div class="form-group" >
+              <input type="text" class="form-control" name="linkedin" placeholder="Linkedin Url"  ng-model="expert.social.linkedin" >
+            
+            </div>
+
+         <div class="form-group" >
+              <input type="text" class="form-control" name="email" placeholder="Email ID"  ng-model="expert.social.email" >
+            
+            </div>
+         <div class="form-group" >
+            Profile Picture: <input type="file" ng-file-select="" ng-model="picFile" name="file" accept="image/*" ng-file-change="generateThumb(picFile[0], $files)">
+         </div>
+         
+      <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" class="thumb">
+    <span class="progress" ng-show="picFile[0].progress >= 0">    
+      <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'" class="ng-binding"></div>
+    </span> 
+    <span ng-show="picFile[0].result">Upload Successful</span>
+          </div>
+   
+    </div>
+
+    
+     </form>
+
+   </div>  
+
+ </div>
+ </div>
+
+ <div class="col-lg-3 col-md-3 col-sm-3">
+  <div ng-include="'partials2/right-nav.html'"> </div>
+</div>
+
+</div>
+</div>
