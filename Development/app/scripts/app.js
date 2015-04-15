@@ -289,6 +289,12 @@ angular.module('pinApp', [
   // controller: 'SettingsCtrl',
   title: 'Settings'
 })
+.when('/add-expert', {
+  templateUrl: 'partials2/add-expert',
+  // controller: 'SettingsCtrl',
+  title: 'Add Expert',
+  controller:'ExpertCtrl'
+})
 
 .otherwise({
     redirectTo: '/404'
