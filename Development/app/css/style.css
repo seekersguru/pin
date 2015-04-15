@@ -2409,3 +2409,10 @@ background-color: #fff;
    position: relative;
    vertical-align: middle;
 }
+
+.rituraj .btn-group:last-child, .btn-group-vertical {
+   border-right:none;
+   display: inline-block;
+   position: relative;
+   vertical-align: middle;
+}
