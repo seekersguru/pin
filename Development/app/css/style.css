@@ -2386,6 +2386,8 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
    color: #393b38;
    height: 40px;
     padding: 6px 10px;
+    font-family: arial;
+    font-size: 16px;
 }
 
 .rituraj .btn.disabled, .btn[disabled], fieldset[disabled] .btn{
@@ -2416,4 +2418,11 @@ background-color: #fff;
    display: inline-block;
    position: relative;
    vertical-align: middle;
+}
+
+.rituraj .btn-group:first-child, .btn-group-vertical {
+   display: inline-block;
+   position: relative;
+   vertical-align: middle;
+   font-style: italic;
 }
