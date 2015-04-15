@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose'),
 User = mongoose.model('User'),
-Article = mongoose.model('Article'),
+Expert = mongoose.model('Expert'),
 multipart = require('connect-multiparty'),
 fs = require('fs'),
 path = require('path'),
@@ -58,13 +58,13 @@ exports.create = function(req, res, next) {
         	};
         	console.log(req.body);
         	// req.body.tags=JSON.parse(req.body.tags);
-        	var article=new Article(req.body);
-        	article.save(function(err,article){
+        	var expert=new Expert(req.body);
+        	expert.save(function(err,expert){
         		if(err){
         			console.log(err);
         			return res.json(400, err);
         		} 
-        		return res.json({article:article});
+        		return res.json({expert:expert});
         	});
 
         });
@@ -74,13 +74,13 @@ exports.create = function(req, res, next) {
   {
        	console.log(req.body);
         	// req.body.tags=req.body.tags;
-        	var article=new Article(req.body);
-        	article.save(function(err,article){
+        	var expert=new Expert(req.body);
+        	expert.save(function(err,expert){
         		if(err){
         			console.log(err);
         			return res.json(400, err);
         		} 
-        		return res.json({article:article});
+        		return res.json({expert:expert});
         	});
 
   }
@@ -88,14 +88,9 @@ exports.create = function(req, res, next) {
 
 //update
 exports.update = function(req, res) {
-	var article_id = req.params.articleid;
-	var article_data = req.body;
-	delete article_data._id;
-	delete article_data.discovered;
-	delete article_data.nFavorites;
-	delete article_data.author;
-	delete article_data.tags;
-	delete article_data.comments;
+	var expert_id = req.params.expertid;
+	var expert_data = req.body;
+	delete expert_data._id;
 
 	console.log(req.body);
 		var data = _.pick(req.body, 'type') ,
@@ -123,18 +118,18 @@ exports.update = function(req, res) {
         	if (err) throw err;
         	console.log('File uploaded to: ' + target_path + ' - ' + file.size + ' bytes');
 
-        	article_data.media={
+        	expert_data.media={
         		extension: file.type,
         		name:file.name,
         		path:savepath,
         		originalName:file.name
         	};
-					Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
+					Expert.findOneAndUpdate({_id: expert_id}, expert_data, function(err, expert) {
 							if (err) {
 								console.log(err);
 								return res.json(400, err);
 							}
-							if (!article) {
+							if (!expert) {
 								console.log('notfound');
 								return res.send(404);
 							}
@@ -146,12 +141,12 @@ exports.update = function(req, res) {
   else
   {
 
-	Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
+	Expert.findOneAndUpdate({_id: expert_id}, expert_data, function(err, expert) {
 		if (err) {
 			console.log(err);
 			return res.json(400, err);
 		}
-		if (!article) {
+		if (!expert) {
 			console.log('notfound');
 			return res.send(404);
 		}
@@ -164,14 +159,14 @@ exports.update = function(req, res) {
 
 //remove media
 exports.removemedia = function(req, res) {
-	var article_id = req.params.articleid;
-	var article_data = {'media':{}};
-	Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
+	var expert_id = req.params.expertid;
+	var expert_data = {'media':{}};
+	Expert.findOneAndUpdate({_id: expert_id}, expert_data, function(err, expert) {
 		if (err) {
 			console.log(err);
 			return res.json(400, err);
 		}
-		if (!article) {
+		if (!expert) {
 			console.log('notfound');
 			return res.send(404);
 		}
@@ -180,22 +175,22 @@ exports.removemedia = function(req, res) {
 
 };
 
-// show particluar one article 
+// show particluar one expert 
 exports.show=function(req,res){
-	var articleid=req.params.articleid;
-	Article.findById(articleid).populate('author','name email')
-	.exec(function(err,article){
+	var expertid=req.params.expertid;
+	Expert.findById(expertid)
+	.exec(function(err,expert){
 		if(err){
 			console.log(err);
 			return res.json(404,err);
 		}
-		if (!article){
+		if (!expert){
 			console.log('notfound');
 			return res.send(404);
 		}
-		if(article)
+		if(expert)
 		{
-			return res.json(article);
+			return res.json(expert);
 		}
 		return res.send(403);
 
@@ -203,12 +198,12 @@ exports.show=function(req,res){
 
 };
 
-// show all articles with paging
+// show all experts with paging
 exports.query = function(req, res) {
 
 	var limit=req.query.limit;
 
-	var q=Article.find({});
+	var q=Expert.find({});
 	/** apply limit  */
 	if(req.query.limit){
 		q=q.limit(req.query.limit);
@@ -220,44 +215,44 @@ exports.query = function(req, res) {
 	}
   
   /** public true  */
-  q.where('public').equals(true);
+  // q.where('public').equals(true);
 
 	/** sorting according to date */
 
 	q.sort('-createdAt');
 
 	/** finally execute */
-	q.populate('author','name email').exec(function(err, articles) {
+	q.exec(function(err, experts) {
 		if (err) {
 			console.log(err);
 			return res.send(404);
 		} else {
-			return res.json({articles:articles});
+			return res.json({experts:experts});
 		}
 	});
 
 
 };
-// show all articles with basic info
+// show all experts with basic info
 exports.basic = function(req, res) {
 
-	var q=Article.find({});
+	var q=Expert.find({});
 
 	/** sorting according to date */
 
 	q.sort('-createdAt');
 
 	/** finally execute */
-		q.populate('author','name email').exec(function(err, articles) {
+		q.exec(function(err, experts) {
 		if (err) {
 			console.log(err);
 			return res.send(404);
 		} else {
-			  for(var i=0; i<articles.length; i++){
+			  for(var i=0; i<experts.length; i++){
 			  	
-            articles[i] = articles[i].articleInfo;
+            experts[i] = experts[i].expertInfo;
          }
-			return res.json({articles:articles});
+			return res.json({experts:experts});
 		}
 	});
 
@@ -265,144 +260,34 @@ exports.basic = function(req, res) {
 };
 
 exports.remove = function(req, res) {
-	var article_id = req.params.articleid;
-	var articleid=req.params.articleid;
-	Article.findById(articleid)
-	.exec(function(err,article){
+	var expert_id = req.params.expertid;
+
+	var expertid=req.params.expertid;
+	Expert.findById(expertid)
+	.exec(function(err,expert){
 		if(err){
 			console.log(err);
 			return res.json(404,err);
 		}
-		if (!article){
+		if (!expert){
 			console.log('notfound');
 			return res.send(404);
 		}
-		if(article)
+		if(expert)
 		{
-    fs.unlink('./app/'+article.media.path, function() {
-  	  Article.findOneAndRemove({_id: article_id}, function(err, article) {
-			if (err) {
-				res.json(400, err);
-			} else {
-				article.remove();
-				res.send(200);
+			fs.unlink('./app/'+expert.media.path, function() {
+        	if (err) throw err;
+    			Expert.findOneAndRemove({_id: expert_id}, function(err, expert) {
+						if (err) {
+							res.json(400, err);
+						} else {
+							expert.remove();
+							res.send(200);
+						}
+					});
+
+    		});
 		}
 	});
-	});
-}
-});
 };
 
-/**============Comment Section Start================**/
-
-// get all comments 
-
-exports.comment_query=function(req, res){
-
-	var articleid = req.params.articleid;
-
-	Article.find({_id:articleid})
-	.exec(function(err,article){
-		if(err){
-			console.log(err);
-			return res.json(404,err);
-		}
-		if (!article){
-			console.log('notfound');
-			return res.send(404);
-		}
-		if(article)
-		{
-			return res.json(article[0].comments);
-		}
-
-			return res.send(403);
-	
-	  });
-	
-	};
-
-
-  // Get Only One comment
-  exports.comment_show=function(req, res){
-  	var articleid = req.params.articleid,
-  	comment_id = req.params.commentid;
-
-		Article.find({_id:articleid})
-		.exec(function(err,article){
-			if(err){
-				console.log(err);
-				return res.json(404,err);
-			}
-			if (!article){
-				console.log('notfound');
-				return res.send(404);
-			}
-			if(article)
-			{
-				var comments=article[0].comments;
-				  for(var i=0; i<comments.length; i++){
-	           if(comment_id == comments[i]._id){
-	           	return res.json(comments[i]);
-	           }
-           }
-			}
-
-			 return res.send(403);
-		
-		  });
-  };
-  
-  //Create comment
-  exports.comment_create=function(req, res){
-  	var article_id = req.params.articleid;
-  	Article.findByIdAndUpdate(
-    article_id,
-    {$push: {"comments": req.body}},
-    {safe: true, upsert: true},
-     function(err, model) {
-        if(err){
-        	console.log(err);
-        	return res.send(err);
-        }
-        return res.json(model);
-     }
-	  );
-  };
-
-  //update update comment
-  exports.comment_update=function(req, res){
-  	var article_id = req.params.articleid,
-  	comment_id = req.params.commentid;
-  	Article.update({'comments._id': comment_id}, {'$set': {
-    'comments.$.post': req.body.post,
-    'comments.$.username': req.body.username,
-    'comments.$.user': req.body.user,
-	   }}, function(err,model) {
-	   	if(err){
-        	console.log(err);
-        	return res.send(err);
-        }
-        return res.json(model);
-	  });
-
-  };
-  
-  //remove comment
-  exports.comment_remove=function(req, res){
-  	var article_id = req.params.articleid,
-  	comment_id = req.params.commentid;
-  
-  Article.findByIdAndUpdate(
-    article_id,
-   { $pull: { 'comments': {  _id: comment_id } } },function(err,model){
- 	   if(err){
-        	console.log(err);
-        	return res.send(err);
-        }
-        return res.json(model);
-  });
-
-  };
-
-  /**========== Comment Section Stop =================**/  

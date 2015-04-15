@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-.controller('ExpertCtrl', function ($scope, $http, $timeout, $compile, $upload) {
+.controller('ExpertCtrl', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope) {
 
   $scope.usingFlash = FileAPI && FileAPI.upload != null;
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
@@ -26,7 +26,7 @@ $scope.uploadPic = function(files) {
     
     
     file.upload = $upload.upload({
-      url: '/api/articles',
+      url: '/api/expert',
       method: 'POST',
       // headers: {
       //   'Content-Type': 'multipart/form-data'
@@ -43,7 +43,7 @@ $scope.uploadPic = function(files) {
         if($rootScope.currentUser.role == 'admin')
         {
         
-            $location.path('/admin').search({ 'family':1});
+            $location.path('/admin').search({ 'expert':1});
         
         }
        
@@ -57,7 +57,7 @@ $scope.uploadPic = function(files) {
        if($rootScope.currentUser.role == 'admin')
         {
         
-            $location.path('/admin').search({ 'articles':1});
+            $location.path('/admin').search({ 'expert':1});
         
         }
 
@@ -140,23 +140,17 @@ $scope.uploadPic = function(files) {
        //    $scope.article.tags[t] = original[t].text;
        //   }
       $scope.form.$setPristine();
-      $http({ method: 'POST', url: '/api/articles',data:$scope.article }).
+      $http({ method: 'POST', url: '/api/expert',data:$scope.article }).
       success(function (data, status, headers, config) {
         // ...
         // console.log(data);
         if($rootScope.currentUser.role == 'admin')
         {
         
-            $location.path('/admin').search({ 'articles':1});
+            $location.path('/admin').search({ 'expert':1});
         
         }
-        else{
-            $location.path('/notification').search({ 'type':'article'});
-        }
-
-        $scope.article={};
-        $scope.articleDone=1;
-        $scope.articleResponse=data;
+       
         
       }).
       error(function (data, status, headers, config) {

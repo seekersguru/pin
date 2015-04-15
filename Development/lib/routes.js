@@ -6,7 +6,8 @@ var index = require('./controllers'),
     session = require('./controllers/session'),
     articles = require('./controllers/article'),
     discussions = require('./controllers/discussion'),
-    familys = require('./controllers/family');
+    familys = require('./controllers/family'), 
+    experts = require('./controllers/expert');
    
 var middleware = require('./middleware');
 var multipart = require('connect-multiparty'),
@@ -99,6 +100,17 @@ module.exports = function(app) {
   app.get('/api/family/:familyid', familys.show);
   app.put('/api/family/:familyid', familys.update); 
   app.del('/api/family/:familyid', familys.remove); 
+
+  /**
+   * experts section apis
+   */
+  app.post('/api/expert', experts.create);
+  app.get('/api/expert', experts.query);
+  app.get('/api/expert/:expertid', experts.show);
+  app.put('/api/expert/:expertid', experts.update); 
+  app.del('/api/expert/:expertid', experts.remove); 
+
+
 
 
   

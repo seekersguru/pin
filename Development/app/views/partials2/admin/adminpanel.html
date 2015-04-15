@@ -54,6 +54,20 @@
 </div>
 </script>
 
+<script type="text/ng-template" id="expert">
+<h1>Expert</h1>
+  <br/>
+<a class="btn btn-success" ng-href="/add-expert"> Add Expert </a> 
+    <br/>
+    <br/>
+ <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
+      <br/>
+      <br/>
+<div class="gridStyle" ng-grid="expertData">
+
+</div>
+</script>
+
 <script type="text/ng-template" id="familymodal.html">
         <div class="modal-header">
             <h3 class="modal-title">Add New family !</h3>
