@@ -2384,8 +2384,8 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
    background-color: transparent;
    border-color: transparent;
    color: #393b38;
-   height: 40px;
-    padding: 6px 10px;
+   height: 32px;
+    padding: 6px 8px;
     font-family: arial;
     font-size: 16px;
 }
@@ -2402,7 +2402,7 @@ background-color: #fff;
    border-color: #dddad1;
    box-shadow: none;
    color: #393b38;
-   height: 40px;
+   height: 32px;
 }
 
 .rituraj .btn-group, .btn-group-vertical {
@@ -2410,7 +2410,7 @@ background-color: #fff;
    display: inline-block;
    position: relative;
    vertical-align: middle;
-   margin-bottom: 4px;
+   margin-bottom: 20px;
 }
 
 .rituraj .btn-group:last-child, .btn-group-vertical {
