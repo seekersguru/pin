@@ -2385,6 +2385,7 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
    border-color: transparent;
    color: #393b38;
    height: 40px;
+    padding: 6px 10px;
 }
 
 .rituraj .btn.disabled, .btn[disabled], fieldset[disabled] .btn{
@@ -2395,8 +2396,16 @@ background-color: transparent;
 }
 
 .rituraj .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default{
-background-color:#fff;
+background-color: #fff;
    border-color: #dddad1;
+   box-shadow: none;
    color: #393b38;
    height: 40px;
+}
+
+.rituraj .btn-group, .btn-group-vertical {
+   border-right: 1px solid #c1beb5;
+   display: inline-block;
+   position: relative;
+   vertical-align: middle;
 }
