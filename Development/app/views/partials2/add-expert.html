@@ -34,19 +34,9 @@
               <p class="text-danger" ng-show="form.name.$error.mongoose">{{ errors.name }} </p>
 
             </div>
-           
-            <div class="form-group" >
-              <input type="text" class="form-control" name="facebook" placeholder="Facebook Url"  ng-model="expert.social.facebook" >
-            
-            </div>
-
-          <div class="form-group" >
-              <input type="text" class="form-control" name="twitter" placeholder="Twitter Url"  ng-model="expert.social.twitter" >
-            
-            </div>
 
          <div class="form-group" >
-              <input type="text" class="form-control" name="google" placeholder="Google Url"  ng-model="expert.social.google" >
+              <input type="text" class="form-control" name="designation" placeholder="Designation" ng-model="expert.designation" >
             
             </div>
 
@@ -59,15 +49,29 @@
               <input type="text" class="form-control" name="email" placeholder="Email ID"  ng-model="expert.social.email" >
             
             </div>
-         <div class="form-group" >
-            Profile Picture: <input type="file" ng-file-select="" ng-model="picFile" name="file" accept="image/*" ng-file-change="generateThumb(picFile[0], $files)">
-         </div>
+
+                <div class="form-group">
+     <label class="control-label" for="fullName">Profile Pic </label>
+     <!-- <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file" accept="image/*"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" /> -->
+     <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
+
+
+
+<br/>
+<img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
+height:100px;width: 100px">  
+<br/>
+<span class="progress" ng-show="mainFIle[0].progress >= 0">    
+  <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
+</span> 
+<span ng-show="mainFIle[0].result">Upload Successful</span>
+<!-- <button >Submit</button> -->
+
+
+</div>
          
-      <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" class="thumb">
-    <span class="progress" ng-show="picFile[0].progress >= 0">    
-      <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'" class="ng-binding"></div>
-    </span> 
-    <span ng-show="picFile[0].result">Upload Successful</span>
+       
+
           </div>
    
     </div>
