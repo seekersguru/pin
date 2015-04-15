@@ -2408,6 +2408,7 @@ background-color: #fff;
    display: inline-block;
    position: relative;
    vertical-align: middle;
+   margin-bottom: 4px;
 }
 
 .rituraj .btn-group:last-child, .btn-group-vertical {
