@@ -55,7 +55,7 @@
            <p class="" ng-hide="showEdit">{{ value.post}}</p>
          </div>
  
-          <div ng-if="currentUser._id" class="pull-right">
+          <div ng-if="currentUser._id==value.user" class="pull-right">
            <ul class="ed-iocn">
             <li><a id="{{key}}-a" ng-click="$parent.showEdit = ! $parent.showEdit"><i class="fa fa-edit"></i>Edit</a></li>
             <li><a ng-click="deleteComment(value._id)"><i class="fa fa-trash"></i>Delete</a></li>
