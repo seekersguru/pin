@@ -291,3 +291,40 @@ exports.remove = function(req, res) {
 	});
 };
 
+
+//remove media
+exports.removemedia = function(req, res) {
+	var expert_id = req.params.expertid;
+	var expertid=req.params.expertid;
+	Expert.findById(expertid)
+	.exec(function(err,expert){
+		if(err){
+			console.log(err);
+			return res.json(404,err);
+		}
+		if (!expert){
+			console.log('notfound');
+			return res.send(404);
+		}
+		if(expert)
+		{
+			fs.unlink('./app/'+expert.media.path, function() {
+        	if (err) throw err;
+    			var expert_data = {'media':{}};
+					Expert.findOneAndUpdate({_id: expert_id}, expert_data, function(err, expert) {
+						if (err) {
+							console.log(err);
+							return res.json(400, err);
+						}
+						if (!expert) {
+							console.log('notfound');
+							return res.send(404);
+						}
+						return res.send(200);
+					});
+    		});
+		}
+	});
+
+};
+

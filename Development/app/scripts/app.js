@@ -291,9 +291,29 @@ angular.module('pinApp', [
 })
 .when('/add-expert', {
   templateUrl: 'partials2/add-expert',
-  // controller: 'SettingsCtrl',
   title: 'Add Expert',
-  controller:'ExpertCtrl'
+  controller:'ExpertCtrl',
+  authenticate: true,
+  admin: true
+})
+.when('/expert/edit/:id', {
+  templateUrl: 'partials2/edit-expert',
+  title: 'Add Expert',
+  controller:'ExpertEditViewCtrl',
+  authenticate: true,
+  admin: true,
+   resolve: {
+      expert: ['$q', '$route', 'Expert', function($q, $route, Expert) {
+        var deferred = $q.defer();
+        Expert.get({expertId: $route.current.params.id}, function(expert) {
+          deferred.resolve(expert);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+    },
 })
 
 .otherwise({
