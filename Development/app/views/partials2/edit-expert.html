@@ -1,0 +1,114 @@
+
+<div class="container-head learning-section">
+
+  <div class="row">
+    <div class="col-lg-9">
+      <ul class="breadcrumb">
+        <li><a href="/home"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="active">Edit Expert</li>
+      </ul>
+    </div>  
+    
+ </div>
+ <div class="row">
+  <div class="col-lg-9">
+    <h1>Edit Expert</h1>
+    <form novalidate  name="form" role='form' enctype= 'multipart/form-data'>
+      <div class="dashboard-section">
+       <div class="row register-form-row-pad">
+          <div class="form-group" ng-class="{'has-error':form.name.$dirty && form.name.$error.required,'has-success':form.name.$valid}">
+            <!-- <label class="control-label" for="name">Title</label> -->
+            <input type="text" class="form-control" name="name" ng-model="expert.name" required ng-minlength=2>
+            <p class="text-danger" ng-show="form.name.$dirty && form.name.$error.required">Please fill name.</p>
+            <p class="text-danger" ng-show="form.name.$dirty && form.name.$error.minlength">your name shoud be minimum 2 character long .</p>
+            <p class="text-danger" ng-show="form.name.$error.mongoose">{{ errors.name }} </p>
+          </div>
+        
+       <div class="form-group" >
+              <input type="text" class="form-control" name="designation" placeholder="Designation" ng-model="expert.designation" >
+            
+            </div>
+
+         <div class="form-group" >
+              <input type="text" class="form-control" name="linkedin" placeholder="Linkedin Url"  ng-model="expert.linkedin" >
+            
+            </div>
+
+         <div class="form-group" >
+              <input type="text" class="form-control" name="email" placeholder="Email ID"  ng-model="expert.email" >
+            
+            </div>
+
+
+      </div>
+      
+      <div class="row ">
+        <div class="col-lg-10">    
+
+          <div class="form-group">
+           <label class="control-label" for="fullName">Profile Pic </label>
+           <a ng-click="removeMedia()" ng-show='expert.media'>Remove Profile</a> 
+
+           <div ng-show='!expert.media' >
+             <!-- <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file" accept="image/*"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" /> -->
+             <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
+             <i class="text-danger" ng-show="form.file.$error.required">*required</i>
+             <br/>
+             <img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
+             height:100px;width: 100px">  
+             <br/>
+             <span class="progress" ng-show="mainFIle[0].progress >= 0">    
+              <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
+            </span> 
+            <span ng-show="mainFIle[0].result">Upload Successful</span>
+
+          </div>
+
+          <div ng-show='expert.media && expert.media.extension.indexOf("image") > -1'>
+            <img ng-show="!expert.media.path" src="images/articels001.jpg"  title="{{expert.title}}" class="img-responsive"> 
+
+            <img ng-show="expert.media.path"  ng-src="../{{expert.media.path}}" title="{{expert.title}}" class="img-responsive">
+          </div>
+          <div ng-show='expert.media && expert.media.extension.indexOf("video") > -1' class="">
+            <videogular vg-theme='config.theme' >
+             <vg-media 
+             vg-src="config.sources" 
+             vg-native-controls="true"  >
+           </vg-media>
+         </videogular>
+       </div>
+     </div>
+
+   </div>
+ </div>
+        <!-- <div class="form-group">
+                <label for="tags">Tags</label>
+                <div tooltip="Add about three to four tags for better discoveribility of your expert">
+                <tags-input
+                     display-property=""
+                     class="tags-input"
+                     min-tags="1"
+                     ng-model="article.tags"
+                     placeholder="Add a tag and press enter (min length 3 characters)"
+                     replace-spaces-with-dashes="false">
+                </tags-input>
+                </div>
+          </div>
+        -->        
+
+        <br/>
+
+        <button ng-show="filearticle" class='btn btn-success' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Update</button> 
+        <button ng-hide="filearticle" class='btn btn-success' ng-disabled="!form.$valid" ng-click="updateArticle(form)" >Update</button> 
+        <a  href="/admin?expert" class='btn btn-warning'>Cancel</a> 
+        <!-- <button class='btn register-bt' ng-click=" preview = !preview " >Preview</button>  -->
+
+</form>
+</div>
+</div>
+
+<div class="col-lg-3 col-md-3 col-sm-3">
+  <div ng-include="'partials2/right-nav.html'"> </div>
+</div>
+</div>
+</div>

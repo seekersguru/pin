@@ -109,8 +109,7 @@ module.exports = function(app) {
   app.get('/api/expert/:expertid', experts.show);
   app.put('/api/expert/:expertid', experts.update); 
   app.del('/api/expert/:expertid', experts.remove); 
-
-
+  app.put('/api/expert/removemedia/:expertid', experts.removemedia);
 
 
   

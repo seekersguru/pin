@@ -355,7 +355,7 @@ $scope.deleteExpert=function(expertId){
                       };
 
 
-  var editDeleteExpertTemplate = '<a ng-click="deleteExpert(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a>';
+  var editDeleteExpertTemplate = '<a ng-click="deleteExpert(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a><a ng-href="/expert/edit/{{row.entity._id}}"  id="view"  class="btn btn-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
 
 $scope.expertData = { data: 'gridExpertData' ,
@@ -369,7 +369,6 @@ $scope.expertData = { data: 'gridExpertData' ,
              { field: 'designation' ,displayName:'Designation'},
              { field: 'mail' ,displayName:'Mail'},
              { field: 'linkedin' ,displayName:'Linkedin'},
-             { field: '' ,displayName:'Action',cellTemplate:''},
             { field: '',displayName:'Action', cellTemplate: editDeleteExpertTemplate, maxWidth: 100  }]
 ,
 showFooter: true,
