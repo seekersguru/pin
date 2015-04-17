@@ -1,0 +1,214 @@
+<div class="container-head learning-section">
+
+  <div class="row">
+    <div class="col-lg-9">
+      <ul class="breadcrumb">
+        <li><a href="/home"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="active">EVENT</li>
+      </ul>
+    </div>  
+    
+
+ </div>
+
+
+ <div class="row">
+  <div class="col-lg-9">
+
+    <div class="submit-articale-section">
+     <h1>Submit Your Event</h1> 
+     <div class="register-form-hr"></div>
+     <form novalidate  name="form" role='form' enctype= 'multipart/form-data' class="">
+      <!-- <button ng-click="template(1)" class="btn btn-primary">Template 1</button> -->
+      <div class="dashboard-section">
+        <div class="row register-form-row-pad">
+          <div class="col-lg-7 paddingr-7">  
+            <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
+              <input type="text" class="form-control" name="title" placeholder="Title"  ng-model="article.title" required ng-minlength=5>
+              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill title.</p>
+              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.minlength">your title shoud be minimum 5 character long .</p>
+              <p class="text-danger" ng-show="form.title.$error.mongoose"> {{ errors.title }} </p>
+
+            </div>
+          </div>
+
+          <div class="col-lg-3  paddingl-7">
+            <div class="form-group">
+              <select ng-model="article.category" ng-options="o as o for o in category" placeholder="choose category"></select>
+            </div>
+          </div>
+
+        </div>
+<div class="row ">
+          <div class="col-lg-10">
+
+            <div class="form-group" ng-class="{'has-error':form.agenda.$dirty && form.agenda.$error.required,'has-success':form.agenda.$valid}">
+              <label class="control-label" for="agenda">Agenda</label>
+              <text-angular class="rituraj" name="agenda" ng-model="article.agenda" required ng-minlength=20 ta-toolbar="[ ['h1', 'h2','quote','insertLink'],['bold', 'italics', 'underline', 'strikeThrough'],['justifyLeft','justifyCenter','justifyRight'],['ul', 'ol'],['insertImage', 'insertVideo']]"> </text-angular>
+
+              <!-- <text-angular class="form-control" rows="5"  name="agenda" ng-model="article.agenda" required ng-minlength=20> </text-angular> -->
+              <p class="text-danger" ng-show="form.agenda.$dirty && form.agenda.$error.required">Please fill Agenda.</p>
+              <p class="text-danger" ng-show="form.agenda.$dirty && form.agenda.$error.minlength">your agenda shoud be minimum 20 character long .</p>
+              <p class="text-danger" ng-show="form.agenda.$error.mongoose">{{ errors.agenda }} </p>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="form-group">
+          <label for="tags">Tags</label>
+          <div tooltip="Add about three to four tags for better discoveribility of your article">
+            <tags-input
+            display-property=""
+            class="tags-input"
+            min-tags="1"
+            ng-model="article.tags"
+            placeholder="Add a tag and press enter (min length 3 characters)"
+            replace-spaces-with-dashes="false">
+          </tags-input>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="form-group">
+     <label class="control-label" for="fullName">Banner </label>
+
+     <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
+
+       <i class="text-danger" ng-show="form.file.$error.required">*required</i>
+<br/>
+<img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
+height:100px;width: 100px">  
+<br/>
+<span class="progress" ng-show="mainFIle[0].progress >= 0">    
+  <div style="width:{{mainFIle[0].progress}}% ;background: green;" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
+</span> 
+<span ng-show="mainFIle[0].result">Upload Successful</span>
+<!-- <button >Submit</button> -->
+
+
+</div>
+<div class="form-group">
+  <tags-input ng-model="article.expert" 
+                display-property="name" 
+                placeholder="Add a expert" 
+                replace-spaces-with-dashes="false"
+                template="tag-template" class="expert">
+      <auto-complete source="loadExpert($query)"
+                     min-length="0"
+                     load-on-focus="true"
+                     load-on-empty="true"
+                     max-results-to-show="32"
+                     template="autocomplete-template"></auto-complete>
+    </tags-input>
+
+
+<script type="text/ng-template" id="tag-template">
+      <div class="tag-template">
+        <div class="left-panel">
+          <img ng-src="{{data.flag}}" ng-if="data.flag"/>
+        </div>
+        <div class="right-panel">
+          <span>{{$getDisplayText()}}</span>
+          <a class="remove-button" ng-click="$removeTag()">&#10006;</a>
+        </div>
+      </div>
+    </script>
+    
+    <script type="text/ng-template" id="autocomplete-template">
+      <div class="autocomplete-template">
+        <div class="left-panel">
+          <img ng-src="{{data.flag}}" />
+        </div>
+        <div class="right-panel">
+          <span ng-bind-html="$highlight($getDisplayText())"></span>
+          <span>({{data.designation}})</span>
+          // <span>{{data.confederation}}</span>
+        </div>
+      </div>
+    </script>
+</div>
+
+<!-- <div class="checkbox italic-font">
+  <label><input type="checkbox" name= "agree" ng-model="article.checked" required value="">Check box to agree to these submission guide line</label>
+</div> -->
+
+
+
+<div class="form-group" >
+  
+<div class='input input-positioned'>
+      <label>Address : </label> <input class="form-control" id="addresspicker_map" />   <br/>
+      <label>Locality: </label> <input class="form-control" id="locality" > 
+            <label>SubLocality: </label> <input class="form-control" id="sublocality" > 
+            <label>District: </label> <input class="form-control" id="administrative_area_level_2" > 
+            <label>State/Province: </label> <input class="form-control" id="administrative_area_level_1" > 
+            <label>Country:  </label> <input class="form-control" id="country" > 
+            <label>Postal Code: </label> <input class="form-control" id="postal_code" > 
+            <label>Lat:      </label> <input class="form-control" id="lat" > 
+            <label>Lng:      </label> <input class="form-control" id="lng" > 
+            <label>Zoom:     </label> <input class="form-control" id="zoom" > 
+          </div>
+
+    <div class='map-wrapper'>
+      <label id="geo_label" for="reverseGeocode">Reverse Geocode after Marker Drag?</label>
+      <select id="reverseGeocode">
+        <option value="false" >No</option>
+        <option value="true" selected>Yes</option>
+      </select><br/>
+
+      <div id="map" style="height: 300px;width: 300px;"></div>
+      <div id="legend">You can drag and drop the marker to the correct location</div>
+  
+</div>
+
+
+
+<!-- <button type="submit" ng-disabled="form.$invalid" class='btn btn-success' >Add</button>  -->
+<button ng-show="filearticle" class='btn register-bt' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Add</button> 
+<button ng-hide="filearticle" class='btn register-bt' ng-disabled="!form.$valid" ng-click="saveArticle(form)" >Add</button> 
+<!-- <button class='btn register-bt' ng-click=" preview = !preview " >Preview</button>  -->
+        <!-- <button  type="reset" ng-click="reset(form)" class='btn btn-warning'>Reset</button> 
+        <a  href="/dashboard" class='btn btn-danger'>Cancel</a>  -->
+        <p ng-show="articleDone"><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
+        <br></br>
+
+        <!-- <div class="alert alert-success" role="alert" ng-show="articleDone">
+         You have successfully written new Article see article here  <a ng-href="/articles/view/{{articleResponse.article._id}}"><b>Click Here</b></a>
+       </div> -->
+
+<!-- <div class="row" ng-show="preview" > -->
+<div class="row" >
+<div class="preview-area">  
+<div class="preview-eye"><i class="fa fa-eye"></i> Preview</div>  
+<div class="preview-shadow">  
+    <h1>{{article.title}}</h1>
+    <div class="green-hr"></div>
+    
+      <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
+      <div  class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
+        <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
+
+        <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="img-responsive" >
+
+        
+    </div>
+
+    <p>{{article.createdAt | date:"MMMM d, yyyy" }}</p>
+    <p ng-bind-html="article.description | rawHtml"></p>
+
+</div>
+</div>
+</div>
+     </form>
+
+
+   </div>  
+
+ </div>
+
+
+ <div class="col-lg-3 col-md-3 col-sm-3">
+  <div ng-include="'partials2/right-nav.html'"> </div>
+</div>
+</div>
+</div>
+

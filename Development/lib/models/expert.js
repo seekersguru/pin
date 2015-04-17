@@ -12,6 +12,20 @@ var ExpertSchema = new Schema({
   designation:String,
   linkedin:String,
   email:String,
+  expert:[  { user: { type: ObjectId, ref: 'User' },
+               name:String,
+            }],
+  location:{ 'address':String,
+  'locality':String,
+  'sublocality':String,
+  'district':String,
+  'state':String,
+  'country':String,
+  'postal-code':String,
+  'lat':Number,
+  'lng':Number,
+  'zoom':Number
+  },          
   media:{extension:String,      
 
                name:String,
@@ -30,7 +44,7 @@ ExpertSchema
       'name': this.name,
       'designation':this.designation,
       'social':this.social,
-      'media':this.media
+      'flag':this.media.path
     };
   });
 

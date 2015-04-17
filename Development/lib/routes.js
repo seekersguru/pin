@@ -106,6 +106,7 @@ module.exports = function(app) {
    */
   app.post('/api/expert', experts.create);
   app.get('/api/expert', experts.query);
+  app.get('/api/expert/basic', experts.basic);
   app.get('/api/expert/:expertid', experts.show);
   app.put('/api/expert/:expertid', experts.update); 
   app.del('/api/expert/:expertid', experts.remove); 

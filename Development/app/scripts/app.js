@@ -289,6 +289,13 @@ angular.module('pinApp', [
   // controller: 'SettingsCtrl',
   title: 'Settings'
 })
+.when('/add-event', {
+  templateUrl: 'partials2/add-event',
+  title: 'Add Event',
+  controller:'EventCtrl',
+  authenticate: true,
+  admin: true
+})
 .when('/add-expert', {
   templateUrl: 'partials2/add-expert',
   title: 'Add Expert',
