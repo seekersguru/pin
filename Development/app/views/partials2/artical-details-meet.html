@@ -3,27 +3,17 @@
 <div class="row">
 <div class="col-lg-9 col-md-9 col-sm-9">
   <ul class="breadcrumb">
-    <li><a href="#"><i class="fa fa-home"></i></a></li>
-    <li><a href="#">learn</a></li>
-    <li class="active">Lorem ipsum dosit amet</li>
+    <li><a href="/"><i class="fa fa-home"></i></a></li>
+    <li><a href="/events">Event</a></li>
+    <li class="active">{{events.title | uppercase}}</li>
 </ul>
 </div>  
-<div class="col-lg-3 col-md-3 col-sm-3">
-  <div class="row ">
-<div class="col-lg-12 ">
-<div class="form-group">
- <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="search">
-</div>
-</div>
-
-</div>
-</div> 
 
 </div>
 
 
 <div class="row">
-<div class="col-lg-9 col-md-9 col-sm-9">
+<div class="col-lg-9 colapp.js-md-9 col-sm-9">
 
 <div class="meet-section">
  <h1>Meet</h1> 
@@ -33,7 +23,7 @@
 <div>
 <div>
 <div class="note blue">
-    <p><span><img src="images/event-user-icon.png" alt=""></span>Lorem ipsum Conference - Event - 2015</p>
+    <p><span><img src="images/event-user-icon.png" alt=""></span>{{events.title | uppercase}}</p>
 </div>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt laboret dolore magna aliqua. Ut enim ad minim veniam, nostrud exercitation ullamco laboris aliquip commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ecillum dolorenulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -43,7 +33,6 @@
 </div>
 
 
-<h2>March 19th 2015</h2>
 
 <P><button class="btn Check-availability" type="button">REGISTER </button></P>
 </div>
@@ -61,35 +50,8 @@ AGENDA
 </div>
 <div class="connect-hr2"></div>
 
+<p class="articleview" ng-bind-html="events.agenda | rawHtml "></p>
 
-<h4>Perspiciatis unde omnis </h4>
-<p>Iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non Numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
-
-<h4> vero eos et accusamus </h4>
-<p>Etusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod “Maxime placeat facere possimus, omnis sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-
-<h4>Consequat Conference</h4>
-<div class="register-time">
-<p>8.40am</p>
-<p>Registration</p>
- 
-<p>9.00am</p>
-<p>Members Speak</p>
- 
-<p>9.15am</p>
-<p>Panel Discussion - Private banking </p>
-
-</div>
-<div class="meet-sectionlist">
- <ul>
- <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </li> 
-  <li>Labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation </li>  
-<li>Ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>  
- <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </li>  
-     <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>  
-        
- </ul> 
-</div>
  <div class="comment-text">
 AGENDA
  </div> 
@@ -97,76 +59,20 @@ AGENDA
 
 <div class="row">
 <div class="team-section">
-<div class="col-lg-3 col-md-3 col-sm-3">
+
+<div class="col-lg-3 col-md-3 col-sm-3" ng-repeat="(key,val) in events.expert">
    <div class="post-box">
                 <div class="caption-red">
                    <span><img src="images/linkdin-icon.png" alt=""></span>
                    <span><img src="images/mail-icon.png" alt=""></span>
                 </div>
 
-<div><img src="images/team-img001.jpg" class="img-responsive" alt=""></div> 
+<div><img ng-src="{{val.flag}}" class="img-responsive" alt=""></div> 
 </div>
-  <h5>Rio J. Barretto</h5> 
-  <p>Founder - CEO</p> 
+  <h5>{{val.name}}</h5> 
+  <p>{{val.designation}}</p> 
 </div> 
-<div class="col-lg-3 col-md-3 col-sm-3">
-  <div class="post-box">
-                <div class="caption-red">
-                   <span><img src="images/linkdin-icon.png" alt=""></span>
-                   <span><img src="images/mail-icon.png" alt=""></span>
-                </div>
-
-<div><img src="images/team-img002.jpg" class="img-responsive" alt=""></div> 
 </div>
-  <h5>Crystal Fernandes</h5> 
-  <p>Manager</p>  
-</div> 
-<div class="col-lg-3 col-md-3 col-sm-3">
-    <div class="post-box">
-                <div class="caption-red">
-                   <span><img src="images/linkdin-icon.png" alt=""></span>
-                   <span><img src="images/mail-icon.png" alt=""></span>
-                </div>
-
-<div><img src="images/team-img003.jpg" class="img-responsive" alt=""></div> 
-</div>
-    <h5>Deepak Somwanshi</h5> 
-  <p>Finance Manager</p>   
-</div> 
-<div class="col-lg-3 col-md-3 col-sm-3">
-  <div class="post-box">
-                <div class="caption-red">
-                   <span><img src="images/linkdin-icon.png" alt=""></span>
-                   <span><img src="images/mail-icon.png" alt=""></span>
-                </div>
-
-<div><img src="images/team-img004.jpg" class="img-responsive" alt=""></div> 
-</div>
-  
-    <h5>Tianna CHoleho</h5> 
-  <p>HR Manager</p>  
-</div>  
-</div>
-</div>
-
- <div class="comment-text">
-Testimonials
- </div> 
- <div class="connect-hr2"></div>
-
-<div class="row">
-<div class="testmonial-section">
-<div class="col-lg-4 col-md-4 col-sm-4">
-<div><img src="images/testmonail.jpg" class="img-responsive" alt=""></div>  
-</div>
-<div class="col-lg-8 col-md-8 col-sm-8">
- <span class="quto">“</span></span><p>Lorem ipsum dolor sit amet, conseur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Unim aideronniam, quistrud exercitation laboris aliquip perspiciatis unde omnis istecommodo consequat.</p>
-
-<p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa laude kalagle pouranche quae inventore veratis quasi rchitecto beatae vitae dicta sunt explicabo. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci dolore magnam aliquam quaerat voluptatem.</p>
-
- <h5>Bhimsingh Katri <span>- Team Lorem Industries</span></h5> 
-</div>  
-</div>  
 </div>
 
 
@@ -178,19 +84,17 @@ Venue
 <div class="row">
 <div class="address-section">
   <div class="col-lg-8 col-md-8 col-sm-8 padding-right0">
-   <div><img src="images/map-meet.png" class="img-responsive" alt=""></div> 
+   <div class="map-view" id="map"></div> 
   </div>
   <div class="col-lg-4 col-md-4 col-sm-4 padding-left0">
 <div class="address">
- <p> St Braz Marina Mandarin Street</p>
+ <p> {{events.location.address}}</p>
 
- <p>6 Raffles Boulevard, Bandra</p>
+ <p>{{events.location.city}}</p>
 
- <p>Marriott Marina Square</p>
+ <p>{{events.location.state}} - {{events.location.postalcode}}</p>
 
- <p>Mumbai - 400056</p>
-
-<p>India</p>
+<p>{{events.location.country}}</p>
 <div class="blue-connect-menu">
   <div>Members<i class="fa icon-right fa-angle-right"></i></div> 
  </div>
@@ -245,3 +149,4 @@ Sponsors
 </div>
 </div>
 </div>
+<input type="hidden" id="addresspicker_map">

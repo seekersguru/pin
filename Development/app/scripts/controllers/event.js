@@ -1,18 +1,38 @@
 'use strict';
 
 angular.module('pinApp')
-.controller('ExpertEditViewCtrl', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope,expert) {
+.controller('EventViewEditCtrl', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope,events) {
 
-   $scope.usingFlash = FileAPI && FileAPI.upload != null;
+  $scope.usingFlash = FileAPI && FileAPI.upload != null;
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
-  $scope.expert=expert;
+  $scope.events=events;
+ var addresspickerMap= $( "#addresspicker_map" ).addresspicker({
+      regionBias: "in",
+      language: "in",
+      mapOptions: {
+        zoom: events.location.zoom,
+        center: new google.maps.LatLng(events.location.lat, events.location.lng),
+        scrollwheel: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      },
+       elements: {
+        map:      "#map"
+      }
+    });
+
+    var gmarker = addresspickerMap.addresspicker( "marker");
+    gmarker.setVisible(true);
+    addresspickerMap.addresspicker( "updatePosition");
+   
+
+
 
   $scope.removeMedia=function(){
   var remove=confirm("Are you sure you want to remove Profile Pic");
   if(remove)
   {
 
-    $http({ method: 'PUT', url: '/api/expert/removemedia/'+$scope.expert._id}).
+    $http({ method: 'PUT', url: '/api/events/removemedia/'+$scope.expert._id}).
       success(function (data, status, headers, config) {
         $scope.expert.media="";
       
@@ -54,7 +74,7 @@ $scope.uploadPic = function(files) {
 
 
     file.upload = $upload.upload({
-      url: '/api/expert/'+expert._id,
+      url: '/api/events/'+expert._id,
       method: 'PUT',
       // headers: {
       //   'Content-Type': 'multipart/form-data'
@@ -131,7 +151,7 @@ $scope.uploadPic = function(files) {
   $scope.updateArticle=function(form){
     if(form.$valid)
     {
-      $http({ method: 'PUT', url: '/api/expert/'+$scope.expert._id,data:$scope.expert }).
+      $http({ method: 'PUT', url: '/api/events/'+$scope.expert._id,data:$scope.expert }).
       success(function (data, status, headers, config) {
         // ...
         $location.path('/admin').search({'expert':1});
@@ -155,7 +175,7 @@ $scope.uploadPic = function(files) {
     {
       $http({
         method:"DELETE",
-        url:'/api/expert/'+$scope.expert._id
+        url:'/api/events/'+$scope.expert._id
       }).
       success(function (data,status,headers,config){
         $scope.form.$setPristine();
@@ -174,7 +194,8 @@ angular.module('pinApp')
 
 
   $scope.category=['Grow','Protect','Manage','Give'];
-  $scope.article={};
+  $scope.article={ location:{}};
+
   $scope.article.category=$scope.category[0];
   $scope.article.expert = [  ];
   
@@ -188,8 +209,8 @@ angular.module('pinApp')
   };  
 
 var addresspickerMap = $( "#addresspicker_map" ).addresspicker({
-      regionBias: "fr",
-      language: "fr",
+      regionBias: "in",
+      language: "in",
       updateCallback: showCallback,
       mapOptions: {
         zoom: 4,
@@ -205,11 +226,10 @@ var addresspickerMap = $( "#addresspicker_map" ).addresspicker({
         route: '#route',
         locality: '#locality',
         sublocality: '#sublocality',
-        administrative_area_level_3: '#administrative_area_level_3',
-        administrative_area_level_2: '#administrative_area_level_2',
-        administrative_area_level_1: '#administrative_area_level_1',
+        administrative_area_level_2: '#district',
+        administrative_area_level_1: '#state',
         country:  '#country',
-        postal_code: '#postal_code',
+        postal_code: '#postalcode',
         type:    '#type'
       }
     });
@@ -252,10 +272,9 @@ $scope.uploadPic = function(files) {
 
   function uploadUsing$upload(file) {
 
-    
-    
+    $scope.setscope();   
     file.upload = $upload.upload({
-      url: '/api/event',
+      url: '/api/events',
       method: 'POST',
       // headers: {
       //   'Content-Type': 'multipart/form-data'
@@ -362,14 +381,9 @@ $scope.uploadPic = function(files) {
       // formData.append("file", $scope.article.file);
       // console.log(formData);
       
-      $scope.article.author=$rootScope.currentUser._id;
-       var original=$scope.article.expert;
-        $scope.article.expert=[];
-        for (var t = 0; t < original.length; t++) {
-          $scope.article.expert[t] = original[t].text;
-         }
-      $scope.form.$setPristine();
-      $http({ method: 'POST', url: '/api/event',data:$scope.article }).
+      $scope.setscope();
+      // $scope.form.$setPristine();
+      $http({ method: 'POST', url: '/api/events',data:$scope.article }).
       success(function (data, status, headers, config) {
         
         // console.log(data);
@@ -394,5 +408,25 @@ $scope.uploadPic = function(files) {
   $scope.reset=function(form){
     $scope.form.$setPristine();
   };
+
+$scope.setscope=function(){
+  $scope.article.author=$rootScope.currentUser._id;
+  var original=$scope.article.expert;
+  $scope.article.expert=[];
+  for (var t = 0; t < original.length; t++) {
+    $scope.article.expert[t] = { name:original[t].name,user:original[t]._id,flag:original[t].flag,designation:original[t].designation};
+  }
+
+
+  $scope.article.location.locality=$('#locality').val();
+  $scope.article.location.sublocality=$('#sublocality').val();
+  $scope.article.location.district=$('#district').val();
+  $scope.article.location.state=$('#state').val();
+  $scope.article.location.country=$('#country').val();
+  $scope.article.location.postalcode=$('#postalcode').val();
+  $scope.article.location.lat=$('#lat').val();
+  $scope.article.location.lng=$('#lng').val();
+  $scope.article.location.zoom=$('#zoom').val();
+};
 
 });

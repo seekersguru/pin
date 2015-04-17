@@ -101,7 +101,7 @@ module.exports = function(app) {
   app.get('/api/events', events.query);
   app.get('/api/events/basic', events.basic);
   app.get('/api/events/:articleid', events.show);
-  app.post('/api/events',  multipartMiddleware, events.create);
+  app.post('/api/events',   events.create);
   app.put('/api/events/:articleid', multipartMiddleware,events.update);
   app.del('/api/events/:articleid', events.remove);
   app.put('/api/events/removemedia/:articleid', events.removemedia);
