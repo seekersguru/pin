@@ -30,7 +30,7 @@ ExpertSchema
       'name': this.name,
       'designation':this.designation,
       'social':this.social,
-      'media':this.media
+      'flag':this.media.path
     };
   });
 

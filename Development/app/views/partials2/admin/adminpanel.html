@@ -9,8 +9,9 @@
         <div class="btn-group" style="margin:10px">
             <button class="btn btn-primary" ng-click="setSearch('users')">Users</button>
             <button class="btn btn-primary" ng-click="setSearch('articles')">Articles</button>
-            <button class="btn btn-primary" ng-click="setSearch('family')">Family </button>
-            <button class="btn btn-primary" ng-click="setSearch('expert')">Expert </button>
+            <button class="btn btn-primary" ng-click="setSearch('family')">Family Office </button>
+            <button class="btn btn-primary" ng-click="setSearch('expert')">Event Experts </button>
+            <button class="btn btn-primary" ng-click="setSearch('event')">Event </button>
 
         </div>
 
@@ -55,7 +56,7 @@
 </script>
 
 <script type="text/ng-template" id="expert">
-<h1>Expert</h1>
+<h1>Event Experts</h1>
   <br/>
 <a class="btn btn-success" ng-href="/add-expert"> Add Expert </a> 
     <br/>
@@ -64,6 +65,20 @@
       <br/>
       <br/>
 <div class="gridStyle" ng-grid="expertData">
+
+</div>
+</script>
+
+<script type="text/ng-template" id="event">
+<h1>Event Experts</h1>
+  <br/>
+<a class="btn btn-success" ng-href="/add-event"> Add Expert </a> 
+    <br/>
+    <br/>
+ <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
+      <br/>
+      <br/>
+<div class="gridStyle" ng-grid="eventData">
 
 </div>
 </script>

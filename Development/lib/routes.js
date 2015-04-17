@@ -5,6 +5,7 @@ var index = require('./controllers'),
     nishant = require('./controllers/nishant'),
     session = require('./controllers/session'),
     articles = require('./controllers/article'),
+    events = require('./controllers/event'),
     discussions = require('./controllers/discussion'),
     familys = require('./controllers/family'), 
     experts = require('./controllers/expert');
@@ -31,50 +32,22 @@ module.exports = function(app) {
 
   //GET
   app.get('/api/articles', articles.query);
-  
-  //GET BASIC INFO
   app.get('/api/articles/basic', articles.basic);
-  
-  // Get Only One
   app.get('/api/articles/:articleid', articles.show);
-  
-  //Create
   app.post('/api/articles',  multipartMiddleware, articles.create);
-
-  //update
   app.put('/api/articles/:articleid', multipartMiddleware,articles.update);
-  
-  //remove
   app.del('/api/articles/:articleid', articles.remove);
-
-
-  //remove media
-
   app.put('/api/articles/removemedia/:articleid', articles.removemedia);
 
-  /**---(',')--article section stop----(',')---**/
-
-   
   /**---(',')--article comments section start----(',')---**/
 
-  //GET
   app.get('/api/comments/:articleid', articles.comment_query);
-  
-  // Get Only One
   app.get('/api/comments/:articleid/:commentid', articles.comment_show);
-  
-  //Create
   app.post('/api/comments/:articleid',  articles.comment_create);
-
-  //update
   app.put('/api/comments/:articleid/:commentid', articles.comment_update);
-  
-  //remove
   app.del('/api/comments/:articleid/:commentid', articles.comment_remove);
 
   /**---(',')--article comments section stop----(',')---**/
-
-  
 
   app.post('/api/users', users.create);
   app.get('/api/users', users.query);
@@ -92,6 +65,17 @@ module.exports = function(app) {
   app.put('/api/discussions/:discussionid', discussions.update); 
   app.del('/api/discussions/:discussionid', discussions.remove); 
 
+    /**---(',')--discussion  comments section start----(',')---**/
+
+  app.get('/api/discussion-comments/:discussionid', discussions.comment_query);
+  app.get('/api/discussion-comments/:discussionid/:commentid', discussions.comment_show);
+  app.post('/api/discussion-comments/:discussionid',  discussions.comment_create);
+  app.put('/api/discussion-comments/:discussionid/:commentid', discussions.comment_update);
+  app.del('/api/discussion-comments/:discussionid/:commentid', discussions.comment_remove);
+
+  /**---(',')--discussion  comments section stop----(',')---**/
+
+
   /**
    * family section apis
    */
@@ -106,30 +90,38 @@ module.exports = function(app) {
    */
   app.post('/api/expert', experts.create);
   app.get('/api/expert', experts.query);
+  app.get('/api/expert/basic', experts.basic);
   app.get('/api/expert/:expertid', experts.show);
   app.put('/api/expert/:expertid', experts.update); 
   app.del('/api/expert/:expertid', experts.remove); 
   app.put('/api/expert/removemedia/:expertid', experts.removemedia);
 
+   /**---(',')--Event section start----(',')---**/
 
-  
-    /**---(',')--discussion  comments section start----(',')---**/
+  app.get('/api/events', events.query);
+  app.get('/api/events/basic', events.basic);
+  app.get('/api/events/:articleid', events.show);
+  app.post('/api/events',  multipartMiddleware, events.create);
+  app.put('/api/events/:articleid', multipartMiddleware,events.update);
+  app.del('/api/events/:articleid', events.remove);
+  app.put('/api/events/removemedia/:articleid', events.removemedia);
 
-  //GET
-  app.get('/api/discussion-comments/:discussionid', discussions.comment_query);
-  
-  // Get Only One
-  app.get('/api/discussion-comments/:discussionid/:commentid', discussions.comment_show);
-  
-  //Create
-  app.post('/api/discussion-comments/:discussionid',  discussions.comment_create);
+  /**---(',')--Event section stop----(',')---**/
 
-  //update
-  app.put('/api/discussion-comments/:discussionid/:commentid', discussions.comment_update);
+   
+  /**---(',')--Event comments section start----(',')---**/
   
-  //remove
-  app.del('/api/discussion-comments/:discussionid/:commentid', discussions.comment_remove);
-  
+  app.get('/api/event-comments/:articleid', events.comment_query);
+  app.get('/api/event-comments/:articleid/:commentid', events.comment_show);
+  app.post('/api/event-comments/:articleid',  events.comment_create);
+  app.put('/api/event-comments/:articleid/:commentid', events.comment_update);
+  app.del('/api/event-comments/:articleid/:commentid', events.comment_remove);
+
+  /**---(',')--Event comments section stop----(',')---**/
+
+
+
+   
   app.post('/api/session', session.login);
   app.del('/api/session', session.logout);
   app.get('/api/session/facebook', session.fblogin);
