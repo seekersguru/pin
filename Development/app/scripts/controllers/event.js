@@ -255,12 +255,12 @@ $scope.uploadPic = function(files) {
     
     
     file.upload = $upload.upload({
-      url: '/api/expert',
+      url: '/api/event',
       method: 'POST',
       // headers: {
       //   'Content-Type': 'multipart/form-data'
       // },
-      data:$scope.expert,
+      data:$scope.article,
       file: file
     });
 
@@ -272,7 +272,7 @@ $scope.uploadPic = function(files) {
         if($rootScope.currentUser.role == 'admin')
         {
         
-            $location.path('/admin').search({ 'expert':1});
+            $location.path('/admin').search({ 'event':1});
         
         }
        
@@ -286,7 +286,7 @@ $scope.uploadPic = function(files) {
        if($rootScope.currentUser.role == 'admin')
         {
         
-            $location.path('/admin').search({ 'expert':1});
+            $location.path('/admin').search({ 'event':1});
         
         }
 
@@ -363,20 +363,21 @@ $scope.uploadPic = function(files) {
       // console.log(formData);
       
       $scope.article.author=$rootScope.currentUser._id;
-       // var original=$scope.article.tags;
-       //  $scope.article.tags=[];
-       //  for (var t = 0; t < original.length; t++) {
-       //    $scope.article.tags[t] = original[t].text;
-       //   }
+       var original=$scope.article.expert;
+        $scope.article.expert=[];
+        for (var t = 0; t < original.length; t++) {
+          $scope.article.expert[t] = original[t].text;
+         }
       $scope.form.$setPristine();
-      $http({ method: 'POST', url: '/api/expert',data:$scope.article }).
+      $http({ method: 'POST', url: '/api/event',data:$scope.article }).
       success(function (data, status, headers, config) {
-        // ...
+        
         // console.log(data);
+        
         if($rootScope.currentUser.role == 'admin')
         {
         
-            $location.path('/admin').search({ 'expert':1});
+            $location.path('/admin').search({ 'event':1});
         
         }
        
