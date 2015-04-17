@@ -2475,3 +2475,8 @@ background-color: #fff;
   font-size: 14px;
   font-style: italic;
 }
+
+.map-view{
+  height:300px;
+  width:500px;
+}

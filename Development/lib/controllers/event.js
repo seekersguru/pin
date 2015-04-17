@@ -56,8 +56,9 @@ exports.create = function(req, res, next) {
         		path:savepath,
         		originalName:file.name
         	};
+        	req.body.expert=JSON.parse(req.body.expert);
+        	req.body.location=JSON.parse(req.body.location);
         	console.log(req.body);
-        	// req.body.tags=JSON.parse(req.body.tags);
         	var article=new Event(req.body);
         	article.save(function(err,article){
         		if(err){
@@ -255,7 +256,7 @@ exports.basic = function(req, res) {
 		} else {
 			  for(var i=0; i<articles.length; i++){
 			  	
-            articles[i] = articles[i].articleInfo;
+            articles[i] = articles[i].eventInfo;
          }
 			return res.json({articles:articles});
 		}

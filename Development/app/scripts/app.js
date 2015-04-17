@@ -278,12 +278,6 @@ angular.module('pinApp', [
       title: 'Forgot Password',
       authenticate: false
   })
-  .when('/meet-event', {
-      templateUrl: 'partials2/artical-details-meet',
-      controller: 'MeetCtrl',
-      title: 'Meet Event'
-  })
-
 .when('/settings', {
   templateUrl: 'partials2/settings',
   // controller: 'SettingsCtrl',
@@ -322,6 +316,25 @@ angular.module('pinApp', [
       }]
     },
 })
+.when('/event/view/:eventid', {
+    templateUrl: 'partials2/artical-details-meet',
+    controller: 'EventViewEditCtrl',
+    title: 'Meet Event',
+      resolve:{
+      events: ['$q', '$route', 'Event', function($q, $route, Event) {
+        var deferred = $q.defer();
+        Event.get({articleId: $route.current.params.eventid}, function(event) {
+          deferred.resolve(event);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+
+    },
+})
+
 
 .otherwise({
     redirectTo: '/404'
