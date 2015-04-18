@@ -20,14 +20,20 @@
 <div class="register-form-hr"></div>
 
 <div class="meet-baner-img">
-<div>
+<img  ng-if="!events.media" src="images/meet-baner-img-2.jpg" class="img-responsive" alt="">
+<img  ng-if="events.media" src="{{events.media.path}}" class="img-responsive" alt="">
+
+<div class="baner-content">
 <div>
 <div class="note blue">
     <p><span><img src="images/event-user-icon.png" alt=""></span>{{events.title | uppercase}}</p>
 </div>
 <p class="articleview" ng-bind-html="events.bannertext | rawHtml "></p>
 </div>
-<P><button class="btn Check-availability" type="button">REGISTER </button></P>
+
+<P><button class="btn Check-availability" disabled="disabled" type="button" ng-if="(events.registered.indexOf(currentUser._id) > -1) ">REGISTERED </button>
+<button class="btn Check-availability"   type="button" ng-if="(events.registered.indexOf(currentUser._id) == -1) " ng-click="registerUserInEvent()">REGISTER </button>
+</P>
 </div>
 </div>
 
@@ -128,16 +134,7 @@ Sponsors
 
 
 <div class="col-lg-3 col-md-3 col-sm-3">
-  <div class="sidebar" role="navigation">
-            <ul>
-<li><a class="active" href="dashboard.html">Learn</a></li>
-<li><a href="content-id.html">Share </a></li>
-<li><a href="chat.html">Chat </a></li>
-<li><a href="connect.html">Connect</a></li>
-<li><a href="#">Meet</a></li>
-            </ul>
-                <!-- /.sidebar-collapse -->
-            </div>
+  <div ng-include="'partials2/right-nav.html'"> </div>
 </div>
 </div>
 </div>

@@ -105,6 +105,7 @@ module.exports = function(app) {
   app.put('/api/events/:articleid', multipartMiddleware,events.update);
   app.del('/api/events/:articleid', events.remove);
   app.put('/api/events/removemedia/:articleid', events.removemedia);
+  app.put('/api/events/register/:eventid', events.register);
 
   /**---(',')--Event section stop----(',')---**/
 

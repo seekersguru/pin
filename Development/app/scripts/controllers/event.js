@@ -23,6 +23,21 @@ angular.module('pinApp')
     var gmarker = addresspickerMap.addresspicker( "marker");
     gmarker.setVisible(true);
     addresspickerMap.addresspicker( "updatePosition");
+
+    $scope.registerUserInEvent=function(){
+      $scope.events.registered.push($rootScope.currentUser._id);
+
+    var user={ user: $rootScope.currentUser._id};  
+
+    $http({ method: 'PUT', url: '/api/events/register/'+events._id,data:user }).
+    success(function (data, status, headers, config) {
+                  
+        }).
+    error(function (data, status, headers, config) {
+      $scope.article={};
+    });
+  };
+
    
 
 });
