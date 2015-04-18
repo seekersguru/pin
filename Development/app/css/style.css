@@ -159,7 +159,8 @@ z-index: 5;
 .event-box-heading{color:#253862; font-size:18px; }
 .event-box-heading a{color:#253862; font-size:18px; }
 .event-box-heading a:hover{color:#b59759; font-size:18px; }
-.meet-baner-img{background-image:url(../images/meet-baner-img-2.jpg); padding-bottom:20px;  min-height:414px; width:100%; margin-top:20px; padding-top:15px;  position: relative;}
+.baner-content{position:absolute; z-index:5; top:25px;   }
+.meet-baner-img{position:relative; }
 .meet-baner-img p{font-size:15px!important; color:#fff !important; padding:5px 15px 0 15px;  }
 .meet-baner-img h2{font-size:18px!important; padding-left:15px;  color:#fff !important; font-weight:normal!important; }
 .note.blue {

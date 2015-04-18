@@ -297,6 +297,23 @@ exports.remove = function(req, res) {
 });
 };
 
+  //Create comment
+  exports.register=function(req, res){
+  	var article_id = req.params.eventid;
+  	Event.findByIdAndUpdate(
+    article_id,
+    {$push: {"registered": req.body.user}},
+    {safe: true, upsert: true},
+     function(err, model) {
+        if(err){
+        	console.log(err);
+        	return res.send(err);
+        }
+        return res.json(model);
+     }
+	  );
+  };
+
 /**============Comment Section Start================**/
 
 // get all comments 

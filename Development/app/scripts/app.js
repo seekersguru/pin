@@ -1,15 +1,6 @@
 'use strict';
 function adjust_window_code(){
-	// if(window.location.pathname == '/register' || window.location.pathname=='/who-is-this-site-for' ||window.location.pathname == '/what-we-do' ||window.location.pathname=='/who-we-are'|| window.location.pathname=='/home'  )
- //  {
- //    // $("footer#footer-bg").css("position","relative").css("bottom","");
- //    $("footer#footer-bg").css("position","absolute").css("bottom",0);
- //  }
- //  else{
-
- //  $("#container_div").css("min-height",function(){return $(window).height() - $("nav").height() -$("footer").height();})
- //  } 
-
+	
  if ($("footer").length){
 
   var append_footer=$("footer").html();
@@ -19,16 +10,11 @@ function adjust_window_code(){
     $("#container_div").html(append_footer + $("#container_div").html());
     alert(1);
   }
-    //$("#container_div").html(append_footer);
   }
-
-  // }
 }
 function adjust_window(){
 	adjust_window_code();
-	// setTimeout(function(){
-		
-	// },1000);
+
 setTimeout(function(){
   adjust_window_code();
 },100);
@@ -38,8 +24,6 @@ setTimeout(function(){
 },3000);
 
 }
-// var tooltipToggle = angular.module('pinApp').Directives.TooltipToggle.directiveSettings();
-// var popoverToggle = angular.module('pinApp').Directives.TooltipToggle.directiveSettings('popover');
 
 angular.module('pinApp', [
   'ngCookies',
@@ -62,10 +46,6 @@ angular.module('pinApp', [
   'com.2fdevs.videogular.plugins.poster',
   'ngGrid'
   ])
-// .directive(tooltipToggle.directiveName, tooltipToggle.directive)
-// .config(tooltipToggle.directiveConfig)
-// .directive(popoverToggle.directiveName, popoverToggle.directive)
-// .config(popoverToggle.directiveConfig)
 .value('nickName', 'anonymous')
 .config(function( $compileProvider ) {
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(http|https|ftp|file|blob):|data:image\//);
@@ -372,14 +352,6 @@ $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
   }]);
 })
 .run(function ($rootScope, $location, Auth) {
-    // var cartIndex = localStorage.cartIndex;
-    // var currentIndex = 3;
-    // if (!cartIndex || !(parseInt(cartIndex) >= currentIndex)) {
-    //   delete localStorage.cart
-    //   localStorage.cartIndex = String(currentIndex);
-    // }
-
-    // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
 
       $rootScope.appTitle = 'PIN';
@@ -407,53 +379,9 @@ $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
        if (next.  admin && !Auth.isAdmin()) {
           $location.path('/home');
         }
-
-// setTimeout(function(){
-//   var bodyHeight = $("body").height();
-//   var vwptHeight = $(window).height();
-//   var navHeight=$("nav").height();
-//   var footerHeight=$("footer").height();
-//   var containerHeight=$("#container_div").height();
-  
-//   // alert(vwptHeight+"--"+bodyHeight+"--"+navHeight+"--"+footerHeight+"--"+containerHeight);
-//   // console.log($("footer#footer-bg"));
-  
-//   if (vwptHeight-footerHeight-navHeight >= containerHeight) {
-//       $("footer#footer-bg").css("position","absolute").css("bottom",0);
-//     }else{
-//       $("footer#footer-bg").css("position","relative").css("bottom","");
-//     }
-    
-//   },1000);
-
     });
   
     $rootScope.$on('$routeChangeSuccess', function () {
-    	// adjust_window()
-    	// $(window).resize(
-    	// 		function(){
-    	// 			adjust_window();
- 
-    	// 		}
-    	
-
-    	// );
-    });
+      });
   
   });
-// .constant('scalingFactor', {tshirt: 12, laptop:6.7478, poster:10.844, canvas: 10.844});
-//  $(document).ready(function(){
-//  setTimeout(function(){
-//   var bodyHeight = $("body").height();
-//   var vwptHeight = $(window).height();
-//   var navHeight=$("nav").height();
-//   var footerHeight=$("footer").height();
-//   // alert(vwptHeight+"--"+bodyHeight+"--"+navHeight+"--"+footerHeight);
-//   // console.log($("footer#footer-bg"));
-//   if (vwptHeight-footerHeight > bodyHeight) {
-//     $("footer#footer-bg").css("position","absolute").css("bottom",0);
-//   }else{
-//     $("footer#footer-bg").css("position","relative").css("bottom","");
-//   }
-//   },100);
-// });

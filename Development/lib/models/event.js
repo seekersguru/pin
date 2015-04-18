@@ -15,12 +15,14 @@ var EventSchema = new Schema({
   mainImage: String,
   discovered: { type: Boolean, default: false, index: true },
   agenda:{type:String, required:true},
+  bannertext:{type:String,required:true},
   nFavorites:{ type:Number, default:0},
-  expert:[  { user: { type: ObjectId, ref: 'User' },
+  expert:[  { user: { type: ObjectId, ref: 'Expert' },
                name:String,
                designation:String,
               flag:String
             }],
+  registered:[{ type: ObjectId, ref: 'User' }],    
   location:{ 
     address:String,
   locality:String,
