@@ -450,7 +450,7 @@ plugins: [new ngGridFlexibleHeightPlugin()]
                                     // { field: 'expert' ,displayName:'Expert' },
                                     // { field: 'comments' ,displayName:'Comments' },
                                     { field: 'category' ,displayName:'Category' },
-                                    { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
+                                    { field: 'eventdate' ,displayName:'Event Date',cellTemplate:'<span> {{row.entity.eventdate|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="eventStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="eventStatus(row.entity._id)">NOT APPROVED</span>'},
                                     { field: '',displayName:'Action', cellTemplate: editDeleteEventTemplate, maxWidth: 100  }],
                         showFooter: true,

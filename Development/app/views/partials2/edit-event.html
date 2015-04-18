@@ -147,6 +147,16 @@ height:100px;width: 100px">
   <label><input type="checkbox" name= "agree" ng-model="article.checked" required value="">Check box to agree to these submission guide line</label>
 </div> -->
 
+<div class="row">
+        <div class="col-md-6">
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="dd-MM-yyyy" ng-model="article.eventdate" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+    </div>
 
 <hr/>
 <div class="row" >
@@ -195,8 +205,8 @@ height:100px;width: 100px">
 <div class="col-lg-6 col-md-6 col-sm-6">
   <label id="geo_label" for="reverseGeocode">Reverse Geocode after Marker Drag?</label>
       <select id="reverseGeocode">
-        <option value="false" >No</option>
-        <option value="true" selected>Yes</option>
+        <option value="false" selected >No</option>
+        <option value="true" >Yes</option>
       </select><br/>
 <div class="map-hw" id="map" style="height: 420px;width: 350px;"></div> 
       <div id="legend">You can drag and drop the marker to the correct location</div>

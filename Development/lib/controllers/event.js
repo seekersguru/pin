@@ -142,7 +142,7 @@ exports.update = function(req, res) {
 								console.log('notfound');
 								return res.send(404);
 							}
-							return res.send(200);
+							return res.json({article:article});
 						});
 			  });
       });
@@ -159,7 +159,7 @@ exports.update = function(req, res) {
 			console.log('notfound');
 			return res.send(404);
 		}
-		return res.send(200);
+		return res.json({article:article});
 	});
 
 }

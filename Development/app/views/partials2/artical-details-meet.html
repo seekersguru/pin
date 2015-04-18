@@ -30,7 +30,7 @@
 </div>
 <p class="articleview" ng-bind-html="events.bannertext | rawHtml "></p>
 </div>
-
+<h2>{{events.eventdate | date:"MMMM dd yyyy"}}</h2>
 <P><button class="btn Check-availability" disabled="disabled" type="button" ng-if="(events.registered.indexOf(currentUser._id) > -1) ">REGISTERED </button>
 <button class="btn Check-availability"   type="button" ng-if="(events.registered.indexOf(currentUser._id) == -1) " ng-click="registerUserInEvent()">REGISTER </button>
 </P>
