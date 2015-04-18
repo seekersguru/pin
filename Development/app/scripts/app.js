@@ -166,6 +166,24 @@ angular.module('pinApp', [
   })
   .when('/meet', {
     templateUrl: 'partials2/meet',
+    controller:'EventListCtrl',
+    resolve:{
+      events: ['$q', '$route', 'Event', function($q, $route, events) {
+        var deferred = $q.defer();
+        var query={
+          pageno:1,
+          limit:5
+        };
+        events.get(query, function(articles) {
+          deferred.resolve(articles.articles);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+
+    },
     authenticate: true
 
   })  

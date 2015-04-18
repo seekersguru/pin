@@ -34,7 +34,8 @@ var EventSchema = new Schema({
   lat:Number,
   lng:Number,
   zoom:Number
-  },         
+  },
+  eventdate: Date,      
   keywords: [String],
   category: String,
   merchs: {},
@@ -60,7 +61,7 @@ EventSchema
       'author': this.author.name,
       // 'expert': this.expert.toString(),
       // 'comments':this.comments.length,
-      'createdAt':this.createdAt,
+      'eventdate':this.eventdate,
       'category':this.category,
       'approve':this.public
     };

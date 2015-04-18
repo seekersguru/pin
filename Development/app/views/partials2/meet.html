@@ -7,17 +7,6 @@
         <li class="active">MEET</li>
       </ul>
     </div>  
-    <div class="col-lg-3">
-      <div class="row ">
-        <div class="col-lg-12 ">
-          <div class="form-group">
-           <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="search">
-         </div>
-       </div>
-
-     </div>
-   </div> 
-
  </div>
 
  <div class="row">
@@ -27,7 +16,7 @@
      <h1>Meet</h1> 
      <div class="register-form-hr"></div>
 
-     <div class="meet-baner-img">
+<!--      <div class="meet-baner-img">
       <div class="event-contentarea">
         <div class="clearfix">
          <div class="event-title">Lorem ipsum amet - Event </div> 
@@ -40,6 +29,24 @@
        <P><button class="btn Check-availability" type="button">REGISTER </button></P>
      </div>
    </div>
+ -->
+
+   <div class="meet-baner-img">
+<img  ng-if="!events[0].media" src="images/meet-baner-img-2.jpg" class="img-responsive" alt="">
+<img  ng-if="events[0].media" src="{{events[0].media.path}}" class="img-responsive" alt="">
+
+<div class="baner-content">
+<div>
+<div class="note blue">
+    <p><span><img src="images/event-user-icon.png" alt=""></span>{{events[0].title | uppercase}}</p>
+</div>
+<p class="articleview" ng-bind-html="events[0].bannertext | rawHtml "></p>
+</div>
+
+<P><a class="btn Check-availability" ng-href="/event/view/{{events[0]._id}}" >See Details </a>
+</P>
+</div>
+</div>
 
 
 
@@ -52,62 +59,23 @@
      <div class="clearfix"></div>
    </div>
    <div class="connect-hr2"></div>
+   
    <div class="row event-row-mar">
-     <div class="col-lg-6">
+     <div class="col-lg-6" ng-repeat="(key,value) in events" ng-show="!$first">
       <div class="event-box clearfix">
         <div class="event-iocn">
-         <img src="images/event-icon-1.png" alt=""> 
+         <img ng-src="images/event-icon-{{key}}.png" alt=""> 
        </div> 
        <div class="event-content">
-         <div class="event-box-heading">Duis aute irure Rehenderit in voluptate</div>
-         <p>16th March 2015</p> 
-         <p>Chennai</p> 
+         <div class="event-box-heading">{{value.title}}</div>
+         <p>{{value.eventdate | date:"dd MMMM yyyy"}}</p> 
+         <p>{{value.location.locality}}</p> 
        </div> 
      </div> 
+   <br>
    </div> 
-
-   <div class="col-lg-6">
-    <div class="event-box clearfix">
-      <div class="event-iocn">
-       <img src="images/event-icon-2.png" alt=""> 
-     </div> 
-     <div class="event-content">
-       <div class="event-box-heading">Duis aute irure Rehenderit in voluptate</div>
-       <p>16th March 2015</p> 
-       <p>Chennai</p> 
-     </div> 
-   </div> 
- </div> 
 </div>
 
-
-<div class="row event-row-mar">
- <div class="col-lg-6">
-  <div class="event-box clearfix">
-    <div class="event-iocn">
-     <img src="images/event-icon-3.png" alt=""> 
-   </div> 
-   <div class="event-content">
-     <div class="event-box-heading">Duis aute irure Rehenderit in voluptate</div>
-     <p>16th March 2015</p> 
-     <p>Chennai</p> 
-   </div> 
- </div> 
-</div> 
-
-<div class="col-lg-6">
-  <div class="event-box clearfix">
-    <div class="event-iocn">
-     <img src="images/event-icon-4.png" alt=""> 
-   </div> 
-   <div class="event-content">
-     <div class="event-box-heading">Duis aute irure Rehenderit in voluptate</div>
-     <p>16th March 2015</p> 
-     <p>Chennai</p> 
-   </div> 
- </div> 
-</div> 
-</div>
 
 <p class="pull-right event-bt-mar"><button class="btn Check-availability" type="button"> LOAD MORE </button></p>
 <br>

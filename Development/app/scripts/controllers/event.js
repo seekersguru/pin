@@ -1,6 +1,13 @@
 'use strict';
 
 angular.module('pinApp')
+.controller('EventListCtrl', function ($scope,$rootScope,events) {
+
+$scope.events=events;
+
+});
+
+angular.module('pinApp')
 .controller('EventViewCtrl', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope,events) {
 
   $scope.usingFlash = FileAPI && FileAPI.upload != null;
@@ -56,6 +63,34 @@ angular.module('pinApp')
       });
     });
   };  
+
+  $scope.clear = function () {
+    $scope.article.eventdate = null;
+  };
+
+  // Disable weekend selection
+  $scope.disabled = function(date, mode) {
+    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+  };
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+
 
 var addresspickerMap = $( "#addresspicker_map" ).addresspicker({
       regionBias: "in",
@@ -175,6 +210,7 @@ $scope.uploadPic = function(files) {
       bannertext:$scope.article.bannertext,
       category:$scope.article.category,
       location:{address:$scope.article.location.address},
+      eventdate:$scope.article.eventdate
 
     };
     
@@ -193,12 +229,12 @@ $scope.uploadPic = function(files) {
     file.upload.then(function(response) {
       $timeout(function() {
         console.log(response);
-        $location.path('/admin').search({'event':1});
+        $location.path('/event/view/'+response.data.article._id);
       });
     }, function(response) {
       if (response.status > 0)
         $scope.errorMsg = response.status + ': ' + response.data;
-        $location.path('/admin').search({'event':1});
+        $location.path('/event/view/'+response.data.article._id);
       });
 
     file.upload.progress(function(evt) {
@@ -262,7 +298,7 @@ $scope.uploadPic = function(files) {
       bannertext:$scope.article.bannertext,
       category:$scope.article.category,
       location:{address:$scope.article.location.address},
-
+      eventdate:$scope.article.eventdate
     };
     $scope.setscope();
     if(form.$valid)
@@ -270,7 +306,7 @@ $scope.uploadPic = function(files) {
       $http({ method: 'PUT', url: '/api/events/'+$scope.article._id,data:$scope.article_put }).
       success(function (data, status, headers, config) {
         // ...
-        $location.path('/admin').search({'event':1});
+        $location.path('/event/view/'+data.article._id);
         
         
       }).
@@ -323,6 +359,37 @@ angular.module('pinApp')
       });
     });
   };  
+
+ $scope.today = function() {
+    $scope.article.eventdate = new Date();
+  };
+  // $scope.today();
+
+  $scope.clear = function () {
+    $scope.article.eventdate = null;
+  };
+
+  // Disable weekend selection
+  $scope.disabled = function(date, mode) {
+    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+  };
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
 
 var addresspickerMap = $( "#addresspicker_map" ).addresspicker({
       regionBias: "in",
@@ -407,7 +474,7 @@ $scope.uploadPic = function(files) {
         if($rootScope.currentUser.role == 'admin')
         {
         
-            $location.path('/admin').search({ 'event':1});
+            $location.path('/event/view/'+response.data.article._id);
         
         }
        
@@ -421,7 +488,7 @@ $scope.uploadPic = function(files) {
        if($rootScope.currentUser.role == 'admin')
         {
         
-            $location.path('/admin').search({ 'event':1});
+            $location.path('/event/view/'+response.data.article._id);
         
         }
 
@@ -507,7 +574,7 @@ $scope.uploadPic = function(files) {
         if($rootScope.currentUser.role == 'admin')
         {
         
-            $location.path('/admin').search({ 'event':1});
+            $location.path('/event/view/'+data.article._id);
         
         }
        
