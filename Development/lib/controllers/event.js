@@ -95,13 +95,12 @@ exports.update = function(req, res) {
 	delete article_data.discovered;
 	delete article_data.nFavorites;
 	delete article_data.author;
-	delete article_data.tags;
 	delete article_data.comments;
 
-	console.log(req.body);
-		var data = _.pick(req.body, 'type') ,
+ console.log(article_data);
+	var data = _.pick(req.body, 'type') ,
 	uploadPath =  '/uploads';
-	console.log(req.files);
+	
 	if(req.files && req.files.file)
 	{
 
@@ -130,6 +129,10 @@ exports.update = function(req, res) {
         		path:savepath,
         		originalName:file.name
         	};
+
+      		article_data.expert=JSON.parse(article_data.expert);
+        	article_data.location=JSON.parse(article_data.location);
+        	
 					Event.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
 							if (err) {
 								console.log(err);
