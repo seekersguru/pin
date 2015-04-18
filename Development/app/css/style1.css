@@ -160,10 +160,7 @@ h6 {
   .top-link a {
     color: #373737; }
     .top-link a:hover {
-      color: #259f64;
-      text-decoration: none; }
-    .top-link a.active {
-      color: #259f64;
+      color: #042850;
       text-decoration: none; }
 
 .navbar-brand {
@@ -274,6 +271,34 @@ h6 {
       #right-sidebar .login-box h2 span {
         margin-right: 10px;
         position: relative; }
+    #right-sidebar .login-box .btn-openid {
+      background-color: #134781;
+      border-color: #134781;
+      color: #fff; }
+    #right-sidebar .login-box .btn-register {
+      overflow: hidden;
+      padding-right: 44px;
+      position: relative;
+      border-radius: 0px;
+      text-align: left;
+      font-size: 16px;
+      text-transform: uppercase;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: 'clear_sans_mediumregular'; }
+    #right-sidebar .login-box .btn.focus, #right-sidebar .login-box .btn:focus, #right-sidebar .login-box .btn:hover {
+      color: #46a677; }
+    #right-sidebar .login-box .btn-register > *:last-child {
+      border-left: 1px solid #002752;
+      bottom: 0;
+      background-color: #002752;
+      font-size: 1.6em;
+      right: 0;
+      line-height: 34px;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 32px; }
     #right-sidebar .login-box p {
       color: #fff;
       font-size: 15px; }
@@ -462,21 +487,6 @@ h6 {
       color: #373737;
       text-decoration: none; }
 
-.paddingl-7 {
-  padding-left: 7px; }
-
-.paddingr-7 {
-  padding-right: 7px; }
-
-.breadcam-link {
-  color: #259f64;
-  margin-top: 20px; }
-  .breadcam-link .fa.fa-home {
-    font-size: 16px;
-    color: #4e4d49; }
-  .breadcam-link span {
-    color: #4e4d49; }
-
 #footer-bg {
   background-color: #3f3f3f;
   border-top: 10px solid #269f64; }
@@ -618,12 +628,6 @@ h6 {
   #content-section {
     padding: 10px; }
 
-  .paddingr-7 {
-    padding-right: 15px; }
-
-  .paddingl-7 {
-    padding-left: 15px; }
-
   .home-image img {
     width: 100%;
     height: auto; }
@@ -700,79 +704,5 @@ h6 {
     background-color: #000;
     margin-top: 14px;
     padding: 3px; } }
-.inner-section h1 {
-  font-size: 30px;
-  font-family: "Calisto MT";
-  border-bottom: dotted 1px #212121;
-  padding-bottom: 15px;
-  margin-bottom: 25px; }
-
-.btn-openid {
-  background-color: #134781;
-  border-color: #134781;
-  color: #fff; }
-
-.btn-register {
-  overflow: hidden;
-  padding-right: 44px;
-  position: relative;
-  border-radius: 0px;
-  text-align: left;
-  font-size: 16px;
-  text-transform: uppercase;
-  text-overflow: ellipsis;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  white-space: nowrap;
-  font-family: 'clear_sans_mediumregular'; }
-
-.btn.focus, .btn:focus, .btn:hover {
-  color: #46a677; }
-
-.btn-register > *:last-child {
-  border-left: 1px solid #002752;
-  bottom: 0;
-  background-color: #002752;
-  font-size: 1.6em;
-  right: 0;
-  line-height: 34px;
-  position: absolute;
-  text-align: center;
-  top: 0;
-  width: 32px; }
-
-.btn-opp {
-  background-color: #5e5e5e;
-  border-color: #5e5e5e;
-  color: #fff; }
-
-.Check-availability {
-  overflow: hidden;
-  padding-left: 44px;
-  position: relative;
-  border-radius: 0px;
-  text-align: left;
-  font-size: 16px;
-  text-transform: uppercase;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  font-family: 'clear_sans_mediumregular'; }
-
-.btn.focus, .btn:focus, .btn:hover {
-  color: #fff; }
-
-.Check-availability > *:first-child {
-  border-left: 1px solid #212121;
-  bottom: 0;
-  background-color: #212121;
-  font-size: 1.6em;
-  left: 0;
-  line-height: 34px;
-  position: absolute;
-  text-align: center;
-  top: 0;
-  width: 32px; }
 
 /*# sourceMappingURL=style.css.map */

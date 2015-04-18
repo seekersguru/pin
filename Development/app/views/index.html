@@ -45,15 +45,13 @@
      <link href="font-awesome-4.3.0/css/font-awesome.css" rel="stylesheet">    <% } %>
     <!-- endbuild -->
     <% if (!css) { %>
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <% } %>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <link rel="stylesheet" href="css/owl.carousel.css">
 
   </head>
   <body>
-  <div id="wrapper">
- 
    <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -176,7 +174,35 @@ FileAPI = {
     //staticPath: '/flash/FileAPI.flash.swf/folder/'
     //flashUrl: 'yourcdn.com/js/FileAPI.flash.swf'
 };
+
+  $(document).ready(function(){
+
+
+   var owl = $("#owl-demo");
+
+      owl.owlCarousel({
+
+        // Define custom and unlimited items depending from the width
+        // If this option is set, itemsDeskop, itemsDesktopSmall, itemsTablet, itemsMobile etc. are disabled
+        // For better preview, order the arrays by screen size, but it's not mandatory
+        // Don't forget to include the lowest available screen size, otherwise it will take the default one for screens lower than lowest available.
+        // In the example there is dimension with 0 with which cover screens between 0 and 450px
+        
+        itemsCustom : [
+          [0, 2],
+          [450, 4],
+          [600, 7],
+          [700, 4],
+          [1000, 10],
+          [1200, 4],
+          [1400, 4],
+          [1600, 4]
+        ],
+        navigation : true
+
+      });
+  });
+
 </script>
-</div>
 </body>
 </html>
