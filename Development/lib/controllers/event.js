@@ -58,6 +58,7 @@ exports.create = function(req, res, next) {
         	};
         	req.body.expert=JSON.parse(req.body.expert);
         	req.body.location=JSON.parse(req.body.location);
+        	req.body.eventdate=JSON.parse(req.body.eventdate);
         	console.log(req.body);
         	var article=new Event(req.body);
         	article.save(function(err,article){
@@ -132,6 +133,7 @@ exports.update = function(req, res) {
 
       		article_data.expert=JSON.parse(article_data.expert);
         	article_data.location=JSON.parse(article_data.location);
+        	article_data.eventdate=JSON.parse(article_data.eventdate);
         	
 					Event.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
 							if (err) {
