@@ -318,7 +318,7 @@ angular.module('pinApp', [
 })
 .when('/event/view/:eventid', {
     templateUrl: 'partials2/artical-details-meet',
-    controller: 'EventViewEditCtrl',
+    controller: 'EventViewCtrl',
     title: 'Meet Event',
       resolve:{
       events: ['$q', '$route', 'Event', function($q, $route, Event) {
@@ -334,8 +334,23 @@ angular.module('pinApp', [
 
     },
 })
-
-
+.when('/event/edit/:eventid', {
+    templateUrl: 'partials2/edit-event',
+    controller: 'EventEditCtrl',
+    title: 'Edit Event',
+      resolve:{
+      events: ['$q', '$route', 'Event', function($q, $route, Event) {
+        var deferred = $q.defer();
+        Event.get({articleId: $route.current.params.eventid}, function(event) {
+          deferred.resolve(event);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+    },
+})
 .otherwise({
     redirectTo: '/404'
 });
