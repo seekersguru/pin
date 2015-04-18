@@ -55,6 +55,18 @@
         </div>
     </div>
 
+<div class="row ">
+          <div class="col-lg-10">
+
+            <div class="form-group" ng-class="{'has-error':form.bannertext.$dirty && form.bannertext.$error.required,'has-success':form.bannertext.$valid}">
+              <label class="control-label" for="bannertext">Banner Text</label>
+              <text-angular class="rituraj" name="bannertext" ng-model="article.bannertext" required ng-minlength=20 ta-toolbar="[ ['h1', 'h2','quote','insertLink'],['bold', 'italics', 'underline', 'strikeThrough'],['justifyLeft','justifyCenter','justifyRight'],['ul', 'ol'],['insertImage', 'insertVideo']]"> </text-angular>
+              <p class="text-danger" ng-show="form.bannertext.$dirty && form.bannertext.$error.required">Please fill Banner Text.</p>
+              <p class="text-danger" ng-show="form.bannertext.$dirty && form.bannertext.$error.minlength">your Banner text shoud be minimum 20 character long .</p>
+              <p class="text-danger" ng-show="form.bannertext.$error.mongoose">{{ errors.bannertext }} </p>
+            </div>
+          </div>
+        </div>
     <div class="form-group">
      <label class="control-label" for="fullName">Banner </label>
      <a ng-click="removeMedia()" ng-show='article.media'>Remove Banner</a> 

@@ -45,28 +45,26 @@
             <div class="form-group" ng-class="{'has-error':form.agenda.$dirty && form.agenda.$error.required,'has-success':form.agenda.$valid}">
               <label class="control-label" for="agenda">Agenda</label>
               <text-angular class="rituraj" name="agenda" ng-model="article.agenda" required ng-minlength=20 ta-toolbar="[ ['h1', 'h2','quote','insertLink'],['bold', 'italics', 'underline', 'strikeThrough'],['justifyLeft','justifyCenter','justifyRight'],['ul', 'ol'],['insertImage', 'insertVideo']]"> </text-angular>
-
-              <!-- <text-angular class="form-control" rows="5"  name="agenda" ng-model="article.agenda" required ng-minlength=20> </text-angular> -->
               <p class="text-danger" ng-show="form.agenda.$dirty && form.agenda.$error.required">Please fill Agenda.</p>
               <p class="text-danger" ng-show="form.agenda.$dirty && form.agenda.$error.minlength">your agenda shoud be minimum 20 character long .</p>
               <p class="text-danger" ng-show="form.agenda.$error.mongoose">{{ errors.agenda }} </p>
             </div>
           </div>
         </div>
-        <!-- <div class="form-group">
-          <label for="tags">Tags</label>
-          <div tooltip="Add about three to four tags for better discoveribility of your article">
-            <tags-input
-            display-property=""
-            class="tags-input"
-            min-tags="1"
-            ng-model="article.tags"
-            placeholder="Add a tag and press enter (min length 3 characters)"
-            replace-spaces-with-dashes="false">
-          </tags-input>
+</div>
+
+<div class="row ">
+          <div class="col-lg-10">
+
+            <div class="form-group" ng-class="{'has-error':form.bannertext.$dirty && form.bannertext.$error.required,'has-success':form.bannertext.$valid}">
+              <label class="control-label" for="bannertext">Banner Text</label>
+              <text-angular class="rituraj" name="bannertext" ng-model="article.bannertext" required ng-minlength=20 ta-toolbar="[ ['h1', 'h2','quote','insertLink'],['bold', 'italics', 'underline', 'strikeThrough'],['justifyLeft','justifyCenter','justifyRight'],['ul', 'ol'],['insertImage', 'insertVideo']]"> </text-angular>
+              <p class="text-danger" ng-show="form.bannertext.$dirty && form.bannertext.$error.required">Please fill Banner Text.</p>
+              <p class="text-danger" ng-show="form.bannertext.$dirty && form.bannertext.$error.minlength">your Banner text shoud be minimum 20 character long .</p>
+              <p class="text-danger" ng-show="form.bannertext.$error.mongoose">{{ errors.bannertext }} </p>
+            </div>
+          </div>
         </div>
-      </div> -->
-    </div>
 
     <div class="form-group">
      <label class="control-label" for="fullName">Banner </label>

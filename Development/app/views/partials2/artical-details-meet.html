@@ -25,22 +25,11 @@
 <div class="note blue">
     <p><span><img src="images/event-user-icon.png" alt=""></span>{{events.title | uppercase}}</p>
 </div>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt laboret dolore magna aliqua. Ut enim ad minim veniam, nostrud exercitation ullamco laboris aliquip commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ecillum dolorenulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-<p>Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Utenim ad minima veniam, eprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
-
+<p class="articleview" ng-bind-html="events.bannertext | rawHtml "></p>
 </div>
-
-
-
 <P><button class="btn Check-availability" type="button">REGISTER </button></P>
 </div>
 </div>
-
-
-
-
 
 <div class="row">
  <div class="col-lg-5 comment-text">
@@ -106,10 +95,13 @@ Venue
 
   </div>
 </div>
+<br/>
+<hr/>
+<p><a class="btn Check-availability" type="button" href="/events/01"  >Back To Events </a>
+<a ng-if="currentUser.role=='admin'" class="btn register-bt " type="button" ng-href="/event/edit/{{events._id}}"  >Edit </a></p>
 
 
-
-<div class="comment-text">
+<!-- <div class="comment-text">
 Sponsors
  </div> 
  <div class="connect-hr2"></div>
@@ -127,8 +119,8 @@ Sponsors
            <div class="item"><img src="images/brand-4.jpg" alt=""></div>
         </div>
     </div>
-</div>
-<p class="pull-right event-bt-mar"><button class="btn Check-availability" type="button"> LOAD MORE </button></p>
+</div> -->
+<!-- <p class="pull-right event-bt-mar"><button class="btn Check-availability" type="button"> LOAD MORE </button></p> -->
 <br>
 </div>  
 

@@ -157,6 +157,7 @@ $scope.uploadPic = function(files) {
     $scope.article_put={
       title:$scope.article.title,
       agenda:$scope.article.agenda,
+      bannertext:$scope.article.bannertext,
       category:$scope.article.category,
       location:{address:$scope.article.location.address},
 
@@ -177,12 +178,12 @@ $scope.uploadPic = function(files) {
     file.upload.then(function(response) {
       $timeout(function() {
         console.log(response);
-        $location.path('/admin').search({'expert':1});
+        $location.path('/admin').search({'event':1});
       });
     }, function(response) {
       if (response.status > 0)
         $scope.errorMsg = response.status + ': ' + response.data;
-        $location.path('/admin').search({'expert':1});
+        $location.path('/admin').search({'event':1});
       });
 
     file.upload.progress(function(evt) {
@@ -243,6 +244,7 @@ $scope.uploadPic = function(files) {
     $scope.article_put={
       title:$scope.article.title,
       agenda:$scope.article.agenda,
+      bannertext:$scope.article.bannertext,
       category:$scope.article.category,
       location:{address:$scope.article.location.address},
 
