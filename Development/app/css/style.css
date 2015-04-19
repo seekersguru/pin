@@ -1663,7 +1663,7 @@ background-color: #d9534f;
 }
 .sidebar ul{margin: 0px; padding: 0px; border-left:solid 3px #b59759;   margin-bottom:-35px;  }
 .sidebar ul li{margin: 0px; list-style: none; line-height:38px;   }
-.sidebar ul li a {margin: 0px; font-size:15px; color:#3b3b3b;  padding-left: 15px; line-height: 45px}
+.sidebar ul li a {margin: 0px; font-size:15px; color:#3b3b3b;  padding-left: 15px; line-height: 43px}
 .sidebar ul li a:hover{margin: 0px; color: #fff;   text-decoration:none;    background:#273c69 no-repeat scroll 15px center; padding-left:30px; 
             background-image: url('../images/arow-reg-bt-1.png'), -webkit-gradient(linear, left top, right top, color-stop(0%,#273c69), color-stop(100%,#19253f)); /* Chrome,Safari4+ */
 
