@@ -70,6 +70,20 @@ html {
 
 
 body{font-family:georgia;   margin-bottom: 140px; background-image:url(../images/body-bg.png); background-repeat:repeat;     font-size:14px; line-height:18px; }
+::-webkit-input-placeholder {
+ color: #888; }
+
+:-moz-placeholder {
+ /* Firefox 18- */
+ color: #888; }
+
+::-moz-placeholder {
+ /* Firefox 19+ */
+ color: #888; }
+
+:-ms-input-placeholder {
+ color: #888; }
+
 a {
   color:blue;
   /* First we need to help some browsers along for this to work.
