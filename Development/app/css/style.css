@@ -2301,6 +2301,7 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 
 
   @media (max-width: 767px) {
+ .tree-container-inner{background-image: none;}   
 .desktop-hide{display: block!important;}
     .tree-container{display:none; }
     .welcome-text{position:relative; left:auto; top:auto; margin-top: 80px; right: auto;   }
