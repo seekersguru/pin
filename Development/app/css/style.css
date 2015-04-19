@@ -2272,6 +2272,9 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
   .padding-right0 img{width:100%; height:300px;  }   
 
   .slider-section{margin-top:25px; position:relative;  background-color:#fff; padding-top:20px; padding-bottom:20px;    } 
+  .sigup-newletter {
+    float: right;
+}
 
 @media (max-width: 1024px) {
   .mar-back-img {
@@ -2351,6 +2354,9 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 
 
   @media (max-width: 767px) {
+    .sigup-newletter {
+    float: none;
+}
 
 .sidebar {
     margin-top: 54px;
