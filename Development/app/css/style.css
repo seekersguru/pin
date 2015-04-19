@@ -2233,6 +2233,7 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 }
 @media (min-width: 768px) and (max-width: 979px) {
 .tree-container{background-image:none;  }
+.tree-container-inner{background-image: none;}
 #nav ul li a{left:220px;top:20px;  }
 .learn-nav ul li a{  padding: 12px 32px;}
 .commentText{width:90%;}
