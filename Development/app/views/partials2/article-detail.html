@@ -240,7 +240,7 @@
 <div class="actionBox">
  <div class="post-comment-hr">Post Your Comment</div>
  <div class="gray-hr"></div>
- <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" ng-if="currentUser._id" class="form-inline">
+ <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" ng-if="currentUser._id" class="">
   <div class="chat-2mar15" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
     <textarea class="form-control"  name="comment"id="comment" placeholder="Your comments" ng-model="article.comment" required ng-minlength=4></textarea>
     <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
