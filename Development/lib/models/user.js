@@ -35,6 +35,8 @@ var UserSchema = new Schema({
     validTill : Date
   },
   role: {type: String, default: 'user', 'enum' : ['user','admin','expert']},
+  adminrole:String,
+  familyrole:{type: Schema.Types.ObjectId, ref:'Family'},
   hashedPassword: String,
   provider: String,
   salt: String,
@@ -50,6 +52,7 @@ var UserSchema = new Schema({
   showAge: {type:Boolean, default: false},
   dob:{type:Date, default: Date.now},
   status:{type: Boolean, default:false},
+  searchable:{type: Boolean, default:true},
   other:String,
 });
 
@@ -96,6 +99,9 @@ UserSchema
       'band': this.band,
       'emailVerification': this.emailVerification.verified,
       'username': this.username,
+      'adminrole':this.adminrole,
+      'familyrole':this.familyrole,
+      'searchable':this.searchable,
       'status':this.status
 
         };

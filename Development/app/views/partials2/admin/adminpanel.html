@@ -104,6 +104,50 @@
         </div>
 </script>
 
+<script type="text/ng-template" id="familyoffice.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Assign Some Role To User !</h3>
+        </div>
+        <div class="modal-body">
+        <form novalidate  class="form-horizontal" name="form" role='form' ng-submit="saveRole()"  >
+           <div class="form-group">
+            <label for="role" class="col-sm-2 control-label">Role</label>
+          <div class="col-sm-10">
+               <select class="form-control" name="adminrole" ng-model="userupdate.adminrole">
+            <option value="Acconts">Accounts</option>
+            <option value="Experts">Experts</option>
+            </select>
+          </div>
+        </div>
+
+         <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Family Office</label>
+          <div class="col-sm-10">
+              <select class="form-control" ng-model="userupdate.familyrole">
+                  <option ng-repeat="(key,value) in familys" value="{{value._id}}">{{value.name}} </option>
+              </select>
+          </div>
+        </div>
+
+           <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Searchable</label>
+          <div class="col-sm-10">
+           <select ng-model="userupdate.searchable" class="form-control"
+            ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">
+    </select>
+         </div>
+        </div>
+
+         </form>   
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="saveRole()" >OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+</script>
+
 
 <div ng-include="mainPage" class="container text-center"></div>
 

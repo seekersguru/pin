@@ -62,6 +62,8 @@ $scope.addFamily=function (size) {
   });
 };
 
+
+
 $scope.updateBand=function(data,band){
    data.band=band;
    console.log(data);
@@ -111,23 +113,55 @@ $scope.userStatus=function(userId){
 
   var setStatus= !$scope.gridUserData[removeIndex].status,
   messageline="";
-
+  var popup=1;
   if(setStatus)
+   {
     messageline="You are approving "+$scope.gridUserData[removeIndex].name+" a mail notification will be sent to  mail id "+$scope.gridUserData[removeIndex].email;
+   }
   else
+   {
     messageline="You are blocking "+$scope.gridUserData[removeIndex].name+" , email notification will be sent to him that , some problem in your account please contact admin";
+    popup=0;
+   }
 
   var yes=confirm(messageline);
   if(yes)
   {
-  $http({ method: 'PUT', url: '/api/users/status/'+userId,data:{'status':setStatus}}).
-      success(function (data, status, headers, config) {
-         $scope.gridUserData[removeIndex].status=setStatus;   
-      }).
-      error(function (data, status, headers, config) {
-        // ...
-        // $scope.article={};
-      });
+      if(popup)
+      {
+        var modalInstance = $modal.open({
+            templateUrl: 'familyoffice.html',
+            controller: 'AssignRoleCtrl',
+            resolve: {
+                searchable: function () {
+                    return $scope.gridUserData[removeIndex].searchable;
+                },
+                adminrole: function () {
+                    return $scope.gridUserData[removeIndex].adminrole;
+                },
+                familyrole: function () {
+                    return $scope.gridUserData[removeIndex].familyrole;
+                },
+                userid: function () {
+                    return userId;
+                },
+                removeIndex: function () {
+                    return removeIndex;
+                }
+              }
+        });
+
+      }else{
+        
+        $http({ method: 'PUT', url: '/api/users/status/'+userId,data:{'status':setStatus}}).
+            success(function (data, status, headers, config) {
+               $scope.gridUserData[removeIndex].status=setStatus;   
+            }).
+            error(function (data, status, headers, config) {
+              // ...
+              // $scope.article={};
+            });
+      }   
   }
   else{
 
@@ -295,7 +329,6 @@ $scope.deleteExpert=function(expertId){
       User.query(function(users){
         $scope.gridUserData=users.users;
       });
-
       break;
 
       case 'articles':
@@ -391,6 +424,8 @@ $scope.deleteExpert=function(expertId){
                                     { field: 'email' ,displayName:'Email' },
                                     { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'}, 
                                     { field: 'role' ,displayName:'Role'},
+                                    { field: 'searchable' ,displayName:'Searchable'},
+                                    { field: 'adminrole' ,displayName:'Adminrole'},
                                     { field: 'emailVerification' ,displayName:'EmailVerification',cellTemplate:'<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>' },
                                     { field: 'username' ,displayName:'Username' },
                                     { field: 'status' ,displayName:'Status',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'},
@@ -463,7 +498,7 @@ plugins: [new ngGridFlexibleHeightPlugin()]
 });
 
 angular.module('pinApp')
-.controller('FamilyCtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller) {
+.controller('FamilyCtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller,$route,$templateCache) {
 
  $.extend(this, $controller('AdminPanelCtrl', {$scope: $scope}));
 
@@ -482,8 +517,11 @@ $scope.family={};
 
           console.log(data);
           
-          $scope.gridFamilyData.push(data.family);
-          $window.location.reload();
+          // $scope.gridFamilyData.push(data.family);
+               var currentPageTemplate = $route.current.templateUrl;
+                $templateCache.remove(currentPageTemplate);
+                $route.reload();
+
           
           
           
@@ -509,4 +547,44 @@ $scope.family={};
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
+});
+
+
+angular.module('pinApp')
+.controller('AssignRoleCtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller,searchable,adminrole,familyrole,userid,removeIndex,$templateCache,$route) {
+  $scope.userupdate={
+    familyrole:familyrole,
+    searchable:searchable,
+    adminrole:adminrole
+  };
+
+ $.extend(this, $controller('AdminPanelCtrl', {$scope: $scope}));
+
+ $http({ method: 'GET', url: 'api/family' }).
+    success(function (data, status, headers, config) {
+       $scope.familys=data.familys;
+    }).
+ error(function (data, status, headers, config) {
+
+  });
+
+  $scope.saveRole = function () {
+          $http({ method: 'PUT', url: '/api/users/status/'+userid,data:{'status':1,adminrole:$scope.userupdate.adminrole,familyrole:$scope.userupdate.familyrole,searchable:$scope.userupdate.searchable}}).
+            success(function (data, status, headers, config) {
+               $modalInstance.close();
+               var currentPageTemplate = $route.current.templateUrl;
+                $templateCache.remove(currentPageTemplate);
+                $route.reload();
+
+            }).
+            error(function (data, status, headers, config) {
+             $scope.userupdate={};
+             $modalInstance.dismiss('cancel');
+            });
+      };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+
 });
