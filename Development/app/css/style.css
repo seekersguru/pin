@@ -2352,8 +2352,12 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 
   @media (max-width: 767px) {
 
+.sidebar {
+    margin-top: 54px;
+}    
+
 .footer-learning ul li a{padding: 18px 12px 0;}
-    
+
 
 .greenbox,.pinkbox,.aquanbox,.redbox{height:auto; }
    
