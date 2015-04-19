@@ -1507,7 +1507,13 @@ height: 100px;  }
 .footer-learning p{color: #9d9d9d; padding-top:45px; padding-bottom: 35px; margin: 0px;}
 .footer-learning .input-group{margin-top: 22px; }
 .footer-learning i{margin-right:10px; font-size:24px; color: #888;  }
-.footer-learning .input-group-addon{background-color: #b59759; color:#fff; border:0px; border-radius:0px; }
+.footer-learning .input-group-addon {
+    background-color: #b59759;
+    border: 0 none;
+    border-radius: 0;
+    color: #fff;
+    padding: 4px 10px 6px 12px;
+}
 .footer-learning input{border-radius:0px; border: solid 1px #ddd; background-color: #fff;  border-right:none; height: 14px;}
 .footer-learning .subscribe-bt{border:none; background-color:#b59759; color:#fff; font-size:18px;  height: 20px; padding: 0px;  }
 .footer-above h3{font-family: 'tff_franklin_gothic_demi'; text-transform:uppercase; margin-top:8px;   color:#c8c8c8; font-size:30px;}
@@ -1988,9 +1994,10 @@ position: relative;
 display: table;
 border-collapse: separate;
 }
+
 .input-group .form-control, .input-group-addon, .input-group-btn {
-display: table-cell; 
-height: 35px;
+    display: table-cell;
+    height: 30px;
 }
 
 .file-caption-ellipsis {
