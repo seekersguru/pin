@@ -1502,8 +1502,10 @@ background: -ms-linear-gradient(top, #212d47 0%,#08132a 100%); /* IE10+ */
 background: linear-gradient(to bottom, #212d47 0%,#08132a 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#212d47', endColorstr='#08132a',GradientType=0 ); /* IE6-9 */
 height: 100px;  }
+
+
 .footer-learning p{color: #9d9d9d; padding-top:45px; padding-bottom: 35px; margin: 0px;}
-.footer-learning .input-group{margin-top: 15px; }
+.footer-learning .input-group{margin-top: 22px; }
 .footer-learning i{margin-right:10px; font-size:24px; color: #888;  }
 .footer-learning .input-group-addon{background-color: #b59759; color:#fff; border:0px; border-radius:0px; }
 .footer-learning input{border-radius:0px; border: solid 1px #ddd; background-color: #fff;  border-right:none; height: 14px;}
