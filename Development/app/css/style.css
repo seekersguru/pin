@@ -1586,7 +1586,7 @@ background-color: #fff;
 .chatlsit-head-hr{background-color:#b59759; height: 1px; margin-top:0px; margin-bottom:18px;}
 .register-form span{color:#ca4f13 }
 .register-form{display:block; /* padding:15px; */padding-top: 15px;}
-.register-form input{width:100%; height: 32px; box-shadow:none;  border-radius:0px; border:solid 1px #ddd;  font-size: 14px;font-style: italic;color: #888888;}
+.register-form input{width:100%; height: 32px; box-shadow:none;  border-radius:0px; border:solid 1px #ddd;  font-size: 14px;font-style: italic;color: #888888; padding-left: 10px}
 .register-form select{width:100%; height: 32px; box-shadow:none;  border-radius:0px; border:solid 1px #ddd;  font-size: 12px;font-style: italic;}
 .register-form textarea {box-shadow:none;  border-radius:0px; border:solid 1px #ddd;}
 .register-form input[type=radio], input[type=checkbox] {display: inline-block;
@@ -2308,6 +2308,11 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 
 
   @media (max-width: 767px) {
+
+    .checkbox.sign-box {
+    position: relative;
+}
+
     .panel.panel-info.sign-box-area {
     margin-top: 100px;
 }
