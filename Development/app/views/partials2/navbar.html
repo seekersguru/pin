@@ -21,13 +21,14 @@
      <li class="desktop-hide"><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li> 
      <li class="desktop-hide"><a href="/what-we-do" ng-class="{active: isActive('/what-we-do')}">What</a></li> 
     <li class="desktop-hide"><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">About</a></li> 
-    <li class="desktop-hide" ><a href="/register" ng-class="{active: isActive('/register')}">Join</a></li>  
+      <li ng-hide="currentUser" class="desktop-hide"><a href="/register" ng-class="{active: isActive('/register')}">Join</a></li>  
+    <li ng-show="currentUser" class="desktop-hide"><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li>   
 <!--     <li class="desktop-hide" ng-show="currentUser"><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li> 
  -->
     </ul>
 
       <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate  >
-        <div ng-hide="currentUser">
+        <div ng-hide="currentUser || isActive('/login')" >
           <div class="form-group" ng-class="{'has-error':form.email.$dirty && form.email.$invalid}">
             <input type="text" id="emailnav" name="email" class="form-control" ng-model="user.email" placeholder="Email" required>
             <div class="checkbox">
