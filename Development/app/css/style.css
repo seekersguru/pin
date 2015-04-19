@@ -2265,7 +2265,7 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 
 .tree-container{background-image:none;  }
 .tree-container-inner{background-image: none; height :0px}
-.inner-section{width:100%; float: none; margin-left:0px; text-align:left;   }
+.inner-section{width:100%; float: none; margin-left:0px; text-align:left;  margin-top:115px; }
 
 #nav ul li a{left:220px;top:20px;  }
 .learn-nav ul li a{  padding: 12px 32px;}
@@ -2320,10 +2320,16 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 
   @media (max-width: 767px) {
 .inner-section {
+  margin-top: 85px;
     float: none;
     margin-left: 0;
     text-align: left;
     width: 100%;
+}
+.inner-section h1 {
+    color: #193164;
+    font-size: 28px;
+    text-transform: uppercase;
 }
     .checkbox.sign-box {
     position: relative;
