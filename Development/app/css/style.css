@@ -2351,6 +2351,9 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 
 
   @media (max-width: 767px) {
+
+.greenbox,.pinkbox,.aquanbox,.redbox{height:auto; }
+   
 .inner-section {
   margin-top: 85px;
     float: none;
