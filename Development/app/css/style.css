@@ -1764,8 +1764,15 @@ background-color: #d9534f;
 .aquanbox{background-color:#fff; border-top:solid 3px #12afbe;  height:260px; margin-bottom:25px; overflow: hidden;}
 .redbox img,.pinkbox img,.greenbox img,.aquanbox img{width:100%;  }
 .redbox .inner-area,.pinkbox .inner-area,.greenbox .inner-area,.aquanbox .inner-area{padding:10px; }
+
 .redbox .inner-area h1,.pinkbox .inner-area h1,.greenbox .inner-area h1,.aquanbox .inner-area h1{font-size:18px; margin-top:10px;  color:#4e4c49}
-.redbox .inner-area p,.pinkbox .inner-area p,.greenbox .inner-area p,.aquanbox .inner-area p{font-size:14px; font-style:italic; color:#787878; }
+
+.redbox .inner-area p, .pinkbox .inner-area p, .greenbox .inner-area p, .aquanbox .inner-area p {
+    color: #787878;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 20px;
+}
 .learn-nav ul{margin: 0px; padding:0px; margin-bottom: 25px;  box-shadow: 0px 2px 2px #a7a7a7;list-style: none; background-color:#fff;  }
 .learn-nav ul li{margin: 0px; padding:0px; float: left; list-style:none; }
 .learn-nav ul li a{margin: 0px; color: #4e4c49; background-image:url(../images/grow-icon.png); background-repeat:no-repeat;  padding: 12px 35px 12px 35px;  float:left; border-left:solid 1px #e2dfd7;  font-size:14px; text-transform:uppercase; background-color:#fff; display:block;     text-indent: 15px;background-position: 10px;}
