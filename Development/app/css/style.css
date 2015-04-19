@@ -2277,6 +2277,10 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 }
 
 @media (max-width: 1024px) {
+
+.breadcrumb {
+    margin-top: 60px;
+}
   .mar-back-img {
     margin-left: -160px;
 }
@@ -2298,6 +2302,9 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
     margin-top: 100px;
 }
 */
+.breadcrumb {
+    margin-top: 60px;
+}
 .tree-container{background-image:none;  }
 .tree-container-inner{background-image: none; height :0px}
 .inner-section{width:100%; float: none; margin-left:0px; text-align:left;  margin-top:115px; }
@@ -2355,7 +2362,7 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 
   @media (max-width: 767px) {
     .sigup-newletter {
-    float: none;
+    float: left;
 }
 
 .sidebar {
