@@ -1614,7 +1614,7 @@ cursor: pointer;}
 input[type="checkbox"] {
 margin-left: -19px;
 width: 14px;
-margin-top: 4px;
+margin-top: 0px;
 }
 
 .panel-green {
