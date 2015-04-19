@@ -2243,6 +2243,17 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
   .slider-section{margin-top:25px; position:relative;  background-color:#fff; padding-top:20px; padding-bottom:20px;    } 
 
 @media (max-width: 1024px) {
+  .mar-back-img {
+    margin-left: -160px;
+}
+.inner-section {
+    float: left;
+    margin-left: -35px;
+    text-align: justify;
+    width: 550px;
+}
+
+
   .container-head{padding:0 15px 0 15px; }
 
 }
