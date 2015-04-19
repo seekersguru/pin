@@ -1397,7 +1397,7 @@ margin-right: 10px; font-size:13px; height: 27px;font-style:italic; }
 
 .articles-section{display:block; border: solid 1px #d8d8d8; margin-top: 35px; border-bottom:solid 2px #e6c55d; background-color:#fff;}
 .articles-inner{padding: 15px;}
-.articles-head a{color:#000;}
+.articles-head a{color:#4e4c49;font-size :18px; line-height :24px;}
 .articles-head a:hover{color:#444; text-decoration:none; }
 .articles-inner h3{font-family: 'tff_franklin_gothic_demi'; margin-bottom: 8px; text-transform:uppercase; margin-top:8px;   color:#171717; font-size:18px;}
 .articles-inner p{font-size:18px; color:#333333; line-height: 20px;}
