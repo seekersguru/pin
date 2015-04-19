@@ -117,7 +117,7 @@
 
 <div class="creations-container">
 <div class="row" id="article-container">
- <div  ng-repeat="(key,value) in articles" class="article-post"  ng-class="{false:'col-lg-8 col-md-8 col-sm-8 {{value.category}}',true:'col-lg-4 col-md-4 col-sm-4{{value.category}}'}[!value.media || value.media.extension.indexOf('image') > -1]" >
+ <div  ng-repeat="(key,value) in articles" class="article-post"  ng-class="{false:'col-lg-8 col-md-8 col-sm-8 {{value.category}}',true:'col-lg-4 col-md-4 col-sm-4 {{value.category}}'}[!value.media || value.media.extension.indexOf('image') > -1]" >
   <a ng-href="/articles/view/{{value._id}}">
   <div class="post-box">
       <div class="" ng-class="color[value.category].caption">
