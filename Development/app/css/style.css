@@ -2260,10 +2260,10 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 }
 @media (min-width: 768px) and (max-width: 979px) {
 
-  .panel.panel-info.sign-box-area {
+/*  .panel.panel-info.sign-box-area {
     margin-top: 100px;
 }
-
+*/
 .tree-container{background-image:none;  }
 .tree-container-inner{background-image: none; height :0px}
 .inner-section{width:100%; float: none; margin-left:0px; text-align:left;  margin-top:115px; }
@@ -2336,9 +2336,9 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
     position: relative;
 }
 
-    .panel.panel-info.sign-box-area {
+/*    .panel.panel-info.sign-box-area {
     margin-top: 100px;
-}
+}*/
  .tree-container-inner{background-image: none;display: none;}   
 .desktop-hide{display: block!important;}
     .tree-container{display:none; }
