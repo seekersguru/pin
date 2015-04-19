@@ -2277,6 +2277,10 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 }
 
 @media (max-width: 1024px) {
+
+.breadcrumb {
+    margin-top: 60px;
+}
   .mar-back-img {
     margin-left: -160px;
 }
