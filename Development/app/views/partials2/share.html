@@ -33,7 +33,7 @@
      <form novalidate  name="form" role='form' enctype= 'multipart/form-data' ng-hide="articleDone" >
       <div class="dashboard-section">
         <div class="row register-form-row-pad">
-          <div class="col-lg-7 paddingr-7">  
+          <div class="col-lg-9 col-md-9 col-sm-9 paddingr-7">  
             <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
               <input type="text" class="form-control" name="title" placeholder="Title"  ng-model="article.title" required ng-minlength=5>
               <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill title.</p>
@@ -43,7 +43,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3  paddingl-7">
+          <div class="col-lg-3 col-md-3 col-sm-3  paddingl-7">
             <div class="form-group">
               <select ng-model="article.category" ng-options="o as o for o in category" placeholder="choose category"></select>
             </div>
@@ -51,7 +51,7 @@
 
         </div>
         <div class="row ">
-          <div class="col-lg-10">
+          <div class="col-lg-12 col-md-12 col-sm-12">
 
             <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
               <label class="control-label" for="description">Description</label>
@@ -73,6 +73,7 @@
      <br></br>
 
      <div class="row" >
+      <div class="preview-outer">
       <div class="preview-area">  
         <div class="preview-eye"><i class="fa fa-eye"></i> Preview</div>  
         <div class="preview-shadow">  
@@ -96,7 +97,7 @@
 
         </div>
       </div>
-
+    </div>
     </div>  
 
   </div>
