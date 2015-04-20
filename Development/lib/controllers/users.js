@@ -89,27 +89,6 @@ exports.connect= function(req, res){
     );
 };
 
-
-  //Create comment
-  exports.comment_create=function(req, res){
-    var article_id = req.params.articleid;
-    Article.findByIdAndUpdate(
-    article_id,
-    {$push: {"comments": req.body}},
-    {safe: true, upsert: true},
-     function(err, model) {
-        if(err){
-          console.log(err);
-          return res.send(err);
-        }
-        return res.json(model);
-     }
-    );
-  };
-
-
-
-
 //update users
 
 exports.update = function(req, res) {
