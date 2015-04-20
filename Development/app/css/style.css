@@ -1324,7 +1324,7 @@ z-index: 5;
 .register-bt:hover{background-color:#b59759; border: solid 1px #a68849; font-size:12px; color: #fff !important; font-style:italic;   }
 
 .form-error{margin: -5px 0px 0px 0px; position: absolute; bottom:6px;  }
-.search-bt{background-color:#253863; text-transform:uppercase;   background-position: right 9px; height: 32px;   text-indent: 0px; border:solid 1px #2d426f;     font-size:12px; color: #fff; font-style:italic;/* padding-left: 21px; */margin-right: 17px;background-position: 82px;width: 102px;text-align: left;}
+.search-bt{background-color:#253863; text-transform:uppercase;   background-position: right 9px; height: 32px;   text-indent: 0px; border:solid 1px #2d426f;     font-size:12px; color: #fff; font-style:italic;/* padding-left: 21px; */margin-right: 17px;background-position: 82px;width: 102px;text-align: center;}
 .search-bt:hover{background-color:#b59759; border: solid 1px #a68849; font-size:12px; color: #fff; font-style:italic;   }
 .chat-listing-2-heading{font-size:18px; color:#5f4f2d; margin-left:10px; margin-top:5px;   }
 .chat-listing-2-heading span{font-size:18px; color: #4e4c49; }
@@ -2419,6 +2419,10 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 
 
   @media (max-width: 767px) {
+
+    .gold-connect-menu {
+    margin-top: 15px;
+}
     .preview-outer {
     padding-left: 15px;
     padding-right: 15px;
