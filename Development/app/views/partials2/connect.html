@@ -46,8 +46,7 @@
 </div>
 </div>
 
-<br> <button class="search-bt" type="submit">  Submit<i class="fa icon-right-search fa-search"></i>
-                      </button><br></br>
+<br> <button class="search-bt" type="submit">  Submit  </button><br></br>
 
 </form>
 
@@ -58,9 +57,9 @@
   <td>{{key+1}}</td> 
   <td>{{value.name}}</td> 
   <td>
-      <button ng-show="!checkStatus(currentUser._id,key)" class="btn btn-info" ng-click="followUser(value._id,key)">Connect</button>
-      <button ng-show="checkStatus(currentUser._id,key) == 1"  disabled="disabled" class="btn btn-warning">Pending</button>
-      <button ng-show="checkStatus(currentUser._id,key) == 2"  disabled="disabled" class="btn btn-success">Connected</button>
+      <button ng-show="!checkStatus(currentUser._id,key)" class="search-bt" ng-click="followUser(value._id,key)">Connect</button>
+      <button ng-show="checkStatus(currentUser._id,key) == 1"  disabled="disabled" class="search-bt">Pending</button>
+      <button ng-show="checkStatus(currentUser._id,key) == 2"  disabled="disabled" class="search-bt">Connected</button>
   </td> 
   </tr>
   <tr ng-hide="searchresult" ><td colspan="3"> No Results Founds ;(</td> </tr>
