@@ -2310,6 +2310,11 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 
 }
 @media (min-width: 768px) and (max-width: 979px) {
+  .preview-outer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 
 /*  .panel.panel-info.sign-box-area {
     margin-top: 100px;
@@ -2374,6 +2379,11 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 
 
   @media (max-width: 767px) {
+    .preview-outer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
     .sigup-newletter {
     float: left;
 }
