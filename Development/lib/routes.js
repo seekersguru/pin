@@ -57,6 +57,8 @@ module.exports = function(app) {
   app.get('/user/:id/verify/:token', users.verifyEmail);
   app.post('/api/users/forgot', users.forgot);
   app.post('/api/users/:id/recover', users.recover);
+  app.get('/api/users/search/:username', users.search);
+
   
 
   app.post('/api/discussions', discussions.create);

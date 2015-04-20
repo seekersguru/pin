@@ -147,6 +147,9 @@ $scope.userStatus=function(userId){
                 },
                 removeIndex: function () {
                     return removeIndex;
+                },
+                commentvisible: function () {
+                    return $scope.gridUserData[removeIndex].commentvisible;
                 }
               }
         });
@@ -424,6 +427,7 @@ $scope.deleteExpert=function(expertId){
                                     { field: 'email' ,displayName:'Email' },
                                     { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'}, 
                                     { field: 'role' ,displayName:'Role'},
+                                    { field: 'commentvisible' ,displayName:'Commentvisible'},
                                     { field: 'searchable' ,displayName:'Searchable'},
                                     { field: 'adminrole' ,displayName:'Adminrole'},
                                     { field: 'emailVerification' ,displayName:'EmailVerification',cellTemplate:'<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>' },
@@ -551,11 +555,12 @@ $scope.family={};
 
 
 angular.module('pinApp')
-.controller('AssignRoleCtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller,searchable,adminrole,familyrole,userid,removeIndex,$templateCache,$route) {
+.controller('AssignRoleCtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller,searchable,adminrole,familyrole,userid,removeIndex,commentvisible,$templateCache,$route) {
   $scope.userupdate={
     familyrole:familyrole,
     searchable:searchable,
-    adminrole:adminrole
+    adminrole:adminrole,
+    commentvisible:commentvisible
   };
 
  $.extend(this, $controller('AdminPanelCtrl', {$scope: $scope}));
@@ -569,7 +574,7 @@ angular.module('pinApp')
   });
 
   $scope.saveRole = function () {
-          $http({ method: 'PUT', url: '/api/users/status/'+userid,data:{'status':1,adminrole:$scope.userupdate.adminrole,familyrole:$scope.userupdate.familyrole,searchable:$scope.userupdate.searchable}}).
+          $http({ method: 'PUT', url: '/api/users/status/'+userid,data:{'status':1,adminrole:$scope.userupdate.adminrole,familyrole:$scope.userupdate.familyrole,searchable:$scope.userupdate.searchable,commentvisible:$scope.userupdate.commentvisible}}).
             success(function (data, status, headers, config) {
                $modalInstance.close();
                var currentPageTemplate = $route.current.templateUrl;

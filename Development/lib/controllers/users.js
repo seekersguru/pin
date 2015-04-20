@@ -41,7 +41,7 @@ exports.query = function(req, res){
 
 /** checkusername that it is exist or not */
 exports.checkusername= function(req, res, next){
-  var username = req.params.username
+  var username = req.params.username;
   var q = User.findOne({username: username},
    function(err,users) {
     if (err) {
@@ -49,6 +49,24 @@ exports.checkusername= function(req, res, next){
       return res.send(404);
     } else {
       console.log(users);
+      return res.json({users:users});
+    }
+  }); 
+};
+
+/** checkusername that it is exist or not */
+exports.search= function(req, res){
+  var username = req.params.username;
+  var regex = new RegExp(username, 'i');  // 'i' makes it case insensitive
+  var q = User.find({name: regex},
+   function(err,users) {
+    if (err) {
+      console.log(err);
+      return res.send(404);
+    } else {
+       for(var i=0; i<users.length; i++){
+          users[i] = users[i].userInfo;
+        }
       return res.json({users:users});
     }
   }); 

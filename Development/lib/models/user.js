@@ -53,6 +53,7 @@ var UserSchema = new Schema({
   dob:{type:Date, default: Date.now},
   status:{type: Boolean, default:false},
   searchable:{type: Boolean, default:true},
+  commentvisible:{type: String, default: 'public', 'enum' : ['public','friends']},
   other:String,
 });
 
@@ -102,6 +103,7 @@ UserSchema
       'adminrole':this.adminrole,
       'familyrole':this.familyrole,
       'searchable':this.searchable,
+      'commentvisible':this.commentvisible,
       'status':this.status
 
         };
