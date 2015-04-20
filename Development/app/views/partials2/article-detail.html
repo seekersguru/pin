@@ -190,8 +190,8 @@
     <p>{{articles.createdAt | date:"MMMM d, yyyy" }}</p>
     <p class="articleview" ng-bind-html="articles.description | rawHtml "></p>
     
-    <p><a class="btn Check-availability" type="button" href="/articles/01"  >Back To Articles </a>
-   <a ng-if="currentUser.role=='admin'" class="btn register-bt " type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a></p>
+    <p><a class="Check-availability" type="button" href="/articles/01"  >Back To Articles </a>
+   <a ng-if="currentUser.role=='admin'" class="register-bt " type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a></p>
 
   
   <div class="comments-hr-top">comments</div>
