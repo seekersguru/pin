@@ -2432,7 +2432,7 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 }
 #chat-list-section .content-area {
     float: left;
-    width: 70%;
+    width: 65%;
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis; 

@@ -13,6 +13,17 @@ angular.module('pinApp')
         $scope.searchactive=1;
         $scope.searchresult=data.users;
         
+        var removeIndex = $scope.searchresult
+        .map(function(item)
+          { 
+            return item._id;
+          })
+          .indexOf($rootScope.currentUser._id);
+
+        if (removeIndex > -1) {
+            $scope.searchresult.splice(removeIndex, 1);
+        } 
+
       }).
       error(function (data, status, headers, config) {
         $scope.searchactive=1;

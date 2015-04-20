@@ -125,6 +125,7 @@ height:100px;width: 100px">
 
 <!-- <div class="row" ng-show="preview" > -->
 <div class="row" >
+<div class="preview-outer">
 <div class="preview-area">  
 <div class="preview-eye"><i class="fa fa-eye"></i> Preview</div>  
 <div class="preview-shadow">  
@@ -143,6 +144,7 @@ height:100px;width: 100px">
     <p>{{article.createdAt | date:"MMMM d, yyyy" }}</p>
     <p ng-bind-html="article.description | rawHtml"></p>
 
+</div>
 </div>
 </div>
 </div>
