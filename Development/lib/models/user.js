@@ -47,7 +47,7 @@ var UserSchema = new Schema({
   createdAt: {type:Date, default: Date.now},
   photo: String,
   bio: String,
-  following:[{type: Schema.Types.ObjectId, ref:'User'}],
+  following:[{user:{type: Schema.Types.ObjectId, ref:'User'},status:{type: Boolean, default:false}}],
   nFollowers:{type: Number, default: 0},
   showAge: {type:Boolean, default: false},
   dob:{type:Date, default: Date.now},

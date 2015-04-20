@@ -1805,7 +1805,13 @@ background-color: #d9534f;
 .dash-articales-ead-details h5{font-size:30px; font-family: 'tff_franklin_gothic_demi'; padding-left:0px;  text-transform:uppercase; }
 .dash-articales-ead h5{font-size:30px; font-family: 'tff_franklin_gothic_demi'; padding-left:12px;  text-transform:uppercase; }
 .dashboard-section .input-group-addon{background-color: #171717; color:#fff; border:0px; border-radius:0px; }
-.dashboard-section input,.articles-inner input{border-radius:0px; font-size:18px; box-shadow:0px;  border:solid 1px #ddd; background-color:#fff;  height: 40px;}
+.dashboard-section input, .articles-inner input {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    font-size: 14px;
+    height: 32px;
+}
 .dashboard-section .subscribe-bt{border:none; background-color:#171717; color:#fff; font-size:18px;  height: 28px; padding: 0px;  }
 .dashboard-section select, .articles-inner select{border-radius:0px; font-size:18px;  box-shadow:0px!important;  border:solid 1px #ddd; background-color:#fff; height: 40px;} 
 .dashboard-section label,.articles-inner label{margin-top:10px; font-size:18px;  }

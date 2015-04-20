@@ -26,4 +26,38 @@ angular.module('pinApp')
     $scope.form.$setPristine();
   };
 
+  $scope.checkStatus=function(userId,key){
+
+    var removeIndex = $scope.searchresult[key].following
+          .map(function(item)
+          { 
+            return item.user;
+          })
+          .indexOf(userId);
+     
+      if(removeIndex === -1)
+      {
+
+        return 0;
+      }
+      else{
+        return 1;
+      }
+};
+
+$scope.followUser=function(userId,key){
+
+      $http({ method: 'POST', url: '/api/users/connect/'+userId,data:{user:$rootScope.currentUser._id}}).
+      success(function (data, status, headers, config) {
+
+        $scope.searchresult[key].following.push({user:$rootScope.currentUser._id,status:false});
+      
+      }).
+      error(function (data, status, headers, config) {
+         alert('There is something Technical Problem Please try after some time.');
+      });
+
+
+};
+
 });

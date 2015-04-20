@@ -57,7 +57,10 @@
   <tr ng-show="searchresult" ng-repeat="(key,value) in searchresult">
   <td>{{key+1}}</td> 
   <td>{{value.name}}</td> 
-  <td>connect</td> 
+  <td>
+      <button ng-show="!checkStatus(currentUser._id,key)" class="btn btn-info" ng-click="followUser(value._id,,key)">Connect</button>
+      <button ng-show="checkStatus(currentUser._id,key)"  disabled="disabled" class="btn btn-success">Pending</button>
+  </td> 
   </tr>
   <tr ng-hide="searchresult" ><td colspan="3"> No Results Founds ;(</td> </tr>
   </tbody>.
