@@ -1,7 +1,7 @@
 <div class="container-head learning-section">
 
   <div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-9 col-md-9 col-sm-9">
       <ul class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home fa-lg"></i></a></li>
         <li class="active">EVENT</li>
@@ -13,7 +13,7 @@
 
 
  <div class="row">
-  <div class="col-lg-9">
+  <div class="col-lg-9 col-md-9 col-sm-9">
 
     <div class="submit-articale-section">
      <h1>Submit Your Event</h1> 
@@ -22,7 +22,7 @@
       <!-- <button ng-click="template(1)" class="btn btn-primary">Template 1</button> -->
       <div class="dashboard-section">
         <div class="row register-form-row-pad">
-          <div class="col-lg-7 paddingr-7">  
+          <div class="col-lg-9 col-md-9 col-sm-9 paddingr-7">  
             <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
               <input type="text" class="form-control" name="title" placeholder="Title"  ng-model="article.title" required ng-minlength=5>
               <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill title.</p>
@@ -32,15 +32,15 @@
             </div>
           </div>
 
-          <div class="col-lg-3  paddingl-7">
+          <div class="col-lg-3 col-md-3 col-sm-3  paddingl-7">
             <div class="form-group">
-              <select ng-model="article.category" ng-options="o as o for o in category" placeholder="choose category"></select>
+              <select class="form-control" ng-model="article.category" ng-options="o as o for o in category" placeholder="choose category"></select>
             </div>
           </div>
 
         </div>
 <div class="row ">
-          <div class="col-lg-10">
+          <div class="col-lg-12 col-md-12 col-sm-12">
 
             <div class="form-group" ng-class="{'has-error':form.agenda.$dirty && form.agenda.$error.required,'has-success':form.agenda.$valid}">
               <label class="control-label" for="agenda">Agenda</label>
@@ -54,7 +54,7 @@
 </div>
 
 <div class="row ">
-          <div class="col-lg-10">
+          <div class="col-lg-12 col-md-12 col-sm-12">
 
             <div class="form-group" ng-class="{'has-error':form.bannertext.$dirty && form.bannertext.$error.required,'has-success':form.bannertext.$valid}">
               <label class="control-label" for="bannertext">Banner Text</label>
@@ -131,7 +131,7 @@ height:100px;width: 100px">
 </div> -->
 
 <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-6">
             <p class="input-group">
               <input type="text" class="form-control" datepicker-popup="dd-MM-yyyy" ng-model="article.eventdate" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" />
               <span class="input-group-btn">
@@ -144,7 +144,7 @@ height:100px;width: 100px">
 
 <div class="row" >
   
-<div class="col-lg-6">
+<div class="col-lg-6 col-md-6 col-sm-6">
 <div class="form-group">              
 <label for="">Address :</label>
 <input type="text"  class="form-control" ng-model="article.location.address" id="addresspicker_map" required>
@@ -187,7 +187,7 @@ height:100px;width: 100px">
            
 <div class="col-lg-6 col-md-6 col-sm-6">
   <label id="geo_label" for="reverseGeocode">Reverse Geocode after Marker Drag?</label>
-      <select id="reverseGeocode">
+      <select id="reverseGeocode" class="form-control">
         <option value="false" selected >No</option>
         <option value="true" >Yes</option>
       </select><br/>

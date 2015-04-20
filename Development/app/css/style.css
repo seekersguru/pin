@@ -1296,7 +1296,7 @@ z-index: 5;
 
 .paddingl-7{padding-left:7px;}
 .paddingr-7{padding-right:7px;}
-.Check-availability{background-color:#b59759; background-position:8px 9px; height: 32px;  background-image:url(../images/arow-reg-bt-1.png); background-repeat:no-repeat;  text-indent:15px; border:solid 1px #a68849;     font-size:12px; color: #fff; font-style:italic;}
+.Check-availability{background-color:#b59759; background-position:8px 9px; height: 32px;  background-image:url(../images/arow-reg-bt-1.png); background-repeat:no-repeat;  text-indent:15px; border:solid 1px #a68849;     font-size:12px; color: #fff; font-style:italic; line-height:18px }
 .Check-availability:hover{background-color:#253863; border:solid 1px #2d426f;  font-size:12px; color: #fff; font-style:italic;   }
 
 .load-more{background-color:#b59759; background-position:8px 9px; height: 32px; float: right; margin-bottom:25px;    border:solid 1px #a68849;     font-size:15px; color: #fff; text-transform:uppercase;  }
