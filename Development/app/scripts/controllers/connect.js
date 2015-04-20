@@ -52,8 +52,14 @@ angular.module('pinApp')
         return 0;
       }
       else{
+        if($scope.searchresult[key].following[removeIndex].status)
+        {
+          return 2;
+        }else{
+
+          return 1;
+        }
         
-        return 1;
       }
 };
 
