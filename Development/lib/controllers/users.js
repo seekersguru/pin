@@ -72,6 +72,44 @@ exports.search= function(req, res){
   }); 
 };
 
+/** checkusername that it is exist or not */
+exports.connect= function(req, res){
+  var user_id = req.params.userid;
+   User.findByIdAndUpdate(
+    user_id,
+    {$push: {"following": req.body}},
+    {safe: true, upsert: true},
+     function(err, model) {
+        if(err){
+          console.log(err);
+          return res.send(err);
+        }
+        return res.json(model);
+     }
+    );
+};
+
+
+  //Create comment
+  exports.comment_create=function(req, res){
+    var article_id = req.params.articleid;
+    Article.findByIdAndUpdate(
+    article_id,
+    {$push: {"comments": req.body}},
+    {safe: true, upsert: true},
+     function(err, model) {
+        if(err){
+          console.log(err);
+          return res.send(err);
+        }
+        return res.json(model);
+     }
+    );
+  };
+
+
+
+
 //update users
 
 exports.update = function(req, res) {
