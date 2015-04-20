@@ -52,6 +52,7 @@ angular.module('pinApp')
         return 0;
       }
       else{
+        
         return 1;
       }
 };
