@@ -58,7 +58,7 @@
   <td>{{key+1}}</td> 
   <td>{{value.name}}</td> 
   <td>
-      <button ng-show="!checkStatus(currentUser._id,key)" class="btn btn-info" ng-click="followUser(value._id,,key)">Connect</button>
+      <button ng-show="!checkStatus(currentUser._id,key)" class="btn btn-info" ng-click="followUser(value._id,key)">Connect</button>
       <button ng-show="checkStatus(currentUser._id,key)"  disabled="disabled" class="btn btn-success">Pending</button>
   </td> 
   </tr>
