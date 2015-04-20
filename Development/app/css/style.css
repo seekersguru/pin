@@ -1813,7 +1813,14 @@ background-color: #d9534f;
     height: 32px;
 }
 .dashboard-section .subscribe-bt{border:none; background-color:#171717; color:#fff; font-size:18px;  height: 28px; padding: 0px;  }
-.dashboard-section select, .articles-inner select{border-radius:0px; font-size:18px;  box-shadow:0px!important;  border:solid 1px #ddd; background-color:#fff; height: 40px;} 
+.dashboard-section select, .articles-inner select {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    color: #888;
+    font-size: 14px;
+    height: 32px;
+}
 .dashboard-section label,.articles-inner label{margin-top:10px; font-size:18px;  }
 .dashboard-section .form-group{margin: 0px;}
 
