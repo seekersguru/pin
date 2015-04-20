@@ -58,8 +58,12 @@ exports.checkusername= function(req, res, next){
 exports.search= function(req, res){
   var username = req.params.username;
   var regex = new RegExp(username, 'i');  // 'i' makes it case insensitive
-  var q = User.find({name: regex},
-   function(err,users) {
+  var q = User.find({name: regex});
+
+  q.where('status').equals(true);
+  q.where('searchable').equals(true);
+
+   q.exec(function(err,users) {
     if (err) {
       console.log(err);
       return res.send(404);
