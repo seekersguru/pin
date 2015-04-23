@@ -1,3 +1,4 @@
+
 'use strict';
 
 angular.module('pinApp')
@@ -89,7 +90,8 @@ angular.module('pinApp')
           // Account created, redirect to home
           $scope.emailSent = true;
           $scope.registerDone=1;
-          $location.path('/login').search({'register': 1});
+          // $location.path('/login').search({'register': 1});
+          $location.path('/notification').search({ 'type':'register'});
         })
         .catch( function(err) {
           err = err.data;
