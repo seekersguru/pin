@@ -183,7 +183,9 @@ exports.removemedia = function(req, res) {
 // show particluar one article 
 exports.show=function(req,res){
 	var articleid=req.params.articleid;
-	Article.findById(articleid).populate('author','name email')
+	Article.findById(articleid)
+	.populate('author','name email')
+	.populate('comments.user','_id fullname following commentvisible')
 	.exec(function(err,article){
 		if(err){
 			console.log(err);
