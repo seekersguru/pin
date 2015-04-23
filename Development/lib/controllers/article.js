@@ -388,6 +388,7 @@ exports.comment_query=function(req, res){
 
   };
   
+  
   //remove comment
   exports.comment_remove=function(req, res){
   	var article_id = req.params.articleid,
