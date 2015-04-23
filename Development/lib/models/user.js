@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
     crypto = require('crypto');
   
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
+mongoose.set('debug', true);
 
 /**
  * User Schema

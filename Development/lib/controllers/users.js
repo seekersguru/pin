@@ -121,7 +121,8 @@ exports.connect= function(req, res){
      // user_id = req.params.userid,
     var following_id = req.params.followingid;
     
-    console.log(following_id+"--"+req.body.status);
+    console.log(following_id);
+    console.log(req.body);
 
     User.update({'following._id': following_id}, {'$set': {
     'following.$.status': req.body.status,
@@ -139,6 +140,8 @@ exports.connect= function(req, res){
 
   };
 
+
+  
 
 //update users
 
