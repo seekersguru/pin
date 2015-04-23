@@ -130,7 +130,7 @@ $scope.addComment=function(form){
           comment.posted=new Date();
           comment._id=data.comments[data.comments.length-1]._id;
 
-          $scope.comments.push(comment);
+          $scope.comments.push({ user:{ _id: $rootScope.currentUser._id,fullname:$rootScope.currentUser.fullname,following:$rootScope.currentUser.following },username:$rootScope.currentUser.name, post: $scope.article.comment,posted : new Date()});
           
           $scope.article={};
           
@@ -206,6 +206,34 @@ $scope.changePage = function(){
   $scope.navigation_control= function(page_no){
     $scope.currentPage = page_no;
     $scope.changePage(); 
+  };
+
+  $scope.checkcommitstatus=function(userid,following){
+
+    if(following)
+    {
+      var removeIndex = following
+      .map(function(item)
+      { 
+        return item.user;
+      })
+      .indexOf(userid);
+
+      if(removeIndex != -1)
+      {
+        return following[removeIndex].status;
+      }else{
+        return  false;
+      }
+
+    }
+    else
+    {
+
+      return 0;
+    }
+
+
   };
 
 });

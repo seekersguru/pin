@@ -190,13 +190,13 @@
     <p>{{articles.createdAt | date:"MMMM d, yyyy" }}</p>
     <p class="articleview" ng-bind-html="articles.description | rawHtml "></p>
     
-    <p><a class="Check-availability" type="button" href="/articles/01"  >Back To Articles </a>
-   <a ng-if="currentUser.role=='admin'" class="register-bt " type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a></p>
+    <p><a class="btn Check-availability" type="button" href="/articles/01"  >Back To Articles </a>
+   <a ng-if="currentUser.role=='admin'" class="btn register-bt " type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a></p>
 
   
   <div class="comments-hr-top">comments</div>
   <ul class="commentList">
-    <li ng-repeat="(key,value) in articles.comments">
+    <li ng-repeat="(key,value) in articles.comments" ng-if="currentUser._id==value.user._id || value.user.commentvisible == 'public' || (value.user.commentvisible == 'friends' && checkcommitstatus (currentUser._id,value.following) )  ">
     <div class="clearfix">
       <div class="commenterImage">
         <img src="images/comment-profile.png">
@@ -207,7 +207,7 @@
       <h3>{{value.username}}</h3>
        <span class="date sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
         </div>
-        <div class="pull-right" ng-if="currentUser._id==value.user">
+        <div class="pull-right" ng-if="currentUser._id==value.user._id">
               <ul class="ed-iocn" >
               <li  ng-click="$parent.showEdit = ! $parent.showEdit"><a  ><i class="fa fa-edit" id="{{key}}-a"></i>Edit</a></li>
               <li ng-click="deleteComment(value._id)"><a ><i class="fa fa-trash"></i>Delete</a></li>
