@@ -65,10 +65,10 @@ angular.module('pinApp')
 
 $scope.followUser=function(userId,key){
 
-      $http({ method: 'POST', url: '/api/users/connect/'+userId,data:{user:$rootScope.currentUser._id}}).
+      $http({ method: 'POST', url: '/api/users/connect/'+userId,data:{user:$rootScope.currentUser._id,name:$rootScope.currentUser.name}}).
       success(function (data, status, headers, config) {
 
-        $scope.searchresult[key].following.push({user:$rootScope.currentUser._id,status:false});
+      $scope.searchresult[key].following.push({user:$rootScope.currentUser._id,status:false,name:$rootScope.currentUser.name});
       
       }).
       error(function (data, status, headers, config) {

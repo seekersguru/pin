@@ -39,6 +39,29 @@ exports.query = function(req, res){
   });
 };
 
+// show particluar one user 
+exports.show=function(req,res){
+  var userid=req.params.userid;
+  User.findById(userid).populate('author','name email')
+  .exec(function(err,user){
+    if(err){
+      console.log(err);
+      return res.json(404,err);
+    }
+    if (!user){
+      console.log('notfound');
+      return res.send(404);
+    }
+    if(user)
+    {
+      return res.json(user);
+    }
+    return res.send(403);
+
+  });
+
+};
+
 /** checkusername that it is exist or not */
 exports.checkusername= function(req, res, next){
   var username = req.params.username;
@@ -92,6 +115,30 @@ exports.connect= function(req, res){
      }
     );
 };
+
+  //update update comment
+  exports.connectupdate=function(req, res){
+     // user_id = req.params.userid,
+    var following_id = req.params.followingid;
+    
+    console.log(following_id+"--"+req.body.status);
+
+    User.update({'following._id': following_id}, {'$set': {
+    'following.$.status': req.body.status,
+    'following.$.user': req.body.user,
+    'following.$.name': req.body.name,
+     }}, function(err,model) {
+      console.log(model);
+      if(err){
+          console.log(err);
+          return res.send(err);
+        }
+        return res.json(model);
+    
+    });
+
+  };
+
 
 //update users
 

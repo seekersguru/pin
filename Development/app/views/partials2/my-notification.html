@@ -1,0 +1,45 @@
+<div class="container-head learning-section">
+
+  <div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-9">
+      <ul class="breadcrumb">
+        <li><a href="/home"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="active">CONNECT LIST</li>
+      </ul>
+    </div>  
+ </div>
+
+
+ <div class="row">
+  <div class="col-lg-9">
+
+    <div class="submit-articale-section">
+     <h1>Your Connect List </h1> 
+     <div class="register-form-hr"></div>
+
+<table class="table" >
+  <thead ><tr><th>S.N</th> <th>Name</th> <th>Connect</th> </tr></thead>
+  <tbody>
+  <tr ng-show="following" ng-repeat="(key,value) in following">
+  <td>{{key+1}}</td> 
+  <td>{{value.name}}</td> 
+  <td>
+      <button ng-show="value.status" class="search-bt" ng-click="updateConnect(value._id,false,key)">Connected</button>
+      <button ng-show="!value.status"   class="search-bt" ng-click="updateConnect(value._id,true,key)">Pending</button>
+  </td> 
+  </tr>
+  <tr ng-hide="following" ><td colspan="3"> No Connect List Found ;(</td> </tr>
+  </tbody>.
+</table>
+
+
+   </div>  
+
+ </div>
+
+
+ <div class="col-lg-3 col-md-3 col-sm-3">
+  <div ng-include="'partials2/right-nav.html'"> </div>
+</div>
+</div>
+</div>

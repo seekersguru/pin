@@ -51,6 +51,7 @@ module.exports = function(app) {
 
   app.post('/api/users', users.create);
   app.get('/api/users', users.query);
+  app.get('/api/users/:userid', users.show);
   app.put('/api/users/:userid', users.update);
   app.put('/api/users/status/:userid', users.updatestatus);
   app.get('/api/users/checkusername/:username',users.checkusername);
@@ -59,6 +60,7 @@ module.exports = function(app) {
   app.post('/api/users/:id/recover', users.recover);
   app.post('/api/users/connect/:userid', users.connect);
   app.get('/api/users/search/:username', users.search);
+  app.put('/api/users/followingstatus/:followingid', users.connectupdate);
 
   
 
