@@ -28,6 +28,10 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
+    plugins = require("gulp-load-plugins")({
+              pattern: ['gulp-*', 'gulp.*', 'main-bower-files'],
+              replaceString: /\bgulp[\-.]/
+            }),
     //livereload = require('gulp-livereload'),
     del = require('del');
 
@@ -55,17 +59,38 @@ gulp.task('styles', function() {
  * @return {[.min js]}
  */
 
-gulp.task('scripts', function() {
-  return gulp.src('app/scripts/**/*.js')
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('default'))
-    .pipe(concat('main.js'))
+gulp.task('bscripts', function() {
+  // var jsFiles = ['app/scripts/**/*.js'];
+  return gulp.src(plugins.mainBowerFiles())
+    // .pipe(jshint('.jshintrc'))
+    // .pipe(jshint.reporter('default'))
+    .pipe(plugins.filter('*.js'))
+    .pipe(plugins.concat('vendor.js'))
     .pipe(gulp.dest('dist/assets/js'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
+    .pipe(plugins.rename({suffix: '.min'}))
+    .pipe(plugins.uglify())
+    .pipe(gulp.dest('dist/assets/js'))
+    .pipe(notify({ message: 'Scripts  Bower task complete' }));
+});
+
+gulp.task('scripts', function() {
+  // var jsFiles = ['app/scripts/**/*.js'];
+  return gulp.src('app/scripts/**/*.js')
+    // .pipe(jshint('.jshintrc'))
+    // .pipe(jshint.reporter('default'))
+    .pipe(plugins.concat('main.js'))
+    .pipe(gulp.dest('dist/assets/js'))
+    .pipe(plugins.rename({suffix: '.min'}))
+    .pipe(plugins.uglify())
     .pipe(gulp.dest('dist/assets/js'))
     .pipe(notify({ message: 'Scripts task complete' }));
 });
+
+// gulp.src(src + 'js/*.js')
+//       .pipe(plugins.concat('main.js'))
+//         .pipe(plugins.rename({suffix: '.min'}))
+//         .pipe(plugins.uglify())
+//         .pipe(gulp.dest(dest + 'js'));
 
 /**
  * [Compress Images]

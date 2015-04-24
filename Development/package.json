@@ -13,8 +13,7 @@
     "debug": "~0.7.4",
     "jade": "~1.3.0",
     "stylus": "0.42.3",
-    "socket.io": "^0.9.16"  ,  
-    "binaryjs": "0.2.1",
+    "socket.io": "^0.9.16",
     "binaryjs": "0.2.1",
     "lodash": "^2.4.1",
     "mongoose": "~3.8.8",
@@ -28,8 +27,7 @@
     "express-session": "~1.0.0",
     "mongoose-unique-validator": "~0.4.1",
     "connect-multiparty": "~1.2.5",
-    "mongoose-assert": "~1.0.2",
-    "es5-shim": "~4.1.0"
+    "mongoose-assert": "~1.0.2"
   },
   "devDependencies": {
     "gulp": "3.8.11",
@@ -47,7 +45,10 @@
     "gulp-notify": "~2.2.0",
     "gulp-imagemin": "~2.2.0",
     "gulp-nodemon": "~1.0.5",
-    "node-inspector": "~0.9.1"
+    "node-inspector": "~0.9.1",
+    "gulp-load-plugins": "~0.10.0",
+    "main-bower-files": "~2.7.0",
+    "gulp-filter": "~2.0.2"
   },
   "engines": {
     "node": ">=0.10.0"
