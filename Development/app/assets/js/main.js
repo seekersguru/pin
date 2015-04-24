@@ -2828,31 +2828,31 @@ angular.module('pinApp')
 'use strict';
 
 angular.module('pinApp')
-.controller('MeetCtrl', function ($log, $scope, chatSocket, messageFormatter, nickName,$rootScope,$location,$http,$timeout) {
+.controller('MeetCtrl', function ($log, $scope,$rootScope,$location,$http,$timeout) {
 
-      var owl = $("#owl-demo");
+      // var owl = $("#owl-demo");
 
-      owl.owlCarousel({
+      // owl.owlCarousel({
 
-        // Define custom and unlimited items depending from the width
-        // If this option is set, itemsDeskop, itemsDesktopSmall, itemsTablet, itemsMobile etc. are disabled
-        // For better preview, order the arrays by screen size, but it's not mandatory
-        // Don't forget to include the lowest available screen size, otherwise it will take the default one for screens lower than lowest available.
-        // In the example there is dimension with 0 with which cover screens between 0 and 450px
+      //   // Define custom and unlimited items depending from the width
+      //   // If this option is set, itemsDeskop, itemsDesktopSmall, itemsTablet, itemsMobile etc. are disabled
+      //   // For better preview, order the arrays by screen size, but it's not mandatory
+      //   // Don't forget to include the lowest available screen size, otherwise it will take the default one for screens lower than lowest available.
+      //   // In the example there is dimension with 0 with which cover screens between 0 and 450px
         
-        itemsCustom : [
-          [0, 2],
-          [450, 4],
-          [600, 7],
-          [700, 4],
-          [1000, 10],
-          [1200, 4],
-          [1400, 4],
-          [1600, 4]
-        ],
-        navigation : true
+      //   itemsCustom : [
+      //     [0, 2],
+      //     [450, 4],
+      //     [600, 7],
+      //     [700, 4],
+      //     [1000, 10],
+      //     [1200, 4],
+      //     [1400, 4],
+      //     [1600, 4]
+      //   ],
+      //   navigation : true
 
-      });
+      // });
 
 });
 
@@ -3121,7 +3121,7 @@ angular.module('pinApp')
 'use strict';
 
 angular.module('pinApp')
-.controller('SocketCtrl', function ($log, $scope, chatSocket, messageFormatter, nickName,$rootScope,$location,$http,$timeout) {
+.controller('SocketCtrl', function ($log, $scope, nickName,$rootScope,$location,$http,$timeout) {
   if($rootScope.currentUser)
   {
     nickName=$rootScope.currentUser.name;
@@ -3316,35 +3316,35 @@ if(form.$valid)
     //   var oldNick = nickName;
     //   nickName = match[1];
     //   $scope.message = '';
-    //   $scope.messageLog = messageFormatter(new Date(), 
+    //   $scope.messageLog = ew Date(), 
     //                   nickName, 'nickname changed - from ' + 
     //                     oldNick + ' to ' + nickName + '!') + $scope.messageLog;
     //   $scope.nickName = nickName;
     // }
 
-    $log.debug('sending message', $scope.message);
-    chatSocket.emit('message', nickName, $scope.message);
-    $scope.message = '';
+    // $log.debug('sending message', $scope.message);
+    // chatSocket.emit('message', nickName, $scope.message);
+    // $scope.message = '';
 
   };
 
-  $scope.$on('socket:broadcast', function(event, data) {
+  // $scope.$on('socket:broadcast', function(event, data) {
     
-    $log.debug('got a message', event.name);
-    if (!data.payload) {
-      $log.error('invalid message', 'event', event, 'data', JSON.stringify(data));
-      return;
-    }else{
-      // save in db with 
-      // userid:$rootScope.currentUser._id
-      // data.payload
+  //   $log.debug('got a message', event.name);
+  //   if (!data.payload) {
+  //     $log.error('invalid message', 'event', event, 'data', JSON.stringify(data));
+  //     return;
+  //   }else{
+  //     // save in db with 
+  //     // userid:$rootScope.currentUser._id
+  //     // data.payload
 
-    }
+  //   }
 
-    $scope.$apply(function() {
-      $scope.messageLog = messageFormatter(new Date(), data.source, data.payload) + $scope.messageLog;
-    });
-  });
+  //   $scope.$apply(function() {
+  //     $scope.messageLog = ew Date(), data.source, data.payload) + $scope.messageLog;
+  //   });
+  // });
 });
 
 'use strict';
@@ -3694,13 +3694,13 @@ angular.module('pinApp')
     return $resource('/api/session/');
   });
 
-'use strict';
-angular.module('pinApp')
-.factory('chatSocket', function (socketFactory) {
-      var socket = socketFactory();
-      socket.forward('broadcast');
-      return socket;
-  });
+// 'use strict';
+// angular.module('pinApp')
+// .factory('chatSocket', function (socketFactory) {
+//       var socket = socketFactory();
+//       socket.forward('broadcast');
+//       return socket;
+//   });
 
 'use strict';
 
