@@ -1,6 +1,6 @@
 'use strict';
 function adjust_window_code(){
-	
+  
  if ($("footer").length){
 
   var append_footer=$("footer").html();
@@ -13,7 +13,7 @@ function adjust_window_code(){
   }
 }
 function adjust_window(){
-	adjust_window_code();
+  adjust_window_code();
 
 setTimeout(function(){
   adjust_window_code();
@@ -2733,7 +2733,7 @@ $scope.uploadPic = function(files) {
 'use strict';
 
 angular.module('pinApp')
-	.controller('FooterCtrl', ['$scope','$rootScope',function($scope,$rootScope){
+  .controller('FooterCtrl', ['$scope','$rootScope',function($scope,$rootScope){
 
 
 
@@ -2859,15 +2859,15 @@ angular.module('pinApp')
 'use strict';
 
 angular.module('pinApp')
-	.controller('NavbarCtrl', ['$scope','$location','$rootScope','Auth', function($scope,$location,$rootScope,Auth){
+  .controller('NavbarCtrl', ['$scope','$location','$rootScope','Auth', function($scope,$location,$rootScope,Auth){
 
-	// active menu option
-	$scope.isActive = function(route) {
+  // active menu option
+  $scope.isActive = function(route) {
       return $location.path() === route;
   };
     
     // logout
-	$scope.logout = function() {
+  $scope.logout = function() {
       Auth.logout()
       .then(function() {
         $location.path('/login');
@@ -2876,8 +2876,8 @@ angular.module('pinApp')
   
   //login
   $scope.login = function(form) {
-	  $scope.submitted = true;
-	  $rootScope.loginStatus=1;
+    $scope.submitted = true;
+    $rootScope.loginStatus=1;
     if(form.$valid) {
       Auth.login({
         // I really hate doing this, I hope Angular JS guys and FF guys can solve this issue.
@@ -2913,7 +2913,7 @@ angular.module('pinApp')
         // $scope.errors.type = err.message.type;
       });
     }
-	};
+  };
 
 }]);
 'use strict';
@@ -2927,7 +2927,7 @@ angular.module('pinApp')
       $scope.submitted = true;
   
       if(form.$valid) {
-      	console.log( $scope.user);
+        console.log( $scope.user);
         $http.post('api/nishant', $scope.user)
         .success(function(data, status, headers, config){
 
@@ -2949,32 +2949,32 @@ angular.module('pinApp')
 angular.module('pinApp')
 .controller('NotificationCtrl', ['$scope','$location','$rootScope','Auth','$routeParams','$http', function($scope,$location,$rootScope,Auth,$routeParams,$http){
 
-	$scope.type=$routeParams.type;
+  $scope.type=$routeParams.type;
 if($rootScope.currentUser)
 {
-	
-	$http({ method: 'GET', url: '/api/users/'+$rootScope.currentUser._id}).
-	success(function (data, status, headers, config) {
-		$scope.following=data.following; 
+  
+  $http({ method: 'GET', url: '/api/users/'+$rootScope.currentUser._id}).
+  success(function (data, status, headers, config) {
+    $scope.following=data.following; 
                // alert("done");  
              }).
-	error(function (data, status, headers, config) {
+  error(function (data, status, headers, config) {
               // ...
               // $scope.article={};
             });
 
-	$scope.updateConnect=function(following_id,statusval,key){
+  $scope.updateConnect=function(following_id,statusval,key){
 
-		$http({ method: 'PUT', url: '/api/users/followingstatus/'+following_id,data:{'status':statusval,'name':$scope.following[key].name,'user':$scope.following[key].user}}).
-	   	success(function (data, status, headers, config) {
-			$scope.following[key].status=statusval;   
-		}).
-		error(function (data, status, headers, config) {
+    $http({ method: 'PUT', url: '/api/users/followingstatus/'+following_id,data:{'status':statusval,'name':$scope.following[key].name,'user':$scope.following[key].user}}).
+      success(function (data, status, headers, config) {
+      $scope.following[key].status=statusval;   
+    }).
+    error(function (data, status, headers, config) {
       // ...
       // $scope.article={};
     });
 
-	};
+  };
 }
 
 }]);
@@ -3078,7 +3078,7 @@ angular.module('pinApp')
 
      $scope.register = function(form) {
       $scope.submitted = true;
-  		$scope.registerDone=0;
+      $scope.registerDone=0;
       if(form.$valid) {
         Auth.createUser({
           fullname: $scope.user.fullname,
@@ -3753,5 +3753,5 @@ angular.module('pinApp')
 
       },
       
-	});
+  });
   });
