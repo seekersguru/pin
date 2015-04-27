@@ -1,5 +1,5 @@
 <!-- Fixed navbar -->
-<nav class="navbar navbar-blue" ng-controller="NavbarCtrl" >
+<!-- <nav class="navbar navbar-blue" ng-controller="NavbarCtrl" >
   <div class="container-head">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -8,12 +8,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!--logo area-->    
       <div class="logo">
         <a href="/" ng-if="currentUser.role != 'admin'" ><img src="images/logo.png" alt="Private Investment Network"></a>
         <a href="/admin?users" ng-if="currentUser.role == 'admin'" ><img src="images/logo.png" alt="Private Investment Network"></a>
       </div>
-      <!--end-->
     </div>
     <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
@@ -23,8 +21,6 @@
     <li class="desktop-hide"><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">About</a></li> 
       <li ng-hide="currentUser" class="desktop-hide"><a href="/register" ng-class="{active: isActive('/register')}">Join</a></li>  
     <li ng-show="currentUser" class="desktop-hide"><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li>   
-<!--     <li class="desktop-hide" ng-show="currentUser"><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li> 
- -->
     </ul>
 
       <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate  >
@@ -51,7 +47,6 @@
                 <li ng-if="currentUser.role == 'admin'"><a href="/post-article"><i class="fa fa-pencil-square-o"></i> Create Article</a></li>
                 <li ng-if="currentUser.role == 'expert'"><a href="/myarticles/01"><i class="fa fa-eye"></i> My Article</a></li>
                 <li><a href="/articles/01" ><i class="fa fa-eye"></i> Preview Articles</a></li>
-                <!-- <li role="presentation" class="dropdown-header">Admin</li> -->
                 <li class="divider" ng-if="currentUser.role == 'admin'"></li>
 
                 <li ng-if="currentUser.role == 'admin'"><a href="/admin?users"><i class="fa fa-users"></i> Users</a></li>
@@ -68,6 +63,42 @@
             </li>  
           </div>
         </form>
-      </div><!--/.nav-collapse -->
+      </div>
     </div>
   </nav>
+ -->
+
+   <nav class="navbar navbar-default navbar-stiky">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="images/logo.png" alt=""></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        
+          <ul class="navbar-right">
+          <div class="top-link"><a class="active" href="/register">Register</a>  |  <a href="/login">Member Login </a> | <a href="#"> Contact</a></div>
+            <form class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
+          </ul>
+            <ul class="nav navbar-nav pull-right">
+            <li><a href="#">Content          </a></li>
+            <li><a href="#about">Discussions          </a></li>
+            <li><a href="#contact">Directory          </a></li>
+         <li><a href="#contact">Events                    </a></li>
+          <li><a href="#contact">Products          </a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>

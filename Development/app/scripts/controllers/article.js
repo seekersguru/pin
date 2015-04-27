@@ -53,7 +53,7 @@ setTimeout(function(){
 },1000);
 
 
-$scope.comments=articles.comments;
+$scope.comments=articles.scomments;
 if($location.path()=="/articles/view/"+articles._id && articles.media)
 {
 
@@ -128,7 +128,7 @@ $scope.addComment=function(form){
           // ...
           console.log(data);
           comment.posted=new Date();
-          comment._id=data.comments[data.comments.length-1]._id;
+          comment._id=data.scomments[data.scomments.length-1]._id;
 
           $scope.comments.push({ user:{ _id: $rootScope.currentUser._id,fullname:$rootScope.currentUser.fullname,following:$rootScope.currentUser.following },username:$rootScope.currentUser.name, post: $scope.article.comment,posted : new Date()});
           

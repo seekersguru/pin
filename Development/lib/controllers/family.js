@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-User = mongoose.model('User'),
+User = mongoose.model('Serviceuser'),
 Family = mongoose.model('Family'),
 path = require('path'),
 _ = require('lodash');

@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-User = mongoose.model('User'),
+User = mongoose.model('Serviceuser'),
 passport = require('passport'),
 Email = require('../email').Email,
 ActivationEmail = require('../email').ActivationEmail,

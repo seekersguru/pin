@@ -9,7 +9,8 @@ var mongoose = require('mongoose'),
  */
 var ArticleSchema = new Schema({
   title: {type:String, required:true},
-  author: { type: ObjectId, ref: 'User' },
+  author: { type: ObjectId, ref: 'Serviceuser' },
+  authortype: {type: String, default: 'user', 'enum' : ['user','serviceuser']},
   createdAt: { type: Date, default: Date.now },
   public: { type: Boolean, default: false },
   mainImage: String,
@@ -20,7 +21,12 @@ var ArticleSchema = new Schema({
   keywords: [String],
   category: String,
   merchs: {},
-  comments: [{ user: { type: ObjectId, ref: 'User' },
+  // comments: [{ user: { type: ObjectId, ref: 'User' },
+  //              username:String,
+  //              post: String,
+  //              posted: {type: Date, default: Date.now}
+  //            }],  
+  scomments: [{ user: { type: ObjectId, ref: 'Serviceuser' },
                username:String,
                post: String,
                posted: {type: Date, default: Date.now}
@@ -42,7 +48,7 @@ ArticleSchema
       'title': this.title,
       'author': this.author.name,
       'tags': this.tags.toString(),
-      'comments':this.comments.length,
+      'comments':this.scomments.length,
       'createdAt':this.createdAt,
       'category':this.category,
       'approve':this.public

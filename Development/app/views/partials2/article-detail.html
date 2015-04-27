@@ -128,57 +128,53 @@
         </div>
       </div>
     -->
-    <div class="container-head learning-section">
+<div class="container">
+<div id="content-section">
 
-      <div class="row mar-row45">
-        <div class="col-lg-6 col-md-6 col-sm-6">
-          <ul class="breadcrumb">
-            <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
-            <li><a href="/articles/01">LEARN</a></li>
-            <li class="active">{{articles.title | uppercase}}</li>
-          </ul>
-        </div>  
+
+<div class="row">
+<div class="col-lg-8 col-md-8 col-sm-8">
+
+<div class="row">
 <div class="col-lg-6 col-md-6 col-sm-6">
-  <div class="row ">
-<div class="col-lg-5 col-md-5 col-sm-5 paddingr-7">
-<div class="form-group">             
- <select class="form-control" id="sel1">
-    <option>sort By</option>
-    <option>services listed in service directory</option>
-    <option>events type listed in events
-</option>
-   
-  </select>
-</div>
+<div class="breadcam-link">
+<ul>
+    <li><a href="#"><i class="fa fa-home"></i></a></li>
+/
+    <li class="active">Article</li>
+</ul>
+</div> 
 </div>
 
-<div class="col-lg-7 col-md-7 col-sm-7 paddingl-7">
-<div class="form-group">
- <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="Nominated by">
-</div>
-</div>
 
-</div>
 </div> 
 
-   </div>
+<div class="gray-hr"></div>
 
 
-   <div class="row">
-    <div class="col-lg-9 col-md-9 col-sm-9 ">
-     <h1>{{articles.title}}</h1>
-    <div class="green-hr"></div>
-    <div >
-      <div ng-if='!articles.media' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
+<div class="directory-section">
+ <h1> {{articles.title}}</h1>
+<div class="clearfix">
+<div class="pull-left">
+<p>by {{articles.author.name | uppercase}}  </p>
+</div>
+<div class="pull-right">
+<p>{{articles.createdAt |date:"MMMM d , yyyy"}} </p>
+</div>  
+</div>
+<div class="dot-hr"></div>
+<div class="row-mar">
+
+      <div ng-if='!articles.media' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
         <img src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
 
       </div>
-      <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
+      <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
         <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
 
         <img ng-if="articles.media.path"  ng-src="../{{articles.media.path}}" title="{{articles.title}}" class="img-responsive">
       </div>
-      <div ng-if='articles.media && articles.media.extension.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
+      <div ng-if='articles.media && articles.media.extension.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
         <videogular vg-theme='config.theme' >
           <vg-media 
           vg-src="config.sources" 
@@ -190,13 +186,13 @@
     <p>{{articles.createdAt | date:"MMMM d, yyyy" }}</p>
     <p class="articleview" ng-bind-html="articles.description | rawHtml "></p>
     
-    <p><a class="btn Check-availability" type="button" href="/articles/01"  >Back To Articles </a>
+    <p><a class="btn readmore-bt" type="button" href="/articles/01"  >Back To Articles </a>
    <a ng-if="currentUser.role=='admin'" class="btn register-bt " type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a></p>
 
   
-  <div class="comments-hr-top">comments</div>
+  <h3>comments</h3>
   <ul class="commentList">
-    <li ng-repeat="(key,value) in articles.comments" ng-if="currentUser._id==value.user._id || value.user.commentvisible == 'public' || (value.user.commentvisible == 'friends' && checkcommitstatus (currentUser._id,value.following) )  ">
+    <li ng-repeat="(key,value) in articles.scomments" ng-if="currentUser._id==value.user._id || value.user.commentvisible == 'public' || (value.user.commentvisible == 'friends' && checkcommitstatus (currentUser._id,value.following) )  ">
     <div class="clearfix">
       <div class="commenterImage">
         <img src="images/comment-profile.png">
@@ -253,9 +249,9 @@
 </div>
 </div>
 </div>
+</div>
 
-
-<div class="col-lg-3 col-md-3 col-sm-3">
+<div class="col-lg-4 col-md-4 col-sm-4">
   <div ng-include="'partials2/right-nav.html'"> </div>
 </div>
 </div>

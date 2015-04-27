@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-User = mongoose.model('User'),
+User = mongoose.model('Serviceuser'),
 Article = mongoose.model('Article'),
 multipart = require('connect-multiparty'),
 fs = require('fs'),
@@ -185,7 +185,7 @@ exports.show=function(req,res){
 	var articleid=req.params.articleid;
 	Article.findById(articleid)
 	.populate('author','name email')
-	.populate('comments.user','_id fullname following commentvisible')
+	.populate('scomments.user','_id fullname following commentvisible')
 	.exec(function(err,article){
 		if(err){
 			console.log(err);
@@ -315,7 +315,7 @@ exports.comment_query=function(req, res){
 		}
 		if(article)
 		{
-			return res.json(article[0].comments);
+			return res.json(article[0].scomments);
 		}
 
 			return res.send(403);
@@ -342,7 +342,7 @@ exports.comment_query=function(req, res){
 			}
 			if(article)
 			{
-				var comments=article[0].comments;
+				var comments=article[0].scomments;
 				  for(var i=0; i<comments.length; i++){
 	           if(comment_id == comments[i]._id){
 	           	return res.json(comments[i]);
@@ -360,7 +360,7 @@ exports.comment_query=function(req, res){
   	var article_id = req.params.articleid;
   	Article.findByIdAndUpdate(
     article_id,
-    {$push: {"comments": req.body}},
+    {$push: {"scomments": req.body}},
     {safe: true, upsert: true},
      function(err, model) {
         if(err){
@@ -376,10 +376,10 @@ exports.comment_query=function(req, res){
   exports.comment_update=function(req, res){
   	var article_id = req.params.articleid,
   	comment_id = req.params.commentid;
-  	Article.update({'comments._id': comment_id}, {'$set': {
-    'comments.$.post': req.body.post,
-    'comments.$.username': req.body.username,
-    'comments.$.user': req.body.user,
+  	Article.update({'scomments._id': comment_id}, {'$set': {
+    'scomments.$.post': req.body.post,
+    'scomments.$.username': req.body.username,
+    'scomments.$.user': req.body.user,
 	   }}, function(err,model) {
 	   	if(err){
         	console.log(err);
@@ -398,7 +398,7 @@ exports.comment_query=function(req, res){
   
   Article.findByIdAndUpdate(
     article_id,
-   { $pull: { 'comments': {  _id: comment_id } } },function(err,model){
+   { $pull: { 'scomments': {  _id: comment_id } } },function(err,model){
  	   if(err){
         	console.log(err);
         	return res.send(err);
