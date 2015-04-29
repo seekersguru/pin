@@ -304,7 +304,7 @@ exports.remove = function(req, res) {
   	var article_id = req.params.eventid;
   	Event.findByIdAndUpdate(
     article_id,
-    {$push: {"registered": req.body.user}},
+    {$push: {"serviceregistered": req.body.user}},
     {safe: true, upsert: true},
      function(err, model) {
         if(err){

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-	.controller('NavbarCtrl', ['$scope','$location','$rootScope','Auth', function($scope,$location,$rootScope,Auth){
+	.controller('NavbarCtrl', ['$scope','$location','$rootScope','Auth','$http', function($scope,$location,$rootScope,Auth,$http){
 
 	// active menu option
 	$scope.isActive = function(route) {
@@ -15,7 +15,28 @@ angular.module('pinApp')
         $location.path('/login');
       });   
   };
-  
+
+  $scope.getEventslist=function(){
+    $scope.eventlist=[];
+     $http({
+      method:"GET",
+      url:'api/events/basic'
+    }).
+    success(function (data,status,headers,config){
+
+      $scope.pineventlist=data.articles;
+
+    })
+
+    .error(function (data,status,headers,config){
+
+    });
+
+
+
+  };
+
+$scope.getEventslist();  
   //login
   $scope.login = function(form) {
 	  $scope.submitted = true;

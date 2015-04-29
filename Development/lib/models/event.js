@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
  */
 var EventSchema = new Schema({
   title: {type:String, required:true},
-  author: { type: ObjectId, ref: 'Serviceuser' },
+  author: { type: ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now },
   public: { type: Boolean, default: false },
   mainImage: String,
@@ -22,7 +22,7 @@ var EventSchema = new Schema({
                designation:String,
               flag:String
             }],
-  registered:[{ type: ObjectId, ref: 'Serviceuser' }],    
+  serviceregistered:[{ type: ObjectId, ref: 'Serviceuser' }],    
   location:{ 
     address:String,
   locality:String,
@@ -39,11 +39,18 @@ var EventSchema = new Schema({
   keywords: [String],
   category: String,
   merchs: {},
-  comments: [{ user: { type: ObjectId, ref: 'Serviceuser' },
-               username:String,
-               post: String,
-               posted: {type: Date, default: Date.now}
-             }],
+  
+  // comments: [{ user: { type: ObjectId, ref: 'User' },
+  //              username:String,
+  //              post: String,
+  //              posted: {type: Date, default: Date.now}
+  //            }],
+
+  scomments: [{ user: { type: ObjectId, ref: 'Serviceuser' },
+   username:String,
+   post: String,
+   posted: {type: Date, default: Date.now}
+  }],
   media:{extension:String,      
                name:String,
                 path:String,

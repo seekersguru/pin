@@ -1,56 +1,62 @@
-<div class="container-head learning-section">
+<div class="container">
+<div id="content-section">
+
 
 <div class="row">
-<div class="col-lg-9 col-md-9 col-sm-9">
-  <ul class="breadcrumb">
+<div class="col-lg-8 col-md-8 col-sm-8">
+
+<div class="breadcam-link">
+<ul>
     <li><a href="/"><i class="fa fa-home"></i></a></li>
+    /
     <li><a href="/meet">MEET</a></li>
+    /
     <li class="active">{{events.title | uppercase}}</li>
 </ul>
 </div>  
 
-</div>
+<div class="gray-hr"></div>
 
 
-<div class="row">
-<div class="col-lg-9 colapp.js-md-9 col-sm-9">
+<div class="event-detais-section">
 
-<div class="meet-section">
- <h1>Meet</h1> 
-<div class="register-form-hr"></div>
 
 <div class="meet-baner-img">
-<img  ng-if="!events.media" src="images/meet-baner-img-2.jpg" class="img-responsive" alt="">
+<!-- <img  ng-if="!events.media" src="images/meet-baner-img-2.jpg" class="img-responsive" alt="">
 <img  ng-if="events.media" src="{{events.media.path}}" class="img-responsive" alt="">
-
-<div class="baner-content">
+ -->
 <div>
-<div class="note blue">
-    <p><span><img src="images/event-user-icon.png" alt=""></span>{{events.title | uppercase}}</p>
-</div>
-<p class="articleview" ng-bind-html="events.bannertext | rawHtml "></p>
-</div>
-<h2>{{events.eventdate | date:"MMMM dd yyyy"}}</h2>
-<P><button class="btn Check-availability" disabled="disabled" type="button" ng-if="(events.registered.indexOf(currentUser._id) > -1) ">REGISTERED </button>
-<button class="btn Check-availability"   type="button" ng-if="(events.registered.indexOf(currentUser._id) == -1) " ng-click="registerUserInEvent()">REGISTER </button>
+<h1>{{events.title | uppercase}}<h1>
+<div class="transparent-bg">
+
+<!-- <p class="articleview" ng-bind-html="events.bannertext | rawHtml "></p> -->
+
+<h2>{{events.eventdate | date:"MMMM dd yyyy"}} - {{events.location. }}<br/>{{events.location.state}} {{events.location.country}}</h2>
+
+<!-- <h2>{{events.eventdate | date:"MMMM dd yyyy"}}</h2> -->
+
+<p class="text-center">
+
+<button class="btn event-register event-opp" disabled="disabled" type="button" ng-if="(events.serviceregistered.indexOf(currentUser._id) > -1) ">REGISTERED <i class="fa fa-caret-right"></i></button>
+
+<button class="btn event-register event-opp"   type="button" ng-if="(events.serviceregistered.indexOf(currentUser._id) == -1) " ng-click="registerUserInEvent()">REGISTER  For Event <i class="fa fa-caret-right"></i></button>
+
 </P>
+
+</div>
+
 </div>
 </div>
 
-<div class="row">
- <div class="col-lg-5 col-md-5 col-sm-5 comment-text">
+<h2>
 AGENDA
- </div> 
-  <div class="clearfix"></div>
-</div>
-<div class="connect-hr2"></div>
+ </h2> 
+
+<h4> {{events.title | uppercase}}</h4>
 
 <p class="articleview" ng-bind-html="events.agenda | rawHtml "></p>
 
- <div class="comment-text">
-AGENDA
- </div> 
- <div class="connect-hr2"></div>
+ <h3>Speakers</h3>
 
 <div class="row">
 <div class="team-section">
@@ -79,7 +85,7 @@ Venue
 <div class="row">
 <div class="address-section">
   <div class="col-lg-8 col-md-8 col-sm-8 padding-right0">
-   <div class="map-view" id="map"></div> 
+   <div class="map-view" id="map" style="height: 236px"></div> 
   </div>
   <div class="col-lg-4 col-md-4 col-sm-4 padding-left0">
 <div class="address">
@@ -90,9 +96,9 @@ Venue
  <p>{{events.location.state}} - {{events.location.postalcode}}</p>
 
 <p>{{events.location.country}}</p>
-<div class="blue-connect-menu">
-  <div>Members<i class="fa icon-right fa-angle-right"></i></div> 
- </div>
+<a type="button" class="btn btn-register btn-openid" ng-href="http://maps.google.com/maps?z={{events.location.zoom}}&t=m&q=loc:{{events.location.lat}}+-{{events.location.lng}}">
+                 <i class="fa fa-caret-right"></i> get direction</a>
+
 </div>
   </div>
 
@@ -106,34 +112,13 @@ Venue
 <p><a class="btn Check-availability" type="button" href="/meet"  >Back To Events </a>
 <a ng-if="currentUser.role=='admin'" class="btn register-bt " type="button" ng-href="/event/edit/{{events._id}}"  >Edit </a></p>
 
-
-<!-- <div class="comment-text">
-Sponsors
- </div> 
- <div class="connect-hr2"></div>
-<div class="slider-section">
- <div id="demo">
-        <div id="owl-demo" class="owl-carousel">
-          
-          <div class="item"><img src="images/brand-1.jpg" alt=""></div>
-         <div class="item"><img src="images/brand-2.jpg" alt=""></div>
-           <div class="item"><img src="images/brand-3.jpg" alt=""></div>
-           <div class="item"><img src="images/brand-4.jpg" alt=""></div>
-            <div class="item"><img src="images/brand-1.jpg" alt=""></div>
-         <div class="item"><img src="images/brand-2.jpg" alt=""></div>
-           <div class="item"><img src="images/brand-3.jpg" alt=""></div>
-           <div class="item"><img src="images/brand-4.jpg" alt=""></div>
-        </div>
-    </div>
-</div> -->
-<!-- <p class="pull-right event-bt-mar"><button class="btn Check-availability" type="button"> LOAD MORE </button></p> -->
 <br>
 </div>  
 
 </div>
 
 
-<div class="col-lg-3 col-md-3 col-sm-3">
+<div class="col-lg-4 col-md-4 col-sm-4">
   <div ng-include="'partials2/right-nav.html'"> </div>
 </div>
 </div>

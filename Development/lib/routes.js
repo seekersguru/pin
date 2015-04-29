@@ -1,7 +1,8 @@
 'use strict';
 
 var index = require('./controllers'),
-    users = require('./controllers/users'),
+    users = require('./controllers/serviceuser'),
+    mainusers = require('./controllers/users'),
     nishant = require('./controllers/nishant'),
     session = require('./controllers/session'),
     articles = require('./controllers/article'),

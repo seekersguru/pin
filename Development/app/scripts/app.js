@@ -167,7 +167,7 @@ angular.module('pinApp', [
     authenticate: true
 
   })
-  .when('/meet', {
+  .when('/event', {
     templateUrl: 'partials2/meet',
     controller:'EventListCtrl',
     resolve:{

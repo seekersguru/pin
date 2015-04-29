@@ -32,7 +32,7 @@ angular.module('pinApp')
     addresspickerMap.addresspicker( "updatePosition");
 
     $scope.registerUserInEvent=function(){
-      $scope.events.registered.push($rootScope.currentUser._id);
+      $scope.events.serviceregistered.push($rootScope.currentUser._id);
 
     var user={ user: $rootScope.currentUser._id};  
 
