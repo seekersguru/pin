@@ -12,11 +12,19 @@ var DiscussionSchema = new Schema({
   title: {type:String, required:true},
   topic: { type: String },
   cid: { type: Number },
+  
   comments: [{ user: { type: ObjectId, ref: 'User' },
                username:String,
                post: String,
                posted: {type: Date, default: Date.now}
-             }]           
+             }],
+
+  scomments: [{ user: { type: ObjectId, ref: 'Serviceuser' },
+               username:String,
+               post: String,
+               posted: {type: Date, default: Date.now}
+             }]
+
 });
 
 // Public Discussion information

@@ -47,7 +47,7 @@ $scope.color={
  $http({ method: 'GET', url: '/api/discussions/'+$location.search()['cid'] }).
       success(function (data, status, headers, config) {
         $scope.discussion=data.discussion[0];
-        $scope.comments=$scope.discussion.comments;
+        $scope.comments=$scope.discussion.scomments;
 
       })
 
@@ -87,14 +87,14 @@ $scope.deleteComment=function(commentId){
     success(function (data,status,headers,config){
       $scope.deleteStatus=1;
 
-      var removeIndex = $scope.comments
+      var removeIndex = $scope.discussion.scomments
       .map(function(item)
       { 
         return item._id;
       })
       .indexOf(commentId);
 
-      $scope.comments.splice(removeIndex, 1);
+      $scope.discussion.scomments.splice(removeIndex, 1);
 
     })
     .error(function (data,status,headers,config){
@@ -117,9 +117,9 @@ $scope.addComment=function(form){
           // ...
           console.log(data);
           comment.posted=new Date();
-          comment._id=data.comments[data.comments.length-1]._id;
+          comment._id=data.scomments[data.scomments.length-1]._id;
 
-          $scope.comments.push(comment);
+          $scope.discussion.scomments.push(comment);
           
           $scope.article={};
           // 
@@ -143,14 +143,14 @@ if(form.$valid)
     success(function (data, status, headers, config) {
           // $scope.form.$setPristine();
 
-          var removeIndex = $scope.comments
+          var removeIndex = $scope.discussion.scomments
           .map(function(item)
           { 
             return item._id;
           })
           .indexOf(commentId);
 
-          $scope.comments[removeIndex].post= editcomment;
+          $scope.discussion.scomments[removeIndex].post= editcomment;
           // $scope.editcomment_id=0;
           // $scope.article={};
         

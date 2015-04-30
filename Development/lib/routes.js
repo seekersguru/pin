@@ -9,6 +9,7 @@ var index = require('./controllers'),
     events = require('./controllers/event'),
     discussions = require('./controllers/discussion'),
     familys = require('./controllers/family'), 
+    companys = require('./controllers/company'), 
     experts = require('./controllers/expert');
    
 var middleware = require('./middleware');
@@ -101,6 +102,17 @@ module.exports = function(app) {
   app.put('/api/expert/:expertid', experts.update); 
   app.del('/api/expert/:expertid', experts.remove); 
   app.put('/api/expert/removemedia/:expertid', experts.removemedia);
+
+
+   /**---(',')--Company section start----(',')---**/
+
+  app.get('/api/companys', companys.query);
+  app.get('/api/companys/basic', companys.basic);
+  app.get('/api/companys/:companyid', companys.show);
+  app.post('/api/companys',   companys.create);
+  app.put('/api/companys/:companyid',companys.update);
+  app.del('/api/companys/:companyid', companys.remove);
+  
 
    /**---(',')--Event section start----(',')---**/
 

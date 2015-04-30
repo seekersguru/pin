@@ -117,7 +117,7 @@ exports.comment_query=function(req, res){
 			}
 			if(discussion)
 			{
-				var comments=discussion[0].comments;
+				var comments=discussion[0].scomments;
 				  for(var i=0; i<comments.length; i++){
 	           if(comment_id == comments[i]._id){
 	           	return res.json(comments[i]);
@@ -135,7 +135,7 @@ exports.comment_query=function(req, res){
   	var discussion_id = req.params.discussionid;
   	Discussion.findByIdAndUpdate(
     discussion_id,
-    {$push: {"comments": req.body}},
+    {$push: {"scomments": req.body}},
     {safe: true, upsert: true},
      function(err, model) {
         if(err){
@@ -151,10 +151,10 @@ exports.comment_query=function(req, res){
   exports.comment_update=function(req, res){
   	var discussion_id = req.params.discussionid,
   	comment_id = req.params.commentid;
-  	Discussion.update({'comments._id': comment_id}, {'$set': {
-    'comments.$.post': req.body.post,
-    'comments.$.username': req.body.username,
-    'comments.$.user': req.body.user,
+  	Discussion.update({'scomments._id': comment_id}, {'$set': {
+    'scomments.$.post': req.body.post,
+    'scomments.$.username': req.body.username,
+    'scomments.$.user': req.body.user,
 	   }}, function(err,model) {
 	   	if(err){
         	console.log(err);
@@ -172,7 +172,7 @@ exports.comment_query=function(req, res){
   
   Discussion.findByIdAndUpdate(
     discussion_id,
-   { $pull: { 'comments': {  _id: comment_id } } },function(err,model){
+   { $pull: { 'scomments': {  _id: comment_id } } },function(err,model){
  	   if(err){
         	console.log(err);
         	return res.send(err);

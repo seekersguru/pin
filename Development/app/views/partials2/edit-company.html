@@ -1,0 +1,133 @@
+<div class="container">
+<div id="content-section">
+
+
+<div class="row">
+<div class="col-lg-8 col-md-8 col-sm-8">
+
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12">
+<div class="breadcam-link">
+<ul>
+    <li><a href="/home"><i class="fa fa-home"></i></a></li>
+/
+ <li><a href="#">Directory</a></li>
+/
+ <li><a href="#">Company Profile</a></li>
+/
+    <li class="active">Edit your Company Profile</li>
+</ul>
+</div> 
+</div>
+
+
+</div> 
+
+<div class="gray-hr"></div>
+
+ <div class="directory-section">
+ <h1>Edit Your company Profile</h1> 
+     <form novalidate  name="form" role='form' enctype= 'multipart/form-data' class="">
+        <div class="row">
+          <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
+          <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="title" placeholder="Company Name"  ng-model="article.title" required ng-minlength=2>
+              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill company name.</p>
+              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.minlength">your company name shoud be minimum 2 character long .</p>
+              <p class="text-danger" ng-show="form.title.$error.mongoose">{{ errors.title }} </p>
+
+            </div>
+          </div>
+          </div>
+      
+            <div class="row">
+                <div class="form-group">
+                <div class="col-lg-6 col-md-6 col-sm-6">  
+                    <input type="text" class="form-control" name="url" placeholder="Website Url"  ng-model="article.url" >
+                  </div>
+                </div>
+                </div>
+
+          <div class="row">
+            <div class="form-group">  
+            <div class="col-lg-6 col-md-6 col-sm-6 ">
+              <select  class="form-control" ng-model="article.organization" >
+                <option value="">Type Of Organization</option>
+                <option value="General">General</option>
+                <option value="Banking">Banking</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Investments">Investments</option>
+                <option value="Estate">Estate</option>
+                <option value="Management">Management</option>
+                <option value="Tax">Tax</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+          <div class="row" >
+           <div class="col-lg-12 col-md-12 col-sm-12">
+
+            <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
+              <label class="control-label" for="description">Description</label>
+              <text-angular class="rituraj" name="description" ng-model="article.description" required ng-minlength=20 ta-toolbar="[ ['h1', 'h2','quote','insertLink'],['bold', 'italics', 'underline', 'strikeThrough'],['justifyLeft','justifyCenter','justifyRight'],['ul', 'ol'],['insertImage', 'insertVideo']]"> </text-angular>
+
+              <!-- <text-angular class="form-control" rows="5"  name="description" ng-model="article.description" required ng-minlength=20> </text-angular> -->
+              <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.required">Please fill description.</p>
+              <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.minlength">your description shoud be minimum 20 character long .</p>
+              <p class="text-danger" ng-show="form.description.$error.mongoose">{{ errors.description }} </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gray-hr"></div>
+
+<h3>Address</h3>
+
+
+
+
+        <div class="row" ng-repeat="(key,value) in article.addresstimes">
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="  Address"  ng-model="article.address[key]" value="">
+              <button ng-click="removeaddress(key)"> Remove</button>
+            </div>
+        </div>
+      </div>
+
+     <button ng-click="addAddress()" class="btn btn-info">Add More address</button>
+<br/><br/>
+
+   <!--    <div class="row">
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+                <select name="public" ng-model="article.public">
+                  <option value="">Approve</option>
+                  <option value=1>Yes</option>
+                  <option value=0>No</option>
+                </select>
+        </div>
+        </div>
+</div>
+<br/> -->
+
+    <button class='btn btn-register  btn-openid' ng-disabled="!form.$valid" ng-click="updateArticle(form)" > <i class="fa fa-caret-right"></i> Edit Company</button> 
+
+<!-- <button class="btn btn-prew-direc btn-prew" >
+                 <i class="fa fa-eye"></i> Preview</button>
+ -->
+     </form>
+ 
+<div class="gray-hr"></div>
+
+
+<a  class="btn readmore-bt" type="button" href="/companies">Back to company profile </a>
+
+</div>  
+</div>
+ <div class="col-lg-4 col-md-4 col-sm-4">
+  <div ng-include="'partials2/right-nav.html'"> </div>
+</div>
+</div>
+</div>

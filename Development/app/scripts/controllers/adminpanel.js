@@ -211,6 +211,52 @@ $scope.eventStatus=function(eventId){
 
 };
 
+$scope.companyStatus=function(eventId){
+      var removeIndex = $scope.gridCompanyData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(eventId);
+
+  var setStatus= !$scope.gridCompanyData[removeIndex].approve;
+  $http({ method: 'PUT', url: '/api/companys/'+eventId,data:{'public':setStatus}}).
+      success(function (data, status, headers, config) {
+         $scope.gridCompanyData[removeIndex].approve=setStatus;   
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+
+};
+
+$scope.deleteCompany=function(articleId){
+  var yes=confirm('Are you sure you want to delete this Company?');
+  if(yes)
+  {
+    $http({
+      method:"DELETE",
+      url:'/api/companys/'+articleId
+    }).
+    success(function (data,status,headers,config){
+      var removeIndex = $scope.gridCompanyData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(articleId);
+
+      $scope.gridCompanyData.splice(removeIndex, 1);
+
+    })
+    .error(function (data,status,headers,config){
+
+    });
+  }
+
+ };
+
 $scope.deleteArticle=function(articleId){
   var yes=confirm('Are you sure you want to delete this Article?');
   if(yes)
@@ -385,6 +431,19 @@ $scope.deleteExpert=function(expertId){
 
        break;
 
+  case 'company':
+      $scope.gridFamilyData={};
+        $http({ method: 'GET', url: 'api/companys/basic' }).
+          success(function (data, status, headers, config) {
+             $scope.gridCompanyData=data.company;
+             
+          }).
+        error(function (data, status, headers, config) {
+
+        });
+
+       break;
+
       default: 
       break;
     }
@@ -492,6 +551,24 @@ plugins: [new ngGridFlexibleHeightPlugin()]
                                     { field: 'eventdate' ,displayName:'Event Date',cellTemplate:'<span> {{row.entity.eventdate|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="eventStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="eventStatus(row.entity._id)">NOT APPROVED</span>'},
                                     { field: '',displayName:'Action', cellTemplate: editDeleteEventTemplate, maxWidth: 100  }],
+                        showFooter: true,
+                        plugins: [new ngGridFlexibleHeightPlugin()]
+                      };
+
+ var editDeleteCompanyTemplate = '<a ng-click="deleteCompany(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-href="/company/view/{{row.entity._id}}"  id="view"  class="btn btn-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-href="/company/edit/{{row.entity._id}}"  id="view"  class="btn btn-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
+
+  $scope.companyData = { data: 'gridCompanyData' ,
+                        enableCellSelection: true,
+                        enableRowSelection: false,
+                        filterOptions: $scope.filterOptions,
+
+                        // showGroupPanel: true ,
+                        columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
+                                    { field: 'title' ,displayName:'Title' },
+                                    { field: 'organization' ,displayName:'Organization' },
+                                    { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
+                                    { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="companyStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="copmanyStatus(row.entity._id)">NOT APPROVED</span>'},
+                                    { field: '',displayName:'Action', cellTemplate: editDeleteCompanyTemplate, maxWidth: 100  }],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };

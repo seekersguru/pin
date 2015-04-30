@@ -11,6 +11,7 @@
             <!-- <button class="btn btn-primary" ng-click="setSearch('articles')">Articles</button> -->
             <button class="btn btn-primary" ng-click="setSearch('family')">Family Office </button>
             <button class="btn btn-primary" ng-click="setSearch('expert')">Event Experts </button>
+            <button class="btn btn-primary" ng-click="setSearch('company')">Companies </button>
             <!-- <button class="btn btn-primary" ng-click="setSearch('event')">Event </button> -->
 
         </div>
@@ -65,6 +66,20 @@
       <br/>
       <br/>
 <div class="gridStyle" ng-grid="expertData">
+
+</div>
+</script>
+
+<script type="text/ng-template" id="company">
+<h1>Companies</h1>
+  <br/>
+<a class="btn btn-success" ng-href="/add-company"> Add Company </a> 
+    <br/>
+    <br/>
+ <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
+      <br/>
+      <br/>
+<div class="gridStyle" ng-grid="companyData">
 
 </div>
 </script>

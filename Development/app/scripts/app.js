@@ -358,6 +358,74 @@ angular.module('pinApp', [
       }]
     },
 })
+
+.when('/companies', {
+  templateUrl: 'partials2/company-listing',
+  title: 'Company Listing',
+  controller:'CompanyCtrl',
+  authenticate: true,
+  admin: true,
+ resolve: {
+  companys: ['$q', '$route', 'Company', function($q, $route, Company) {
+    var deferred = $q.defer();
+    Company.get(function(company) {
+      deferred.resolve(company);
+    },
+    function(err){
+      deferred.reject();
+    });
+    return deferred.promise;
+  }]
+},
+})
+
+.when('/add-company', {
+  templateUrl: 'partials2/add-company',
+  title: 'Add Company',
+  controller:'CompanyAddCtrl',
+  authenticate: true,
+  admin: true
+})
+
+.when('/company/edit/:companyid', {
+  templateUrl: 'partials2/edit-company',
+  title: 'Edit Company',
+  controller:'CompanyEditViewCtrl',
+  authenticate: true,
+  admin: true,
+   resolve: {
+      company: ['$q', '$route', 'Company', function($q, $route, Company) {
+        var deferred = $q.defer();
+        Company.get({companyId: $route.current.params.companyid}, function(company) {
+          deferred.resolve(company);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+    },
+})
+
+.when('/company/view/:companyid', {
+    templateUrl: 'partials2/company-details',
+    controller: 'CompanyEditViewCtrl',
+    title: 'View Company',
+      resolve:{
+      company: ['$q', '$route', 'Company', function($q, $route, Company) {
+        var deferred = $q.defer();
+        Company.get({companyId: $route.current.params.companyid}, function(event) {
+          deferred.resolve(event);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+
+    },
+})
+
 .otherwise({
     redirectTo: '/404'
 });

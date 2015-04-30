@@ -1,0 +1,47 @@
+<div class="container">
+<div id="content-section">
+
+
+<div class="row">
+<div class="col-lg-8 col-md-8 col-sm-8">
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div class="breadcam-link">
+<ul>
+    <li><a href="#"><i class="fa fa-home"></i></a></li>
+/
+ <li><a href="/companies">Directory</a></li>
+/
+ <li><a href="/companies">Company Profile</a></li>
+/
+
+<li class="active">{{article.title}}</li>
+</ul>
+</div> 
+</div>
+
+
+</div> 
+
+<div class="gray-hr"></div>
+
+
+<div class="directory-section">
+ <h1> {{article.title}}</h1>
+ <p><b>{{article.organization}} </b></p>
+ <p><b>{{article.url}} </b></p>
+ <p class="articleview" ng-bind-html="article.description | rawHtml "></p>
+ <div class="gray-hr"></div>
+    
+<p><a class="btn readmore-bt" type="button" href="/companies"  >Back To Companies </a>
+ <a ng-if="currentUser.role=='admin'" class="btn register-bt " type="button" ng-href="/company/edit/{{article._id}}"  >Edit </a></p>
+
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+  <div ng-include="'partials2/right-nav.html'"> </div>
+</div>
+</div>
+</div>
+
