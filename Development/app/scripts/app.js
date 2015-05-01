@@ -232,7 +232,7 @@ angular.module('pinApp', [
       }]
 
     },
-    authenticate: true
+    // authenticate: true
   })
   .when('/articles/edit/:id', {
     templateUrl: 'partials2/update-article',
