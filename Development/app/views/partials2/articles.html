@@ -80,19 +80,39 @@
  -->      <!-- /container -->
     <!-- </div> -->
 
-
-
-
-<div class="container-head learning-section">
+<div class="container">
+<div id="content-section">
 
 <div class="row">
-<div class="col-lg-6 col-md-6 col-sm-6">
-  <ul class="breadcrumb">
-    <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
-    <li><a class="active" >LEARN</a></li>
-</ul>
-</div>  
+<div class="col-lg-8 col-md-8 col-sm-8">
+<div class="row">
+<div class="col-lg-4 col-md-4 col-sm-4 filter-dropdown">
+ <select class="form-control fliter" id="sel1">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+</div>
+</div>
+<div class="gray-hr"></div>
 
+
+<div class="clearfix">
+<div class="breadcam">
+
+<div class="investment"><span><div ng-if='articles[0].media.extension.indexOf("image") > -1'>
+          <img ng-if="!articles[0].media.path" src="images/articels001.jpg" class="img-responsive" title="{{articles[0].title}}">           
+          <img ng-if="articles[0].media.path" ng-src="../{{articles[0].media.path}}" title="{{articles[0].title}}">
+          </div>
+          <div ng-if='articles[0].media.extension.indexOf("video") > -1'>
+
+          <img  src="images/video-play.png" class="img-responsive" title="{{articles[0].title}}">           
+    </div</span><a href="#">articles[0].category</a> <i class="fa fa-chevron-right"></i> {{articles[0].title}} </div>
+</div> 
+<div class="date">
+ March 19, 2015 
+</div> 
 </div>
 
 
@@ -128,7 +148,7 @@
 
 <div class="" ng-class="color[value.category].colorclass">
  <a ng-href="/articles/view/{{value._id}}">
- <div ng-if='value.media.extension.indexOf("image") > -1'>
+        <div ng-if='value.media.extension.indexOf("image") > -1'>
           <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">           
           <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}">
           </div>

@@ -153,6 +153,31 @@
 
 
 
+<div class="row register-form-row-pad">
+<div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
+<div class="form-group">             
+ <select class="form-control" name="member" ng-model="user.company"   tooltip="Please choose company." 
+          tooltip-placement="bottom" ng-change="changeaddress()">
+    
+    <option value="">Select Company </option>
+    <option ng-repeat="(key,value) in companies" value="{{value._id}}">{{value.title}}</option>
+  </select>
+</div>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
+<div class="form-group">
+ <select class="form-control" name="member" ng-model="user.companyaddress"   tooltip="Please choose company address." 
+          tooltip-placement="bottom">
+    <option value="">Select Comany Address </option>
+    <option ng-repeat="(key,value) in companyaddress" value="{{key}}">{{value}}</option>
+  </select>
+
+</div>
+</div>
+
+</div> 
+
 
 
 <div class="row register-form-row-pad">

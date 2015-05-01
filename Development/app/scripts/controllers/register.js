@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('pinApp')
-  .controller('RegisterCtrl',['$scope','$location','$rootScope','Auth', function ($scope, $location,$rootScope ,Auth) {
+  .controller('RegisterCtrl',['$scope','$location','$rootScope','Auth','$http', function ($scope, $location,$rootScope ,Auth,$http) {
     // $scope.user = {};
     $scope.errors = {};
     $scope.user={
@@ -13,6 +13,34 @@ angular.module('pinApp')
       'city':''
     }
     };
+
+      $http({ method: 'GET', url: 'api/companys/basic' }).
+          success(function (data, status, headers, config) {
+             $scope.companies=data.company;
+             
+          }).
+        error(function (data, status, headers, config) {
+
+        });
+
+     
+     $scope.changeaddress=function(){
+
+     var removeIndex = $scope.companies
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf($scope.user.company);
+
+      $scope.companyaddress=$scope.companies[removeIndex].address;
+
+      // for (var i = 0; i < $scope.companies[removeIndex].address.length-1; i++) {
+      //       $scope.companyaddress.push($scope.companies[removeIndex].address[i]);
+      // }
+
+     };   
+
     // $scope.email = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
      $scope.checkUsername =function(form){
       form['username'].$setValidity('mongoose', true);
@@ -84,7 +112,9 @@ angular.module('pinApp')
           nominated: $scope.user.nominated,
           interests: $scope.user.interests,
           other: $scope.user.other,
-          password:$scope.user.password
+          password:$scope.user.password,
+          company:$scope.user.company,
+          companyaddress:$scope.user.companyaddress,
         })
         .then( function() {
           // Account created, redirect to home
