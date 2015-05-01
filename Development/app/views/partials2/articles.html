@@ -57,8 +57,9 @@
 <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in articles" ng-if="!$first">
 <div class="content-block">
 <div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
-          <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">           
-          <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}">
+          <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">   
+
+          <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
           </div>
           <div ng-if='value.media.extension.indexOf("video") > -1' class="block-image">
 
