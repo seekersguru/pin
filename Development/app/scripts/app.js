@@ -62,16 +62,42 @@ angular.module('pinApp', [
 .config(function ($routeProvider, $locationProvider, $httpProvider) {
   $routeProvider
   .when('/home', {
-    templateUrl: 'partials2/main',
-    authenticate: false
-
+    templateUrl: 'partials2/articles',
+    controller:'ArticleCtrl',
+    resolve:{
+      articles: ['$q', '$route', 'Article', function($q, $route, article) {
+        var deferred = $q.defer();
+        var query = angular.copy($route.current.params);
+        query.limit=25;
+        article.get(query, function(articles) {
+          deferred.resolve(articles.articles);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+    }
   })
   .when('/', {
-    templateUrl: 'partials2/main',
-    authenticate: false
-
+    templateUrl: 'partials2/articles',
+    controller:'ArticleCtrl',
+    resolve:{
+      articles: ['$q', '$route', 'Article', function($q, $route, article) {
+        var deferred = $q.defer();
+        var query = angular.copy($route.current.params);
+        query.limit=25;
+        article.get(query, function(articles) {
+          deferred.resolve(articles.articles);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+    }
   })
-  .when('/nishant', {
+   .when('/nishant', {
     templateUrl: 'partials2/nishant',
     controller:'NishantCtrl'
 
@@ -153,7 +179,7 @@ angular.module('pinApp', [
       }]
 
     },
-    authenticate: true
+    // authenticate: true
   })
   .when('/post-article', {
     templateUrl: 'partials2/post-article',
@@ -363,9 +389,7 @@ angular.module('pinApp', [
   templateUrl: 'partials2/company-listing',
   title: 'Company Listing',
   controller:'CompanyCtrl',
-  authenticate: true,
-  admin: true,
- resolve: {
+  resolve: {
   companys: ['$q', '$route', 'Company', function($q, $route, Company) {
     var deferred = $q.defer();
     Company.get(function(company) {

@@ -1,85 +1,3 @@
-
-  <!-- <div class="container"> -->
-    <!-- Articles section -->
-    <!-- <div class="member-us-section article-inner">
-      <h1 class="text-center">Articles</h1>
-    </div> -->
-
-    <!-- article listing Start-->
-<!--     <div class="row">
-
-      <div class="col-lg-4" ng-repeat="(key,value) in articles">
-        <div class="articles-section">
-        <div ng-if='value.media.extension.indexOf("image") > -1'>
-          <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">           
-          <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}">
-          </div>
-          <div ng-if='value.media.extension.indexOf("video") > -1'>
-
-          <img  src="images/video.png" class="img-responsive" title="{{value.title}}">           
-          </div>
-
-          <div class="articles-inner">
-            <div class="post-meta-info">
-              <div>
-                <div class="post_meta_author"><i class="fa fa-user"></i>
-                  {{value.author.name | uppercase}}</div>
-                  <div class="post_meta_cats"><i class="fa fa-clock-o"></i>{{value.createdAt | date:"d MMMM yyyy" }}</div>
-                  <div class="clearfix"></div>
-                </div>
-
-                <div>
-                  <div class="post_meta_date"><i class="fa fa-comment"></i>{{value.comments.length}} Comments</div>
-                  <div class="post_meta_views"><i class="fa fa-tag"></i>{{value.tags.toString()}}</div>
-                  <div class="clearfix"></div>
-                </div>
-              </div> 
-              <h3 class="articles-head"><a href="#">{{value.title}}</a></h3>
-              <p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml"></p>
-              <div class="btn-gold"><a ng-href="/articles/view/{{value._id}}">Readmore</a></div>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-        </div>
-        
-
-      </div>
- -->
-
-
-
-      <!-- article listing Stop-->
-
-      <!--end-->
-      <!-- <div class="row-fluid" style="margin-top:20px;text-align:center" >
-        <div class="col-xs-12" style="margin-top:30px;">
-          <a href="#sorter" du-smooth-scroll class="btn btn-default" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1;changePage()">
-            Previous
-          </a>
-          <a href="#sorter" du-smooth-scroll  ng-repeat = "t in [-4,-3,-2,-1,0]" ng-disabled = "currentPage+t <= 0" style = "margin:1px; currentPage+t <=0 ? background:white:background:red; " ng-click = "navigation_control(currentPage+t-1)">
-            <span ng-if = "currentPage + t > 0" class="btn btn-default nexa-bold">
-              {{currentPage+t}}
-            </span>
-          </a>
-          <span class="nexa-bold btn">
-            {{currentPage+1}}
-          </span>
-          <a href="#sorter" du-smooth-scroll  ng-repeat = "t in [2,3,4,5,6]" ng-disabled = "currentPage+t > numberOfPages()" style = "margin:1px"  ng-click = "navigation_control(currentPage + t-1)">
-            <span ng-if ="currentPage + t <= numberOfPages()" class = "btn btn-default nexa-bold">
-              {{currentPage+t}}
-            </span>
-            <span ng-if = "currentPage + t > numberOfPages()" class = "btn nexa-bold">
-              .
-            </span>
-          </a>
-          <a href="#sorter" du-smooth-scroll class="btn btn-default" ng-disabled="currentPage >= artworks.length/pageSize - 1" ng-click="currentPage=currentPage+1;changePage()">
-            Next
-          </a>
-        </div>
-      </div>
- -->      <!-- /container -->
-    <!-- </div> -->
-
 <div class="container">
 <div id="content-section">
 
@@ -101,78 +19,64 @@
 <div class="clearfix">
 <div class="breadcam">
 
-<div class="investment"><span><div ng-if='articles[0].media.extension.indexOf("image") > -1'>
-          <img ng-if="!articles[0].media.path" src="images/articels001.jpg" class="img-responsive" title="{{articles[0].title}}">           
-          <img ng-if="articles[0].media.path" ng-src="../{{articles[0].media.path}}" title="{{articles[0].title}}">
-          </div>
-          <div ng-if='articles[0].media.extension.indexOf("video") > -1'>
-
-          <img  src="images/video-play.png" class="img-responsive" title="{{articles[0].title}}">           
-    </div</span><a href="#">articles[0].category</a> <i class="fa fa-chevron-right"></i> {{articles[0].title}} </div>
+<div class="investment"><span><img src="images/investment.jpg" alt=""></span><a href="#">INVESTMENTS</a> <i class="fa fa-chevron-right"></i> Traditional investments  </div>
 </div> 
 <div class="date">
  March 19, 2015 
-</div> 
+</div>    
 </div>
 
 
 <div class="row">
-<div class="col-lg-9 col-md-9 col-sm-9">
-<div class="learn-nav creations-filter">
- <ul class="clearfix filterArticle">
+ <div   class="col-lg-6 col-md-6 col-sm-12" >
+   <div ng-if='articles[0].media.extension.indexOf("image") > -1' class="home-image">
+          <img ng-if="!articles[0].media.path" src="images/articels001.jpg" class="img-responsive" title="{{articles[0].title}}">           
+          <img ng-if="articles[0].media.path" ng-src="../{{articles[0].media.path}}" title="{{articles[0].title}}">
+          </div>
+          <div ng-if='articles[0].media.extension.indexOf("video") > -1' class="home-image">
 
-  <!-- <li><a href="#Grow" data-filter=".Grow" class="current">Grow</a></li>
-    <li><a href="#Protect" data-filter=".Protect">Protect</a></li> 
-      <li> <a href="#Manage" data-filter=".Manage">Manage</a></li> 
-        <li><a href="#Give" data-filter=".Give">Give</a></li>  
-    -->
-    <li><a  data-filter=".Grow" class="current">Grow</a></li>
-    <li><a  data-filter=".Protect">Protect</a></li> 
-    <li> <a  data-filter=".Manage">Manage</a></li> 
-    <li><a  data-filter=".Give">Give</a></li>  
- 
- </ul> 
-</div>  
-
-
-<div class="creations-container">
-<div class="row" id="article-container">
- <div  ng-repeat="(key,value) in articles" class="article-post"  ng-class="{false:'col-lg-8 col-md-8 col-sm-8 {{value.category}}',true:'col-lg-4 col-md-4 col-sm-4 {{value.category}}'}[!value.media || value.media.extension.indexOf('image') > -1]" >
-  <a ng-href="/articles/view/{{value._id}}">
-  <div class="post-box">
-      <div class="" ng-class="color[value.category].caption">
-       <a ng-href="/articles/view/{{value._id}}"><div><img src="images/post-hover-img.png" alt=""></div>
-       <div class="read-more"><a ng-href="/articles/view/{{value._id}}">Read more</a></div>
-       </a>
+          <img  src="images/video-play.png" class="img-responsive" title="{{articles[0].title}}">           
+      </div>
       </div>
 
-<div class="" ng-class="color[value.category].colorclass">
- <a ng-href="/articles/view/{{value._id}}">
-        <div ng-if='value.media.extension.indexOf("image") > -1'>
+      <div class="col-lg-6 col-md-6 col-sm-12 ">
+<h1>{{articles[0].title}}</h1>
+<p><small>by</small> {{articles[0].author.name}}</p>
+<p ng-bind-html="articles[0].description | limitTo:descriptionLimit | rawHtml"></p>
+<p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{articles[0]._id}}">Continue Reading </a></p>  
+</div>  
+
+</div>
+
+
+<div class="gray-hr"></div>
+
+ 
+<div class="row">
+
+<div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in articles">
+<div class="content-block">
+<div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
           <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">           
           <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}">
           </div>
-          <div ng-if='value.media.extension.indexOf("video") > -1'>
+          <div ng-if='value.media.extension.indexOf("video") > -1' class="block-image">
 
           <img  src="images/video-play.png" class="img-responsive" title="{{value.title}}">           
-    </div>
-          <div class="inner-area"> 
-<h3 class="articles-head"><a ng-href="/articles/view/{{value._id}}">{{value.title}}</a></h3>
+      </div>
+   
+<h2>{{value.title}}</h2>
+<!-- <p><small>by</small> John W. Smith</p> -->
+
 <p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml"></p>
- </div>
- </a>
-</div>
-</a>
-</div>
-
- </div>
-</div>
-<p><button class="btn load-more" type="button">  Load More </button></p>
-</div>
+ <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value._id}}">Read more </a></p>
+ </div> 
+</div> 
 </div>
 
+</div>
 
-<div class="col-lg-3 col-md-3 col-sm-3">
+<div class="col-lg-4 col-md-4 col-sm-4">
   <div ng-include="'partials2/right-nav.html'"> </div>
 </div>
 </div>
