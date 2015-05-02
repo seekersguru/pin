@@ -227,6 +227,7 @@ exports.query = function(req, res) {
   
   /** public true  */
   q.where('public').equals(true);
+  q.where('pin').equals(true);
 
 	/** sorting according to date */
 

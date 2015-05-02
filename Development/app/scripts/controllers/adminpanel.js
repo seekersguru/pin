@@ -191,6 +191,46 @@ $scope.articleStatus=function(articleId){
 
 };
 
+$scope.articlePin=function(articleId){
+      var removeIndex = $scope.gridArticleData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(articleId);
+
+  var setStatus= !$scope.gridArticleData[removeIndex].pin;
+  $http({ method: 'PUT', url: '/api/articles/'+articleId,data:{'pin':setStatus}}).
+      success(function (data, status, headers, config) {
+         $scope.gridArticleData[removeIndex].pin=setStatus;   
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+
+};
+
+$scope.articleMoney=function(articleId){
+      var removeIndex = $scope.gridArticleData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(articleId);
+
+  var setStatus= !$scope.gridArticleData[removeIndex].money;
+  $http({ method: 'PUT', url: '/api/articles/'+articleId,data:{'money':setStatus}}).
+      success(function (data, status, headers, config) {
+         $scope.gridArticleData[removeIndex].money=setStatus;   
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+
+};
+
 $scope.eventStatus=function(eventId){
       var removeIndex = $scope.gridEventData
       .map(function(item)
@@ -203,6 +243,45 @@ $scope.eventStatus=function(eventId){
   $http({ method: 'PUT', url: '/api/events/'+eventId,data:{'public':setStatus}}).
       success(function (data, status, headers, config) {
          $scope.gridEventData[removeIndex].approve=setStatus;   
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+
+};
+
+$scope.eventPin=function(eventId){
+      var removeIndex = $scope.gridEventData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(eventId);
+
+  var setStatus= !$scope.gridEventData[removeIndex].pin;
+  $http({ method: 'PUT', url: '/api/events/'+eventId,data:{'pin':setStatus}}).
+      success(function (data, status, headers, config) {
+         $scope.gridEventData[removeIndex].pin=setStatus;   
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+
+};
+$scope.eventMoney=function(eventId){
+      var removeIndex = $scope.gridEventData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(eventId);
+
+  var setStatus= !$scope.gridEventData[removeIndex].money;
+  $http({ method: 'PUT', url: '/api/events/'+eventId,data:{'money':setStatus}}).
+      success(function (data, status, headers, config) {
+         $scope.gridEventData[removeIndex].money=setStatus;   
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -411,6 +490,9 @@ $scope.deleteExpert=function(expertId){
                                     { field: 'category' ,displayName:'Category' },
                                     { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="articleStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="articleStatus(row.entity._id)">NOT APPROVED</span>'},
+{ field: 'pin' ,displayName:'Show on Pin',cellTemplate:'<span ng-if="row.entity.pin" class="label label-success" ng-click="articlePin(row.entity._id)">SHOW</span><span ng-if="!row.entity.pin" class="label label-danger" ng-click="articlePin(row.entity._id)">NOT SHOW</span>'},
+
+{ field: 'money' ,displayName:'Show on Money',cellTemplate:'<span ng-if="row.entity.money" class="label label-success" ng-click="articleMoney(row.entity._id)">SHOW</span><span ng-if="!row.entity.money" class="label label-danger" ng-click="articleMoney(row.entity._id)">NOT SHOW</span>'},
                                     { field: '',displayName:'Action', cellTemplate: editDeleteArticleTemplate, maxWidth: 100  }],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
@@ -491,6 +573,8 @@ plugins: [new ngGridFlexibleHeightPlugin()]
                                     { field: 'category' ,displayName:'Category' },
                                     { field: 'eventdate' ,displayName:'Event Date',cellTemplate:'<span> {{row.entity.eventdate|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="eventStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="eventStatus(row.entity._id)">NOT APPROVED</span>'},
+                                    { field: 'pin' ,displayName:'Show On PIN',cellTemplate:'<span ng-if="row.entity.pin" class="label label-success" ng-click="eventPin(row.entity._id)">SHOWN</span><span ng-if="!row.entity.pin" class="label label-danger" ng-click="eventPin(row.entity._id)">NOT SHOWN</span>'},
+                                    { field: 'money' ,displayName:'Show on Money',cellTemplate:'<span ng-if="row.entity.money" class="label label-success" ng-click="eventMoney(row.entity._id)">SHOWN</span><span ng-if="!row.entity.money" class="label label-danger" ng-click="eventMoney(row.entity._id)">NOT SHOWN</span>'},
                                     { field: '',displayName:'Action', cellTemplate: editDeleteEventTemplate, maxWidth: 100  }],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
