@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
  */
 var ArticleSchema = new Schema({
   title: {type:String, required:true},
-  author: { type: ObjectId, ref: 'Serviceuser' },
+  author: { type: ObjectId, ref: 'User' },
   authortype: {type: String, default: 'user', 'enum' : ['user','serviceuser']},
   createdAt: { type: Date, default: Date.now },
   public: { type: Boolean, default: false },

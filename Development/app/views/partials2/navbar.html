@@ -79,12 +79,15 @@
           </button>
           <a class="navbar-brand" href="#"><img src="images/logo.png" alt=""></a>
         </div>
+
+        
         <div id="navbar" class="navbar-collapse collapse">
         
           <ul class="navbar-right">
           <div class="top-link" ng-hide="currentUser" ><a class="active" href="/register">Register</a>  |  <a href="/login">Member Login </a> | <a href="#"> Contact</a></div>
 
           <div class="top-link" ng-show="currentUser" >Welcome {{currentUser.name}} | <a href="/admin"> admin</a> | <a ng-click="logout()" href="#"><i class="fa fa-sign-out"></i> Sign-out</a></div>
+
             <form class="navbar-form" role="search">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
