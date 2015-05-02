@@ -19,10 +19,15 @@
     <ul class="nav navbar-nav">
 
      <li class="desktop-hide"><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li> 
+   
      <li class="desktop-hide"><a href="/what-we-do" ng-class="{active: isActive('/what-we-do')}">What</a></li> 
+   
     <li class="desktop-hide"><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">About</a></li> 
-      <li ng-hide="currentUser" class="desktop-hide"><a href="/register" ng-class="{active: isActive('/register')}">Join</a></li>  
-    <li ng-show="currentUser" class="desktop-hide"><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li>   
+
+     <li ng-show="!currentUser" ><a href="/register" ng-class="{active: isActive('/register')}">Join</a></li>  
+
+    <li ng-show="currentUser" ><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li>
+
 <!--     <li class="desktop-hide" ng-show="currentUser"><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li> 
  -->
     </ul>
