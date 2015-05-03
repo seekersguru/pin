@@ -486,9 +486,9 @@ $scope.deleteExpert=function(expertId){
                                     { field: 'title' ,displayName:'Title' },
                                     { field: 'author' ,displayName:'Author' },
                                     // { field: 'tags' ,displayName:'Tags' },
-                                    { field: 'comments' ,displayName:'Comments' },
+                                    { field: 'comments' ,displayName:'Comment' },
                                     { field: 'category' ,displayName:'Category' },
-                                    { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
+                                    // { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="articleStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="articleStatus(row.entity._id)">NOT APPROVED</span>'},
 { field: 'pin' ,displayName:'Show on Pin',cellTemplate:'<span ng-if="row.entity.pin" class="label label-success" ng-click="articlePin(row.entity._id)">SHOW</span><span ng-if="!row.entity.pin" class="label label-danger" ng-click="articlePin(row.entity._id)">NOT SHOW</span>'},
 
