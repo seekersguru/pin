@@ -86,8 +86,7 @@
  <!--        Profile Picture: <input type="file" ng-file-select=""  ng-model="picFile" name="file" accept="image/*" ng-file-change="generateThumb(picFile[0], $files)"  required="">
 -->        <i class="text-danger" ng-show="form.file.$error.required">*required</i>
 <br/>
-<img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
-height:100px;width: 100px">  
+<!-- <img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="height:100px;width: 100px">   -->
 <br/>
 <span class="progress" ng-show="mainFIle[0].progress >= 0">    
   <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
@@ -134,10 +133,10 @@ height:100px;width: 100px">
     
       <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
       <div  class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
-        <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
+ <!--        <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
 
         <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="img-responsive" >
-
+ -->
         
     </div>
 

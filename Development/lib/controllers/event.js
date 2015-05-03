@@ -172,17 +172,35 @@ exports.update = function(req, res) {
 exports.removemedia = function(req, res) {
 	var article_id = req.params.articleid;
 	var article_data = {'media':{}};
-	Event.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
-		if (err) {
+	Event.findById(article_id)
+	.exec(function(err,article){
+		if(err){
 			console.log(err);
-			return res.json(400, err);
+			return res.json(404,err);
 		}
-		if (!article) {
+		if (!article){
 			console.log('notfound');
 			return res.send(404);
 		}
-		return res.send(200);
+		if(article)
+		{
+     fs.unlink('./app/'+article.media.path, function() {
+				Event.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
+		 			if (err) {
+					return	res.json(400, err);
+					} else {
+						// article.remove();
+					return res.send(200);
+					}
+			});
+		});
+	
+		// return res.send(200);
+
+		}
 	});
+	
+
 
 };
 
