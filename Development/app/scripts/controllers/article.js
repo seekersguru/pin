@@ -241,9 +241,92 @@ $scope.changePage = function(){
 angular.module('pinApp')
 .controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,article,$sce,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
-  $scope.article=article;
+  
+  $scope.tagcategory={
+        'Grow':['Equities','Fixed Interest','Real Estate', 'Cash','Global','Alternatives'],
+        'Protect':['Trusts','Wills','Governance'],
+        'Manage':[],
+        'Give':[]
+  };
 
-  $scope.article.tags="";
+  $scope.mmicategory=[
+   {
+    'name':'Investments',
+    'sub': [
+    {
+      'name':'Traditional',
+      'tags':['Equities','Fixed Interest','Real Estate', 'Cash','Global']
+    },
+    {
+      'name':'Alternative',
+      'tags':['Private Equity', 'Hedge Fund', 'Venture, Angel', 'Real Estate']
+    },
+    {
+      'name':'Portfolios Construction',
+      'tags':[]
+    },
+    {  
+      'name':'Markets',
+      'tags':[]
+    }
+    ]
+    },
+  {
+    'name':'WM/distribution',
+    'sub':[
+          {
+          'name':'Wealth planning',
+          'tags':['Trusts', 'Wills', 'Governance']
+          },
+          {
+            'name':'Business issues',
+            'tags':['Strategy', 'marketing', 'sales, operations']
+          },
+          {
+            'name':'Advisory process',
+            'tags':['Client onboarding', 'risk profiling','behavioural finance']
+          }
+        ]
+   },
+  {
+    'name':'Communication',
+    'sub': [
+      {
+      'name':'Investor comms',
+      'tags':[]
+       }
+      ]
+  }
+  ];
+
+  $scope.article=article;
+   var removeIndex = $scope.mmicategory
+      .map(function(item)
+      { 
+        return item.name;
+      })
+      .indexOf($scope.article.mmicategory);
+
+   $scope.mmisubcategory=$scope.mmicategory[removeIndex].sub;      
+
+
+
+    $scope.changemmicategory=function(){
+
+     var removeIndex = $scope.mmicategory
+      .map(function(item)
+      { 
+        return item.name;
+      })
+      .indexOf($scope.article.mmicategory);
+
+      $scope.mmisubcategory=$scope.mmicategory[removeIndex].sub;
+      $scope.article.mmitags=$scope.mmicategory[removeIndex].sub;
+
+  };
+
+
+
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
 
 
@@ -287,6 +370,18 @@ $scope.uploadPic = function(files) {
     if ($scope.mainFIle[0] !== null) {
       generateThumbAndUpload($scope.mainFIle[0])
     }
+
+      // $scope.article.mmitags=$scope.mmisubcategory[removeIndex].tags;
+       var removeIndex = $scope.mmisubcategory
+      .map(function(item)
+      { 
+        return item.name;
+      })
+      .indexOf($scope.article.mmisubcategory);
+
+      $scope.article.mmitags=$scope.mmisubcategory[removeIndex].tags;
+      $scope.article.tags=$scope.tagcategory[$scope.article.category];
+
   };
   
   function generateThumbAndUpload(file) {
@@ -314,7 +409,11 @@ $scope.uploadPic = function(files) {
 
       title:$scope.article.title,
       description:$scope.article.description,
-      category:$scope.article.category
+      category:$scope.article.category,
+      mmicategory:$scope.article.mmicategory,
+      mmisubcategorycategory:$scope.article.mmisubcategorycategory,
+      mmitags:$scope.article.mmitags,
+      tags:$scope.article.tags
 
     };
 
@@ -407,8 +506,16 @@ $scope.uploadPic = function(files) {
     if(form.$valid)
     {
       $scope.article.author=$rootScope.currentUser._id;
-      console.log($scope.article.tags);
-      console.log($scope.article);
+     var removeIndex = $scope.mmisubcategory
+      .map(function(item)
+      { 
+        return item.name;
+      })
+      .indexOf($scope.article.mmisubcategory);
+
+      $scope.article.mmitags=$scope.mmisubcategory[removeIndex].tags;
+
+      $scope.article.tags=$scope.tagcategory[$scope.article.category];
       // var original=$scope.article.tags;
       // for (var t = 0; t < original.length; t++) {
       //   $scope.article.tags[t] = original[t].text;
@@ -456,9 +563,80 @@ angular.module('pinApp')
 .controller('ArticleAddCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
 
+  $scope.tagcategory={
+        'Grow':['Equities','Fixed Interest','Real Estate', 'Cash','Global','Alternatives'],
+        'Protect':['Trusts','Wills','Governance'],
+        'Manage':[],
+        'Give':[]
+  };
+
   $scope.article={};
   $scope.preview=0;
   $scope.article.category=$scope.category[0];
+    $scope.mmicategory=[
+   {
+    'name':'Investments',
+    'sub': [
+    {
+      'name':'Traditional',
+      'tags':['Equities','Fixed Interest','Real Estate', 'Cash','Global']
+    },
+    {
+      'name':'Alternative',
+      'tags':['Private Equity', 'Hedge Fund', 'Venture, Angel', 'Real Estate']
+    },
+    {
+      'name':'Portfolios Construction',
+      'tags':[]
+    },
+    {  
+      'name':'Markets',
+      'tags':[]
+    }
+    ]
+    },
+  {
+    'name':'WM/distribution',
+    'sub':[
+          {
+          'name':'Wealth planning',
+          'tags':['Trusts', 'Wills', 'Governance']
+          },
+          {
+            'name':'Business issues',
+            'tags':['Strategy', 'marketing', 'sales, operations']
+          },
+          {
+            'name':'Advisory process',
+            'tags':['Client onboarding', 'risk profiling','behavioural finance']
+          }
+        ]
+   },
+  {
+    'name':'Communication',
+    'sub': [
+      {
+      'name':'Investor comms',
+      'tags':[]
+       }
+      ]
+  }
+  ];
+
+  $scope.changemmicategory=function(){
+
+     var removeIndex = $scope.mmicategory
+      .map(function(item)
+      { 
+        return item.name;
+      })
+      .indexOf($scope.article.mmicategory);
+
+      $scope.mmisubcategory=$scope.mmicategory[removeIndex].sub;
+      $scope.article.mmitags=$scope.mmicategory[removeIndex].sub;
+
+  };
+
   // $scope.usingFlash = FileAPI && FileAPI.upload != null;
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
 
@@ -484,6 +662,20 @@ $scope.article.description="<p>Sed ut perspiciatis unde omnis iste natu error lu
 $scope.article.tags=['tag1','tag2'];
 };
   $scope.uploadPic = function(files) {
+   
+   var removeIndex = $scope.mmisubcategory
+      .map(function(item)
+      { 
+        return item.name;
+      })
+      .indexOf($scope.article.mmisubcategory);
+
+      $scope.article.mmitags=$scope.mmisubcategory[removeIndex].tags;
+      // $scope.article.mmitags=$scope.article.mmitags[removeIndex].tags;
+      $scope.article.tags=$scope.tagcategory[$scope.article.category];
+      
+
+
     $scope.formUpload = true;
     if ($scope.mainFIle[0] !== null) {
       generateThumbAndUpload($scope.mainFIle[0])
@@ -623,6 +815,17 @@ $scope.article.tags=['tag1','tag2'];
       // var formData = new FormData();
       // formData.append("file", $scope.article.file);
       // console.log(formData);
+      
+     var removeIndex = $scope.mmisubcategory
+      .map(function(item)
+      { 
+        return item.name;
+      })
+      .indexOf($scope.article.mmisubcategory);
+
+      $scope.article.mmitags=$scope.mmisubcategory[removeIndex].tags;
+      $scope.article.tags=$scope.tagcategory[$scope.article.category];
+
       
       $scope.article.author=$rootScope.currentUser._id;
        // var original=$scope.article.tags;

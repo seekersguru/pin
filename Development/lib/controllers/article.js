@@ -56,6 +56,10 @@ exports.create = function(req, res, next) {
         		path:savepath,
         		originalName:file.name
         	};
+
+        	req.body.mmitags=JSON.parse(req.body.mmitags);
+        	req.body.tags=JSON.parse(req.body.tags);
+
         	console.log(req.body);
         	// req.body.tags=JSON.parse(req.body.tags);
         	var article=new Article(req.body);
@@ -94,7 +98,6 @@ exports.update = function(req, res) {
 	delete article_data.discovered;
 	delete article_data.nFavorites;
 	delete article_data.author;
-	delete article_data.tags;
 	delete article_data.comments;
 
 	console.log(req.body);
@@ -122,6 +125,9 @@ exports.update = function(req, res) {
         fs.unlink(tmp_path, function() {
         	if (err) throw err;
         	console.log('File uploaded to: ' + target_path + ' - ' + file.size + ' bytes');
+
+        	article_data.mmitags=JSON.parse(req.body.mmitags);
+        	article_data.tags=JSON.parse(req.body.tags);
 
         	article_data.media={
         		extension: file.type,
