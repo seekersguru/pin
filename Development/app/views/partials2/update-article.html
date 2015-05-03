@@ -66,8 +66,7 @@
              <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
              <i class="text-danger" ng-show="form.file.$error.required">*required</i>
              <br/>
-             <img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
-             height:100px;width: 100px">  
+             <!-- <img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="height:100px;width: 100px">   -->
              <br/>
              <span class="progress" ng-show="mainFIle[0].progress >= 0">    
               <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
@@ -153,13 +152,22 @@
 
   <div ng-show="filearticle">
     <div  class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
-      <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
 
-      <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="img-responsive" >
+    <!--   <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].type.indexOf('video') > -1 " class="img-responsive">  -->
+
+      <!-- <img  ng-show="mainFIle[0].type.indexOf('image') > -1 " ng-src="{{mainFIle[0].dataUrl}}" class="img-responsive" > -->
 
 
     </div>
 
+<!--     <div ng-show='mainFIle && mainFIle[0].type.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
+          <img ng-show="mainFIle[0].dataUrl"  ng-src="../{{mainFIle[0].dataUrl}}" title="{{article.title}}" class="img-responsive">
+      </div>
+
+    <div ng-show='mainFIle && mainFIle[0].type.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
+        <img  ng-src="images/video-play.png" title="{{article.title}}" class="img-responsive">
+    </div>
+ -->
     
 
 
