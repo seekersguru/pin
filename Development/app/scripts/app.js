@@ -127,13 +127,18 @@ angular.module('pinApp', [
     templateUrl: 'partials2/video'
   })
   .when('/who-is-this-site-for', {
-    templateUrl: 'partials2/who.html'
+    templateUrl: 'partials2/who.html',
+    authenticate: false
+
   })
   .when('/what-we-do', {
-    templateUrl: 'partials2/what.html'
+    templateUrl: 'partials2/what.html',
+    authenticate: false
+
   }) 
   .when('/who-we-are', {
-    templateUrl: 'partials2/about.html'
+    templateUrl: 'partials2/about.html',
+    authenticate: false
   })
   .when('/articles/:pageno', {
     templateUrl: 'partials2/articles',
