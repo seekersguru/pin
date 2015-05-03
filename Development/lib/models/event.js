@@ -12,6 +12,8 @@ var EventSchema = new Schema({
   author: { type: ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now },
   public: { type: Boolean, default: false },
+  pin: { type: Boolean, default: true },
+  money: { type: Boolean, default: true },
   mainImage: String,
   discovered: { type: Boolean, default: false, index: true },
   agenda:{type:String, required:true},
@@ -63,6 +65,8 @@ EventSchema
       // 'comments':this.comments.length,
       'eventdate':this.eventdate,
       'category':this.category,
+      'pin':this.pin,
+      'money':this.money,
       'approve':this.public
     };
   });

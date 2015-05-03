@@ -12,6 +12,8 @@ var ArticleSchema = new Schema({
   author: { type: ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now },
   public: { type: Boolean, default: false },
+  pin: { type: Boolean, default: true },
+  money: { type: Boolean, default: true },
   mainImage: String,
   discovered: { type: Boolean, default: false, index: true },
   description:{type:String, required:true},
@@ -45,7 +47,9 @@ ArticleSchema
       'comments':this.comments.length,
       'createdAt':this.createdAt,
       'category':this.category,
-      'approve':this.public
+      'approve':this.public,
+      'pin':this.pin,
+      'money':this.money
     };
   });
 
