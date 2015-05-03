@@ -369,6 +369,7 @@ $scope.uploadPic = function(files) {
   
    $scope.setFiles = function(element) {
     $scope.filearticle=1;
+    $scope.articletype="image";
     var file=element.files[0];
     $scope.$apply(function($scope) {
       // console.log('files:', element.files);
@@ -380,6 +381,14 @@ $scope.uploadPic = function(files) {
             $timeout(function() {
               element.files[0].dataUrl = e.target.result;
               $scope.mainFIle=element.files;
+              if(file.type.indexOf('image') > -1)
+              {
+                $scope.articletype='image';
+
+              }else{
+                
+                $scope.articletype='video';
+              } 
             });
           };
         });
