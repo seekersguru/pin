@@ -1,0 +1,64 @@
+<div class="container">
+<div id="content-section">
+
+<div class="row">
+<div class="col-lg-8 col-md-8 col-sm-8">
+<div class="gray-hr"></div>
+
+<h1>Search result for " {{ searchterm }} "</h1>
+
+<div class="gray-hr"></div>
+
+ 
+<div class="row" ng-hide="articleload">
+
+  <div class="col-lg-12 col-md-12 col-sm-12">
+
+  <h3> Loading ... </h3>
+
+  </div>
+
+
+</div>
+
+<div class="row" ng-show="articleload && !articles.length">
+
+  <div class="col-lg-12 col-md-12 col-sm-12">
+
+  <h3> No Article Found</h3>
+
+  </div>
+
+
+</div>
+
+<div class="row" ng-show="articleload && articles.length">
+
+<div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in articles">
+<div class="content-block">
+<div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
+          <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">   
+
+          <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
+          </div>
+          <div ng-if='value.media.extension.indexOf("video") > -1' class="block-image">
+
+          <img  src="images/video-play.png" class="img-responsive" title="{{value.title}}">           
+      </div>
+   
+<h2>{{value.title}}</h2>
+<p><small>by</small> {{value.author.name}}</p>
+
+<p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml"></p>
+ <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value._id}}">Read more </a></p>
+ </div> 
+</div> 
+</div>
+
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-4">
+  <div ng-include="'partials2/right-nav.html'"> </div>
+</div>
+</div>
+</div>

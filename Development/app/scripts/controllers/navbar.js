@@ -36,6 +36,17 @@ angular.module('pinApp')
 
   };
 
+$scope.searcharticle=function(form)
+{
+
+ if(form.$valid)
+    {
+     $location.path('/articles/search/'+$scope.search);
+
+    }
+
+};
+
 $scope.getEventslist();  
   //login
   $scope.login = function(form) {

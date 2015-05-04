@@ -239,6 +239,24 @@ $scope.changePage = function(){
 });
 
 angular.module('pinApp')
+.controller('ArticleSearchCtrl', function ($scope,$http,$sce,$upload,$timeout,$routeParams) {
+
+  
+  $scope.searchterm=$routeParams.search;
+  $scope.articleload=0;
+
+    $http({ method: 'GET', url: '/api/articles/search/'+$routeParams.search}).
+        success(function (data, status, headers, config) {
+          $scope.articles=data.articles;
+          $scope.articleload=1;      
+        })
+        .error(function (data, status, headers, config) {
+      
+        });
+    
+});
+
+angular.module('pinApp')
 .controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,article,$sce,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
   $scope.article=article;

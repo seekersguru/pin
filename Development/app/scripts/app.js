@@ -179,8 +179,11 @@ angular.module('pinApp', [
       }]
 
     },
-    // authenticate: true
   })
+  .when('/articles/search/:search', {
+    templateUrl: 'partials2/article-search',
+    controller:'ArticleSearchCtrl',
+   })
   .when('/post-article', {
     templateUrl: 'partials2/post-article',
     controller:'ArticleAddCtrl',
