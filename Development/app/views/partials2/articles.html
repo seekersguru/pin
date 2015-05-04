@@ -6,10 +6,9 @@
 <div class="row">
 <div class="col-lg-4 col-md-4 col-sm-4 filter-dropdown">
  <select class="form-control fliter" id="sel1">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
+    
+    <option ng-repeat="(key,value) in  mmicategory" value="{{value.name}}">{{ value.name }} </option>
+
   </select>
 </div>
 </div>

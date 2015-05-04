@@ -1,0 +1,16 @@
+{"v":1,"key":{"_id":1},"ns":"pin-dev.sessions","name":"_id_"}
+{"v":1,"key":{"expires":1},"ns":"pin-dev.sessions","name":"expires_1","expireAfterSeconds":0}
+{"v":1,"key":{"_id":1},"ns":"pin-dev.articles","name":"_id_"}
+{"v":1,"key":{"discovered":1},"ns":"pin-dev.articles","name":"discovered_1","background":true,"safe":null}
+{"v":1,"key":{"_id":1},"ns":"pin-dev.users","name":"_id_"}
+{"v":1,"key":{"username":1},"unique":true,"ns":"pin-dev.users","name":"username_1","background":true,"safe":null}
+{"v":1,"key":{"email":1},"unique":true,"ns":"pin-dev.users","name":"email_1","background":true,"safe":null}
+{"v":1,"key":{"_id":1},"ns":"pin-dev.discussions","name":"_id_"}
+{"v":1,"key":{"_id":1},"ns":"pin-dev.families","name":"_id_"}
+{"v":1,"key":{"_id":1},"ns":"pin-dev.experts","name":"_id_"}
+{"v":1,"key":{"_id":1},"ns":"pin-dev.events","name":"_id_"}
+{"v":1,"key":{"discovered":1},"ns":"pin-dev.events","name":"discovered_1","background":true,"safe":null}
+{"v":1,"key":{"_id":1},"ns":"pin-dev.serviceusers","name":"_id_"}
+{"v":1,"key":{"username":1},"unique":true,"ns":"pin-dev.serviceusers","name":"username_1","background":true,"safe":null}
+{"v":1,"key":{"email":1},"unique":true,"ns":"pin-dev.serviceusers","name":"email_1","background":true,"safe":null}
+{"v":1,"key":{"_id":1},"ns":"pin-dev.companies","name":"_id_"}

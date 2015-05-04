@@ -32,6 +32,57 @@ angular.module('pinApp')
     'image':'purple-chat.jpg'
 }
 };
+
+$scope.mmicategory=[
+   {
+    'name':'Investments',
+    'sub': [
+    {
+      'name':'Traditional',
+      'tags':['Equities','Fixed Interest','Real Estate', 'Cash','Global']
+    },
+    {
+      'name':'Alternative',
+      'tags':['Private Equity', 'Hedge Fund', 'Venture, Angel', 'Real Estate']
+    },
+    {
+      'name':'Portfolios Construction',
+      'tags':[]
+    },
+    {  
+      'name':'Markets',
+      'tags':[]
+    }
+    ]
+    },
+  {
+    'name':'WM/distribution',
+    'sub':[
+          {
+          'name':'Wealth planning',
+          'tags':['Trusts', 'Wills', 'Governance']
+          },
+          {
+            'name':'Business issues',
+            'tags':['Strategy', 'marketing', 'sales, operations']
+          },
+          {
+            'name':'Advisory process',
+            'tags':['Client onboarding', 'risk profiling','behavioural finance']
+          }
+        ]
+   },
+  {
+    'name':'Communication',
+    'sub': [
+      {
+      'name':'Investor comms',
+      'tags':[]
+       }
+      ]
+  }
+  ];
+
 $scope.rightnav="right-nav.html";
 
 setTimeout(function(){
