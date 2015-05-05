@@ -5,8 +5,8 @@
 <div class="col-lg-8 col-md-8 col-sm-8">
 <div class="row">
 <div class="col-lg-4 col-md-4 col-sm-4 filter-dropdown">
- <select class="form-control fliter" id="sel1">
-    
+ <select class="form-control fliter" id="sel1" ng-model="selectcategory">
+    <option value="">--Select Category--</option>
     <option ng-repeat="(key,value) in  mmicategory" value="{{value.name}}">{{ value.name }} </option>
 
   </select>
@@ -53,7 +53,7 @@
  
 <div class="row">
 
-<div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in articles" ng-if="!$first">
+<div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in articles" ng-if="!$first || value.mmicategory== selectcategory" >
 <div class="content-block">
 <div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
           <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">   

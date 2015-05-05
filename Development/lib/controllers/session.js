@@ -18,7 +18,6 @@ exports.logout = function (req, res) {
  * Login
  */
 exports.login = function (req, res, next) {
-  
   var stratergy = 'local';
   passport.authenticate(stratergy ,function(err, user, info) {
     var error = err || info;
@@ -47,6 +46,26 @@ exports.fbcallback = function (req, res, next) {
   console.log('redirectTo:', redirectTo);
   passport.authenticate('facebook', {
     callbackURL : '/api/session/facebook/callback/?redirectPath=' + qs.escape(redirectPath),
+    failureRedirect: '/login/',
+    successRedirect: redirectTo
+  })(req, res, next);
+};
+
+exports.linkedinlogin = function(req, res, next) {
+  var redirectPath = req.query.redirectPath || '/';
+  redirectPath = (new Buffer(String(redirectPath))).toString('base64');
+  passport.authenticate('linkedin', {
+    callbackURL : '/api/session/linkedin/callback/?redirectPath='+ qs.escape(redirectPath),
+    scope: ['r_basicprofile', 'r_emailaddress','r_fullprofile','r_contactinfo']
+  })(req, res, next);
+};
+
+exports.linkedincallback = function (req, res, next) {
+  var redirectPath = req.query.redirectPath || '/';
+  var redirectTo = (new Buffer(String(redirectPath), 'base64')).toString('ascii');
+  console.log('redirectTo:', redirectTo);
+  passport.authenticate('linkedin', {
+    callbackURL : '/api/session/linkedin/callback/?redirectPath=' + qs.escape(redirectPath),
     failureRedirect: '/login/',
     successRedirect: redirectTo
   })(req, res, next);

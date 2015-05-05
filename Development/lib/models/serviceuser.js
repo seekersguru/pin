@@ -47,6 +47,7 @@ var UserSchema = new Schema({
   twitter: {},
   github: {},
   google: {},
+  linkedin: {},
   createdAt: {type:Date, default: Date.now},
   photo: String,
   bio: String,

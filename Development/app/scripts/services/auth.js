@@ -11,6 +11,10 @@ angular.module('pinApp')
       facebookLogin: function() {
         $window.location.href = '/api/session/facebook/?redirectPath='+($rootScope.redirectPath||'');
       },
+
+      linkedinLogin:function() {
+        $window.location.href = '/api/session/linkedin/?redirectPath='+($rootScope.redirectPath||'');
+      },
       /**
        * Authenticate user
        * 

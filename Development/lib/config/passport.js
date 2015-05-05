@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
     FacebookStrategy = require('passport-facebook').Strategy,
     GoogleStrategy = require('passport-google').Strategy,
     TwitterStrategy = require('passport-twitter').Strategy,
+    LinkedinStrategy = require('passport-linkedin').Strategy,
     config = require('./config');
 
 /**
@@ -148,5 +149,68 @@ passport.use(new FacebookStrategy({
     }
   });
 }));
+
+
+passport.use(new LinkedinStrategy({
+    consumerKey: config.linkedin.key,
+    consumerSecret:config.linkedin.secretkey,
+    profileFields: ['id', 'first-name', 'last-name', 'email-address','public-profile-url','picture-url']
+  
+    // callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback"
+  },
+  function(token, tokenSecret, profile, done) {
+    console.log(profile);
+    console.log(token);
+    console.log(tokenSecret);
+
+    // User.findOrCreate({ linkedinId: profile.id }, function (err, user) {
+    //   return done(err, user);
+    // });
+profile = profile._json;
+  var photo_url =profile.pictureUrl;
+  console.log('Profile');
+  return User.findOne({
+    'email': profile.emailAddress
+  }, function(err, user) {
+    if (err) {
+      return done(err);
+    }
+    if (!user) {
+      user = new User({
+        name: profile.firstName + ' ' + profile.lastName,
+        email: profile.emailAddress,
+        provider: 'linkedin',
+        linkedin: profile,
+        photo: photo_url,
+        username:profile.firstName,
+        password:token
+      });
+      console.log('New');
+      user.save(function(err) {
+        if (err) done(err);
+        console.log('Saved');
+        return done(err, user);
+      });
+    } else if (user.linkedin) {
+      console.log('OldWithLinkedin');
+      return done(null, user);
+    } else {
+      console.log('Old');
+      user.linkedin = profile;
+      user.photo = user.photo || photo_url;
+      if (!user.emailVerification.verified) {
+        user.username = null;
+      }
+      return user.save(function(err, saved_user) {
+        if (err) done(err);
+        console.log('Updated');
+        return done(null, saved_user);
+      });
+    }
+  });
+
+
+  }
+));
 
 module.exports = passport;

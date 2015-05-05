@@ -41,8 +41,19 @@ process.env.FB_APP_SECRET="523d6510a56672ae230d91910085612c";
 
 // Application Config
 var config = require('./lib/config/config');
-config['facebook']['id']=703341096418077;
-config['facebook']['secret']="523d6510a56672ae230d91910085612c";
+// config['facebook']['id']=703341096418077;
+// config['facebook']['secret']="523d6510a56672ae230d91910085612c";
+
+config.linkedin={
+  key:'75jcyupgn21hu2',
+  secretkey:'EvgypAvfjwxjxeh0'
+};
+
+config.facebook={
+  id:703341096418077,
+  secret:'523d6510a56672ae230d91910085612c'
+};
+
 config["port"]=3002;
 // Connect to database
 var db = mongoose.connect(config.mongo.uri, config.mongo.options);

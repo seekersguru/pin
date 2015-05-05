@@ -147,6 +147,9 @@ module.exports = function(app) {
   app.get('/api/session/facebook', session.fblogin);
   app.get('/api/session/facebook/callback', session.fbcallback);
 
+  app.get('/api/session/linkedin', session.linkedinlogin);
+  app.get('/api/session/linkedin/callback', session.linkedincallback);
+
   // All undefined api routes should return a 404
   app.get('/api/*', function(req, res) {
     res.send(404);
