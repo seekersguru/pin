@@ -1,44 +1,15 @@
-<div class="container-fluid h3o-reletive">
-<div class="container-head">
-<div class="row">
-<div class="pull-left">
-<div class="mar-back-img">
-<!-- Become a member section -->
-<div class="tree-container-inner">
-<div id="nav">
- <ul>
- <li><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li> 
- <li><a href="/what-we-do" ng-class="{active: isActive('/what-we-do')}">what</a></li> 
- <li><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">about</a></li> 
-  <li><a href="/register" ng-class="{active: isActive('/register')}">join</a></li>  
- </ul> 
+<div class="container" ng-controller="NotificationCtrl">
+	<div id="content-section">
+ 		<div class="notification-section" ng-if="type=='register'">
+			<div class="modal-header">
+        <h4 class="modal-title">Email Verification</h4>
+        </div>
+			<div class="inner-part">
+ 				<div class="notification"> <p>Your email verification done successfully.Now please wait for admin approval. </p>
+			</div>
+	<!-- 	<div class="cuntinue-bt"><button class="btn btn-register btn-openid" type="submit">
+  <i class="fa fa-caret-right"></i> Continue</button></div> -->
+  </div>
 </div>
-</div>
-</div>
-</div>
-
-
-			<div class="inner-section">
-					<div class="panel panel-info ">
-						<div class="panel-body">
-							<div class="col-lg-12">     
-								<h1 style="margin-top:0px;">Email Verification</h1>   
-								<div class="register-form-hr"></div>                 
-									<div class="row login-pad">                                   
-										<div class="col-lg-12 ">
-										<h3>Your email verification done successfully.Now please wait for admin approval. </h3>
-										</div>
-										   
-							</div>  
-						</div>  
-					</div>
-			</div>  
-
-
-</div>
-</div>
-
-<!-- /container -->
-
-
+</div> <!-- /container -->
 </div>

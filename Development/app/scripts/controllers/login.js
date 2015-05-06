@@ -36,8 +36,6 @@ angular.module('pinApp')
                 $rootScope.redirectPath = undefined;
                 $location.path(path);
               } else {
-                
-                  
                 $location.path('/articles/01');
 
               }

@@ -1,67 +1,20 @@
-<!-- <footer class="footer" ng-controller="FooterCtrl" id="footer-bg">
-  <div class="footer-above" ng-hide="currentUser">
-    <div class="container-head">
-     <div class="footer-link">
-       <ul class="clearfix">
-        <li>
-         <h2>Who is this site for?</h2>
-         <p class="read-more"><a href="/who-is-this-site-for">Read More</a></p> 
-       </li> 
-
-       <li>
-         <h2>What we do?</h2>
-         <p class="read-more"><a href="/what-we-do">Read More</a></p> 
-       </li> 
-       <li>
-         <h2>Who we are?</h2>
-         <p class="read-more"><a href="/who-we-are">Read More</a></p> 
-       </li> 
-       <li>
-         <h2>Register with us</h2>
-         <p class="read-more"><a href="/register">Read More</a></p> 
-       </li>
-     </ul>
-   </div>
- </div>
-</div>
-
-<div class="footer-learning" ng-show="currentUser">
-    <div class="container-head">
-      <div class="row">
-        <div class=" col-lg-8">
-          <ul>
-            <li><a href="/articles/01">Learn </a></li>
-            <li><a  ng-if="currentUser.role !='user'" href="#" ng-class="{active:isActive('/share')}">Share </a></li>
-            <li><a href="/chat-start"> Chat       </a></li>
-            <li><a href="/connect"> Connect </a></li>
-            </ul>
-        </div>
-        <div class="sigup-newletter col-lg-4">
-          <div class="input-group">
-            <input type="text" class="form-control">
-            <span class="input-group-addon"><button class="btn subscribe-bt"><img src="images/newsletter-arow.png" alt=""></button></span>
-          </div>
-        </div>
-      </div>
-      <p>Copyright © Private Investor Network.</p>
-
-    </div>
-  </div>
-
-</footer>
- -->
 <footer id="footer-bg">
         <div class="footer-learning">
             <div class="container">
             <div class="row">
               <div class=" col-lg-8">
-                <ul>
+                <ul ng-show="currentUser">
                   <li><a href="/articles/01">Learn </a></li>
-                  <li><a  ng-if="currentUser.role !='user'" href="#" ng-class="{active:isActive('/share')}">Share </a></li>
-                  <li><a href="#"> Chat       </a></li>
-                  <li><a href="#"> Connect </a></li>
-                  <li><a href="#"> Register for event </a></li>
+                  <li><a href="/discussion-listing"> Discussion       </a></li>
+                  <li><a href="/companies"> Directory </a></li>
+                  <li><a href="/meet"> Register for event </a></li>
                 </ul>
+                <ul ng-hide="currentUser">
+             <li><a href="/who-is-this-site-for">Who is this site for?</a></li> 
+             <li><a href="/what-we-do">What we do?</a></li> 
+             <li><a href="/who-we-are">Who we are?</a></li> 
+             <li> <a href="/register">Register with us</a> </li>
+                             </ul>
               </div>
 <div class="col-lg-4">
 <div class="footer-social">

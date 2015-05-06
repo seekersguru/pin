@@ -1089,6 +1089,27 @@ h6 {
       #error-message-505 p a:hover {
         color: #787878; }
 
+.notification-section {
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 5px solid #cccccc;
+  border-radius: 6px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  outline: 0 none;
+  position: relative;
+  width: 708px;
+  margin: 0 auto; }
+  .notification-section h4 {
+    font-family: "Calisto MT";
+    line-height: 1.42857;
+    font-size: 30px; }
+  .notification-section .inner-part {
+    padding: 40px 20px; }
+  .notification-section .modal-header {
+    border-bottom: 1px dotted #212121;
+    min-height: 16.43px;
+    padding: 15px; }
+
 @media (max-width: 1024px) {
   .nav > li > a {
     display: block;

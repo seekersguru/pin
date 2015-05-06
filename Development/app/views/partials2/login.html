@@ -1,108 +1,85 @@
 <!-- ng-click="facebookLogin()" -->
 <div class="container-fluid po-reletive">
 	<div class="container-head">
-		<div class="row">
-			<!-- <div class="pull-left">
-				<div class="mar-back-img">
-					<div class="tree-container-inner">
-						<div id="nav">
-							<ul>
-						 <li><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li>
-						 <li><a href="/what-we-do" ng-class="{active: isActive('/what-we-do')}">what</a></li> 
-						 <li><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">about</a></li> 
-						  <li><a href="/register" ng-class="{active: isActive('/register')}">join</a></li>  
-							</ul> 
+	<div class="row">
+<div class="col-lg-8 col-md-8 col-sm-8">
+
+<div class="breadcam-link">
+<ul>
+    <li><a href="#"><i class="fa fa-home"></i></a></li>
+/
+    <li class="active">Register</li>
+</ul>
+</div> 
+
+<div class="gray-hr"></div>
+
+	<div class="notification-section">	
+		<div class="modal-header">
+			<h3 class="modal-title">Member Login</h3>
+		</div>
+		<div class="modal-body">
+			<div class="inner-section">
+				<div class="register-form-hr"></div>
+				<form   name="form" role='form' ng-submit="login(form)" novalidate >
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							<p>Sign in to your Account or <a href="/register">Register with us.</a></p>
+							<div class="row">
+
+								<div class="form-group" ng-class="{'has-error':form.name.$dirty && form.name.$error.required,'has-success':form.name.$valid}">
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<input type="email" placeholder="Email" class="form-control" required autofocus id="username" name="email" ng-model="user.email" mongoose-error/>
+										<p class="text-danger" ng-show="form.email.$error.required && submitted">Please fill EmailId .</p>
+										<p class="text-danger" ng-show="form.email.$error.email && submitted" >
+											Doesnot look like a valid email.
+										</p>
+
+										<p class="text-danger" ng-show="form.email.$error.mongoose">
+											{{ errors.email }}
+										</p>
+									</div>      
+
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group">
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<input type="password" class="form-control" placeholder="Password" required  id="password" name="password" ng-model="user.password" mongoose-error />
+										<p class="text-danger" ng-show="form.password.$error.required && submitted">Please fill Password.</p>
+
+										<p class="text-danger" ng-show="form.password.$error.mongoose">
+											{{ errors.password }}
+										</p>
+
+									</div>
+
+								</div>
+							</div>  
+
+							<div class="row">
+								<div class="form-group">
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<button class="btn btn-register btn-openid" type="submit">
+											<i class="fa fa-caret-right"></i> Login</button>
+
+											<div class="forget-pass"><a href="/forgot">Forgot Your Password?</a></div>
+										</div></div></div>  
+
+									</form>   
+
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6">
+									<div class="verticale-hr">
+										<div class="or">or</div> 
+									</div> 
+									<div class="social">
+										<p>Sign in using Linked IN account.</p>
+										<p><a ng-click="linkedinLogin()" href="#"><img src="images/linkdin-bt.png" alt="Sign in using Linked IN account." title="Sign in using Linked IN account."></a></p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
- -->
- <button ng-click="linkedinLogin()">Linkedin</button>
-			<div class="inner-section">
-				<form class="register-form" class="register-form" name="form" ng-submit="login(form)" novalidate> 
-				 <div class="alert alert-info" role="alert" ng-show="registerStatus=='register'" >
-
-				  Welcome ! You registration successful. 
-				  <br/>To notify admin please verify your email. 
-				  <br/>After that admin will validate and activate your account.
-				  
-				
-				</div>
-				
-			 <div class="alert alert-danger" role="alert" ng-show="registerStatus=='loginError'" >
-
-				  {{errormessage}}
-          <!-- Invalid Email or password.     -->
-				</div>
-
-					<div class="panel panel-info sign-box-area">
-						<div class="panel-body">
-							<div class="col-lg-12">     
-								<h1 style="margin-top:0px;">Sign in</h1>   
-								<div class="register-form-hr"></div>                 
-									<div class="row login-pad">                                   
-										<div class="col-lg-12 ">
-											<div class="form-group">
-												<input type="email" placeholder="Email" class="form-control" required autofocus id="username" name="email" ng-model="user.email" mongoose-error/>
-												<p class="text-danger" ng-show="form.email.$error.required && submitted">Please fill EmailId .</p>
-											  <p class="text-danger" ng-show="form.email.$error.email && submitted">
-                  					Doesn't look like a valid email.
-              					</p>
-
-												<p class="text-danger" ng-show="form.email.$error.mongoose">
-													{{ errors.email }}
-												</p>
-											</div>
-										</div>
-
-										<div class="col-lg-12 ">
-											<div class="form-group">
-												<input type="password" class="form-control" placeholder="Password" required  id="password" name="password" ng-model="user.password" mongoose-error />
-												<p class="text-danger" ng-show="form.password.$error.required && submitted">Please fill Password.</p>
-	          
-												<p class="text-danger" ng-show="form.password.$error.mongoose">
-													{{ errors.password }}
-												</p>
-
-											</div>
-										</div>     
-										<div class="form-group has-error">
-										<!-- 	<p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
-												Please enter your email and password.
-											</p> -->    
-										</div>
-										<div class="col-lg-12 ">
-										<div class="form-group">
-											<div class="checkbox sign-box">
-												<label>
-													<input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
-												</label>
-											</div>
-										</div>
-
-										<div style="margin-top:10px" class="form-group">
-											<!-- Button -->
-
-											<button class="btn register-bt"  type="submit">
-												login
-											</button>
-										</div>
-										</div>
-										<div class="col-lg-12">
-											<div class="forgetpass">
-												<div class="register-form-hr"></div> 
-												Don't have an account! 
-												<a href="/register" >
-													Sign Up Here </a> | <a href="/forgot"> Forgot password
-												</a>
-											</div>
-										</div>
-									</div>    
-							</div>  
-						</div>  
-					</div>
-				</form>
-			</div>  
 		</div>
-	</div>
-</div>
