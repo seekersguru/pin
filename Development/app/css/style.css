@@ -1814,7 +1814,7 @@ background-color: #d9534f;
     line-height: 20px;
 }
 .learn-nav ul{margin: 0px; padding:0px; margin-bottom: 25px;  box-shadow: 0px 2px 2px #a7a7a7;list-style: none; background-color:#fff;  }
-.learn-nav ul li{margin: 0px; padding:0px; float: left; list-style:none; }
+.learn-nav ul li{margin: 0px; padding:0px; float: left; list-style:none; cursor: pointer;}
 .learn-nav ul li a{margin: 0px; color: #4e4c49; background-image:url(../images/grow-icon.png); background-repeat:no-repeat;  padding: 12px 35px 12px 35px;  float:left; border-left:solid 1px #e2dfd7;  font-size:14px; text-transform:uppercase; background-color:#fff; display:block;     text-indent: 15px;background-position: 10px;}
 .learn-nav ul li+li a{ background-image:url(../images/protect.png); background-repeat:no-repeat;}
 .learn-nav ul li+li+li a{ background-image:url(../images/manage-icon.png); background-repeat:no-repeat;}
