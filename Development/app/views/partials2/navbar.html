@@ -84,7 +84,7 @@
         <div id="navbar" class="navbar-collapse collapse">
         
           <ul class="navbar-right">
-          <div class="top-link" ng-hide="currentUser" ><a class="active" href="/register">Register</a>  |  <a href="/login">Member Login </a> | <a href="#"> Contact</a></div>
+          <div class="top-link" ng-hide="currentUser" ><a class="active" href="/register">Register</a>  |  <a ng-click="popuplogin()">Member Login </a> | <a href="#"> Contact</a></div>
 
           <div class="top-link" ng-show="currentUser" >Welcome {{currentUser.name}} | <a href="/admin"> admin</a> | <a ng-click="logout()" href="#"><i class="fa fa-sign-out"></i> Sign-out</a></div>
 
@@ -106,3 +106,94 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
+<script type="text/ng-template" id="loginmodal.html" >
+        <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+        <div class="modal-header">
+            <h3 class="modal-title">Member Login</h3>
+        </div>
+        <div class="modal-body">
+        <div class="inner-section">
+        <div class="register-form-hr"></div>
+        <form   name="form" role='form' ng-submit="login(form)" novalidate >
+         <div class="row">
+<div class="col-lg-6 col-md-6 col-sm-6">
+<p>Sign in to your Account or <a href="/register">Register with us.</a></p>
+        <div class="row">
+
+        <div class="form-group" ng-class="{'has-error':form.name.$dirty && form.name.$error.required,'has-success':form.name.$valid}">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+     <input type="email" placeholder="Email" class="form-control" required autofocus id="username" name="email" ng-model="user.email" mongoose-error/>
+                        <p class="text-danger" ng-show="form.email.$error.required && submitted">Please fill EmailId .</p>
+                    <p class="text-danger" ng-show="form.email.$error.email && submitted" >
+                            Doesnot look like a valid email.
+                      </p>
+
+                        <p class="text-danger" ng-show="form.email.$error.mongoose">
+                          {{ errors.email }}
+                        </p>
+        </div>      
+
+            </div>
+            </div>
+
+        <div class="row">
+           <div class="form-group">
+           <div class="col-lg-12 col-md-12 col-sm-12">
+            <input type="password" class="form-control" placeholder="Password" required  id="password" name="password" ng-model="user.password" mongoose-error />
+                        <p class="text-danger" ng-show="form.password.$error.required && submitted">Please fill Password.</p>
+            
+                        <p class="text-danger" ng-show="form.password.$error.mongoose">
+                          {{ errors.password }}
+                        </p>
+
+</div>
+
+           </div>
+           </div>  
+           
+           <div class="row">
+           <div class="form-group">
+           <div class="col-lg-12 col-md-12 col-sm-12">
+<button class="btn btn-register btn-openid" type="submit">
+                 <i class="fa fa-caret-right"></i> Login</button>
+
+                 <div class="forget-pass"><a ng-click="forgotpassword()">Forgot Your Password?</a></div>
+                 </div></div></div>  
+
+         </form>   
+
+        </div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+ <div class="verticale-hr">
+  <div class="or">or</div> 
+ </div> 
+ <div class="social">
+ <p>Sign in using Linked IN account.</p>
+ <p><a ng-click="linkedinLogin()" href="#"><img src="images/linkdin-bt.png" alt="Sign in using Linked IN account." title="Sign in using Linked IN account."></a></p>
+ </div>
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+                    
+
+                </div>
+
+           
+
+            </div>
+
+        </div>
+
+    </div>
+
+</script>
