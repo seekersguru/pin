@@ -32,8 +32,8 @@
           <ul>
             <li><a href="/articles/01">Learn </a></li>
             <!-- <li><a href="#">Share      </a></li> -->
-            <li><a  ng-if="currentUser.role !='user'" href="#" ng-class="{active:isActive('/share')}">Share </a></li>
-            <li><a href="/chat-start"> Chat       </a></li>
+            <li><a  ng-if="currentUser.role !='user'" href="/share" ng-class="{active:isActive('/share')}">Share </a></li>
+            <li><a href="/discussion-listing"> Discussion </a></li>
             <li><a href="/connect"> Connect </a></li>
             <!-- <li><a href="/register"> Register for event </a></li> -->
           </ul>
