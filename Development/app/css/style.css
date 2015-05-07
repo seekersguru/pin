@@ -1435,11 +1435,12 @@ color: #FFF;
 text-transform: uppercase;
 margin: 0px;
 padding: 0px;   }
-.forget-pass{font-size:12px; color: #fff; display: block;}
+.forget-pass{font-size:12px; color: #fff; display: block;line-height: 21px;}
 .forget-pass a {
     color: #fff;
     display: block;
     font-size: 12px;
+    
 }
 
 .forget-pass a:hover{
