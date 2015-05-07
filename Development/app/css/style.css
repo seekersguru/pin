@@ -155,7 +155,14 @@ z-index: 5;
 .footer-link ul{margin:0px; padding: 0px; list-style:none; clear: both;  }
 .footer-link ul li:first-child { margin-left: 0%;}
 .footer-link ul li:first-child:hover{margin-left: 0%;}
-.footer-link ul li {margin:0px; padding: 0px; list-style:none;  border-top:solid 5px #b59759; width:23.5%; margin-left: 2%; float: left; }
+.footer-link ul li {
+    border-top: 4px solid #b59759;
+    float: left;
+    list-style: outside none none;
+    margin: 0 0 0 15px;
+    padding: 0;
+    width: 244px;
+}
 .footer-link ul li:hover{margin:0px; padding: 0px; border-top:solid 5px #5e5649; margin-left: 2%;  }
 
 .meet-section{display: block;}
@@ -1359,17 +1366,17 @@ z-index: 5;
 }
 .footer-learning ul li:first-child a{padding-left:0px }
 .footer-learning ul li a:hover{color:#fff;}
-.footer-link .read-more a{
 
- background-image: url("../images/arrow-img-2.png");
-    background-position: right center;
+.footer-link .read-more a {
+    background-image: url("../images/arrow-img-2.png");
+    background-position: right 5px;
     background-repeat: no-repeat;
     color: #ca4f13;
     display: inline;
     font-size: 15px;
     font-style: italic;
-    padding-right: 32px;
-    text-indent: 24px; 
+    padding-right: 28px;
+    text-indent: 24px;
 }
 .footer-link .read-more a:hover{font-size:15px; text-decoration:none;  font-style:italic; color:#f1eee5; background-image:url(../images/arrow-img-hover.png);}
 .footer-link h2
@@ -1386,17 +1393,17 @@ z-index: 5;
 .footer-link ul li:first-child { margin-left: 0%;}
 .footer-link ul li:first-child:hover{margin-left: 0%;}
 .footer-link ul li {
-    border-top: 4px solid #b59759;
+   border-top: 4px solid #b59759;
     float: left;
     list-style: outside none none;
-    margin: 0 0 0 2%;
+    margin: 0 0 0 15px;
     padding: 0;
-    width: 23.5%;
+    width: 244px;
   }
 
 .footer-link ul li:hover{
     border-top: 4px solid #5e5649;
-    margin: 0 0 0 2%;
+    margin: 0 0 0 15px;
     padding: 0;
 }
 
@@ -2661,7 +2668,9 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
 .container-head{padding:0 15px 0 15px; 
   }
 
-.footer-link ul li{width:100%; float:none;     border-top: 1px solid #374259; margin: 0px;  }
+.footer-link ul li{
+  width:100%; float:none;     border-top: 1px solid #374259; margin: 0px; 
+   }
 .footer-link ul li:hover{border-top: 1px solid #374259; margin: 0px;}
 .footer-above {
     /*background-image: url("../images/footer-bg.png");*/
