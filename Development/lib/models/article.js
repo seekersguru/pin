@@ -35,6 +35,11 @@ var ArticleSchema = new Schema({
                name:String,
                 path:String,
                 originalName:String
+              },
+    thumblemedia:{extension:String,      
+               name:String,
+                path:String,
+                originalName:String
               }
 });
 
