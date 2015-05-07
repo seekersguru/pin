@@ -559,6 +559,49 @@ $scope.uploadPic = function(files) {
   };
 });
 
+
+angular.module('pinApp')
+.controller('ArticleSearchCtrl', function ($scope,$http,$sce,$upload,$timeout,$routeParams) {
+
+  $scope.category=['Grow','Protect','Manage','Give'];
+  $scope.color={
+    'Grow':
+    {'caption':'caption',
+    'colorclass':'greenbox',
+    'image':'green-chat.jpg'
+  },
+  'Protect':
+  {
+    'caption':'caption-red',
+    'colorclass':'redbox',
+    'image':'red-chat.jpg'
+  },
+  'Manage':
+  {
+   'caption':'caption-aqua',
+   'colorclass':'aquanbox',
+    'image':'blue-chat.jpg'
+ },
+ 'Give':
+ { 'caption':'caption-pink',
+ 'colorclass':'pinkbox',
+    'image':'purple-chat.jpg'
+}
+};
+  $scope.searchterm=$routeParams.search;
+  $scope.articleload=0;
+
+    $http({ method: 'GET', url: '/api/articles/search/'+$routeParams.search}).
+        success(function (data, status, headers, config) {
+          $scope.articles=data.articles;
+          $scope.articleload=1;      
+        })
+        .error(function (data, status, headers, config) {
+      
+        });
+    
+});
+
 angular.module('pinApp')
 .controller('ArticleAddCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
