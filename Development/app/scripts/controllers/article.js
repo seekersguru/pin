@@ -823,11 +823,23 @@ $scope.article.tags=['tag1','tag2'];
 
   $scope.setFiles = function(element) {
     $scope.filearticle=1;
+    $scope.videoupload=0;
+    $scope.imageupload=0;
     var file=element.files[0];
     $scope.$apply(function($scope) {
       console.log('files:', element.files);
       if ($scope.fileReaderSupported && (file.type.indexOf('image') > -1 || file.type.indexOf('video') > -1)) {
         $timeout(function() {
+          if(file.type.indexOf('video') > -1){
+
+            $scope.videoupload=1;
+          }
+          if(file.type.indexOf('image') > -1){
+
+            $scope.imageupload=1;
+          }
+
+
           var fileReader = new FileReader();
           fileReader.readAsDataURL(file);
           fileReader.onload = function(e) {
