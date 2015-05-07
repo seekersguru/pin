@@ -16,6 +16,7 @@ angular.module('pinApp')
       });   
   };
   
+  
   //login
   $scope.login = function(form) {
 	  $scope.submitted = true;

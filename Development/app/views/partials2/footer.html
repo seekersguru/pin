@@ -39,10 +39,12 @@
           </ul>
         </div>
         <div class="sigup-newletter col-lg-4">
+        <form class="navbar-form" novalidate  name="form" role='form' ng-submit="searcharticle(form)" > 
           <div class="input-group">
-            <input type="text" class="form-control">
-            <span class="input-group-addon"><button class="btn subscribe-bt"><img src="images/newsletter-arow.png" alt=""></button></span>
+            <input type="text" class="form-control" placeholder="Search" name="srch-term" ng-model="search" id="srch-term" required>
+            <span class="input-group-addon"><button class="btn subscribe-bt" type="submit"><img src="images/newsletter-arow.png" alt=""></button></span>
           </div>
+          </form>
         </div>
       </div>
       <p>Copyright © Private Investor Network.</p>

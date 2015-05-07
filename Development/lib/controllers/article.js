@@ -8,6 +8,32 @@ fs = require('fs'),
 path = require('path'),
 _ = require('lodash');
 
+Article.collection.ensureIndex({title: 'text', description: 'text', tags: 'text', mmitags: 'text', category: 'text', mmicategory: 'text', mmisubcategory: 'text'}, function(error) {console.log("get index");});
+
+
+
+
+/** serach that it is exist or not */
+exports.search= function(req, res){
+  var search = req.params.search;
+  var regex = new RegExp(search, 'i');  // 'i' makes it case insensitive
+  var q = Article.find({$text:{$search:search}});
+
+  q.where('public').equals(true);
+  // q.where('searchable').equals(true);
+
+   q.populate('author','name email').exec(function(err,articles) {
+    if (err) {
+      console.log(err);
+      return res.send(404);
+    } else {
+       
+      return res.json({articles:articles});
+    }
+  }); 
+};
+
+
 
 /**
  * Create file upload
