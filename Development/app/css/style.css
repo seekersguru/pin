@@ -87,16 +87,6 @@ body{font-family:georgia;   margin-bottom: 140px; background-image:url(../images
 
 a {
   color:blue;
-  /* First we need to help some browsers along for this to work.
-     Just because a vendor prefix is there, doesn't mean it will
-     work in a browser made by that vendor either, it's just for
-     future-proofing purposes I guess. */
-  -o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  /* ...and now for the proper property */
-  transition:.5s;
 }
 a:hover { color:blue; }
 .container {position:relative; }
@@ -237,6 +227,11 @@ z-index: 5;
 
 .load-more{background-color:#b59759; background-position:8px 9px; height: 32px; float: right; margin-bottom:25px;    border:solid 1px #a68849;     font-size:15px; color: #fff!important; text-transform:uppercase;  }
 .load-more:hover{background-color:#253863; border:solid 1px #2d426f;  font-size:15px; color: #fff;    }
+
+.artical-img {
+    height: 175px;
+    overflow: hidden;
+}
 
 .register-bt {
     background-color: #253863;
@@ -1226,17 +1221,7 @@ html {
 body{font-family:georgia;   margin-bottom: 140px; background-image:url(../images/body-bg.png); background-repeat:repeat;     font-size:14px; line-height:18px; }
 a {
   color:blue;
-  /* First we need to help some browsers along for this to work.
-     Just because a vendor prefix is there, doesn't mean it will
-     work in a browser made by that vendor either, it's just for
-     future-proofing purposes I guess. */
-  -o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  /* ...and now for the proper property */
-  transition:.5s;
-}
+ }
 a:hover { color:blue; }
 .container {position:relative; }
 .navbartop-default-inner{background-color:#fff; border-bottom:solid 3px #619afb;  width:100%; position:fixed; z-index:5; top:0px;}
