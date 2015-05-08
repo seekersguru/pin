@@ -35,13 +35,13 @@ angular.module('pinApp')
 $scope.rightnav="right-nav.html";
 
 setTimeout(function(){
-  // $('.post-box').hover(
-  //   function(){
-  //           $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideDown(250); //.fadeIn(250)
-  //         },
-  //         function(){
-  //           $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideUp(250); //.fadeOut(205)
-  //         }); 
+  $('.post-box').hover(
+    function(){
+            $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideDown(250); //.fadeIn(250)
+          },
+          function(){
+            $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideUp(250); //.fadeOut(205)
+          }); 
 
   $(".filterArticle li").find("a").click(function(){
 
@@ -746,8 +746,8 @@ $scope.article.tags=['tag1','tag2'];
       mainfiles[0]=file; 
     if($scope.thumbleFile)
     {
-      file.push($scope.thumbleFile[0]);
-}
+        mainfiles.push($scope.thumbleFile[0]);
+    }
 
     file.upload = $upload.upload({
       url: '/api/articles',
@@ -756,7 +756,7 @@ $scope.article.tags=['tag1','tag2'];
       //   'Content-Type': 'multipart/form-data'
       // },
       data:$scope.article,
-      file: file
+      file: mainfiles
     });
 
     file.upload.then(function(response) {
