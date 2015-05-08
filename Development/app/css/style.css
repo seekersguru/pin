@@ -233,6 +233,15 @@ z-index: 5;
     overflow: hidden;
 }
 
+
+.artical-img img {
+    height: 175px;
+    overflow: hidden;
+    width: 100%;
+}
+
+ .video-play-icon{background-image:url(../images/video-iocn.png); height: 89px; width: 90px; position:absolute; z-index: 8; left:50%  top:63px; margin-left:-45px;   }
+ 
 .register-bt {
     background-color: #253863;
     background-image: url("../images/register-arow.png");
