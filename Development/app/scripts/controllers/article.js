@@ -756,7 +756,7 @@ $scope.article.tags=['tag1','tag2'];
       //   'Content-Type': 'multipart/form-data'
       // },
       data:$scope.article,
-      file: mainfiles
+      file: file
     });
 
     file.upload.then(function(response) {

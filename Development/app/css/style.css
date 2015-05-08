@@ -241,7 +241,7 @@ z-index: 5;
 }
 
  .video-play-icon{background-image:url(../images/video-iocn.png); height: 89px; width: 90px; position:absolute; z-index: 8; left:50%  top:63px; margin-left:-45px;   }
- 
+
 .register-bt {
     background-color: #253863;
     background-image: url("../images/register-arow.png");
@@ -629,14 +629,14 @@ background-color: #d9534f;
 .sidebar ul{margin: 0px; padding: 0px; border-left:solid 3px #b59759;   margin-bottom:-35px;  }
 .sidebar ul li{margin: 0px; list-style: none; line-height:38px;   }
 .sidebar ul li a {margin: 0px; font-size:15px; color:#171717;  padding-left: 15px;}
-.sidebar ul li a:hover{margin: 0px; color: #fff;   text-decoration:none;    background:#273c69 no-repeat scroll 15px center; padding-left:30px; 
-            background-image: url('../images/arow-reg-bt-1.png'), -webkit-gradient(linear, left top, right top, color-stop(0%,#273c69), color-stop(100%,#19253f)); /* Chrome,Safari4+ */
+/*.sidebar ul li a:hover{margin: 0px; color: #fff;   text-decoration:none;    background:#273c69 no-repeat scroll 15px center; padding-left:30px; 
+            background-image: url('../images/arow-reg-bt-1.png'), -webkit-gradient(linear, left top, right top, color-stop(0%,#273c69), color-stop(100%,#19253f)); 
 
  display: block;  }
  .sidebar ul li a.active{margin: 0px; color: #fff;   text-decoration:none;    background:#273c69 no-repeat scroll 15px center; padding-left:30px; 
-            background-image: url('../images/arow-reg-bt-1.png'), -webkit-gradient(linear, left top, right top, color-stop(0%,#273c69), color-stop(100%,#19253f)); /* Chrome,Safari4+ */
+            background-image: url('../images/arow-reg-bt-1.png'), -webkit-gradient(linear, left top, right top, color-stop(0%,#273c69), color-stop(100%,#19253f)); 
 
- display: block;  }
+ display: block;  }*/
  .learning-section{padding-top:50px; }
 .learning-section h1{font-size: 22px; color: #4e4c49}
 .learning-section h2{font-size: 16px; font-weight: bold; color: #4e4c49}

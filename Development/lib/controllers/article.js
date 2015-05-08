@@ -57,7 +57,7 @@ exports.create = function(req, res, next) {
 	if(req.files && req.files.file)
 	{
 
-	var file = req.files.file[0],
+	var file = req.files.file,
 	extension=path.extname(file.name);
 
 	var originalName=Date.now()+extension;
