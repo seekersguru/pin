@@ -7,6 +7,7 @@ angular.module('pinApp')
   $scope.currentPage = 0;
   $scope.pageSize = 20;
   $scope.numberOfPage=25;
+
   $scope.category=['Grow','Protect','Manage','Give'];
   $scope.color={
     'Grow':
@@ -51,6 +52,20 @@ setTimeout(function(){
 
   }); 
 },1000);
+
+
+  $scope.searcharticle=function(form)
+  {
+
+   if(form.$valid)
+      {
+       $location.path('/articles/search/'+$scope.search);
+
+      }
+
+  };
+
+
 
 
 $scope.comments=articles.comments;
