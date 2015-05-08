@@ -139,7 +139,7 @@
     </div>
           <div class="inner-area"> 
 <h3 class="articles-head"><a ng-href="/articles/view/{{value._id}}">{{value.title}}</a></h3>
-<p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml"></p>
+<p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml" ng-if='!value.media'></p>
  </div>
  </a>
 </div>

@@ -742,13 +742,13 @@ $scope.article.tags=['tag1','tag2'];
     // for (var t = 0; t < original.length; t++) {
     //   $scope.article.tags[t] = original[t].text;
     // }
-
+    var mainfiles=[];
+      mainfiles[0]=file; 
     if($scope.thumbleFile)
     {
-
       file.push($scope.thumbleFile[0]);
+}
 
-    }
     file.upload = $upload.upload({
       url: '/api/articles',
       method: 'POST',
