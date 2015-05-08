@@ -730,7 +730,13 @@ background-color: #d9534f;
 .learn-nav ul{margin: 0px; padding:0px; margin-bottom: 25px;  box-shadow: 0px 2px 2px #a7a7a7;list-style: none; background-color:#fff;  }
 .learn-nav ul li{margin: 0px; padding:0px; float: left; list-style:none; }
 .learn-nav ul li a{margin: 0px; color: #4e4c49; background-image:url(../images/grow-icon.png); background-repeat:no-repeat;  padding: 12px 35px 12px 35px;  float:left; border-left:solid 1px #e2dfd7;  font-size:14px; text-transform:uppercase; background-color:#fff; display:block;     text-indent: 15px;background-position: 10px;}
-.learn-nav ul li+li a{ background-image:url(../images/protect.png); background-repeat:no-repeat;}
+
+.learn-nav ul li + li a {
+    background-image: url("../images/protect.png");
+    background-repeat: no-repeat;
+    text-indent: 22px;
+}
+
 .learn-nav ul li+li+li a{ background-image:url(../images/manage-icon.png); background-repeat:no-repeat;}
 .learn-nav ul li+li+li+li a{ background-image:url(../images/give.png); background-repeat:no-repeat;}
 .learn-nav ul li a:hover{opacity:0.8; text-decoration:none;   }
@@ -1841,15 +1847,16 @@ background-color: #d9534f;
 .sidebar ul{margin: 0px; padding: 0px; border-left:solid 3px #b59759;   margin-bottom:-35px;  }
 .sidebar ul li{margin: 0px; list-style: none; line-height:38px;   }
 .sidebar ul li a {margin: 0px; font-size:15px; color:#3b3b3b;  padding-left: 15px; line-height: 43px}
-.sidebar ul li a:hover{margin: 0px; color: #fff;   text-decoration:none;    background:#273c69 no-repeat scroll 15px center; padding-left:30px; 
-            background-image: url('../images/arow-reg-bt-1.png'), -webkit-gradient(linear, left top, right top, color-stop(0%,#273c69), color-stop(100%,#19253f)); /* Chrome,Safari4+ */
 
- display: block;  }
- .sidebar ul li a.active{margin: 0px; color: #fff;   text-decoration:none;    background:#273c69 no-repeat scroll 15px center; padding-left:30px; 
-            background-image: url('../images/arow-reg-bt-1.png'), -webkit-gradient(linear, left top, right top, color-stop(0%,#273c69), color-stop(100%,#19253f)); /* Chrome,Safari4+ */
+.sidebar ul li a:hover{
+  background-image:url(../images/right-sidebar.png); display:block; color:#fff; text-decoration:none; text-indent:25px;
+}
 
- display: block;  }
- .learning-section{padding-top:50px; }
+.sidebar ul li a.active{
+  background-image:url(../images/right-sidebar.png); display:block; color:#fff; text-decoration:none; text-indent:25px;  
+ }
+
+.learning-section{padding-top:50px; }
 .learning-section h1{font-size: 22px; color: #4e4c49}
 .learning-section h2{font-size: 16px; font-weight: bold; color: #4e4c49}
 .learning-section h3 {
@@ -1958,10 +1965,39 @@ background-color: #d9534f;
 }
 .learn-nav ul{margin: 0px; padding:0px; margin-bottom: 25px;  box-shadow: 0px 2px 2px #a7a7a7;list-style: none; background-color:#fff;  }
 .learn-nav ul li{margin: 0px; padding:0px; float: left; list-style:none; cursor: pointer;}
-.learn-nav ul li a{margin: 0px; color: #4e4c49; background-image:url(../images/grow-icon.png); background-repeat:no-repeat;  padding: 12px 35px 12px 35px;  float:left; border-left:solid 1px #e2dfd7;  font-size:14px; text-transform:uppercase; background-color:#fff; display:block;     text-indent: 15px;background-position: 10px;}
+
+.learn-nav ul li a {
+    background-color: #fff;
+    background-image: url("../images/grow-icon.png");
+    background-position: 18px center;
+    background-repeat: no-repeat;
+    border-left: 1px solid #e2dfd7;
+    color: #4e4c49;
+    display: block;
+    float: left;
+    font-size: 14px;
+    margin: 0;
+    padding: 13px 20px;
+    text-indent: 32px;
+    text-transform: uppercase;
+}
+
 .learn-nav ul li+li a{ background-image:url(../images/protect.png); background-repeat:no-repeat;}
-.learn-nav ul li+li+li a{ background-image:url(../images/manage-icon.png); background-repeat:no-repeat;}
-.learn-nav ul li+li+li+li a{ background-image:url(../images/give.png); background-repeat:no-repeat;}
+
+.learn-nav ul li + li + li a {
+    background-image: url("../images/manage-icon.png");
+    background-repeat: no-repeat;
+    padding: 12px 20px;
+    text-indent: 33px;
+}
+
+.learn-nav ul li + li + li + li a {
+    background-image: url("../images/give.png");
+    background-repeat: no-repeat;
+    padding: 12px 20px;
+    text-indent: 27px;
+}
+
 .learn-nav ul li a:hover{opacity:0.8; text-decoration:none;   }
 .blue-connect-menu{background-image:url(../images/blue-connect-bt.png); cursor: pointer; font-size:15px; text-transform: uppercase; line-height:40px; padding-left: 10px;    color:#fff;   background-size:100%; background-repeat:repeat-y; height: 40px;}
 .blue-connect-menu:hover{background-image:url(../images/gold-connect-bt.png); background-size:100%; background-repeat:repeat-y; height: 40px;}
@@ -2465,11 +2501,12 @@ border-top-right-radius: 6px; box-shadow: -1px -3px 3px 0 #888; padding:10px; di
   .sigup-newletter {
     float: right;
 }
+
 .breadcrumb {
     border-radius: 4px;
     list-style: outside none none;
-    margin-bottom: 20px;
-    padding: 8px 0;
+    margin-bottom: 14px;
+    padding: 11px 0;
 }
 
  .mar-back-img-inner {

@@ -128,11 +128,11 @@
 
 <div class="" ng-class="color[value.category].colorclass">
  <a ng-href="/articles/view/{{value._id}}">
- <div ng-if='value.media.extension.indexOf("image") > -1'>
+ <div ng-if='value.media.extension.indexOf("image") > -1' class="artical-img">
           <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">           
           <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}">
           </div>
-          <div ng-if='value.media.extension.indexOf("video") > -1'>
+          <div ng-if='value.media.extension.indexOf("video") > -1' class="artical-video">
 
           <img  src="images/video-play.png" class="img-responsive" title="{{value.title}}">           
     </div>

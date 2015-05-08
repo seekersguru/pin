@@ -737,11 +737,18 @@ $scope.article.tags=['tag1','tag2'];
     $scope.article.author= $rootScope.currentUser._id;
     
     var original=$scope.article.tags;
+
     // $scope.article.tags=[];
     // for (var t = 0; t < original.length; t++) {
     //   $scope.article.tags[t] = original[t].text;
     // }
 
+    if($scope.thumbleFile)
+    {
+
+      file.push($scope.thumbleFile[0]);
+
+    }
     file.upload = $upload.upload({
       url: '/api/articles',
       method: 'POST',
@@ -767,7 +774,6 @@ $scope.article.tags=['tag1','tag2'];
             $location.path('/notification').search({ 'type':'article'});
 
         }
-
         $scope.article={};
         $scope.articleDone=1;
         $scope.articleResponse=response.data;
@@ -775,7 +781,7 @@ $scope.article.tags=['tag1','tag2'];
       });
     }, function(response) {
       if (response.status > 0)
-        $scope.errorMsg = response.status + ': ' + response.data;
+      $scope.errorMsg = response.status + ': ' + response.data;
       $scope.article={};
        if($rootScope.currentUser.role == 'admin')
         {
@@ -857,6 +863,32 @@ $scope.article.tags=['tag1','tag2'];
         $scope.files.push(element.files[i]);
       }
       $scope.progressVisible = false;
+    });
+  };
+
+  $scope.setThumbleFiles = function(element) {
+    var file=element.thumblefiles[0];
+    $scope.$apply(function($scope) {
+      console.log('files:', element.thumblefiles);
+      if ($scope.fileReaderSupported && (file.type.indexOf('image') > -1 || file.type.indexOf('video') > -1)) {
+        $timeout(function() {
+          var fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+          fileReader.onload = function(e) {
+            $timeout(function() {
+              element.thumblefiles[0].dataUrl = e.target.result;
+              $scope.thumbleFile=element.thumblefiles;
+              
+            });
+          };
+        });
+      }
+      // Turn the FileList object into an Array
+      $scope.thumblefiles = [];
+      for (var i = 0; i < element.thumblefiles.length; i++) {
+        $scope.thumblefiles.push(element.thumblefiles[i]);
+      }
+      // $scope.progressVisible = false;
     });
   };
 
