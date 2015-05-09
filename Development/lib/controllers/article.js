@@ -243,6 +243,7 @@ exports.query = function(req, res) {
   
   /** public true  */
   q.where('public').equals(true);
+  q.where('money').equals(true);
 
 	/** sorting according to date */
 
