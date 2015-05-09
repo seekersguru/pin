@@ -54,6 +54,7 @@ module.exports = function(app) {
 
   app.post('/api/users', users.create);
   app.get('/api/users', users.query);
+  app.get('/api/users/adminrole', users.adminrole);
   app.get('/api/users/:userid', users.show);
   app.put('/api/users/:userid', users.update);
   app.put('/api/users/status/:userid', users.updatestatus);

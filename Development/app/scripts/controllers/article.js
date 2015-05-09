@@ -257,6 +257,16 @@ angular.module('pinApp')
 .controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,article,$sce,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
   $scope.column=[1,2];
+
+     $http({ method: 'GET', url: '/api/users/adminrole' }).
+      success(function (data, status, headers, config) {
+        // ...
+        $scope.experts=data.users;
+      }).
+      error(function (data, status, headers, config) {
+        $scope.experts={};
+      }
+      );
   
   $scope.tagcategory={
         'Grow':['Equities','Fixed Interest','Real Estate', 'Cash','Global','Alternatives'],
@@ -450,8 +460,7 @@ $scope.uploadPic = function(files) {
       mmitags:$scope.article.mmitags,
       tags:$scope.article.tags,
       column:$scope.article.column
-
-    };
+       };
 
      var mainfiles=[];
       mainfiles[0]=file; 
@@ -459,6 +468,13 @@ $scope.uploadPic = function(files) {
     {
         mainfiles.push($scope.thumbleFile[0]);
     }
+      if(!$scope.article.author)
+    {
+      $scope.articleput.author= $rootScope.currentUser._id;
+    }else{
+      $scope.articleput.author=$scope.article.author;
+    }
+
 
     file.upload = $upload.upload({
       url: '/api/articles/'+article._id,
@@ -584,7 +600,14 @@ $scope.uploadPic = function(files) {
   $scope.updateArticle=function(form){
     if(form.$valid)
     {
-      $scope.article.author=$rootScope.currentUser._id;
+        if(!$scope.article.author)
+      {
+        $scope.article.author= $rootScope.currentUser._id;
+      }else{
+        $scope.article.author= $scope.article.author;
+        
+      }
+
      var removeIndex = $scope.mmisubcategory
       .map(function(item)
       { 
@@ -684,6 +707,7 @@ angular.module('pinApp')
 angular.module('pinApp')
 .controller('ArticleAddCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
+  
   $scope.column=[1,2];
 
   $scope.tagcategory={
@@ -745,6 +769,17 @@ angular.module('pinApp')
       ]
   }
   ];
+
+   $http({ method: 'GET', url: '/api/users/adminrole' }).
+      success(function (data, status, headers, config) {
+        // ...
+        $scope.experts=data.users;
+      }).
+      error(function (data, status, headers, config) {
+        $scope.experts={};
+      }
+      );
+
 
   $scope.changemmicategory=function(){
 
@@ -813,8 +848,10 @@ $scope.article.tags=['tag1','tag2'];
   }
 
   function uploadUsing$upload(file) {
-
-    $scope.article.author= $rootScope.currentUser._id;
+    if(!$scope.article.author)
+    {
+      $scope.article.author= $rootScope.currentUser._id;
+    }
     
     var original=$scope.article.tags;
 
@@ -994,7 +1031,11 @@ $scope.article.tags=['tag1','tag2'];
       $scope.article.tags=$scope.tagcategory[$scope.article.category];
 
       
-      $scope.article.author=$rootScope.currentUser._id;
+          if(!$scope.article.author)
+    {
+      $scope.article.author= $rootScope.currentUser._id;
+    }
+
        // var original=$scope.article.tags;
        //  $scope.article.tags=[];
        //  for (var t = 0; t < original.length; t++) {

@@ -177,7 +177,6 @@ exports.update = function(req, res) {
 	delete article_data._id;
 	delete article_data.discovered;
 	delete article_data.nFavorites;
-	delete article_data.author;
 	delete article_data.comments;
 
 	console.log(req.body);

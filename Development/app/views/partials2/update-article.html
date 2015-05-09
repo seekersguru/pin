@@ -70,6 +70,18 @@
           
       </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">  
+
+          <label>Posted By Experts</label>          
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">  
+
+          <select  class="form-control" ng-model="article.author" ng-options="o._id as o.name for o in experts " placeholder="Choose Expert"></select>
+          
+      </div>
+</div>
  
       <div class="row ">
         <div class="col-lg-12 col-md-12 col-sm-12" >    
