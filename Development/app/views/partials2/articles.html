@@ -160,7 +160,8 @@
           <div ng-if='value.media.extension.indexOf("video") > -1' class="artical-video">
           <div class="video-play-icon"></div>
 
-          <img  src="images/video-play.png" class="img-responsive" title="{{value.title}}">           
+          <img ng-if="!value.thumblemedia.path" src="images/video-play.jpg" class="img-responsive" title="{{value.title}}">           
+          <img ng-if="value.thumblemedia.path" ng-src="../{{value.thumblemedia.path}}" title="{{value.title}}">        
     </div>
           <div class="inner-area"> 
 <h3 class="articles-head"><a ng-href="/articles/view/{{value._id}}">{{value.title}}</a></h3>

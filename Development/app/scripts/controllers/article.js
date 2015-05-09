@@ -381,6 +381,25 @@ $scope.removeMedia=function(){
 
 };
 
+$scope.removeThumble=function(){
+  var remove=confirm("Are you sure you want to remove this Thumble");
+  if(remove)
+  {
+
+    $http({ method: 'PUT', url: '/api/articles/removethumble/'+$scope.article._id}).
+      success(function (data, status, headers, config) {
+        $scope.article.thumblemedia="";
+      
+      })
+      .error(function (data, status, headers, config) {
+      
+      alert('There is something technical problem.Please try after some time.');
+      
+      });
+ };
+
+};
+
 $scope.uploadPic = function(files) {
     $scope.formUpload = true;
     if ($scope.mainFIle[0] !== null) {
@@ -434,6 +453,12 @@ $scope.uploadPic = function(files) {
 
     };
 
+     var mainfiles=[];
+      mainfiles[0]=file; 
+    if($scope.thumbleFile)
+    {
+        mainfiles.push($scope.thumbleFile[0]);
+    }
 
     file.upload = $upload.upload({
       url: '/api/articles/'+article._id,
@@ -442,7 +467,7 @@ $scope.uploadPic = function(files) {
       //   'Content-Type': 'multipart/form-data'
       // },
       data:$scope.articleput,
-      file: file
+      file: mainfiles
     });
 
     file.upload.then(function(response) {
@@ -485,6 +510,8 @@ $scope.uploadPic = function(files) {
   
    $scope.setFiles = function(element) {
     $scope.filearticle=1;
+    $scope.videoupload=0;
+    $scope.imageupload=0;
     $scope.articletype="image";
     var file=element.files[0];
     $scope.$apply(function($scope) {
@@ -504,7 +531,16 @@ $scope.uploadPic = function(files) {
               }else{
                 
                 $scope.articletype='video';
-              } 
+              }
+                if(file.type.indexOf('video') > -1){
+
+            $scope.videoupload=1;
+          }
+          if(file.type.indexOf('image') > -1){
+
+            $scope.imageupload=1;
+          }
+ 
             });
           };
         });
@@ -515,6 +551,32 @@ $scope.uploadPic = function(files) {
         $scope.files.push(element.files[i]);
       }
       $scope.progressVisible = false;
+    });
+  };
+
+  $scope.setThumbleFiles = function(element) {
+    var file=element.files[0];
+    $scope.$apply(function($scope) {
+      console.log('files:', element.files);
+      if ($scope.fileReaderSupported && (file.type.indexOf('image') > -1 || file.type.indexOf('video') > -1)) {
+        $timeout(function() {
+          var fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+          fileReader.onload = function(e) {
+            $timeout(function() {
+              element.files[0].dataUrl = e.target.result;
+              $scope.thumbleFile=element.files;
+              
+            });
+          };
+        });
+      }
+      // Turn the FileList object into an Array
+      $scope.thumblefiles = [];
+      for (var i = 0; i < element.files.length; i++) {
+        $scope.thumblefiles.push(element.files[i]);
+      }
+      // $scope.progressVisible = false;
     });
   };
 
