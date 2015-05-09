@@ -29,7 +29,7 @@
 <div class="row">
  <div   class="col-lg-6 col-md-6 col-sm-6" >
    <div ng-if='articles[0].media.extension.indexOf("image") > -1' class="home-image">
-          <img ng-if="!articles[0].media.path" src="images/articels001.jpg" class="img-responsive" title="{{articles[0].title}}">           
+          <img ng-if="!articles[0].media.path" ng-src="images/{{mmicategorysetting[articles[0].mmicategory].main-image}}" class="img-responsive" title="{{articles[0].title}}">           
           <img ng-if="articles[0].media.path" ng-src="../{{articles[0].media.path}}" title="{{articles[0].title}}" class="img-responsive">
           </div>
           <div ng-if='articles[0].media.extension.indexOf("video") > -1' class="home-image">
@@ -56,7 +56,7 @@
 <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in articles" ng-if="!$first || value.mmicategory== selectcategory" >
 <div class="content-block">
 <div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
-          <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">   
+          <img ng-if="!value.media.path" ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}.jpg" class="img-responsive" title="{{value.title}}">   
 
           <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
           </div>

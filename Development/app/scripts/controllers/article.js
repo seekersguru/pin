@@ -33,6 +33,27 @@ angular.module('pinApp')
 }
 };
 
+$scope.mmicategorysetting={
+'Investments':
+{
+  'main-image':'investment-img.png',
+  'icon-img':'investment-icon.jpg'
+},
+
+'WM/distribution':
+{
+  'main-image':'welath-img.png',
+  'icon-img':'wealth.png'
+},
+
+'Communication':
+{
+  'main-image':'communicationlarge-img.png',
+  'icon-img':'cummunaction.png'
+}
+
+};
+
 $scope.mmicategory=[
    {
     'name':'Investments',
