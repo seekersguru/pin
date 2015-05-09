@@ -1845,9 +1845,14 @@ background-color: #d9534f;
   background-image:url(../images/right-sidebar.png); display:block; color:#fff; text-decoration:none; text-indent:25px;
 }
 
-.sidebar ul li a.active{
-  background-image:url(../images/right-sidebar.png); display:block; color:#fff; text-decoration:none; text-indent:25px;  
- }
+.sidebar ul li a.active {
+    background-image: url("../images/right-sidebar.png");
+    background-size: 100% auto;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    text-indent: 25px;
+}
 
 .learning-section{padding-top:50px; }
 .learning-section h1{font-size: 22px; color: #4e4c49}
