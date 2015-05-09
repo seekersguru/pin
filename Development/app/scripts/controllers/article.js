@@ -256,6 +256,7 @@ $scope.changePage = function(){
 angular.module('pinApp')
 .controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,article,$sce,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
+  $scope.column=[1,2];
   
   $scope.tagcategory={
         'Grow':['Equities','Fixed Interest','Real Estate', 'Cash','Global','Alternatives'],
@@ -428,7 +429,8 @@ $scope.uploadPic = function(files) {
       mmicategory:$scope.article.mmicategory,
       mmisubcategorycategory:$scope.article.mmisubcategorycategory,
       mmitags:$scope.article.mmitags,
-      tags:$scope.article.tags
+      tags:$scope.article.tags,
+      column:$scope.article.column
 
     };
 
@@ -620,6 +622,7 @@ angular.module('pinApp')
 angular.module('pinApp')
 .controller('ArticleAddCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
+  $scope.column=[1,2];
 
   $scope.tagcategory={
         'Grow':['Equities','Fixed Interest','Real Estate', 'Cash','Global','Alternatives'],
