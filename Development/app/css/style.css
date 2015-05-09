@@ -2499,7 +2499,13 @@ height: 40px;
 ul.ed-iocn{
   list-style: none; float: right; margin-top:10px; 
 }
-.mar-img-l{margin-right:0px; padding-left: 0px; }
+
+.mar-img-l {
+    margin-right: 0;
+    padding-left: 9px;
+    padding-right: 0;
+}
+
 .post-comment-hr{font-size: 20px; font-weight:normal; border-bottom:solid 1px #c7c4bc; padding-bottom:10px;  }
 
 .ed-iocn > li{list-style: none; color:#4d4c48; font-size:16px; border-bottom:0px;   display:inline;  text-transform:uppercase;  }

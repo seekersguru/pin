@@ -66,14 +66,10 @@ exports.create = function(req, res, next) {
 		file = req.files.file[0];
 		thumb=req.files.file[1];
 
-	var originalThumbName=Date.now()+path.extname(thumb.name);
-	  // get the temporary location of the file
-	  var tmp_thumbpath = thumb.path;
-    // set where the file should actually exists - in this case it is in the "images" directory
-    var target_thumbpath = './app/uploads/' + originalThumbName,
-    savepaththumb='uploads/' + originalThumbName;
-
-	    
+	var originalThumbName=Date.now()+path.extname(thumb.name),
+	   tmp_thumbpath = thumb.path,
+     target_thumbpath = './app/uploads/' + originalThumbName,
+     savepaththumb='uploads/' + originalThumbName;
 	}
 
 	var extension=path.extname(file.name);
@@ -111,6 +107,7 @@ exports.create = function(req, res, next) {
         		originalName:thumb.name
         	};
         		
+
         	}
 
 
@@ -119,6 +116,30 @@ exports.create = function(req, res, next) {
 
         	console.log(req.body);
         	// req.body.tags=JSON.parse(req.body.tags);
+        	if(thumb)
+        	{
+				    fs.rename(tmp_thumbpath, target_thumbpath, function(err) {
+			    	if (err) throw err;
+			        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+		        fs.unlink(tmp_thumbpath, function() {
+			        	if (err) throw err;
+
+		        	var article=new Article(req.body);
+		        	article.save(function(err,article){
+		        		if(err){
+		        			console.log(err);
+		        			return res.json(400, err);
+		        		} 
+		        		return res.json({article:article});
+		        	});
+		      
+		        });
+		      
+		      });	
+
+
+        	}else{
+
         	var article=new Article(req.body);
         	article.save(function(err,article){
         		if(err){
@@ -127,6 +148,8 @@ exports.create = function(req, res, next) {
         		} 
         		return res.json({article:article});
         	});
+        		
+        	}
 
         });
       });
