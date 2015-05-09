@@ -187,11 +187,11 @@
       </videogular>
     </div>
 
-    <p>{{articles.createdAt | date:"MMMM d, yyyy" }}</p>
+    <p class="date-articale">{{articles.createdAt | date:"MMMM d, yyyy" }}</p>
     <p class="articleview" ng-bind-html="articles.description | rawHtml "></p>
     
-    <p><a class="btn Check-availability" type="button" href="/articles/01"  >Back To Articles </a>
-   <a ng-if="currentUser.role=='admin'" class="btn register-bt " type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a></p>
+    <p class="btn-articale-mar"><a class="btn btn-info" type="button" href="/articles/01"  ><i class="fa fa-angle-left"></i> Back To Articles </a>
+   <a ng-if="currentUser.role=='admin'" class="btn btn-primary " type="button" ng-href="/articles/edit/{{articles._id}}"  > Edit <i class="fa fa-angle-right"></i> </a></p>
 
   
   <div class="comments-hr-top">comments</div>
@@ -247,8 +247,8 @@
     <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
     <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
   </div> 
-    <button class="btn register-bt" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid">Comment</button>
-    <button class="btn register-bt" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid">Edit</button>
+    <button class="btn btn-primary" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid">Comment</button>
+    <button class="btn btn-info" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid">Edit</button>
 </form>
 </div>
 </div>

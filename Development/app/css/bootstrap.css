@@ -3018,9 +3018,9 @@ fieldset[disabled] .btn {
 }
 .btn-default {
   color: #fff;
-  background-color: #223256;
-  border-color: #2a4070;
-  height:40px; 
+  background-color: #b59759;
+  border-color: #a68849;
+  font-size:14px; text-transform:uppercase;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -3028,9 +3028,9 @@ fieldset[disabled] .btn {
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
-  color: #333;
-  background-color: #e6e6e6;
-  border-color: #adadad;
+  color: #fff;
+  background-color: #273c69;
+  border-color: #354d80;
 }
 .btn-default:active,
 .btn-default.active,
@@ -3063,9 +3063,16 @@ fieldset[disabled] .btn-default.active {
   background-color: #333;
 }
 .btn-primary {
-  color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+color: #fff;
+background: #273c6a; /* Old browsers */
+background: -moz-linear-gradient(left, #273c6a 0%, #18253e 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#273c6a), color-stop(100%,#18253e)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #273c6a 0%,#18253e 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #273c6a 0%,#18253e 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #273c6a 0%,#18253e 100%); /* IE10+ */
+background: linear-gradient(to right, #273c6a 0%,#18253e 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#273c6a', endColorstr='#18253e',GradientType=1 ); /* IE6-9 */
+  border-color: #2f4677; font-size:14px; font-style:italic; text-transform:uppercase;   
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -3073,9 +3080,16 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-  color: #fff;
-  background-color: #286090;
-  border-color: #204d74;
+  color:#fff;
+  border-color:#bd9f60;  
+ background: #a88a4c; /* Old browsers */
+background: -moz-linear-gradient(left, #a88a4c 0%, #836a34 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#a88a4c), color-stop(100%,#836a34)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #a88a4c 0%,#836a34 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #a88a4c 0%,#836a34 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #a88a4c 0%,#836a34 100%); /* IE10+ */
+background: linear-gradient(to right, #a88a4c 0%,#836a34 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a88a4c', endColorstr='#836a34',GradientType=1 ); /* IE6-9 */
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -3154,8 +3168,9 @@ fieldset[disabled] .btn-success.active {
 }
 .btn-info {
   color: #fff;
-  background-color: #96aa49;
-  border-color: #839735;
+  background-color: #b59759;
+  border-color: #a68849;
+  font-size:14px; font-style:italic;   
 }
 .btn-info:hover,
 .btn-info:focus,
@@ -3163,9 +3178,9 @@ fieldset[disabled] .btn-success.active {
 .btn-info:active,
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
-  color: #fff;
-  background-color: #31b0d5;
-  border-color: #269abc;
+   color: #fff;
+  background-color: #273c69;
+  border-color: #354d80;
 }
 .btn-info:active,
 .btn-info.active,

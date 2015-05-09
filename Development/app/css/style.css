@@ -472,8 +472,19 @@ li.dropdown{list-style:none; }
 .articles-section-3 .btn-gold a{font-size:18px; padding:8px 15px 8px 15px;   color:#fff; background-color:#000000;   line-height: 20px;}
 
 
+.date-articale{text-transform:uppercase; }
+.fa.fa-angle-left {
+    font-size: 16px;
+    font-weight: 800;
+    margin-right: 5px;
+}
 
+.fa.fa-angle-right {
+    margin-left: 6px;
+      font-weight: 800;
+}
 
+ .btn-articale-mar{margin-top:25px; }   
 .footer-above{background: #212d47; /* Old browsers */
 background: -moz-linear-gradient(top, #212d47 0%, #08132a 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#212d47), color-stop(100%,#08132a)); /* Chrome,Safari4+ */
@@ -1242,7 +1253,7 @@ html {
 }
 
 
-body{font-family:georgia;   margin-bottom: 140px; background-image:url(../images/body-bg.png); background-repeat:repeat;     font-size:14px; line-height:18px; }
+body{font-family:georgia;   margin-bottom: 140px; background-image:url(../images/body-bg.png); background-repeat:repeat;     font-size:14px; line-height:20px; color:#4b4842;  }
 a {
   color:blue;
  }
@@ -1290,7 +1301,9 @@ z-index: 5;
     padding-left: 0;
 }
 
-
+.articleview.ng-binding > p {
+    margin-bottom: 20px;
+}
 #nav ul li a.active {text-decoration: none;  color:#57544f; background-image:url(../images/nav-img-hover.png); cursor:default;      }
 .error-massege{height:20px; margin-bottom:10px; margin-top:-10px;   }
 .error-massege p{margin: 0px; }
@@ -1912,11 +1925,11 @@ background-color: #d9534f;
 .learning-section h1{font-size: 22px; color: #4e4c49}
 .learning-section h2{font-size: 16px; font-weight: bold; color: #4e4c49}
 .learning-section h3 {
-    color: #4e4c49;
-    font-size: 18px;
-    margin-bottom: 10px;
+    color: #5e502d;
+    font-size:20px;
+    margin-bottom:0px;
     margin-top: 0;
-    text-transform: capitalize;
+    text-transform:uppercase;
 }
 .learning-section .green-hr{background-color:#a2bb2c; height: 3px; margin-bottom:25px;  }
 
@@ -2497,7 +2510,7 @@ height: 40px;
 .or-hr{background-color:#c7c4bc; height: 1px; position: relative; margin-bottom:45px; margin-top:30px;   }
 .or-text{position: absolute; width:30px; font-size:20px; font-style:italic;   left:0px; right: 0px; margin: 0 auto; top:-10px; text-align: center;   color:#4e4c49; background-color:#f5f2e9;  }
 ul.ed-iocn{
-  list-style: none; float: right; margin-top:10px; 
+  list-style: none; float: right; margin-top:0px; 
 }
 
 .mar-img-l {
