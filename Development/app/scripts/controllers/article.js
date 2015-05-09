@@ -771,7 +771,7 @@ $scope.article.tags=['tag1','tag2'];
       //   'Content-Type': 'multipart/form-data'
       // },
       data:$scope.article,
-      file: file
+      file: mainfiles
     });
 
     file.upload.then(function(response) {
@@ -882,17 +882,17 @@ $scope.article.tags=['tag1','tag2'];
   };
 
   $scope.setThumbleFiles = function(element) {
-    var file=element.thumblefiles[0];
+    var file=element.files[0];
     $scope.$apply(function($scope) {
-      console.log('files:', element.thumblefiles);
+      console.log('files:', element.files);
       if ($scope.fileReaderSupported && (file.type.indexOf('image') > -1 || file.type.indexOf('video') > -1)) {
         $timeout(function() {
           var fileReader = new FileReader();
           fileReader.readAsDataURL(file);
           fileReader.onload = function(e) {
             $timeout(function() {
-              element.thumblefiles[0].dataUrl = e.target.result;
-              $scope.thumbleFile=element.thumblefiles;
+              element.files[0].dataUrl = e.target.result;
+              $scope.thumbleFile=element.files;
               
             });
           };
@@ -900,8 +900,8 @@ $scope.article.tags=['tag1','tag2'];
       }
       // Turn the FileList object into an Array
       $scope.thumblefiles = [];
-      for (var i = 0; i < element.thumblefiles.length; i++) {
-        $scope.thumblefiles.push(element.thumblefiles[i]);
+      for (var i = 0; i < element.files.length; i++) {
+        $scope.thumblefiles.push(element.files[i]);
       }
       // $scope.progressVisible = false;
     });
