@@ -187,8 +187,22 @@ exports.update = function(req, res) {
 	if(req.files && req.files.file)
 	{
 
-	var file = req.files.file,
-	extension=path.extname(file.name);
+		var file =" ",
+		thumb="";
+		file = req.files.file;
+
+	if( Object.prototype.toString.call( req.files.file ) === '[object Array]' ) {
+		
+		file = req.files.file[0];
+		thumb=req.files.file[1];
+
+	var originalThumbName=Date.now()+path.extname(thumb.name),
+	   tmp_thumbpath = thumb.path,
+     target_thumbpath = './app/uploads/' + originalThumbName,
+     savepaththumb='uploads/' + originalThumbName;
+	}
+
+	var extension=path.extname(file.name);
 
 	var originalName=Date.now()+extension;
 	  // get the temporary location of the file
@@ -215,7 +229,47 @@ exports.update = function(req, res) {
         		path:savepath,
         		originalName:file.name
         	};
-					Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
+        		if(thumb)
+        	{
+
+        	article_data.thumblemedia={
+        		extension: thumb.type,
+        		name:thumb.name,
+        		path:savepaththumb,
+        		originalName:thumb.name
+        	};
+        		
+
+        	}
+
+
+					if(thumb)
+        	{
+				    fs.rename(tmp_thumbpath, target_thumbpath, function(err) {
+			    	if (err) throw err;
+			        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+		        fs.unlink(tmp_thumbpath, function() {
+			        	if (err) throw err;
+
+							Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
+								if (err) {
+									console.log(err);
+									return res.json(400, err);
+								}
+								if (!article) {
+									console.log('notfound');
+									return res.send(404);
+								}
+								return res.send(200);
+							});
+
+		        });
+
+		      });	
+
+
+        	}else{
+						Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
 							if (err) {
 								console.log(err);
 								return res.json(400, err);
@@ -226,6 +280,7 @@ exports.update = function(req, res) {
 							}
 							return res.send(200);
 						});
+				}
 			  });
       });
   }
@@ -278,6 +333,39 @@ exports.removemedia = function(req, res) {
 	
 		// return res.send(200);
 
+		}
+	});
+
+};
+
+//remove media
+exports.removethumble = function(req, res) {
+	var article_id = req.params.articleid;
+	var article_data = {'thumblemedia':{}};
+
+	Article.findById(article_id)
+	.exec(function(err,article){
+		if(err){
+			console.log(err);
+			return res.json(404,err);
+		}
+		if (!article){
+			console.log('notfound');
+			return res.send(404);
+		}
+		if(article)
+		{
+     fs.unlink('./app/'+article.thumblemedia.path, function() {
+				Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
+		 			if (err) {
+					return	res.json(400, err);
+					} else {
+						// article.remove();
+					return res.send(200);
+					}
+			});
+		});
+	
 		}
 	});
 

@@ -38,6 +38,7 @@ module.exports = function(app) {
   app.put('/api/articles/:articleid', multipartMiddleware,articles.update);
   app.del('/api/articles/:articleid', articles.remove);
   app.put('/api/articles/removemedia/:articleid', articles.removemedia);
+  app.put('/api/articles/removethumble/:articleid', articles.removethumble);
   app.get('/api/articles/search/:search',articles.search);
 
 
