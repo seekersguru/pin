@@ -66,12 +66,12 @@ exports.create = function(req, res, next) {
 		file = req.files.file[0];
 		thumb=req.files.file[1];
 
-	// var originalName=Date.now()+path.extname(thumb.name);
-	//   // get the temporary location of the file
-	//   var tmp_path = file.path;
- //    // set where the file should actually exists - in this case it is in the "images" directory
- //    var target_path = './app/uploads/' + originalName,
- //    savepath='uploads/' + originalName;
+	var originalThumbName=Date.now()+path.extname(thumb.name);
+	  // get the temporary location of the file
+	  var tmp_thumbpath = thumb.path;
+    // set where the file should actually exists - in this case it is in the "images" directory
+    var target_thumbpath = './app/uploads/' + originalThumbName,
+    savepaththumb='uploads/' + originalThumbName;
 
 	    
 	}
@@ -101,12 +101,17 @@ exports.create = function(req, res, next) {
         		originalName:file.name
         	};
 
-        	// req.body.thumblemedia={
-        	// 	extension: thumb.type,
-        	// 	name:thumb.name,
-        	// 	path:savepaththumb,
-        	// 	originalName:thumb.name
-        	// };
+        	if(thumb)
+        	{
+
+        	req.body.thumblemedia={
+        		extension: thumb.type,
+        		name:thumb.name,
+        		path:savepaththumb,
+        		originalName:thumb.name
+        	};
+        		
+        	}
 
 
         	req.body.mmitags=JSON.parse(req.body.mmitags);
