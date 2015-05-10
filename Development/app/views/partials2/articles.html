@@ -21,7 +21,7 @@
 <div class="investment"><span><img ng-src="images/{{mmicategorysetting[articles[0].mmicategory]['icon-img']}}" alt=""></span><a href="#">{{articles[0].mmicategory | uppercase}}</a> <i class="fa fa-chevron-right"></i> {{articles[0].mmisubcategory}}  </div>
 </div> 
 <div class="date">
- March 19, 2015 
+ {{articles[0].createdAt  |date:"MMMM d , yyyy" }} 
 </div>    
 </div>
 
