@@ -21,7 +21,74 @@
 </div>
 
 
+
 <div class="row">
+     <div class="col-lg-9 col-md-9 col-sm-9" ng-show="creatediscussion">
+     <div class="alert alert-success" role="alert"> 
+       
+       <p>You have successfully created your discussion</p>
+     </div>
+     </div>
+     <div class="col-lg-9 col-md-9 col-sm-9" ng-show='!creatediscussion'>
+    
+    <div class="submit-articale-section">
+           <h1>Start New Discussion</h1> 
+           <div class="register-form-hr"></div>
+           <form class="register-form"  name="form" ng-submit="chatDetail(form)" novalidate>
+            <div class="row">
+            
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="form-group">
+                
+                <input required type="text" name="title" class="form-control" ng-model="chat.title" placeholder="Title"/>
+                <p class="text-danger" ng-show="form.title.$error.required && submitted">Please fill Title.</p>
+             
+              </div>
+            </div>
+             <div class="col-lg-6  col-md-6 col-sm-6">
+              <div class="form-group">
+                
+                <select ng-model="chat.topic" name ="topic" class="form-control" required id="sel1">
+                  <option  value="">Select Topic</option>
+                  <option  value="Grow">Grow</option>
+                  <option  value="Protect">Protect</option>
+                  <option  value="Manage">Manage</option>
+                  <option  value="Give">Give</option>
+                </select>
+               
+                <p class="text-danger" ng-show="form.topic.$error.required && submitted">Please fill Topic Name.</p>
+
+
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-lg-12  col-md-12 col-sm-12">
+            <div class="form-group">
+            <textarea class="form-control" name ="topic" placeholder="Your comments" required ng-model="chat.comment"> </textarea>
+            <p class="text-danger" ng-show="form.topic.$error.required && submitted">Please fill Your Comments.</p>
+            
+            </div>
+            </div>
+          </div>
+
+           <br> <button class="btn register-bt" ng-disabled="forsubmit" type="submit">
+          Create
+        </button>
+<!--         <br></br>
+        <p><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
+        <br></br>
+ -->
+
+      </form>
+
+
+
+    </div>
+
+    </div>
+
 <div class="col-lg-9 col-md-9 col-sm-9">
 
 <div class="submit-articale-section">
@@ -33,7 +100,7 @@
 
 <div class="form-group">
 
- <a ng-href="/discussion-detail?cid={{currentDate}}" class="btn register-bt" role="button" >Start Discussion</a>
+ <a ng-click="creatediscussion =!creatediscussion" ng-show="creatediscussion" class="btn register-bt" role="button" >Start Discussion</a>
 
 </div>
 
@@ -46,7 +113,7 @@
 <div id="chat-list-section">
 <div class="content mCustomScrollbar">
  
- <div class="clearfix" ng-repeat="(key , val) in chatlist" ng-class="{0:'chat-list-row-odd',1:'chat-list-row-even'}[key % 2]">
+ <div class="clearfix" ng-repeat="(key , val) in chatlist | reverse" ng-class="{0:'chat-list-row-odd',1:'chat-list-row-even'}[key % 2]">
   <div class="chat-icon"><img ng-src="images/{{color[val.topic].image}}" alt="{{val.topic}}"></div> 
   <div class="content-area">
  <h2><a ng-href="/discussion-start?cid={{val.cid}}">{{val.title}}</a></h2> 
