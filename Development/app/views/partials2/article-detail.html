@@ -165,10 +165,10 @@
 <div class="dot-hr"></div>
 <div class="row-mar">
 
-      <div ng-if='!articles.media' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
-        <img src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
+      <!-- <div ng-if='!articles.media' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
+        <img ng-src="images/{{mmicategorysetting[articles.mmicategory]['main-image']}}"  title="{{articles.title}}" class="img-responsive"> 
 
-      </div>
+      </div> -->
       <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
         <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
 

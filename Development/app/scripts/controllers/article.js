@@ -335,7 +335,26 @@ angular.module('pinApp')
 
   $scope.article.tags="";
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
+$scope.mmicategorysetting={
+'Investments':
+{
+  'main-image':'investment-img.png',
+  'icon-img':'investment-icon.jpg'
+},
 
+'WM/distribution':
+{
+  'main-image':'welath-img.png',
+  'icon-img':'wealth.png'
+},
+
+'Communication':
+{
+  'main-image':'communicationlarge-img.png',
+  'icon-img':'cummunaction.png'
+}
+
+};
 
 if($location.path()=="/articles/edit/"+article._id && article.media)
 {

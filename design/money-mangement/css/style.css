@@ -18,7 +18,16 @@
   font-style: normal; }
 html {
   font-size: 62.5%;
-  /* Sets up the Base 10 stuff */ }
+  /* Sets up the Base 10 stuff */
+  position: relative;
+  min-height: 100%; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px; }
 
 body {
   overflow-x: hidden;
@@ -27,7 +36,8 @@ body {
   background-image: url(../images/body-bg.png);
   background-repeat: repeat;
   line-height: 18px;
-  color: #373737; }
+  color: #373737;
+  margin-bottom: 140px; }
 
 ::-webkit-input-placeholder {
   color: #333; }
@@ -1109,6 +1119,50 @@ h6 {
     border-bottom: 1px dotted #212121;
     min-height: 16.43px;
     padding: 15px; }
+
+.changepassword-section {
+  background-color: #fff;
+  box-shadow: 0 0 4px 0 #cbcbcb;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto; }
+  .changepassword-section h4 {
+    font-family: "Calisto MT";
+    line-height: 1.42857;
+    font-size: 30px; }
+  .changepassword-section .inner-part {
+    padding: 40px 20px; }
+  .changepassword-section .modal-header {
+    border-bottom: 1px dotted #212121;
+    min-height: 16.43px;
+    padding: 15px; }
+
+
+/*new css add 10-5-2015 */    
+.shadow-img{background-image:url(../images/shadow-img.png); background-size: 100% auto;
+    bottom: 0;
+    font-weight: bold;
+    height: 50px;
+    padding-left: 9px;
+    padding-top: 26px;
+    position: absolute;
+    width: 100%;}
+.wealth-iocn{background-image:url(../images/wealth-small-icon.png); text-indent:20px;  font-family: 'clear_sans_lightregular'; width:18px; height:17px; color:#38c881; font-size:13px; text-transform:uppercase;}
+.communication-iocn{background-image:url(../images/comunication.png); text-indent:20px;  font-family: 'clear_sans_lightregular'; width:18px; height:17px; color:#5acce4; font-size:13px; text-transform:uppercase;}    
+.investment-iocn{background-image:url(../images/investment-icon-small.png); text-indent:20px;  font-family: 'clear_sans_lightregular'; width:18px; height:17px; color:#fd7a7a; font-size:13px; text-transform:uppercase;}        
+  .block-image{position:relative; width:100%;}
+  .play-iocn{background-image: url("../images/vedio-icon.png");
+    height: 78px;
+    left: 50%;
+    margin-left: -40px;
+    margin-top: -40px;
+    position: absolute;
+    top: 50%;
+    width: 81px; cursor:pointer; }
+
+/*--end--*/
 
 @media (max-width: 1024px) {
   .nav > li > a {
