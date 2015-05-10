@@ -12,7 +12,8 @@ var DiscussionSchema = new Schema({
   title: {type:String, required:true},
   topic: { type: String },
   cid: { type: Number },
-  
+  authorpin: { type: ObjectId, ref: 'User' },
+  authormmi: { type: ObjectId, ref: 'Serviceuser' },
   comments: [{ user: { type: ObjectId, ref: 'User' },
                username:String,
                post: String,
@@ -23,7 +24,11 @@ var DiscussionSchema = new Schema({
                username:String,
                post: String,
                posted: {type: Date, default: Date.now}
-             }]
+             }],
+  pin: { type: Boolean, default: false},           
+  money: { type: Boolean, default: false},
+
+
 
 });
 
