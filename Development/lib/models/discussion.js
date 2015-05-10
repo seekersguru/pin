@@ -27,9 +27,8 @@ var DiscussionSchema = new Schema({
              }],
   pin: { type: Boolean, default: false},           
   money: { type: Boolean, default: false},
-
-
-
+  createdAt: { type: Date, default: Date.now },
+  
 });
 
 // Public Discussion information

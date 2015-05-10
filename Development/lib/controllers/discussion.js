@@ -7,6 +7,7 @@ Discussion = mongoose.model('Discussion');
 
 exports.query = function(req, res){
 	var q = Discussion.find({});
+	q.where('money').equals(true);
 	q.exec(function(err, discussion) {
 		if (err) {
 			console.log(err);
@@ -47,6 +48,7 @@ exports.checkcid = function(req, res){
  * Create user
  */
  exports.create = function (req, res, next) {
+ 	req.body.money=true;
  	var data = req.body;
  	var newDiscussion = new Discussion(data);
  	newDiscussion.save(function(err, savedDiscussion) {
