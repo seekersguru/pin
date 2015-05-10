@@ -56,13 +56,16 @@
 <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in articles" ng-if="!$first || value.mmicategory== selectcategory" >
 <div class="content-block">
 <div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
-          <img ng-if="!value.media.path" ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}.jpg" class="img-responsive" title="{{value.title}}">   
+          <img ng-if="!value.media.path" ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">   
 
           <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
           </div>
           <div ng-if='value.media.extension.indexOf("video") > -1' class="block-image">
 
           <img  src="images/video-play.png" class="img-responsive" title="{{value.title}}">           
+      </div>
+  <div ng-if='!value.media' class="block-image">
+             <img  ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">           
       </div>
    
 <h2>{{value.title}}</h2>
