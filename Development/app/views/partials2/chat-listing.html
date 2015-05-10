@@ -1,27 +1,25 @@
-<div class="container-head learning-section">
+<div class="container">
+<div id="content-section">
+
 
 <div class="row">
-<div class="col-lg-9 col-md-9 col-sm-9">
-  <ul class="breadcrumb">
-    <li><a href="/home"><i class="fa fa-home fa-lg"></i></a></li>
-    <li><a class="active">DISCUSSION</a></li>
-    </ul>
-</div>  
-<div class="col-lg-3 col-md-3 col-sm-3">
-  <div class="row ">
-<div class="col-lg-12 col-md-12 col-sm-12 ">
-<div class="form-group">
- <input required="" type="text" name="addr" id="addr" class="form-control" placeholder="search">
-</div>
+<div class="col-lg-8 col-md-8 col-sm-8">
+
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12">
+<div class="breadcam-link">
+<ul>
+    <li><a href="#"><i class="fa fa-home"></i></a></li>
+/
+    <li class="active">Articale</li>
+</ul>
+</div> 
 </div>
 
-</div>
+
 </div> 
 
-</div>
-
-
-<div class="row">
+<div class="gray-hr"></div>
 
 <div class="col-lg-9 col-md-9 col-sm-9" ng-show="creatediscussion">
      <div class="alert alert-success" role="alert"> 
@@ -29,7 +27,7 @@
        <p>You have successfully created your discussion</p>
      </div>
      </div>
-     <div class="col-lg-9 col-md-9 col-sm-9" ng-show='!creatediscussion'>
+     <div ng-show='!creatediscussion'>
     
     <div class="submit-articale-section">
            <h1>Start New Discussion</h1> 
@@ -73,9 +71,11 @@
             </div>
           </div>
 
-           <br> <button class="btn register-bt" ng-disabled="forsubmit" type="submit">
-          Create
+            <button class="btn btn-register  btn-openid" ng-disabled="forsubmit" type="submit">
+         <i class="fa fa-caret-right"></i> Create
         </button>
+
+
 <!--         <br></br>
         <p><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
         <br></br>
@@ -86,7 +86,55 @@
     </div>
 
     </div>
-<div class="col-lg-9 col-md-9 col-sm-9">
+
+
+
+    <div>
+
+<div class="horizentle-hr">
+  <div class="or-chat">or</div> 
+ </div>
+
+
+   <form class="register-form"  name="searchform"  novalidate>
+            <div class="row">
+            
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="form-group">
+                
+                <input required type="text" name="title" class="form-control" ng-model="search.title" placeholder="Title"/>
+                <!-- <p class="text-danger" ng-show="searchform.title.$error.required && submitted">Please fill Title.</p> -->
+             
+              </div>
+            </div>
+             <div class="col-lg-6  col-md-6 col-sm-6">
+              <div class="form-group">
+                
+                <select ng-model="search.topic" name ="topic" class="form-control" required id="sel1">
+                  <option  value="">Select Topic</option>
+                  <option  value="Grow">Grow</option>
+                  <option  value="Protect">Protect</option>
+                  <option  value="Manage">Manage</option>
+                  <option  value="Give">Give</option>
+                </select>
+               
+                <!-- <p class="text-danger" ng-show="searchform.topic.$error.required && submitted">Please fill Topic Name.</p> -->
+
+
+              </div>
+            </div>
+
+          </div>
+           <button class="btn btn-prew-direc btn-prew" type="submit"> <i class="fa fa-search"></i> Lookup</button>
+<!--         <br></br>
+        <p><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
+        <br></br>
+ -->
+
+      </form>
+
+
+<br>
 
 <div class="submit-articale-section">
 <div class="row">
@@ -133,8 +181,125 @@
 </div>
 
 
-<div class="col-lg-3 col-md-3 col-sm-3">
-  <div ng-include="'partials2/right-nav.html'"> </div>
+
+
+
+
+
 </div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+ <div id="right-sidebar">
+  <div class="login-box">
+   <h2><span><img alt="" src="images/mail-icon.jpg"></span>Register for Our Newsletter</h2>
+<p>Lorem ipsum dolor amet, consecr adipisicing elit, eiusmod tempor labore dolore magna. aliqua.</p>
+     <form class="form-signin clearfix">
+                <input type="text" autofocus="" required="" placeholder="Email" class="form-control">
+                <input type="password" required="" placeholder="Password" class="form-control">
+
+                
+           <div class="pull-right">
+                <button type="submit" class="btn btn-register btn-openid">
+                 <i class="fa fa-caret-right"></i> Register</button>
+              </div>
+             
+                </form>
+  </div> 
+<div id="upcomming-event">
+<h1>Upcoming Events</h1>
+<ul>
+<li><a href="#">Indian Family Wealth Forum 2015</a></li> 
+<li><a href="#">Asian Wealth Management Forum 2015</a></li>  
+<li><a href="#">Thailand Wealth Management Forum 2015</a></li>  
+<li><a href="#">Philippines Wealth Management Forum</a></li>   
+</ul>
+</div>
+
+
+<div id="latestdiscussions">
+<h1>Latest Discussions</h1>
+<ul>
+<li>
+<article class="entry-item">
+  <div class="entry-thumb">
+   <a href="#"><img src="images/dis-img001.jpg" class="img-responsive" alt=""></a></div>
+     <!-- end:entry-thumb -->
+  <div class="entry-content clearfix">
+  
+  <div class="entry-title"> 
+  <h2><a href="#">Tony Vidler </a></h2>
+  <p>@Antonia Ruffell  </p>
+  </div>                                        
+  <div class="date">21March</div>    
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+</p>
+ <!-- end:entry-content -->
+</article>  
+</li> 
+
+<li>
+<article class="entry-item">
+  <div class="entry-thumb">
+   <a href="#"><img src="images/dis-img001.jpg" class="img-responsive" alt=""></a></div>
+     <!-- end:entry-thumb -->
+  <div class="entry-content clearfix">
+  
+  <div class="entry-title"> 
+  <h2><a href="#">Tony Vidler </a></h2>
+  <p>@Antonia Ruffell  </p>
+  </div>                                        
+  <div class="date">21March</div>    
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+</p>
+ <!-- end:entry-content -->
+</article>  
+</li> 
+
+<li>
+<article class="entry-item">
+  <div class="entry-thumb">
+   <a href="#"><img src="images/dis-img001.jpg" class="img-responsive" alt=""></a></div>
+     <!-- end:entry-thumb -->
+  <div class="entry-content clearfix">
+  
+  <div class="entry-title"> 
+  <h2><a href="#">Tony Vidler </a></h2>
+  <p>@Antonia Ruffell  </p>
+  </div>                                        
+  <div class="date">21March</div>    
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+</p>
+ <!-- end:entry-content -->
+</article>  
+</li>  
+
+<li>
+<article class="entry-item">
+  <div class="entry-thumb">
+   <a href="#"><img src="images/dis-img001.jpg" class="img-responsive" alt=""></a></div>
+     <!-- end:entry-thumb -->
+  <div class="entry-content clearfix">
+  
+  <div class="entry-title"> 
+  <h2><a href="#">Tony Vidler </a></h2>
+  <p>@Antonia Ruffell  </p>
+  </div>                                        
+  <div class="date">21March</div>    
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+</p>
+ <!-- end:entry-content -->
+</article>  
+</li>    
+</ul>
+</div>
+
+
+ </div> 
+</div>   
+</div>
+ 
 </div>
 </div>

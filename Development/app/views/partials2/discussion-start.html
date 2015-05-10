@@ -1,20 +1,18 @@
-<div class="container-head learning-section">
+<div class="container">
+<div id="content-section">
 
-  <div class="row mar-row45">
-    <div class="col-lg-9 col-md-9 col-sm-9">
-      <ul class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
-        <li><a  class="active" >DISCUSSION</a></li>
-      </ul>
-    </div>  
-  </div>
+
 
   <div class="row">
 
-    <div class="col-lg-9 col-md-9 col-sm-9" ng-if="chatid=='nochat'">
+    <div class="col-lg-8 col-md-8 col-sm-8" ng-if="chatid=='nochat'">
+
       <div class="submit-articale-section">
+
         <div class="row">
-         <div class="col-lg-8 col-md-8 col-sm-8"><h1>Discussion</h1> </div>
+ 
+         <div class="col-lg-8 col-md-8 col-sm-8">
+         <h1>Discussion</h1> </div>
        </div>
        <div class="chatlsit-head-hr"></div>
        <div class="container">
@@ -26,16 +24,31 @@
    </div>
  </div>
 
- <div class="col-lg-9 col-md-9 col-sm-9" ng-if="chatid != 'nochat' ">
+ <div class="col-lg-8 col-md-8 col-sm-8" ng-if="chatid != 'nochat' ">
   <div class="submit-articale-section">
     <div class="row">
-     <div class="col-lg-8 col-md-8 col-sm-8"><h1>Discussion</h1></div>
+     <div class="col-lg-8 col-md-8 col-sm-8">
+                 <div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12">
+<div class="breadcam-link">
+<ul>
+    <li><a href="#"><i class="fa fa-home"></i></a></li>
+/
+    <li class="active">Articale</li>
+</ul>
+</div> 
+</div>
+
+
+</div> 
+<div class="gray-hr"></div>
+     <h1>Discussion</h1></div>
    </div>
    <div class="chatlsit-head-hr"></div>
    <div class="container">
     <div class="row">
-     <div class="pull-left"><img src="images/chat-listing-2-top.png" alt=""></div>
-     <div class="pull-left chat-listing-2-heading">{{discussion.title}} <span>- Topic Name {{discussion.topic}}</span></div>
+     <div class="chat-img"><img src="images/chat-listing-2-top.png" alt=""></div>
+     <div class="chat-listing-2-heading">{{discussion.title}} <span>- Topic Name {{discussion.topic}}</span></div>
    </div>
  </div>
 
@@ -51,7 +64,7 @@
           <div class="clearfix">
           <div class="content-area">
            <h2>{{value.username}}</h2>
-           <span class="date sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
+           <span class="sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
            <p class="" ng-hide="showEdit">{{ value.post}}</p>
          </div>
  
@@ -70,9 +83,10 @@
       <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
       <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
         </div>
-        <button type="submit" class="btn register-bt pull-right">
+        
+        <button type="submit" class="btn btn-register btn-openid ">
 
-         Edit
+         <i class="fa fa-caret-right"></i> Edit
        </button>
      </form>
    </div>
@@ -86,7 +100,7 @@
 </div>
 
 <div class="actionBox">
-  <div class="post-comment-hr">Post Your Comment</div>
+  <h3>Post Your Comment</h3>
   <div class="gray-hr"></div>
   <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" ng-if="currentUser._id" class="" >
     <div class="chat-2mar15" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
@@ -96,7 +110,8 @@
       <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
     </div> 
     <!-- <div class="form-group"> -->
-    <button class="btn register-bt" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid">Send</button>
+    
+    <button class="btn btn-register btn-openid" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid"><i class="fa fa-caret-right"></i> Send</button><br>
     <!-- <button class="btn btn-default" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid">Edit</button> -->
     <!-- </div> -->
   </form>
@@ -106,8 +121,9 @@
 </div>
 </div>
 
-<div class="col-lg-3 col-md-3 col-sm-3">
+<div class="col-lg-4 col-md-4 col-sm-4">
   <div ng-include="'partials2/right-nav.html'"> </div>
+</div>
 </div>
 </div>
 </div>
