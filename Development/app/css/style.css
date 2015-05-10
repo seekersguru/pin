@@ -69,9 +69,10 @@ h6 {
   font-size: 13px;
   font-size: 1.3rem; }
 
+.articale-title-h{height:42px; }
 .navbar-stiky {
   border: none;
-  min-height: 90px;
+  min-height: 100px;
   box-shadow: 0px 0px 4px 2px #cbcbcb;
   margin-bottom: 0px;
   background-color: #fff;
@@ -120,15 +121,22 @@ h6 {
   margin-bottom: 0px; }
 
 .navbar-form {
-  padding: 0px 0px 10px 0; }
+  padding: 8px 0px 8px 0; float: right; }
   .navbar-form .form-control {
     display: inline-block;
     vertical-align: middle;
     width: 215px;
-    width: auto;
+    width: auto; height:30px; 
     border-right: 0px;
     border-radius: 0px;
     box-shadow: none; }
+
+      .navbar-form .btn.btn-default {
+    padding: 4px;
+}
+ .navbar-form .btn.focus, .btn:focus, .btn:hover {
+    color: #373737;
+}
   .navbar-form .input-group .form-control:last-child, .navbar-form .input-group-addon:last-child, .navbar-form .input-group-btn:first-child > .btn-group:not(:first-child) > .btn, .navbar-form .input-group-btn:first-child > .btn:not(:first-child), .navbar-form .input-group-btn:last-child > .btn, .navbar-form .input-group-btn:last-child > .btn-group > .btn, .navbar-form .input-group-btn:last-child > .dropdown-toggle {
     border-radius: 0px;
     border-left: none; }
@@ -160,7 +168,7 @@ h6 {
   width: 100%; }
 
 .top-link {
-  margin-top: 15px; }
+  margin-top: 15px; margin-bottom: 4px; }
   .top-link .dropdown {
     float: left; }
   .top-link span {
@@ -179,24 +187,27 @@ h6 {
     .top-link a.active {
       color: #259f64;
       text-decoration: none; }
-
+.navbar-nav {
+    float: left;
+    margin: 40px 0 0 0;
+}
 .navbar-brand {
   float: left;
   font-size: 18px;
   height: auto;
   line-height: 20px;
-  padding: 10px 10px 10px 0; }
-
+  padding: 15px 10px 15px 0; }
+.navbar-form .input-group > .form-control{width: 253px;}
 #content-section {
   margin-top: 30px;
   margin-bottom: 30px;
   padding-left: 18px;
-  background-color: #fff;
+  background-color: #fff; padding-bottom:30px; 
   box-shadow: 0px 0px 4px 0px #cbcbcb; }
   #content-section .content-row-mar {
     margin-top: 20px; }
   #content-section .content-block {
-    display: block; }
+    display: block; margin-bottom:30px; min-height: 336px;  }
     #content-section .content-block small {
       color: #666666;
       font-size: 13px; }
@@ -1092,12 +1103,12 @@ h6 {
   background-clip: padding-box;
   background-color: #fff;
   border: 5px solid #cccccc;
-  border-radius: 6px;
+  border-radius:0px;
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   outline: 0 none;
-  position: relative;
+  position: relative; margin:40px auto 40px auto;   
   width: 708px;
-  margin: 0 auto; }
+   }
   .notification-section h4 {
     font-family: "Calisto MT";
     line-height: 1.42857;
@@ -1241,7 +1252,10 @@ h6 {
 @media (max-width: 767px) {
   #content-section {
     padding: 10px; }
-
+.navbar-nav {
+    float: left;
+    margin: 0px 0 0;
+}
   .paddingr-7 {
     padding-right: 15px; }
 
