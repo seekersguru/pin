@@ -18,14 +18,17 @@
   font-style: normal; }
 html {
   font-size: 62.5%;
+   min-height: 100%;
+    position: relative;
   /* Sets up the Base 10 stuff */ }
+
 
 body {
   overflow-x: hidden;
   font-family: 'clear_sans_lightregular';
   font-size: 14px;
   background-image: url(../images/body-bg.png);
-  background-repeat: repeat;
+  background-repeat: repeat;   margin-bottom: 113px;
   line-height: 18px;
   color: #373737; }
 
@@ -92,7 +95,11 @@ h6 {
   .navbar-stiky .navbar-default .navbar-nav > li > a:focus, .navbar-stiky .navbar-default .navbar-nav > li > a:hover {
     background-color: transparent;
     color: #052a52; }
-
+.footer-learning{height:78px; }
+.footer-social {
+    margin-top: -10px;
+    padding-top: 0;
+}
 #sticky-holder {
   position: relative; }
 
@@ -510,7 +517,11 @@ h6 {
 
 #footer-bg {
   background-color: #3f3f3f;
-  border-top: 10px solid #269f64; }
+  border-top: 10px solid #269f64;     
+    bottom: 0;
+    height: 113px;
+    position: absolute;
+    width: 100%;}
   #footer-bg .copyright {
     background-color: #000;
     padding: 3px; }
@@ -542,12 +553,13 @@ h6 {
         #footer-bg ul li a:hover {
           color: #bee196; }
   #footer-bg .footer-social ul {
-    margin: 0 0 15px 0;
-    padding: 0;
-    list-style: none; }
+    float: right;
+    list-style: outside none none;
+    margin: 24px 0 16px;
+    padding: 0; }
     #footer-bg .footer-social ul li {
       font-size: 18px;
-      font-size: 1.8rem; }
+      font-size: 1.8rem; float: left; }
       #footer-bg .footer-social ul li a.facebook {
         color: #fff;
         float: left;
@@ -852,7 +864,7 @@ h6 {
   padding: 0px;
   color: #fff; }
 .directory-section ul {
-  margin: 10px 0 40px 0;
+  margin: 0px 0 40px 0;
   padding: 0;
   list-style: none;
   border-top: dotted 1px #000; }
