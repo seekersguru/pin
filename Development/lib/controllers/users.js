@@ -43,7 +43,7 @@ exports.adminrole = function(req, res){
   var q = User.find({role: {'$ne':'admin' }});
   q.where('status').equals(true);
   q.where('searchable').equals(true);
-  // q.where('adminrole').equals("Experts");
+  q.where('adminrole').equals("Experts");
 
   q.exec(function(err, users) {
     if (err) {
