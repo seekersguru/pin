@@ -36,19 +36,22 @@ $scope.mmicategorysetting={
 'Investments':
 {
   'main-image':'investment-img.png',
-  'icon-img':'investment-icon.jpg'
+  'icon-img':'investment-icon.jpg',
+  'classname':'investment-iocn'
 },
 
 'WM/distribution':
 {
   'main-image':'welath-img.png',
-  'icon-img':'wealth.png'
+  'icon-img':'wealth.png',
+  'classname':'wealth-iocn'
 },
 
 'Communication':
 {
   'main-image':'communicationlarge-img.png',
-  'icon-img':'cummunaction.png'
+  'icon-img':'cummunaction.png',
+  'classname':'communication-iocn'
 }
 
 };

@@ -63,7 +63,7 @@
 
           <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
           <div class="shadow-img">
-<div class="communication-iocn">{{value.mmicategory}}</div>
+<div ng-class="{{value.classname}}">{{value.mmicategory}}</div>
 </div>          
 
           </div>
