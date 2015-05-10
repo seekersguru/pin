@@ -2,7 +2,6 @@
 angular.module('pinApp')
 .controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles,$sce,$timeout) {
   $scope.article={};
-  $scope.articles=articles;
   $scope.descriptionLimit=90;
   $scope.currentPage = 0;
   $scope.pageSize = 20;
@@ -103,7 +102,8 @@ $scope.mmicategory=[
       ]
   }
   ];
-
+$scope.articles=articles;
+  
 $scope.rightnav="right-nav.html";
 
 setTimeout(function(){
