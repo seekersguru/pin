@@ -172,11 +172,14 @@ if(form.$valid)
     $scope.submitted = true;
     if(form.$valid) {
     $scope.forsubmit=1;
+
       $scope.chat.comments=[{ user: $rootScope.currentUser._id,
                username:$rootScope.currentUser.name,
                post: $scope.chat.comment               
              }];
       $scope.chat.cid=new Date().getTime();       
+      $scope.chat.authorpin=$rootScope.currentUser._id;
+      
       $http({ method: 'POST', url: '/api/discussions',data:$scope.chat }).
       success(function (data, status, headers, config) {
         // $location.path('/discussion-start').search('cid',$scope.chatid);

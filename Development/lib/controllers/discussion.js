@@ -7,6 +7,7 @@ Discussion = mongoose.model('Discussion');
 
 exports.query = function(req, res){
 	var q = Discussion.find({});
+  q.where('pin').equals(true);
 	q.exec(function(err, discussion) {
 		if (err) {
 			console.log(err);
@@ -48,6 +49,7 @@ exports.checkcid = function(req, res){
  */
  exports.create = function (req, res, next) {
  	var data = req.body;
+ 			req.body.pin=true;
  	var newDiscussion = new Discussion(data);
  	newDiscussion.save(function(err, savedDiscussion) {
  		if (err) return res.json(400, err);
