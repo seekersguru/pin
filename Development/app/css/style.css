@@ -173,7 +173,10 @@ h6 {
   padding: 6px 12px;
   transition: none;
   width: 100%; }
-
+.sub-text {
+    font-size: 13px;
+    text-transform: capitalize;
+}
 .top-link {
   margin-top: 15px; margin-bottom: 4px; }
   .top-link .dropdown {
@@ -762,7 +765,9 @@ h6 {
         font-size: 14px;
         top: -6px;
         position: relative; }
-
+.chat-2mar15 {
+    margin-top: 25px;
+}
 .directory-section .row-mar {
   margin-top: 30px; }
 .directory-section .imge-pad {
@@ -771,7 +776,7 @@ h6 {
   border-bottom: 1px dotted #212121;
   font-family: "Calisto MT";
   font-size: 30px;
-  margin-bottom: 15px;
+  margin-bottom: 9px;
   padding-bottom: 15px; }
 .directory-section h3 {
   border-bottom: 1px solid #ddd;
@@ -810,7 +815,7 @@ h6 {
   width: 66%; }
 .directory-section .comment-reply {
   float: right;
-  width: 30%; }
+  width: 20%; }
 .directory-section .comment-re-icon {
   margin-left: 6px; }
 .directory-section .comment-reply {
@@ -887,7 +892,41 @@ h6 {
       text-decoration: none; }
       .directory-section ul li a:hover {
         color: #0a386a; }
-
+        ul.ed-iocn {
+    float: right;
+    list-style: outside none none;
+    margin-top: 0;
+}
+.ed-iocn > li {
+    border-bottom: 0 none;
+    color: #4d4c48;
+    display: inline;
+    font-size: 16px;
+    list-style: outside none none;
+    text-transform: uppercase;
+}
+.ed-iocn > li i {
+    font-size: 16px;
+    list-style: outside none none;
+    margin-right: 5px;
+}
+.ed-iocn > li a {
+    color: #4d4c48;
+    list-style: outside none none;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+.ed-iocn > li a:hover {
+    color: #263c65;
+    list-style: outside none none;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.ed-iocn > li + li a:hover {
+    color: #b0332d;
+    list-style: outside none none;
+    text-transform: uppercase;
+}
 .preview-link {
   color: #083668;
   font-size: 18px;
