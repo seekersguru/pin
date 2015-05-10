@@ -32,7 +32,7 @@
  -->
 
    <div class="meet-baner-img">
-<img  ng-if="!events[0].media" src="images/meet-baner-img-2.jpg" class="img-responsive" alt="">
+<div class="meet-baner-top"><img  ng-if="!events[0].media" src="images/meet-baner-img-2.jpg" class="img-responsive" alt=""></div>
 <img  ng-if="events[0].media" src="{{events[0].media.path}}" class="img-responsive" alt="">
 
 <div class="baner-content">
@@ -43,7 +43,7 @@
 <p class="articleview" ng-bind-html="events[0].bannertext | rawHtml "></p>
 </div>
 
-<P><a class="btn Check-availability" ng-href="/event/view/{{events[0]._id}}" >See Details </a>
+<P><a class="btn btn-info" ng-href="/event/view/{{events[0]._id}}" >See Details </a>
 </P>
 </div>
 </div>
@@ -77,7 +77,7 @@
 </div>
 
 
-<p class="pull-right event-bt-mar"><button class="btn Check-availability" type="button"> LOAD MORE </button></p>
+<p class="pull-right "><button class="btn btn-default" type="button"> LOAD MORE <i class="fa fa-angle-down"></i></button>  </p>
 <br>
 </div>  
 
