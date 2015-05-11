@@ -159,7 +159,7 @@
 <div id="chat-list-section">
 <div class="content mCustomScrollbar">
  
- <div class="clearfix" ng-repeat="(key , val) in chatlist | reverse" ng-class="{0:'chat-list-row-odd',1:'chat-list-row-even'}[key % 2]">
+ <div class="clearfix" ng-repeat="(key , val) in chatlist | reverse | filter:(search.title || search.topic) " ng-class="{0:'chat-list-row-odd',1:'chat-list-row-even'}[key % 2]">
   <div class="chat-icon"><img ng-src="images/{{color[val.topic].image}}" alt="{{val.topic}}"></div> 
   <div class="content-area">
  <h2><a ng-href="/discussion-start?cid={{val.cid}}">{{val.title}}</a></h2> 
@@ -188,116 +188,7 @@
 
 </div>
 <div class="col-lg-4 col-md-4 col-sm-4">
- <div id="right-sidebar">
-  <div class="login-box">
-   <h2><span><img alt="" src="images/mail-icon.jpg"></span>Register for Our Newsletter</h2>
-<p>Lorem ipsum dolor amet, consecr adipisicing elit, eiusmod tempor labore dolore magna. aliqua.</p>
-     <form class="form-signin clearfix">
-                <input type="text" autofocus="" required="" placeholder="Email" class="form-control">
-                <input type="password" required="" placeholder="Password" class="form-control">
-
-                
-           <div class="pull-right">
-                <button type="submit" class="btn btn-register btn-openid">
-                 <i class="fa fa-caret-right"></i> Register</button>
-              </div>
-             
-                </form>
-  </div> 
-<div id="upcomming-event">
-<h1>Upcoming Events</h1>
-<ul>
-<li><a href="#">Indian Family Wealth Forum 2015</a></li> 
-<li><a href="#">Asian Wealth Management Forum 2015</a></li>  
-<li><a href="#">Thailand Wealth Management Forum 2015</a></li>  
-<li><a href="#">Philippines Wealth Management Forum</a></li>   
-</ul>
-</div>
-
-
-<div id="latestdiscussions">
-<h1>Latest Discussions</h1>
-<ul>
-<li>
-<article class="entry-item">
-  <div class="entry-thumb">
-   <a href="#"><img src="images/dis-img001.jpg" class="img-responsive" alt=""></a></div>
-     <!-- end:entry-thumb -->
-  <div class="entry-content clearfix">
-  
-  <div class="entry-title"> 
-  <h2><a href="#">Tony Vidler </a></h2>
-  <p>@Antonia Ruffell  </p>
-  </div>                                        
-  <div class="date">21March</div>    
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-</p>
- <!-- end:entry-content -->
-</article>  
-</li> 
-
-<li>
-<article class="entry-item">
-  <div class="entry-thumb">
-   <a href="#"><img src="images/dis-img001.jpg" class="img-responsive" alt=""></a></div>
-     <!-- end:entry-thumb -->
-  <div class="entry-content clearfix">
-  
-  <div class="entry-title"> 
-  <h2><a href="#">Tony Vidler </a></h2>
-  <p>@Antonia Ruffell  </p>
-  </div>                                        
-  <div class="date">21March</div>    
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-</p>
- <!-- end:entry-content -->
-</article>  
-</li> 
-
-<li>
-<article class="entry-item">
-  <div class="entry-thumb">
-   <a href="#"><img src="images/dis-img001.jpg" class="img-responsive" alt=""></a></div>
-     <!-- end:entry-thumb -->
-  <div class="entry-content clearfix">
-  
-  <div class="entry-title"> 
-  <h2><a href="#">Tony Vidler </a></h2>
-  <p>@Antonia Ruffell  </p>
-  </div>                                        
-  <div class="date">21March</div>    
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-</p>
- <!-- end:entry-content -->
-</article>  
-</li>  
-
-<li>
-<article class="entry-item">
-  <div class="entry-thumb">
-   <a href="#"><img src="images/dis-img001.jpg" class="img-responsive" alt=""></a></div>
-     <!-- end:entry-thumb -->
-  <div class="entry-content clearfix">
-  
-  <div class="entry-title"> 
-  <h2><a href="#">Tony Vidler </a></h2>
-  <p>@Antonia Ruffell  </p>
-  </div>                                        
-  <div class="date">21March</div>    
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-</p>
- <!-- end:entry-content -->
-</article>  
-</li>    
-</ul>
-</div>
-
-
- </div> 
+  <div ng-include="'partials2/right-nav.html'"> </div>
 </div>   
 </div>
  
