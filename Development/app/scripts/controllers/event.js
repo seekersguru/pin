@@ -9,6 +9,18 @@ $scope.events=events;
 
 angular.module('pinApp')
 .controller('EventViewCtrl', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope,events) {
+    $timeout(function(){
+
+    $('.post-box').hover(
+        function(){
+            $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideDown(250); //.fadeIn(250)
+        },
+        function(){
+            $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideUp(250); //.fadeOut(205)
+        }
+    ); 
+    },500);
+
 
   $scope.usingFlash = FileAPI && FileAPI.upload != null;
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
