@@ -260,12 +260,13 @@ angular.module('pinApp')
 
      $http({ method: 'GET', url: '/api/users/adminrole' }).
       success(function (data, status, headers, config) {
-        $scope.experts=[{
+        var me=[{
                     _id: $rootScope.currentUser._id,
                     name: 'ME'
                 }];
 
-        $scope.experts.push(data.users);
+        data.user.push(me);
+        $scope.experts=data.users;
       }).
       error(function (data, status, headers, config) {
         $scope.experts={};
@@ -777,12 +778,13 @@ angular.module('pinApp')
    $http({ method: 'GET', url: '/api/users/adminrole' }).
       success(function (data, status, headers, config) {
         // ...
-        $scope.experts=[{
+        var me=[{
                     _id: $rootScope.currentUser._id,
                     name: 'ME'
                 }];
 
-        $scope.experts.push(data.users);
+        data.user.push(me);
+        $scope.experts=data.users;
       }).
       error(function (data, status, headers, config) {
         $scope.experts={};
