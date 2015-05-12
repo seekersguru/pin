@@ -265,7 +265,7 @@ angular.module('pinApp')
                     name: 'ME'
                 };
 
-        data.user.push(me);
+        data.users.push(me);
         $scope.experts=data.users;
       }).
       error(function (data, status, headers, config) {
@@ -783,7 +783,7 @@ angular.module('pinApp')
                     name: 'ME'
                 };
 
-        data.user.push(me);
+        data.users.push(me);
         $scope.experts=data.users;
       }).
       error(function (data, status, headers, config) {
