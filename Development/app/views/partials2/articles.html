@@ -56,7 +56,7 @@
  
 <div class="row">
 
-<div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in articles" ng-if="!$first || value.mmicategory== selectcategory" >
+<div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in articles | filter:selectcategory " ng-if="!$first" > 
 <div class="content-block">
 <div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
           <img ng-if="!value.media.path" ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">   
