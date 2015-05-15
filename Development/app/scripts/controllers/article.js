@@ -107,7 +107,9 @@ $scope.mmicategory=[
   ];
 $scope.articles=articles;
 $scope.exceptonearticle=articles;
-$scope.exceptonearticle.splice(0,1);
+if( Object.prototype.toString.call( $scope.exceptonearticle ) === '[object Array]' ) {
+  $scope.exceptonearticle.splice(0,1);
+}
   
 $scope.rightnav="right-nav.html";
 
