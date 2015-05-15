@@ -106,6 +106,8 @@ $scope.mmicategory=[
   }
   ];
 $scope.articles=articles;
+$scope.exceptonearticle=articles;
+$scope.exceptonearticle.splice(0,1);
   
 $scope.rightnav="right-nav.html";
 
