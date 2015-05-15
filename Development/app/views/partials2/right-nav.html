@@ -32,16 +32,24 @@
 							<h1>Upcoming Events</h1>
 							<ul>
 
-							<li ng-repeat="(key,value) in pineventlist"><a ng-href="/event/view/{{value._id}}">{{value.title}}</a></li> 
+							<li ng-repeat="(key,value) in pineventlist"><a ng-href="/event/view/{{value._id}}">{{value.title}} -- ({{ value.eventdate | date:"d-MMMM-yyyy" }})</a></li> 
 						
 							</ul>
 						</div>
 
 
-						<div id="latestdiscussions">
+						<!-- <div id="latestdiscussions"> -->
+						<div id="upcomming-event">
 							<h1>Latest Discussions</h1>
-							<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/RatanRituraj" data-widget-id="593275119876734976">Tweets by @RatanRituraj</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+							<!-- <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/RatanRituraj" data-widget-id="593275119876734976">Tweets by @RatanRituraj</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
+
+							<ul>
+
+							<li ng-repeat="(key,value) in pindiscussionslist"><a ng-href="/discussion-start?cid={{value.cid}}">{{value.title}} -- ({{ value.topic }})</a></li> 
+						
+							</ul>
+
 										</div>
 
 

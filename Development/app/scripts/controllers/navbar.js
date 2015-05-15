@@ -52,6 +52,26 @@ $scope.popuplogin=function(){
 
   };
 
+  $scope.getDiscussionslist=function(){
+    $scope.eventlist=[];
+     $http({
+      method:"GET",
+      url:'api/discussions'
+    }).
+    success(function (data,status,headers,config){
+
+      $scope.pindiscussionslist=data.discussion;
+
+    })
+
+    .error(function (data,status,headers,config){
+
+    });
+
+
+
+  };
+
   $scope.searcharticle=function(form)
   {
 
@@ -64,6 +84,7 @@ $scope.popuplogin=function(){
   };
 
 $scope.getEventslist();  
+$scope.getDiscussionslist();
   //login
   $scope.login = function(form) {
 	  $scope.submitted = true;

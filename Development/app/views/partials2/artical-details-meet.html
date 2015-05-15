@@ -96,7 +96,10 @@ AGENDA
  <p>{{events.location.state}} - {{events.location.postalcode}}</p>
 
 <p>{{events.location.country}}</p>
-<a type="button" class="btn btn-register btn-openid" ng-href="http://maps.google.com/maps?z={{events.location.zoom}}&t=m&q=loc:{{events.location.lat}}+-{{events.location.lng}}">
+<a type="button" class="btn btn-register btn-openid" ng-href="http://maps.google.com/maps?saddr={{events.location.lat}},{{events.location.lng}}&daddr={{events.location.lat}},{{events.location.lng}}&hl=en&sll={{events.location.lat}},{{events.location.lng}}&t=m&mra=mift&mrsp=1&sz={{events.location.zoom}}&z={{events.location.zoom}}" 
+
+
+target="_blank">
                  <i class="fa fa-caret-right"></i> get direction</a>
 
 </div>
