@@ -126,7 +126,59 @@ h6 {
   float: right !important;
   margin-right: -15px;
   margin-bottom: 0px; }
+.rituraj .btn-default {
+   background-color: transparent;
+   border-color: transparent;
+   color: #393b38;
+   height: 32px;
+    padding: 6px 8px;
+    font-family: arial;
+    font-size: 16px;
+}
 
+.rituraj .btn.disabled, .rituraj .btn[disabled],.rituraj fieldset[disabled] .btn{
+background-color: transparent;
+   border-color: transparent;
+   color: #393b38;
+   opacity: 1;
+}
+
+.rituraj .btn-default:hover,.rituraj .btn-default:focus,.rituraj .btn-default.focus,.rituraj .btn-default:active,.rituraj .btn-default.active, .open > .dropdown-toggle.btn-default{
+background-color: #fff;
+   border-color: #dddad1;
+   box-shadow: none;
+   color: #393b38;
+   height: 32px;
+}
+
+.rituraj .btn-group,.rituraj .btn-group-vertical {
+   border-right: 1px solid #c1beb5;
+   display: inline-block;
+   position: relative;
+   vertical-align: middle;
+   margin-bottom: 20px;
+}
+.rituraj .btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
+    border-radius: 0;
+    margin-right: 8px;
+}
+.rituraj .btn-group .btn-default:nth-child(1){
+  border: solid 1px #0e3e74; border-radius:0px; margin-left:8px; margin-right:8px;  padding-top:4px;    
+}
+
+.rituraj .btn-group:last-child,.rituraj .btn-group-vertical {
+   border-right:none;
+   display: inline-block;
+   position: relative;
+   vertical-align: middle;
+}
+
+.rituraj .btn-group:first-child,.rituraj .btn-group-vertical {
+   display: inline-block;
+   position: relative;
+   vertical-align: middle;
+   font-style: italic;
+}
 .navbar-form {
   padding: 8px 0px 8px 0; float: right; }
   .navbar-form .form-control {
@@ -705,7 +757,7 @@ h6 {
   padding-bottom: 6px;
   margin-bottom: 15px; }
 .event-detais-section h4 {
-  font-family: 'clear_sans_lightregular';
+  font-family: 'clear_sans_mediumregular';
   color: #002752;
   line-height: 24px;
   font-size: 18px; }
@@ -1502,6 +1554,21 @@ h6 {
 .navbar-nav {
     float: left;
     margin: 0px 0 0;
+}
+
+.notification-section {
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 5px solid #cccccc;
+  border-radius:0px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  outline: 0 none;
+  position: relative; margin:40px auto 40px auto;   
+  width:98%;
+   }
+
+   .footer-learning {
+    height:auto;
 }
 #chat-list-section .content-area {
     float: left;

@@ -28,14 +28,14 @@
 
 
 <div class="directory-section">
- <h1> {{article.title}}</h1>
+ <h1> {{article.title}}fdsf</h1>
  <p><b>Type Institution:  </b>{{article.organization}}</p>
  <p><b>Website:  </b>{{article.url}}</p>
  <p class="articleview" ng-bind-html="article.description | rawHtml "></p>
  <div class="gray-hr"></div>
     
 <p><a class="btn readmore-bt" type="button" href="/companies"  >Back To Companies </a>
- <a ng-if="currentUser.role=='admin'" class="btn register-bt " type="button" ng-href="/company/edit/{{article._id}}"  >Edit </a></p>
+ <a ng-if="currentUser.role=='admin'" class="btn readmore-bt " type="button" ng-href="/company/edit/{{article._id}}"  >Edit </a></p>
 
 </div>
 </div>
