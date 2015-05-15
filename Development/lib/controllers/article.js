@@ -184,7 +184,7 @@ exports.removemedia = function(req, res) {
 exports.show=function(req,res){
 	var articleid=req.params.articleid;
 	Article.findById(articleid)
-	.populate('author','name email')
+	.populate('author','name email fullname')
 	.populate('scomments.user','_id fullname following commentvisible')
 	.exec(function(err,article){
 		if(err){
@@ -214,7 +214,7 @@ exports.search= function(req, res){
   q.where('public').equals(true);
   // q.where('searchable').equals(true);
 
-   q.populate('author','name email').exec(function(err,articles) {
+   q.populate('author','name email fullname').exec(function(err,articles) {
     if (err) {
       console.log(err);
       return res.send(404);
@@ -250,7 +250,7 @@ exports.query = function(req, res) {
 	q.sort('-createdAt');
 
 	/** finally execute */
-	q.populate('author','name email').exec(function(err, articles) {
+	q.populate('author','name email fullname').exec(function(err, articles) {
 		if (err) {
 			console.log(err);
 			return res.send(404);
@@ -271,7 +271,7 @@ exports.basic = function(req, res) {
 	q.sort('-createdAt');
 
 	/** finally execute */
-		q.populate('author','name email').exec(function(err, articles) {
+		q.populate('author','name email fullname').exec(function(err, articles) {
 		if (err) {
 			console.log(err);
 			return res.send(404);
