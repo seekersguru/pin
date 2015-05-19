@@ -15,8 +15,16 @@ var CompanySchema = new Schema({
   keywords: [String],
   organization: String,
   url:String,
-  address: []
-  
+  address: [{
+             street: String,
+             city:String,
+             state:String,
+             country:String,
+             pin:String,
+             main: { type: Boolean, default: false },
+             phone:String
+           }],
+
 });
 
 // Basic info to identify the current authenticated user in the app

@@ -32,6 +32,12 @@
  <p><b>Type Institution:  </b>{{article.organization}}</p>
  <p><b>Website:  </b>{{article.url}}</p>
  <p class="articleview" ng-bind-html="article.description | rawHtml "></p>
+<div ng-repeat="(key,value) in article.address" ng-if="value.main==true" >
+ <h4>Main Office</h4>
+<p><b>Country:</b> {{value.country}}</p>
+<p><b>Address:</b> {{value.street}} {{value.city}} {{value.state}} {{value.pin}}</p>
+<p><b>Phone:</b> {{value.phone}}</p>
+</div>
  <div class="gray-hr"></div>
     
 <p><a class="btn readmore-bt" type="button" href="/companies"  >Back To Companies </a>

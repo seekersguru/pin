@@ -87,17 +87,64 @@
 
 
 
-        <div class="row" ng-repeat="(key,value) in article.addresstimes">
+        <div class="row" ng-repeat="(key,value) in article.addresstimes" ng-class="{'alert alert-success':article.address[key].main}">
+          <h2 class="center-block">Address #{{key+1}}  <b ng-show="article.address[key].main"><i> Selected as a main address</i></b></h2>
+        
+        <div class="gray-hr"></div>
+
+
           <div class="form-group">
             <div class="col-lg-6 col-md-6 col-sm-6">  
-              <input type="text" class="form-control" name="adrress[]" placeholder="  Address"  ng-model="article.address[key]" value="">
-              <button ng-click="removeaddress(key)"> Remove</button>
+              <input type="text" class="form-control" name="adrress[]" placeholder="Street"  ng-model="article.address[key].street" >
             </div>
-        </div>
-      </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="City"  ng-model="article.address[key].city" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="State"  ng-model="article.address[key].state" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="Country"  ng-model="article.address[key].country" >
+            </div>
+          </div>
 
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="PIN"  ng-model="article.address[key].pin" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="Phone No."  ng-model="article.address[key].phone" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <label>
+                <input type="radio" name="addressmain[]" ng-model="article.address[key].main"  ng-change="changemain(key)" value="true">
+                Want to make As a Main Office address
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <button ng-click="removeaddress(key)" class="center-block"> Remove</button>
+            </div>
+          </div>
+<br/>
+        </div>
+
+<div class="gray-hr"></div>
      <button ng-click="addAddress()" class="btn btn-info">Add More address</button>
-<br/><br/>
+<div class="gray-hr"></div>
 
    <!--    <div class="row">
           <div class="form-group">

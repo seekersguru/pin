@@ -56,7 +56,7 @@ angular.module('pinApp')
   $scope.article=company;
   $scope.article.addresstimes=[];
 
-  for (var i = 0; i < company.address.length-1; i++) {
+  for (var i = 0; i < company.address.length; i++) {
   
       $scope.article.addresstimes.push('val'+i);
   };
@@ -74,7 +74,15 @@ angular.module('pinApp')
  
      $scope.addAddress=function(){
 
-      $scope.article.address.push("  ");
+      $scope.article.address.push({
+             street: '',
+             city:'',
+             state:'',
+             country:'',
+             pin:'',
+             phone:'',
+             main: false
+          });
       $scope.article.addresstimes.push(new Date());
 
 
@@ -140,6 +148,18 @@ angular.module('pinApp')
     }
   };
 
+  $scope.changemain=function(passkey){
+
+    
+    angular.forEach($scope.article.address, function(value, key) {
+      $scope.article.address[key].main=false;
+    });    
+  
+    $scope.article.address[passkey].main=true;
+
+
+  };
+
 });
 
 angular.module('pinApp')
@@ -147,7 +167,15 @@ angular.module('pinApp')
 
 $scope.article={};
 $scope.article.addresstimes=[1];
-$scope.article.address=[""];
+$scope.article.address=[{
+             street: '',
+             city:'',
+             state:'',
+             country:'',
+             pin:'',
+             phone:'',
+             main: false
+          }];
 $scope.template=function(templateno){$scope.article={};
 $scope.article.title="Set your Event Title Name";
 $scope.article.description="<p>Sed ut perspiciatis unde omnis iste natu error luptatem accusantium. dolorem laudantm, totam reaperiam, eaqu psa aeab illo inventore veriquasi architecto beatae vitae dicta sunt explicabo.</p>"+
@@ -210,7 +238,15 @@ $scope.article.description="<p>Sed ut perspiciatis unde omnis iste natu error lu
 
     $scope.addAddress=function(){
 
-      $scope.article.address.push("  ");
+      $scope.article.address.push({
+             street: '',
+             city:'',
+             state:'',
+             country:'',
+             pin:'',
+             phone:'',
+             main: false
+          });
       $scope.article.addresstimes.push(new Date());
 
 
@@ -238,5 +274,18 @@ $scope.setscope=function(){
   // }
 
 };
+
+  $scope.changemain=function(passkey){
+
+    
+    angular.forEach($scope.article.address, function(value, key) {
+      $scope.article.address[key].main=false;
+    });    
+  
+    $scope.article.address[passkey].main=true;
+
+
+  };
+
 
 });

@@ -13,6 +13,7 @@ _ = require('lodash');
 exports.create = function(req, res, next) {
        	console.log(req.body);
         	// req.body.tags=req.body.tags;
+        	console.log(req.body); 
         	var company=new Company(req.body);
         	company.save(function(err,company){
         		if(err){
@@ -28,6 +29,8 @@ exports.create = function(req, res, next) {
 exports.update = function(req, res) {
 	var article_id = req.params.companyid;
 	var article_data = req.body;
+
+	console.log(article_data);
 
 	Company.findOneAndUpdate({_id: article_id}, article_data, function(err, company) {
 		if (err) {
