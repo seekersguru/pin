@@ -47,12 +47,12 @@ AGENDA
 
 <p class="articleview" ng-bind-html="events.agenda | rawHtml "></p>
 
- <div class="comment-text">
+ <div class="comment-text" ng-if="events.expert">
 AGENDA
  </div> 
  <div class="connect-hr2"></div>
 
-<div class="row">
+<div class="row" ng-if="events.expert">
 <div class="team-section">
 
 <div class="col-lg-3 col-md-3 col-sm-3" ng-repeat="(key,val) in events.expert">
