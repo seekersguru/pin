@@ -11,6 +11,7 @@ var mongoose = require('mongoose'),
 var DiscussionSchema = new Schema({
   title: {type:String, required:true},
   topic: { type: String },
+  subtopic: { type: String },
   cid: { type: Number },
   authorpin: { type: ObjectId, ref: 'User' },
   authormmi: { type: ObjectId, ref: 'Serviceuser' },

@@ -37,7 +37,7 @@
            <form class="register-form"  name="form" ng-submit="chatDetail(form)" novalidate>
             <div class="row">
             
-            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="form-group">
                 
                 <input required type="text" name="title" class="form-control" ng-model="chat.title" placeholder="Title"/>
@@ -45,24 +45,29 @@
              
               </div>
             </div>
-             <div class="col-lg-6  col-md-6 col-sm-6">
+            </div>
+            <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">  
+            <div class="form-group">
+              <select  class="form-control" name="topicnames" ng-model="chat.topic" ng-change="changetopic()">
+               <option value=""> ---Select Topic--- </option>
+               <option ng-repeat="(key,value) in topicnames" value="{{value.name}}">{{value.name}}</option>
+              </select>
+
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6">
               <div class="form-group">
-                
-                <select ng-model="chat.topic" name ="topic" class="form-control" required id="sel1">
-                  <option  value="">Select Topic</option>
-                  <option  value="Grow">Grow</option>
-                  <option  value="Protect">Protect</option>
-                  <option  value="Manage">Manage</option>
-                  <option  value="Give">Give</option>
+                <select  class="form-control" name="mmisubcategory" ng-model="chat.subtopic" >
+                  <option value=""> ---Select Sub Topic--- </option>
+                  <option ng-repeat="(key,value) in subtopicnames" value="{{value.name}}">{{value.name}}</option>
                 </select>
-               
-                <p class="text-danger" ng-show="form.topic.$error.required && submitted">Please fill Topic Name.</p>
-
-
-              </div>
             </div>
 
           </div>
+
+        </div>
           <div class="row">
             <div class="col-lg-12  col-md-12 col-sm-12">
             <div class="form-group">
@@ -101,7 +106,7 @@
    <form class="register-form"  name="searchform"  novalidate>
             <div class="row">
             
-            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="form-group">
                 
                 <input required type="text" name="title" class="form-control" ng-model="search.title" placeholder="Title"/>
@@ -109,24 +114,30 @@
              
               </div>
             </div>
-             <div class="col-lg-6  col-md-6 col-sm-6">
+            </div>
+            <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">  
+            <div class="form-group">
+              <select  class="form-control" name="topicnames" ng-model="search.topic" ng-change="changelookuptopic()">
+               <option value=""> ---Select Topic--- </option>
+               <option ng-repeat="(key,value) in topicnames" value="{{value.name}}">{{value.name}}</option>
+              </select>
+
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6">
               <div class="form-group">
-                
-                <select ng-model="search.topic" name ="topic" class="form-control" required id="sel1">
-                  <option  value="">Select Topic</option>
-                  <option  value="Grow">Grow</option>
-                  <option  value="Protect">Protect</option>
-                  <option  value="Manage">Manage</option>
-                  <option  value="Give">Give</option>
+                <select  class="form-control" name="mmisubcategory" ng-model="search.subtopic" >
+                  <option value=""> ---Select Sub Topic--- </option>
+                  <option ng-repeat="(key,value) in subtopicnames" value="{{value.name}}">{{value.name}}</option>
                 </select>
-               
-                <!-- <p class="text-danger" ng-show="searchform.topic.$error.required && submitted">Please fill Topic Name.</p> -->
-
-
-              </div>
             </div>
 
           </div>
+
+        </div>
+
            <button class="btn btn-prew-direc btn-prew" type="submit"> <i class="fa fa-search"></i> Lookup</button>
 <!--         <br></br>
         <p><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
@@ -161,11 +172,11 @@
 <div id="chat-list-section">
 <div class="content mCustomScrollbar">
  
- <div class="clearfix" ng-repeat="(key , val) in chatlist | reverse | filter:(search.title || search.topic) " ng-class="{0:'chat-list-row-odd',1:'chat-list-row-even'}[key % 2]">
+ <div class="clearfix" ng-repeat="(key , val) in chatlist | reverse | filter:(search.title || search.topic ) " ng-class="{0:'chat-list-row-odd',1:'chat-list-row-even'}[key % 2]">
   <div class="chat-icon"><img ng-src="images/{{color[val.topic].image}}" alt="{{val.topic}}"></div> 
   <div class="content-area">
  <h2><a ng-href="/discussion-start?cid={{val.cid}}">{{val.title}}</a></h2> 
-   <p>- {{val.topic}}</p>
+   <p>- {{val.topic}}</p>  
   </div>
   <!-- <div class="user-area">
    <img src="images/user-icon.png" alt=""> <span>160</span>/325

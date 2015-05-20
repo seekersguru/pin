@@ -9,18 +9,18 @@ angular.module('pinApp')
   }
 
 $scope.color={
-    'Grow':
+    'Investments':
     {'caption':'caption',
     'colorclass':'greenbox',
     'image':'green-chat.jpg'
   },
-  'Protect':
+  'WM/distribution':
   {
     'caption':'caption-red',
     'colorclass':'redbox',
     'image':'red-chat.jpg'
   },
-  'Manage':
+  'Communication':
   {
    'caption':'caption-aqua',
    'colorclass':'aquanbox',
@@ -37,6 +37,88 @@ $scope.color={
 
  
  $scope.category=['Grow','Protect','Manage','Give'];
+
+
+  $scope.topicnames=[
+   {
+    'name':'Investments',
+    'sub': [
+    {
+      'name':'Traditional',
+      'tags':['Equities','Fixed Interest','Real Estate', 'Cash','Global']
+    },
+    {
+      'name':'Alternative',
+      'tags':['Private Equity', 'Hedge Fund', 'Venture, Angel', 'Real Estate']
+    },
+    {
+      'name':'Portfolios Construction',
+      'tags':[]
+    },
+    {  
+      'name':'Markets',
+      'tags':[]
+    }
+    ]
+    },
+  {
+    'name':'WM/distribution',
+    'sub':[
+          {
+          'name':'Wealth planning',
+          'tags':['Trusts', 'Wills', 'Governance']
+          },
+          {
+            'name':'Business issues',
+            'tags':['Strategy', 'marketing', 'sales, operations']
+          },
+          {
+            'name':'Advisory process',
+            'tags':['Client onboarding', 'risk profiling','behavioural finance']
+          }
+        ]
+   },
+  {
+    'name':'Communication',
+    'sub': [
+      {
+      'name':'Investor comms',
+      'tags':[]
+       }
+      ]
+  }
+  ];
+
+
+    $scope.changetopic=function(){
+
+     var removeIndex = $scope.topicnames
+      .map(function(item)
+      { 
+        return item.name;
+      })
+      .indexOf($scope.chat.topic);
+
+      $scope.subtopicnames=$scope.topicnames[removeIndex].sub;
+      // $scope.article.mmitags=$scope.topicnames[removeIndex].sub;
+
+  };
+
+    $scope.changelookuptopic=function(){
+
+     var removeIndex = $scope.topicnames
+      .map(function(item)
+      { 
+        return item.name;
+      })
+      .indexOf($scope.search.topic);
+
+      $scope.subtopicnames=$scope.topicnames[removeIndex].sub;
+      // $scope.article.mmitags=$scope.topicnames[removeIndex].sub;
+
+  };
+
+
  
  $scope.article={};
  $scope.chat={};
