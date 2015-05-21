@@ -117,6 +117,7 @@ UserSchema
       'familyrole':this.familyrole,
       'searchable':this.searchable,
       'commentvisible':this.commentvisible,
+      'company':this.company,
       'status':this.status
 
         };

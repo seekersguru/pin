@@ -129,8 +129,7 @@
             <label for="role" class="col-sm-2 control-label">Role</label>
           <div class="col-sm-10">
                <select class="form-control" name="adminrole" ng-model="userupdate.adminrole">
-            <option value="Acconts">Accounts</option>
-            <option value="Experts">Experts</option>
+              <option ng-repeat="(key,value) in userupdate.roletype" value="{{value}}" ng-selected="key == userupdate.adminrole - 1">{{roletypes[value-1]}}</option>
             </select>
           </div>
         </div>

@@ -50,20 +50,35 @@
 
           <div class="row">
             <div class="form-group">  
-            <div class="col-lg-6 col-md-6 col-sm-6 ">
-              <select  class="form-control" ng-model="article.organization" >
-                <option value="">Type Of Organization</option>
-                <option value="General">General</option>
-                <option value="Banking">Banking</option>
-                <option value="Insurance">Insurance</option>
-                <option value="Investments">Investments</option>
-                <option value="Estate">Estate</option>
-                <option value="Management">Management</option>
-                <option value="Tax">Tax</option>
-              </select>
+              <div class="col-lg-6 col-md-6 col-sm-6 ">
+                <select  class="form-control" ng-model="article.firmsupertype" >
+                      <option value=""> ---Select Firm Super Type--- </option>
+                       <option ng-repeat="(key,value) in companyStructure" value="{{key}}" ng-selected="key == article.firmsupertype">{{key}}</option>
+
+                </select>
+              </div>
             </div>
           </div>
-        </div>
+          <div class="row">
+            <div class="form-group">  
+              <div class="col-lg-6 col-md-6 col-sm-6 ">
+                <select  class="form-control" ng-model="article.firmtype" >
+                       <option value=""> ---Select Firm Type--- </option>
+                       <option ng-repeat="(key,value) in companyStructure[article.firmsupertype]" value="{{key}}" ng-selected="key == article.firmtype">{{key}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">  
+              <div class="col-lg-6 col-md-6 col-sm-6 ">
+                <select  class="form-control" ng-model="article.firmsubtype" >
+                       <option value=""> ---Select Firm Sub Type--- </option>
+                       <option ng-repeat="(key,value) in companyStructure[article.firmsupertype][article.firmtype]" value="{{key}}" ng-selected="key == article.firmsubtype">{{key}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
 
           <div class="row" >
            <div class="col-lg-12 col-md-12 col-sm-12">

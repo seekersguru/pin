@@ -56,6 +56,54 @@ angular.module('pinApp')
   $scope.article=company;
   $scope.article.addresstimes=[];
 
+  
+  $scope.companyStructure={
+    'Buy':{
+        'WM':{
+            'Multi-family office':[1,2,3,4,5],
+            'Private Bank':[1,2,3,4,5],
+            'Retail Bank':[1,2,3,4,5],
+            'Private Client Firm':[1,2,3,4,5],
+            'IFA':[1,2,3,4,5],
+            'IFA platform':[1,2,3],
+        },
+        'Foreign portfolio investor':{
+            'Consultants':[1,2,3,4,5],
+            'FII - pension':[1,2,3,4,5],
+            'FII - SWF':[1,2,3,4,5],
+            'FII - insurance':[1,2,3,4,5],
+            'FII - endowment':[1,2,3,4,5],
+            'FII - fund-of-funds':[1,2,3,4,5],
+            'Family office':[1,2,3,4,5],
+        },
+        'Regulator':{
+            'Regulator':[1,2,3]
+        }
+    },
+    'Sell':{
+        'Service provider':{
+            'Tax/Accounting':[1,2,3],
+            'Legal':[1,2,3],
+            'Technology':[1,2,3],
+            'Education':[1,2,3],
+            'Association':[1,2,3],
+            'Trust company':[1,2,3],
+            'Consulting':[1,2,3],
+            'Research/Investment consulting/data provider':[1,2,3],
+            'Media':[1,2,3],
+            'Philanthropic/NGO':[1,2,3],
+            'Securities exchange':[1,2,3]
+        },
+        'Product provider':{
+            'Asset Management Company':[1,2,3,6,7],
+            'Alternative Investment Fund Manager':[1,2,3,6,7],
+            'Portfolio Management Service Provider':[1,2,3,6,7],
+            'Investment Bank':[1,2,3,6,7],
+            'Non-bank financial institution':[1,2,3,6,7]
+        }
+    }
+};
+
   for (var i = 0; i < company.address.length; i++) {
   
       $scope.article.addresstimes.push('val'+i);
@@ -88,13 +136,9 @@ angular.module('pinApp')
 
     };
 
- $scope.setscope=function(){
-  
-  // var original=$scope.article.expert;
-  // $scope.article_put.expert=[];
-  // for (var t = 0; t < original.length; t++) {
-  //   $scope.article_put.expert[t] = { name:original[t].name,user:original[t]._id,flag:original[t].flag,designation:original[t].designation};
-  // }
+$scope.setscope=function(){
+ 
+
 };
 
 
@@ -107,6 +151,11 @@ angular.module('pinApp')
       organization:$scope.article.organization,
       address:$scope.article.address,
       url:$scope.article.url,
+      firmsupertype:$scope.article.firmsupertype,
+      firmtype:$scope.article.firmtype,
+      firmsubtype:$scope.article.firmsubtype,
+      roletype:$scope.companyStructure[$scope.article.firmsupertype][$scope.article.firmtype][$scope.article.firmsubtype]
+
       // public:$scope.article.public
     };
 
@@ -200,6 +249,54 @@ $scope.article.description="<p>Sed ut perspiciatis unde omnis iste natu error lu
 
 };
 
+$scope.companyStructure={
+    'Buy':{
+        'WM':{
+            'Multi-family office':[1,2,3,4,5],
+            'Private Bank':[1,2,3,4,5],
+            'Retail Bank':[1,2,3,4,5],
+            'Private Client Firm':[1,2,3,4,5],
+            'IFA':[1,2,3,4,5],
+            'IFA platform':[1,2,3],
+        },
+        'Foreign portfolio investor':{
+            'Consultants':[1,2,3,4,5],
+            'FII - pension':[1,2,3,4,5],
+            'FII - SWF':[1,2,3,4,5],
+            'FII - insurance':[1,2,3,4,5],
+            'FII - endowment':[1,2,3,4,5],
+            'FII - fund-of-funds':[1,2,3,4,5],
+            'Family office':[1,2,3,4,5],
+        },
+        'Regulator':{
+            'Regulator':[1,2,3]
+        }
+    },
+    'Sell':{
+        'Service provider':{
+            'Tax/Accounting':[1,2,3],
+            'Legal':[1,2,3],
+            'Technology':[1,2,3],
+            'Education':[1,2,3],
+            'Association':[1,2,3],
+            'Trust company':[1,2,3],
+            'Consulting':[1,2,3],
+            'Research/Investment consulting/data provider':[1,2,3],
+            'Media':[1,2,3],
+            'Philanthropic/NGO':[1,2,3],
+            'Securities exchange':[1,2,3]
+        },
+        'Product provider':{
+            'Asset Management Company':[1,2,3,6,7],
+            'Alternative Investment Fund Manager':[1,2,3,6,7],
+            'Portfolio Management Service Provider':[1,2,3,6,7],
+            'Investment Bank':[1,2,3,6,7],
+            'Non-bank financial institution':[1,2,3,6,7]
+        }
+    }
+};
+
+ 
   $scope.saveArticle=function(form){
     //     var str = "abc'sddf khdfkjdf dflkfdlkfd fdkjfdk test#s";
     // alert(str.replace(/[^a-zA-Z ]/g, "").replace(/ /g,"-"));
@@ -212,6 +309,7 @@ $scope.article.description="<p>Sed ut perspiciatis unde omnis iste natu error lu
       // console.log(formData);
       
       $scope.setscope();
+
       // $scope.form.$setPristine();
       $http({ method: 'POST', url: '/api/companys',data:$scope.article }).
       success(function (data, status, headers, config) {
@@ -267,13 +365,8 @@ $scope.reset=function(form){
 
 $scope.setscope=function(){
   $scope.article.author=$rootScope.currentUser._id;
-  // var original=$scope.article.expert;
-  // $scope.article.expert=[];
-  // for (var t = 0; t < original.length; t++) {
-  //   $scope.article.expert[t] = { name:original[t].name,user:original[t]._id,flag:original[t].flag,designation:original[t].designation};
-  // }
-
-};
+  $scope.article.roletype=$scope.companyStructure[$scope.article.firmsupertype][$scope.article.firmtype][$scope.article.firmsubtype];
+  };
 
   $scope.changemain=function(passkey){
 

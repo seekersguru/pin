@@ -150,6 +150,9 @@ $scope.userStatus=function(userId){
                 },
                 commentvisible: function () {
                     return $scope.gridUserData[removeIndex].commentvisible;
+                },
+                roletype: function () {
+                    return $scope.gridUserData[removeIndex].company['roletype'];
                 }
               }
         });
@@ -632,12 +635,13 @@ $scope.family={};
 
 
 angular.module('pinApp')
-.controller('AssignRoleCtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller,searchable,adminrole,familyrole,userid,removeIndex,commentvisible,$templateCache,$route) {
+.controller('AssignRoleCtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller,searchable,adminrole,familyrole,userid,removeIndex,commentvisible,roletype,$templateCache,$route) {
   $scope.userupdate={
     familyrole:familyrole,
     searchable:searchable,
     adminrole:adminrole,
-    commentvisible:commentvisible
+    commentvisible:commentvisible,
+    roletype:roletype
   };
 
  $.extend(this, $controller('AdminPanelCtrl', {$scope: $scope}));
@@ -649,6 +653,18 @@ angular.module('pinApp')
  error(function (data, status, headers, config) {
 
   });
+
+
+$scope.roletypes=[
+    'CEO/business head',
+    'Management',
+    'Sales/Marketing',
+    'Investment/Product',  
+    'RM/client facing',
+    'Investment Mgmt"',
+    'Product Mgmt'
+    ];  
+
 
   $scope.saveRole = function () {
           $http({ method: 'PUT', url: '/api/users/status/'+userid,data:{'status':1,adminrole:$scope.userupdate.adminrole,familyrole:$scope.userupdate.familyrole,searchable:$scope.userupdate.searchable,commentvisible:$scope.userupdate.commentvisible}}).
