@@ -43,7 +43,7 @@
             <div class="form-group">
               <select  class="form-control" name="mmicategory" ng-model="article.mmicategory" ng-change="changemmicategory()">
                <option value=""> ---Select MMI Category--- </option>
-               <option ng-repeat="(key,value) in mmicategory" value="{{value.name}}">{{value.name}}</option>
+               <option ng-repeat="(key,value) in mmicategory" value="{{value.name}}" ng-selected="article.mmicategory == value.name">{{value.name}}</option>
               </select>
 
             </div>
@@ -53,7 +53,7 @@
               <div class="form-group">
                 <select  class="form-control" name="mmisubcategory" ng-model="article.mmisubcategory" >
                   <option value=""> ---Select MMI Sub Category--- </option>
-                  <option ng-repeat="(key,value) in mmisubcategory" value="{{value.name}}" >{{value.name}}</option>
+                  <option ng-repeat="(key,value) in mmisubcategory" value="{{value.name}}" ng-selected="article.mmisubcategory == value.name">{{value.name}}</option>
                 </select>
             </div>
 
