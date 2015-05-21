@@ -155,11 +155,11 @@
  <select class="form-control" name="member" ng-model="user.member"   tooltip="Please choose member type." 
           tooltip-placement="bottom">
     
-    <option value="">Select Member type </option>
-    <option value="Family">Family </option>
-    <option value="Family office">Family office</option>
-    <option value="Nominee">Nominee
-</option>
+    <option value="" tooltip="Please choose member type.">Select Member type </option>
+    <option value="Family" tooltip="the UHNI or wealth owner">Family </option>
+    <option value="FO staff" tooltip="who works in single family office">FO staff</option>
+    <option value="Adviser" tooltip="accountant or consultant to the family">Adviser</option>
+    <option value="NextGen" tooltip="still family, but not decision-maker; UHNI's children">NextGen</option>
    
   </select>
 </div>
@@ -184,15 +184,28 @@
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
 <div class="form-group">             
- <select class="form-control" name="interests" ng-model="user.interests" tooltip="Please choose interests." 
+<!--  <select class="form-control" name="interests" ng-model="user.interests" tooltip="Please choose interests." 
           tooltip-placement="bottom">
 
     <option value="">Select Interest </option>
-    <option value="Topic listed in CMS">Topic listed in CMS </option>
-    <option value="services listed in service directory">services listed in service directory</option>
-    <option value="events type listed in events">events type listed in events</option>
+    <option value="Grow">Grow </option>
+    <option value="Protect">Protect</option>
+    <option value="Give">Give</option>
+    <option value="Manage">Manage</option>
    
-  </select>
+  </select> -->
+<label>Please choose interests</label>
+<br/>
+ <label ng-repeat="interest in interests">
+  <input
+    type="checkbox"
+    name="selectedInterest[]"
+    value="{{interest}}"
+    ng-checked="user.interests.indexOf(interest) > -1"
+    ng-click="toggleSelection(interest)"
+  > {{interest}}
+</label>
+ 
 </div>
 </div>
 

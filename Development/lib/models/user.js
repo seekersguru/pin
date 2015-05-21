@@ -24,7 +24,7 @@ var UserSchema = new Schema({
   phone:String,
   membertype:String,
   nominated:String,
-  interests:String,
+  interests:[],
   band:Number,
   emailVerification: {
       token: String,

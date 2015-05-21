@@ -13,6 +13,25 @@ angular.module('pinApp')
       'city':''
     }
     };
+    $scope.interests=['Reading about','Networking','Info about' ,'Investments', ' SFOs in India', 'Funds','Wealth planning', 'SFOs overseas', 'Deals','Administration','Exclusive services','Philanthropy'];
+
+    $scope.user.interests=[];
+
+    // toggle selection for a given fruit by name
+  $scope.toggleSelection = function toggleSelection(fruitName) {
+    var idx = $scope.user.interests.indexOf(fruitName);
+
+    // is currently selected
+    if (idx > -1) {
+      $scope.user.interests.splice(idx, 1);
+    }
+
+    // is newly selected
+    else {
+      $scope.user.interests.push(fruitName);
+    }
+  };
+
     // $scope.email = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
      $scope.checkUsername =function(form){
       form['username'].$setValidity('mongoose', true);
