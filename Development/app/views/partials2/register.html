@@ -22,11 +22,9 @@
            <div class="form-group" >
            <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
            <input type="text" name="fullname" class="form-control" placeholder="Family Office / Family Name " ng-model="user.fullname"
-          tooltip="Please fill Family Office / Family Name." 
-          tooltip-placement="bottom"
           />
           <div class="error-massege"> 
-           <p class="text-danger" ng-show="form.fullname.$error.required && submitted">Please fill FullName .</p>
+           <p class="text-danger" ng-show="form.fullname.$error.required && submitted">Please provide your full name.</p>
            </div>
        </div>
            </div>
@@ -36,13 +34,9 @@
             <div class="row">
            <div class="form-group" ng-class="{'has-error':form.name.$error.required && submitted,'has-success':form.name.$valid && submitted}">
            <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
-           <input required type="text" name="name"  class="form-control" ng-model="user.name" placeholder="Name *"
-          tooltip="Please fill your name ." 
-          tooltip-placement="bottom"
-          tooltip-trigger="{{{true: 'focus', false: 'never'}[form.name.$error.required && submitted]}}"
-          />
+           <input required type="text" name="name"  class="form-control" ng-model="user.name" placeholder="Name *" />
            <div class="error-massege">  
-           <p class="text-danger" ng-show="form.name.$error.required && submitted">Please fill Name .</p>
+           <p class="text-danger" ng-show="form.name.$error.required && submitted">Please provide a name that will show when you post comments on the site.</p>
            </div>
 </div>
            </div>
@@ -52,11 +46,7 @@
           <div class="row">
            <div class="form-group" ng-class="{'has-error': form.username.$error.required && submitted,'has-success':form.username.$valid && submitted}">
            <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
-           <input required type="text" name="username" class="form-control" placeholder="Alias/Username * " ng-model="user.username" ng-blur="checkUsername(form)"
-          tooltip="Please fill your alias name or username." 
-          tooltip-placement="bottom"
-
-           />
+           <input required type="text" name="username" class="form-control" placeholder="Alias/Username * " ng-model="user.username" ng-blur="checkUsername(form)" />
            <div class="error-massege"> 
             <p class="text-danger" ng-show="form.username.$error.required && submitted && !form.username.$error.mongoose" >Please fill your alias name or username.</p>
             <p class="text-danger" ng-show="form.username.$error.mongoose">
@@ -78,36 +68,23 @@
 <div class="col-lg-4 col-md-4 col-sm-4 paddingr-7">
 <div class="form-group"  >
               
-<input type="text" name="address" ng-model="user.address.street" class="form-control" placeholder="Street Address "
-          tooltip="Please fill your street address." 
-          tooltip-placement="bottom"
-/>
+<input type="text" name="address" ng-model="user.address.street" class="form-control" placeholder="Street Address "/>
 
  </div>
 </div>
 
 <div class="col-lg-4 col-md-4 col-sm-4 paddingr-7 paddingl-7">
 <div class="form-group" ng-class="{'has-error':form.city.$error.required && submitted,'has-success':form.city.$valid && submitted}">
-<input type="text" required name="city" ng-model="user.address.city" class="form-control" placeholder="City *"
-
-          tooltip="Please fill your city name." 
-          tooltip-placement="bottom"
-          tooltip-trigger="{{{true: 'focus', false: 'never'}[form.city.$error.required && submitted]}}"
-          />
+<input type="text" required name="city" ng-model="user.address.city" class="form-control" placeholder="City *" />
 <div class="error-massege">           
-<p class="text-danger" ng-show="form.city.$error.required && submitted">Please fill city name. </p>
+<p class="text-danger" ng-show="form.city.$error.required && submitted">Please indicate city. </p>
 </div>
   </div>
 </div>
-
+ 
 <div class="col-lg-4 col-md-4 col-sm-4 paddingl-7">
 <div class="form-group">
-<input type="text" name="country" ng-model="user.address.country" class="form-control" placeholder="Country"
-
-          tooltip="Please fill your country name." 
-          tooltip-placement="bottom"
-
-          />
+<input type="text" name="country" ng-model="user.address.country" class="form-control" placeholder="Country"/>
   </div>
 </div>
 
@@ -116,15 +93,11 @@
 <div class="row ">
 <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
 <div class="form-group" ng-class="{'has-error':form.email.$error.required && submitted,'has-success':form.email.$valid && submitted}">
-   <input required type="email" validateEmail name="email"  class="form-control" placeholder="Email *" ng-model="user.email" mongoose-error
-         tooltip="Please fill your valid email address." 
-          tooltip-placement="bottom"
-
-/>
+   <input required type="email" validateEmail name="email"  class="form-control" placeholder="Email *" ng-model="user.email" mongoose-error />
 <div class="error-massege"> 
-   <p class="text-danger" ng-show="form.email.$error.required  && submitted">Please fill Email .</p>
+   <p class="text-danger" ng-show="form.email.$error.required  && submitted">Please provide a valid email address.</p>
    <p class="text-danger" ng-show="form.email.$error.email && submitted">
-                  Doesn't look like a valid email.
+                  Please provide a valid email address.
               </p>
    <p class="text-danger" ng-show="form.email.$error.mongoose">
     {{ errors.email }}
@@ -135,10 +108,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
 <div class="form-group" >
-              <input  type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone"
-                        tooltip="Please fill your phone/mobilenumber." 
-          tooltip-placement="bottom"
-/>
+              <input  type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone" />
               <!-- <p class="text-danger" ng-show="form.phone.$error.required && submitted">Please fill Phone/Mobile.</p> -->
            </div>
 </div>
@@ -152,8 +122,7 @@
 <div class="row register-form-row-pad">
 <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
 <div class="form-group">             
- <select class="form-control" name="member" ng-model="user.member"   tooltip="Please choose member type." 
-          tooltip-placement="bottom">
+ <select class="form-control" name="member" ng-model="user.member" >
     
     <option value="" tooltip="Please choose member type.">Select Member type </option>
     <option value="Family" tooltip="the UHNI or wealth owner">Family </option>
@@ -167,13 +136,9 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
 <div class="form-group" ng-class="{'has-error':form.nominated.$error.required && submitted,'has-success':form.nominated.$valid && submitted}">
- <input type="text" required name="nominated" class="form-control" placeholder="Nominated by *" ng-model="user.nominated"
-          tooltip="Please fill your nominated name." 
-          tooltip-placement="bottom"
-          tooltip-trigger="{{{true: 'focus', false: 'never'}[form.nominated.$error.required && submitted]}}"
- />
+ <input type="text" required name="nominated" class="form-control" placeholder="Nominated by *" ng-model="user.nominated" />
  <div class="error-massege"> 
-<p class="text-danger" ng-show="form.nominated.$error.required && submitted">Please fill nominated name. </p>
+<p class="text-danger" ng-show="form.nominated.$error.required && submitted">Please indicate who nominated you for membership. </p>
 </div>
 </div>
 </div>
@@ -184,16 +149,6 @@
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
 <div class="form-group">             
-<!--  <select class="form-control" name="interests" ng-model="user.interests" tooltip="Please choose interests." 
-          tooltip-placement="bottom">
-
-    <option value="">Select Interest </option>
-    <option value="Grow">Grow </option>
-    <option value="Protect">Protect</option>
-    <option value="Give">Give</option>
-    <option value="Manage">Manage</option>
-   
-  </select> -->
 <label>Please choose interests</label>
 <br/>
  <label ng-repeat="interest in interests">
@@ -211,10 +166,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
 <div class="form-group">
- <input type="text" name="other" class="form-control" placeholder="Other " ng-model="user.other"
-    tooltip="Please fill other detail." 
-          tooltip-placement="bottom"
-          />
+ <input type="text" name="other" class="form-control" placeholder="Other " ng-model="user.other" />
 </div>
 </div>
 
@@ -222,13 +174,9 @@
 <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6">
               <div class="form-group" ng-class="{'has-error':form.password.$error.required && submitted,'has-success':form.password.$valid  && submitted }" >
-                <input required type="password" name="password"  class="form-control" placeholder="password *" ng-model="user.password" ng-minlength=5 mongoose-error
-
-          tooltip="Please fill your password." 
-          tooltip-placement="bottom"
-/>
+                <input required type="password" name="password"  class="form-control" placeholder="password *" ng-model="user.password" ng-minlength=5 mongoose-error />
                 <div class="error-massege"> 
-                <p class="text-danger" ng-show="form.password.$error.required && submitted">Please fill   Password.</p>
+                <p class="text-danger" ng-show="form.password.$error.required && submitted">Please select a password.</p>
                 
                 <p class="text-danger" ng-show="form.password.$error.minlength && submitted">your password shoud be minimum 5 character long .</p>
                 
