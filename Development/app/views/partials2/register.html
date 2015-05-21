@@ -212,8 +212,8 @@
 </div> 
 
 
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
+<div class="row register-form-row-pad">
+<!-- <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
 <div class="form-group">             
  <select class="form-control" name="interests" ng-model="user.interests" tooltip="Please choose interests." 
           tooltip-placement="bottom">
@@ -229,19 +229,15 @@
   </select>
 </div>
 </div>
-
-<div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
+ -->
+<div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
 <div class="form-group">
- <input type="text" name="other" class="form-control" placeholder="Other " ng-model="user.other"
-    tooltip="Please fill other detail." 
-          tooltip-placement="bottom"
-          />
+ <input type="text" name="other" class="form-control" placeholder="Other " ng-model="user.other"    tooltip="Please fill other detail." 
+          tooltip-placement="bottom"  />
 </div>
 </div>
 
-</div> 
-<div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-6">
+ <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
               <div class="form-group" ng-class="{'has-error':form.password.$error.required && submitted,'has-success':form.password.$valid  && submitted }" >
                 <input required type="password" name="password"  class="form-control" placeholder="password *" ng-model="user.password" ng-minlength=5 mongoose-error
 
@@ -261,7 +257,8 @@
               </div>
             </div>
 
-</div>
+
+</div> 
 <!-- <p><span>*</span> Admin will check the nominated by before approving membership;<br> 
    will also put family into a Wealth band (30m+, 5-30m, <5m)</p>
  -->
