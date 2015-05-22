@@ -78,6 +78,7 @@ AdminApproveEmail.prototype = Object.create(UserEmail.prototype);
  * Class to send activation user approve email 
  */
 var AdminBlockEmail = function(user, locals) {
+  user.email='Hansi Mehrotra <privateinvestmentnetwork@gmail.com>';
   UserEmail.call(this, user, 'adminblock', locals);
   this.email.subject = 'Admin Block Your PIN Account';
 };

@@ -184,6 +184,7 @@ if(form.$valid)
       success(function (data, status, headers, config) {
         // $location.path('/discussion-start').search('cid',$scope.chatid);
         $scope.forsubmit=0;
+        $location.path('discussion-start').search('cid',$scope.chat.cid);
         $scope.chatlist.push($scope.chat);
         $scope.form.$setPristine();
         // $scope.lastid=$scope.chat.cid;

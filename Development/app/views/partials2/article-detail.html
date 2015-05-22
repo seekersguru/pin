@@ -207,9 +207,9 @@
   <ul class="commentList">
     <li ng-repeat="(key,value) in articles.comments" ng-if="currentUser._id==value.user._id || value.user.commentvisible == 'public' || (value.user.commentvisible == 'friends' && checkcommitstatus (currentUser._id,value.following) )  ">
     <div class="clearfix">
-      <div class="commenterImage">
+      <!-- <div class="commenterImage">
         <img src="images/comment-profile.png">
-      </div>
+      </div> -->
       <div class="commentText">
       <div class="clearfix">
       <div class="pull-left">
@@ -229,10 +229,10 @@
        <form novalidate  name="form" role='form' ng-submit="editComment(form,value._id,value.post,key)" name="form" ng-show="showEdit">
 
             <div class="chat-2mar15">
-<textarea class="form-control"  name="comment"id="comment" placeholder="Your comments" ng-model="value.post" required ng-minlength=4></textarea>
+<textarea class="form-control"  name="comment"id="comment" placeholder="Your comments" ng-model="value.post" ></textarea>
 
-    <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
-    <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
+    <!-- <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p> -->
+    <!-- <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p> -->
     <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
             </div>
        <button class="btn register-bt pull-right" type="submit">
@@ -251,9 +251,9 @@
  <div class="gray-hr"></div>
  <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" ng-if="currentUser._id" class="">
   <div class="chat-2mar15" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
-    <textarea class="form-control"  name="comment"id="comment" placeholder="Your comments" ng-model="article.comment" required ng-minlength=4></textarea>
-    <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
-    <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
+    <textarea class="form-control"  name="comment"id="comment" placeholder="Your comments" ng-model="article.comment"></textarea>
+   <!--  <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
+    <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p> -->
     <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
   </div> 
     <button class="btn btn-primary" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid">Comment</button>
