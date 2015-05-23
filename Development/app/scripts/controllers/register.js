@@ -2,17 +2,51 @@
 'use strict';
 
 angular.module('pinApp')
-  .controller('RegisterCtrl',['$scope','$location','$rootScope','Auth', function ($scope, $location,$rootScope ,Auth) {
+  .controller('RegisterCtrl',['$scope','$location','$rootScope','Auth','$http', function ($scope, $location,$rootScope ,Auth,$http) {
     // $scope.user = {};
+   
+   $scope.getCountries = function() {
+      return $http.get('/api/countries')
+      .then(function(response){
+        return response.data.countries.map(function(item){
+          return item;
+        });
+      });
+    };
+ 
+ $scope.allcountry=$scope.getCountries();
+ 
+   $scope.getCities = function(val) {
+      return $http.get('/api/cities/'+val)
+      .then(function(response){
+        return response.data.cities.map(function(item){
+          return item;
+        });
+      });
+    };
+
     $scope.errors = {};
     $scope.user={
 
     'member':'',
     'interests':'',
     'address':{
-      'city':''
+      'city':'',
+      'country':'India'
     }
     };
+    var precountry=$scope.user.address.country; 
+
+    $scope.checkcountry=function(){
+       if(precountry !== $scope.user.address.country)
+       {
+        precountry = $scope.user.address.country;
+        $scope.user.address.city="";
+
+       }
+
+    };
+
     $scope.interests=['Reading about','Networking','Info about' ,'Investments', ' SFOs in India', 'Funds','Wealth planning', 'SFOs overseas', 'Deals','Administration','Exclusive services','Philanthropy'];
 
     $scope.user.interests=[];
@@ -49,11 +83,13 @@ angular.module('pinApp')
           {
              form['username'].$setValidity('mongoose', false);
              $scope.errors['username'] = 'username already available :(';
-
+             $("#username").focus();
+              
           }else{
              form['username'].$setValidity('mongoose', true);
              $scope.errors['username'] = 'Username available. ';
              $scope.checkmessage='Username available.'; 
+             $("#street").focus();
           }
           $scope.checkusername=0;
         })
@@ -65,11 +101,13 @@ angular.module('pinApp')
             form[field].$setValidity('mongoose', false);
             $scope.errors[field] = error.message;
           });
+          $("#street").focus();
         });
 
       }else{
         form['username'].$setValidity('mongoose', false);
         $scope.errors['username'] = 'Please fill your alias name';
+        $("#username").focus();
       }
 
 

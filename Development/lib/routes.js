@@ -8,7 +8,8 @@ var index = require('./controllers'),
     events = require('./controllers/event'),
     discussions = require('./controllers/discussion'),
     familys = require('./controllers/family'), 
-    experts = require('./controllers/expert');
+    experts = require('./controllers/expert'),
+    countrycity = require('./controllers/countrycity');
    
 var middleware = require('./middleware');
 var multipart = require('connect-multiparty'),
@@ -136,6 +137,13 @@ module.exports = function(app) {
   app.del('/api/session', session.logout);
   app.get('/api/session/facebook', session.fblogin);
   app.get('/api/session/facebook/callback', session.fbcallback);
+
+
+/*** Country city **/
+
+
+ app.get('/api/countries', countrycity.getCountry);
+ app.get('/api/cities/:country', countrycity.getCity);
 
   // All undefined api routes should return a 404
   app.get('/api/*', function(req, res) {

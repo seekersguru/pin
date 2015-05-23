@@ -46,7 +46,7 @@
           <div class="row">
            <div class="form-group" ng-class="{'has-error': form.username.$error.required && submitted,'has-success':form.username.$valid && submitted}">
            <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
-           <input required type="text" name="username" class="form-control" placeholder="Alias/Username * " ng-model="user.username" ng-blur="checkUsername(form)" />
+           <input required type="text" name="username" class="form-control" placeholder="Alias/Username * " id="username" ng-model="user.username" ng-blur="checkUsername(form)"  />
            <div class="error-massege"> 
             <p class="text-danger" ng-show="form.username.$error.required && submitted && !form.username.$error.mongoose" >Please fill your alias name or username.</p>
             <p class="text-danger" ng-show="form.username.$error.mongoose">
@@ -68,14 +68,15 @@
 <div class="col-lg-4 col-md-4 col-sm-4 paddingr-7">
 <div class="form-group"  >
               
-<input type="text" name="address" ng-model="user.address.street" class="form-control" placeholder="Street Address "/>
+<input type="text" name="address" ng-model="user.address.street" id="street" class="form-control" placeholder="Street Address "/>
 
  </div>
 </div>
 
 <div class="col-lg-4 col-md-4 col-sm-4 paddingr-7 paddingl-7">
 <div class="form-group" ng-class="{'has-error':form.city.$error.required && submitted,'has-success':form.city.$valid && submitted}">
-<input type="text" required name="city" ng-model="user.address.city" class="form-control" placeholder="City *" />
+<input type="text" required name="city" ng-model="user.address.city" class="form-control" placeholder="City *"  typeahead="address for address in getCities(user.address.country)" typeahead-loading="loadingLocationscity"/>
+<i ng-show="loadingLocationscity" class="glyphicon glyphicon-refresh"></i>
 <div class="error-massege">           
 <p class="text-danger" ng-show="form.city.$error.required && submitted">Please indicate city. </p>
 </div>
@@ -84,7 +85,8 @@
  
 <div class="col-lg-4 col-md-4 col-sm-4 paddingl-7">
 <div class="form-group">
-<input type="text" name="country" ng-model="user.address.country" class="form-control" placeholder="Country"/>
+<input type="text" name="country" ng-blur="checkcountry()" ng-model="user.address.country" class="form-control" placeholder="Country"  typeahead="address for address in allcountry" typeahead-loading="loadingLocations"/>
+<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
   </div>
 </div>
 
