@@ -3,15 +3,46 @@
 
 angular.module('pinApp')
   .controller('RegisterCtrl',['$scope','$location','$rootScope','Auth','$http', function ($scope, $location,$rootScope ,Auth,$http) {
-    // $scope.user = {};
+   $scope.getCountries = function() {
+      return $http.get('/api/countries')
+      .then(function(response){
+        return response.data.countries.map(function(item){
+          return item;
+        });
+      });
+    };
+ 
+ $scope.allcountry=$scope.getCountries();
+ 
+   $scope.getCities = function(val) {
+      return $http.get('/api/cities/'+val)
+      .then(function(response){
+        return response.data.cities.map(function(item){
+          return item;
+        });
+      });
+    };
+
     $scope.errors = {};
     $scope.user={
 
     'member':'',
     'interests':'',
     'address':{
-      'city':''
+      'city':'',
+      'country':'India'
     }
+    };
+    var precountry=$scope.user.address.country; 
+
+    $scope.checkcountry=function(){
+       if(precountry !== $scope.user.address.country)
+       {
+        precountry = $scope.user.address.country;
+        $scope.user.address.city="";
+
+       }
+
     };
 
       $http({ method: 'GET', url: 'api/companys/basic' }).

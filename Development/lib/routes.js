@@ -10,7 +10,8 @@ var index = require('./controllers'),
     discussions = require('./controllers/discussion'),
     familys = require('./controllers/family'), 
     companys = require('./controllers/company'), 
-    experts = require('./controllers/expert');
+    experts = require('./controllers/expert'),
+    countrycity = require('./controllers/countrycity');
    
 var middleware = require('./middleware');
 var multipart = require('connect-multiparty'),
@@ -149,6 +150,11 @@ module.exports = function(app) {
 
   app.get('/api/session/linkedin', session.linkedinlogin);
   app.get('/api/session/linkedin/callback', session.linkedincallback);
+
+  app.get('/api/countries', countrycity.getCountry);
+  app.get('/api/cities/:country', countrycity.getCity);
+
+ 
 
   // All undefined api routes should return a 404
   app.get('/api/*', function(req, res) {

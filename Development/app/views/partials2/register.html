@@ -99,7 +99,8 @@
           tooltip="Please fill your city name." 
           tooltip-placement="bottom"
           tooltip-trigger="{{{true: 'focus', false: 'never'}[form.city.$error.required && submitted]}}"
-          />
+           typeahead="address for address in getCities(user.address.country)" typeahead-loading="loadingLocationscity"/>
+<i ng-show="loadingLocationscity" class="glyphicon glyphicon-refresh"></i>          
 <div class="error-massege">           
 <p class="text-danger" ng-show="form.city.$error.required && submitted">Please fill city name. </p>
 </div>
@@ -108,12 +109,13 @@
 
 <div class="col-lg-4 col-md-4 col-sm-4 paddingl-7">
 <div class="form-group">
-<input type="text" name="country" ng-model="user.address.country" class="form-control" placeholder="Country"
+<input type="text" name="country" ng-blur="checkcountry()" ng-model="user.address.country" class="form-control" placeholder="Country"
 
           tooltip="Please fill your country name." 
           tooltip-placement="bottom"
 
-          />
+          typeahead="address for address in allcountry" typeahead-loading="loadingLocations"/>
+<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
   </div>
 </div>
 
