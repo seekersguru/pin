@@ -49,7 +49,7 @@
               <div class="form-group">
                 
                 <select ng-model="chat.topic" name ="topic" class="form-control" required id="sel1">
-                  <option  value="">Select Topic</option>
+                  <option  value="">---Select Topic---</option>
                   <option  value="Grow">Grow</option>
                   <option  value="Protect">Protect</option>
                   <option  value="Manage">Manage</option>
@@ -91,6 +91,40 @@
 
 <div class="col-lg-9 col-md-9 col-sm-9">
 
+<form class="register-form"  name="searchform"  novalidate>
+            
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">  
+            <div class="form-group">
+                <input required type="text" name="title" class="form-control" ng-model="search.title" placeholder="Title"/>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="form-group">
+              <select  class="form-control" name="topicnames" ng-model="search.topic">
+                  <option  value="">---Select Topic---</option>
+                  <option  value="Grow">Grow</option>
+                  <option  value="Protect">Protect</option>
+                  <option  value="Manage">Manage</option>
+                  <option  value="Give">Give</option>
+              </select>
+            </div>
+
+          </div>
+
+        </div>
+
+           <button class="btn register-bt" type="submit"> <i class="fa fa-search"></i> Lookup</button>
+<!--         <br></br>
+        <p><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
+        <br></br>
+ -->
+
+      </form>
+
+
+
 <div class="submit-articale-section">
 <div class="row">
  <div class="col-lg-8 col-md-8 col-sm-8"><h1>Discussion</h1> </div>
@@ -113,7 +147,7 @@
 <div id="chat-list-section">
 <div class="content mCustomScrollbar">
  
- <div class="clearfix" ng-repeat="(key , val) in chatlist | reverse" ng-class="{0:'chat-list-row-odd',1:'chat-list-row-even'}[key % 2]">
+ <div class="clearfix" ng-repeat="(key , val) in chatlist | reverse | filter:(search.title || search.topic)" ng-class="{0:'chat-list-row-odd',1:'chat-list-row-even'}[key % 2]">
   <div class="chat-icon"><img ng-src="images/{{color[val.topic].image}}" alt="{{val.topic}}"></div> 
   <div class="content-area">
  <h2><a ng-href="/discussion-start?cid={{val.cid}}">{{val.title}}</a></h2> 
