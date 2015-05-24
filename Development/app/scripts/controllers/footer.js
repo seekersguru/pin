@@ -15,7 +15,10 @@ angular.module('pinApp')
 
   };
 
-
+// active menu option
+	$scope.isActive = function(route) {
+      return $location.path() === route;
+  };
 
 
 }]);
