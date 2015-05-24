@@ -38,6 +38,7 @@ var UserEmail = function(user, templateName, locals) {
   Email.call(this);
   this.email.to =  user.name + ' <' + user.email + '>';
   this.email.subject = 'Greetings from PIN';
+  this.email.cc = user.cc;
   this.templateName  = templateName;
   this.locals = _.merge({user: user}, locals || {});
 };
@@ -78,7 +79,9 @@ AdminApproveEmail.prototype = Object.create(UserEmail.prototype);
  * Class to send activation user approve email 
  */
 var AdminBlockEmail = function(user, locals) {
-  user.email='Hansi Mehrotra <privateinvestmentnetwork@gmail.com>';
+   
+  user.email='hansi.mehrotra@gmail.com';
+  user.cc='nishu.saxena@gmail.com';
   UserEmail.call(this, user, 'adminblock', locals);
   this.email.subject = 'Admin Block Your PIN Account';
 };
