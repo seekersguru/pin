@@ -102,8 +102,7 @@ exports.checkusername= function(req, res, next){
 exports.search= function(req, res){
   var username = req.params.username;
   var regex = new RegExp(username, 'i');  // 'i' makes it case insensitive
-  var q = User.find({name: regex});
-
+  var q = User.find({name: regex,fullname: regex,band: { $lte: req.user.band }});
   q.where('status').equals(true);
   q.where('searchable').equals(true);
 

@@ -93,7 +93,8 @@ UserSchema
       'provider': this.provider,
       'following':this.following,
       'favorites':this.favorites,
-      'username': this.username
+      'username': this.username,
+      'band': this.band
     };
   });
 
