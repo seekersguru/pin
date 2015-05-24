@@ -3,16 +3,16 @@
     <div class="container-head">
      <div class="footer-link">
        <ul class="clearfix">
-        <li>
+        <li ng-class="{active:isActive('/who-is-this-site-for')}">
          <h2>Who is this site for?</h2>
          <p class="read-more"><a href="/who-is-this-site-for">Read More</a></p> 
        </li> 
 
-       <li>
+       <li ng-class="{active:isActive('/what-we-do')}">
          <h2>What we do?</h2>
          <p class="read-more"><a href="/what-we-do">Read More</a></p> 
        </li> 
-       <li>
+       <li ng-class="{active:isActive('/who-we-are')}">
          <h2>Who we are?</h2>
          <p class="read-more"><a href="/who-we-are">Read More</a></p> 
        </li> 
@@ -30,11 +30,10 @@
       <div class="row">
         <div class=" col-lg-8">
           <ul>
-            <li><a href="/articles/01">Learn </a></li>
-            <!-- <li><a href="#">Share      </a></li> -->
+            <li><a href="/articles/01" ng-class="{active:isActive('/articles/01')}">Learn </a></li>
             <li><a  ng-if="currentUser.role !='user'" href="/share" ng-class="{active:isActive('/share')}">Share </a></li>
-            <li><a href="/discussion-listing"> DISCUSS </a></li>
-            <li><a href="/connect"> Connect </a></li>
+            <li><a href="/discussion-listing" ng-class="{active:isActive('/discussion-listing')}"> DISCUSS </a></li>
+            <li><a href="/connect" ng-class="{active:isActive('/connect')}"> Connect </a></li>
             <!-- <li><a href="/register"> Register for event </a></li> -->
           </ul>
         </div>
