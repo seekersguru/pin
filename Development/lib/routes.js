@@ -55,6 +55,7 @@ module.exports = function(app) {
 
   app.post('/api/users', users.create);
   app.get('/api/users', users.query);
+  app.post('/api/users/upload',  multipartMiddleware, users.uploaduser);
   app.get('/api/users/adminrole', users.adminrole);
   app.get('/api/users/:userid', users.show);
   app.put('/api/users/:userid', users.update);
@@ -144,6 +145,10 @@ module.exports = function(app) {
 
  app.get('/api/countries', countrycity.getCountry);
  app.get('/api/cities/:country', countrycity.getCity);
+ app.get('/admin-user-upload',function(req,res){
+  res.render('uploadxlsx.html');
+
+ });
 
   // All undefined api routes should return a 404
   app.get('/api/*', function(req, res) {
