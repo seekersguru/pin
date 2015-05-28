@@ -12,6 +12,7 @@ var CompanySchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   public: { type: Boolean, default: false },
   description:{type:String, required:true},
+  services:String,
   keywords: [String],
   organization: String,
   firmsupertype: String,
@@ -28,6 +29,8 @@ var CompanySchema = new Schema({
              main: { type: Boolean, default: false },
              phone:String
            }],
+  pin: { type: Boolean, default: true },
+  money: { type: Boolean, default: true },         
 
 });
 
