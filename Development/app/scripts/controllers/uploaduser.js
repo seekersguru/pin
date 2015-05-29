@@ -6,6 +6,8 @@ angular.module('pinApp')
 
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
 
+  $scope.companies=[];
+
 $scope.uploadPic = function(files) {
 
 
@@ -39,7 +41,7 @@ $scope.uploadPic = function(files) {
     file.upload.then(function(response) {
       $timeout(function() {
         console.log(response);
-        // $location.path('articles/view/'+response.data.article._id);
+        // $location.path('articles/view/'+output.Sheet1[i].response.data.article._id);
         file.result = response.data;
         $scope.articleDone=1;
         startparsing();
@@ -167,17 +169,84 @@ function to_json(workbook) {
 
 function process_wb(wb) {
   var output = to_json(wb);
-  if(out.innerText === undefined) out.textContent = output;
-  else out.innerText = output;
+  // if(out.innerText === undefined) out.textContent = output;
+  // else out.innerText = output;
   if(typeof console !== 'undefined') 
     {
       console.log("output", new Date());
-    console.log(output);
-    var str="";
+      console.log(output);
+      var str="";
+    if(output.Sheet1 && output.Sheet1.length)
+    {
+
+
     for (var i = 0; i < output.Sheet1.length; i++) {
-      str+=output.Sheet1[i].name+"--"+output.Sheet1[i].age+"\n";
-    };
-    out.innerText=str;
+      
+      var temp={
+'title':output.Sheet1[i].title,
+'firmsupertype':output.Sheet1[i].firmsupertype,
+'firmtype':output.Sheet1[i].firmtype,
+'firmsubtype':output.Sheet1[i].firmsubtype,
+'services':output.Sheet1[i].services,
+'office':[
+
+{  
+  'street':output.Sheet1[i].office1street,
+  'city':output.Sheet1[i].office1city,
+  'state':output.Sheet1[i].office1state,
+  'country':output.Sheet1[i].office1country,
+  'pin':output.Sheet1[i].office1pin,
+  'main':output.Sheet1[i].office1main,
+  'phone':output.Sheet1[i].office1phone
+  }  ,   
+ { 
+  'street':output.Sheet1[i].office2street,
+   'city':output.Sheet1[i].office2city,
+   'state':output.Sheet1[i].office2state,
+   'country':output.Sheet1[i].office2country,
+   'pin':output.Sheet1[i].office2pin,
+   'main':output.Sheet1[i].office2main,
+   'phone':output.Sheet1[i].office2phone
+  },
+  {
+
+    'street':output.Sheet1[i].office3street,
+    'city':output.Sheet1[i].office3city,
+    'state':output.Sheet1[i].office3state,
+    'country':output.Sheet1[i].office3country,
+    'pin':output.Sheet1[i].office3pin,
+    'main':output.Sheet1[i].office3main,
+    'phone':output.Sheet1[i].office3phone
+   },       
+  {
+  'street':output.Sheet1[i].office4street,
+  'city':output.Sheet1[i].office4city,
+  'state':output.Sheet1[i].office4state,
+  'country':output.Sheet1[i].office4country,
+  'pin':output.Sheet1[i].office4pin,
+  'main':output.Sheet1[i].office4main,
+  'phone':output.Sheet1[i].office4phone
+}
+  ],
+        
+
+  'pin':output.Sheet1[i].pin,
+  'money':output.Sheet1[i].money,
+  'url':output.Sheet1[i].url,
+  'description':output.Sheet1[i].description+'\n',
+   'status':0 
+
+
+
+  };
+  
+     $scope.companies.push(temp);
+ }
+ $scope.setdata=1;
+}else{
+      $scope.setdatanotfound=1;
+    }
+     // out.innerText=str;
   }
 }
 

@@ -19,7 +19,7 @@
 				<div class="register-form-hr"></div>
 				<form novalidate  name="form" role='form' enctype= 'multipart/form-data' class="">
 						<div class="row register-form-row-pad">
-							<div class="col-lg-9 col-md-9 col-sm-9 paddingr-7">  
+							<div class="col-lg-12 col-md-12 col-sm-12 paddingr-7">  
 								<div class="form-group">
 									<label class="control-label" for="fullName">Media </label>
 									<!-- <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file" accept="image/*"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" /> -->
@@ -32,23 +32,82 @@
 									</div>
 
 								<button ng-show="filearticle" class='btn btn-primary' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Add <i class="fa fa-angle-right"></i></button>
+
+								<button ng-show="setdata" class='btn btn-primary'  ng-click="uploadCompany()" >Save Company <i class="fa fa-angle-right"></i></button>
+
+
 								</div>
 								</div> 
 							</form>
+							<div ng-show="filearticle">
+								<h1>  Total Companies  </h1>
+								<table class="table">
+									<thead>
+										<tr>
+												<th rowspan="2">Name</th><th colspan="3"> Firm</th><th rowspan="2">Services</th><th colspan="6">Office1</th><th colspan="6">Office2</th><th colspan="6">Office3</th><th colspan="6">Office4</th><th rowspan="2">Notes</th><th rowspan="2">Pin</th><th rowspan="2">Money</th><th rowspan="2">Url</th><th rowspan="2">Description</th>
+										</tr>										
+												<th >Firm Super</th><th>Firm</th><th >Firm Sub</th><th>Street</th><th>City</th><th>State</th><th>Country</th><th>Pin</th><th>Main</th><th>Street</th><th>City</th><th>State</th><th>Country</th><th>Pin</th><th>Main</th><th>Street</th><th>City</th><th>State</th><th>Country</th><th>Pin</th><th>Main</th><th>Street</th><th>City</th><th>State</th><th>Country</th><th>Pin</th><th>Main</th><th>Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr  ng-show="setdatanotfound"> 
+											<td colspan="27" class="center"> No Company data found please upload again.</td>
+										</tr>
+										
+										<tr ng-repeat="(key,value) in companies" ng-show="setdata">
+											<td>{{value.title}}</td>
+											<td>{{value.firmsupertype}}</td>
+											<td>{{value.firmtype}}</td>
+											<td>{{value.firmsubtype}}</td>
+											<td>{{value.services}}</td>
+											<td>{{value['office'][0]['street']}}</td>
+											<td>{{value['office'][0]['city']}}</td>
+											<td>{{value['office'][0]['state']}}</td>
+											<td>{{value['office'][0]['country']}}</td>
+											<td>{{value['office'][0]['pin']}}</td>
+											<td>{{value['office'][0]['main']}}</td>
+											<td>{{value['office'][0]['phone']}}</td>
+											<td>{{value['office'][1]['street']}}</td>
+											<td>{{value['office'][1]['city']}}</td>
+											<td>{{value['office'][1]['state']}}</td>
+											<td>{{value['office'][1]['country']}}</td>
+											<td>{{value['office'][1]['pin']}}</td>
+											<td>{{value['office'][1]['main']}}</td>
+											<td>{{value['office'][1]['phone']}}</td>	
+											<td>{{value['office'][2]['street']}}</td>
+											<td>{{value['office'][2]['city']}}</td>
+											<td>{{value['office'][2]['state']}}</td>
+											<td>{{value['office'][2]['country']}}</td>
+											<td>{{value['office'][2]['pin']}}</td>
+											<td>{{value['office'][2]['main']}}</td>
+											<td>{{value['office'][2]['phone']}}</td>
+											<td>{{value['office'][3]['street']}}</td>
+											<td>{{value['office'][3]['city']}}</td>
+											<td>{{value['office'][3]['state']}}</td>
+											<td>{{value['office'][3]['country']}}</td>
+											<td>{{value['office'][3]['pin']}}</td>
+											<td>{{value['office'][3]['main']}}</td>
+											<td>{{value['office'][3]['phone']}}</td>
+											<td>{{value.pin}}</td>
+											<td>{{value.money}}</td>
+											<td>{{value.url}}</td>
+											<td>{{value.description}}</td>
+											<td ng-show="{{value.status}}" class="success">Uploaded</td>
+											<td ng-hide="{{value.status}}" class="danger">Pending</td>
+										</tr>
 
+									</tbody>
+								</table>
+							</div>	
 
 						</div>  
 
 					</div>
 
 
-					<div class="col-lg-3 col-md-3 col-sm-3">
-						<div ng-include="'partials2/right-nav.html'"> </div>
-					</div>
+
 				</div>
-			<div>
-				<div id="fileurl"></div>
-				<pre id="out"></pre>
+			<div id="out">
 			</div>
 				
 			</div>
