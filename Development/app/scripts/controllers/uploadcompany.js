@@ -321,7 +321,9 @@ function process_wb(wb) {
      $scope.companies.push(temp);
  }
  $scope.setdata=1;
+  $scope.loaddata=1;
 }else{
+   $scope.loaddata=1;
       $scope.setdatanotfound=1;
     }
      // out.innerText=str;
