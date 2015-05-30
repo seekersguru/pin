@@ -255,6 +255,7 @@ function process_wb(wb) {
     if(output.Sheet1 && output.Sheet1.length)
     {
 
+$scope.companies=[];
 
     for (var i = 0; i < output.Sheet1.length; i++) {
       
