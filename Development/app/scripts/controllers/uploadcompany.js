@@ -3,6 +3,7 @@
 angular.module('pinApp')
 .controller('UploadCompanyCtrl', function ($scope,$rootScope,$http,$route,$timeout,$upload ) {
   $scope.article={};
+  $scope.loaddata=0;
   $scope.companyStructure={
     'Buy':{
         'WM':{
