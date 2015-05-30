@@ -28,7 +28,8 @@
     "mongoose-unique-validator": "~0.4.1",
     "connect-multiparty": "~1.2.5",
     "mongoose-assert": "~1.0.2",
-    "passport-linkedin": "~0.1.3"
+    "passport-linkedin": "~0.1.3",
+    "xlsx": "~0.8.0"
   },
   "devDependencies": {
     "gulp": "3.8.11",

@@ -154,6 +154,8 @@ $scope.setscope=function(){
       firmsupertype:$scope.article.firmsupertype,
       firmtype:$scope.article.firmtype,
       firmsubtype:$scope.article.firmsubtype,
+      services:$scope.article.services,
+      notes:$scope.article.notes,
       roletype:$scope.companyStructure[$scope.article.firmsupertype][$scope.article.firmtype][$scope.article.firmsubtype]
 
       // public:$scope.article.public

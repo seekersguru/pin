@@ -568,9 +568,11 @@ plugins: [new ngGridFlexibleHeightPlugin()]
                         // showGroupPanel: true ,
                         columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
                                     { field: 'title' ,displayName:'Title' },
-                                    { field: 'organization' ,displayName:'Organization' },
+                                    { field: 'firmsupertype' ,displayName:'SuperType' },
+                                    { field: 'firmtype' ,displayName:'Type' },
+                                    { field: 'firmsubtype' ,displayName:'Sub Type' },
                                     { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
-                                    { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="companyStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="copmanyStatus(row.entity._id)">NOT APPROVED</span>'},
+                                    // { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="companyStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="copmanyStatus(row.entity._id)">NOT APPROVED</span>'},
                                     { field: '',displayName:'Action', cellTemplate: editDeleteCompanyTemplate, maxWidth: 100  }],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]

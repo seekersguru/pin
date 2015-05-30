@@ -160,6 +160,12 @@ angular.module('pinApp', [
   }) 
   .when('/who-we-are', {
     templateUrl: 'partials2/about.html'
+  }) 
+   .when('/privacy', {
+    templateUrl: 'partials2/privacy.html'
+  })
+  .when('/term-and-condition', {
+    templateUrl: 'partials2/term-and-condition.html'
   })
   .when('/articles/:pageno', {
     templateUrl: 'partials2/articles',
@@ -281,6 +287,13 @@ angular.module('pinApp', [
       templateUrl: 'partials2/admin/adminpanel',
       controller: 'AdminPanelCtrl',
       title: 'Admin Panel',
+      authenticate: true,
+      admin: true
+  })
+  .when('/upload-company', {
+      templateUrl: 'partials2/upload-company',
+      controller: 'UploadCompanyCtrl',
+      title: 'Upload Companies',
       authenticate: true,
       admin: true
   })

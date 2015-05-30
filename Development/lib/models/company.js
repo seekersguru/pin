@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
  * Company Schema
  */
 var CompanySchema = new Schema({
-  title: {type:String, required:true},
+  title: {type:String, required:true,unique:true},
   createdAt: { type: Date, default: Date.now },
   public: { type: Boolean, default: false },
   description:{type:String, required:true},
@@ -30,9 +30,26 @@ var CompanySchema = new Schema({
              phone:String
            }],
   pin: { type: Boolean, default: true },
-  money: { type: Boolean, default: true },         
+  money: { type: Boolean, default: true },
+  notes:String         
 
 });
+
+// Validate username is not taken
+
+CompanySchema
+  .path('title')
+  .validate(function(value, respond) {
+    var self = this;
+    this.constructor.findOne({title: value}, function(err, user) {
+      if(err) throw err;
+      if(user) {
+        if(self.id === user.id) return respond(true);
+        return respond(false);
+      }
+      respond(true);
+    });
+}, 'The specified comppany name is already in use.');
 
 // Basic info to identify the current authenticated user in the app
 CompanySchema
