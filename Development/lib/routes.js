@@ -114,6 +114,7 @@ module.exports = function(app) {
   app.post('/api/companys',   companys.create);
   app.put('/api/companys/:companyid',companys.update);
   app.del('/api/companys/:companyid', companys.remove);
+  app.post('/api/companys/upload',  multipartMiddleware, companys.uploadcompanies);
   
 
    /**---(',')--Event section start----(',')---**/

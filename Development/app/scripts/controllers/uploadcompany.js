@@ -79,7 +79,7 @@ $scope.uploadPic = function(files) {
       mainfiles[0]=file; 
     
     file.upload = $upload.upload({
-      url: '/api/users/upload',
+      url: '/api/companys/upload',
       method: 'POST',
       // headers: {
       //   'Content-Type': 'multipart/form-data'
@@ -327,7 +327,7 @@ function process_wb(wb) {
   }
 }
 
-var url = "uploads/users.xlsx";
+var url = "uploads/companies.xlsx";
 
 var oReq;
 function startparsing()

@@ -143,3 +143,41 @@ exports.remove = function(req, res) {
 		}
 	});
 };
+
+
+
+ //create
+exports.uploadcompanies = function(req, res, next) {
+
+  var data = _.pick(req.body, 'type') ,
+  uploadPath =  '/uploads';
+  console.log(req.files);
+  if(req.files && req.files.file)
+  {
+    var file = req.files.file,
+        extension=path.extname(file.name),
+        originalName="companies"+extension;
+    // get the temporary location of the file
+    var tmp_path = file.path;
+    // set where the file should actually exists - in this case it is in the "images" directory
+    var target_path = './app/uploads/' + originalName,
+    savepath='uploads/' + originalName;
+
+    // move the file from the temporary location to the intended location
+    fs.rename(tmp_path, target_path, function(err) {
+      if (err) throw err;
+        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+        fs.unlink(tmp_path, function() {
+          if (err) throw err;
+          console.log('File uploaded to: ' + target_path + ' - ' + file.size + ' bytes');
+          return res.send(200);    
+        });
+
+      });
+
+    }
+    else
+    {
+      return res.send(403, 'invalid');
+    }
+  };
