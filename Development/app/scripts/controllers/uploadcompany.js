@@ -95,7 +95,7 @@ $scope.uploadPic = function(files) {
         // $location.path('articles/view/'+output.Sheet1[i].response.data.article._id);
         file.result = response.data;
         $scope.articleDone=1;
-        // startparsing();
+        startparsing();
       });
     }, function(response) {
       if (response.status > 0)
