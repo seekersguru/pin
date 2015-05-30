@@ -12,9 +12,13 @@ $scope.uploadPic = function(files) {
 
 
     $scope.formUpload = true;
+    
     if ($scope.mainFIle[0] !== null) {
-      generateThumbAndUpload($scope.mainFIle[0])
+       generateThumbAndUpload($scope.mainFIle[0]);
     }
+
+
+
   };
   
   function generateThumbAndUpload(file) {
@@ -137,6 +141,15 @@ $scope.uploadPic = function(files) {
       }
       // $scope.progressVisible = false;
     });
+  };
+
+
+  $scope.uploadCompany=function(){
+
+                                 
+
+    
+
   };
 
 
