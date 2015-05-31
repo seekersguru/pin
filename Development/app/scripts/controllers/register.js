@@ -3,6 +3,18 @@
 
 angular.module('pinApp')
   .controller('RegisterCtrl',['$scope','$location','$rootScope','Auth','$http', function ($scope, $location,$rootScope ,Auth,$http) {
+
+   $scope.roletypes=[
+    'CEO/business head',
+    'Management',
+    'Sales/Marketing',
+    'Investment/Product',  
+    'RM/client facing',
+    'Investment Mgmt"',
+    'Product Mgmt'
+    ];  
+
+ 
    $scope.getCountries = function() {
       return $http.get('/api/countries')
       .then(function(response){
@@ -65,6 +77,7 @@ angular.module('pinApp')
       .indexOf($scope.user.company);
 
       $scope.companyaddress=$scope.companies[removeIndex].address;
+      $scope.selectroletypes=$scope.companies[removeIndex].roletype;
 
       // for (var i = 0; i < $scope.companies[removeIndex].address.length-1; i++) {
       //       $scope.companyaddress.push($scope.companies[removeIndex].address[i]);
@@ -132,17 +145,17 @@ angular.module('pinApp')
   		$scope.registerDone=0;
       if(form.$valid) {
         Auth.createUser({
-          fullname: $scope.user.fullname,
-          name:  $scope.user.name,
+          lastname: $scope.user.lastname,
+          firstname:  $scope.user.firstname,
           username:  $scope.user.username,
           alias: $scope.user.alias,
           address: $scope.user.address,
           email: $scope.user.email,
           phone: $scope.user.phone,
-          membertype: $scope.user.member,
-          nominated: $scope.user.nominated,
+          adminrole: $scope.user.adminrole,
+          notes: $scope.user.notes,
           interests: $scope.user.interests,
-          other: $scope.user.other,
+          // other: $scope.user.other,
           password:$scope.user.password,
           company:$scope.user.company,
           companyaddress:$scope.user.companyaddress,

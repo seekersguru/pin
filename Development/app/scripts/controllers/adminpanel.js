@@ -484,7 +484,7 @@ $scope.deleteExpert=function(expertId){
                          enableRowSelection: false,
                          filterOptions: $scope.filterOptions,
                          columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
-                                    { field: 'name' ,displayName:'Name' },
+                                    { field: 'firstname' ,displayName:'First Name' },
                                     { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'email' ,displayName:'Email' },
                                     { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'}, 

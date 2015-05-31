@@ -65,6 +65,8 @@ module.exports = function(app) {
   app.post('/api/users/connect/:userid', users.connect);
   app.get('/api/users/search/:username', users.search);
   app.put('/api/users/followingstatus/:followingid', users.connectupdate);
+  app.post('/api/users/upload',  multipartMiddleware, users.uploadusers);
+
 
   
 

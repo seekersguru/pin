@@ -65,6 +65,7 @@ CompanySchema
       'address':this.address,
       'url':this.url,
       'createdAt':this.createdAt,
+      'roletype':this.roletype,
       'approve':this.public
     };
   });

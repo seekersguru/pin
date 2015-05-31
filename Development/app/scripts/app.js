@@ -298,6 +298,14 @@ angular.module('pinApp', [
       admin: true
   })
 
+  .when('/upload-users', {
+      templateUrl: 'partials2/upload-users',
+      controller: 'UploadUsersCtrl',
+      title: 'Upload Users',
+      authenticate: true,
+      admin: true
+  })
+
   .when('/user/:id/recover/:token', {
     templateUrl: 'partials2/recover',
     controller: 'RecoverCtrl',

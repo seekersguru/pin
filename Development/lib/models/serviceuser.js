@@ -11,8 +11,8 @@ mongoose.set('debug', true);
  * User Schema
  */
 var UserSchema = new Schema({
-  name: String,
-  fullname: String,
+  firstname: String,
+  lastname: String,
   alias: String,
   address: {
     street:String,
@@ -26,6 +26,7 @@ var UserSchema = new Schema({
   nominated:String,
   interests:String,
   band:Number,
+  notes:String,
   emailVerification: {
       token: String,
       verified : {type: Boolean, default:false},
@@ -91,7 +92,7 @@ UserSchema
   .get(function() {
     return {
       '_id': this._id,
-      'name': this.name,
+      'firstname': this.firstname,
       'role': this.role,
       'provider': this.provider,
       'following':this.following,
@@ -106,7 +107,7 @@ UserSchema
   .get(function() {
     return {
       '_id': this._id,
-      'name': this.name,
+      'firstname': this.firstname,
       'createdAt':this.createdAt,
       'email': this.email,
       'role': this.role,
@@ -128,7 +129,7 @@ UserSchema
   .get(function() {
     return {
       '_id': this._id,
-      'name': this.name,
+      'firstname': this.firstname,
       'bio': this.bio,
       'role': this.role,
       'city': this.address.city,
@@ -178,7 +179,7 @@ UserSchema
     });
 }, 'The specified email address is already in use.');
 
-// Validate username is not taken
+// Validate userfirstname is not taken
 UserSchema
   .path('username')
   .validate(function(value, respond) {

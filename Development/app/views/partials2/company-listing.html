@@ -37,16 +37,14 @@
 </div> 
 </div>
 <div class="col-lg-4 col-md-4 col-sm-4 filter-dropdown">
- <select ng-model="search.organization" name ="organization" class="form-control">
-    <option value="">--Search By Organization--</option>
-    <option value="General">General</option>
-    <option value="Banking">Banking</option>
-    <option value="Insurance">Insurance</option>
-    <option value="Investments">Investments</option>
-    <option value="Estate">Estate</option>
-    <option value="Management">Management</option>
-    <option value="Tax">Tax</option>
-  </select>
+ <select ng-model="search.firmtype" name ="organization" class="form-control">
+    <option value="">--Search By Type--</option>
+    <option value="WM">WM</option>
+    <option value="Foreign portfolio investor">Foreign portfolio investor</option>
+    <option value="Regulator">Regulator</option>
+    <option value="Service provider">Service provider</option>
+    <option value="Product provider">Product provider</option>
+     </select>
 </div>  
 </div>
 </form>
@@ -54,7 +52,7 @@
 
 <div id="upcomming-event">
 <ul>
-<li ng-repeat="(key,value) in companys | filter:(search.title || search.organization) ">
+<li ng-repeat="(key,value) in companys | filter:(search.title || search.firmtype) ">
 <h2><a href="/company/view/{{value._id}}">{{value.title}}</a></h2>
 <p>{{value.organization}}</p>
 </li> 
