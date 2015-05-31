@@ -8,6 +8,9 @@ ActivationEmail = require('../email').ActivationEmail,
 ForgotPasswordEmail = require('../email').ForgotPasswordEmail,
 AdminApproveEmail= require('../email').AdminApproveEmail,
 AdminBlockEmail= require('../email').AdminBlockEmail,
+multipart = require('connect-multiparty'),
+fs = require('fs'),
+path = require('path'),
 _ = require('lodash');
 
 
