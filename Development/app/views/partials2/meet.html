@@ -38,7 +38,7 @@
 <div class="baner-content">
 <div>
 <div class="note blue">
-    <p><span><img src="images/event-user-icon.png" alt=""></span>{{events[0].title | uppercase}}</p>
+    <p><span><img src="images/{{events[0].type}}.jpg" alt=""></span>{{events[0].title | uppercase}}</p>
 </div>
 <p class="articleview" ng-bind-html="events[0].bannertext | rawHtml "></p>
 </div>
@@ -62,9 +62,9 @@
    
    <div class="row event-row-mar">
      <div class="col-lg-6 col-md-6 col-sm-6" ng-repeat="(key,value) in events" ng-show="!$first">
-      <div class="event-box clearfix">
+     <a ng-href="/event/view/{{value._id}}"> <div class="event-box clearfix">
         <div class="event-iocn">
-         <img ng-src="images/event-icon-{{key}}.png" alt=""> 
+         <img ng-src="images/{{value.type }}.jpg" alt=""> 
        </div> 
        <div class="event-content">
          <div class="event-box-heading">{{value.title}}</div>
@@ -73,6 +73,7 @@
        </div> 
      </div> 
    <br>
+   </a>
    </div> 
 </div>
 

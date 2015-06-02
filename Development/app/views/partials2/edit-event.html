@@ -40,6 +40,14 @@
 
         </div>
 <div class="row ">
+<div class="col-lg-12 col-md-12 col-sm-12  paddingl-7">
+            <div class="form-group">
+              <select class="form-control" ng-model="article.type" ng-options="o as o for o in typecat" placeholder="choose type"></select>
+            </div>
+          </div>
+
+</div>        
+<div class="row ">
           <div class="col-lg-12 col-md-12 col-sm-12">
 
             <div class="form-group" ng-class="{'has-error':form.agenda.$dirty && form.agenda.$error.required,'has-success':form.agenda.$valid}">

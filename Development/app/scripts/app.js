@@ -184,7 +184,7 @@ angular.module('pinApp', [
         var deferred = $q.defer();
         var query={
           pageno:1,
-          limit:5
+          limit:9
         };
         events.get(query, function(articles) {
           deferred.resolve(articles.articles);
