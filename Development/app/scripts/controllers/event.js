@@ -53,6 +53,7 @@ angular.module('pinApp')
 .controller('EventEditCtrl', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope,events) {
 
   $scope.category=['Grow','Protect','Manage','Give'];
+  $scope.typecat=['Conference','Webinar','Round Table'];
   $scope.article=events;
 
   $scope.loadExpert = function($query) {
@@ -209,6 +210,7 @@ $scope.uploadPic = function(files) {
       agenda:$scope.article.agenda,
       bannertext:$scope.article.bannertext,
       category:$scope.article.category,
+      type:$scope.article.type,
       location:{address:$scope.article.location.address},
       eventdate:$scope.article.eventdate
 
@@ -297,6 +299,7 @@ $scope.uploadPic = function(files) {
       agenda:$scope.article.agenda,
       bannertext:$scope.article.bannertext,
       category:$scope.article.category,
+      type:$scope.article.type,
       location:{address:$scope.article.location.address},
       eventdate:$scope.article.eventdate
     };
@@ -346,9 +349,12 @@ angular.module('pinApp')
 
 
   $scope.category=['Grow','Protect','Manage','Give'];
+  $scope.typecat=['Conference','Webinar','Round Table'];
+
   $scope.article={ location:{}};
 
   $scope.article.category=$scope.category[0];
+  $scope.article.type=$scope.typecat[0];
   $scope.article.expert = [  ];
   
   $scope.template=function(templateno){

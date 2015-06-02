@@ -26,7 +26,7 @@
 <div class="baner-content">
 <div>
 <div class="note blue">
-    <p><span><img src="images/event-user-icon.png" alt=""></span>{{events.title | uppercase}}</p>
+    <p><span><img ng-src="images/{{events.type }}.jpg" alt=""></span>{{events.title | uppercase}}</p>
 </div>
 <p class="articleview" ng-bind-html="events.bannertext | rawHtml "></p>
 </div>
