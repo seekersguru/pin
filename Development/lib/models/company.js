@@ -12,7 +12,7 @@ var CompanySchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   public: { type: Boolean, default: false },
   description:{type:String, required:true},
-  services:String,
+  services:[],
   keywords: [String],
   organization: String,
   firmsupertype: String,

@@ -195,6 +195,14 @@ $scope.uploadPic = function(files) {
 
   angular.forEach($scope.companies, function(value, key) {
       // $scope.form.$setPristine();
+      angular.forEach(value.address,function(address,key){
+      if(address.street == '')
+      {
+          delete value.address[key];
+      }
+     });   
+
+
       $http({ method: 'POST', url: '/api/companys',data:value }).
       success(function (data, status, headers, config) {
         $scope.companies[key].status=1;
