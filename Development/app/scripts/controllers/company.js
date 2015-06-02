@@ -56,6 +56,26 @@ angular.module('pinApp')
   $scope.article=company;
   $scope.article.addresstimes=[];
 
+  $scope.services=['Wealth management','Investment advisory',  'Investment execution','Wealth planning','Financial planning','Tax','Audit','Legal','IT product','IT consulting','Educational certifications','Educational training','Trade body','Self-regulation','Trust set-up','Trusteeship','Trust administration','Consulting - management/HR','Consulting - investment','Media outlet','Media agent','Media content','Philanthropy advice','Philanthropy execution','Asset management - mutual fund','Asset management - institutional','Asset management - managed account','Asset management - alternatives','Asset management - structured product','Lending/credit','Fiduciary','Regulation setting','Regulation enforcement','Securities exchange','Administration platform','BPO/KPO'];
+
+
+   // toggle selection for a given fruit by name
+  $scope.toggleSelection = function toggleSelection(servicename) {
+    var idx = $scope.article.services.indexOf(servicename);
+
+    // is currently selected
+    if (idx > -1) {
+      $scope.article.services.splice(idx, 1);
+    }
+
+    // is newly selected
+    else {
+      $scope.article.services.push(servicename);
+    }
+  };
+
+
+
   
   $scope.companyStructure={
     'Buy':{
@@ -227,6 +247,28 @@ $scope.article.address=[{
              phone:'',
              main: false
           }];
+
+$scope.services=['Wealth management','Investment advisory',  'Investment execution','Wealth planning','Financial planning','Tax','Audit','Legal','IT product','IT consulting','Educational certifications','Educational training','Trade body','Self-regulation','Trust set-up','Trusteeship','Trust administration','Consulting - management/HR','Consulting - investment','Media outlet','Media agent','Media content','Philanthropy advice','Philanthropy execution','Asset management - mutual fund','Asset management - institutional','Asset management - managed account','Asset management - alternatives','Asset management - structured product','Lending/credit','Fiduciary','Regulation setting','Regulation enforcement','Securities exchange','Administration platform','BPO/KPO'];
+
+  $scope.article.services=[];
+  
+   // toggle selection for a given fruit by name
+  $scope.toggleSelection = function toggleSelection(servicename) {
+    var idx = $scope.article.services.indexOf(servicename);
+
+    // is currently selected
+    if (idx > -1) {
+      $scope.article.services.splice(idx, 1);
+    }
+
+    // is newly selected
+    else {
+      $scope.article.services.push(servicename);
+    }
+  };
+
+
+
 $scope.template=function(templateno){$scope.article={};
 $scope.article.title="Set your Event Title Name";
 $scope.article.description="<p>Sed ut perspiciatis unde omnis iste natu error luptatem accusantium. dolorem laudantm, totam reaperiam, eaqu psa aeab illo inventore veriquasi architecto beatae vitae dicta sunt explicabo.</p>"+
