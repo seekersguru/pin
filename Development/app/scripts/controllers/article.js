@@ -45,14 +45,17 @@ setTimeout(function(){
           }); 
 
   $(".filterArticle li").find("a").click(function(){
-
+    $(".filterArticle li").find("a").removeClass("current");
     var filter = $(this).data("filter");
     $("#article-container").find(".article-post").fadeOut(205);
     $("#article-container").find(filter).fadeIn(205);
 
+    $(this).addClass("current");
+
   }); 
 
   $(".clear-filter").find("a").click(function(){
+    $(".filterArticle li").find("a").removeClass("current");
 
     $("#article-container").find(".article-post").fadeIn(205);
 
