@@ -51,6 +51,14 @@ setTimeout(function(){
     $("#article-container").find(filter).fadeIn(205);
 
   }); 
+
+  $(".clear-filter").find("a").click(function(){
+
+    $("#article-container").find(".article-post").fadeIn(205);
+
+  }); 
+
+
 },1000);
 
 
