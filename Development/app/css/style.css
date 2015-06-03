@@ -137,7 +137,9 @@ z-index: 5;
 .div3{height:30%; font-size:30px; padding:10px;   }
 .div4{height:30%; font-size:30px; padding:10px;   }
 .footer-learning{background-color:#222222; border-top:solid 7px #b59759;}
-
+.clear-filter{margin-top:6px; }
+.clear-filter a{background-color:#5e5e5e; padding:6px 15px 6px 15px;  color:#fff; text-transform:uppercase; font-size:15px;   }
+.clear-filter a:hover{background-color:#273c69; text-decoration:none;  padding:6px 15px 6px 15px;  color:#fff; text-transform:uppercase; font-size:15px;   }
 .footer-learning ul{margin:0px; padding: 0px; list-style:none; clear: both;  }
 .footer-learning ul li {margin:0px; padding: 0px; list-style:none;    float: left; }
 .footer-learning ul li a {margin:0px; padding: 0px; list-style:none; color: #dddddd; padding-left:20px; padding-right:20px;      padding-top: 15px;float: left; }
