@@ -176,22 +176,21 @@
 </div> 
 <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6">
-             <div class="form-group">             
-<label>Please choose interests</label>
-<br/>
- <label ng-repeat="interest in interests">
-  <input
+             
+
+<div class="intrest-area">
+<h4>Select area of interests</h4> 
+<div class="checkbox " ng-repeat="interest in interests">
+  <label><input
     type="checkbox"
     name="selectedInterest[]"
     value="{{interest}}"
     ng-checked="user.interests.indexOf(interest) > -1"
     ng-click="toggleSelection(interest)"
-  > {{interest}}
-</label>
- 
-</div> 
-            </div>
-
+  > {{interest}} </label>
+</div>
+  </div>
+</div>
 </div>
 <!-- <p><span>*</span> Admin will check the nominated by before approving membership;<br> 
    will also put family into a Wealth band (30m+, 5-30m, <5m)</p>

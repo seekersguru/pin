@@ -32,8 +32,8 @@
   <body>
 <div id="wrapper">
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-blue">
-      <div class="container-head">
+<nav class="navbar navbar-blue">
+      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -41,14 +41,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-      <!--logo area-->    
-<div class="logo">
+ <div class="logo">
 <img src="images/logo.png" alt="">
 </div>
-<!--end-->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-  <form class="navbar-form navbar-right" method="GET" action="dashboard.html" >
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+         
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+             <form class="navbar-form navbar-right" method="GET" action="dashboard.html" >
                     <div class="form-group">
                         <input type="text" class="form-control" name="username" placeholder="Username">
                       <div class="checkbox">
@@ -61,9 +66,13 @@
                     </div>
                     <button type="submit" class="btn btn-default">Sign In</button>
                 </form>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
+
+
 
 
     
@@ -229,7 +238,27 @@
 </div> 
 <p><span>*</span> Admin will check the nominated by before approving membership;<br> 
    will also put family into a Wealth band (30m+, 5-30m, <5m)</p>
+<div class="intrest-area">
+<h4>Select Area of intrest</h4> 
 
+ <div class="checkbox">
+  <label><input type="checkbox" value="">A) keeping abreast of:
+ <label class="radio-inline"><input type="radio" name="optradio">Investments</label>
+<label class="radio-inline"><input type="radio" name="optradio">Wealth planing</label>
+<label class="radio-inline"><input type="radio" name="optradio">Adminstrations</label> 
+<label class="radio-inline"><input type="radio" name="optradio">Philanthropy</label> 
+  </label>
+</div>
+<div class="checkbox">
+  <label><input type="checkbox" value="">B) Networking and discussion with peers</label>
+</div>
+<div class="checkbox ">
+  <label><input type="checkbox" value="" >C) Finding well-rated services providers</label>
+</div>
+<div class="checkbox ">
+  <label><input type="checkbox" value="" >D) Researching investment products </label>
+</div>
+</div>
 
    <button class="btn register-bt" type="button">
               
@@ -289,7 +318,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajaxogleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
 
   

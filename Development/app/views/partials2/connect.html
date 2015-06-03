@@ -46,11 +46,14 @@
 </div>
 </div>
 
-<br> <button class="btn btn-primary" type="submit">  Submit  </button><br></br>
+<br> <button class="btn btn-primary" type="submit">  Search  <i class="fa fa-search"></i></button>
+<button class="btn btn-default" type="button">  My Contacts<i class="fa fa-user"></i>
+</button>
+<br></br>
 
 </form>
 
-<table class="table" ng-show="searchactive">
+<!-- <table class="table" ng-show="searchactive">
   <thead ><tr><th>S.N</th> <th>Name</th> <th>Connect</th> </tr></thead>
   <tbody>
   <tr ng-show="searchresult" ng-repeat="(key,value) in searchresult">
@@ -65,6 +68,49 @@
   <tr ng-hide="searchresult" ><td colspan="3"> No Results Founds ;(</td> </tr>
   </tbody>.
 </table>
+ -->
+ <div class="row">
+ <div class="col-lg-5 comment-text">
+   Members
+ </div> 
+  <!-- <div class="pull-right col-lg-3">
+    <div class="form-group">
+            
+          <select class="form-control" id="sel1">
+    <option>Short By</option>
+    <option>services listed in service directory</option>
+    <option>events type listed in events
+</option>
+   
+  </select>
+           </div>
+  </div>  -->
+  <div class="clearfix"></div>
+</div>
+<div class="connect-hr2"></div>
+<ul class="commentList" ng-show="searchactive">
+            <li class="clearfix" ng-show="searchresult" ng-repeat="(key,value) in searchresult">
+              
+                <div class="commentText">
+                <h3>{{value.name}}</h3>
+                 
+                     <p class="">Cheaf Excutive Officer</p>
+                     <p>Motilal Oswal Wealth Management </p>
+
+                </div>
+
+            <button type="button" class="add-contact btn btn-default" ng-show="!checkStatus(currentUser._id,key)"  ng-click="followUser(value._id,key)">Add contact<i class="fa fa-user-plus"></i></button>
+
+            <button type="button"  class="add-contact btn btn-default" ng-show="checkStatus(currentUser._id,key) == 1"  disabled="disabled" >Pending<i class="fa fa-user-plus"></i></button>
+            
+            <button type="button" class="add-contact btn btn-default" disabled="disabled" ng-show="checkStatus(currentUser._id,key) == 2" >Connected<i class="fa fa-user-plus"></i></button>
+
+            </li>
+             <li class="clearfix" ng-hide="searchresult">No Result Found :( </li>
+            
+        </ul>
+
+
 
 </div>  
 
