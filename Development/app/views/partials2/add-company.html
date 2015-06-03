@@ -55,7 +55,7 @@
  <label ng-repeat="service in services">
   <input
     type="checkbox"
-    name="selectedInterest[]"
+    name="selectedServices[]"
     value="{{service}}"
     ng-checked="article.services.indexOf(service) > -1"
     ng-click="toggleSelection(service)"
