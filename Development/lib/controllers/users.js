@@ -104,11 +104,29 @@ exports.checkusername= function(req, res, next){
 /** checkusername that it is exist or not */
 exports.search= function(req, res){
   var username = req.params.username;
+  var userid = req.params.userid;
   var regex = new RegExp(username, 'i');  // 'i' makes it case insensitive
-  var q = User.find({name: regex,fullname: regex,band: { $lte: req.user.band }});
+  var q = User.find({ 'following.user':{$ne: userid},name: regex,fullname: regex,band: { $lte: req.user.band }});
   q.where('status').equals(true);
   q.where('searchable').equals(true);
 
+   q.exec(function(err,users) {
+    if (err) {
+      console.log(err);
+      return res.send(404);
+    } else {
+       for(var i=0; i<users.length; i++){
+          users[i] = users[i].userInfo;
+        }
+      return res.json({users:users});
+    }
+  }); 
+};
+
+/** checkusername that it is exist or not */
+exports.mycontact= function(req, res){
+  var userid = req.params.userid;
+  var q = User.find({ 'following.user':userid});
    q.exec(function(err,users) {
     if (err) {
       console.log(err);

@@ -65,7 +65,8 @@ module.exports = function(app) {
   app.post('/api/users/forgot', users.forgot);
   app.post('/api/users/:id/recover', users.recover);
   app.post('/api/users/connect/:userid', users.connect);
-  app.get('/api/users/search/:username', users.search);
+  app.get('/api/users/search/:username/:userid', users.search);
+  app.get('/api/users/mycontact/:userid', users.mycontact);
   app.put('/api/users/followingstatus/:followingid', users.connectupdate);
 
   

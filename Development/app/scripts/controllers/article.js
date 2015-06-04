@@ -407,6 +407,38 @@ $scope.removeMedia=function(){
 
 };
 
+$scope.today = function() {
+    $scope.article.eventdate = new Date();
+  };
+  // $scope.today();
+
+  $scope.clear = function () {
+    $scope.article.eventdate = null;
+  };
+
+  // Disable weekend selection
+  $scope.disabled = function(date, mode) {
+    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+  };
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+
 $scope.removeThumble=function(){
   var remove=confirm("Are you sure you want to remove this Thumble");
   if(remove)
@@ -735,6 +767,38 @@ angular.module('pinApp')
 
   $scope.article={};
   $scope.preview=0;
+  
+  $scope.today = function() {
+      $scope.article.eventdate = new Date();
+    };
+    // $scope.today();
+
+    $scope.clear = function () {
+      $scope.article.eventdate = null;
+    };
+
+    // Disable weekend selection
+    $scope.disabled = function(date, mode) {
+      return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+    };
+
+    $scope.toggleMin = function() {
+      $scope.minDate = $scope.minDate ? null : new Date();
+    };
+    $scope.toggleMin();
+
+    $scope.open = function($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+
+      $scope.opened = true;
+    };
+
+    $scope.dateOptions = {
+      formatYear: 'yy',
+      startingDay: 1
+    };
+
   $scope.article.category=$scope.category[0];
     $scope.mmicategory=[
    {

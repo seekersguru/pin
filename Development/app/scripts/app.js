@@ -111,7 +111,7 @@ angular.module('pinApp', [
   })
   .when('/my-contact', {
     templateUrl: 'partials2/my-contact',
-    controller: 'MyConnectCtrl',
+    controller: 'MyContactCtrl',
     title: 'My Friends',
     authenticate: true
   })

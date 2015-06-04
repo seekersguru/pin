@@ -4,7 +4,7 @@
 <div class="col-lg-9 col-md-9 col-sm-9 ">
   <ul class="breadcrumb">
     <li><a href="#"><i class="fa fa-home fa-lg"></i></a></li>
-    <li class="active">CONNECT</li>
+    <li class="active">MY CONTACT</li>
     <!-- <li >Lorem ipsum dosit amet</li> -->
 </ul>
 </div>  
@@ -15,7 +15,7 @@
 <div class="col-lg-9 col-md-9 col-sm-9">
 
 <div class="submit-articale-section">
- <h1>Connect</h1> 
+ <h1>My Contact</h1> 
 <div class="register-form-hr"></div>
 
 <div class="row mar-conect-top-bt">
@@ -32,46 +32,9 @@
 </div>
 
 <div class="connect-hr"></div>
-<p>Search Your Friend name by which you want to connect</p>
-
-<form class="register-form"  novalidate  name="form" role='form' ng-submit="searchFriends(form)" >
-<div class="row register-form-row-pad">
-<div class="col-lg-7 col-md-7 col-sm-7 paddingr-7">
-<div class="form-group">
-              
-<input required type="text" name="search"  ng-model="connect.search" class="form-control" placeholder="Search "/>
-<p class="text-danger" ng-show="form.search.$dirty && form.search.$error.required">Please fill searchbox.</p>
-
- </div>
-</div>
-</div>
-
-<br> <button class="btn btn-primary" type="submit">  Search  <i class="fa fa-search"></i></button>
-<a class="btn btn-default" type="button" href="/my-contact">  My Contacts<i class="fa fa-user"></i>
-</a>
-<br></br>
-
-</form>
-
-<!-- <table class="table" ng-show="searchactive">
-  <thead ><tr><th>S.N</th> <th>Name</th> <th>Connect</th> </tr></thead>
-  <tbody>
-  <tr ng-show="searchresult" ng-repeat="(key,value) in searchresult">
-  <td>{{key+1}}</td> 
-  <td>{{value.name}}</td> 
-  <td>
-      <button ng-show="!checkStatus(currentUser._id,key)" class="search-bt" ng-click="followUser(value._id,key)">Connect</button>
-      <button ng-show="checkStatus(currentUser._id,key) == 1"  disabled="disabled" class="search-bt">Pending</button>
-      <button ng-show="checkStatus(currentUser._id,key) == 2"  disabled="disabled" class="search-bt">Connected</button>
-  </td> 
-  </tr>
-  <tr ng-hide="searchresult" ><td colspan="3"> No Results Founds ;(</td> </tr>
-  </tbody>.
-</table>
- -->
  <div class="row">
  <div class="col-lg-5 comment-text">
-   Members
+   My Contact list
  </div> 
   <!-- <div class="pull-right col-lg-3">
     <div class="form-group">
@@ -89,7 +52,7 @@
 </div>
 <div class="connect-hr2"></div>
 <ul class="commentList" ng-show="searchactive">
-            <li class="clearfix" ng-show="searchresult" ng-repeat="(key,value) in searchresult">
+            <li class="clearfix" ng-show="searchresult" ng-repeat="(key,value) in searchresult | filter:connect.search">
               
                 <div class="commentText">
                 <h3>{{value.name}}</h3>
@@ -98,8 +61,6 @@
                      <p>Motilal Oswal Wealth Management </p>
 
                 </div>
-
-            <button type="button" class="add-contact btn btn-default" ng-show="!checkStatus(currentUser._id,key)"  ng-click="followUser(value._id,key)">Add contact<i class="fa fa-user-plus"></i></button>
 
             <button type="button"  class="add-contact btn btn-default" ng-show="checkStatus(currentUser._id,key) == 1"  disabled="disabled" >Pending<i class="fa fa-user-plus"></i></button>
             
