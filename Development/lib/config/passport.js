@@ -177,7 +177,8 @@ profile = profile._json;
     }
     if (!user) {
       user = new User({
-        name: profile.firstName + ' ' + profile.lastName,
+        firstname: profile.firstName,
+        lastname: profile.lastName,
         email: profile.emailAddress,
         provider: 'linkedin',
         linkedin: profile,

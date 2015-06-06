@@ -5,7 +5,7 @@ angular.module('pinApp')
 .controller('SocketCtrl', function ($log, $scope, nickName,$rootScope,$location,$http,$timeout) {
   if($rootScope.currentUser)
   {
-    nickName=$rootScope.currentUser.name;
+    nickName=$rootScope.currentUser.firstname;
   }
 
 $scope.color={
@@ -192,7 +192,7 @@ $scope.addComment=function(form){
  if(form.$valid)
  {
   
-    var comment={ user: $rootScope.currentUser._id ,username:$rootScope.currentUser.name, post: $scope.article.comment};  
+    var comment={ user: $rootScope.currentUser._id ,username:$rootScope.currentUser.firstname, post: $scope.article.comment};  
 
     $http({ method: 'POST', url: '/api/discussion-comments/'+$scope.discussion._id,data:comment }).
     success(function (data, status, headers, config) {
@@ -219,7 +219,7 @@ $scope.addComment=function(form){
 $scope.editComment=function(form,commentId,editcomment,key){
 if(form.$valid)
  {
-  var comment={ post: editcomment,username:$rootScope.currentUser.name,user:$rootScope.currentUser._id};  
+  var comment={ post: editcomment,username:$rootScope.currentUser.firstname,user:$rootScope.currentUser._id};  
 
     $http({ method: 'PUT', url: '/api/discussion-comments/'+$scope.discussion._id+'/'+commentId,data:comment}).
     success(function (data, status, headers, config) {
@@ -255,7 +255,7 @@ if(form.$valid)
     if(form.$valid) {
     $scope.forsubmit=1;
       $scope.chat.scomments=[{ user: $rootScope.currentUser._id,
-               username:$rootScope.currentUser.name,
+               username:$rootScope.currentUser.firstname,
                post: $scope.chat.comment               
              }];
       $scope.chat.cid=new Date().getTime();       
