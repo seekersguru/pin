@@ -56,7 +56,7 @@ exports.linkedinlogin = function(req, res, next) {
   redirectPath = (new Buffer(String(redirectPath))).toString('base64');
   passport.authenticate('linkedin', {
     callbackURL : '/api/session/linkedin/callback/?redirectPath='+ qs.escape(redirectPath),
-    scope: ['r_basicprofile', 'r_emailaddress','r_fullprofile','r_contactinfo']
+    scope: ['r_basicprofile', 'r_emailaddress']
   })(req, res, next);
 };
 
