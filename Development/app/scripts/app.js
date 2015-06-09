@@ -143,16 +143,13 @@ angular.module('pinApp', [
 
   }) 
   .when('/who-we-are', {
-    templateUrl: 'partials2/about.html',
-    authenticate: false
+    templateUrl: 'partials2/about.html'
   })
   .when('/terms', {
-    templateUrl: 'partials2/terms.html',
-    authenticate: false
+    templateUrl: 'partials2/terms.html'
   })
   .when('/privacy', {
-    templateUrl: 'partials2/privacy.html',
-    authenticate: false
+    templateUrl: 'partials2/privacy.html'
   })
   .when('/articles/:pageno', {
     templateUrl: 'partials2/articles',
