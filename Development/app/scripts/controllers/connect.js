@@ -6,7 +6,20 @@ angular.module('pinApp')
 
   $scope.memeberlist=1;
 
-  
+  $scope.getCompanies=function(){
+
+$http({ method: 'GET', url: '/api/companys' }).
+      success(function (data, status, headers, config) {
+        $scope.companys=data.copmanys;
+
+      }).
+      error(function (data, status, headers, config) {
+         alert('There is something Technical Problem Please try after some time.');
+      });
+
+  };
+
+  $scope.getCompanies();
   $scope.searchFriends=function(form){
     $scope.mycontact=0;
     if(form.$valid)

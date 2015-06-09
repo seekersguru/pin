@@ -146,6 +146,14 @@ angular.module('pinApp', [
     templateUrl: 'partials2/about.html',
     authenticate: false
   })
+  .when('/terms', {
+    templateUrl: 'partials2/terms.html',
+    authenticate: false
+  })
+  .when('/privacy', {
+    templateUrl: 'partials2/privacy.html',
+    authenticate: false
+  })
   .when('/articles/:pageno', {
     templateUrl: 'partials2/articles',
     controller:'ArticleCtrl',

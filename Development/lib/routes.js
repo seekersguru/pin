@@ -9,6 +9,7 @@ var index = require('./controllers'),
     discussions = require('./controllers/discussion'),
     familys = require('./controllers/family'), 
     experts = require('./controllers/expert'),
+    companys = require('./controllers/company'),
     countrycity = require('./controllers/countrycity');
    
 var middleware = require('./middleware');
@@ -132,7 +133,7 @@ module.exports = function(app) {
 
   /**---(',')--Event comments section stop----(',')---**/
 
-
+  app.get('/api/companys', companys.query);
 
    
   app.post('/api/session', session.login);

@@ -108,8 +108,57 @@
 
 </div>
 <div ng-hide="memeberlist">
-  service provider
+
+  
+<div class="directory-section">
+ <p>Service Provider</p> 
+
+<!-- <form class="register-form"  name="searchform"  novalidate>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-6">
+ <div>
+  <div class="input-group">
+  <input type="text" required type="text" name="title" class="form-control" ng-model="search.title" placeholder="Title">
+  <span class="input-group-addon"><button class="btn subscribe-bt"><i class="fa fa-search"></i></button></span>
+  
+</div> 
+</div> 
 </div>
+<div class="col-lg-4 col-md-4 col-sm-4 filter-dropdown">
+ <select ng-model="search.firmtype" name ="organization" class="form-control">
+    <option value="">--Search By Type--</option>
+    <option value="WM">WM</option>
+    <option value="Foreign portfolio investor">Foreign portfolio investor</option>
+    <option value="Regulator">Regulator</option>
+    <option value="Service provider">Service provider</option>
+    <option value="Product provider">Product provider</option>
+     </select>
+</div>  
+</div>
+</form>
+ -->
+
+ 
+ <ul class="commentList" >
+  <li class="clearfix" ng-show="companys" ng-repeat="(key,value) in companys">
+
+    <a ng-href="http://moneymanagementindia.net/company/view/{{value._id}}" target="_blank" title="{{value.title}}"> <div class="commentText" >
+      <h3>{{value.title}}</h3>
+      <p class="">{{value.organization}}</p>
+    </div>
+   </a> 
+
+  </li>
+
+  <li class="clearfix" ng-hide="companys">No Service Provider Found :( </li>
+
+</ul>
+
+</div>
+
+</div> 
+
+
 </div>  
 
 </div>
