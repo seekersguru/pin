@@ -1,117 +1,115 @@
 <div class="container-head learning-section">
 
-<div class="row">
-<div class="col-lg-9 col-md-9 col-sm-9 ">
-  <ul class="breadcrumb">
-    <li><a href="#"><i class="fa fa-home fa-lg"></i></a></li>
-    <li class="active">CONNECT</li>
-    <!-- <li >Lorem ipsum dosit amet</li> -->
-</ul>
-</div>  
-</div>
+  <div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-9 ">
+      <ul class="breadcrumb">
+        <li><a href="#"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="active">CONNECT</li>
+        <!-- <li >Lorem ipsum dosit amet</li> -->
+      </ul>
+    </div>  
+  </div>
 
 
-<div class="row">
-<div class="col-lg-9 col-md-9 col-sm-9">
+  <div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-9">
 
-<div class="submit-articale-section">
- <h1>Connect</h1> 
-<div class="register-form-hr"></div>
+      <div class="submit-articale-section">
+       <h1>Connect</h1> 
+       <div class="register-form-hr"></div>
 
-<div class="row mar-conect-top-bt">
-<div class="col-lg-6 col-md-6 col-sm-6">
- <div class="blue-connect-menu">
-  <div>Members<i class="fa icon-right fa-angle-down"></i></div> 
- </div> 
-</div> 
-<div class="col-lg-6 col-md-6 col-sm-6">
- <div class="gold-connect-menu">
-  <div>Service Providers<i class="fa icon-right fa-angle-right"></i></div> 
- </div> 
-</div>  
-</div>
+       <div class="row mar-conect-top-bt">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+         <div class="" ng-click="memeberlist = 1" ng-class="{1:'gold-connect-menu', 0:'blue-connect-menu'}[memeberlist]">
+          <div>Members<i class="fa icon-right fa-angle-down" ng-class="{1:'fa-angle-down', 0:'fa-angle-up'}[memeberlist]"></i></div> 
+        </div> 
+      </div> 
+      <div class="col-lg-6 col-md-6 col-sm-6">
+       <div class="" ng-click="memeberlist = 0" ng-class="{0:'gold-connect-menu', 1:'blue-connect-menu'}[memeberlist]">
+        <div>Service Providers<i class="fa icon-right" ng-class="{0:'fa-angle-down', 1:'fa-angle-up'}[memeberlist]"></i></div> 
+      </div> 
+    </div>  
+  </div>
 
-<div class="connect-hr"></div>
-<p>Search Your Friend name by which you want to connect</p>
 
-<form class="register-form"  novalidate  name="form" role='form' ng-submit="searchFriends(form)" >
-<div class="row register-form-row-pad">
-<div class="col-lg-7 col-md-7 col-sm-7 paddingr-7">
-<div class="form-group">
-              
-<input required type="text" name="search"  ng-model="connect.search" class="form-control" placeholder="Search "/>
-<p class="text-danger" ng-show="form.search.$dirty && form.search.$error.required">Please fill searchbox.</p>
+  <div class="connect-hr"></div>
+<div ng-show="memeberlist">
+  <p>Search Your Friend name by which you want to connect</p>
 
+  <form class="register-form"  novalidate  name="form" role='form' ng-submit="searchFriends(form)" >
+    <div class="row register-form-row-pad">
+      <div class="col-lg-7 col-md-7 col-sm-7 paddingr-7">
+        <div class="form-group">
+
+          <input required type="text" name="search"  ng-model="connect.search" class="form-control" placeholder="Search "/>
+          <p class="text-danger" ng-show="form.search.$dirty && form.search.$error.required">Please fill searchbox.</p>
+
+        </div>
+      </div>
+    </div>
+
+    <br> <button class="btn btn-primary" type="submit">  Search  <i class="fa fa-search"></i></button>
+    <a class="btn btn-default" type="button" ng-click="showContact()">  My Contacts<i class="fa fa-user"></i>
+    </a>
+    <br></br>
+
+  </form>
+
+  <div class="row">
+   <div class="col-lg-5 comment-text">
+     Members
+   </div> 
+   <div class="clearfix"></div>
  </div>
+
+ <div class="connect-hr2"></div>
+ 
+ <ul class="commentList" ng-show="searchactive">
+  <li class="clearfix" ng-show="searchresult" ng-repeat="(key,value) in searchresult">
+
+    <div class="commentText">
+      <h3>{{value.name}}</h3>
+
+      <p class="">Cheaf Excutive Officer</p>
+      <p>Motilal Oswal Wealth Management </p>
+
+    </div>
+
+    <button type="button" class="add-contact btn btn-default" ng-show="!checkStatus(searchresult,currentUser._id,key)"  ng-click="followUser(value._id,key)">Add contact<i class="fa fa-user-plus"></i></button>
+
+    <button type="button"  class="add-contact btn btn-default" ng-show="checkStatus(searchresult,currentUser._id,key) == 1"  disabled="disabled" >Pending<i class="fa fa-user-plus"></i></button>
+
+    <button type="button" class="add-contact btn btn-default" disabled="disabled" ng-show="checkStatus(searchresult,currentUser._id,key) == 2" >Connected<i class="fa fa-user-plus"></i></button>
+  </li>
+  <li class="clearfix" ng-hide="searchresult">No Result Found :( </li>
+</ul>
+
+<ul class="commentList" ng-show="mycontact">
+  <li class="clearfix" ng-show="mycontactresult" ng-repeat="(key,value) in mycontactresult">
+    <div class="commentText">
+      <h3>{{value.name}}</h3>
+
+      <p class="">Cheaf Excutive Officer</p>
+      <p>Motilal Oswal Wealth Management </p>
+
+    </div>
+
+    <button type="button" class="add-contact btn btn-default" ng-show="!checkStatus(mycontactresult,currentUser._id,key)"  ng-click="followUser(value._id,key)">Add contact<i class="fa fa-user-plus"></i></button>
+
+    <button type="button"  class="add-contact btn btn-default" ng-show="checkStatus(mycontactresult,currentUser._id,key) == 1"  disabled="disabled" >Pending<i class="fa fa-user-plus"></i></button>
+
+    <button type="button" class="add-contact btn btn-default" disabled="disabled" ng-show="checkStatus(mycontactresult,currentUser._id,key) == 2" >Connected<i class="fa fa-user-plus"></i></button>
+
+  </li>
+  <li class="clearfix" ng-hide="mycontactresult">No Contact Found :( </li>
+
+</ul>
+
+
 </div>
+<div ng-hide="memeberlist">
+  service provider
 </div>
-
-<br> <button class="btn btn-primary" type="submit">  Search  <i class="fa fa-search"></i></button>
-<a class="btn btn-default" type="button" href="/my-contact">  My Contacts<i class="fa fa-user"></i>
-</a>
-<br></br>
-
-</form>
-
-<!-- <table class="table" ng-show="searchactive">
-  <thead ><tr><th>S.N</th> <th>Name</th> <th>Connect</th> </tr></thead>
-  <tbody>
-  <tr ng-show="searchresult" ng-repeat="(key,value) in searchresult">
-  <td>{{key+1}}</td> 
-  <td>{{value.name}}</td> 
-  <td>
-      <button ng-show="!checkStatus(currentUser._id,key)" class="search-bt" ng-click="followUser(value._id,key)">Connect</button>
-      <button ng-show="checkStatus(currentUser._id,key) == 1"  disabled="disabled" class="search-bt">Pending</button>
-      <button ng-show="checkStatus(currentUser._id,key) == 2"  disabled="disabled" class="search-bt">Connected</button>
-  </td> 
-  </tr>
-  <tr ng-hide="searchresult" ><td colspan="3"> No Results Founds ;(</td> </tr>
-  </tbody>.
-</table>
- -->
- <div class="row">
- <div class="col-lg-5 comment-text">
-   Members
- </div> 
-  <!-- <div class="pull-right col-lg-3">
-    <div class="form-group">
-            
-          <select class="form-control" id="sel1">
-    <option>Short By</option>
-    <option>services listed in service directory</option>
-    <option>events type listed in events
-</option>
-   
-  </select>
-           </div>
-  </div>  -->
-  <div class="clearfix"></div>
-</div>
-<div class="connect-hr2"></div>
-<ul class="commentList" ng-show="searchactive">
-            <li class="clearfix" ng-show="searchresult" ng-repeat="(key,value) in searchresult">
-              
-                <div class="commentText">
-                <h3>{{value.name}}</h3>
-                 
-                     <p class="">Cheaf Excutive Officer</p>
-                     <p>Motilal Oswal Wealth Management </p>
-
-                </div>
-
-            <button type="button" class="add-contact btn btn-default" ng-show="!checkStatus(currentUser._id,key)"  ng-click="followUser(value._id,key)">Add contact<i class="fa fa-user-plus"></i></button>
-
-            <button type="button"  class="add-contact btn btn-default" ng-show="checkStatus(currentUser._id,key) == 1"  disabled="disabled" >Pending<i class="fa fa-user-plus"></i></button>
-            
-            <button type="button" class="add-contact btn btn-default" disabled="disabled" ng-show="checkStatus(currentUser._id,key) == 2" >Connected<i class="fa fa-user-plus"></i></button>
-
-            </li>
-             <li class="clearfix" ng-hide="searchresult">No Result Found :( </li>
-            
-        </ul>
-
-
-
 </div>  
 
 </div>

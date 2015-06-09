@@ -4,9 +4,14 @@ angular.module('pinApp')
 .controller('ConnectCtrl', function ($scope,$rootScope,$http) {
   $scope.connect={};
 
+  $scope.memeberlist=1;
+
+  
   $scope.searchFriends=function(form){
+    $scope.mycontact=0;
     if(form.$valid)
     {
+
       $scope.searchactive=0;
       $http({ method: 'GET', url: '/api/users/search/'+$scope.connect.search+'/'+$rootScope.currentUser._id }).
       success(function (data, status, headers, config) {
@@ -33,13 +38,49 @@ angular.module('pinApp')
 
   };
 
+  $scope.myContact=function(form){
+
+    $scope.mycontact=0;
+      $http({ method: 'GET', url: '/api/users/mycontact/'+$rootScope.currentUser._id }).
+      success(function (data, status, headers, config) {
+        $scope.mycontact=1;
+        $scope.mycontactresult=data.users;
+        
+        var removeIndex = $scope.mycontactresult
+        .map(function(item)
+          { 
+            return item._id;
+          })
+          .indexOf($rootScope.currentUser._id);
+
+        if (removeIndex > -1) {
+            $scope.mycontactresult.splice(removeIndex, 1);
+        } 
+
+      }).
+      error(function (data, status, headers, config) {
+        $scope.mycontact=1;
+         alert('There is something Technical Problem Please try after some time.');
+      });
+  
+  };
+
+$scope.myContact();
+
+$scope.showContact=function(){
+  $scope.mycontact=1;
+  $scope.searchactive=0;
+
+};
+
+
   $scope.reset=function(form){
     $scope.form.$setPristine();
   };
 
-  $scope.checkStatus=function(userId,key){
+  $scope.checkStatus=function(myobject,userId,key){
 
-    var removeIndex = $scope.searchresult[key].following
+    var removeIndex = myobject[key].following
           .map(function(item)
           { 
             return item.user;
@@ -52,7 +93,7 @@ angular.module('pinApp')
         return 0;
       }
       else{
-        if($scope.searchresult[key].following[removeIndex].status)
+        if(myobject[key].following[removeIndex].status)
         {
           return 2;
         }else{
