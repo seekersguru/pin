@@ -7,6 +7,7 @@ angular.module('pinApp')
   {
     nickName=$rootScope.currentUser.name;
   }
+  $scope.startdiscussion=0;
 
 $scope.color={
     'Grow':
