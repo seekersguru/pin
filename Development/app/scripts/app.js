@@ -1,6 +1,6 @@
 'use strict';
 function adjust_window_code(){
-	
+  
  if ($("footer").length){
 
   var append_footer=$("footer").html();
@@ -13,7 +13,7 @@ function adjust_window_code(){
   }
 }
 function adjust_window(){
-	adjust_window_code();
+  adjust_window_code();
 
 setTimeout(function(){
   adjust_window_code();
@@ -62,16 +62,42 @@ angular.module('pinApp', [
 .config(function ($routeProvider, $locationProvider, $httpProvider) {
   $routeProvider
   .when('/home', {
-    templateUrl: 'partials2/main',
-    authenticate: false
-
+    templateUrl: 'partials2/articles',
+    controller:'ArticleCtrl',
+    resolve:{
+      articles: ['$q', '$route', 'Article', function($q, $route, article) {
+        var deferred = $q.defer();
+        var query = angular.copy($route.current.params);
+        query.limit=25;
+        article.get(query, function(articles) {
+          deferred.resolve(articles.articles);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+    }
   })
   .when('/', {
-    templateUrl: 'partials2/main',
-    authenticate: false
-
+    templateUrl: 'partials2/articles',
+    controller:'ArticleCtrl',
+    resolve:{
+      articles: ['$q', '$route', 'Article', function($q, $route, article) {
+        var deferred = $q.defer();
+        var query = angular.copy($route.current.params);
+        query.limit=25;
+        article.get(query, function(articles) {
+          deferred.resolve(articles.articles);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+    }
   })
-  .when('/nishant', {
+   .when('/nishant', {
     templateUrl: 'partials2/nishant',
     controller:'NishantCtrl'
 
@@ -109,12 +135,6 @@ angular.module('pinApp', [
     title: 'Connect Friends',
     authenticate: true
   })
-  .when('/my-contact', {
-    templateUrl: 'partials2/my-contact',
-    controller: 'MyContactCtrl',
-    title: 'My Friends',
-    authenticate: true
-  })
   .when('/content-id', {
     templateUrl: 'partials2/content-id'
   })
@@ -133,14 +153,10 @@ angular.module('pinApp', [
     templateUrl: 'partials2/video'
   })
   .when('/who-is-this-site-for', {
-    templateUrl: 'partials2/who.html',
-    authenticate: false
-
+    templateUrl: 'partials2/who.html'
   })
   .when('/what-we-do', {
-    templateUrl: 'partials2/what.html',
-    authenticate: false
-
+    templateUrl: 'partials2/what.html'
   }) 
   .when('/who-we-are', {
     templateUrl: 'partials2/about.html'
@@ -169,7 +185,6 @@ angular.module('pinApp', [
       }]
 
     },
-    authenticate: true
   })
   .when('/articles/search/:search', {
     templateUrl: 'partials2/article-search',
@@ -187,7 +202,7 @@ angular.module('pinApp', [
     authenticate: true
 
   })
-  .when('/meet', {
+  .when('/event', {
     templateUrl: 'partials2/meet',
     controller:'EventListCtrl',
     resolve:{
@@ -226,7 +241,7 @@ angular.module('pinApp', [
       }]
 
     },
-    authenticate: true
+    // authenticate: true
   })
   .when('/articles/edit/:id', {
     templateUrl: 'partials2/update-article',
@@ -275,6 +290,21 @@ angular.module('pinApp', [
       authenticate: true,
       admin: true
   })
+  .when('/upload-company', {
+      templateUrl: 'partials2/upload-company',
+      controller: 'UploadCompanyCtrl',
+      title: 'Upload Companies',
+      authenticate: true,
+      admin: true
+  })
+
+  .when('/upload-users', {
+      templateUrl: 'partials2/upload-users',
+      controller: 'UploadUsersCtrl',
+      title: 'Upload Users',
+      authenticate: true,
+      admin: true
+  })
 
   .when('/user/:id/recover/:token', {
     templateUrl: 'partials2/recover',
@@ -314,13 +344,6 @@ angular.module('pinApp', [
   templateUrl: 'partials2/add-event',
   title: 'Add Event',
   controller:'EventCtrl',
-  authenticate: true,
-  admin: true
-})
-.when('/upload-users', {
-  templateUrl: 'partials2/uploaduser',
-  title: 'Upload users',
-  controller:'UploadUserCtrl',
   authenticate: true,
   admin: true
 })
@@ -385,6 +408,72 @@ angular.module('pinApp', [
       }]
     },
 })
+
+.when('/companies', {
+  templateUrl: 'partials2/company-listing',
+  title: 'Company Listing',
+  controller:'CompanyCtrl',
+  resolve: {
+  companys: ['$q', '$route', 'Company', function($q, $route, Company) {
+    var deferred = $q.defer();
+    Company.get(function(company) {
+      deferred.resolve(company);
+    },
+    function(err){
+      deferred.reject();
+    });
+    return deferred.promise;
+  }]
+},
+})
+
+.when('/add-company', {
+  templateUrl: 'partials2/add-company',
+  title: 'Add Company',
+  controller:'CompanyAddCtrl',
+  authenticate: true,
+  admin: true
+})
+
+.when('/company/edit/:companyid', {
+  templateUrl: 'partials2/edit-company',
+  title: 'Edit Company',
+  controller:'CompanyEditViewCtrl',
+  authenticate: true,
+  admin: true,
+   resolve: {
+      company: ['$q', '$route', 'Company', function($q, $route, Company) {
+        var deferred = $q.defer();
+        Company.get({companyId: $route.current.params.companyid}, function(company) {
+          deferred.resolve(company);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+    },
+})
+
+.when('/company/view/:companyid', {
+    templateUrl: 'partials2/company-details',
+    controller: 'CompanyEditViewCtrl',
+    title: 'View Company',
+      resolve:{
+      company: ['$q', '$route', 'Company', function($q, $route, Company) {
+        var deferred = $q.defer();
+        Company.get({companyId: $route.current.params.companyid}, function(event) {
+          deferred.resolve(event);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+
+    },
+})
+
 .otherwise({
     redirectTo: '/404'
 });
