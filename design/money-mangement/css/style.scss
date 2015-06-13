@@ -37,6 +37,9 @@
 }
 html {
   font-size: 62.5%; /* Sets up the Base 10 stuff */
+  position: relative;
+  min-height: 100%;
+
 }
 
 @mixin font-size($sizeValue: 1.6) {
@@ -60,7 +63,14 @@ html {
       -ms-border-radius: $radius;
           border-radius: $radius;
 }
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
 
+}
 body {
     overflow-x: hidden;
     font-family: 'clear_sans_lightregular';
@@ -68,6 +78,7 @@ body {
     background-image:url(../images/body-bg.png); background-repeat:repeat;  
     line-height:18px;
     color:#373737 ;
+     margin-bottom: 140px;
 }
 
 ::-webkit-input-placeholder {
@@ -968,6 +979,46 @@ span{color:#ff3434;}
     }
 }
 }
+
+.notification-section {
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 5px solid #cccccc;
+    border-radius: 6px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    outline: 0 none;
+    position: relative; 
+     width: 708px; margin:0 auto;
+h4{font-family: "Calisto MT"; line-height: 1.42857;
+    font-size: 30px; }
+    .inner-part{padding: 40px 20px;}
+
+    .modal-header {
+    border-bottom: 1px dotted #212121;
+    min-height: 16.43px;
+    padding: 15px;
+}
+   }
+
+
+
+   .changepassword-section {
+   background-color: #fff;
+    box-shadow: 0 0 4px 0 #cbcbcb;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding: 20px; max-width:600px; margin:0 auto;
+h4{font-family: "Calisto MT"; line-height: 1.42857;
+    font-size: 30px; }
+    .inner-part{padding: 40px 20px;}
+
+    .modal-header {
+    border-bottom: 1px dotted #212121;
+    min-height: 16.43px;
+    padding: 15px;
+}
+   }
+
 
 
 @media (max-width: 1024px) {
