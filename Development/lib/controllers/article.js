@@ -268,10 +268,8 @@ exports.hansi = function(req, res) {
 
 	var q=Article.find({});
 	/** apply limit  */
-	if(req.query.limit){
-		q=q.limit(req.query.limit);
-	}
-
+	q=q.limit(req.query.limit);
+	
   /** public true  */
   q.where('public').equals(true);
   q.where('money').equals(true);
