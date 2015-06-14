@@ -17,7 +17,29 @@ angular.module('pinApp')
   };
 
 
+$scope.mmicategorysetting={
+'Investments':
+{
+  'main-image':'investment-img.png',
+  'icon-img':'investment-icon.jpg',
+  'classname':'investment-iocn'
+},
 
+'WM/distribution':
+{
+  'main-image':'welath-img.png',
+  'icon-img':'wealth.png',
+  'classname':'wealth-iocn'
+},
+
+'Communication':
+{
+  'main-image':'communicationlarge-img.png',
+  'icon-img':'cummunaction.png',
+  'classname':'communication-iocn'
+}
+
+};
 $scope.popuplogin=function(){
   var modalInstance = $modal.open({
             templateUrl: 'loginmodal.html',

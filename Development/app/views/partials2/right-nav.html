@@ -45,8 +45,13 @@ Desk</h2>
 <ul>
 <li ng-repeat="hansiArticle in hansiArticles">
 <article class="entry-item">
-  <div class="entry-thumb">
-   <a href="#"><img alt="" class="img-responsive" src="images/img-sm001.jpg"></a></div>
+  <div class="entry-thumb" ng-if='hansiArticle.media.extension.indexOf("image") > -1'>
+   <a ng-href="/articles/view/{{hansiArticle._id}}"`>
+    <img ng-if="!hansiArticle.media.path" ng-src="images/{{mmicategorysetting[hansiArticle.mmicategory].main-image}}" class="img-responsive" title="{{hansiArticle.title}}">   
+
+          <img ng-if="hansiArticle.media.path" ng-src="../{{hansiArticle.media.path}}" title="{{hansiArticle.title}}" class="img-responsive">
+   </a>
+   </div>
      <!-- end:entry-thumb -->
   <div class="entry-content clearfix">
   <div class="entry-title"> 
@@ -65,7 +70,7 @@ Desk</h2>
 							<h1>Upcoming Events</h1>
 							<ul>
 
-							<li ng-repeat="(key,value) in pineventlist"><a ng-href="/event/view/{{value._id}}">{{value.title}} -- ({{ value.eventdate | date:"d-MMMM-yyyy" }})</a></li> 
+							<li ng-repeat="(key,value) in pineventlist"><a ng-href="/event/view/{{value._id}}">{{value.title}} -- {{ value.eventdate | date:"d-MMMM-yyyy" }}</a></li> 
 						
 							</ul>
 						</div>
@@ -79,7 +84,7 @@ Desk</h2>
 
 							<ul>
 
-							<li ng-repeat="(key,value) in pindiscussionslist"><a ng-href="/discussion-start?cid={{value.cid}}">{{value.title}} -- ({{ value.topic }})</a></li> 
+							<li ng-repeat="(key,value) in pindiscussionslist"><a ng-href="/discussion-start?cid={{value.cid}}">{{value.title}} -- {{ value.topic }}</a></li> 
 						
 							</ul>
 

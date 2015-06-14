@@ -266,7 +266,7 @@ exports.hansi = function(req, res) {
 
 	var limit=4;
 
-	var q=Article.find({'author.id':'5550fab2812c67052dafff7b'});
+	var q=Article.find({});
 	/** apply limit  */
 	if(req.query.limit){
 		q=q.limit(req.query.limit);

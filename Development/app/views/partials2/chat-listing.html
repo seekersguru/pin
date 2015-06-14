@@ -21,88 +21,16 @@
 
 <div class="gray-hr"></div>
 
-<div class="col-lg-9 col-md-9 col-sm-9" ng-show="creatediscussion">
-     <br/>
-     <br/>
-     <div class="alert alert-success" role="alert"> 
-       
-       <p>You have successfully created your discussion</p>
-     </div>
-     </div>
-     <div ng-show='!creatediscussion'>
-    
-    <div class="submit-articale-section">
-           <h1>Start New Discussion</h1> 
-           <div class="register-form-hr"></div>
-           <form class="register-form"  name="form" ng-submit="chatDetail(form)" novalidate>
-            <div class="row">
-            
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="form-group">
-                
-                <input required type="text" name="title" class="form-control" ng-model="chat.title" placeholder="Title"/>
-                <p class="text-danger" ng-show="form.title.$error.required && submitted">Please fill Title.</p>
-             
-              </div>
-            </div>
-            </div>
-            <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">  
-            <div class="form-group">
-              <select  class="form-control" name="topicnames" ng-model="chat.topic" ng-change="changetopic()">
-               <option value=""> ---Select Topic--- </option>
-               <option ng-repeat="(key,value) in topicnames" value="{{value.name}}">{{value.name}}</option>
-              </select>
-
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="form-group">
-                <select  class="form-control" name="mmisubcategory" ng-model="chat.subtopic" >
-                  <option value=""> ---Select Sub Topic--- </option>
-                  <option ng-repeat="(key,value) in subtopicnames" value="{{value.name}}">{{value.name}}</option>
-                </select>
-            </div>
-
-          </div>
-
-        </div>
-          <div class="row">
-            <div class="col-lg-12  col-md-12 col-sm-12">
-            <div class="form-group">
-            <textarea class="form-control" name ="topic" placeholder="Your comments" required ng-model="chat.comment"> </textarea>
-            <p class="text-danger" ng-show="form.topic.$error.required && submitted">Please fill Your Comments.</p>
-            
-            </div>
-            </div>
-          </div>
-
-            <button class="btn btn-register  btn-openid" ng-disabled="forsubmit" type="submit">
-         <i class="fa fa-caret-right"></i> Create
-        </button>
-
-
-<!--         <br></br>
-        <p><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
-        <br></br>
- -->
-
-      </form>
-
-    </div>
-
-    </div>
 
 
 
     <div>
 
-<div class="horizentle-hr">
-  <div class="or-chat">or</div> 
+<!-- <div class="horizentle-hr">
+  <div class="or-chat">or </div> 
  </div>
-
-
+ -->
+<h1>Look Up Discussion</h1> 
    <form class="register-form"  name="searchform"  novalidate>
             <div class="row">
             
@@ -187,8 +115,8 @@
 </div>
 
 <br>
-<p class="chat-list-section-footer"><span>*</span> Select a Chatroom / Topic and Start a Conversation.</p>
-<br>
+<!-- <p class="chat-list-section-footer"><span>*</span> Select a Chatroom / Topic and Start a Conversation.</p>
+ --><br>
 </div>  
 
 </div>
@@ -198,8 +126,81 @@
 
 
 
+<div class="col-lg-9 col-md-9 col-sm-9" ng-show="creatediscussion">
+     <br/>
+     <br/>
+     <div class="alert alert-success" role="alert"> 
+       
+       <p>You have successfully created your discussion</p>
+     </div>
+     </div>
+     <div ng-show='!creatediscussion'>
+    
+    <div class="submit-articale-section">
+           <h1>Start New Discussion</h1> 
+           <div class="register-form-hr"></div>
+           <form class="register-form"  name="form" ng-submit="chatDetail(form)" novalidate>
+            <div class="row">
+            
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="form-group">
+                
+                <input required type="text" name="title" class="form-control" ng-model="chat.title" placeholder="Title"/>
+                <p class="text-danger" ng-show="form.title.$error.required && submitted">Please fill Title.</p>
+             
+              </div>
+            </div>
+            </div>
+            <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">  
+            <div class="form-group">
+              <select  class="form-control" name="topicnames" ng-model="chat.topic" ng-change="changetopic()">
+               <option value=""> ---Select Topic--- </option>
+               <option ng-repeat="(key,value) in topicnames" value="{{value.name}}">{{value.name}}</option>
+              </select>
+
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="form-group">
+                <select  class="form-control" name="mmisubcategory" ng-model="chat.subtopic" >
+                  <option value=""> ---Select Sub Topic--- </option>
+                  <option ng-repeat="(key,value) in subtopicnames" value="{{value.name}}">{{value.name}}</option>
+                </select>
+            </div>
+
+          </div>
+
+        </div>
+          <div class="row">
+            <div class="col-lg-12  col-md-12 col-sm-12">
+            <div class="form-group">
+            <textarea class="form-control" name ="topic" placeholder="Your comments" required ng-model="chat.comment"> </textarea>
+            <p class="text-danger" ng-show="form.topic.$error.required && submitted">Please fill Your Comments.</p>
+            
+            </div>
+            </div>
+          </div>
+
+            <button class="btn btn-register  btn-openid" ng-disabled="forsubmit" type="submit">
+         <i class="fa fa-caret-right"></i> Create
+        </button>
+
+
+<!--         <br></br>
+        <p><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
+        <br></br>
+ -->
+
+      </form>
+
+    </div>
+
+    </div>
 
 </div>
+
 <div class="col-lg-4 col-md-4 col-sm-4">
   <div ng-include="'partials2/right-nav.html'"> </div>
 </div>   
