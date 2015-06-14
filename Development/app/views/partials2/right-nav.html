@@ -43,7 +43,7 @@ Desk</h2>
 <div id="upcomming-news">
 
 <ul>
-<li ng-repeat="hansiArticle in hansiArticles">
+<li ng-repeat="hansiArticle in hansiArticles | limitTo:4">
 <article class="entry-item">
   <div class="entry-thumb" ng-if='hansiArticle.media.extension.indexOf("image") > -1'>
    <a ng-href="/articles/view/{{hansiArticle._id}}"`>
