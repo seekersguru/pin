@@ -72,6 +72,28 @@ $scope.popuplogin=function(){
 
   };
 
+  $scope.getHansiArticle=function(){
+    $scope.eventlist=[];
+     $http({
+      method:"GET",
+      url:'api/hansiarticles'
+    }).
+    success(function (data,status,headers,config){
+
+      $scope.hansiArticles=data.articles;
+
+    })
+
+    .error(function (data,status,headers,config){
+
+    });
+
+
+
+  };
+
+  $scope.getHansiArticle();
+
   $scope.searcharticle=function(form)
   {
 

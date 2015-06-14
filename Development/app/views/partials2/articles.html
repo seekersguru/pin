@@ -43,7 +43,7 @@
 
       <div class="col-lg-6 col-md-6 col-sm-12 ">
 <h1>{{articles[0].title}}</h1>
-<p><small>by</small> {{articles[0].author.name}} {{articles[0].author.fullname}}</p>
+<p><small>by</small> {{articles[0].author.fullname}}</p>
 <p ng-bind-html="articles[0].description | limitTo:descriptionLimit | rawHtml"></p>
 <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{articles[0]._id}}">Continue Reading </a></p>  
 </div>  
@@ -80,7 +80,7 @@
       </div>
    
 <h2 class="articale-title-h">{{value.title}}</h2>
-<p><small>by</small> {{value.author.name}}</p>
+<p><small>by</small> {{value.author.fullname}}</p>
 
 <p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml"></p>
  <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value._id}}">Read more </a></p>

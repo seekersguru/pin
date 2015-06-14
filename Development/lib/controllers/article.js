@@ -261,6 +261,37 @@ exports.query = function(req, res) {
 
 
 };
+// show all hansi articles with paging
+exports.hansi = function(req, res) {
+
+	var limit=4;
+
+	var q=Article.find({'author.id':'5550fab2812c67052dafff7b'});
+	/** apply limit  */
+	if(req.query.limit){
+		q=q.limit(req.query.limit);
+	}
+
+  /** public true  */
+  q.where('public').equals(true);
+  q.where('money').equals(true);
+
+	/** sorting according to date */
+
+	q.sort('-createdAt');
+
+	/** finally execute */
+	q.populate('author','name email fullname').exec(function(err, articles) {
+		if (err) {
+			console.log(err);
+			return res.send(404);
+		} else {
+			return res.json({articles:articles});
+		}
+	});
+
+
+};
 // show all articles with basic info
 exports.basic = function(req, res) {
 

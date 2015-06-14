@@ -35,6 +35,7 @@ module.exports = function(app) {
 
   //GET
   app.get('/api/articles', articles.query);
+  app.get('/api/hansiarticles', articles.hansi);
   app.get('/api/articles/basic', articles.basic);
   app.get('/api/articles/:articleid', articles.show);
   app.post('/api/articles',  multipartMiddleware, articles.create);
