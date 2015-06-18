@@ -229,7 +229,7 @@ exports.show=function(req,res){
 
 // show all articles with paging
 exports.query = function(req, res) {
-
+var today=new Date();
 	var limit=req.query.limit;
 
 	var q=Event.find({});
@@ -246,6 +246,7 @@ exports.query = function(req, res) {
   /** public true  */
   q.where('public').equals(true);
   q.where('pin').equals(true);
+  // q.where('created_at').gt(today);
 
 	/** sorting according to date */
 
