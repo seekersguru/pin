@@ -1,21 +1,13 @@
-<div class="container-fluid h3o-reletive">
+<div class="container-fluid po-reletive">
 <div class="container-head">
 <div class="row">
 <div class="pull-left">
-<div class="mar-back-img">
+<div class="mar-back-img-inner">
 <!-- Become a member section -->
-<div class="tree-container-inner" ng-controller="NavbarCtrl">
-<div id="nav">
- <ul>
- <li><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li> 
- <li><a href="/what-we-do" ng-class="{active: isActive('/what-we-do')}">what</a></li> 
- <li><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">about</a></li> 
-  <li><a href="/register" ng-class="{active: isActive('/register')}">join</a></li>  
- </ul> 
+<div ng-include="'partials2/left-navbar.html'"> </div>
 </div>
 </div>
-</div>
-</div>
+
 
 
 			<div class="inner-section" ng-controller="NotificationCtrl">
@@ -55,4 +47,5 @@
 <!-- /container -->
 
 
+</div>
 </div>
