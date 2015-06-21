@@ -20,7 +20,7 @@ var templatesDir = config.root + config.emailTemplatesPath;
  */
 var Email = function(email) {
   this.email = email||{};
-  this.email.from = this.email.from ||'Hansi Mehrotra <privateinvestmentnetwork@gmail.com>';
+  this.email.from = this.email.from ||'PIN TEAM <admin@indianpin.net>';
   this.email.text = this.email.text || this.email.message;
 };
 Email.prototype.send = function(cb) {
@@ -80,8 +80,8 @@ AdminApproveEmail.prototype = Object.create(UserEmail.prototype);
  */
 var AdminBlockEmail = function(user, locals) {
    
-  user.email='hansi.mehrotra@gmail.com';
-  user.cc='nishu.saxena@gmail.com';
+  user.email='admin@indianpin.net';
+  user.cc='riturajratan@gmail.com';
   UserEmail.call(this, user, 'adminblock', locals);
   this.email.subject = 'Admin Block Your PIN Account';
 };

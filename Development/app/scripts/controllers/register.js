@@ -83,13 +83,13 @@ angular.module('pinApp')
           {
              form['username'].$setValidity('mongoose', false);
              $scope.errors['username'] = 'username already available :(';
-             $("#username").focus();
+             // $("#username").focus();
               
           }else{
              form['username'].$setValidity('mongoose', true);
              $scope.errors['username'] = 'Username available. ';
              $scope.checkmessage='Username available.'; 
-             $("#street").focus();
+             // $("#street").focus();
           }
           $scope.checkusername=0;
         })
@@ -101,13 +101,13 @@ angular.module('pinApp')
             form[field].$setValidity('mongoose', false);
             $scope.errors[field] = error.message;
           });
-          $("#street").focus();
+          // $("#street").focus();
         });
 
       }else{
         form['username'].$setValidity('mongoose', false);
         $scope.errors['username'] = 'Please fill your alias name';
-        $("#username").focus();
+        // $("#username").focus();
       }
 
 
