@@ -20,7 +20,7 @@ var templatesDir = config.root + config.emailTemplatesPath;
  */
 var Email = function(email) {
   this.email = email||{};
-  this.email.from = this.email.from ||'Hansi Mehrotra <privateinvestmentnetwork@gmail.com>';
+  this.email.from = this.email.from ||'MMI TEAM <admin@moneymanagementindia.net>';
   this.email.text = this.email.text || this.email.message;
 };
 Email.prototype.send = function(cb) {
@@ -97,7 +97,7 @@ ForgotPasswordEmail.prototype = Object.create(UserEmail.prototype);
  * Class to send email to contact@PIN when we get an ContactUs Query
  */
 var ContactUsEmail = function(locals) {
-  UserEmail.call(this, {name: 'PIN ContactUs Query Replier', email: 'contact@PIN.com'}, 'contactus', locals);
+  UserEmail.call(this, {name: 'MMI ContactUs Query Replier', email: 'admin@moneymanagementindia.net'}, 'contactus', locals);
   this.email.subject = 'New ContactUs Query from : '+ locals.contactus.email;
 };
 ContactUsEmail.prototype = Object.create(UserEmail.prototype);

@@ -221,9 +221,7 @@ angular.module('pinApp', [
         return deferred.promise;
       }]
 
-    },
-    authenticate: true
-
+    }
   })  
   .when('/articles/view/:articleid', {
     templateUrl: 'partials2/article-detail',
