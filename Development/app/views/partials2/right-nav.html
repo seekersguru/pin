@@ -43,20 +43,21 @@ Desk</h2>
 <div id="upcomming-news">
 
 <ul>
-<li ng-repeat="hansiArticle in hansiArticles | limitTo:4">
+<!-- <li ng-repeat="hansiArticle in hansiArticles | limitTo:4"> -->
+<li ng-repeat="hansiArticles">
 <article class="entry-item">
-  <div class="entry-thumb" ng-if='hansiArticle.media.extension.indexOf("image") > -1'>
-   <a ng-href="/articles/view/{{hansiArticle._id}}"`>
-    <img ng-if="!hansiArticle.media.path" ng-src="images/{{mmicategorysetting[hansiArticle.mmicategory].main-image}}" class="img-responsive" title="{{hansiArticle.title}}">   
+  <div class="entry-thumb" ng-if='hansiArticles.media.extension.indexOf("image") > -1'>
+   <a ng-href="/articles/view/{{hansiArticles._id}}"`>
+    <img ng-if="!hansiArticles.media.path" ng-src="images/{{mmicategorysetting[hansiArticles.mmicategory].main-image}}" class="img-responsive" title="{{hansiArticles.title}}">   
 
-          <img ng-if="hansiArticle.media.path" ng-src="../{{hansiArticle.media.path}}" title="{{hansiArticle.title}}" class="img-responsive">
+          <img ng-if="hansiArticles.media.path" ng-src="../{{hansiArticles.media.path}}" title="{{hansiArticles.title}}" class="img-responsive">
    </a>
    </div>
      <!-- end:entry-thumb -->
   <div class="entry-content clearfix">
   <div class="entry-title"> 
-  <h2><a ng-href="/articles/view/{{hansiArticle._id}}">{{hansiArticle.title}}</a></h2>
-<p ng-bind-html="hansiArticle.description | limitTo:50 | rawHtml"></p>
+  <h2><a ng-href="/articles/view/{{hansiArticles._id}}">{{hansiArticles.title}}</a></h2>
+<p ng-bind-html="hansiArticles.description | limitTo:50 | rawHtml"></p>
   </div>                                          
   </div>
 
