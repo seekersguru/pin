@@ -86,6 +86,7 @@ angular.module('pinApp')
             'Private Client Firm':[1,2,3,4,5],
             'IFA':[1,2,3,4,5],
             'IFA platform':[1,2,3],
+            'Securities firm':[1,2,3,4,5]
         },
         'Foreign portfolio investor':{
             'Consultants':[1,2,3,4,5],
@@ -97,8 +98,12 @@ angular.module('pinApp')
             'Family office':[1,2,3,4,5],
         },
         'Regulator':{
-            'Regulator':[1,2,3]
+            'Regulator':[1,2,3,4,5]
+        },
+        'Industry':{
+          'Association':[1,2,3,4]
         }
+        
     },
     'Sell':{
         'Service provider':{
@@ -112,14 +117,21 @@ angular.module('pinApp')
             'Research/Investment consulting/data provider':[1,2,3],
             'Media':[1,2,3],
             'Philanthropic/NGO':[1,2,3],
-            'Securities exchange':[1,2,3]
+            'Securities exchange':[1,2,3],
+            'Custody':[1,2,3,4],
+            'Recruitment':[1,2,3,4]
         },
         'Product provider':{
             'Asset Management Company':[1,2,3,6,7],
             'Alternative Investment Fund Manager':[1,2,3,6,7],
             'Portfolio Management Service Provider':[1,2,3,6,7],
             'Investment Bank':[1,2,3,6,7],
-            'Non-bank financial institution':[1,2,3,6,7]
+            'Non-bank financial institution':[1,2,3,6,7],
+            'Insurance Company':[1,2,3,4,6,7],
+
+        },
+        'Industry':{
+          'Association':[1,2,3,4]
         }
     }
 };
@@ -302,6 +314,7 @@ $scope.companyStructure={
             'Private Client Firm':[1,2,3,4,5],
             'IFA':[1,2,3,4,5],
             'IFA platform':[1,2,3],
+            'Securities firm':[1,2,3,4,5]
         },
         'Foreign portfolio investor':{
             'Consultants':[1,2,3,4,5],
@@ -313,8 +326,12 @@ $scope.companyStructure={
             'Family office':[1,2,3,4,5],
         },
         'Regulator':{
-            'Regulator':[1,2,3]
+            'Regulator':[1,2,3,4,5]
+        },
+        'Industry':{
+          'Association':[1,2,3,4]
         }
+        
     },
     'Sell':{
         'Service provider':{
@@ -328,14 +345,21 @@ $scope.companyStructure={
             'Research/Investment consulting/data provider':[1,2,3],
             'Media':[1,2,3],
             'Philanthropic/NGO':[1,2,3],
-            'Securities exchange':[1,2,3]
+            'Securities exchange':[1,2,3],
+            'Custody':[1,2,3,4],
+            'Recruitment':[1,2,3,4]
         },
         'Product provider':{
             'Asset Management Company':[1,2,3,6,7],
             'Alternative Investment Fund Manager':[1,2,3,6,7],
             'Portfolio Management Service Provider':[1,2,3,6,7],
             'Investment Bank':[1,2,3,6,7],
-            'Non-bank financial institution':[1,2,3,6,7]
+            'Non-bank financial institution':[1,2,3,6,7],
+            'Insurance Company':[1,2,3,4,6,7],
+
+        },
+        'Industry':{
+          'Association':[1,2,3,4]
         }
     }
 };
