@@ -111,7 +111,7 @@ exports.basic = function(req, res) {
 
 	/** sorting according to date */
 
-	q.sort('-createdAt');
+	q.sort('title');
 
 	/** finally execute */
 		q.exec(function(err, company) {
