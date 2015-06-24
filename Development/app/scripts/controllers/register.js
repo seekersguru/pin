@@ -10,7 +10,7 @@ angular.module('pinApp')
     'Sales/Marketing',
     'Investment/Product',  
     'RM/client facing',
-    'Investment Mgmt"',
+    'Investment Mgmt',
     'Product Mgmt'
     ];  
 
