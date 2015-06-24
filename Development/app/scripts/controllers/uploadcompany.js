@@ -298,35 +298,35 @@ $scope.companies=[];
   'pin':output.Sheet1[i].office1pin,
   'main':output.Sheet1[i].office1main,
   'phone':output.Sheet1[i].office1phone
-  }  ,   
- { 
-  'street':output.Sheet1[i].office2street,
-   'city':output.Sheet1[i].office2city,
-   'state':output.Sheet1[i].office2state,
-   'country':output.Sheet1[i].office2country,
-   'pin':output.Sheet1[i].office2pin,
-   'main':output.Sheet1[i].office2main,
-   'phone':output.Sheet1[i].office2phone
-  },
-  {
+  }    
+//  { 
+//   'street':output.Sheet1[i].office2street,
+//    'city':output.Sheet1[i].office2city,
+//    'state':output.Sheet1[i].office2state,
+//    'country':output.Sheet1[i].office2country,
+//    'pin':output.Sheet1[i].office2pin,
+//    'main':output.Sheet1[i].office2main,
+//    'phone':output.Sheet1[i].office2phone
+//   },
+//   {
 
-    'street':output.Sheet1[i].office3street,
-    'city':output.Sheet1[i].office3city,
-    'state':output.Sheet1[i].office3state,
-    'country':output.Sheet1[i].office3country,
-    'pin':output.Sheet1[i].office3pin,
-    'main':output.Sheet1[i].office3main,
-    'phone':output.Sheet1[i].office3phone
-   },       
-  {
-  'street':output.Sheet1[i].office4street,
-  'city':output.Sheet1[i].office4city,
-  'state':output.Sheet1[i].office4state,
-  'country':output.Sheet1[i].office4country,
-  'pin':output.Sheet1[i].office4pin,
-  'main':output.Sheet1[i].office4main,
-  'phone':output.Sheet1[i].office4phone
-}
+//     'street':output.Sheet1[i].office3street,
+//     'city':output.Sheet1[i].office3city,
+//     'state':output.Sheet1[i].office3state,
+//     'country':output.Sheet1[i].office3country,
+//     'pin':output.Sheet1[i].office3pin,
+//     'main':output.Sheet1[i].office3main,
+//     'phone':output.Sheet1[i].office3phone
+//    },       
+//   {
+//   'street':output.Sheet1[i].office4street,
+//   'city':output.Sheet1[i].office4city,
+//   'state':output.Sheet1[i].office4state,
+//   'country':output.Sheet1[i].office4country,
+//   'pin':output.Sheet1[i].office4pin,
+//   'main':output.Sheet1[i].office4main,
+//   'phone':output.Sheet1[i].office4phone
+// }
   ],
         
 
