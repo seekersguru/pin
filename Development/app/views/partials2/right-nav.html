@@ -54,7 +54,7 @@ Desk</h2>
    </a>
    </div>
      <!-- end:entry-thumb -->
-  <div class="entry-content clearfix">
+  <div class="clearfix" ng-class="{'entry-content' : (hansiArticle.media.extension.indexOf("image") < 0)} ">
   <div class="entry-title"> 
   <h2><a ng-href="/articles/view/{{hansiArticle._id}}">{{hansiArticle.title}}</a></h2>
 <p ng-bind-html="hansiArticle.description | limitTo:400 | rawHtml"></p>

@@ -137,15 +137,26 @@
    </div>
 </div>
 
-<div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
-<div class="form-group" >
-              <input  type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone"
-                        tooltip="Please fill your phone/mobilenumber." 
+ <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
+              <div class="form-group" ng-class="{'has-error':form.password.$error.required && submitted,'has-success':form.password.$valid  && submitted }" >
+                <input required type="password" name="password"  class="form-control" placeholder="password *" ng-model="user.password" ng-minlength=5 mongoose-error
+
+          tooltip="Please fill your password." 
           tooltip-placement="bottom"
 />
-              <!-- <p class="text-danger" ng-show="form.phone.$error.required && submitted">Please fill Phone/Mobile.</p> -->
-           </div>
-</div>
+                <div class="error-massege"> 
+                <p class="text-danger" ng-show="form.password.$error.required && submitted">Please fill   Password.</p>
+                
+                <p class="text-danger" ng-show="form.password.$error.minlength && submitted">your password shoud be minimum 5 character long .</p>
+                
+                <p class="text-danger" ng-show="form.password.$error.mongoose">
+                 {{ errors.password }}
+                </p>
+                </div>
+
+              </div>
+            </div>
+
 
 </div> 
 
@@ -202,25 +213,18 @@
 </div>
 </div> -->
 
- <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
-              <div class="form-group" ng-class="{'has-error':form.password.$error.required && submitted,'has-success':form.password.$valid  && submitted }" >
-                <input required type="password" name="password"  class="form-control" placeholder="password *" ng-model="user.password" ng-minlength=5 mongoose-error
 
-          tooltip="Please fill your password." 
+
+            <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
+<div class="form-group" >
+              <input  type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone"
+                        tooltip="Please fill your phone/mobilenumber." 
           tooltip-placement="bottom"
 />
-                <div class="error-massege"> 
-                <p class="text-danger" ng-show="form.password.$error.required && submitted">Please fill   Password.</p>
-                
-                <p class="text-danger" ng-show="form.password.$error.minlength && submitted">your password shoud be minimum 5 character long .</p>
-                
-                <p class="text-danger" ng-show="form.password.$error.mongoose">
-                 {{ errors.password }}
-                </p>
-                </div>
+              <!-- <p class="text-danger" ng-show="form.phone.$error.required && submitted">Please fill Phone/Mobile.</p> -->
+           </div>
+</div>
 
-              </div>
-            </div>
 
 </div> 
 
