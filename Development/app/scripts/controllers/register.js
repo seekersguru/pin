@@ -140,6 +140,11 @@ angular.module('pinApp')
           membertype: $scope.user.member,
           nominated: $scope.user.nominated,
           interests: $scope.user.interests,
+          interests1: $scope.user.interests1,
+          interests11: $scope.user.interests11,
+          interests2: $scope.user.interests2,
+          interests3: $scope.user.interests3,
+          interests4: $scope.user.interests4,
           other: $scope.user.other,
           password:$scope.user.password
         })

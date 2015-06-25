@@ -25,6 +25,11 @@ var UserSchema = new Schema({
   membertype:String,
   nominated:String,
   interests:[],
+  interests1:String,
+  interests11:String,
+  interests2:String,
+  interests3:String,
+  interests4:String,
   band:Number,
   emailVerification: {
       token: String,

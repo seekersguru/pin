@@ -109,10 +109,22 @@
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
-<div class="form-group" >
-              <input  type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone" />
-              <!-- <p class="text-danger" ng-show="form.phone.$error.required && submitted">Please fill Phone/Mobile.</p> -->
-           </div>
+<div class="form-group" ng-class="{'has-error':form.password.$error.required && submitted,'has-success':form.password.$valid  && submitted }" >
+                <input required type="password" name="password"  class="form-control" placeholder="password *" ng-model="user.password" ng-minlength=5 mongoose-error />
+                <div class="error-massege"> 
+                <p class="text-danger" ng-show="form.password.$error.required && submitted">Please select a password.</p>
+                
+                <p class="text-danger" ng-show="form.password.$error.minlength && submitted">your password shoud be minimum 5 character long .</p>
+                
+                <p class="text-danger" ng-show="form.password.$error.mongoose">
+                 {{ errors.password }}
+                </p>
+                </div>
+
+</div>
+
+
+
 </div>
 
 </div> 
@@ -156,29 +168,19 @@
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
-<div class="form-group" ng-class="{'has-error':form.password.$error.required && submitted,'has-success':form.password.$valid  && submitted }" >
-                <input required type="password" name="password"  class="form-control" placeholder="password *" ng-model="user.password" ng-minlength=5 mongoose-error />
-                <div class="error-massege"> 
-                <p class="text-danger" ng-show="form.password.$error.required && submitted">Please select a password.</p>
-                
-                <p class="text-danger" ng-show="form.password.$error.minlength && submitted">your password shoud be minimum 5 character long .</p>
-                
-                <p class="text-danger" ng-show="form.password.$error.mongoose">
-                 {{ errors.password }}
-                </p>
-                </div>
-
-              </div>
-
+<div class="form-group" >
+              <input  type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone" />
+              <!-- <p class="text-danger" ng-show="form.phone.$error.required && submitted">Please fill Phone/Mobile.</p> -->
+           </div>
 
 </div>
 
 </div> 
-<div class="row">
+<!-- <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6">
-             
+ -->             
 
-<div class="intrest-area">
+<!-- <div class="intrest-area">
 <h4>Select area of interests</h4> 
 <div class="checkbox " ng-repeat="interest in interests">
   <label><input
@@ -190,6 +192,28 @@
   > {{interest}} </label>
 </div>
   </div>
+</div>
+</div> -->
+
+<div class="intrest-area">
+<h4>Select Area of intrest</h4> 
+
+ <div class="checkbox">
+  <label><input type="checkbox" value="keeping abreast of" ng-model="user.interests1">A) keeping abreast of:
+ <label class="radio-inline"><input type="radio" ng-model="user.interests11"  checked="checked" name="optradio" value="Investments">Investments</label>
+<label class="radio-inline"><input type="radio" ng-model="user.interests11" name="optradio" value="Wealth planing">Wealth planing</label>
+<label class="radio-inline"><input type="radio" ng-model="user.interests11" name="optradio" value="Adminstrations">Adminstrations</label> 
+<label class="radio-inline"><input type="radio" ng-model="user.interests11" name="optradio" value="Philanthropy">Philanthropy</label> 
+  </label>
+</div>
+<div class="checkbox">
+  <label><input type="checkbox" value="Networking and discussion with peers" ng-model="user.interests2">B) Networking and discussion with peers</label>
+</div>
+<div class="checkbox ">
+  <label><input type="checkbox" value="Networking and discussion with peers" ng-model="user.interests3">C) Finding well-rated services providers</label>
+</div>
+<div class="checkbox ">
+  <label><input type="checkbox" value="Networking and discussion with peers" ng-model="user.interests4" >D) Researching investment products </label>
 </div>
 </div>
 <!-- <p><span>*</span> Admin will check the nominated by before approving membership;<br> 
