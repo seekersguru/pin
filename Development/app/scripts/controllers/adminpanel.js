@@ -231,6 +231,34 @@ $scope.articleMoney=function(articleId){
 
 };
 
+$scope.articleMMIBanner=function(articleId){
+      var removeIndex = $scope.gridArticleData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(articleId);
+
+  var setStatus= !$scope.gridArticleData[removeIndex].mmibanner;
+  $http({ method: 'PUT', url: '/api/articles/'+articleId,data:{'mmibanner':setStatus,'banner':1}}).
+      success(function (data, status, headers, config) {
+         if(setStatus)
+         {
+            angular.forEach($scope.gridArticleData,function(val,key){
+              $scope.gridArticleData[key].mmibanner=!setStatus;
+          });
+        }
+
+        $scope.gridArticleData[removeIndex].mmibanner=setStatus;   
+ 
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+
+};
+
 $scope.eventStatus=function(eventId){
       var removeIndex = $scope.gridEventData
       .map(function(item)
@@ -493,6 +521,9 @@ $scope.deleteExpert=function(expertId){
 { field: 'pin' ,displayName:'Show on Pin',cellTemplate:'<span ng-if="row.entity.pin" class="label label-success" ng-click="articlePin(row.entity._id)">SHOW</span><span ng-if="!row.entity.pin" class="label label-danger" ng-click="articlePin(row.entity._id)">NOT SHOW</span>'},
 
 { field: 'money' ,displayName:'Show on Money',cellTemplate:'<span ng-if="row.entity.money" class="label label-success" ng-click="articleMoney(row.entity._id)">SHOW</span><span ng-if="!row.entity.money" class="label label-danger" ng-click="articleMoney(row.entity._id)">NOT SHOW</span>'},
+
+{ field: 'mmibanner' ,displayName:'MMI Banner',cellTemplate:'<span ng-if="row.entity.mmibanner" class="label label-success" ng-click="articleMMIBanner(row.entity._id)">YES</span><span ng-if="!row.entity.mmibanner" class="label label-danger" ng-click="articleMMIBanner(row.entity._id)">NOT</span>'},
+
                                     { field: '',displayName:'Action', cellTemplate: editDeleteArticleTemplate, maxWidth: 100  }],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]

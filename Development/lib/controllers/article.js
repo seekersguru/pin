@@ -286,6 +286,29 @@ exports.update = function(req, res) {
   else
   {
 
+//if we ra emaking article as a MMI banner 
+//then reset all mmibanner field for article
+// is false this request mainly send by admin section
+
+	if(req.body.banner){ 
+		 Article.where({})
+			    .update({},{ $set: { mmibanner: false }},{ multi: true},function(){
+			    	console.log("mmi banner updated");
+			    	
+		    		Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
+								if (err) {
+									console.log(err);
+									return res.json(400, err);
+								}
+								if (!article) {
+									console.log('notfound');
+									return res.send(404);
+								}
+								return res.send(200);
+							});
+			    });
+	
+	}else{
 	Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
 		if (err) {
 			console.log(err);
@@ -297,6 +320,9 @@ exports.update = function(req, res) {
 		}
 		return res.send(200);
 	});
+
+	}
+
 
 }
 

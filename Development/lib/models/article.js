@@ -14,6 +14,7 @@ var ArticleSchema = new Schema({
   public: { type: Boolean, default: false },
   pin: { type: Boolean, default: true },
   money: { type: Boolean, default: true },
+  mmibanner: { type: Boolean, default: false },
   mainImage: String,
   discovered: { type: Boolean, default: false, index: true },
   description:{type:String, required:true},
@@ -58,7 +59,8 @@ ArticleSchema
       'category':this.category,
       'approve':this.public,
       'pin':this.pin,
-      'money':this.money
+      'money':this.money,
+      'mmibanner':this.mmibanner,
     };
   });
 
