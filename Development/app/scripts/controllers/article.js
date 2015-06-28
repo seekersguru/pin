@@ -107,25 +107,26 @@ $scope.mmicategory=[
   ];
 $scope.articles=articles;
 $scope.exceptonearticle=angular.copy(articles);
+if( Object.prototype.toString.call( $scope.exceptonearticle ) === '[object Array]' ) {
+  var removeIndex=0;
+     removeIndex = $scope.exceptonearticle
+    .map(function(item)
+    { 
+      return item.mmibanner;
+    })
+    .indexOf(true);
 
-  var removeIndex = $scope.exceptonearticle
-  .map(function(item)
-  { 
-    return item.mmibanner;
-  })
-  .indexOf(true);
+  if(removeIndex <= 0)
+   {
+      $scope.exceptonearticle.splice(removeIndex, 1);
+   }
+   else
+   {
+        $scope.mainlist=$scope.exceptonearticle.splice(0,1);
+   }
 
-if(removeIndex <= 0)
- {
-    $scope.exceptonearticle.splice(removeIndex, 1);
- }
- else
- {
-    if( Object.prototype.toString.call( $scope.exceptonearticle ) === '[object Array]' ) {
-      $scope.mainlist=$scope.exceptonearticle.splice(0,1);
-    }
-}
-  
+  $scope.bannerArticle=articles[removeIndex];
+}  
 $scope.rightnav="right-nav.html";
 
 setTimeout(function(){
