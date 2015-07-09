@@ -186,7 +186,7 @@
       </videogular>
     </div>
 
-    <p>{{articles.createdAt | date:"MMMM d, yyyy" }}</p>
+    <!-- <p>{{articles.createdAt | date:"MMMM d, yyyy" }}</p> -->
     <p class="articleview" ng-bind-html="articles.description | rawHtml "></p>
     
     <p><a class="btn readmore-bt" type="button" href="/articles/01"  >Back To Articles </a>
@@ -262,9 +262,9 @@
     
     </li>
 </ul>
-<div class="actionBox">
+<div class="actionBox" ng-if="currentUser._id" >
  <h3>Post Your Comment</h3>
- <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" ng-if="currentUser._id" class="">
+ <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" class="">
   <div class="chat-2mar15" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
     <textarea class="form-control"  name="comment"id="comment" placeholder="Your comments" ng-model="article.comment" required ng-minlength=4></textarea>
     <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>

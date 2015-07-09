@@ -2,7 +2,14 @@
 
 angular.module('pinApp')
 .controller('EventListCtrl', function ($scope,$rootScope,events) {
+ angular.forEach(events,function(eventname,key){
+  var currentdate=new Date();
 
+    if(new Date(eventname.eventdate) < new Date(currentdate)) 
+      delete events[key];
+
+
+  });
 $scope.events=events;
 
 });
@@ -24,7 +31,10 @@ angular.module('pinApp')
 
   $scope.usingFlash = FileAPI && FileAPI.upload != null;
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
+
   $scope.events=events;
+
+
   var addresspickerMap= $( "#addresspicker_map" ).addresspicker({
       regionBias: "in",
       language: "in",

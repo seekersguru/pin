@@ -495,7 +495,7 @@ $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
 .run(function ($rootScope, $location, Auth) {
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
 
-      $rootScope.appTitle = 'PIN';
+      $rootScope.appTitle = 'Connecting Indian money industry';
       if (next.title) {
         $rootScope.appTitle = next.title;
       }
