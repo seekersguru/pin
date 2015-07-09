@@ -408,7 +408,7 @@ $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
 .run(function ($rootScope, $location, Auth) {
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
 
-      $rootScope.appTitle = 'PIN';
+      $rootScope.appTitle = 'Connecting Indian family offices';
       if (next.title) {
         $rootScope.appTitle = next.title;
       }
@@ -416,7 +416,7 @@ $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
         $rootScope.redirectPath = $location.path();
       }
 
-      $rootScope.ogTitle = "PIN";
+      $rootScope.ogTitle = "Connecting Indian family offices";
       $rootScope.ogDescription = "PIN Description";
       $rootScope.ogImage = "";
       $rootScope.ogUrl =  "http://"+$location.host()+$location.path();
