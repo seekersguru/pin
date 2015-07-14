@@ -65,7 +65,7 @@ $scope.popuplogin=function(){
       angular.forEach(data.articles,function(eventname,key){
       var currentdate=new Date();
       if(new Date(eventname.eventdate) < new Date(currentdate)) 
-        delete events[key]; 
+        delete data.articles[key]; 
     });
       
       $scope.pineventlist=data.articles;
