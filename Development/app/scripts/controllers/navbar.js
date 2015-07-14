@@ -62,8 +62,14 @@ $scope.popuplogin=function(){
     }).
     success(function (data,status,headers,config){
 
+      angular.forEach(data.articles,function(eventname,key){
+      var currentdate=new Date();
+      if(new Date(eventname.eventdate) < new Date(currentdate)) 
+        delete events[key]; 
+    });
+      
       $scope.pineventlist=data.articles;
-
+      
     })
 
     .error(function (data,status,headers,config){
