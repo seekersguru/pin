@@ -60,14 +60,14 @@
  
 <div class="row">
 
-<div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in exceptonearticle | filter:selectcategory"  > 
+<div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in exceptonearticle | filter:{ mmisubcategory: selectcategory }"  > 
 <div class="content-block">
 <div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
           <img ng-if="!value.media.path" ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">   
 
           <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
           <div class="shadow-img">
-<div class="{{mmicategorysetting[value.mmicategory].classname}}">{{value.mmicategory}}</div>
+<div class="{{mmicategorysetting[value.mmicategory].classname}}">{{value.mmisubcategory}}</div>
 </div>          
 
           </div>
@@ -76,7 +76,7 @@
           <img  ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}"> 
           <div class="play-iocn"></div>
 <div class="shadow-img">
-<div class="communication-iocn">{{value.mmicategory}}</div>
+<div class="communication-iocn">{{value.mmisubcategory}}</div>
 </div>          
       </div>
   <div ng-if='!value.media' class="block-image">
