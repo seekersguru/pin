@@ -71,7 +71,7 @@ Desk</h2>
 							<h1>Upcoming Events</h1>
 							<ul>
 
-							<li ng-repeat="(key,value) in pineventlist"><a ng-href="/event/view/{{value._id}}">{{value.title}} -- {{ value.eventdate | date:"d-MMMM-yyyy" }}</a></li> 
+							<li ng-repeat="(key,value) in pineventlist track by $index"><a ng-href="/event/view/{{value._id}}">{{value.title}} -- {{ value.eventdate | date:"d-MMMM-yyyy" }}</a></li> 
 						
 							</ul>
 						</div>
