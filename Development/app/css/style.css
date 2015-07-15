@@ -331,6 +331,27 @@ h6 {
     font-style: italic;
     padding: 6px 35px 6px 15px;
 }
+
+#content-section .readmore-left-bt {
+    background-color: #eeeeee;
+    background-image: url("../images/left-arrow.png");
+    background-position: left 11px;
+    background-repeat: no-repeat;
+    color: #373737;
+    font-size: 13px;
+    font-style: italic;
+    padding: 6px 8px 6px 29px;
+}
+#content-section .readmore-left-bt:hover {
+    background-color: #002752;
+    background-image: url("../images/left-arrow-hover.png");
+    background-position: left 11px;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 13px;
+    font-style: italic;
+    padding: 6px 8px 6px 29px;
+}
 #content-section .fa.fa-long-arrow-right {
     font-size: 16px;
     margin: 3px 0 0 8px;
