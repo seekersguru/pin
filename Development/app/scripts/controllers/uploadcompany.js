@@ -286,7 +286,7 @@ $scope.companies=[];
 'firmsupertype':output.companies[i].firmsupertype,
 'firmtype':output.companies[i].firmtype,
 'firmsubtype':output.companies[i].firmsubtype,
-'services':output.companies[i].services,
+'services':(output.companies[i].services+ ",").split(","),
 'roletype':$scope.companyStructure[output.companies[i].firmsupertype][output.companies[i].firmtype][output.companies[i].firmsubtype],
 
 'address':[
