@@ -105,7 +105,7 @@ $scope.uploadPic = function(files) {
     file.upload.then(function(response) {
       $timeout(function() {
         console.log(response);
-        // $location.path('articles/view/'+output.Sheet1[i].response.data.article._id);
+        // $location.path('articles/view/'+output.companies[i].response.data.article._id);
         file.result = response.data;
         $scope.articleDone=1;
         startparsing();
@@ -219,6 +219,7 @@ $scope.uploadPic = function(files) {
       $http({ method: 'POST', url: '/api/companys',data:value }).
       success(function (data, status, headers, config) {
         $scope.companies[key].status=1;
+        $scope.companies[key].address[0]['main']=1;
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -273,68 +274,68 @@ function process_wb(wb) {
       console.log("output", new Date());
       console.log(output);
       var str="";
-    if(output.Sheet1 && output.Sheet1.length)
+    if(output.companies && output.companies.length)
     {
 
 $scope.companies=[];
 
-    for (var i = 0; i < output.Sheet1.length; i++) {
+    for (var i = 0; i < output.companies.length; i++) {
       
       var temp={
-'title':output.Sheet1[i].title,
-'firmsupertype':output.Sheet1[i].firmsupertype,
-'firmtype':output.Sheet1[i].firmtype,
-'firmsubtype':output.Sheet1[i].firmsubtype,
-'services':output.Sheet1[i].services,
-'roletype':$scope.companyStructure[output.Sheet1[i].firmsupertype][output.Sheet1[i].firmtype][output.Sheet1[i].firmsubtype],
+'title':output.companies[i].title,
+'firmsupertype':output.companies[i].firmsupertype,
+'firmtype':output.companies[i].firmtype,
+'firmsubtype':output.companies[i].firmsubtype,
+'services':output.companies[i].services,
+'roletype':$scope.companyStructure[output.companies[i].firmsupertype][output.companies[i].firmtype][output.companies[i].firmsubtype],
 
 'address':[
 
 {  
-  'street':output.Sheet1[i].office1street,
-  'city':output.Sheet1[i].office1city,
-  'state':output.Sheet1[i].office1state,
-  'country':output.Sheet1[i].office1country,
-  'pin':output.Sheet1[i].office1pin,
-  'main':output.Sheet1[i].office1main,
-  'phone':output.Sheet1[i].office1phone
-  }  ,   
- { 
-  'street':output.Sheet1[i].office2street,
-   'city':output.Sheet1[i].office2city,
-   'state':output.Sheet1[i].office2state,
-   'country':output.Sheet1[i].office2country,
-   'pin':output.Sheet1[i].office2pin,
-   'main':output.Sheet1[i].office2main,
-   'phone':output.Sheet1[i].office2phone
-  },
-  {
+  'street':output.companies[i].office1street,
+  'city':output.companies[i].office1city,
+  'state':output.companies[i].office1state,
+  'country':output.companies[i].office1country,
+  'pin':output.companies[i].office1pin,
+  'main':1,
+  'phone':output.companies[i].office1phone
+  }   
+//  { 
+//   'street':output.companies[i].office2street,
+//    'city':output.companies[i].office2city,
+//    'state':output.companies[i].office2state,
+//    'country':output.companies[i].office2country,
+//    'pin':output.companies[i].office2pin,
+//    'main':output.companies[i].office2main,
+//    'phone':output.companies[i].office2phone
+//   },
+//   {
 
-    'street':output.Sheet1[i].office3street,
-    'city':output.Sheet1[i].office3city,
-    'state':output.Sheet1[i].office3state,
-    'country':output.Sheet1[i].office3country,
-    'pin':output.Sheet1[i].office3pin,
-    'main':output.Sheet1[i].office3main,
-    'phone':output.Sheet1[i].office3phone
-   },       
-  {
-  'street':output.Sheet1[i].office4street,
-  'city':output.Sheet1[i].office4city,
-  'state':output.Sheet1[i].office4state,
-  'country':output.Sheet1[i].office4country,
-  'pin':output.Sheet1[i].office4pin,
-  'main':output.Sheet1[i].office4main,
-  'phone':output.Sheet1[i].office4phone
-}
+//     'street':output.companies[i].office3street,
+//     'city':output.companies[i].office3city,
+//     'state':output.companies[i].office3state,
+//     'country':output.companies[i].office3country,
+//     'pin':output.companies[i].office3pin,
+//     'main':output.companies[i].office3main,
+//     'phone':output.companies[i].office3phone
+//    },       
+//   {
+//   'street':output.companies[i].office4street,
+//   'city':output.companies[i].office4city,
+//   'state':output.companies[i].office4state,
+//   'country':output.companies[i].office4country,
+//   'pin':output.companies[i].office4pin,
+//   'main':output.companies[i].office4main,
+//   'phone':output.companies[i].office4phone
+// }
   ],
         
 
-  'pin':output.Sheet1[i].pin,
-  'money':output.Sheet1[i].money,
-  'url':output.Sheet1[i].url,
-  'notes':output.Sheet1[i].notes,
-  'description':output.Sheet1[i].description,
+  'pin':output.companies[i].pin,
+  'money':output.companies[i].money,
+  'url':output.companies[i].url,
+  'notes':output.companies[i].notes,
+  'description':output.companies[i].description,
   'status':0
 
 
