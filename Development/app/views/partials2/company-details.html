@@ -35,7 +35,7 @@
 <div ng-repeat="(key,value) in article.address" ng-if="value.main==true" >
  <h4>Main Office</h4>
 <p><b>Country:</b> {{value.country}}</p>
-<p><b>Address:</b> <p>{{value.street}}</p>
+<p><b>Address:</b> {{value.street}}
 <p> {{value.city}} {{value.state}} {{value.pin}}</p></p>
 <p><b>Phone:</b> {{value.phone}}</p>
 </div>
