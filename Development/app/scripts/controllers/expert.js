@@ -302,14 +302,14 @@ $scope.uploadPic = function(files) {
       // formData.append("file", $scope.article.file);
       // console.log(formData);
       
-      $scope.article.author=$rootScope.currentUser._id;
+      $scope.expert['author']=$rootScope.currentUser._id;
        // var original=$scope.article.tags;
        //  $scope.article.tags=[];
        //  for (var t = 0; t < original.length; t++) {
        //    $scope.article.tags[t] = original[t].text;
        //   }
       $scope.form.$setPristine();
-      $http({ method: 'POST', url: '/api/expert',data:$scope.article }).
+      $http({ method: 'POST', url: '/api/expert',data:$scope.expert }).
       success(function (data, status, headers, config) {
         // ...
         // console.log(data);
