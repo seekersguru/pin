@@ -7,6 +7,7 @@ multipart = require('connect-multiparty'),
 fs = require('fs'),
 path = require('path'),
 _ = require('lodash');
+// moment=require('moment');
 
 Article.collection.ensureIndex({title: 'text', description: 'text', tags: 'text', mmitags: 'text', category: 'text', mmicategory: 'text', mmisubcategory: 'text'}, function(error) {console.log("get index");});
 
@@ -54,6 +55,13 @@ exports.create = function(req, res, next) {
 	var data = _.pick(req.body, 'type') ,
 	uploadPath =  '/uploads';
 	console.log(req.files);
+	// if(req.body.createdAt)
+	// {	console.log(req.body.createdAt);
+	// 	req.body.createdAt=moment(req.body.createdAt).calendar();
+	//     console.log(req.body.createdAt);
+
+	// }
+
 	if(req.files && req.files.file)
 	{
 
@@ -113,6 +121,7 @@ exports.create = function(req, res, next) {
 
         	req.body.mmitags=JSON.parse(req.body.mmitags);
         	req.body.tags=JSON.parse(req.body.tags);
+        	req.body.createdAt=JSON.parse(req.body.createdAt);
 
         	console.log(req.body);
         	// req.body.tags=JSON.parse(req.body.tags);
@@ -221,6 +230,11 @@ exports.update = function(req, res) {
 
         	article_data.mmitags=JSON.parse(req.body.mmitags);
         	article_data.tags=JSON.parse(req.body.tags);
+        	if(req.body.createdAt)
+        	{
+        		article_data.createdAt= JSON.parse(req.body.createdAt);
+       		 }
+        	
 
         	article_data.media={
         		extension: file.type,
