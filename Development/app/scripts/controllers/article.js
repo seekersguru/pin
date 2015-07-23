@@ -118,14 +118,17 @@ if( Object.prototype.toString.call( $scope.exceptonearticle ) === '[object Array
 
   if(removeIndex <= 0)
    {
-      $scope.exceptonearticle.splice(removeIndex, 1);
+      $scope.exceptonearticle.splice(0, 1);
+      $scope.bannerArticle=articles[0];
+
    }
    else
    {
-        $scope.mainlist=$scope.exceptonearticle.splice(0,1);
+        $scope.mainlist=$scope.exceptonearticle.splice(removeIndex,1);
+        $scope.bannerArticle=articles[removeIndex];
+
    }
 
-  $scope.bannerArticle=articles[removeIndex];
 }  
 $scope.rightnav="right-nav.html";
 
