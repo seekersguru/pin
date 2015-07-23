@@ -68,7 +68,7 @@ angular.module('pinApp', [
       articles: ['$q', '$route', 'Article', function($q, $route, article) {
         var deferred = $q.defer();
         var query = angular.copy($route.current.params);
-        query.limit=25;
+        query.limit=100;
         article.get(query, function(articles) {
           deferred.resolve(articles.articles);
         },
@@ -86,7 +86,7 @@ angular.module('pinApp', [
       articles: ['$q', '$route', 'Article', function($q, $route, article) {
         var deferred = $q.defer();
         var query = angular.copy($route.current.params);
-        query.limit=25;
+        query.limit=100;
         article.get(query, function(articles) {
           deferred.resolve(articles.articles);
         },
