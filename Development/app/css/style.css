@@ -1910,7 +1910,7 @@ h2 {
 }
 #footer-bg ul li {
     font-size: 1.8rem;
-    line-height: 24px; display:inline-block; 
+    line-height: 24px; display:inline-block;
 }
 #footer-bg .footer-social ul{float:none; }
 #footer-bg ul li a {
@@ -2122,7 +2122,7 @@ td {
 
 .from-editor-openid {
   background-color: #134781;
-  border-color: #134781; border:none; 
+  border-color: #134781; border:none;
   color: #fff; }
 
 .btn-from-editor {
@@ -2191,5 +2191,13 @@ td {
 }
 
 #right-sidebar #upcomming-news ul li .entry-item .entry-title h2 a{
-      color: #666666; font-weight:bold; 
+      color: #666666; font-weight:bold;
 }
+
+/*new css alpha list*/
+
+.alphalist ul{margin:0px; padding:0px;}
+.alphalist ul li{margin:0px; padding:0px; border-bottom:none;  font-family: "clear_sans_mediumregular"; display:inline-block; padding:4px 6px;  }
+.alphalist ul li a{ font-size:16px; color: #032c5a; text-transform:uppercase; cursor:pointer;}
+.alphalist ul li a:hover{  color: #259f64; }
+.alphalist ul li a.active{color: #259f64;}

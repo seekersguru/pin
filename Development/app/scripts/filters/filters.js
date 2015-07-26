@@ -14,6 +14,29 @@ angular.module('pinApp')
   };
 });
 
+
+/**
+ * filter by this we
+ * can do searching with start
+ * with alphabatical
+ */
+
+angular.module('pinApp')
+.filter('startsWithLetter', function() {
+  return function(items, letter) {
+
+    var filtered = [];
+    var letterMatch = new RegExp(letter, 'i');
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      if (letterMatch.test(item.title.substring(0, 1))) {
+        filtered.push(item);
+      }
+    }
+    return filtered;
+  };
+});
+
 /**
  * Filters out all duplicate items from an array by checking the specified key
  * @param [key] {string} the name of the attribute of each object to compare for uniqueness

@@ -13,57 +13,72 @@
 /
  <li class="active">Directory</li>
 </ul>
-</div> 
+</div>
 </div>
 
 
-</div> 
+</div>
 
 <div class="gray-hr"></div>
 
 
 <div class="directory-section">
- <h1>Directory</h1> 
+ <h1>Directory</h1>
 
 <form class="register-form"  name="searchform"  novalidate>
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-6">
  <div>
   <div class="input-group">
-  <input type="text" required type="text" name="title" class="form-control" ng-model="search.title" placeholder="Title">
-  <span class="input-group-addon"><button class="btn subscribe-bt"><i class="fa fa-search"></i></button></span>
-  
-</div> 
-</div> 
+  <input type="text" required type="text" name="title" class="form-control" ng-model="search.title" placeholder="Title" ng-change="setSearchTitle()">
+  <span class="input-group-addon"><button class="btn subscribe-bt" ><i class="fa fa-search"></i></button></span>
+
+</div>
+</div>
 </div>
 <div class="col-lg-4 col-md-4 col-sm-4 filter-dropdown">
- <select ng-model="search.firmtype" name ="organization" class="form-control">
-    <option value="">--Search By Type--</option>
-    <option value="WM">WM</option>
-    <option value="Foreign portfolio investor">Foreign portfolio investor</option>
-    <option value="Regulator">Regulator</option>
-    <option value="Service provider">Service provider</option>
-    <option value="Product provider">Product provider</option>
+ <select ng-model="search.firmtype" name ="organization" class="form-control" ng-change="setSearchSubType()">
+    <option value="">--Search By Type and SubType--</option>
+    <optgroup ng-repeat="(typekey,type) in  companyStructure" label="{{typekey}}">
+         <option ng-repeat="(subkey,subtype) in  type" value="{{subkey}}">{{ subkey}} </option>
+    </optgroup>
      </select>
-</div>  
+</div>
+
+
+
+</div>
+
+<div class="alphalist">
+<ul>
+  <li ng-click="activateLetter('')" ><a  ng-class="{'active':activeLetter==''}">ALL</a></li>
+  <li ng-repeat="letter in alphabet track by $index" >
+    <a ng-class="{'active':letter == activeLetter}" ng-click="activateLetter(letter)">{{letter}}</a>
+  </li>
+
+</ul>
 </div>
 </form>
 
 
 <div id="upcomming-event">
 <ul>
-<li ng-repeat="(key,value) in companys | filter:(search.title || search.firmtype) ">
+<li ng-repeat="(key,value) in companys | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter">
 <h2><a href="/company/view/{{value._id}}">{{value.title}}</a></h2>
 <p>{{value.organization}}</p>
-</li> 
+</li>
 
+<li ng-show="(companys  | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter).length==0">
+<h2> No Result Found :( </h2>
+<p> Please try with Another Keyword.</p>
+</li>
 
 
 </ul>
 </div>
 
 <button class="btn readmore-bt" type="button">Read more </button>
-</div>  
+</div>
 
 </div>
 
@@ -72,4 +87,3 @@
 </div>
 </div>
 </div>
-

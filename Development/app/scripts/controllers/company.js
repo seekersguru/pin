@@ -4,7 +4,84 @@ angular.module('pinApp')
 .controller('CompanyCtrl', function ($scope,$rootScope,companys) {
 
 $scope.companys=companys.copmanys;
+$scope.search={
+  title:'',
+  firmtype:''
+};
+var str = "abcdefghijklmnopqrstuvwxyz";
+$scope.alphabet = str.toUpperCase().split("");
 
+$scope.activeLetter = '';
+
+
+$scope.activateLetter = function(letter) {
+  $scope.search.title ='';
+  $scope.search.firmtype='';
+  $scope.activeLetter = letter;
+}
+
+$scope.setSearchSubType=function(){
+  $scope.search.title ='';
+  $scope.activeLetter = '';
+}
+
+$scope.setSearchTitle=function(){
+  $scope.search.firmtype='';
+  $scope.activeLetter = '';
+}
+$scope.companyStructure={
+      'WM':{
+          'Multi-family office':[1,2,3,4,5],
+          'Private Bank':[1,2,3,4,5],
+          'Retail Bank':[1,2,3,4,5],
+          'Private Client Firm':[1,2,3,4,5],
+          'IFA':[1,2,3,4,5],
+          'IFA platform':[1,2,3],
+          'Securities firm':[1,2,3,4,5]
+      },
+      'Foreign portfolio investor':{
+          'Consultants':[1,2,3,4,5],
+          'FII - pension':[1,2,3,4,5],
+          'FII - SWF':[1,2,3,4,5],
+          'FII - insurance':[1,2,3,4,5],
+          'FII - endowment':[1,2,3,4,5],
+          'FII - fund-of-funds':[1,2,3,4,5],
+          'Family office':[1,2,3,4,5],
+      },
+      'Regulator':{
+          'Regulator':[1,2,3,4,5]
+      },
+      'Industry':{
+        'Association':[1,2,3,4]
+      },
+      'Service provider':{
+          'Tax/Accounting':[1,2,3],
+          'Legal':[1,2,3],
+          'Technology':[1,2,3],
+          'Education':[1,2,3],
+          'Association':[1,2,3],
+          'Trust company':[1,2,3],
+          'Consulting':[1,2,3],
+          'Research/Investment consulting/data provider':[1,2,3],
+          'Media':[1,2,3],
+          'Philanthropic/NGO':[1,2,3],
+          'Securities exchange':[1,2,3],
+          'Custody':[1,2,3,4],
+          'Recruitment':[1,2,3,4]
+      },
+      'Product provider':{
+          'Asset Management Company':[1,2,3,6,7],
+          'Alternative Investment Fund Manager':[1,2,3,6,7],
+          'Portfolio Management Service Provider':[1,2,3,6,7],
+          'Investment Bank':[1,2,3,6,7],
+          'Non-bank financial institution':[1,2,3,6,7],
+          'Insurance Company':[1,2,3,4,6,7],
+
+      },
+      'Industry':{
+        'Association':[1,2,3,4]
+      }
+};
 });
 
 angular.module('pinApp')
@@ -34,18 +111,18 @@ angular.module('pinApp')
     $scope.registerUserInEvent=function(){
       $scope.events.serviceregistered.push($rootScope.currentUser._id);
 
-    var user={ user: $rootScope.currentUser._id};  
+    var user={ user: $rootScope.currentUser._id};
 
     $http({ method: 'PUT', url: '/api/events/register/'+events._id,data:user }).
     success(function (data, status, headers, config) {
-                  
+
         }).
     error(function (data, status, headers, config) {
       $scope.article={};
     });
   };
 
-   
+
 
 });
 
@@ -76,7 +153,7 @@ angular.module('pinApp')
 
 
 
-  
+
   $scope.companyStructure={
     'Buy':{
         'WM':{
@@ -103,7 +180,7 @@ angular.module('pinApp')
         'Industry':{
           'Association':[1,2,3,4]
         }
-        
+
     },
     'Sell':{
         'Service provider':{
@@ -137,21 +214,21 @@ angular.module('pinApp')
 };
 
   for (var i = 0; i < company.address.length; i++) {
-  
+
       $scope.article.addresstimes.push('val'+i);
   };
 
 
     $scope.removeaddress=function(key)
     {
-      
-      $scope.article.addresstimes.splice(key, 1);  
-      $scope.article.address.splice(key, 1);  
-   
+
+      $scope.article.addresstimes.splice(key, 1);
+      $scope.article.address.splice(key, 1);
+
     };
 
 
- 
+
      $scope.addAddress=function(){
 
       $scope.article.address.push({
@@ -169,7 +246,7 @@ angular.module('pinApp')
     };
 
 $scope.setscope=function(){
- 
+
 
 };
 
@@ -199,8 +276,8 @@ $scope.setscope=function(){
       success(function (data, status, headers, config) {
         // ...
         $location.path('/company/view/'+data.company._id);
-        
-        
+
+
       }).
       error(function (data, status, headers, config) {
           alert('Oh Oh :(.  There is some technical problem please try after some time .');
@@ -208,7 +285,7 @@ $scope.setscope=function(){
       });
     }
   };
-  
+
   $scope.reset=function(form){
     $scope.form.$setPristine();
   };
@@ -233,11 +310,11 @@ $scope.setscope=function(){
 
   $scope.changemain=function(passkey){
 
-    
+
     angular.forEach($scope.article.address, function(value, key) {
       $scope.article.address[key].main=false;
-    });    
-  
+    });
+
     $scope.article.address[passkey].main=true;
 
 
@@ -263,7 +340,7 @@ $scope.article.address=[{
 $scope.services=['Wealth management','Investment advisory',  'Investment execution','Wealth planning','Financial planning','Tax','Audit','Legal','IT product','IT consulting','Educational certifications','Educational training','Trade body','Self-regulation','Trust set-up','Trusteeship','Trust administration','Consulting - management/HR','Consulting - investment','Media outlet','Media agent','Media content','Philanthropy advice','Philanthropy execution','Asset management - mutual fund','Asset management - institutional','Asset management - managed account','Asset management - alternatives','Asset management - structured product','Lending/credit','Fiduciary','Regulation setting','Regulation enforcement','Securities exchange','Administration platform','BPO/KPO'];
 
   $scope.article.services=[];
-  
+
    // toggle selection for a given fruit by name
   $scope.toggleSelection = function toggleSelection(servicename) {
     var idx = $scope.article.services.indexOf(servicename);
@@ -331,7 +408,7 @@ $scope.companyStructure={
         'Industry':{
           'Association':[1,2,3,4]
         }
-        
+
     },
     'Sell':{
         'Service provider':{
@@ -364,34 +441,34 @@ $scope.companyStructure={
     }
 };
 
- 
+
   $scope.saveArticle=function(form){
     //     var str = "abc'sddf khdfkjdf dflkfdlkfd fdkjfdk test#s";
     // alert(str.replace(/[^a-zA-Z ]/g, "").replace(/ /g,"-"));
-    
+
 
     if(form.$valid)
     {
       // var formData = new FormData();
       // formData.append("file", $scope.article.file);
       // console.log(formData);
-      
+
       $scope.setscope();
 
       // $scope.form.$setPristine();
       $http({ method: 'POST', url: '/api/companys',data:$scope.article }).
       success(function (data, status, headers, config) {
-        
+
         // console.log(data);
-        
+
         if($rootScope.currentUser.role == 'admin')
         {
-        
+
             $location.path('/company/view/'+data.company._id);
-        
+
         }
-       
-        
+
+
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -417,13 +494,13 @@ $scope.companyStructure={
 
 
     };
-    
+
     $scope.removeaddress=function(key)
     {
-      
-      $scope.article.addresstimes.splice(key, 1);  
-      $scope.article.address.splice(key, 1);  
-   
+
+      $scope.article.addresstimes.splice(key, 1);
+      $scope.article.address.splice(key, 1);
+
     };
 
 
@@ -438,11 +515,11 @@ $scope.setscope=function(){
 
   $scope.changemain=function(passkey){
 
-    
+
     angular.forEach($scope.article.address, function(value, key) {
       $scope.article.address[key].main=false;
-    });    
-  
+    });
+
     $scope.article.address[passkey].main=true;
 
 
