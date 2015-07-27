@@ -30,7 +30,7 @@
 <div class="col-lg-6 col-md-6 col-sm-6">
  <div>
   <div class="input-group">
-  <input type="text" required type="text" name="title" class="form-control" ng-model="search.title" placeholder="Title" ng-change="setSearchTitle()">
+  <input type="text" required type="text" name="title" class="form-control" ng-model="search.title" placeholder="Search by company name, services, or keyword" ng-change="setSearchTitle()">
   <span class="input-group-addon"><button class="btn subscribe-bt" ><i class="fa fa-search"></i></button></span>
 
 </div>
@@ -69,8 +69,7 @@
 </li>
 
 <li ng-show="(companys  | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter).length==0">
-<h2> No Result Found :( </h2>
-<p> Please try with Another Keyword.</p>
+<h2> No Result Found. </h2>
 </li>
 
 
