@@ -56,7 +56,6 @@ $scope.companyStructure={
           'Legal':[1,2,3],
           'Technology':[1,2,3],
           'Education':[1,2,3],
-          'Association':[1,2,3],
           'Trust company':[1,2,3],
           'Consulting':[1,2,3],
           'Research/Investment consulting/data provider':[1,2,3],
@@ -74,6 +73,9 @@ $scope.companyStructure={
           'Non-bank financial institution':[1,2,3,6,7],
           'Insurance Company':[1,2,3,4,6,7],
 
+      },
+      'Industry':{
+        'Association':[1,2,3,4]
       }
 };
 });
