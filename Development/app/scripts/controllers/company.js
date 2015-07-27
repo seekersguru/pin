@@ -51,9 +51,6 @@ $scope.companyStructure={
       'Regulator':{
           'Regulator':[1,2,3,4,5]
       },
-      'Industry':{
-        'Association':[1,2,3,4]
-      },
       'Service provider':{
           'Tax/Accounting':[1,2,3],
           'Legal':[1,2,3],
@@ -77,9 +74,6 @@ $scope.companyStructure={
           'Non-bank financial institution':[1,2,3,6,7],
           'Insurance Company':[1,2,3,4,6,7],
 
-      },
-      'Industry':{
-        'Association':[1,2,3,4]
       }
 };
 });
