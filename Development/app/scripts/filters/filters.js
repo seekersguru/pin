@@ -37,6 +37,14 @@ angular.module('pinApp')
   };
 });
 
+//convert html as text
+angular.module('pinApp').
+  filter('htmlToPlaintext', function() {
+    return function(text) {
+      return String(text).replace(/<[^>]+>/gm, '');
+    };
+  }
+);
 /**
  * Filters out all duplicate items from an array by checking the specified key
  * @param [key] {string} the name of the attribute of each object to compare for uniqueness

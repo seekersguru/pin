@@ -134,8 +134,8 @@ if( Object.prototype.toString.call( $scope.exceptonearticle ) === '[object Array
 
 for(var i = 0; i < $scope.exceptonearticle.length; i++){
 
-    $scope.exceptonearticle[i].title = $sce.trustAsHtml($filter('limitTo')($scope.exceptonearticle[i].title, $scope.titleLimit));
-    $scope.exceptonearticle[i].description = $sce.trustAsHtml($filter('limitTo')($scope.exceptonearticle[i].description, $scope.descriptionLimit));
+    // $scope.exceptonearticle[i].title = $sce.trustAsHtml($filter('limitTo')($scope.exceptonearticle[i].title, $scope.titleLimit));
+    $scope.exceptonearticle[i].description = $sce.trustAsHtml($filter('htmlToPlaintext')($filter('limitTo')($scope.exceptonearticle[i].description, $scope.descriptionLimit)));
 
 }
 

@@ -34,7 +34,7 @@ $scope.setSearchTitle=function(){
   $scope.searchStart=true;
 }
 
-$scope.setSearchTitle();
+// $scope.setSearchTitle();
 
 $scope.companyStructure={
       'WM':{
