@@ -47,7 +47,7 @@
 
       <div class="col-lg-6 col-md-6 col-sm-12 ">
 <h1>{{bannerArticle.title}}</h1>
-<p><small>by</small> {{bannerArticle.author.fullname}}</p>
+<p><small>by</small> {{bannerArticle.author.fullname || bannerArticle.author.name}}</p>
 <p ng-bind-html="bannerArticle.description | limitTo:descriptionLimit | rawHtml"></p>
 <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{bannerArticle._id}}">Continue Reading </a></p>
 </div>
