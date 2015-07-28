@@ -1574,7 +1574,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', e
     font-size: 13px;
    display: table-cell;
     font-family: "clear_sans_lightregular";
-    font-size: 13px; background-repeat:no-repeat;
+    font-size: 12px; background-repeat:no-repeat;
     height: 45px;
     text-indent: 30px;
     background-position: left bottom;
@@ -1588,7 +1588,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', e
     color: #5acce4;
     display: table-cell;
     font-family: "clear_sans_lightregular";
-    font-size: 13px;
+    font-size: 12px;
     height: 45px;
     text-indent: 30px; background-repeat:no-repeat;
     text-transform: uppercase;
@@ -1602,7 +1602,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', e
     font-size: 13px;
     display: table-cell;
     font-family: "clear_sans_lightregular";
-    font-size: 13px; background-repeat:no-repeat;
+    font-size: 12px; background-repeat:no-repeat;
     height: 45px;
     text-indent: 30px;
     text-transform: uppercase;
