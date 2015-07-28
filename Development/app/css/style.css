@@ -298,11 +298,13 @@ h6 {
 #content-section .content-row-mar {
     margin-top: 20px;
 }
+
 #content-section .content-block {
     display: block;
     margin-bottom: 30px;
-    min-height: 336px;
+    min-height: 350px;
 }
+
 #content-section .content-block small {
     color: #666666;
     font-size: 13px;
@@ -1548,56 +1550,73 @@ ul.ed-iocn {
     min-height: 16.43px;
     padding: 15px;
 }
+
 .shadow-img {
-    background-image: url("../images/shadow-img.png");
-    background-size: 100% auto;
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
+background: -moz-linear-gradient(bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+background: linear-gradient(to top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
     bottom: 0;
     font-weight: bold;
-    height: 60px;
-    padding-left: 9px;
-    padding-top: 26px;
-    position: absolute;
+    height: 50px;
+    display:table-cell; vertical-align:bottom;
+    position: absolute; padding-left:6px;
     width: 100%;
 }
 .wealth-iocn {
-  background-image: url("../images/wealth-small-icon.png");
-    background-repeat: no-repeat;
+    background-image: url("../images/wealth-small-icon.png");
     color: #38c881;
     font-family: "clear_sans_lightregular";
     font-size: 13px;
-    height: 17px;
-    text-indent: 20px;
+   display: table-cell;
+    font-family: "clear_sans_lightregular";
+    font-size: 13px; background-repeat:no-repeat;
+    height: 45px;
+    text-indent: 30px;
+    background-position: left bottom;
     text-transform: uppercase;
-
+    vertical-align: bottom;
 }
 .communication-iocn {
     background-image: url("../images/comunication.png");
+    background-position: left bottom;
     background-repeat: no-repeat;
     color: #5acce4;
+    display: table-cell;
     font-family: "clear_sans_lightregular";
     font-size: 13px;
-    height: 17px;
-    text-indent: 20px;
+    height: 45px;
+    text-indent: 30px; background-repeat:no-repeat;
     text-transform: uppercase;
-  }
-  .investment-iocn {
-      background-image: url("../images/investment-icon-small.png");
-      background-repeat: no-repeat;
-      color: #fd7a7a;
-      font-family: "clear_sans_lightregular";
-      font-size: 13px;
-      height: 17px;
-      text-indent: 20px;
-      text-transform: uppercase;
+    vertical-align: bottom;
+}
+.investment-iocn {
+    background-image: url("../images/investment-icon-small.png");
+    color: #fd7a7a;
+    background-position: left bottom;
+    font-family: "clear_sans_lightregular";
+    font-size: 13px;
+    display: table-cell;
+    font-family: "clear_sans_lightregular";
+    font-size: 13px; background-repeat:no-repeat;
+    height: 45px;
+    text-indent: 30px;
+    text-transform: uppercase;
+    vertical-align: bottom;
+}
 
-  }
-  
 .block-image {
-    height: 160px;
+    height: 150px;
     overflow: hidden;
     position: relative;
     width: 100%;
 }
+
+
 .play-iocn {
     background-image: url("../images/vedio-icon.png");
     cursor: pointer;
