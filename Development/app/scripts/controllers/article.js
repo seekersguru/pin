@@ -2,7 +2,7 @@
 angular.module('pinApp')
 .controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles,$sce,$timeout,$filter) {
   $scope.article={};
-  $scope.descriptionLimit=83;
+  $scope.descriptionLimit=80;
   $scope.titleLimit=45;
   $scope.currentPage = 0;
   $scope.pageSize = 20;
