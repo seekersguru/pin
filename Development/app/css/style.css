@@ -1560,35 +1560,38 @@ ul.ed-iocn {
     width: 100%;
 }
 .wealth-iocn {
-    background-image: url("../images/wealth-small-icon.png");
+  background-image: url("../images/wealth-small-icon.png");
+    background-repeat: no-repeat;
     color: #38c881;
     font-family: "clear_sans_lightregular";
     font-size: 13px;
     height: 17px;
     text-indent: 20px;
     text-transform: uppercase;
-    width: 18px;
+
 }
 .communication-iocn {
     background-image: url("../images/comunication.png");
+    background-repeat: no-repeat;
     color: #5acce4;
     font-family: "clear_sans_lightregular";
     font-size: 13px;
     height: 17px;
     text-indent: 20px;
     text-transform: uppercase;
-    width: 18px;
-}
-.investment-iocn {
-    background-image: url("../images/investment-icon-small.png");
-    color: #fd7a7a;
-    font-family: "clear_sans_lightregular";
-    font-size: 13px;
-    height: 17px;
-    text-indent: 20px;
-    text-transform: uppercase;
-    width: 18px;
-}
+  }
+  .investment-iocn {
+      background-image: url("../images/investment-icon-small.png");
+      background-repeat: no-repeat;
+      color: #fd7a7a;
+      font-family: "clear_sans_lightregular";
+      font-size: 13px;
+      height: 17px;
+      text-indent: 20px;
+      text-transform: uppercase;
+
+  }
+  
 .block-image {
     height: 160px;
     overflow: hidden;
