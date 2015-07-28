@@ -51,7 +51,7 @@
 
 <div class="alphalist">
 <ul>
-  <li ng-click="activateLetter('')" ><a  ng-class="{'active':activeLetter==''}">ALL</a></li>
+  <!-- <li ng-click="activateLetter('')" ><a  ng-class="{'active':activeLetter==''}">ALL</a></li> -->
   <li ng-repeat="letter in alphabet track by $index" >
     <a ng-class="{'active':letter == activeLetter}" ng-click="activateLetter(letter)">{{letter}}</a>
   </li>
@@ -63,12 +63,12 @@
 
 <div id="upcomming-event">
 <ul>
-<li ng-repeat="(key,value) in companys | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter">
+<li ng-repeat="(key,value) in companys | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter" ng-show="searchStart">
 <h2><a href="/company/view/{{value._id}}">{{value.title}}</a></h2>
 <p>{{value.organization}}</p>
 </li>
 
-<li ng-show="(companys  | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter).length==0">
+<li ng-show="searchStart && (companys  | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter).length==0">
 <h2> No Result Found. </h2>
 </li>
 

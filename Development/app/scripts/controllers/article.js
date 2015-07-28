@@ -1,8 +1,9 @@
 'use strict';
 angular.module('pinApp')
-.controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles,$sce,$timeout) {
+.controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles,$sce,$timeout,$filter) {
   $scope.article={};
-  $scope.descriptionLimit=90;
+  $scope.descriptionLimit=83;
+  $scope.titleLimit=45;
   $scope.currentPage = 0;
   $scope.pageSize = 20;
   $scope.numberOfPage=25;
@@ -72,7 +73,7 @@ $scope.mmicategory=[
       'name':'Portfolios Construction',
       'tags':[]
     },
-    {  
+    {
       'name':'Markets',
       'tags':[]
     }
@@ -111,7 +112,7 @@ if( Object.prototype.toString.call( $scope.exceptonearticle ) === '[object Array
   var removeIndex=0;
      removeIndex = $scope.exceptonearticle
     .map(function(item)
-    { 
+    {
       return item.mmibanner;
     })
     .indexOf(true);
@@ -129,7 +130,15 @@ if( Object.prototype.toString.call( $scope.exceptonearticle ) === '[object Array
 
    }
 
-}  
+}
+
+for(var i = 0; i < $scope.exceptonearticle.length; i++){
+
+    $scope.exceptonearticle[i].title = $sce.trustAsHtml($filter('limitTo')($scope.exceptonearticle[i].title, $scope.titleLimit));
+    $scope.exceptonearticle[i].description = $sce.trustAsHtml($filter('limitTo')($scope.exceptonearticle[i].description, $scope.descriptionLimit));
+
+}
+
 $scope.rightnav="right-nav.html";
 
 setTimeout(function(){
@@ -139,7 +148,7 @@ setTimeout(function(){
   //         },
   //         function(){
   //           $(this).find('.caption, .caption-red, .caption-pink, .caption-aqua').slideUp(250); //.fadeOut(205)
-  //         }); 
+  //         });
 
   $(".filterArticle li").find("a").click(function(){
 
@@ -147,7 +156,7 @@ setTimeout(function(){
     $("#article-container").find(".article-post").fadeOut(205);
     $("#article-container").find(filter).fadeIn(205);
 
-  }); 
+  });
 },1000);
 
 
@@ -156,7 +165,7 @@ if($location.path()=="/articles/view/"+articles._id && articles.media)
 {
 
   $scope.config=
-  {  
+  {
     'sources': [
     {src: $sce.trustAsResourceUrl('../'+articles.media.path), type: 'video/mp4'}
     ],
@@ -166,7 +175,7 @@ if($location.path()=="/articles/view/"+articles._id && articles.media)
     }
   };
 
-}  
+}
 
 $scope.getLatest=function(){
 
@@ -199,7 +208,7 @@ $scope.deleteComment=function(commentId){
 
       var removeIndex = $scope.comments
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(commentId);
@@ -219,7 +228,7 @@ $scope.addComment=function(form){
 
  if(form.$valid)
  {
-    var comment={ user: $rootScope.currentUser._id ,username:$rootScope.currentUser.name, post: $scope.article.comment};  
+    var comment={ user: $rootScope.currentUser._id ,username:$rootScope.currentUser.name, post: $scope.article.comment};
 
     $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
     success(function (data, status, headers, config) {
@@ -229,11 +238,11 @@ $scope.addComment=function(form){
           comment._id=data.scomments[data.scomments.length-1]._id;
 
           $scope.comments.push({ user:{ _id: $rootScope.currentUser._id,fullname:$rootScope.currentUser.fullname,following:$rootScope.currentUser.following },username:$rootScope.currentUser.name, post: $scope.article.comment,posted : new Date()});
-          
+
           $scope.article={};
-          
+
           // $scope.form.$setPristine();
-          
+
         }).
     error(function (data, status, headers, config) {
       $scope.article={};
@@ -245,7 +254,7 @@ $scope.addComment=function(form){
 $scope.editComment=function(form,commentId,editcomment,key){
 if(form.$valid)
  {
-  var comment={ post: editcomment,username:$rootScope.currentUser.name,user:$rootScope.currentUser._id};  
+  var comment={ post: editcomment,username:$rootScope.currentUser.name,user:$rootScope.currentUser._id};
 
     $http({ method: 'PUT', url: '/api/comments/'+articles._id+'/'+commentId,data:comment}).
     success(function (data, status, headers, config) {
@@ -253,7 +262,7 @@ if(form.$valid)
 
           var removeIndex = $scope.comments
           .map(function(item)
-          { 
+          {
             return item._id;
           })
           .indexOf(commentId);
@@ -261,13 +270,13 @@ if(form.$valid)
           $scope.comments[removeIndex].post= editcomment;
           // $scope.editcomment_id=0;
           // $scope.article={};
-        
+
         $timeout(function(){
-       
+
            angular.element("#"+key+"-a").trigger("click");
-         
+
         },200);
-          
+
         }).
     error(function (data, status, headers, config) {
       // $scope.article={};
@@ -277,18 +286,18 @@ if(form.$valid)
 };
 
 $scope.numberOfPages = function(){
-    // return Math.ceil($scope.articles.length/$scope.pageSize);                
+    // return Math.ceil($scope.articles.length/$scope.pageSize);
   };
 
   // $scope.$on('$routeUpdate', function(){
-  //   $scope.currentPage = parseInt($routeParams.pageno) - 1;    
+  //   $scope.currentPage = parseInt($routeParams.pageno) - 1;
   // });
 
 $scope.changePage = function(){
   $location.path('/articles/'+$scope.currentPage+1);
 };
 
-  // if($routeParams.pageno){      
+  // if($routeParams.pageno){
   //   if($routeParams.pageno > $scope.numberOfPages()){
   //     $location.search({'page' : $scope.numberOfPages()});
   //   }
@@ -300,10 +309,10 @@ $scope.changePage = function(){
   // else{
   //   $scope.changePage();
   // }
-  
+
   $scope.navigation_control= function(page_no){
     $scope.currentPage = page_no;
-    $scope.changePage(); 
+    $scope.changePage();
   };
 
   $scope.checkcommitstatus=function(userid,following){
@@ -312,7 +321,7 @@ $scope.changePage = function(){
     {
       var removeIndex = following
       .map(function(item)
-      { 
+      {
         return item.user;
       })
       .indexOf(userid);
@@ -339,19 +348,19 @@ $scope.changePage = function(){
 angular.module('pinApp')
 .controller('ArticleSearchCtrl', function ($scope,$http,$sce,$upload,$timeout,$routeParams) {
 
-  
+
   $scope.searchterm=$routeParams.search;
   $scope.articleload=0;
 
     $http({ method: 'GET', url: '/api/articles/search/'+$routeParams.search}).
         success(function (data, status, headers, config) {
           $scope.articles=data.articles;
-          $scope.articleload=1;      
+          $scope.articleload=1;
         })
         .error(function (data, status, headers, config) {
-      
+
         });
-    
+
 });
 
 angular.module('pinApp')
@@ -386,7 +395,7 @@ if($location.path()=="/articles/edit/"+article._id && article.media)
 {
 
   $scope.config=
-  {  
+  {
     'sources': [
     {src: $sce.trustAsResourceUrl('../'+article.media.path), type: 'video/mp4'}
     ],
@@ -396,7 +405,7 @@ if($location.path()=="/articles/edit/"+article._id && article.media)
     }
   };
 
-}  
+}
 
 $scope.removeMedia=function(){
   var remove=confirm("Are you sure you want to remove this Media");
@@ -406,12 +415,12 @@ $scope.removeMedia=function(){
     $http({ method: 'PUT', url: '/api/articles/removemedia/'+$scope.article._id}).
       success(function (data, status, headers, config) {
         $scope.article.media="";
-      
+
       })
       .error(function (data, status, headers, config) {
-      
+
       alert('There is something technical problem.Please try after some time.');
-      
+
       });
  };
 
@@ -423,12 +432,12 @@ $scope.uploadPic = function(files) {
       generateThumbAndUpload($scope.mainFIle[0])
     }
   };
-  
+
   function generateThumbAndUpload(file) {
     $scope.errorMsg = null;
     $scope.generateThumb(file);
     uploadUsing$upload(file);
-    
+
   }
 
   function uploadUsing$upload(file) {
@@ -438,7 +447,7 @@ $scope.uploadPic = function(files) {
 
 
     };
-    
+
     var original=$scope.article.tags;
     // $scope.article.tags=[];
     // for (var t = 0; t < original.length; t++) {
@@ -501,7 +510,7 @@ $scope.uploadPic = function(files) {
       }
     }
   };
-  
+
    $scope.setFiles = function(element) {
     $scope.filearticle=1;
     var file=element.files[0];
@@ -554,7 +563,7 @@ $scope.uploadPic = function(files) {
       });
     }
   };
-  
+
   $scope.reset=function(form){
     $scope.form.$setPristine();
   };
@@ -615,18 +624,18 @@ $scope.article.tags=['tag1','tag2'];
       generateThumbAndUpload($scope.mainFIle[0])
     }
   };
-  
+
   function generateThumbAndUpload(file) {
     $scope.errorMsg = null;
     $scope.generateThumb(file);
     uploadUsing$upload(file);
-    
+
   }
 
   function uploadUsing$upload(file) {
 
     $scope.article.author= $rootScope.currentUser._id;
-    
+
     var original=$scope.article.tags;
     // $scope.article.tags=[];
     // for (var t = 0; t < original.length; t++) {
@@ -650,9 +659,9 @@ $scope.article.tags=['tag1','tag2'];
         file.result = response.data;
          if($rootScope.currentUser.role == 'admin')
         {
-        
+
             $location.path('/admin').search({ 'articles':1});
-        
+
         }
         else{
             $location.path('/notification').search({ 'type':'article'});
@@ -670,9 +679,9 @@ $scope.article.tags=['tag1','tag2'];
       $scope.article={};
        if($rootScope.currentUser.role == 'admin')
         {
-        
+
             $location.path('/admin').search({ 'articles':1});
-        
+
         }
         else{
             $location.path('/notification').search({ 'type':'article'});
@@ -725,7 +734,7 @@ $scope.article.tags=['tag1','tag2'];
             $timeout(function() {
               element.files[0].dataUrl = e.target.result;
               $scope.mainFIle=element.files;
-              
+
             });
           };
         });
@@ -749,7 +758,7 @@ $scope.article.tags=['tag1','tag2'];
       // var formData = new FormData();
       // formData.append("file", $scope.article.file);
       // console.log(formData);
-      
+
       $scope.article.author=$rootScope.currentUser._id;
        // var original=$scope.article.tags;
        //  $scope.article.tags=[];
@@ -763,9 +772,9 @@ $scope.article.tags=['tag1','tag2'];
         // console.log(data);
         if($rootScope.currentUser.role == 'admin')
         {
-        
+
             $location.path('/admin').search({ 'articles':1});
-        
+
         }
         else{
             $location.path('/notification').search({ 'type':'article'});
@@ -774,7 +783,7 @@ $scope.article.tags=['tag1','tag2'];
         $scope.article={};
         $scope.articleDone=1;
         $scope.articleResponse=data;
-        
+
       }).
       error(function (data, status, headers, config) {
         // ...

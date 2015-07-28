@@ -12,23 +12,30 @@ var str = "abcdefghijklmnopqrstuvwxyz";
 $scope.alphabet = str.toUpperCase().split("");
 
 $scope.activeLetter = '';
+$scope.searchStart=false;
 
 
 $scope.activateLetter = function(letter) {
   $scope.search.title ='';
   $scope.search.firmtype='';
   $scope.activeLetter = letter;
+  $scope.searchStart=true;
 }
 
 $scope.setSearchSubType=function(){
   $scope.search.title ='';
   $scope.activeLetter = '';
+  $scope.searchStart=true;
 }
 
 $scope.setSearchTitle=function(){
   $scope.search.firmtype='';
   $scope.activeLetter = '';
+  $scope.searchStart=true;
 }
+
+$scope.setSearchTitle();
+
 $scope.companyStructure={
       'WM':{
           'Multi-family office':[1,2,3,4,5],
