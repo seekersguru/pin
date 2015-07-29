@@ -62,7 +62,7 @@ angular.module('pinApp', [
 .config(function ($routeProvider, $locationProvider, $httpProvider) {
   $routeProvider
   .when('/home', {
-    templateUrl: 'partials2/articles',
+    templateUrl: 'partials2/main',
     controller:'ArticleCtrl',
     resolve:{
       articles: ['$q', '$route', 'Article', function($q, $route, article) {
@@ -80,7 +80,7 @@ angular.module('pinApp', [
     }
   })
   .when('/', {
-    templateUrl: 'partials2/articles',
+    templateUrl: 'partials2/main',
     controller:'ArticleCtrl',
     resolve:{
       articles: ['$q', '$route', 'Article', function($q, $route, article) {
@@ -495,7 +495,7 @@ $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
 .run(function ($rootScope, $location, Auth) {
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
 
-      $rootScope.appTitle = 'Connecting Indian money industry';
+      $rootScope.appTitle = 'The Money Hans';
       if (next.title) {
         $rootScope.appTitle = next.title;
       }

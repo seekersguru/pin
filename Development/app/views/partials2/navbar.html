@@ -16,11 +16,11 @@
     <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
 
-     <li class="desktop-hide"><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li> 
-     <li class="desktop-hide"><a href="/what-we-do" ng-class="{active: isActive('/what-we-do')}">What</a></li> 
-    <li class="desktop-hide"><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">About</a></li> 
-      <li ng-hide="currentUser" class="desktop-hide"><a href="/register" ng-class="{active: isActive('/register')}">Join</a></li>  
-    <li ng-show="currentUser" class="desktop-hide"><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li>   
+     <li class="desktop-hide"><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li>
+     <li class="desktop-hide"><a href="/what-we-do" ng-class="{active: isActive('/what-we-do')}">What</a></li>
+    <li class="desktop-hide"><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">About</a></li>
+      <li ng-hide="currentUser" class="desktop-hide"><a href="/register" ng-class="{active: isActive('/register')}">Join</a></li>
+    <li ng-show="currentUser" class="desktop-hide"><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li>
     </ul>
 
       <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate  >
@@ -51,16 +51,16 @@
 
                 <li ng-if="currentUser.role == 'admin'"><a href="/admin?users"><i class="fa fa-users"></i> Users</a></li>
                 <li ng-if="currentUser.role == 'admin'"><a href="/admin?articles"><i class="fa fa-paper-plane"></i> Articles</a></li>
-                
+
                 <li class="divider" ng-if="currentUser.role == 'admin'"></li>
-                
+
                 <li ng-if="currentUser.role == 'admin'"><a href="/"><i class="fa fa-external-link"></i> View Site</a></li>
-                
+
                 <li class="divider" ></li>
 
                 <li><a ng-click="logout()" href="#"><i class="fa fa-sign-out"></i> Sign-out</a></li>
               </ul>
-            </li>  
+            </li>
           </div>
         </form>
       </div>
@@ -68,7 +68,7 @@
   </nav>
  -->
 
-   <nav class="navbar navbar-default navbar-stiky" ng-controller="NavbarCtrl">
+   <!--<nav class="navbar navbar-default navbar-stiky" ng-controller="NavbarCtrl">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -80,15 +80,15 @@
           <a class="navbar-brand" href="#"><img src="images/new-logo.png" alt=""></a>
         </div>
 
-        
+
         <div id="navbar" class="navbar-collapse collapse">
-        
+
           <ul class="navbar-right">
           <div class="top-link" ng-hide="currentUser" ><a  href="/register" ng-class="{active: isActive('/register')}">Register</a>  |  <a href="/login" ng-class="{active: isActive('/login')}">Member Login </a> </div>
 
           <div class="top-link" ng-show="currentUser" >Welcome {{currentUser.firstname}} | <a href="/admin" ng-class="{active: isActive('/admin')}"> admin</a> | <a ng-click="logout()" href="#"><i class="fa fa-sign-out"></i> Sign-out</a></div>
 
-        <form class="navbar-form" novalidate  name="form" role='form' ng-submit="searcharticle(form)"  ng-show="currentUser" > 
+        <form class="navbar-form" novalidate  name="form" role='form' ng-submit="searcharticle(form)"  ng-show="currentUser" >
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search" name="srch-term" ng-model="search" id="srch-term" required>
             <div class="input-group-btn">
@@ -103,9 +103,9 @@
             <li ng-class="{active: isActive('/companies')}" ><a href="/companies">Directory          </a></li>
             <li ng-class="{active: isActive('/event')}" ><a href="/event">Events                    </a></li>
           </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+        </div>--><!--/.nav-collapse -->
+      <!--</div>
+    </nav>-->
 
 <script type="text/ng-template" id="loginmodal.html" >
         <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
@@ -132,7 +132,7 @@
                         <p class="text-danger" ng-show="form.email.$error.mongoose">
                           {{ errors.email }}
                         </p>
-        </div>      
+        </div>
 
             </div>
             </div>
@@ -142,7 +142,7 @@
            <div class="col-lg-12 col-md-12 col-sm-12">
             <input type="password" class="form-control" placeholder="Password" required  id="password" name="password" ng-model="user.password" mongoose-error />
                         <p class="text-danger" ng-show="form.password.$error.required && submitted">Please fill Password.</p>
-            
+
                         <p class="text-danger" ng-show="form.password.$error.mongoose">
                           {{ errors.password }}
                         </p>
@@ -150,8 +150,8 @@
 </div>
 
            </div>
-           </div>  
-           
+           </div>
+
            <div class="row">
            <div class="form-group">
            <div class="col-lg-12 col-md-12 col-sm-12">
@@ -159,15 +159,15 @@
                  <i class="fa fa-caret-right"></i> Login</button>
 
                  <div class="forget-pass"><a ng-click="forgotpassword()">Forgot Your Password?</a></div>
-                 </div></div></div>  
+                 </div></div></div>
 
-         </form>   
+         </form>
 
         </div>
 <div class="col-lg-6 col-md-6 col-sm-6">
  <div class="verticale-hr">
-  <div class="or">or</div> 
- </div> 
+  <div class="or">or</div>
+ </div>
  <div class="social">
  <p>Sign in using Linked IN account.</p>
  <p><a ng-click="linkedinLogin()" href="#"><img src="images/linkdin-bt.png" alt="Sign in using Linked IN account." title="Sign in using Linked IN account."></a></p>
@@ -180,3 +180,26 @@
         </div>
     </div>
 </script>
+<!-- for money hans -->
+<div class="container">
+<div class="row pad-top-80">
+<div class="logo">
+<a href="index.html"><img src="images/logo.png" alt=""></a>
+</div>
+
+   <div class="col-md-3 search">
+        <form role="search">
+          <div id="custom-search-input">
+                            <div class="input-group">
+                                <input type="text" class="search-query form-control" placeholder="Search" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+        </form>
+      </div>
+      </div>
+</div>
