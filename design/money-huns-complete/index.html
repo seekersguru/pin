@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+  <title>The Money Hans</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="font-awesome-4.3.0/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+<div class="container">
+<div class="row pad-top-80">
+<div class="logo">
+<a href="index.html"><img src="images/logo.png" alt=""></a>
+</div>
+
+   <div class="col-md-3 search">
+        <form role="search">
+          <div id="custom-search-input">
+                            <div class="input-group">
+                                <input type="text" class="search-query form-control" placeholder="Search" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+        </form>
+      </div>
+      </div>
+</div>
+
+<div class="doodals-header"></div>
+<div class="container">
+<div class="row">
+
+<!--architect area-->
+<div id="arch">
+<div class="col-md-3 col-sm-3 pad-top-70">
+<h1>Learn…based on topic</h1>
+<div class="pad-top-120 ">
+<div class="architect-bt"><a href="Home_ArchitectBlueprint.html">1. Architect Blueprint</a></div>
+</div> 
+<div class="text-right mobile"><img src="images/architect-doodles.png" alt=""></div>  
+
+<div class="doodel-archet"></div>
+</div>
+</div>
+<!--end-->
+
+<div id="home">
+<!--nav area start-->
+<div class="col-md-6 col-sm-6">
+<div class="home-nav">
+<div id="nav">
+ <ul>
+ <li><a href="Home_EssentialFoundation.html">2.Essentials Foundation</a></li> 
+ <li><a href="Home_GrowthPillars.html">3.Growth Pillars</a></li> 
+ <li><a href="Home_FreedomSlab.html">4.Freedom Slab</a></li> 
+<li><a href="Home__FunRoof.html">5.Fun Money Roof</a></li>  
+ </ul> 
+</div>
+</div> 
+
+</div>
+</div>
+<!--end-->
+
+<!--right nav-->
+<div id="navtop">
+<div class="col-md-3 col-sm-3 left-sidebar">
+<h1>What would you <br>
+like to do?
+<div class="arow-black"></div>
+</h1>
+  <div id="left-nav">
+ <ul>
+ <li><a href="#">Learn</a></li> 
+  <li><a href="#">Meet@LiveEvent</a></li> 
+   <li><a href="#">#AskHansi</a></li> 
+ 
+ </ul> 
+ <div class="text-right"><img src="images/hunsi-img.png" alt=""></div>
+ <div class="doodel-left-sidebot"></div>
+</div>
+</div>
+</div>
+<!--end-->
+
+</div>
+</div>
+
+
+
+
+
+    
+
+<!-- /container -->
+
+
+
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script>
+$(document).ready(function(){
+
+    var col1_data,col2_data,col3_data;
+
+    col1_data = $("#arch").html();
+    col2_data = $("#home").html();
+    col3_data = $("#navtop").html();
+
+    var w = $(window).width();        
+
+    if (w < 768)
+    swap_columns();
+
+    function swap_columns()
+    {
+        var w = $(window).width();
+        if (w < 768)
+        {
+            $("#arch").html(col3_data);
+            $("#home").html(col1_data);
+            $("#navtop").html(col2_data);
+        }
+        else
+        {
+            $("#arch").html(col1_data);
+            $("#home").html(col2_data);
+            $("#navtop").html(col3_data);
+        }
+    }
+
+
+    $(window).resize(function() {
+        swap_columns();
+    });
+});
+</script>
+  
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+   <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+  </body>
+</html>
