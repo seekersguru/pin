@@ -1,6 +1,6 @@
 'use strict';
 function adjust_window_code(){
-  
+
  if ($("footer").length){
 
   var append_footer=$("footer").html();
@@ -157,7 +157,7 @@ angular.module('pinApp', [
   })
   .when('/what-we-do', {
     templateUrl: 'partials2/what.html'
-  }) 
+  })
   .when('/who-we-are', {
     templateUrl: 'partials2/about.html'
   })
@@ -174,7 +174,7 @@ angular.module('pinApp', [
       articles: ['$q', '$route', 'Article', function($q, $route, article) {
         var deferred = $q.defer();
         var query = angular.copy($route.current.params);
-        query.limit=25;
+        query.limit=100;
         article.get(query, function(articles) {
           deferred.resolve(articles.articles);
         },
@@ -210,7 +210,7 @@ angular.module('pinApp', [
         var deferred = $q.defer();
         var query={
           pageno:1,
-          limit:9
+          limit:25
         };
         events.get(query, function(articles) {
           deferred.resolve(articles.articles);
@@ -222,7 +222,7 @@ angular.module('pinApp', [
       }]
 
     }
-  })  
+  })
   .when('/articles/view/:articleid', {
     templateUrl: 'partials2/article-detail',
     controller:'ArticleCtrl',
@@ -257,7 +257,7 @@ angular.module('pinApp', [
         return deferred.promise;
       }]
     },
-    authenticate: true    
+    authenticate: true
   })
   .when('/myarticles/:pageno', {
     templateUrl: 'partials2/myarticle',
@@ -516,13 +516,13 @@ $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
         $location.path('/login');
       }
 
-      
+
        if (next.  admin && !Auth.isAdmin()) {
           $location.path('/home');
         }
     });
-  
+
     $rootScope.$on('$routeChangeSuccess', function () {
       });
-  
+
   });
