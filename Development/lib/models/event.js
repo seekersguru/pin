@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.Types.ObjectId;
-    
+
 /**
  * Event Schema
  */
@@ -14,6 +14,7 @@ var EventSchema = new Schema({
   public: { type: Boolean, default: false },
   pin: { type: Boolean, default: true },
   money: { type: Boolean, default: true },
+  hans: { type: Boolean, default: true },
   mainImage: String,
   discovered: { type: Boolean, default: false, index: true },
   agenda:{type:String, required:true},
@@ -24,8 +25,8 @@ var EventSchema = new Schema({
                designation:String,
               flag:String
             }],
-  registered:[{ type: ObjectId, ref: 'User' }],    
-  location:{ 
+  registered:[{ type: ObjectId, ref: 'User' }],
+  location:{
     address:String,
   locality:String,
   sublocality:String,
@@ -37,7 +38,7 @@ var EventSchema = new Schema({
   lng:Number,
   zoom:Number
   },
-  eventdate: Date,      
+  eventdate: Date,
   keywords: [String],
   category: String,
   type: String,
@@ -47,7 +48,7 @@ var EventSchema = new Schema({
                post: String,
                posted: {type: Date, default: Date.now}
              }],
-  media:{extension:String,      
+  media:{extension:String,
                name:String,
                 path:String,
                 originalName:String
@@ -68,6 +69,7 @@ EventSchema
       'category':this.category,
       'pin':this.pin,
       'money':this.money,
+      'hans':this.hans,
       'approve':this.public
     };
   });

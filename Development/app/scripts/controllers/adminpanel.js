@@ -338,6 +338,26 @@ $scope.eventMoney=function(eventId){
 
 };
 
+$scope.eventHans=function(eventId){
+      var removeIndex = $scope.gridEventData
+      .map(function(item)
+      {
+        return item._id;
+      })
+      .indexOf(eventId);
+
+  var setStatus= !$scope.gridEventData[removeIndex].hans;
+  $http({ method: 'PUT', url: '/api/events/'+eventId,data:{'hans':setStatus}}).
+      success(function (data, status, headers, config) {
+         $scope.gridEventData[removeIndex].hans=setStatus;
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+
+};
+
 $scope.deleteArticle=function(articleId){
   var yes=confirm('Are you sure you want to delete this Article?');
   if(yes)
@@ -628,6 +648,7 @@ plugins: [new ngGridFlexibleHeightPlugin()]
                                     { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="eventStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="eventStatus(row.entity._id)">NOT APPROVED</span>'},
                                     { field: 'pin' ,displayName:'Show On PIN',cellTemplate:'<span ng-if="row.entity.pin" class="label label-success" ng-click="eventPin(row.entity._id)">SHOWN</span><span ng-if="!row.entity.pin" class="label label-danger" ng-click="eventPin(row.entity._id)">NOT SHOWN</span>'},
                                     { field: 'money' ,displayName:'Show on Money',cellTemplate:'<span ng-if="row.entity.money" class="label label-success" ng-click="eventMoney(row.entity._id)">SHOWN</span><span ng-if="!row.entity.money" class="label label-danger" ng-click="eventMoney(row.entity._id)">NOT SHOWN</span>'},
+                                    { field: 'hans' ,displayName:'Show on Hans',cellTemplate:'<span ng-if="row.entity.hans" class="label label-success" ng-click="eventHans(row.entity._id)">SHOWN</span><span ng-if="!row.entity.hans" class="label label-danger" ng-click="eventHans(row.entity._id)">NOT SHOWN</span>'},
                                     { field: '',displayName:'Action', cellTemplate: editDeleteEventTemplate, maxWidth: 100  }],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
