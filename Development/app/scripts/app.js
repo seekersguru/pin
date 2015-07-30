@@ -223,6 +223,24 @@ angular.module('pinApp', [
 
     }
   })
+  .when('/category/:categoryname', {
+    templateUrl: 'partials2/articles',
+    controller:'CategoryCtrl',
+    resolve:{
+      categoryArticles: ['$q', '$route', 'Article', function($q, $route, Article) {
+        var deferred = $q.defer();
+        Article.bycategory({category: $route.current.params.categoryname}, function(articles) {
+          deferred.resolve(articles.articles);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+
+    },
+    // authenticate: true
+  })
   .when('/articles/view/:articleid', {
     templateUrl: 'partials2/article-detail',
     controller:'ArticleCtrl',

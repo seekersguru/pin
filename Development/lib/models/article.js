@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.Types.ObjectId;
-    
+
 /**
  * Article Schema
  */
@@ -20,18 +20,19 @@ var ArticleSchema = new Schema({
   tags: [String],
   keywords: [String],
   category: String,
+  hansicategory: String,
   merchs: {},
   // comments: [{ user: { type: ObjectId, ref: 'User' },
   //              username:String,
   //              post: String,
   //              posted: {type: Date, default: Date.now}
-  //            }],  
+  //            }],
   scomments: [{ user: { type: ObjectId, ref: 'Serviceuser' },
                username:String,
                post: String,
                posted: {type: Date, default: Date.now}
              }],
-  media:{extension:String,      
+  media:{extension:String,
 
                name:String,
                 path:String,
@@ -51,6 +52,7 @@ ArticleSchema
       'comments':this.scomments.length,
       'createdAt':this.createdAt,
       'category':this.category,
+      'hansicategory':this.hansicategory,
       'approve':this.public
     };
   });
