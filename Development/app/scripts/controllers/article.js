@@ -9,6 +9,7 @@ angular.module('pinApp')
   $scope.numberOfPage=25;
 
   $scope.category=['Grow','Protect','Manage','Give'];
+  $scope.hanscategory=['Architect Blueprint','Essentials Foundation','Growth Pillars','Freedom Slab','Fun Money Roof'];
   $scope.color={
     'Grow':
     {'caption':'caption',
@@ -267,6 +268,8 @@ $scope.changePage = function(){
 angular.module('pinApp')
 .controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,article,$sce,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
+  $scope.hanscategory=['Architect Blueprint','Essentials Foundation','Growth Pillars','Freedom Slab','Fun Money Roof'];
+  
   $scope.column=[1,2];
 
      $http({ method: 'GET', url: '/api/users/adminrole' }).
@@ -503,6 +506,7 @@ $scope.uploadPic = function(files) {
       title:$scope.article.title,
       description:$scope.article.description,
       category:$scope.article.category,
+      hanscategory:$scope.article.hanscategory,
       mmicategory:$scope.article.mmicategory,
       mmisubcategorycategory:$scope.article.mmisubcategorycategory,
       mmitags:$scope.article.mmitags,
@@ -757,6 +761,8 @@ angular.module('pinApp')
   $scope.category=['Grow','Protect','Manage','Give'];
 
   $scope.column=[1,2];
+  $scope.hanscategory=['Architect Blueprint','Essentials Foundation','Growth Pillars','Freedom Slab','Fun Money Roof'];
+
 
   $scope.tagcategory={
         'Grow':['Equities','Fixed Interest','Real Estate', 'Cash','Global','Alternatives'],

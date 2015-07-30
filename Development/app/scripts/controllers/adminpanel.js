@@ -58,7 +58,7 @@ $scope.addFamily=function (size) {
       templateUrl: 'familymodal.html',
       controller: 'FamilyCtrl',
       size: size
-      
+
   });
 };
 
@@ -69,7 +69,7 @@ $scope.updateBand=function(data,band){
    console.log(data);
    $http({ method: 'PUT', url: '/api/users/'+data._id,data:{'band':band}}).
       success(function (data, status, headers, config) {
-            
+
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -82,7 +82,7 @@ $scope.updateFamily=function(data,name){
    console.log(data);
    $http({ method: 'PUT', url: '/api/family/'+data._id,data:{'name':name}}).
       success(function (data, status, headers, config) {
-            
+
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -95,7 +95,7 @@ $scope.updateExpert=function(data,name){
    console.log(data);
    $http({ method: 'PUT', url: '/api/expert/'+data._id,data:{'name':name}}).
       success(function (data, status, headers, config) {
-            
+
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -106,7 +106,7 @@ $scope.updateExpert=function(data,name){
 $scope.userStatus=function(userId){
       var removeIndex = $scope.gridUserData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(userId);
@@ -155,16 +155,16 @@ $scope.userStatus=function(userId){
         });
 
       }else{
-        
+
         $http({ method: 'PUT', url: '/api/users/status/'+userId,data:{'status':setStatus}}).
             success(function (data, status, headers, config) {
-               $scope.gridUserData[removeIndex].status=setStatus;   
+               $scope.gridUserData[removeIndex].status=setStatus;
             }).
             error(function (data, status, headers, config) {
               // ...
               // $scope.article={};
             });
-      }   
+      }
   }
   else{
 
@@ -174,7 +174,7 @@ $scope.userStatus=function(userId){
 $scope.articleStatus=function(articleId){
       var removeIndex = $scope.gridArticleData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(articleId);
@@ -182,7 +182,7 @@ $scope.articleStatus=function(articleId){
   var setStatus= !$scope.gridArticleData[removeIndex].approve;
   $http({ method: 'PUT', url: '/api/articles/'+articleId,data:{'public':setStatus}}).
       success(function (data, status, headers, config) {
-         $scope.gridArticleData[removeIndex].approve=setStatus;   
+         $scope.gridArticleData[removeIndex].approve=setStatus;
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -194,7 +194,7 @@ $scope.articleStatus=function(articleId){
 $scope.articlePin=function(articleId){
       var removeIndex = $scope.gridArticleData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(articleId);
@@ -202,7 +202,7 @@ $scope.articlePin=function(articleId){
   var setStatus= !$scope.gridArticleData[removeIndex].pin;
   $http({ method: 'PUT', url: '/api/articles/'+articleId,data:{'pin':setStatus}}).
       success(function (data, status, headers, config) {
-         $scope.gridArticleData[removeIndex].pin=setStatus;   
+         $scope.gridArticleData[removeIndex].pin=setStatus;
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -214,7 +214,7 @@ $scope.articlePin=function(articleId){
 $scope.articleMoney=function(articleId){
       var removeIndex = $scope.gridArticleData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(articleId);
@@ -222,7 +222,27 @@ $scope.articleMoney=function(articleId){
   var setStatus= !$scope.gridArticleData[removeIndex].money;
   $http({ method: 'PUT', url: '/api/articles/'+articleId,data:{'money':setStatus}}).
       success(function (data, status, headers, config) {
-         $scope.gridArticleData[removeIndex].money=setStatus;   
+         $scope.gridArticleData[removeIndex].money=setStatus;
+      }).
+      error(function (data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+
+};
+
+$scope.articleHans=function(articleId){
+      var removeIndex = $scope.gridArticleData
+      .map(function(item)
+      {
+        return item._id;
+      })
+      .indexOf(articleId);
+
+  var setStatus= !$scope.gridArticleData[removeIndex].hans;
+  $http({ method: 'PUT', url: '/api/articles/'+articleId,data:{'hans':setStatus}}).
+      success(function (data, status, headers, config) {
+         $scope.gridArticleData[removeIndex].hans=setStatus;
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -234,7 +254,7 @@ $scope.articleMoney=function(articleId){
 $scope.articleMMIBanner=function(articleId){
       var removeIndex = $scope.gridArticleData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(articleId);
@@ -249,8 +269,8 @@ $scope.articleMMIBanner=function(articleId){
           });
         }
 
-        $scope.gridArticleData[removeIndex].mmibanner=setStatus;   
- 
+        $scope.gridArticleData[removeIndex].mmibanner=setStatus;
+
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -262,7 +282,7 @@ $scope.articleMMIBanner=function(articleId){
 $scope.eventStatus=function(eventId){
       var removeIndex = $scope.gridEventData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(eventId);
@@ -270,7 +290,7 @@ $scope.eventStatus=function(eventId){
   var setStatus= !$scope.gridEventData[removeIndex].approve;
   $http({ method: 'PUT', url: '/api/events/'+eventId,data:{'public':setStatus}}).
       success(function (data, status, headers, config) {
-         $scope.gridEventData[removeIndex].approve=setStatus;   
+         $scope.gridEventData[removeIndex].approve=setStatus;
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -282,7 +302,7 @@ $scope.eventStatus=function(eventId){
 $scope.eventPin=function(eventId){
       var removeIndex = $scope.gridEventData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(eventId);
@@ -290,7 +310,7 @@ $scope.eventPin=function(eventId){
   var setStatus= !$scope.gridEventData[removeIndex].pin;
   $http({ method: 'PUT', url: '/api/events/'+eventId,data:{'pin':setStatus}}).
       success(function (data, status, headers, config) {
-         $scope.gridEventData[removeIndex].pin=setStatus;   
+         $scope.gridEventData[removeIndex].pin=setStatus;
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -301,7 +321,7 @@ $scope.eventPin=function(eventId){
 $scope.eventMoney=function(eventId){
       var removeIndex = $scope.gridEventData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(eventId);
@@ -309,7 +329,7 @@ $scope.eventMoney=function(eventId){
   var setStatus= !$scope.gridEventData[removeIndex].money;
   $http({ method: 'PUT', url: '/api/events/'+eventId,data:{'money':setStatus}}).
       success(function (data, status, headers, config) {
-         $scope.gridEventData[removeIndex].money=setStatus;   
+         $scope.gridEventData[removeIndex].money=setStatus;
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -329,7 +349,7 @@ $scope.deleteArticle=function(articleId){
     success(function (data,status,headers,config){
       var removeIndex = $scope.gridArticleData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(articleId);
@@ -356,7 +376,7 @@ $scope.deleteFamily=function(familyId){
     success(function (data,status,headers,config){
       var removeIndex = $scope.gridFamilyData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(familyId);
@@ -382,7 +402,7 @@ $scope.deleteExpert=function(expertId){
     success(function (data,status,headers,config){
       var removeIndex = $scope.gridExpertData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(expertId);
@@ -408,7 +428,7 @@ $scope.deleteExpert=function(expertId){
     success(function (data,status,headers,config){
       var removeIndex = $scope.gridEventData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(expertId);
@@ -423,7 +443,7 @@ $scope.deleteExpert=function(expertId){
 
  };
 
- 
+
 
  $scope.setSearch = function(search){
   $location.search(search);
@@ -446,7 +466,7 @@ $scope.deleteExpert=function(expertId){
         $http({ method: 'GET', url: 'api/articles/basic' }).
           success(function (data, status, headers, config) {
              $scope.gridArticleData=data.articles;
-             
+
           }).
         error(function (data, status, headers, config) {
 
@@ -459,7 +479,7 @@ $scope.deleteExpert=function(expertId){
         $http({ method: 'GET', url: 'api/family' }).
           success(function (data, status, headers, config) {
              $scope.gridFamilyData=data.familys;
-             
+
           }).
         error(function (data, status, headers, config) {
 
@@ -471,7 +491,7 @@ $scope.deleteExpert=function(expertId){
         $http({ method: 'GET', url: 'api/expert' }).
           success(function (data, status, headers, config) {
              $scope.gridExpertData=data.experts;
-             
+
           }).
         error(function (data, status, headers, config) {
 
@@ -484,7 +504,7 @@ $scope.deleteExpert=function(expertId){
         $http({ method: 'GET', url: 'api/events/basic' }).
           success(function (data, status, headers, config) {
              $scope.gridEventData=data.articles;
-             
+
           }).
         error(function (data, status, headers, config) {
 
@@ -492,7 +512,7 @@ $scope.deleteExpert=function(expertId){
 
        break;
 
-      default: 
+      default:
       break;
     }
   }, 0);
@@ -522,6 +542,8 @@ $scope.deleteExpert=function(expertId){
 
 { field: 'money' ,displayName:'Show on Money',cellTemplate:'<span ng-if="row.entity.money" class="label label-success" ng-click="articleMoney(row.entity._id)">SHOW</span><span ng-if="!row.entity.money" class="label label-danger" ng-click="articleMoney(row.entity._id)">NOT SHOW</span>'},
 
+{ field: 'hans' ,displayName:'Show on Hans',cellTemplate:'<span ng-if="row.entity.hans" class="label label-success" ng-click="articleHans(row.entity._id)">SHOW</span><span ng-if="!row.entity.hans" class="label label-danger" ng-click="articleHans(row.entity._id)">NOT SHOW</span>'},
+
 { field: 'mmibanner' ,displayName:'MMI Banner',cellTemplate:'<span ng-if="row.entity.mmibanner" class="label label-success" ng-click="articleMMIBanner(row.entity._id)">YES</span><span ng-if="!row.entity.mmibanner" class="label label-danger" ng-click="articleMMIBanner(row.entity._id)">NOT</span>'},
 
                                     { field: '',displayName:'Action', cellTemplate: editDeleteArticleTemplate, maxWidth: 100  }],
@@ -538,7 +560,7 @@ $scope.deleteExpert=function(expertId){
                                     { field: 'name' ,displayName:'Name' },
                                     { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'email' ,displayName:'Email' },
-                                    { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'}, 
+                                    { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'},
                                     { field: 'role' ,displayName:'Role'},
                                     { field: 'commentvisible' ,displayName:'Commentvisible'},
                                     { field: 'searchable' ,displayName:'Searchable'},
@@ -576,7 +598,7 @@ $scope.expertData = { data: 'gridExpertData' ,
  enableRowSelection: false,
  filterOptions: $scope.filterOptions,
  columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
-             { field: 'media' ,displayName:'Profile',cellTemplate:'<img style="height:70px;width:70px;"ng-src="{{row.entity.media.path}}">'}, 
+             { field: 'media' ,displayName:'Profile',cellTemplate:'<img style="height:70px;width:70px;"ng-src="{{row.entity.media.path}}">'},
             { field: 'name' ,displayName:'Name',cellTemplate : '<input  type="text" ng-model="row.entity.name" ng-blur="updateExpert(row.entity,row.entity.name)" ng-value="row.entity.name" />' },
              { field: 'designation' ,displayName:'Designation'},
              { field: 'mail' ,displayName:'Mail'},
@@ -611,8 +633,8 @@ plugins: [new ngGridFlexibleHeightPlugin()]
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };
 
-                       
-  
+
+
 
 });
 
@@ -625,29 +647,29 @@ $scope.family={};
   $scope.saveFamily = function () {
     var familyname=$("#familyname").val();
     if(familyname)
-    {      
-       var family={name: familyname};  
+    {
+       var family={name: familyname};
 
     $http({ method: 'POST', url: '/api/family/',data:family }).
     success(function (data, status, headers, config) {
           // ...
-          
+
           $modalInstance.close();
 
           console.log(data);
-          
+
           // $scope.gridFamilyData.push(data.family);
                var currentPageTemplate = $route.current.templateUrl;
                 $templateCache.remove(currentPageTemplate);
                 $route.reload();
 
-          
-          
-          
+
+
+
           // $scope.form.$setPristine();
-      
+
         $modalInstance.close();
-          
+
         }).
     error(function (data, status, headers, config) {
       $scope.family={};

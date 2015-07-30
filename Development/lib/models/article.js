@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.Types.ObjectId;
-    
+
 /**
  * Article Schema
  */
@@ -14,6 +14,7 @@ var ArticleSchema = new Schema({
   public: { type: Boolean, default: false },
   pin: { type: Boolean, default: true },
   money: { type: Boolean, default: true },
+  hans: { type: Boolean, default: true },
   mmibanner: { type: Boolean, default: false },
   mainImage: String,
   discovered: { type: Boolean, default: false, index: true },
@@ -23,6 +24,7 @@ var ArticleSchema = new Schema({
   mmitags: [String],
   keywords: [String],
   category: String,
+  hanscategory:String,
   mmicategory:String,
   mmisubcategory:String,
   column:{ type:Number, default:1},
@@ -32,13 +34,13 @@ var ArticleSchema = new Schema({
                post: String,
                posted: {type: Date, default: Date.now}
              }],
-  media:{extension:String,      
+  media:{extension:String,
 
                name:String,
                 path:String,
                 originalName:String
               },
-    thumblemedia:{extension:String,      
+    thumblemedia:{extension:String,
                name:String,
                 path:String,
                 originalName:String
@@ -60,6 +62,7 @@ ArticleSchema
       'approve':this.public,
       'pin':this.pin,
       'money':this.money,
+      'hans':this.hans,
       'mmibanner':this.mmibanner,
     };
   });
