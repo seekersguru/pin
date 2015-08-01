@@ -1,9 +1,9 @@
 <div class="container">
 <div id="breadcam">
  <ul>
- <li><a href="#"><img src="images/home-icon.png" alt=""></a></li>
-  <li><a href="#"><img src="images/arwwo-bardcam.png" alt=""></a></li>
-   <li><a href="#">Learn</a></li>
+ <li><a href="/"><img src="images/home-icon.png" alt=""></a></li>
+  <li><img src="images/arwwo-bardcam.png" alt=""></li>
+   <li>Learn</li>
  </ul>
 </div>
 <div class="inner-doodles-tophead"></div>
@@ -11,103 +11,56 @@
 
 
 <div class="container">
-<div id="content-section">
+<div class="row mar-bot40">
+<div class="inner-doodles-drownig"></div>
+<div class="inner-doodles-men"></div>
+<div class="inner-doodles-right-1"></div>
+<div class="inner-doodles-right-2"></div>
+<div class="inner-doodles-right-3"></div>
+<div class="inner-doodles-right-4"></div>
+<!--architect area-->
+<h2>Blog</h2>
 
-<div class="row">
-<div class="col-lg-8 col-md-8 col-sm-8">
-<div class="row">
-<div class="col-lg-4 col-md-4 col-sm-4 filter-dropdown">
- <select class="form-control fliter" id="sel1" ng-model="selectcategory">
-    <option value="">--Select Category--</option>
-    <optgroup ng-repeat="(key,mmicat) in  mmicategory" label="{{mmicat.name}}">
+<div class="col-md-8 col-sm-12 padr-30">
+<div class="col-md-4 col-sm-6 padr-30" ng-repeat="(key,value) in exceptonearticle">
 
-         <option ng-repeat="(key,value) in  mmicat.sub" value="{{value.name}}">{{ value.name }} </option>
+<article   ng-if='value.media.extension.indexOf("video") < 0'>
+<div class="yallow-box">
 
-    </optgroup>
+  <div class="entry-thumb" ng-if='value.media.extension.indexOf("image") > -1'>
+   <a ng-href="/articles/view/{{value._id}}"><imgng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive" alt=""></a>
+ </div>
 
-  </select>
-</div>
-</div>
-<div class="gray-hr"></div>
+ <!-- <div ng-if='!value.media' class="block-image">
+   <img  ng-src="images/{{mmicategorysetting[value.mmicategory]['main-image']}}" class="img-responsive" title="{{value.title}}">
+ </div> -->
+     <!-- end:entry-thumb -->
+  <div class="entry-content">
 
+  <div class="entry-title">
+  <h3><a ng-href="/articles/view/{{value._id}}">{{value.title}}
+ </a></h3>
+  </div>
+  <div class="entry-date">May 28, 2015</div>
+    <div class="entry-meta">
+     <span><img src="images/comment-icon.png" alt=""></span> 33 Comments
+    </div>
+  </div>
+<div class="arrow-articale"><a ng-href="/articles/view/{{value._id}}"><img src="images/articale-aarow.png" alt=""></a></div>
+ <!-- end:entry-content -->
+ </div>
+</article>
 
-<div class="clearfix">
-<div class="breadcam">
-
-<div class="investment"><span><img ng-src="images/{{mmicategorysetting[bannerArticle.mmicategory]['icon-img']}}" alt=""></span><a href="#">{{bannerArticle.mmicategory | uppercase}}</a> <i class="fa fa-chevron-right"></i> {{bannerArticle.mmisubcategory}}  </div>
-</div>
-<div class="date">
- {{bannerArticle.createdAt  |date:"MMMM d , yyyy" }}
-</div>
-</div>
-
-
-<div class="row">
- <div   class="col-lg-6 col-md-6 col-sm-6" >
-   <div ng-if='bannerArticle.media.extension.indexOf("image") > -1' class="home-image">
-          <img ng-if="!bannerArticle.media.path" ng-src="images/{{mmicategorysetting[bannerArticle.mmicategory].main-image}}" class="img-responsive" title="{{bannerArticle.title}}">
-          <img ng-if="bannerArticle.media.path" ng-src="../{{bannerArticle.media.path}}" title="{{bannerArticle.title}}" class="img-responsive">
-          </div>
-          <div ng-if='bannerArticle.media.extension.indexOf("video") > -1' class="home-image">
-          <img  ng-src="../{{bannerArticle.thumblemedia.path}}" class="img-responsive" title="{{bannerArticle.title}}">
-                <div class="play-iocn"></div>
-      <!-- <div class="shadow-img">
-      <div class="communication-iocn">{{bannerArticle.mmicategory}}</div>
-      </div>       -->
-      </div>
-      </div>
-
-      <div class="col-lg-6 col-md-6 col-sm-12 ">
-<h1>{{bannerArticle.title}}</h1>
-<p><small>by</small> {{bannerArticle.author.fullname || bannerArticle.author.name}}</p>
-<p ng-bind-html="bannerArticle.description | limitTo:descriptionLimit | rawHtml"></p>
-<p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{bannerArticle._id}}">Continue Reading </a></p>
-</div>
-
-</div>
-
-
-<div class="gray-hr"></div>
-
-
-<div class="row">
-
-<div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in exceptonearticle | filter:{ mmisubcategory: selectcategory }"  >
-<div class="content-block">
-<div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
-          <img ng-if="!value.media.path" ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">
-
-          <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
-          <div class="shadow-img">
-<div class="{{mmicategorysetting[value.mmicategory].classname}}">{{value.mmicategory}}</div>
-</div>
-
-          </div>
-          <div ng-if='value.media.extension.indexOf("video") > -1' class="block-image">
-
-          <img  ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}">
-          <div class="play-iocn"></div>
-<div class="shadow-img">
-<div class="communication-iocn">{{value.mmisubcategory}}</div>
-</div>
-      </div>
-  <div ng-if='!value.media' class="block-image">
-        <img  ng-src="images/{{mmicategorysetting[value.mmicategory]['main-image']}}" class="img-responsive" title="{{value.title}}">
-      </div>
-
-<h2 class="articale-title-h">{{value.title | htmlToPlaintext | limitTo:60 }}</h2>
-<p><small>by</small> {{value.author.fullname || value.author.name}}</p>
-
-<p ng-bind-html="value.description + '...'"> </p>
-<p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value._id}}">Read more </a></p>
+<div class="video-img"  ng-if='value.media.extension.indexOf("video") > -1'>
+ <div class="video-hight"><img ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}"> </div>
+ <div class="play-icon"><img src="images/play-icon.png" alt=""></div>
+ <div class="video-caption-green">{{value.title}}</div>
 </div>
 </div>
 </div>
-
-</div>
-
-<div class="col-lg-4 col-md-4 col-sm-4">
+<!-- right nav bar-->
   <div ng-include="'partials2/right-nav.html'"> </div>
-</div>
-</div>
-</div>
+  <!--end-->
+
+  </div>
+  </div>

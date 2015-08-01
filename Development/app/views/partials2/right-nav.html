@@ -1,69 +1,36 @@
-<!-- <div class="sidebar" role="navigation" ng-controller="NavbarCtrl ">
-	<ul>
-		<li><a  href="/articles/01"  ng-class="{active:isActive('/articles/01')}">LEARN</a></li>
-		<li><a  ng-if="currentUser.role !='user'" href="/share" ng-class="{active:isActive('/share')}">SHARE </a></li>
-		<li><a ng-class="{active:isActive('/discussion-listing')}" href="/discussion-listing">DISCUSSION </a></li>
-		<li><a  ng-class="{active:isActive('/connect')}" href="/connect">CONNECT</a></li>
-		<li><a ng-class="{active:isActive('/meet')}" href="/meet">MEET</a></li>
-	</ul>
-</div>    --> 
+<!--				<div id="right-sidebar" ng-controller="NavbarCtrl">
 
-
-				<div id="right-sidebar" ng-controller="NavbarCtrl">
-<!-- 					<div class="login-box">
-						<h2><span><img src="images/mail-icon.jpg" alt=""></span>Register for Our Newsletter</h2>
-						<p>Lorem ipsum dolor amet, consecr adipisicing elit, eiusmod tempor labore dolore magna. aliqua.</p>
-						<form class="form-signin clearfix" action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=MaddyzoneTechBlog', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
-							<input type="text" name="email" value="Enter your e-mail address" onfocus="if (this.value == 'Enter your e-mail address') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter your e-mail address';}" class="form-control" placeholder="Enter your e-mail address"  autofocus>
-               <input type="hidden" value="MaddyzoneTechBlog" name="uri">
- 						   <input type="hidden" name="loc" value="en_US">
- 
-							<div class="pull-right">
-								<button class="btn btn-register btn-openid" name="Submit" type="submit">
-									<i class="fa fa-caret-right"></i> Register</button>
-								</div>
-
-							</form>
-
-
-
-						</div>  -->
 						  <div class="editor-box">
    <div class="from-editor">
    <h2>From <br>
 <span>the Editor’s</span><br>
 Desk</h2>
-
-<!-- <a role="button" class="btn btn-from-editor from-editor-openid" href="articles/01">
-                 <i class="fa fa-caret-right"></i> View All</a> --> 
-
 </div>
   <div><img src="images/hansi_img.jpg" class="img-responsive" alt=""></div>
-  </div> 
+  </div>
 <div id="upcomming-news">
 
 <ul>
 <!-- <li ng-repeat="hansiArticle in hansiArticles | limitTo:4"> -->
-<li ng-repeat="hansiArticle in hansiArticles">
+<!--<li ng-repeat="hansiArticle in hansiArticles">
 <article class="entry-item">
   <div class="entry-thumb" ng-if='hansiArticle.media.extension.indexOf("image") > -1'>
    <a ng-href="/articles/view/{{hansiArticle._id}}"`>
-    <img ng-if="!hansiArticle.media.path" ng-src="images/{{mmicategorysetting[hansiArticle.mmicategory].main-image}}" class="img-responsive" title="{{hansiArticle.title}}">   
+    <img ng-if="!hansiArticle.media.path" ng-src="images/{{mmicategorysetting[hansiArticle.mmicategory].main-image}}" class="img-responsive" title="{{hansiArticle.title}}">
 
           <img ng-if="hansiArticle.media.path" ng-src="../{{hansiArticle.media.path}}" title="{{hansiArticle.title}}" class="img-responsive">
    </a>
    </div>
      <!-- end:entry-thumb -->
-  <div class="clearfix" ng-class="{'entry-content' : (hansiArticle.media.extension.indexOf('image') < 0)} ">
-  <div class="entry-title"> 
+<!--  <div class="clearfix" ng-class="{'entry-content' : (hansiArticle.media.extension.indexOf('image') < 0)} ">
+  <div class="entry-title">
   <h2><a ng-href="/articles/view/{{hansiArticle._id}}">{{hansiArticle.title}}</a></h2>
-<p ng-bind-html="hansiArticle.description | limitTo:400 | rawHtml"></p>
-  </div>                                          
+	<p ng-bind-html="hansiArticle.description | limitTo:400 | rawHtml"></p>
   </div>
-
+  </div>
  <!-- end:entry-content -->
-</article>  
-</li> 
+<!--</article>
+</li>
 
 </ul>
 </div>
@@ -71,25 +38,60 @@ Desk</h2>
 							<h1>Upcoming Events</h1>
 							<ul>
 
-							<li ng-repeat="(key,value) in pineventlist track by $index" ng-if="value"><a ng-href="/event/view/{{value._id}}">{{value.title}} -- {{ value.eventdate | date:"d-MMMM-yyyy" }}</a></li> 
-						
+							<li ng-repeat="(key,value) in pineventlist track by $index" ng-if="value"><a ng-href="/event/view/{{value._id}}">{{value.title}} -- {{ value.eventdate | date:"d-MMMM-yyyy" }}</a></li>
+
 							</ul>
 						</div>
 
 
 						<!-- <div id="latestdiscussions"> -->
-						<div id="upcomming-event">
+						<!--<div id="upcomming-event">
 							<h1>Latest Discussions</h1>
-							<!-- <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/RatanRituraj" data-widget-id="593275119876734976">Tweets by @RatanRituraj</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
-
 							<ul>
-
-							<li ng-repeat="(key,value) in pindiscussionslist"><a ng-href="/discussion-start?cid={{value.cid}}">{{value.title}} -- {{ value.topic }}</a></li> 
-						
-							</ul>
-
-										</div>
+								<li ng-repeat="(key,value) in pindiscussionslist"><a ng-href="/discussion-start?cid={{value.cid}}">{{value.title}} -- {{ value.topic }}</a></li>
+								</ul>
+							</div>
 
 
-									</div> 
+									</div>
+
+-->
+									<!-- new -->
+									<!--right nav-->
+									<div class="col-md-4 col-sm-12 pad-left-slidebar">
+
+									  <div id="discussion-nav">
+									  <h2>Discussions</h1>
+									 <ul>
+									<li ng-repeat="(key,value) in pindiscussionslist"><a ng-href="/discussion-start?cid={{value.cid}}">#{{value.title}}</a></li>
+									 </ul>
+									</div>
+
+									<div id="event-nav">
+									<h2>Upcoming LiveEvent</h2>
+									 <ul>
+									 <li>
+									 <div class="clearfix">
+									 <div class="event-icon"><img src="images/green-globe.png" alt=""></div>
+									 <div class="event-content">
+									  <h4><a href="event-detals.html">WORLD VALUE INVESTING FEST</a></h4>
+									  <p>July 10, 2015</p>
+									 </div>
+									 </div>
+									 </li>
+
+									   <li>
+									 <div class="clearfix">
+									 <div class="event-icon"><img src="images/calender-icon.png" alt=""></div>
+									 <div class="event-content">
+									  <h4><a href="TRENDS.html">TRENDS IN GLOBAL FUNDS MANAGEMENT</a></h4>
+									  <p>June 2, 2015</p>
+									 </div>
+									 </div>
+									 </li>
+
+									 </ul>
+									</div>
+
+									</div>
+									<!--end-->

@@ -4,24 +4,24 @@
             <div class="articale-sidebar">
               <aside class="sidebar">
                <ul class="sidebar_widgets">
-              <li class="widget widget_recent_entries">        
+              <li class="widget widget_recent_entries">
                 <h3 class="widget-head">Recent Posts</h3>
-                <div class="widget-content"> 
+                <div class="widget-content">
                   <ul>
                     <li ng-repeat="(key,value) in latestcomments">
                      <div class="post-img">
                       <a ng-href="/articles/view/{{value._id}}">
-  
+
                        <div ng-if='value.media.extension.indexOf("image") > -1'>
                         <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" width="150" height="150" src="images/31-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="{{value.title}}">
 
-                         <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}" width="150" height="150"> 
+                         <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}" width="150" height="150">
                       </div>
                          <div ng-if='value.media.extension.indexOf("video") > -1'>
 
-                          <img  src="images/video-min.png" class="img-responsive" title="{{value.title}}" width="150" height="150">           
+                          <img  src="images/video-min.png" class="img-responsive" title="{{value.title}}" width="150" height="150">
                           </div>
-  
+
                         </a>
 
                       </div>
@@ -34,7 +34,7 @@
                          <span class="wid_post-date"><i class="fa fa-clock-o"></i>{{ value.createdAt | date:"d MMMM yyyy" }}</span>
                          <span class="wid_comments"><i class="fa fa-comments"></i><span>{{ value.comments.length }} Comments</span></span>
                        </div>
-                     </div>       
+                     </div>
                    </li>
                  </ul>
                </div>
@@ -44,7 +44,7 @@
 
           </div>
         </div>
-        
+
         <div class="col-lg-9">
           <div class="dashboard-section">
 
@@ -56,7 +56,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="articles-section"  >
-                <div class="articles-inner2"> 
+                <div class="articles-inner2">
                   <div class="dash-articales-ead-details"><h5>{{articles.title}}</h5></div>
                   <div class="post-meta-info-inner">
 
@@ -68,17 +68,17 @@
                     </div>
                   </div>
 
-                  <div class="articles-inner"> 
+                  <div class="articles-inner">
                     <div class="articale-img-inner" ng-if='articles.media.extension.indexOf("image") > -1'>
-                      <img ng-if="!articles.media.path" src="images/articels001.jpg" class="img-responsive" title="{{articles.title}}"> 
+                      <img ng-if="!articles.media.path" src="images/articels001.jpg" class="img-responsive" title="{{articles.title}}">
 
                       <img ng-if="articles.media.path" ng-src="../{{articles.media.path}}" title="{{articles.title}}">
                     </div>
                    <div class="articale-img-inner" ng-if='articles.media.extension.indexOf("video") > -1'>
-                 
+
                  <videogular vg-theme='config.theme'>
-                  <vg-media 
-                            vg-src="config.sources" 
+                  <vg-media
+                            vg-src="config.sources"
                             vg-native-controls="true"  >
                   </vg-media>
                 </videogular>
@@ -111,7 +111,7 @@
                               <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
                             <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
                             <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
-                          </div> 
+                          </div>
                           <div class="form-group">
                             <button class="btn btn-default" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid">Add</button>
                             <button class="btn btn-default" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid">Edit</button>
@@ -144,13 +144,13 @@
     <li ><a href="/articles/01">Content</a></li>
 /
  <li class="active"> {{articles.title}} </li>
- 
+
 </ul>
-</div> 
+</div>
 </div>
 
 
-</div> 
+</div>
 
 <div class="gray-hr"></div>
 
@@ -163,24 +163,24 @@
 </div>
 <div class="pull-right">
 <p>{{articles.createdAt |date:"MMMM d , yyyy"}} </p>
-</div>  
+</div>
 </div>
 <div class="dot-hr"></div>
 <div class="row-mar">
 
       <!-- <div ng-if='!articles.media' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
-        <img ng-src="images/{{mmicategorysetting[articles.mmicategory]['main-image']}}"  title="{{articles.title}}" class="img-responsive"> 
+        <img ng-src="images/{{mmicategorysetting[articles.mmicategory]['main-image']}}"  title="{{articles.title}}" class="img-responsive">
 
       </div> -->
       <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
-        <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
+        <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive">
 
         <img ng-if="articles.media.path"  ng-src="../{{articles.media.path}}" title="{{articles.title}}" class="img-responsive">
       </div>
       <div ng-if='articles.media && articles.media.extension.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
         <videogular vg-theme='config.theme' >
-          <vg-media 
-          vg-src="config.sources" 
+          <vg-media
+          vg-src="config.sources"
           vg-native-controls="true"  >
         </vg-media>
       </videogular>
@@ -188,11 +188,11 @@
 
     <!-- <p>{{articles.createdAt | date:"MMMM d, yyyy" }}</p> -->
     <p class="articleview" ng-bind-html="articles.description | rawHtml "></p>
-    
+
     <p><a class="btn readmore-left-bt" type="button" href="/articles/01"  >Back To Articles </a>
    <!-- <a ng-if="currentUser.role=='admin'" class="btn readmore-bt " type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a></p> -->
 
-  
+
   <h3>comments</h3>
   <ul class="commentList">
 
@@ -202,19 +202,19 @@
                   <img src="images/comment-profile.png">
                 </div>
                 <div class="commentText">
-                <div class="clearfix"> 
+                <div class="clearfix">
                 <div class="comment-head">
                <h5>{{value.username}}</h5>
                 </div>
                 <div class="comment-reply">
                   <div class="clearfix" ng-if="currentUser._id==value.user._id">
-           
+
               <div class="pull-left"  ng-click="$parent.showEdit = ! $parent.showEdit"><a  ><i class="fa fa-edit" id="{{key}}-a"></i>Edit</a></div>
               <div class="pull-right" ng-click="deleteComment(value._id)"><a ><i class="fa fa-trash"></i>Delete</a></div>
-              
+
               </div>
                 </div>
-                </div> 
+                </div>
                   <span class="sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
                     <div><p  ng-hide="showEdit">{{ value.post}}</p></div>
 
@@ -242,7 +242,7 @@
               </div>
 
        <div><p  ng-hide="showEdit">{{ value.post}}</p></div> -->
-       
+
        <form novalidate  name="form" role='form' ng-submit="editComment(form,value._id,value.post,key)" name="form" ng-show="showEdit">
 
             <div class="chat-2mar15">
@@ -254,12 +254,12 @@
             </div>
             <br>
        <button class="btn readmore-bt" type="submit">
-          
+
          Edit
         </button>
         </form>
         <br/>
-    
+
     </li>
 </ul>
 <div class="actionBox" ng-if="currentUser._id" >
@@ -270,7 +270,7 @@
     <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
     <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
     <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
-  </div> 
+  </div>
     <button class="btn btn-register btn-openid" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid"><i class="fa fa-caret-right"></i> Comment</button>
     <button class="btn btn-prew-direc btn-prew" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid"><i class="fa fa-caret-right"></i> Edit</button>
 
@@ -286,4 +286,3 @@
 </div>
 </div>
 </div>
-

@@ -7,7 +7,7 @@
         <li><a href="/home"><i class="fa fa-home fa-lg"></i></a></li>
         <li class="active">LEARN</li>
       </ul>
-    </div>  
+    </div>
     <!-- <div class="col-lg-3">
       <div class="row ">
         <div class="col-lg-12 ">
@@ -32,7 +32,7 @@
          You have successfully deleted your Article. Go to your Articles <a href="/myarticles/01"><b>Click Here</b></a>
        </div>
        <div class="row register-form-row-pad">
-        <div class="col-lg-9 col-md-9 col-sm-9 paddingr-7"> 
+        <div class="col-lg-9 col-md-9 col-sm-9 paddingr-7">
           <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
             <!-- <label class="control-label" for="title">Title</label> -->
             <input type="text" class="form-control" name="title" ng-model="article.title" required ng-minlength=5>
@@ -50,7 +50,7 @@
 
       </div>
       <div class="row ">
-        <div class="col-lg-12 col-md-12 col-sm-12" >    
+        <div class="col-lg-12 col-md-12 col-sm-12" >
 
           <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
             <label class="control-label" for="description">Description</label>
@@ -67,7 +67,7 @@
 
 
       <div class="row ">
-        <div class="col-lg-10 col-md-10 col-sm-10">    
+        <div class="col-lg-10 col-md-10 col-sm-10">
 
           <div class="form-group">
            <label class="control-label" for="fullName">Media </label>
@@ -78,24 +78,24 @@
              <i class="text-danger" ng-show="form.file.$error.required">*required</i>
              <br/>
              <img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
-             height:100px;width: 100px">  
+             height:100px;width: 100px">
              <br/>
-             <span class="progress" ng-show="mainFIle[0].progress >= 0">    
+             <span class="progress" ng-show="mainFIle[0].progress >= 0">
               <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
-            </span> 
+            </span>
             <span ng-show="mainFIle[0].result">Upload Successful</span>
 
           </div>
 
           <div ng-show='article.media && article.media.extension.indexOf("image") > -1'>
-            <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+            <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive">
 
             <img ng-show="article.media.path"  ng-src="../{{article.media.path}}" title="{{article.title}}" class="img-responsive">
           </div>
           <div ng-show='article.media && article.media.extension.indexOf("video") > -1' class="">
             <videogular vg-theme='config.theme' >
-             <vg-media 
-             vg-src="config.sources" 
+             <vg-media
+             vg-src="config.sources"
              vg-native-controls="true"  >
            </vg-media>
          </videogular>
@@ -117,14 +117,14 @@
                 </tags-input>
                 </div>
           </div>
-        -->        
+        -->
 
         <br/>
 
-        <button ng-show="filearticle" class='btn btn-success' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Update</button> 
-        <button ng-hide="filearticle" class='btn btn-success' ng-disabled="!form.$valid" ng-click="updateArticle(form)" >Update</button> 
-        <a  href="/articles/01" class='btn btn-warning'>Cancel</a> 
-        <button ng-click="remove(form)" class='btn btn-danger'>Delete</button> 
+        <button ng-show="filearticle" class='btn btn-success' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Update</button>
+        <button ng-hide="filearticle" class='btn btn-success' ng-disabled="!form.$valid" ng-click="updateArticle(form)" >Update</button>
+        <a  href="/articles/01" class='btn btn-warning'>Cancel</a>
+        <button ng-click="remove(form)" class='btn btn-danger'>Delete</button>
         <!-- <button class='btn register-bt' ng-click=" preview = !preview " >Preview</button>  -->
         <br/>
         <br/>
@@ -132,9 +132,9 @@
         <!-- <div class="row" ng-show="preview" > -->
       <div class="row" >
 <div class="preview-outer">
-<div class="preview-area">  
-<div class="preview-eye"><i class="fa fa-eye"></i> Preview</div>  
-<div class="preview-shadow">  
+<div class="preview-area">
+<div class="preview-eye"><i class="fa fa-eye"></i> Preview</div>
+<div class="preview-shadow">
             <h1>{{article.title}}</h1>
             <div class="green-hr"></div>
             <div class= "articleview">
@@ -142,18 +142,18 @@
               <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
               <div ng-show="!filearticle">
                 <div ng-if='!article.media' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
-                  <img src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+                  <img src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive">
 
                 </div>
                 <div ng-show='article.media && article.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
-                  <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive"> 
+                  <img ng-show="!article.media.path" src="images/articels001.jpg"  title="{{article.title}}" class="img-responsive">
 
                   <img ng-show="article.media.path"  ng-src="../{{article.media.path}}" title="{{article.title}}" class="img-responsive">
                 </div>
                 <div ng-show='article.media && article.media.extension.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
 <!--         <videogular vg-theme='config.theme' >
-          <vg-media 
-          vg-src="config.sources" 
+          <vg-media
+          vg-src="config.sources"
           vg-native-controls="true"  >
         </vg-media>
       </videogular> -->
@@ -164,14 +164,14 @@
 
   <div ng-show="filearticle">
     <div  class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
-      <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
+      <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive">
 
       <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="img-responsive" >
 
 
     </div>
 
-    
+
 
 
   </div>
