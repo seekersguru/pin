@@ -19,7 +19,7 @@ angular.module('pinApp')
     $scope.color = {
       'Architect Blueprint': {
         'caption': 'caption',
-        'colorclass': 'yallow-box',
+        'colorclass': 'blueprint-box',
         'videoclass': 'video-caption-yallow',
         'bodyClass': 'blueprint'
       },

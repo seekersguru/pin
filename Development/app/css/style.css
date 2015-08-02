@@ -564,6 +564,7 @@ article .arrow-articale {
     text-overflow: ellipsis;
     white-space: normal;
     width: 100%;
+    overflow: hidden;
 }
 #discussion-nav ul li + li a {
     background-image: url("../images/inner-right-nav-2.png");
