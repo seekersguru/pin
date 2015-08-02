@@ -2662,3 +2662,39 @@ h1 {
 .forget-pass {
     display: inline-block;
 }
+
+.blueprint .specch-content h4 {
+   color: #dfe1d4;
+   font-family: "clear_sansbold";
+   font-size: 17px;
+   letter-spacing: 0.2px;
+   margin-top: 0;
+   text-align: left;
+}
+
+.blueprint .specch-content h4 a {
+   color: #dfe1d4;
+   font-family: "clear_sansbold";
+   font-size: 17px;
+   letter-spacing: 0.2px;
+   margin-top: 0;
+   text-align: left;
+}
+
+.blueprint .specch-content h4 a:hover {
+   color: #dfe1d4;
+   font-family: "clear_sansbold";
+   font-size: 17px;
+   letter-spacing: 0.2px;
+   margin-top: 0;
+   text-align: left;
+}
+
+.blueprint .speech-icon {
+   float: left;
+   margin-top: 6px;
+   width: 45px;
+}
+.blueprint .specch-content {
+   padding-left: 60px;
+}
