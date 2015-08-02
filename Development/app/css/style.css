@@ -662,7 +662,7 @@ article .arrow-articale {
 .body-doodels {
     overflow: hidden;
 }
-/*.inner-doodles-tophead {
+.inner-doodles-tophead {
     background-image: url("../images/doodles-top-header-inner.png");
     display: block;
     height: 184px;
@@ -670,7 +670,19 @@ article .arrow-articale {
     position: absolute;
     top: -18px;
     width: 158px;
-}*/
+}
+
+
+.inner-doodles-drownig-blueprint{background-image: url("../images/doodles-drwonig.png");
+   background-repeat: no-repeat;
+   display: block;
+   height: 141px;
+   left: -146px;
+   position: absolute;
+   top: 128px;
+   width: 135px;}
+
+
 .inner-doodles-tophead-meet {
     background-image: url("../images/doodles-top-header-inner.png");
     display: block;
@@ -680,7 +692,7 @@ article .arrow-articale {
     top: -71px;
     width: 158px;
 }
-.inner-doodles-tophead-blue-print {
+.inner-doodles-tophead-blueprint {
     background-image: url("../images/blue-print-header-top.jpg");
     display: block;
     height: 184px;
