@@ -65,7 +65,7 @@ exports.create = function(req, res, next) {
         		if(err){
         			console.log(err);
         			return res.json(400, err);
-        		} 
+        		}
         		return res.json({article:article});
         	});
 
@@ -81,7 +81,7 @@ exports.create = function(req, res, next) {
         		if(err){
         			console.log(err);
         			return res.json(400, err);
-        		} 
+        		}
         		return res.json({article:article});
         	});
 
@@ -101,7 +101,7 @@ exports.update = function(req, res) {
  console.log(article_data);
 	var data = _.pick(req.body, 'type') ,
 	uploadPath =  '/uploads';
-	
+
 	if(req.files && req.files.file)
 	{
 
@@ -134,7 +134,7 @@ exports.update = function(req, res) {
       		article_data.expert=JSON.parse(article_data.expert);
         	article_data.location=JSON.parse(article_data.location);
         	article_data.eventdate=JSON.parse(article_data.eventdate);
-        	
+
 					Event.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
 							if (err) {
 								console.log(err);
@@ -186,7 +186,7 @@ exports.removemedia = function(req, res) {
 
 };
 
-// show particluar one article 
+// show particluar one article
 exports.show=function(req,res){
 	var articleid=req.params.articleid;
 	Event.findById(articleid).populate('author','name email')
@@ -224,7 +224,7 @@ exports.query = function(req, res) {
 	if(req.query.pageno){
 		q=q.skip((req.query.pageno-1)*req.query.limit);
 	}
-  
+
   /** public true  */
   q.where('public').equals(true);
 
@@ -260,7 +260,7 @@ exports.basic = function(req, res) {
 			return res.send(404);
 		} else {
 			  for(var i=0; i<articles.length; i++){
-			  	
+
             articles[i] = articles[i].eventInfo;
          }
 			return res.json({articles:articles});
@@ -318,7 +318,7 @@ exports.remove = function(req, res) {
 
 /**============Comment Section Start================**/
 
-// get all comments 
+// get all comments
 
 exports.comment_query=function(req, res){
 
@@ -340,9 +340,9 @@ exports.comment_query=function(req, res){
 		}
 
 			return res.send(403);
-	
+
 	  });
-	
+
 	};
 
 
@@ -372,10 +372,10 @@ exports.comment_query=function(req, res){
 			}
 
 			 return res.send(403);
-		
+
 		  });
   };
-  
+
   //Create comment
   exports.comment_create=function(req, res){
   	var article_id = req.params.articleid;
@@ -410,12 +410,12 @@ exports.comment_query=function(req, res){
 	  });
 
   };
-  
+
   //remove comment
   exports.comment_remove=function(req, res){
   	var article_id = req.params.articleid,
   	comment_id = req.params.commentid;
-  
+
   Event.findByIdAndUpdate(
     article_id,
    { $pull: { 'comments': {  _id: comment_id } } },function(err,model){
@@ -428,4 +428,4 @@ exports.comment_query=function(req, res){
 
   };
 
-  /**========== Comment Section Stop =================**/  
+  /**========== Comment Section Stop =================**/
