@@ -43,7 +43,7 @@
   </div>
 
 <div class="row meet-row-mar">
-     <div class="col-lg-6 col-md-6 col-sm-6" ng-repeat="(key,value) in events" ng-show="!$first">
+     <div class="col-lg-6 col-md-6 col-sm-6" ng-repeat="(key,value) in events track by $index" ng-show="!$first">
    <div class="meet-box">
    <div class="clearfix">
    <div class="event-icon"><img alt="" class="img-responsive" ng-src="images/{{value.type}}.png"></div>
