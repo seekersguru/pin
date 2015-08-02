@@ -1,288 +1,93 @@
-<!--       <div class="container page">
-        <div class="row">
-          <div class="col-lg-3">
-            <div class="articale-sidebar">
-              <aside class="sidebar">
-               <ul class="sidebar_widgets">
-              <li class="widget widget_recent_entries">
-                <h3 class="widget-head">Recent Posts</h3>
-                <div class="widget-content">
-                  <ul>
-                    <li ng-repeat="(key,value) in latestcomments">
-                     <div class="post-img">
-                      <a ng-href="/articles/view/{{value._id}}">
-
-                       <div ng-if='value.media.extension.indexOf("image") > -1'>
-                        <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" width="150" height="150" src="images/31-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="{{value.title}}">
-
-                         <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}" width="150" height="150">
-                      </div>
-                         <div ng-if='value.media.extension.indexOf("video") > -1'>
-
-                          <img  src="images/video-min.png" class="img-responsive" title="{{value.title}}" width="150" height="150">
-                          </div>
-
-                        </a>
-
-                      </div>
-
-                      <div class="widget-post-info">
-                        <h4>
-                          <a ng-href="/articles/view/{{value._id}}">{{value.title}}</a>
-                        </h4>
-                        <div class="meta">
-                         <span class="wid_post-date"><i class="fa fa-clock-o"></i>{{ value.createdAt | date:"d MMMM yyyy" }}</span>
-                         <span class="wid_comments"><i class="fa fa-comments"></i><span>{{ value.comments.length }} Comments</span></span>
-                       </div>
-                     </div>
-                   </li>
-                 </ul>
-               </div>
-             </li>
-            </ul>
-            </aside>
-
-          </div>
-        </div>
-
-        <div class="col-lg-9">
-          <div class="dashboard-section">
-
-
-
-
-          </div>
-
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="articles-section"  >
-                <div class="articles-inner2">
-                  <div class="dash-articales-ead-details"><h5>{{articles.title}}</h5></div>
-                  <div class="post-meta-info-inner">
-
-                    <div class="post_meta_author"><i class="fa fa-user"></i>
-                      {{articles.author.name | uppercase}}</div>
-                      <div class="post_meta_cats"><i class="fa fa-clock-o"></i>{{articles.createdAt | date:"d MMMM yyyy" }}</div>
-                      <div class="post_meta_date"><i class="fa fa-comment"></i>{{articles.comments.length}} Comments</div>
-                      <div class="post_meta_views"><i class="fa fa-tag"></i>{{articles.tags.toString()}}</div>
-                    </div>
-                  </div>
-
-                  <div class="articles-inner">
-                    <div class="articale-img-inner" ng-if='articles.media.extension.indexOf("image") > -1'>
-                      <img ng-if="!articles.media.path" src="images/articels001.jpg" class="img-responsive" title="{{articles.title}}">
-
-                      <img ng-if="articles.media.path" ng-src="../{{articles.media.path}}" title="{{articles.title}}">
-                    </div>
-                   <div class="articale-img-inner" ng-if='articles.media.extension.indexOf("video") > -1'>
-
-                 <videogular vg-theme='config.theme'>
-                  <vg-media
-                            vg-src="config.sources"
-                            vg-native-controls="true"  >
-                  </vg-media>
-                </videogular>
-                    </div>
-
-                    <p ng-bind-html="articles.description | rawHtml"></p>
-
-
-                    <div class="detailBox">
-                      <div class="titleBox">
-                        <label>Comment Box</label>
-                        <button type="button" class="close" aria-hidden="true">&times;</button>
-                      </div>
-                      <div class="actionBox">
-                        <ul class="commentList">
-                          <li ng-repeat="(key,value) in articles.comments">
-                            <div class="commenterImage">
-                              <img src="http://lorempixel.com/50/50/people/6" />
-                            </div>
-                            <div class="commentText">
-                              <p class="">{{ value.post}}</p> <span class="date sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
-                              <div ng-if="currentUser._id" class="pull-left edit-icon"><a ng-click="editComment(value._id,value.post)"> <i class="fa fa-edit"></i>Edit</a></div>
-                              <div ng-if="currentUser._id" class="pull-left trash-o-icon"><a ng-click="deleteComment(value._id)"> <i class="fa fa-trash-o"></i>Delete</a></div>
-                            </div>
-                          </li>
-                        </ul>
-                        <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" ng-if="currentUser._id">
-                          <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
-                            <textarea class="form-control"  name="comment" placeholder="Your comments" ng-model="article.comment" required ng-minlength=4></textarea>
-                              <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
-                            <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
-                            <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
-                          </div>
-                          <div class="form-group">
-                            <button class="btn btn-default" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid">Add</button>
-                            <button class="btn btn-default" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid">Edit</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    -->
 <div class="container">
-<div id="content-section">
+<div id="breadcam">
+ <ul>
+ <li><a href="/"><img src="images/home-icon.png" alt=""></a></li>
+  <li><img src="images/arwwo-bardcam.png" alt=""></li>
+   <li><a href="/articles/01">Learn</a></li>
+   <li><img src="images/arwwo-bardcam.png" alt=""></li>
+   <li class="active"> {{articles.title}} </li>
 
-
-<div class="row">
-<div class="col-lg-8 col-md-8 col-sm-8">
-
-<div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12">
-<div class="breadcam-link">
-<ul>
-    <li><a href="#"><i class="fa fa-home"></i></a></li>
-/
-    <li ><a href="/articles/01">Content</a></li>
-/
- <li class="active"> {{articles.title}} </li>
-
-</ul>
+ </ul>
 </div>
-</div>
-
 
 </div>
 
+<div class="container">
+<div class="row mar-bot40">
+<div class="inner-doodles-drownig"></div>
+<div class="inner-doodles-men"></div>
+<div class="inner-doodles-right-1"></div>
+<div class="inner-doodles-right-2"></div>
+<div class="inner-doodles-right-3"></div>
+<div class="inner-doodles-right-4"></div>
+<!--architect area-->
+<div class="col-md-8 col-sm-12 padr-30">
+<div class="learnarticale-section">
+<h2> {{articles.title}}</h2>
+<div class="yallow-hr"></div>
+<div class="clearfix">
+ <div class="articale-heading">{{articles.author.name | uppercase}} </div>
+  <div class="date-articale">{{articles.createdAt |date:"MMMM d , yyyy"}} </div>
+</div>
+
+  <div class="row-mar">
+
+    <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-5 pull-right imge-pad text-right">
+      <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive">
+
+      <img ng-if="articles.media.path"  ng-src="../{{articles.media.path}}" title="{{articles.title}}" class="img-responsive">
+    </div>
+    <div ng-if='articles.media && articles.media.extension.indexOf("video") > -1' class="col-lg-5 pull-right imge-pad text-right">
+      <videogular vg-theme='config.theme' >
+        <vg-media
+        vg-src="config.sources"
+        vg-native-controls="true"  >
+      </vg-media>
+    </videogular>
+  </div>
+
+  <p class="articleview" ng-bind-html="articles.description | rawHtml "></p>
+
+   <a class="btn btn-primary mar-top15" type="button" href="/articles/01" >
+  <i class="fa fa-angle-left"></i>
+  Back to article</a>
+
+  <h2><span><img src="images/comment-black-arrow.jpg" alt=""></span>comments</h2>
 <div class="gray-hr"></div>
 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'themoneyhans';
 
-<div class="directory-section">
- <h1> {{articles.title}}</h1>
-<div class="clearfix">
-<div class="pull-left">
-<p>by {{articles.author.name | uppercase}}  </p>
-</div>
-<div class="pull-right">
-<p>{{articles.createdAt |date:"MMMM d , yyyy"}} </p>
-</div>
-</div>
-<div class="dot-hr"></div>
-<div class="row-mar">
-
-      <!-- <div ng-if='!articles.media' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
-        <img ng-src="images/{{mmicategorysetting[articles.mmicategory]['main-image']}}"  title="{{articles.title}}" class="img-responsive">
-
-      </div> -->
-      <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
-        <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive">
-
-        <img ng-if="articles.media.path"  ng-src="../{{articles.media.path}}" title="{{articles.title}}" class="img-responsive">
-      </div>
-      <div ng-if='articles.media && articles.media.extension.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
-        <videogular vg-theme='config.theme' >
-          <vg-media
-          vg-src="config.sources"
-          vg-native-controls="true"  >
-        </vg-media>
-      </videogular>
-    </div>
-
-    <!-- <p>{{articles.createdAt | date:"MMMM d, yyyy" }}</p> -->
-    <p class="articleview" ng-bind-html="articles.description | rawHtml "></p>
-
-    <p><a class="btn readmore-left-bt" type="button" href="/articles/01"  >Back To Articles </a>
-   <!-- <a ng-if="currentUser.role=='admin'" class="btn readmore-bt " type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a></p> -->
-
-
-  <h3>comments</h3>
-  <ul class="commentList">
-
-<li ng-repeat="(key,value) in articles.scomments" ng-if="currentUser._id==value.user._id || value.user.commentvisible == 'public' || (value.user.commentvisible == 'friends' && checkcommitstatus (currentUser._id,value.following) )  ">
-            <div class="clearfix">
-                <div class="commenterImage">
-                  <img src="images/comment-profile.png">
-                </div>
-                <div class="commentText">
-                <div class="clearfix">
-                <div class="comment-head">
-               <h5>{{value.username}}</h5>
-                </div>
-                <div class="comment-reply">
-                  <div class="clearfix" ng-if="currentUser._id==value.user._id">
-
-              <div class="pull-left"  ng-click="$parent.showEdit = ! $parent.showEdit"><a  ><i class="fa fa-edit" id="{{key}}-a"></i>Edit</a></div>
-              <div class="pull-right" ng-click="deleteComment(value._id)"><a ><i class="fa fa-trash"></i>Delete</a></div>
-
-              </div>
-                </div>
-                </div>
-                  <span class="sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
-                    <div><p  ng-hide="showEdit">{{ value.post}}</p></div>
-
-                </div>
-                </div>
-   <!--          </li>
-
-    <li ng-repeat="(key,value) in articles.scomments" ng-if="currentUser._id==value.user._id || value.user.commentvisible == 'public' || (value.user.commentvisible == 'friends' && checkcommitstatus (currentUser._id,value.following) )  ">
-    <div class="clearfix">
-      <div class="commenterImage">
-        <img src="images/comment-profile.png">
-      </div>
-      <div class="commentText">
-      <div class="clearfix">
-      <div class="pull-left">
-      <h5>{{value.username}}</h5>
-       <span class="date sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
-        </div>
-        <div class="pull-right" ng-if="currentUser._id==value.user._id">
-              <ul class="ed-iocn" >
-              <li  ng-click="$parent.showEdit = ! $parent.showEdit"><a  ><i class="fa fa-edit" id="{{key}}-a"></i>Edit</a></li>
-              <li ng-click="deleteComment(value._id)"><a ><i class="fa fa-trash"></i>Delete</a></li>
-              </ul>
-              </div>
-              </div>
-
-       <div><p  ng-hide="showEdit">{{ value.post}}</p></div> -->
-
-       <form novalidate  name="form" role='form' ng-submit="editComment(form,value._id,value.post,key)" name="form" ng-show="showEdit">
-
-            <div class="chat-2mar15">
-<textarea class="form-control"  name="comment"id="comment" placeholder="Your comments" ng-model="value.post" required ng-minlength=4></textarea>
-
-    <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
-    <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
-    <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
-            </div>
-            <br>
-       <button class="btn readmore-bt" type="submit">
-
-         Edit
-        </button>
-        </form>
-        <br/>
-
-    </li>
-</ul>
-<div class="actionBox" ng-if="currentUser._id" >
- <h3>Post Your Comment</h3>
- <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" class="">
-  <div class="chat-2mar15" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
-    <textarea class="form-control"  name="comment"id="comment" placeholder="Your comments" ng-model="article.comment" required ng-minlength=4></textarea>
-    <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
-    <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
-    <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
-  </div>
-    <button class="btn btn-register btn-openid" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid"><i class="fa fa-caret-right"></i> Comment</button>
-    <button class="btn btn-prew-direc btn-prew" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid"><i class="fa fa-caret-right"></i> Edit</button>
-
-
-</form>
-</div>
-</div>
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
 </div>
 
-<div class="col-lg-4 col-md-4 col-sm-4">
+
+</div>
+<!--end-->
+
+<!--right nav-->
   <div ng-include="'partials2/right-nav.html'"> </div>
 </div>
 </div>
-</div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'themoneyhans';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>

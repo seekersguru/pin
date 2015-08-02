@@ -9,26 +9,32 @@
 <div class="inner-doodles-tophead"></div>
 </div>
 
+<div class="container" ng-if="currentCategoryName">
+<h1>{{currentCategoryName}}</h1>
+<div class="inner-doodles-tophead{{bodyDoodleMainClass}}"></div>
+</div>
 
 <div class="container">
 <div class="row mar-bot40">
-<div class="inner-doodles-drownig"></div>
-<div class="inner-doodles-men"></div>
-<div class="inner-doodles-right-1"></div>
-<div class="inner-doodles-right-2"></div>
-<div class="inner-doodles-right-3"></div>
-<div class="inner-doodles-right-4"></div>
-<!--architect area-->
-<h2>Blog</h2>
+<div class="inner-doodles-drownig{{ bodyDoodleMainClass }}"></div>
+<div class="inner-doodles-men{{ bodyDoodleMainClass }}"></div>
+<div class="inner-doodles{{bodyDoodleMainClass}}-right-1"></div>
+<div class="inner-doodles{{bodyDoodleMainClass}}-right-2"></div>
+<div class="inner-doodles{{ bodyDoodleMainClass }}-right-3"></div>
+<div class="inner-doodles{{ bodyDoodleMainClass }}-right-4"></div>
 
-<div class="col-md-8 col-sm-12 padr-30">
-<div class="col-md-4 col-sm-6 padr-30" ng-repeat="(key,value) in exceptonearticle">
+<!--architect area-->
+<div class="col-md-8">
+
+<h2>Blog</h2>
+<div class="row">
+<div class="col-md-6 col-sm-6 padr-30" ng-repeat="(key,value) in exceptonearticle">
 
 <article   ng-if='value.media.extension.indexOf("video") < 0'>
-<div class="yallow-box">
+<div class="{{ color[value.hanscategory].colorclass }}" ng-class="{'white-box':currentCategoryName }">
 
   <div class="entry-thumb" ng-if='value.media.extension.indexOf("image") > -1'>
-   <a ng-href="/articles/view/{{value._id}}"><imgng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive" alt=""></a>
+   <a ng-href="/articles/view/{{value._id}}"><img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive" alt=""></a>
  </div>
 
  <!-- <div ng-if='!value.media' class="block-image">
@@ -43,7 +49,7 @@
   </div>
   <div class="entry-date">May 28, 2015</div>
     <div class="entry-meta">
-     <span><img src="images/comment-icon.png" alt=""></span> 33 Comments
+     <span><img src="images/comment-icon.png" alt=""></span> <span class="disqus-comment-count" data-disqus-url="{{HOSTPATH}}/articles/view/{{value._id}}"> <!-- Count will be inserted here --> </span> Comments
     </div>
   </div>
 <div class="arrow-articale"><a ng-href="/articles/view/{{value._id}}"><img src="images/articale-aarow.png" alt=""></a></div>
@@ -54,7 +60,8 @@
 <div class="video-img"  ng-if='value.media.extension.indexOf("video") > -1'>
  <div class="video-hight"><img ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}"> </div>
  <div class="play-icon"><img src="images/play-icon.png" alt=""></div>
- <div class="video-caption-green">{{value.title}}</div>
+ <div class="{{ color[value.hanscategory].videoclass }}">{{value.title}}</div>
+</div>
 </div>
 </div>
 </div>
