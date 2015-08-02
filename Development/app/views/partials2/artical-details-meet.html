@@ -1,41 +1,57 @@
 <div class="container">
-<div id="content-section">
+<div id="breadcam">
+ <ul>
+ <li><a href="/"><img src="images/home-icon.png" alt=""></a></li>
+  <li><img src="images/arwwo-bardcam.png" alt=""></li>
+   <li><a href="/event"> Meet</a> </li>
+   <li><img src="images/arwwo-bardcam.png" alt=""></li>
+   <li class="active">{{events.title}}</li>
+ </ul>
+</div>
+</div>
+
+<div class="container">
+<div class="inner-doodles-tophead-meet"></div>
+<div class="row mar-bot40">
+<div class="inner-doodles-drownig"></div>
+<div class="inner-doodles-men"></div>
+<div class="inner-doodles-right-1"></div>
+<div class="inner-doodles-right-2"></div>
+<div class="inner-doodles-right-3"></div>
+<div class="inner-doodles-right-4"></div>
+<!--architect area-->
+<div class="col-md-12 col-sm-12 padr-30">
+<h2>Upcoming LiveEvent</h2>
+<div class="discussions-section">
+<div class="eventdetail-box">
+<div class="clearfix">
+<div class="event-icon"><img alt="" src="images/{{events.type}}.png"></div>
+<div class="event-content">
+<h2>{{events.title | uppercase}}</h2>
+ </div>
+</div>
+<p></p>
+
+<div class="date">{{events.eventdate | date:"MMMM dd yyyy"}} <br>
+{{events.location.state}} {{events.location.country}}</div>
+<a type="button" class="btn btn-primary"
+ ng-href="http://maps.google.com/maps?saddr={{events.location.lat}},{{events.location.lng}}&daddr={{events.location.lat}},{{events.location.lng}}&hl=en&sll={{events.location.lat}},{{events.location.lng}}&t=m&mra=mift&mrsp=1&sz={{events.location.zoom}}&z={{events.location.zoom}}"
+target="_blank">Get Direction
+<i class="fa fa-angle-right"></i></a>
+</div>
 
 
-<div class="row">
-<div class="col-lg-8 col-md-8 col-sm-8">
 
-<div class="breadcam-link">
-<ul>
-    <li><a href="/"><i class="fa fa-home"></i></a></li>
-    /
-    <li><a href="/event">Events</a></li>
-    /
-    <li class="active">{{events.title | uppercase}}</li>
-</ul>
-</div>  
+<div class="row-mar">
 
-<div class="gray-hr"></div>
+<div class="row chat-2mar15">
+ <div class="col-lg-12">
+ <div>
+ <div class="event-detais-section">
 
 
-<div class="event-detais-section">
 
-
-<div class="meet-baner-img">
-<!-- <img  ng-if="!events.media" src="images/meet-baner-img-2.jpg" class="img-responsive" alt="">
-<img  ng-if="events.media" src="{{events.media.path}}" class="img-responsive" alt="">
- -->
-<div>
-<h1>{{events.title | uppercase}}<h1>
-<div class="transparent-bg">
-
-<!-- <p class="articleview" ng-bind-html="events.bannertext | rawHtml "></p> -->
-
-<h2>{{events.eventdate | date:"MMMM dd yyyy"}} - {{events.location. }}<br/>{{events.location.state}} {{events.location.country}}</h2>
-
-<!-- <h2>{{events.eventdate | date:"MMMM dd yyyy"}}</h2> -->
-
-<p class="text-center" ng-if="currentUser">
+<!-- <p class="text-center" ng-if="currentUser">
 
 <button class="btn event-register event-opp" disabled="disabled" type="button" ng-if="(events.serviceregistered.indexOf(currentUser._id) > -1) ">REGISTERED <i class="fa fa-caret-right"></i></button>
 
@@ -46,24 +62,18 @@
 
 <a class="btn event-register event-opp"   type="button" ng-href="/register" >REGISTER  For Event <i class="fa fa-caret-right"></i></a>
 
-</P>
+</P> -->
 
-</div>
 
-</div>
-</div>
+<h2>AGENDA</h2>
 
-<h2>
-AGENDA
- </h2> 
-
-<h4> {{events.title | uppercase}}</h4>
+<h3> {{events.title | uppercase}}</h3>
 
 <p class="articleview" ng-bind-html="events.agenda | rawHtml "></p>
 
  <h3 ng-if="events.expert" >Speakers</h3>
 
-<div class="row" ng-if="events.expert" >
+<!-- <div class="row" ng-if="events.expert" >
 <div class="team-section">
 
 <div class="col-lg-3 col-md-3 col-sm-3" ng-repeat="(key,val) in events.expert">
@@ -73,26 +83,41 @@ AGENDA
                    <span><img src="images/mail-icon.png" alt=""></span>
                 </div>
 
-<div><img ng-src="{{val.flag}}" class="img-responsive" alt=""></div> 
+<div><img ng-src="{{val.flag}}" class="img-responsive" alt=""></div>
 </div>
-  <h5>{{val.name}}</h5> 
-  <p>{{val.designation}}</p> 
-</div> 
+  <h5>{{val.name}}</h5>
+  <p>{{val.designation}}</p>
 </div>
 </div>
+</div> -->
+<h3>Speakers</h3>
+<div class="row">
+<div class="testmonial-section">
+<div class="col-md-3 col-sm-4">
+<div class="event-img"><img src="images/hunsi-event.png" class="img-responsive" alt=""></div>
+</div>
+<div class="col-md-9 col-sm-8">
+<h5>Hansi Mehrotra</h5>
+<p>CFA</p>
+
+
+<div class="social">
+<span><a href="https://www.linkedin.com/company/money-management-india" target="_blank"><img src="images/linkdin-icon-ev.png" alt=""></a></span>
+<span class="mar-left6"><a href="mailto:editor@moneymanagementindia.net?Subject=Hi TheMoneyHans" target="_top"><img src="images/mail-icon-ev.png" alt=""></a></span></div>
+</div>
+</div>
+</div>
+
 
 
  <div class="comment-text">
  <h3>Venue</h3>
- </div> 
- <div class="connect-hr2"></div>
-
 <div class="row">
 <div class="address-section">
-  <div class="col-lg-8 col-md-8 col-sm-8 padding-right0">
-   <div class="map-view" id="map" style="height: 236px"></div> 
-  </div>
-  <div class="col-lg-4 col-md-4 col-sm-4 padding-left0">
+  <div class="col-md-6 col-sm-7">
+   <div class="map-view" id="map" style="height: 236px"></div>
+ </div>
+ <div class="col-md-6 col-sm-5">
 <div class="address">
  <p> {{events.location.address}}</p>
 
@@ -101,33 +126,33 @@ AGENDA
  <p>{{events.location.state}} - {{events.location.postalcode}}</p>
 
 <p>{{events.location.country}}</p>
-<a type="button" class="btn btn-register btn-openid" ng-href="http://maps.google.com/maps?saddr={{events.location.lat}},{{events.location.lng}}&daddr={{events.location.lat}},{{events.location.lng}}&hl=en&sll={{events.location.lat}},{{events.location.lng}}&t=m&mra=mift&mrsp=1&sz={{events.location.zoom}}&z={{events.location.zoom}}" 
+<a type="button" class="btn btn-primary" ng-href="http://maps.google.com/maps?saddr={{events.location.lat}},{{events.location.lng}}&daddr={{events.location.lat}},{{events.location.lng}}&hl=en&sll={{events.location.lat}},{{events.location.lng}}&t=m&mra=mift&mrsp=1&sz={{events.location.zoom}}&z={{events.location.zoom}}"
 
 
 target="_blank">
                  <i class="fa fa-caret-right"></i> get direction</a>
 
-</div>
-  </div>
+               </div>
+                 </div>
 
 
 
 
-  </div>
-</div>
+                 </div>
+               </div>
 <br/>
-<hr/>
-<p><a class="btn readmore-bt" type="button" href="/event"  >Back To Events </a>
+<p><a type="button" class="btn btn-primary" href="/event"  >Back To Events </a>
 <!-- <a ng-if="currentUser.role=='admin'" class="btn register-bt " type="button" ng-href="/event/edit/{{events._id}}"  >Edit </a></p> -->
 
 <br>
-</div>  
+</div>
 
 </div>
 
 
-<div class="col-lg-4 col-md-4 col-sm-4">
+<!-- <div class="col-lg-4 col-md-4 col-sm-4">
   <div ng-include="'partials2/right-nav.html'"> </div>
+</div> -->
 </div>
 </div>
 </div>

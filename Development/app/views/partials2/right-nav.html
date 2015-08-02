@@ -72,7 +72,7 @@ Desk</h2>
 									 <ul>
 									 <li  ng-repeat="(key,value) in pineventlist track by $index" ng-if="value">
 									 <div class="clearfix">
-									 <div class="event-icon"><img src="images/green-globe.png" alt=""></div>
+									 <div class="event-icon"><img ng-src="images/{{value.type}}.jpg" alt=""></div>
 									 <div class="event-content">
 									  <h4><a href="/event/view/{{value._id}}">{{value.title}} </a></h4>
 									  <p>{{ value.eventdate | date:"d-MMMM-yyyy" }}</p>

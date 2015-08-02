@@ -1,81 +1,72 @@
+
 <div class="container">
-<div id="content-section">
-
-
-<div class="row">
-<div class="col-lg-8 col-md-8 col-sm-8">
-
-<div class="breadcam-link">
-<ul>
-    <li><a href="/home"><i class="fa fa-home"></i></a></li>
-/
-    <li class="active">Event</li>
-</ul>
-</div> 
-
- 
-
-<div class="gray-hr"></div>
-
-<div class="event-detais-section">
-
-
-<div class="meet-baner-img">
-<div>
-
-<h1>{{events[0].title | uppercase}}</h1>
-
-<div class="transparent-bg">
-
-<h2>{{events[0].eventdate | date:"MMMM dd yyyy"}} - {{events[0].location. }}<br/>{{events[0].location.state}} {{events[0].location.country}}</h2>
-
-<p class="text-center"><a type="button" class="btn event-register event-opp" ng-href="/event/view/{{events[0]._id}}">See details <i class="fa fa-caret-right"></i></a></p>
-</div>
-
-
-
+<div id="breadcam">
+ <ul>
+ <li><a href="/"><img src="images/home-icon.png" alt=""></a></li>
+  <li><a href="#"><img src="images/arwwo-bardcam.png" alt=""></a></li>
+   <li class="active">Meet </li>
+ </ul>
 </div>
 </div>
 
 
+<div class="container">
+<div class="inner-doodles-tophead-meet"></div>
+<div class="row mar-bot40">
+<div class="inner-doodles-drownig"></div>
+<div class="inner-doodles-men"></div>
+<div class="inner-doodles-right-1"></div>
+<div class="inner-doodles-right-2"></div>
+<div class="inner-doodles-right-3"></div>
+<div class="inner-doodles-right-4"></div>
+<!--architect area-->
+<div class="col-md-12 col-sm-12 padr-30">
+<h2>Upcoming LiveEvent</h2>
+<div class="discussions-section">
 
 
-   <div class="row event-row-mar">
-     <div class="col-lg-6 col-md-6 col-sm-6">
-       <h1>Upcoming Events</h1>
-     </div> 
-     <div class="clearfix"></div>
+  <div class="eventdetail-box">
+  <div class="clearfix">
+  <div class="event-icon"><img alt="" ng-src="images/{{events[0].type}}.png"></div>
+  <div class="event-content">
+  <h2> @ {{events[0].title}}- {{events[0].location.locality }} {{events[0].location.state}} {{events[0].location.country}}</h2>
    </div>
-  <div class="dot-hr"></div>
-   <div class="row event-row-mar">
+  </div>
+  <p></p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+
+  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+
+  <div class="date">{{events[0].eventdate | date:"EEE, MMMM dd, yyyy"}}</div>
+  <a type="submit" class="btn btn-primary"  ng-href="/event/view/{{events[0]._id}}">
+  Get Directions<i class="fa fa-angle-right"></i></a>
+  </div>
+
+<div class="row meet-row-mar">
      <div class="col-lg-6 col-md-6 col-sm-6" ng-repeat="(key,value) in events" ng-show="!$first">
-     <a ng-href="/event/view/{{value._id}}">
-      <div class="event-box clearfix">
-        <div class="event-iocn">
-         <img ng-src="images/{{value.type}}.jpg" alt=""> 
-       </div> 
-       <div class="event-content">
-         <h3>{{value.title}}</h3>
-         <h4>{{value.eventdate | date:"dd MMMM yyyy"}}</h4> 
-         <h4>{{value.location.locality}}</h4> 
-       </div> 
-     </div>
-     </a> 
-   <br>
-   </div> 
+   <div class="meet-box">
+   <div class="clearfix">
+   <div class="event-icon"><img alt="" class="img-responsive" ng-src="images/{{value.type}}.png"></div>
+   <div class="event-content">
+   <h3><a ng-href="/event/view/{{value._id}}"> @ {{value.title}} - {{value.location.locality}}</a></h3>
+   <p>{{value.eventdate | date:"EEE, MMMM dd, yyyy"}}</p>
+   <p> {{events[0].location.locality }} {{events[0].location.state}} {{events[0].location.country}}</p>
+    </div>
+   </div>
+   </div>
+   </div>
+</div>
+
 </div>
 
 
-<div class="clearfix">
-<!-- <p class="pull-right load-more"><a href="#"> Load more <i class="fa fa-chevron-down"></i> </a></p> -->
 </div>
+<!--end-->
 
-<div class="gray-hr"></div>
-</div>
-</div>
 
-<div class="col-lg-4 col-md-4 col-sm-4">
-  <div ng-include="'partials2/right-nav.html'"> </div>
-</div>
+
+
+
+
 </div>
 </div>
