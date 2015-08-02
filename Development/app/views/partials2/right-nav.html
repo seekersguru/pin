@@ -70,7 +70,7 @@ Desk</h2>
 									<div id="event-nav">
 									<h2>Upcoming LiveEvent</h2>
 									 <ul>
-									 <li  ng-repeat="(key,value) in pineventlist track by $index" ng-if="value">
+									 <li  ng-repeat="(key,value) in pineventlist track by $index  | limitTo:2 " ng-if="value">
 									 <div class="clearfix">
 									 <div class="event-icon"><img ng-src="images/{{value.type}}.png" alt=""></div>
 									 <div class="event-content">
