@@ -1,109 +1,57 @@
 <div class="container">
-<div id="content-section">
+<div id="breadcam">
+ <ul>
+ <li><a href="/"><img src="images/home-icon.png" alt=""></a></li>
+  <li><img src="images/arwwo-bardcam.png" alt=""></li>
+  <li><a href="/discussion-listing">Discussion </a></li>
+  <li><img src="images/arwwo-bardcam.png" alt=""></li>
+  <li class="active">Discussion </a></li>
 
-
-
-  <div class="row">
-
-    <div class="col-lg-8 col-md-8 col-sm-8" ng-if="chatid=='nochat'">
-
-      <div class="submit-articale-section">
-
-        <div class="row">
- 
-         <div class="col-lg-8 col-md-8 col-sm-8">
-         <h1>Discussion</h1> </div>
-       </div>
-       <div class="chatlsit-head-hr"></div>
-       <div class="container">
-        <div class="row">
-         <div class="pull-left"><img src="images/chat-listing-2-top.png" alt=""></div> 
-         <div class="pull-left chat-listing-2-heading">This is not a valid Discussion url</div>
-       </div>
-     </div>
-   </div>
- </div>
-
- <div class="col-lg-8 col-md-8 col-sm-8" ng-if="chatid != 'nochat' ">
-  <div class="submit-articale-section">
-    <div class="row">
-     <div class="col-lg-8 col-md-8 col-sm-8">
-                 <div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12">
-<div class="breadcam-link">
-<ul>
-    <li><a href="#"><i class="fa fa-home"></i></a></li>
-/
-    <li ><a href="/discussion-listing">Discussion</a></li>
-/
-    <li class="active"> {{discussion.topic}} </li>
-
-</ul>
-</div> 
+ </ul>
 </div>
 
+</div>
 
-</div> 
-<div class="gray-hr"></div>
-     <h1>Discussion</h1></div>
+<div class="container">
+<div class="row mar-bot40">
+<div class="inner-doodles-drownig"></div>
+<div class="inner-doodles-men"></div>
+<div class="inner-doodles-right-1"></div>
+<div class="inner-doodles-right-2"></div>
+<div class="inner-doodles-right-3"></div>
+<div class="inner-doodles-right-4"></div>
+<!--architect area-->
+<div class="col-md-8 col-sm-12 padr-30">
+<div class="discussions-section">
+
+<div class="black-hr"></div>
+<div class="row-mar">
+
+<div class="container" ng-if="chatid != 'nochat' ">
+<div class="row">
+<div id="chat-list-section-2">
+ <div class="pull-left"><img alt="" ng-src="images/{{color[discussion.topic].image}}"></div>
+  <div class="pull-left mar-left10">
+  <h3>{{discussion.title}}</h3>
+  <p>- Topic Name {{discussion.topic}}</p>
+  </div>
+  </div>
+</div>
+</div>
+
+<div class="container"  ng-if="chatid=='nochat'">
+  <div class="row">
+  <div id="chat-list-section-2">
+   <div class="pull-left"><img alt="" src="images/green-chat.png"></div>
+    <div class="pull-left mar-left10"><h1>This is not a valid Discussion url</h1></div>
    </div>
-   <div class="chatlsit-head-hr"></div>
-   <div class="container">
-    <div class="row">
-     <div class="chat-img"><img src="images/chat-listing-2-top.png" alt=""></div>
-     <div class="chat-listing-2-heading">{{discussion.title}} <span>- Topic Name {{discussion.topic}}</span></div>
    </div>
  </div>
 
  <div class="row chat-2mar15">
-   <div class="col-lg-12 col-md-12 col-sm-12">
-     <div id="chat-list-section-2">
-      <div >
-
-        <div class="chat-list-2-row-even clearfix"  ng-repeat="(key,value) in discussion.scomments">
-         <div class="clearfix">
-          <div class="chat-icon"><img src="images/chat-listing-2-user.png" alt=""></div>
-          <div class="chat-2left">
-          <div class="clearfix">
-          <div class="content-area">
-           <h2>{{value.username}}</h2>
-           <span class="sub-text">on {{value.posted | date:"MMMM d, yyyy"}}</span>
-           <p class="" ng-hide="showEdit">{{ value.post}}</p>
-         </div>
- 
-          <div ng-if="currentUser._id==value.user" class="pull-right">
-           <ul class="ed-iocn">
-            <li><a id="{{key}}-a" ng-click="$parent.showEdit = ! $parent.showEdit"><i class="fa fa-edit"></i>Edit</a></li>
-            <li><a ng-click="deleteComment(value._id)"><i class="fa fa-trash"></i>Delete</a></li>
-          </ul>
-        </div>
-
-      </div>
-      <form role="form" class="clearfix" ng-submit="editComment(form,value._id,value.post,key)" name="form" ng-show="showEdit">
-        <div class="chat-2mar15">
-         <textarea class="form-control"  name="comment" placeholder="Your comments" ng-model="value.post" required ng-minlength=4></textarea>
-      <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
-      <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
-      <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
-        </div>
-        
-        <button type="submit" class="btn btn-register btn-openid ">
-
-         <i class="fa fa-caret-right"></i> Edit
-       </button>
-     </form>
-   </div>
- </div>
-</div>
-
-</div>
-</div>
-</div> 
-
-</div>
-
-<div class="actionBox">
-  <h3>Post Your Comment</h3>
+  <div class="col-lg-12">
+  <div id="chat-list-section-2" ng-if="chatid != 'nochat' ">
+<!--  <h3>Post Your Comment</h3>
   <div class="gray-hr"></div>
   <form novalidate  name="form" role='form' ng-submit="addComment(form)" name="form" ng-if="currentUser._id" class="" >
     <div class="chat-2mar15" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
@@ -111,22 +59,47 @@
       <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.required">Please fill comment.</p>
       <p class="text-danger" ng-show="form.comment.$dirty && form.comment.$error.minlength">your comment shoud be minimum 4 character long .</p>
       <p class="text-danger" ng-show="form.comment.$error.mongoose">{{ errors.comment }} </p>
-    </div> 
+    </div>
     <!-- <div class="form-group"> -->
-    
-    <button class="btn btn-register btn-openid" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid"><i class="fa fa-caret-right"></i> Send</button><br>
+
+  <!--  <button class="btn btn-register btn-openid" ng-hide="editcomment_id" type="submit" ng-disabled="form.$invalid"><i class="fa fa-caret-right"></i> Send</button><br>
     <!-- <button class="btn btn-default" ng-show="editcomment_id" type="submit" ng-disabled="form.$invalid">Edit</button> -->
     <!-- </div> -->
-  </form>
+  <!--</form>-->
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'themoneyhans';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+</div>
 </div>
 
-
 </div>
 </div>
+</div>
 
-<div class="col-lg-4 col-md-4 col-sm-4">
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'themoneyhans';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function () {
+          var s = document.createElement('script'); s.async = true;
+          s.type = 'text/javascript';
+          s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+          (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+      }());
+  </script>
   <div ng-include="'partials2/right-nav.html'"> </div>
-</div>
-</div>
-</div>
-</div>
+  </div>
+  </div>

@@ -41,75 +41,6 @@ angular.module('pinApp')
 
     $scope.currentDate = new Date().getTime();
 
-    $scope.topicnames = [{
-      'name': 'Investments',
-      'sub': [{
-        'name': 'Traditional',
-        'tags': ['Equities', 'Fixed Interest', 'Real Estate', 'Cash',
-          'Global'
-        ]
-      }, {
-        'name': 'Alternative',
-        'tags': ['Private Equity', 'Hedge Fund', 'Venture, Angel',
-          'Real Estate'
-        ]
-      }, {
-        'name': 'Portfolios Construction',
-        'tags': []
-      }, {
-        'name': 'Markets',
-        'tags': []
-      }]
-    }, {
-      'name': 'WM/distribution',
-      'sub': [{
-        'name': 'Wealth planning',
-        'tags': ['Trusts', 'Wills', 'Governance']
-      }, {
-        'name': 'Business issues',
-        'tags': ['Strategy', 'marketing', 'sales, operations']
-      }, {
-        'name': 'Advisory process',
-        'tags': ['Client onboarding', 'risk profiling',
-          'behavioural finance'
-        ]
-      }]
-    }, {
-      'name': 'Communication',
-      'sub': [{
-        'name': 'Investor comms',
-        'tags': []
-      }]
-    }];
-
-
-    $scope.changetopic = function() {
-
-      var removeIndex = $scope.topicnames
-        .map(function(item) {
-          return item.name;
-        })
-        .indexOf($scope.chat.topic);
-
-      $scope.subtopicnames = $scope.topicnames[removeIndex].sub;
-      // $scope.article.mmitags=$scope.topicnames[removeIndex].sub;
-
-    };
-
-    $scope.changelookuptopic = function() {
-
-      var removeIndex = $scope.topicnames
-        .map(function(item) {
-          return item.name;
-        })
-        .indexOf($scope.search.topic);
-
-      $scope.subtopicnames = $scope.topicnames[removeIndex].sub;
-      // $scope.article.mmitags=$scope.topicnames[removeIndex].sub;
-
-    };
-
-
 
     $scope.article = {};
     $scope.chat = {};
@@ -271,7 +202,8 @@ angular.module('pinApp')
           post: $scope.chat.comment
         }];
         $scope.chat.cid = new Date().getTime();
-        $scope.chat.authormmi = $rootScope.currentUser._id;
+        $scope.chat.hans = true;
+        $scope.chat.authorhans = $rootScope.currentUser._id;
         $http({
           method: 'POST',
           url: '/api/discussions',

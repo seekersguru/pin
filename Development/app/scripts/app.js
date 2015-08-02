@@ -120,19 +120,16 @@ angular.module('pinApp', [
       })
       .when('/discussion-start', {
         templateUrl: 'partials2/discussion-start',
-        controller: 'SocketCtrl',
-        authenticate: true
+        controller: 'SocketCtrl'
       })
       .when('/discussion-detail', {
         templateUrl: 'partials2/chat-detail',
-        controller: 'SocketCtrl',
-        authenticate: true
+        controller: 'SocketCtrl'
       })
       .when('/discussion-listing', {
         templateUrl: 'partials2/chat-listing',
         controller: 'SocketCtrl',
-        title: 'Chat Listing',
-        authenticate: true
+        title: 'Chat Listing'
       })
       .when('/connect', {
         templateUrl: 'partials2/connect',

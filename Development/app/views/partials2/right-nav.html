@@ -58,12 +58,12 @@ Desk</h2>
 -->
 									<!-- new -->
 									<!--right nav-->
-									<div class="col-md-4 col-sm-12 pad-left-slidebar">
+									<div class="col-md-4 col-sm-12 pad-left-slidebar" ng-controller="NavbarCtrl">
 
 									  <div id="discussion-nav">
 									  <h2>Discussions</h1>
 									 <ul>
-									<li ng-repeat="(key,value) in pindiscussionslist"><a ng-href="/discussion-start?cid={{value.cid}}">#{{value.title}}</a></li>
+									<li ng-repeat="(key,value) in pindiscussionslist | limitTo:2"><a ng-href="/discussion-start?cid={{value.cid}}">#{{value.title}}</a></li>
 									 </ul>
 									</div>
 

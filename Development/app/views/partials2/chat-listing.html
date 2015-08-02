@@ -27,27 +27,33 @@
  <div class="col-md-7 col-sm-7">
  <h2>Latest Discussions</h2>
  </div>
- <div class="col-md-5 col-sm-5"><select id="sel1" class="form-control">
-    <option>Search By category</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-  </select></div>
+ <div class="col-md-5 col-sm-5">
+   <select  class="form-control" name="topicnames" ng-model="search.topic">
+       <option  value="">---Select Topic---</option>
+       <option  value="Architect Blueprint">Architect Blueprint</option>
+       <option  value="Essentials Foundation">Essentials Foundation</option>
+       <option  value="Growth Pillars">Growth Pillars</option>
+       <option  value="Freedom Slab">Freedom Slab</option>
+       <option  value="Fun Money Roof">Fun Money Roof</option>
+   </select>
+</div>
 </div>
 <div class="black-hr"></div>
 <div class="row-mar">
 <h3>Lookup Discussion </h3>
 
 <blockquote  ng-repeat="(key , val) in chatlist | reverse | filter:(search.title || search.topic ) " class="rectangle-speech-border {{ color[val.topic].colorclass}}">
-  <div class="ask-disc-right"></div>
+<a ng-href="/discussion-start?cid={{val.cid}}">  <div class="" ng-class="{0:'ask-disc-right',1:'ask-disc-left'}[key % 2]"></div>
     <div class="clearfix">
 
  <div class="speech-icon"><img ng-src="images/{{color[val.topic].image}}" alt="{{val.topic}}"></div>
  <div class="specch-content">
-<h4><a ng-href="/discussion-start?cid={{val.cid}}"> # {{val.title}}</a></h4>
+<h4> # {{val.title}}</h4>
   <p>- Topic name {{val.topic}}</p>
  </div>
  </div>
+ </a>
+<!--  -->
  <!-- <div class="user-area">
   <img src="images/user-icon.png" alt=""> <span>160</span>/325
  </div> -->
@@ -66,7 +72,7 @@
 </ul>
 </div>
 </div> -->
-
+<div ng-if="currentUser">
 <p class="mar-top40">Select a Discussion / Topic and Start a Conversation.</p>
 
 <div class="or-section">
@@ -74,11 +80,12 @@
 </div>
 
 <h3 class="mar-top40">Begin a New Discussion </h3>
-<form class="register-form " role="form" novalidate="">
+<form class="register-form"  name="form" ng-submit="chatDetail(form)" novalidate>
 <div class="row">
 <div class="col-md-12">
  <div class="form-group">
-<input type="text" placeholder="Company Name" class="form-control" id="addr" name="addr" required="">
+   <input required type="text" name="title" class="form-control" ng-model="chat.title" placeholder="Title"/>
+   <p class="text-danger" ng-show="form.title.$error.required && submitted">Please fill Title.</p>
  </div>
  </div>
 </div>
@@ -86,17 +93,22 @@
 <div class="row">
 <div class="col-md-6">
 <div class="form-group">
-<select id="sel1" class="form-control">
-    <option>Search By category</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
+  <select ng-model="chat.topic" name ="topic" class="form-control" required id="sel1">
+      <option  value="">---Select Topic---</option>
+      <option  value="Architect Blueprint">Architect Blueprint</option>
+      <option  value="Essentials Foundation">Essentials Foundation</option>
+      <option  value="Growth Pillars">Growth Pillars</option>
+      <option  value="Freedom Slab">Freedom Slab</option>
+      <option  value="Fun Money Roof">Fun Money Roof</option>
   </select>
+  <p class="text-danger" ng-show="form.topic.$error.required && submitted">Please fill Topic Name.</p>
+
  </div>
 </div></div>
- <button class="btn btn-primary" type="submit">
+ <button class="btn btn-primary"  ng-disabled="forsubmit" type="submit" >
  Create<i class="fa fa-angle-right"></i></button>
  </form>
+ </div>
 
 </div>
 </div>

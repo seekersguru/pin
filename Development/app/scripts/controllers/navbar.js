@@ -7,13 +7,13 @@ angular.module('pinApp')
 	$scope.isActive = function(route) {
       return $location.path() === route;
   };
-    
+
     // logout
 	$scope.logout = function() {
       Auth.logout()
       .then(function() {
         $location.path('/login');
-      });   
+      });
   };
 
 
@@ -64,12 +64,12 @@ $scope.popuplogin=function(){
 
       angular.forEach(data.articles,function(eventname,key){
       var currentdate=new Date();
-      if(new Date(eventname.eventdate) < new Date(currentdate)) 
-        delete data.articles[key]; 
+      if(new Date(eventname.eventdate) < new Date(currentdate))
+        delete data.articles[key];
     });
-      
+
       $scope.pineventlist=data.articles;
-      
+
     })
 
     .error(function (data,status,headers,config){
@@ -133,7 +133,7 @@ $scope.popuplogin=function(){
 
   };
 
-$scope.getEventslist();  
+$scope.getEventslist();
 $scope.getDiscussionslist();
   //login
   $scope.login = function(form) {
@@ -147,20 +147,20 @@ $scope.getDiscussionslist();
       })
       .then( function() {
         // Logged in, redirect to home
-       
+
           if($rootScope.currentUser.role=='admin')
             {
 
             $location.path('/admin').search({'users':1});
 
             }else{
-          
+
         if ($rootScope.redirectPath && $rootScope.redirectPath !== '/register' ) {
           var path = $rootScope.redirectPath;
           $rootScope.redirectPath = undefined;
           $location.path(path);
         } else {
-        
+
             $location.path('/articles/01');
         }
       }
@@ -186,17 +186,17 @@ angular.module('pinApp')
     $rootScope.changeFooterNishant = 1;
     $scope.facebookLogin = Auth.facebookLogin;
     $scope.linkedinLogin = Auth.linkedinLogin;
-    
+
     $scope.registerStatus = Object.keys($location.search())[0] || 'test';
     $scope.errormessage=$location.search()[$scope.registerStatus] || '';
     $scope.field=Object.keys($location.search())[1] || 'field';
-    
+
     $scope.forgotpassword=function(){
       $modalInstance.dismiss('cancel');
       $location.path("/forgot");
     };
 
-    
+
     $scope.login = function(form) {
 
       $scope.submitted = true;
@@ -234,11 +234,11 @@ angular.module('pinApp')
             $scope.errors[error.field] = error.message;
           });
           $scope.registerStatus='test';
-          
+
         });
       }
     };
-    
+
   $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
   };
