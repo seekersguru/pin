@@ -1,211 +1,109 @@
+
 <div class="container">
-<div id="content-section">
+<div id="breadcam">
+ <ul>
+ <li><a href="/"><img src="images/home-icon.png" alt=""></a></li>
+  <li><a href="#"><img src="images/arwwo-bardcam.png" alt=""></a></li>
+   <li class="active">Discussion </li>
+ </ul>
+</div>
 
-
-<div class="row">
-<div class="col-lg-8 col-md-8 col-sm-8">
-
-<div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12">
-<div class="breadcam-link">
-<ul>
-    <li><a href="#"><i class="fa fa-home"></i></a></li>
-/
-    <li class="active">Discussion</li>
-</ul>
-</div> 
 </div>
 
 
-</div> 
+<div class="container">
+<div class="row mar-bot40">
+<div class="inner-doodles-drownig"></div>
+<div class="inner-doodles-men"></div>
+<div class="inner-doodles-right-1"></div>
+<div class="inner-doodles-right-2"></div>
+<div class="inner-doodles-right-3"></div>
+<div class="inner-doodles-right-4"></div>
+<!--architect area-->
+<div class="col-md-8 col-sm-12 padr-30">
+<div class="discussions-section">
 
-<div class="gray-hr"></div>
-
-
-
-
-    <div>
-
-<!-- <div class="horizentle-hr">
-  <div class="or-chat">or </div> 
+<div class="row mar-top25">
+ <div class="col-md-7 col-sm-7">
+ <h2>Latest Discussions</h2>
  </div>
- -->
-<h1>Look Up Discussion</h1> 
-   <form class="register-form"  name="searchform"  novalidate>
-            <div class="row">
-            
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="form-group">
-                
-                <input required type="text" name="title" class="form-control" ng-model="search.title" placeholder="Title"/>
-                <!-- <p class="text-danger" ng-show="searchform.title.$error.required && submitted">Please fill Title.</p> -->
-             
-              </div>
-            </div>
-            </div>
-            <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">  
-            <div class="form-group">
-              <select  class="form-control" name="topicnames" ng-model="search.topic" ng-change="changelookuptopic()">
-               <option value=""> ---Select Topic--- </option>
-               <option ng-repeat="(key,value) in topicnames" value="{{value.name}}">{{value.name}}</option>
-              </select>
+ <div class="col-md-5 col-sm-5"><select id="sel1" class="form-control">
+    <option>Search By category</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select></div>
+</div>
+<div class="black-hr"></div>
+<div class="row-mar">
+<h3>Lookup Discussion </h3>
 
-            </div>
-          </div>
+<blockquote  ng-repeat="(key , val) in chatlist | reverse | filter:(search.title || search.topic ) " class="rectangle-speech-border {{ color[val.topic].colorclass}}">
+  <div class="ask-disc-right"></div>
+    <div class="clearfix">
 
-          <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="form-group">
-                <select  class="form-control" name="mmisubcategory" ng-model="search.subtopic" >
-                  <option value=""> ---Select Sub Topic--- </option>
-                  <option ng-repeat="(key,value) in subtopicnames" value="{{value.name}}">{{value.name}}</option>
-                </select>
-            </div>
+ <div class="speech-icon"><img ng-src="images/{{color[val.topic].image}}" alt="{{val.topic}}"></div>
+ <div class="specch-content">
+<h4><a ng-href="/discussion-start?cid={{val.cid}}"> # {{val.title}}</a></h4>
+  <p>- Topic name {{val.topic}}</p>
+ </div>
+ </div>
+ <!-- <div class="user-area">
+  <img src="images/user-icon.png" alt=""> <span>160</span>/325
+ </div> -->
+</blockquote>
 
-          </div>
+<!-- <div class="row">
+<div class="col-md-12">
+<ul class="pagination">
+  <li><a href="#"><i class="fa fa-angle-left"></i>
+</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#" class="active">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#"><i class="fa fa-angle-right"></i>
+</a></li>
+</ul>
+</div>
+</div> -->
 
-        </div>
+<p class="mar-top40">Select a Discussion / Topic and Start a Conversation.</p>
 
-           <button class="btn btn-prew-direc btn-prew" type="submit"> <i class="fa fa-search"></i> Lookup</button>
-<!--         <br></br>
-        <p><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
-        <br></br>
- -->
+<div class="or-section">
+ <div class="or-text">Or</div>
+</div>
 
-      </form>
-
-
-<br>
-
-<div class="submit-articale-section">
+<h3 class="mar-top40">Begin a New Discussion </h3>
+<form class="register-form " role="form" novalidate="">
 <div class="row">
- <div class="col-lg-8 col-md-8 col-sm-8"><h1>Discussion</h1> </div>
+<div class="col-md-12">
+ <div class="form-group">
+<input type="text" placeholder="Company Name" class="form-control" id="addr" name="addr" required="">
+ </div>
+ </div>
+</div>
 
- <div class="col-lg-4 col-md-4 col-sm-4">
-  <!-- <form class="register-form"  role="form" novalidate> -->
-
+<div class="row">
+<div class="col-md-6">
 <div class="form-group">
-
- <a ng-click="creatediscussion =!creatediscussion" ng-show="creatediscussion" class="btn register-bt" role="button" >Start Discussion</a>
-
-
-</div>
-
-<!-- </form> -->
-</div>
-</div>
-<div class="chatlsit-head-hr"></div>
-
-
-<div id="chat-list-section">
-<div class="content mCustomScrollbar">
- 
- <div class="clearfix" ng-repeat="(key , val) in chatlist | reverse | filter:(search.title || search.topic ) " ng-class="{0:'chat-list-row-odd',1:'chat-list-row-even'}[key % 2]">
-  <div class="chat-icon"><img ng-src="images/{{color[val.topic].image}}" alt="{{val.topic}}"></div> 
-  <div class="content-area">
- <h2><a ng-href="/discussion-start?cid={{val.cid}}">{{val.title}}</a></h2> 
-   <p>- {{val.topic}}</p>  
-  </div>
-  <!-- <div class="user-area">
-   <img src="images/user-icon.png" alt=""> <span>160</span>/325
-  </div> -->
- </div> 
-</div>
+<select id="sel1" class="form-control">
+    <option>Search By category</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+ </div>
+</div></div>
+ <button class="btn btn-primary" type="submit">
+ Create<i class="fa fa-angle-right"></i></button>
+ </form>
 
 </div>
-
-<br>
-<!-- <p class="chat-list-section-footer"><span>*</span> Select a Chatroom / Topic and Start a Conversation.</p>
- --><br>
-</div>  
-
 </div>
-
-
-
-
-
-<h1>Start New Discussion</h1> 
-<div class="gray-hr"></div>
-<div class="col-lg-9 col-md-9 col-sm-9" ng-show="creatediscussion">
-     <br/>
-     <br/>
-     <div class="alert alert-success" role="alert"> 
-       
-       <p>You have successfully created your discussion</p>
-     </div>
-     </div>
-     <div ng-show='!creatediscussion'>
-    
-    <div class="submit-articale-section">
-           
-           <div class="register-form-hr"></div>
-           <form class="register-form"  name="form" ng-submit="chatDetail(form)" novalidate>
-            <div class="row">
-            
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="form-group">
-                
-                <input required type="text" name="title" class="form-control" ng-model="chat.title" placeholder="Title"/>
-                <p class="text-danger" ng-show="form.title.$error.required && submitted">Please fill Title.</p>
-             
-              </div>
-            </div>
-            </div>
-            <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">  
-            <div class="form-group">
-              <select  class="form-control" name="topicnames" ng-model="chat.topic" ng-change="changetopic()">
-               <option value=""> ---Select Topic--- </option>
-               <option ng-repeat="(key,value) in topicnames" value="{{value.name}}">{{value.name}}</option>
-              </select>
-
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="form-group">
-                <select  class="form-control" name="mmisubcategory" ng-model="chat.subtopic" >
-                  <option value=""> ---Select Sub Topic--- </option>
-                  <option ng-repeat="(key,value) in subtopicnames" value="{{value.name}}">{{value.name}}</option>
-                </select>
-            </div>
-
-          </div>
-
-        </div>
-          <div class="row">
-            <div class="col-lg-12  col-md-12 col-sm-12">
-            <div class="form-group">
-            <textarea class="form-control" name ="topic" placeholder="Your comments" required ng-model="chat.comment"> </textarea>
-            <p class="text-danger" ng-show="form.topic.$error.required && submitted">Please fill Your Comments.</p>
-            
-            </div>
-            </div>
-          </div>
-
-            <button class="btn btn-register  btn-openid" ng-disabled="forsubmit" type="submit">
-         <i class="fa fa-caret-right"></i> Create
-        </button>
-
-
-<!--         <br></br>
-        <p><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
-        <br></br>
- -->
-
-      </form>
-
-    </div>
-
-    </div>
-
 </div>
+<!--end-->
 
-<div class="col-lg-4 col-md-4 col-sm-4">
-  <div ng-include="'partials2/right-nav.html'"> </div>
-</div>   
-</div>
- 
+<div ng-include="'partials2/right-nav.html'"> </div>
+
 </div>
 </div>
