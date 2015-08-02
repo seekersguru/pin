@@ -8,11 +8,11 @@ var index = require('./controllers'),
     articles = require('./controllers/article'),
     events = require('./controllers/event'),
     discussions = require('./controllers/discussion'),
-    familys = require('./controllers/family'), 
-    companys = require('./controllers/company'), 
+    familys = require('./controllers/family'),
+    companys = require('./controllers/company'),
     experts = require('./controllers/expert'),
     countrycity = require('./controllers/countrycity');
-   
+
 var middleware = require('./middleware');
 var multipart = require('connect-multiparty'),
     multipartMiddleware = multipart();
@@ -23,14 +23,14 @@ var multipart = require('connect-multiparty'),
 module.exports = function(app) {
 
   // Server API Routes
-  
+
   //nishant section start
 
   app.post('/api/nishant', nishant.create);
   app.get('/api/nishant', nishant.query);
 
   //nishant section end
-  
+
   /**---(',')--article section start----(',')---**/
 
   //GET
@@ -69,13 +69,13 @@ module.exports = function(app) {
   app.post('/api/users/upload',  multipartMiddleware, users.uploadusers);
 
 
-  
+
 
   app.post('/api/discussions', discussions.create);
   app.get('/api/discussions', discussions.query);
   app.get('/api/discussions/:cid', discussions.checkcid);
-  app.put('/api/discussions/:discussionid', discussions.update); 
-  app.del('/api/discussions/:discussionid', discussions.remove); 
+  app.put('/api/discussions/:discussionid', discussions.update);
+  app.del('/api/discussions/:discussionid', discussions.remove);
 
     /**---(',')--discussion  comments section start----(',')---**/
 
@@ -94,8 +94,8 @@ module.exports = function(app) {
   app.post('/api/family', familys.create);
   app.get('/api/family', familys.query);
   app.get('/api/family/:familyid', familys.show);
-  app.put('/api/family/:familyid', familys.update); 
-  app.del('/api/family/:familyid', familys.remove); 
+  app.put('/api/family/:familyid', familys.update);
+  app.del('/api/family/:familyid', familys.remove);
 
   /**
    * experts section apis
@@ -104,8 +104,8 @@ module.exports = function(app) {
   app.get('/api/expert', experts.query);
   app.get('/api/expert/basic', experts.basic);
   app.get('/api/expert/:expertid', experts.show);
-  app.put('/api/expert/:expertid', experts.update); 
-  app.del('/api/expert/:expertid', experts.remove); 
+  app.put('/api/expert/:expertid', experts.update);
+  app.del('/api/expert/:expertid', experts.remove);
   app.put('/api/expert/removemedia/:expertid', experts.removemedia);
 
 
@@ -118,7 +118,7 @@ module.exports = function(app) {
   app.put('/api/companys/:companyid',companys.update);
   app.del('/api/companys/:companyid', companys.remove);
   app.post('/api/companys/upload',  multipartMiddleware, companys.uploadcompanies);
-  
+
 
    /**---(',')--Event section start----(',')---**/
 
@@ -133,9 +133,9 @@ module.exports = function(app) {
 
   /**---(',')--Event section stop----(',')---**/
 
-   
+
   /**---(',')--Event comments section start----(',')---**/
-  
+
   app.get('/api/event-comments/:articleid', events.comment_query);
   app.get('/api/event-comments/:articleid/:commentid', events.comment_show);
   app.post('/api/event-comments/:articleid',  events.comment_create);
@@ -146,7 +146,7 @@ module.exports = function(app) {
 
 
 
-   
+
   app.post('/api/session', session.login);
   app.del('/api/session', session.logout);
   app.get('/api/session/facebook', session.fblogin);
@@ -158,7 +158,7 @@ module.exports = function(app) {
   app.get('/api/countries', countrycity.getCountry);
   app.get('/api/cities/:country', countrycity.getCity);
 
- 
+
 
   // All undefined api routes should return a 404
   app.get('/api/*', function(req, res) {
