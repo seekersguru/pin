@@ -847,15 +847,15 @@ angular.module('pinApp')
           cellTemplate: '<span ng-if="row.entity.approve" class="label label-success" ng-click="eventStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="eventStatus(row.entity._id)">NOT APPROVED</span>'
         }, {
           field: 'pin',
-          displayName: 'Show On PIN',
+          displayName: 'PIN',
           cellTemplate: '<span ng-if="row.entity.pin" class="label label-success" ng-click="eventPin(row.entity._id)">SHOWN</span><span ng-if="!row.entity.pin" class="label label-danger" ng-click="eventPin(row.entity._id)">NOT SHOWN</span>'
         }, {
           field: 'money',
-          displayName: 'Show on Money',
+          displayName: 'Money',
           cellTemplate: '<span ng-if="row.entity.money" class="label label-success" ng-click="eventMoney(row.entity._id)">SHOWN</span><span ng-if="!row.entity.money" class="label label-danger" ng-click="eventMoney(row.entity._id)">NOT SHOWN</span>'
         }, {
           field: 'hans',
-          displayName: 'Show on Hans',
+          displayName: 'Hans',
           cellTemplate: '<span ng-if="row.entity.hans" class="label label-success" ng-click="eventHans(row.entity._id)">SHOWN</span><span ng-if="!row.entity.hans" class="label label-danger" ng-click="eventHans(row.entity._id)">NOT SHOWN</span>'
         }, {
           field: '',
