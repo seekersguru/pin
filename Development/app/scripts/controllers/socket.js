@@ -15,7 +15,7 @@ angular.module('pinApp')
       'Architect Blueprint': {
         'caption': 'caption',
         'colorclass': 'blueprint',
-        'image': 'green-chat.png'
+        'image': 'blueprint-icon.png'
       },
       'Essentials Foundation': {
         'caption': 'caption-red',
