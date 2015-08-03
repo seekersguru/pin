@@ -528,6 +528,7 @@ article .arrow-articale {
     float: left;
     list-style: outside none none;
     margin-bottom: 10px;
+    font-family: "clear_sans_lightregular";
 }
 #breadcam ul li + li {
     list-style: outside none none;
@@ -1581,8 +1582,8 @@ ul.ed-iocn {
 .blueprint h3{color:#dfe1d4!important;}
 .freedome h3{color:#339a01!important;}
 .growth h3{color:#1faed6!important;}
-.funnyroof h3{color:#e0930f!important;}
-.foundation h3{color:#c61718!important; }
+.funmoney h3{color:#e0930f!important;}
+.fundation h3{color:#c61718!important; }
 
 .blueprint .specch-content h4 {
     color: #dfe1d4;
