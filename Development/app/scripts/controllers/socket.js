@@ -14,7 +14,7 @@ angular.module('pinApp')
     $scope.color = {
       'Architect Blueprint': {
         'caption': 'caption',
-        'colorclass': 'greenbox',
+        'colorclass': 'blueprint',
         'image': 'green-chat.png'
       },
       'Essentials Foundation': {
