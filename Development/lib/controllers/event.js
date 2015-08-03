@@ -262,6 +262,8 @@ exports.query = function(req, res) {
 exports.basic = function(req, res) {
 
   var q = Event.find({});
+  q.where('money').equals(true);
+  q.where('public').equals(true);
 
   /** sorting according to date */
 
