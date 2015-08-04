@@ -16,7 +16,7 @@ angular.module('pinApp')
       for (var i = 0; i < orders.length; i++) {
 
         var current - day = new Date().getTime();
-        var last_modified = new Date(orders[i].last_modified).getTime();
+        var last_modified = new Date(orders[i].eventdate).getTime();
 
         if (currentday <= last_modified) {
           filtered_list.push(orders[i]);
