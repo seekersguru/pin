@@ -48,7 +48,7 @@
    </div>
   <div class="dot-hr"></div>
    <div class="row event-row-mar">
-     <div class="col-lg-6 col-md-6 col-sm-6" ng-repeat="(key,value) in events | GreaterThanDate" ng-show="!$first">
+     <div class="col-lg-6 col-md-6 col-sm-6" ng-repeat="(key,value) in events" ng-show="!$first">
      <a ng-href="/event/view/{{value._id}}">
       <div class="event-box clearfix">
         <div class="event-iocn">

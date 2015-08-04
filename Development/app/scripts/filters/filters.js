@@ -8,24 +8,6 @@ angular.module('pinApp')
   }]);
 
 angular.module('pinApp')
-  .filter('GreaterThanDate', function() {
-    return function(orders) {
-
-      var filtered_list = [];
-
-      for (var i = 0; i < orders.length; i++) {
-
-        var current - day = new Date().getTime();
-        var last_modified = new Date(orders[i].eventdate).getTime();
-
-        if (currentday <= last_modified) {
-          filtered_list.push(orders[i]);
-        }
-      }
-      return filtered_list;
-    }
-  });
-angular.module('pinApp')
   .filter('reverse', function() {
     return function(items) {
       return items.slice().reverse();
