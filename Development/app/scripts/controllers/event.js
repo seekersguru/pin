@@ -6,8 +6,10 @@ angular.module('pinApp')
       var currentdate = new Date();
 
       if (new Date(eventname.eventdate).getTime() < new Date(currentdate)
-        .getTime())
+        .getTime()) {
         events.splice(key, 1);
+        console.log(key);
+      }
 
     });
     $scope.events = events;
