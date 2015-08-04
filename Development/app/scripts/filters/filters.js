@@ -1,18 +1,36 @@
 'use strict';
 // filter to show raw HTML
 angular.module('pinApp')
-.filter('rawHtml', ['$sce', function($sce){
-  return function(val) {
-    return $sce.trustAsHtml(val);
-  };
-}]);
+  .filter('rawHtml', ['$sce', function($sce) {
+    return function(val) {
+      return $sce.trustAsHtml(val);
+    };
+  }]);
 
 angular.module('pinApp')
-.filter('reverse', function() {
-  return function(items) {
-    return items.slice().reverse();
-  };
-});
+  .filter('GreaterThanDate', function() {
+    return function(orders) {
+
+      var filtered_list = [];
+
+      for (var i = 0; i < orders.length; i++) {
+
+        var current - day = new Date().getTime();
+        var last_modified = new Date(orders[i].last_modified).getTime();
+
+        if (currentday <= last_modified) {
+          filtered_list.push(orders[i]);
+        }
+      }
+      return filtered_list;
+    }
+  });
+angular.module('pinApp')
+  .filter('reverse', function() {
+    return function(items) {
+      return items.slice().reverse();
+    };
+  });
 
 
 /**
@@ -22,29 +40,28 @@ angular.module('pinApp')
  */
 
 angular.module('pinApp')
-.filter('startsWithLetter', function() {
-  return function(items, letter) {
+  .filter('startsWithLetter', function() {
+    return function(items, letter) {
 
-    var filtered = [];
-    var letterMatch = new RegExp(letter, 'i');
-    for (var i = 0; i < items.length; i++) {
-      var item = items[i];
-      if (letterMatch.test(item.title.substring(0, 1))) {
-        filtered.push(item);
+      var filtered = [];
+      var letterMatch = new RegExp(letter, 'i');
+      for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        if (letterMatch.test(item.title.substring(0, 1))) {
+          filtered.push(item);
+        }
       }
-    }
-    return filtered;
-  };
-});
+      return filtered;
+    };
+  });
 
 //convert html as text
 angular.module('pinApp').
-  filter('htmlToPlaintext', function() {
-    return function(text) {
-      return String(text).replace(/<[^>]+>/gm, '');
-    };
-  }
-);
+filter('htmlToPlaintext', function() {
+  return function(text) {
+    return String(text).replace(/<[^>]+>/gm, '');
+  };
+});
 /**
  * Filters out all duplicate items from an array by checking the specified key
  * @param [key] {string} the name of the attribute of each object to compare for uniqueness
@@ -52,18 +69,20 @@ angular.module('pinApp').
  if the key === false then no filtering will be performed
  * @return {array}
  */
-angular.module('pinApp').filter('unique', function () {
+angular.module('pinApp').filter('unique', function() {
 
-  return function (items, filterOn) {
+  return function(items, filterOn) {
 
     if (filterOn === false) {
       return items;
     }
 
-    if ((filterOn || angular.isUndefined(filterOn)) && angular.isArray(items)) {
-      var hashCheck = {}, newItems = [];
+    if ((filterOn || angular.isUndefined(filterOn)) && angular.isArray(
+        items)) {
+      var hashCheck = {},
+        newItems = [];
 
-      var extractValueToCompare = function (item) {
+      var extractValueToCompare = function(item) {
         if (angular.isObject(item) && angular.isString(filterOn)) {
           return item[filterOn];
         } else {
@@ -71,11 +90,12 @@ angular.module('pinApp').filter('unique', function () {
         }
       };
 
-      angular.forEach(items, function (item) {
+      angular.forEach(items, function(item) {
         var valueToCheck, isDuplicate = false;
 
         for (var i = 0; i < newItems.length; i++) {
-          if (angular.equals(extractValueToCompare(newItems[i]), extractValueToCompare(item))) {
+          if (angular.equals(extractValueToCompare(newItems[i]),
+              extractValueToCompare(item))) {
             isDuplicate = true;
             break;
           }

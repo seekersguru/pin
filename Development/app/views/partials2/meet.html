@@ -11,9 +11,9 @@
 /
     <li class="active">Event</li>
 </ul>
-</div> 
+</div>
 
- 
+
 
 <div class="gray-hr"></div>
 
@@ -43,26 +43,26 @@
    <div class="row event-row-mar">
      <div class="col-lg-6 col-md-6 col-sm-6">
        <h1>Upcoming Events</h1>
-     </div> 
+     </div>
      <div class="clearfix"></div>
    </div>
   <div class="dot-hr"></div>
    <div class="row event-row-mar">
-     <div class="col-lg-6 col-md-6 col-sm-6" ng-repeat="(key,value) in events" ng-show="!$first">
+     <div class="col-lg-6 col-md-6 col-sm-6" ng-repeat="(key,value) in events|GreaterThanDate" ng-show="!$first">
      <a ng-href="/event/view/{{value._id}}">
       <div class="event-box clearfix">
         <div class="event-iocn">
-         <img ng-src="images/{{value.type}}.jpg" alt=""> 
-       </div> 
+         <img ng-src="images/{{value.type}}.jpg" alt="">
+       </div>
        <div class="event-content">
          <h3>{{value.title}}</h3>
-         <h4>{{value.eventdate | date:"dd MMMM yyyy"}}</h4> 
-         <h4>{{value.location.locality}}</h4> 
-       </div> 
+         <h4>{{value.eventdate | date:"dd MMMM yyyy"}}</h4>
+         <h4>{{value.location.locality}}</h4>
+       </div>
      </div>
-     </a> 
+     </a>
    <br>
-   </div> 
+   </div>
 </div>
 
 
