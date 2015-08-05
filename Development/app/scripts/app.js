@@ -163,6 +163,9 @@ angular.module('pinApp', [
       .when('/who-we-are', {
         templateUrl: 'partials2/about.html'
       })
+      .when('/contact-us', {
+        templateUrl: 'partials2/contact-us.html'
+      })
       .when('/terms', {
         templateUrl: 'partials2/terms.html'
       })
