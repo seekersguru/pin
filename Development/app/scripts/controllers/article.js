@@ -25,13 +25,13 @@ angular.module('pinApp')
       },
       'Essentials Foundation': {
         'caption': 'caption-red',
-        'colorclass': 'blue-box',
+        'colorclass': 'red-box',
         'videoclass': 'video-caption-blue',
         'bodyClass': 'foundation'
       },
       'Growth Pillars': {
         'caption': 'caption-aqua',
-        'colorclass': 'red-box',
+        'colorclass': 'blue-box',
         'videoclass': 'video-caption-red',
         'bodyClass': 'growth'
       },
