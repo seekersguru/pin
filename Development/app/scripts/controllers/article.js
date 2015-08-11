@@ -30,8 +30,8 @@ angular.module('pinApp')
       var w = $(window).width();
       if (w < 768) {
         $("#arch").html(col3_data);
-        $("#home").html(col2_data);
-        $("#navtop").html(col1_data);
+        $("#home").html(col1_data);
+        $("#navtop").html(col2_data);
       } else {
         $("#arch").html(col1_data);
         $("#home").html(col2_data);
