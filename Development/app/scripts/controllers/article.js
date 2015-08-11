@@ -15,6 +15,34 @@ angular.module('pinApp')
     $scope.currentCategoryName = '';
     $scope.HOSTPATH = $location.protocol() + '://' + $location.host();
 
+    var col1_data, col2_data, col3_data, w;
+
+    col1_data = $("#arch").html();
+    col2_data = $("#home").html();
+    col3_data = $("#navtop").html();
+    w = $(window).width();
+
+    if (w < 768) {
+      swap_columns();
+    }
+
+    function swap_columns() {
+      var w = $(window).width();
+      if (w < 768) {
+        $("#arch").html(col3_data);
+        $("#home").html(col1_data);
+        $("#navtop").html(col2_data);
+      } else {
+        $("#arch").html(col1_data);
+        $("#home").html(col2_data);
+        $("#navtop").html(col3_data);
+      }
+    }
+
+
+    $(window).resize(function() {
+      swap_columns();
+    });
 
     $scope.color = {
       'Architect Blueprint': {
