@@ -6,34 +6,34 @@
         <li><a  href="/discussion-listing" >DISCUSSION</a></li>
         <li class="active">START DISCUSSION</li>
       </ul>
-    </div>  
+    </div>
   </div>
 
   <div class="row">
-  
+
      <div class="col-lg-9 col-md-9 col-sm-9">
-    
+
     <div class="submit-articale-section">
-           <h1>Start New Discussion</h1> 
+           <h1>Start New Discussion</h1>
            <div class="register-form-hr"></div>
            <div class="chat-h2text">Begin New Discussion</div>
 
            <form class="register-form"  name="form" ng-submit="chatDetail(form)" novalidate>
             <div class="row">
-            
+
             <div class="col-lg-6 col-md-6 col-sm-6">
               <div class="form-group">
-                
+
                 <input required type="text" name="title" class="form-control" ng-model="chat.title" placeholder="Title"/>
                 <p class="text-danger" ng-show="form.title.$error.required && submitted">Please fill Title.</p>
-             
+
               </div>
             </div>
             </div>
             <div class='row'>
             <div class="col-lg-6  col-md-6 col-sm-6">
               <div class="form-group">
-                
+
                 <select ng-model="chat.topic" name ="topic" class="form-control" required id="sel1">
                   <option  value="">Select Topic</option>
                   <option  value="Grow">Grow</option>
@@ -41,7 +41,7 @@
                   <option  value="Manage">Manage</option>
                   <option  value="Give">Give</option>
                 </select>
-               
+
                 <p class="text-danger" ng-show="form.topic.$error.required && submitted">Please fill Topic Name.</p>
 
 
