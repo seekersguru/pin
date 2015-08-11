@@ -131,12 +131,12 @@ angular.module('pinApp', [
         controller: 'SocketCtrl',
         title: 'Chat Listing'
       })
-      .when('/connect', {
-        templateUrl: 'partials2/connect',
-        controller: 'ConnectCtrl',
-        title: 'Connect Friends',
-        authenticate: true
-      })
+      // .when('/connect', {
+      //   templateUrl: 'partials2/connect',
+      //   controller: 'ConnectCtrl',
+      //   title: 'Connect Friends',
+      //   authenticate: true
+      // })
       .when('/content-id', {
         templateUrl: 'partials2/content-id'
       })
@@ -314,20 +314,21 @@ angular.module('pinApp', [
         authenticate: true
       })
 
-    .when('/admin', {
-        templateUrl: 'partials2/admin/adminpanel',
-        controller: 'AdminPanelCtrl',
-        title: 'Admin Panel',
-        authenticate: true,
-        admin: true
-      })
-      .when('/upload-company', {
-        templateUrl: 'partials2/upload-company',
-        controller: 'UploadCompanyCtrl',
-        title: 'Upload Companies',
-        authenticate: true,
-        admin: true
-      })
+    // .when('/admin', {
+    //     templateUrl: 'partials2/admin/adminpanel',
+    //     controller: 'AdminPanelCtrl',
+    //     title: 'Admin Panel',
+    //     authenticate: true,
+    //     admin: true
+    //   })
+
+    .when('/upload-company', {
+      templateUrl: 'partials2/upload-company',
+      controller: 'UploadCompanyCtrl',
+      title: 'Upload Companies',
+      authenticate: true,
+      admin: true
+    })
 
     .when('/upload-users', {
       templateUrl: 'partials2/upload-users',
