@@ -7,7 +7,7 @@
     <li><a href="/meet">MEET</a></li>
     <li class="active">{{events.title | uppercase}}</li>
 </ul>
-</div>  
+</div>
 
 </div>
 
@@ -16,7 +16,7 @@
 <div class="col-lg-9 colapp.js-md-9 col-sm-9">
 
 <div class="meet-section">
- <h1>Meet</h1> 
+ <h1>Meet</h1>
 <div class="register-form-hr"></div>
 
 <div class="meet-baner-img">
@@ -31,16 +31,16 @@
 <p class="articleview" ng-bind-html="events.bannertext | rawHtml "></p>
 </div>
 <h2>{{events.eventdate | date:"MMMM dd yyyy"}}</h2>
-<P><button class="btn Check-availability" disabled="disabled" type="button" ng-if="(events.registered.indexOf(currentUser._id) > -1) ">REGISTERED </button>
+<!-- <P><button class="btn Check-availability" disabled="disabled" type="button" ng-if="(events.registered.indexOf(currentUser._id) > -1) ">REGISTERED </button>
 <button class="btn Check-availability"   type="button" ng-if="(events.registered.indexOf(currentUser._id) == -1) " ng-click="registerUserInEvent()">REGISTER </button>
-</P>
+</P> -->
 </div>
 </div>
 
 <div class="row">
  <div class="col-lg-5 col-md-5 col-sm-5 comment-text">
 AGENDA
- </div> 
+ </div>
   <div class="clearfix"></div>
 </div>
 <div class="connect-hr2"></div>
@@ -49,7 +49,7 @@ AGENDA
 
  <div class="comment-text" ng-if="events.expert">
 AGENDA
- </div> 
+ </div>
  <div class="connect-hr2"></div>
 
 <div class="row" ng-if="events.expert">
@@ -62,24 +62,24 @@ AGENDA
                    <span><img src="images/mail-icon.png" alt=""></span>
                 </div>
 
-<div><img ng-src="{{val.flag}}" class="img-responsive" alt=""></div> 
+<div><img ng-src="{{val.flag}}" class="img-responsive" alt=""></div>
 </div>
-  <h5>{{val.name}}</h5> 
-  <p>{{val.designation}}</p> 
-</div> 
+  <h5>{{val.name}}</h5>
+  <p>{{val.designation}}</p>
+</div>
 </div>
 </div>
 
 
  <div class="comment-text">
 Venue
- </div> 
+ </div>
  <div class="connect-hr2"></div>
 
 <div class="row">
 <div class="address-section">
   <div class="col-lg-8 col-md-8 col-sm-8 padding-right0">
-   <div class="map-view" id="map"></div> 
+   <div class="map-view" id="map"></div>
   </div>
   <div class="col-lg-4 col-md-4 col-sm-4 padding-left0">
 <div class="address">
@@ -91,7 +91,7 @@ Venue
 
 <p>{{events.location.country}}</p>
 <div class="blue-connect-menu">
-  <div>Members<i class="fa icon-right fa-angle-right"></i></div> 
+  <div>Members<i class="fa icon-right fa-angle-right"></i></div>
  </div>
 </div>
   </div>
@@ -109,12 +109,12 @@ Venue
 
 <!-- <div class="comment-text">
 Sponsors
- </div> 
+ </div>
  <div class="connect-hr2"></div>
 <div class="slider-section">
  <div id="demo">
         <div id="owl-demo" class="owl-carousel">
-          
+
           <div class="item"><img src="images/brand-1.jpg" alt=""></div>
          <div class="item"><img src="images/brand-2.jpg" alt=""></div>
            <div class="item"><img src="images/brand-3.jpg" alt=""></div>
@@ -128,7 +128,7 @@ Sponsors
 </div> -->
 <!-- <p class="pull-right event-bt-mar"><button class="btn Check-availability" type="button"> LOAD MORE </button></p> -->
 <br>
-</div>  
+</div>
 
 </div>
 
