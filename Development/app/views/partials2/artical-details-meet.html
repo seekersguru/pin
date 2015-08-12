@@ -13,7 +13,7 @@
     /
     <li class="active">{{events.title | uppercase}}</li>
 </ul>
-</div>  
+</div>
 
 <div class="gray-hr"></div>
 
@@ -26,10 +26,9 @@
 <img  ng-if="events.media" src="{{events.media.path}}" class="img-responsive" alt="">
  -->
 <div>
-<h1>{{events.title | uppercase}}<h1>
+<h1>{{events.title | uppercase}}</h1>
 <div class="transparent-bg">
 
-<!-- <p class="articleview" ng-bind-html="events.bannertext | rawHtml "></p> -->
 
 <h2>{{events.eventdate | date:"MMMM dd yyyy"}} - {{events.location. }}<br/>{{events.location.state}} {{events.location.country}}</h2>
 
@@ -52,10 +51,12 @@
 
 </div>
 </div>
+<br/>
+<p class="articleview" ng-bind-html="events.bannertext | rawHtml "></p>
 
 <h2>
 AGENDA
- </h2> 
+ </h2>
 
 <h4> {{events.title | uppercase}}</h4>
 
@@ -73,24 +74,24 @@ AGENDA
                    <span><img src="images/mail-icon.png" alt=""></span>
                 </div>
 
-<div><img ng-src="{{val.flag}}" class="img-responsive" alt=""></div> 
+<div><img ng-src="{{val.flag}}" class="img-responsive" alt=""></div>
 </div>
-  <h5>{{val.name}}</h5> 
-  <p>{{val.designation}}</p> 
-</div> 
+  <h5>{{val.name}}</h5>
+  <p>{{val.designation}}</p>
+</div>
 </div>
 </div>
 
 
  <div class="comment-text">
  <h3>Venue</h3>
- </div> 
+ </div>
  <div class="connect-hr2"></div>
 
 <div class="row">
 <div class="address-section">
   <div class="col-lg-8 col-md-8 col-sm-8 padding-right0">
-   <div class="map-view" id="map" style="height: 236px"></div> 
+   <div class="map-view" id="map" style="height: 236px"></div>
   </div>
   <div class="col-lg-4 col-md-4 col-sm-4 padding-left0">
 <div class="address">
@@ -101,7 +102,7 @@ AGENDA
  <p>{{events.location.state}} - {{events.location.postalcode}}</p>
 
 <p>{{events.location.country}}</p>
-<a type="button" class="btn btn-register btn-openid" ng-href="http://maps.google.com/maps?saddr={{events.location.lat}},{{events.location.lng}}&daddr={{events.location.lat}},{{events.location.lng}}&hl=en&sll={{events.location.lat}},{{events.location.lng}}&t=m&mra=mift&mrsp=1&sz={{events.location.zoom}}&z={{events.location.zoom}}" 
+<a type="button" class="btn btn-register btn-openid" ng-href="http://maps.google.com/maps?saddr={{events.location.lat}},{{events.location.lng}}&daddr={{events.location.lat}},{{events.location.lng}}&hl=en&sll={{events.location.lat}},{{events.location.lng}}&t=m&mra=mift&mrsp=1&sz={{events.location.zoom}}&z={{events.location.zoom}}"
 
 
 target="_blank">
@@ -121,7 +122,7 @@ target="_blank">
 <!-- <a ng-if="currentUser.role=='admin'" class="btn register-bt " type="button" ng-href="/event/edit/{{events._id}}"  >Edit </a></p> -->
 
 <br>
-</div>  
+</div>
 
 </div>
 
