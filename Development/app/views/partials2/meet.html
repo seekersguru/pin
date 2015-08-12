@@ -33,7 +33,7 @@
    </div>
   </div>
   <p></p>
-  <p ng-bind-html="events[0].agenda | limitTo:600 | rawHtml "></p>
+  <p ng-bind-html="events[0].bannertext | limitTo:600 | rawHtml "></p>
 
   <div class="date">{{events[0].eventdate | date:"EEE, MMMM dd, yyyy"}}</div>
   <a type="submit" class="btn btn-primary"  ng-href="/event/view/{{events[0]._id}}">
