@@ -48,7 +48,7 @@
   <h3><a ng-href="/articles/view/{{value._id}}">{{value.title}}
  </a></h3>
   </div>
-  <div class="entry-date">May 28, 2015</div>
+  <div class="entry-date">{{value.createdAt | date:"MMMM d , yyyy" }}</div>
     <div class="entry-meta">
      <span><img src="images/comment-icon.png" alt=""></span> <span class="disqus-comment-count" data-disqus-url="{{HOSTPATH}}/articles/view/{{value._id}}"> <!-- Count will be inserted here --> </span> Comments
     </div>
