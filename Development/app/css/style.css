@@ -425,21 +425,27 @@ article .white-box .arrow-articale {
     bottom: -10px;
     position: absolute;
     right: 26px;
+
 }
 .blueprint-bg {
     background-color: #dfe1d4;
+      min-height: 780px;
 }
 .foundation-bg {
     background-color: #e36552;
+      min-height: 780px;
 }
 .growth-bg {
     background-color: #4cd2e6;
+      min-height: 780px;
 }
 .freedom-bg {
     background-color: #aad84c;
+      min-height: 780px;
 }
 .funroof-bg {
     background-color: #eebd0b;
+      min-height: 780px; 
 }
 article .entry-thumb {
     float: left;
