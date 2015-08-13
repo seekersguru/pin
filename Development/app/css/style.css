@@ -2098,7 +2098,12 @@ ul.ed-iocn {
     width: 100%;
 }
 #discussion-nav ul li a {
-    background-size: 100% auto;
+  background-size: auto auto;
+  padding-right: 25px;
+ width: 320px;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
 }
 .padr-20 {
     padding-left: 15px;
@@ -2137,7 +2142,12 @@ ul.ed-iocn {
     padding-left: 15px;
 }
 #discussion-nav ul li a {
-    background-size: 100% auto;
+  background-size: auto auto;
+  padding-right: 25px;
+ width: 320px;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
 }
 .inner-doodles-tophead {
     background-image: url("../images/doodles-top-header-inner.png");
@@ -2264,7 +2274,12 @@ h1 {
     width: 100%;
 }
 #discussion-nav ul li a {
-    background-size: 100% auto;
+  background-size: auto auto;
+  padding-right: 25px;
+ width: 320px;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis
 }
 .padr-20 {
     padding-left: 15px;
@@ -2291,9 +2306,12 @@ h1 {
     width: 100%;
 }
 #discussion-nav ul li a {
-    background-size: auto auto;
-    padding-right: 25px;
+      background-size: auto auto;
+      padding-right: 25px;
      width: 320px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis
 }
 .inner-doodles-tophead {
     background-repeat: no-repeat;
@@ -2480,7 +2498,10 @@ ul.ed-iocn {
 #discussion-nav ul li a {
     background-size: auto auto;
     padding-right: 25px;
-    width: 320px;
+   width: 320px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis
 }
 .video-hight img {
     height: auto;
@@ -2708,4 +2729,4 @@ h1 {
 #discussion-nav ul li.funmoney a{color:#e0930f !important; }
 #discussion-nav ul li.growth a{color:#1faed6 !important; }
 #discussion-nav ul li.foundation a{color:#c61718 !important; }
-#discussion-nav ul li.bluprint a{color:#c61718 !important; }
+#discussion-nav ul li.bluprint a{color:#c0c3b1 !important; }
