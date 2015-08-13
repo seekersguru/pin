@@ -65,8 +65,8 @@ angular.module('pinApp')
       },
       'Freedom Slab': {
         'caption': 'caption-pink',
-        'colorclass': 'blue-box',
-        'videoclass': 'video-caption-blue',
+        'colorclass': 'green-box',
+        'videoclass': 'video-caption-green',
         'bodyClass': 'freedom'
       },
       'Fun Money Roof': {

@@ -18,6 +18,39 @@ angular.module('pinApp')
 					});
 			};
 
+			$scope.color = {
+				'Architect Blueprint': {
+					'caption': 'caption',
+					'colorclass': 'blueprint-box',
+					'videoclass': 'video-caption-yallow',
+					'bodyClass': 'blueprint'
+				},
+				'Essentials Foundation': {
+					'caption': 'caption-red',
+					'colorclass': 'red-box',
+					'videoclass': 'video-caption-blue',
+					'bodyClass': 'foundation'
+				},
+				'Growth Pillars': {
+					'caption': 'caption-aqua',
+					'colorclass': 'blue-box',
+					'videoclass': 'video-caption-red',
+					'bodyClass': 'growth'
+				},
+				'Freedom Slab': {
+					'caption': 'caption-pink',
+					'colorclass': 'green-box',
+					'videoclass': 'video-caption-green',
+					'bodyClass': 'freedom'
+				},
+				'Fun Money Roof': {
+					'caption': 'caption-pink',
+					'colorclass': 'yallow-box',
+					'videoclass': 'video-caption-yallow',
+					'bodyClass': 'funroof'
+				}
+
+			};
 
 			$scope.mmicategorysetting = {
 				'Investments': {
