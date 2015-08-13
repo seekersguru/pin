@@ -63,7 +63,7 @@ Desk</h2>
 									  <div id="discussion-nav">
 									  <h2>Discussions</h1>
 											 <ul>
-													<li ng-repeat="(key,value) in pindiscussionslist | limitTo:2" class="{{color[value.topic].bodyClass}}"><a ng-href="/discussion-start?cid={{value.cid}}">#{{value.title}}</a></li>
+													<li ng-repeat="(key,value) in pindiscussionslist | reverse |limitTo:2" class="{{color[value.topic].bodyClass}}"><a ng-href="/discussion-start?cid={{value.cid}}">#{{value.title}}</a></li>
 											 </ul>
 									</div>
 
