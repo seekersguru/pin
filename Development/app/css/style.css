@@ -2292,6 +2292,8 @@ h1 {
 }
 #discussion-nav ul li a {
     background-size: auto auto;
+    padding-right: 25px;
+     width: 320px;
 }
 .inner-doodles-tophead {
     background-repeat: no-repeat;
@@ -2477,6 +2479,8 @@ ul.ed-iocn {
 }
 #discussion-nav ul li a {
     background-size: auto auto;
+    padding-right: 25px;
+    width: 320px;
 }
 .video-hight img {
     height: auto;
@@ -2699,3 +2703,9 @@ h1 {
 .blueprint .specch-content {
    padding-left: 60px;
 }
+/** right side discussion nav css **/
+#discussion-nav ul li.freedom a{color:#339a01 }
+#discussion-nav ul li.funmoney a{color:#e0930f }
+#discussion-nav ul li.growth a{color:#1faed6 }
+#discussion-nav ul li.foundation a{color:#c61718 }
+#discussion-nav ul li.bluprint a{color:#c61718 }
