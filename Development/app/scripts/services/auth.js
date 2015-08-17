@@ -2,7 +2,7 @@
 
 angular.module('pinApp')
   .factory('Auth', function Auth($location, $rootScope, Session, User, $cookieStore, $window) {
-    
+
     // Get currentUser from cookie
     $rootScope.currentUser = $cookieStore.get('user') || null;
     $cookieStore.remove('user');
@@ -17,14 +17,14 @@ angular.module('pinApp')
       },
       /**
        * Authenticate user
-       * 
+       *
        * @param  {Object}   user     - login info
        * @param  {Function} callback - optional
-       * @return {Promise}            
+       * @return {Promise}
        */
       login: function(user, callback) {
         var cb = callback || angular.noop;
-        
+
         return Session.save({
           email: user.email,
           password: user.password
@@ -38,9 +38,9 @@ angular.module('pinApp')
 
       /**
        * Unauthenticate user
-       * 
+       *
        * @param  {Function} callback - optional
-       * @return {Promise}           
+       * @return {Promise}
        */
       logout: function(callback) {
         var cb = callback || angular.noop;
@@ -55,12 +55,12 @@ angular.module('pinApp')
       },
 
       /**
-        * 
+        *
        * @param  {Object}   user     - user info
        * @param  {Function} callback - optional
-       * @return {Promise}            
+       * @return {Promise}
        */
- 
+
       createUser: function(user, callback) {
         var cb = callback || angular.noop;
         return User.save(user,
@@ -88,11 +88,11 @@ angular.module('pinApp')
 
       /**
        * Change password
-       * 
-       * @param  {String}   oldPassword 
-       * @param  {String}   newPassword 
+       *
+       * @param  {String}   oldPassword
+       * @param  {String}   newPassword
        * @param  {Function} callback    - optional
-       * @return {Promise}              
+       * @return {Promise}
        */
       changePassword: function(_id, oldPassword, newPassword, callback) {
         var cb = callback || angular.noop;
@@ -110,7 +110,7 @@ angular.module('pinApp')
 
       /**
        * Gets all available info on authenticated user
-       * 
+       *
        * @return {Object} user
        */
       currentUser: function() {
@@ -119,7 +119,7 @@ angular.module('pinApp')
 
       /**
        * Simple check to see if a user is logged in
-       * 
+       *
        * @return {Boolean}
        */
       isLoggedIn: function() {
@@ -128,7 +128,7 @@ angular.module('pinApp')
       },
       /**
        * Simple check to see if a user is logged in
-       * 
+       *
        * @return {Boolean}
        */
       isAdmin: function() {
