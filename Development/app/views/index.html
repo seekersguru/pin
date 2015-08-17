@@ -30,13 +30,14 @@
     <!-- build:css(app) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-loading-bar/src/loading-bar.css" />
-    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="bower_components/angular-social/angular-social.css" />
-    <link rel='stylesheet' href='bower_components/textAngular/src/textAngular.css' />
-    <!-- <link rel='stylesheet' href='bower_components/ng-grid/ng-grid.min.css' /> -->
     <link rel='stylesheet' href='bower_components/videogular-themes-default/videogular.min.css' />
-    <link rel='stylesheet' href='bower_components/jquery-ui/themes/base/all.css' />
+    <!-- <link rel="stylesheet" href="bower_components/angular-social/angular-social.css" /> -->
+    <!-- <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" /> -->
+    <!-- <link rel='stylesheet' href='bower_components/textAngular/src/textAngular.css' /> -->
+    <!-- <link rel='stylesheet' href='bower_components/ng-grid/ng-grid.min.css' /> -->
+    <!-- <link rel='stylesheet' href='bower_components/jquery-ui/themes/base/all.css' /> -->
+
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
@@ -52,8 +53,6 @@
     <% if (!css) { %>
     <link rel="stylesheet" href="styles/main.css">
     <% } %>
-
-    <link rel="stylesheet" href="css/owl.carousel.css">
 
   </head>
   <body>
@@ -92,49 +91,22 @@
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/addresspicker/src/jquery.ui.addresspicker.js"></script>
 
-    <script src="bower_components/socket.io-client/dist/socket.io.js"></script>
     <script src="bower_components/es5-shim/es5-sham.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/js/collapse.js"></script>
-    <script src="bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
-    <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/ng-grid/ng-grid-2.0.14.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-loading-bar/src/loading-bar.js"></script>
-    <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
-    <script src="bower_components/angular-social/angular-social.js"></script>
     <script src="bower_components/angular-scroll/angular-scroll.js"></script>
-<!--     <script src="bower_components/angulartics/src/angulartics.js"></script>
-    <script src="bower_components/angulartics/src/angulartics-ga.js"></script>
- -->
-    <script src="bower_components/angular-socket-io/socket.min.js"></script>
-    <script src="bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
-    <script src="bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
-    <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
-    <!-- <script src="bower_components/owl.carousel/src/owl.carousel.js"></script> -->
     <script src="bower_components/fabric/dist/fabric.js"></script>
     <script src="bower_components/videogular/videogular.js"></script>
     <script src="bower_components/videogular-controls/vg-controls.js"></script>
     <script src="bower_components/videogular-overlay-play/vg-overlay-play.js"></script>
     <script src="bower_components/videogular-poster/vg-poster.js"></script>
     <script src="bower_components/videogular-buffering/vg-buffering.js"></script>
-    <script src="bower_components/ng-file-upload/FileAPI.min.js"></script>
-
-    <script src="bower_components/ng-file-upload/FileAPI.flash.swf"></script>
-
-       <!-- for excel parse Start-->
-<!--    <script src="bower_components/js-xlsx/dist/jszip.js"></script>
-    <script src="bower_components/js-xlsx/dist/cpexcel.js"></script>
-    <script src="bower_components/js-xlsx/dist/xlsx.js"></script>
-  -->
-    <!-- ODS support -->
-    <!--<script src="bower_components/js-xlsx/dist/ods.js"></script>-->
-   <!-- for excel parse End-->
-
 
    <!--  <script src="assets/js/vendor.js"></script>
     <script src="assets/js/main.js"></script>
@@ -148,10 +120,8 @@
     <script src="scripts/controllers/session.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/register.js"></script>
-    <script src="scripts/controllers/nishant.js"></script>
     <script src="scripts/controllers/socket.js"></script>
     <script src="scripts/controllers/article.js"></script>
-    <!-- <script src="scripts/controllers/adminpanel.js"></script> -->
     <script src="scripts/controllers/forgot.js"></script>
     <script src="scripts/controllers/footer.js"></script>
     <script src="scripts/controllers/recover.js"></script>
@@ -159,11 +129,7 @@
     <script src="scripts/controllers/meet.js"></script>
     <script src="scripts/controllers/expert.js"></script>
     <script src="scripts/controllers/event.js"></script>
-    <!-- <script src="scripts/controllers/connect.js"></script> -->
-  <!--  <script src="scripts/controllers/company.js"></script>
-    <script src="scripts/controllers/uploadcompany.js"></script>
-    <script src="scripts/controllers/uploadusers.js"></script>
-  -->
+
 
     <script src="scripts/services/user.js"></script>
     <script src="scripts/services/auth.js"></script>
@@ -173,7 +139,6 @@
     <script src="scripts/services/article.js"></script>
     <script src="scripts/services/expert.js"></script>
     <script src="scripts/services/event.js"></script>
-    <!-- <script src="scripts/services/company.js"></script> -->
 
     <script src="scripts/directives/mongooseError.js"></script>
 

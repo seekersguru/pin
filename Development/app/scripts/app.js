@@ -34,19 +34,11 @@ angular.module('pinApp', [
     'ngRoute',
     'ui.bootstrap',
     'chieffancypants.loadingBar',
-    'ngTagsInput',
-    'ngSocial',
-    // 'angulartics',
-    // 'angulartics.google.analytics',
     'duScroll',
-    'angularFileUpload',
-    'btford.socket-io',
-    'textAngular',
     'com.2fdevs.videogular',
     'com.2fdevs.videogular.plugins.controls',
     'com.2fdevs.videogular.plugins.overlayplay',
     'com.2fdevs.videogular.plugins.poster',
-    'ngGrid'
   ])
   .value('nickName', 'anonymous')
   .config(function($compileProvider) {
@@ -101,11 +93,6 @@ angular.module('pinApp', [
             return deferred.promise;
           }]
         }
-      })
-      .when('/nishant', {
-        templateUrl: 'partials2/nishant',
-        controller: 'NishantCtrl'
-
       })
       .when('/dashboard', {
         templateUrl: 'partials2/dashboard'
