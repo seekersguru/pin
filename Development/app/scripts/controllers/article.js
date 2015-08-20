@@ -12,6 +12,15 @@ angular.module('pinApp')
     $scope.hanscategory = ['Architect Blueprint', 'Essentials Foundation',
       'Growth Pillars', 'Freedom Slab', 'Fun Money Roof'
     ];
+
+    $scope.model = {
+      'Architect Blueprint': '',
+      'Essentials Foundation': '',
+      'Growth Pillars': '',
+      'Freedom Slab': '',
+      'Fun Money Roof': ''
+    };
+
     $scope.currentCategoryName = '';
     $scope.HOSTPATH = $location.protocol() + '://' + $location.host();
 

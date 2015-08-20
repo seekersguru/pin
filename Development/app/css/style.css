@@ -445,7 +445,7 @@ article .white-box .arrow-articale {
 }
 .funroof-bg {
     background-color: #eebd0b;
-      min-height: 780px; 
+      min-height: 780px;
 }
 article .entry-thumb {
     float: left;
@@ -2741,3 +2741,48 @@ h1 {
 #discussion-nav ul li.growth a{color:#1faed6 !important; }
 #discussion-nav ul li.foundation a{color:#c61718 !important; }
 #discussion-nav ul li.bluprint a{color:#c0c3b1 !important; }
+
+.modal-content{background-image:url(../images/popup-bg.png); background-repeat:no-repeat;  min-height:245px;  background-size:100%; background-color:transparent;box-shadow:none; border:none;   }
+ .close {
+     color: #000;
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    margin-top: -20px;
+    opacity: 1;
+    position: absolute;
+    right: 45px;
+    text-shadow:none;
+    top: -7px;
+}
+.close:hover, .close:focus {
+    color: #000;
+    cursor: pointer;
+    opacity: 1;
+    text-decoration: none;
+}
+ .modal-body {
+  padding: 9px 50px 0;
+    position: relative; font-size:16px; color:#444444;
+    font-family: 'clear_sans_lightregular';
+}
+ .modal-title {
+    line-height: 1.42857;
+    font-family: 'aint_nothing_fancyregular';
+    font-size:25px;
+    color:#025d66;
+    margin: 0;
+}
+ .modal-header {
+    border-bottom:none;
+    min-height: 16.4286px;
+      padding: 36px 50px 0 50px;
+}
+ .modal.in .modal-dialog {
+    transform: translate(0px, 50%);
+}
+
+ .modal-backdrop {
+   background-color: #ee5c4b;
+}
