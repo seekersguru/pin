@@ -1,7 +1,8 @@
 'use strict';
 angular.module('pinApp')
   .controller('ArticleCtrl', function($scope, Auth, $location, $rootScope,
-    $routeParams, $http, articles, $sce, $timeout, $filter) {
+    $routeParams, $http, articles, $sce, $timeout, $filter,
+    localStorageService, $modal) {
     $scope.article = {};
     $scope.descriptionLimit = 80;
     $scope.titleLimit = 45;
@@ -12,14 +13,51 @@ angular.module('pinApp')
     $scope.hanscategory = ['Architect Blueprint', 'Essentials Foundation',
       'Growth Pillars', 'Freedom Slab', 'Fun Money Roof'
     ];
+
+    $scope.model = {
+      'Architect Blueprint': 'Before you build a house, you need a plan. Write down your goals and figure out how much they cost. Also, think about any attitudes or knowledge gaps that might stop you from building your dream house.',
+      'Essentials Foundation': 'These are things you cannot afford to lose. The most important is your life and health,soget insurance.The next is having emergency cash for any unforeseen events.Some need to have their house, while others need to have part of their wealth in very safe investments with minimal risk.',
+      'Growth Pillars': 'Your job or business is your biggest source of income; keep investing to ensure they stay relevant. But also accumulate some solid growth assets such as income-producing real estate or blue-chip stock portfolio that may fluctuate slightly but likely to give decent returns.',
+      'Freedom Slab': 'To really get ahead and be able to stop working, you need to some risks. If they pay off, you get great returns; if they don’t, you need to be able to write them off and start again. For employed people, it could be your ESOPS or start-up. For business people, it could be a new idea. It could also be illiquid investments.',
+      'Fun Money Roof': 'You only live once. You want to pursue some intellectually or soul-stimulating project. Or give it away.'
+    };
+
+    $scope.openArticle = function(article) {
+      if (!localStorageService.cookie.get([article.hanscategory])) {
+
+        $scope.message = {
+          'title': article.hanscategory,
+          'description': $scope.model[article.hanscategory],
+          'id': article._id
+        };
+
+        localStorageService.cookie.set([article.hanscategory], 1, 1800);
+        var modalInstance = $modal.open({
+          templateUrl: 'messageContainer.html',
+          controller: 'messageContainerCtrl',
+          resolve: {
+            article: function() {
+              return $scope.message;
+            }
+          }
+        });
+
+      } else {
+        $location.path("/articles/view/" + article._id);
+      }
+
+    };
+
     $scope.currentCategoryName = '';
-    $scope.HOSTPATH = $location.protocol() + '://' + $location.host();
+    $scope.HOSTPATH = $location.protocol() +
+      '://' + $location.host();
 
     var col1_data, col2_data, col3_data, w;
 
     col1_data = $("#arch").html();
     col2_data = $("#home").html();
-    col3_data = $("#navtop").html();
+    col3_data = $(
+      "#navtop").html();
     w = $(window).width();
 
     if (w < 768) {
@@ -102,7 +140,8 @@ angular.module('pinApp')
       'name': 'Investments',
       'sub': [{
         'name': 'Traditional',
-        'tags': ['Equities', 'Fixed Interest', 'Real Estate', 'Cash',
+        'tags': ['Equities', 'Fixed Interest', 'Real Estate',
+          'Cash',
           'Global'
         ]
       }, {
@@ -142,7 +181,8 @@ angular.module('pinApp')
     //category name to article listing section
     if ($routeParams.categoryname) {
       $scope.currentCategoryName = $routeParams.categoryname;
-      $rootScope.bodyMainClass = $scope.color[$scope.currentCategoryName].bodyClass +
+      $rootScope.bodyMainClass = $scope.color[$scope.currentCategoryName]
+        .bodyClass +
         "-bg";
       $rootScope.bodyDoodleMainClass = "-" + $scope.color[$scope.currentCategoryName]
         .bodyClass;
@@ -152,7 +192,8 @@ angular.module('pinApp')
     }
     $scope.articles = articles;
     $scope.exceptonearticle = angular.copy(articles);
-    $scope.rightnav = "right-nav.html";
+    $scope
+      .rightnav = "right-nav.html";
 
     $scope.comments = articles.scomments;
     if ($location.path() == "/articles/view/" + articles._id && articles.media) {
@@ -505,7 +546,8 @@ angular.module('pinApp')
 
       file.upload.progress(function(evt) {
         // Math.min is to fix IE which reports 200% sometimes
-        file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+        file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt
+          .total));
       });
 
       file.upload.xhr(function(xhr) {
@@ -516,7 +558,8 @@ angular.module('pinApp')
 
     $scope.generateThumb = function(file) {
       if (file !== null) {
-        if ($scope.fileReaderSupported && (file.type.indexOf('image') > -1 ||
+        if ($scope.fileReaderSupported && (file.type.indexOf('image') > -
+            1 ||
             file.type.indexOf('video') > -1)) {
           $timeout(function() {
             var fileReader = new FileReader();
@@ -726,7 +769,8 @@ angular.module('pinApp')
 
       file.upload.progress(function(evt) {
         // Math.min is to fix IE which reports 200% sometimes
-        file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+        file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt
+          .total));
       });
 
       file.upload.xhr(function(xhr) {
@@ -737,7 +781,8 @@ angular.module('pinApp')
 
     $scope.generateThumb = function(file) {
       if (file !== null) {
-        if ($scope.fileReaderSupported && (file.type.indexOf('image') > -1 ||
+        if ($scope.fileReaderSupported && (file.type.indexOf('image') > -
+            1 ||
             file.type.indexOf('video') > -1)) {
           $timeout(function() {
             var fileReader = new FileReader();
@@ -834,4 +879,24 @@ angular.module('pinApp')
       $scope.form.$setPristine();
     };
 
+  });
+
+
+angular.module('pinApp')
+  .controller('messageContainerCtrl', function($scope, $modalInstance, article,
+    $templateCache, $location) {
+    $scope.messagemodel = {
+      id: article.id,
+      title: article.title,
+      description: article.description
+    };
+
+    $scope.closeMessagePopup = function() {
+      $modalInstance.close();
+      $location.path("/articles/view/" + $scope.messagemodel.id);
+    }
+    $scope.closePopup = function() {
+      $modalInstance.close();
+
+    }
   });
