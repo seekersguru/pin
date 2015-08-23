@@ -40,10 +40,11 @@ angular.module('pinApp')
             }
           }
         });
+        // $rootScope.bodyMainClass = $scope.color[categoryname].bodyClass +
+        "-bg";
 
       } else {
-        $location.path("/category/" +
-          categoryname);
+        $location.path("/category/" + categoryname);
       }
 
     };
@@ -883,7 +884,8 @@ angular.module('pinApp')
 
 
 angular.module('pinApp')
-  .controller('messageContainerCtrl', function($scope, $modalInstance, article,
+  .controller('messageContainerCtrl', function($scope, $rootScope,
+    $modalInstance, article,
     $templateCache, $location) {
     $scope.messagemodel = {
       title: article.title,
@@ -893,9 +895,12 @@ angular.module('pinApp')
     $scope.closeMessagePopup = function() {
       $modalInstance.close();
       $location.path("/category/" + article.title);
+      // $rootScope.bodyMainClass = '';
+
     }
     $scope.closePopup = function() {
       $modalInstance.close();
+      // $rootScope.bodyMainClass = '';
 
     }
   });
