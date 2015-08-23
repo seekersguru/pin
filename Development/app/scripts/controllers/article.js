@@ -22,16 +22,15 @@ angular.module('pinApp')
       'Fun Money Roof': 'You only live once. You want to pursue some intellectually or soul-stimulating project. Or give it away.'
     };
 
-    $scope.openArticle = function(article) {
-      if (!localStorageService.cookie.get([article.hanscategory])) {
+    $scope.openArticle = function(categoryname) {
+      if (!localStorageService.cookie.get([categoryname])) {
 
         $scope.message = {
-          'title': article.hanscategory,
-          'description': $scope.model[article.hanscategory],
-          'id': article._id
+          'title': categoryname,
+          'description': $scope.model[categoryname]
         };
 
-        localStorageService.cookie.set([article.hanscategory], 1, 1800);
+        localStorageService.cookie.set([categoryname], 1, 1800);
         var modalInstance = $modal.open({
           templateUrl: 'messageContainer.html',
           controller: 'messageContainerCtrl',
@@ -43,7 +42,8 @@ angular.module('pinApp')
         });
 
       } else {
-        $location.path("/articles/view/" + article._id);
+        $location.path("/category/" +
+          categoryname);
       }
 
     };
@@ -886,14 +886,13 @@ angular.module('pinApp')
   .controller('messageContainerCtrl', function($scope, $modalInstance, article,
     $templateCache, $location) {
     $scope.messagemodel = {
-      id: article.id,
       title: article.title,
       description: article.description
     };
 
     $scope.closeMessagePopup = function() {
       $modalInstance.close();
-      $location.path("/articles/view/" + $scope.messagemodel.id);
+      $location.path("/category/" + article.title);
     }
     $scope.closePopup = function() {
       $modalInstance.close();
