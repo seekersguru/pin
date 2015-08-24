@@ -1,8 +1,7 @@
 'use strict';
 angular.module('pinApp')
   .controller('ArticleCtrl', function($scope, Auth, $location, $rootScope,
-    $routeParams, $http, articles, $sce, $timeout, $filter,
-    localStorageService, $modal) {
+    $routeParams, $http, articles, $sce, $timeout, $filter, $modal) {
     $scope.article = {};
     $scope.descriptionLimit = 80;
     $scope.titleLimit = 45;
@@ -14,38 +13,39 @@ angular.module('pinApp')
       'Growth Pillars', 'Freedom Slab', 'Fun Money Roof'
     ];
 
-    $scope.model = {
+    $scope.modelPopup = {
       'Architect Blueprint': 'Before you build a house, you need a plan. Write down your goals and figure out how much they cost. Also, think about any attitudes or knowledge gaps that might stop you from building your dream house.',
-      'Essentials Foundation': 'These are things you cannot afford to lose. The most important is your life and health,soget insurance.The next is having emergency cash for any unforeseen events.Some need to have their house, while others need to have part of their wealth in very safe investments with minimal risk.',
-      'Growth Pillars': 'Your job or business is your biggest source of income; keep investing to ensure they stay relevant. But also accumulate some solid growth assets such as income-producing real estate or blue-chip stock portfolio that may fluctuate slightly but likely to give decent returns.',
-      'Freedom Slab': 'To really get ahead and be able to stop working, you need to some risks. If they pay off, you get great returns; if they don’t, you need to be able to write them off and start again. For employed people, it could be your ESOPS or start-up. For business people, it could be a new idea. It could also be illiquid investments.',
-      'Fun Money Roof': 'You only live once. You want to pursue some intellectually or soul-stimulating project. Or give it away.'
+      'Essentials Foundation': 'These are things you cannot afford to lose. The most important is your life and health, so get insurance. The next is having emergency cash for any unforeseen events. Some need to have their house, while others need to have part of their wealth in very safe investments with minimal risk.',
+      'Growth Pillars': 'Your profession is your biggest source of income; keep investing in skills to ensure they stay relevant. But also accumulate some solid growth assets. The longer time horizon you have, the more you can invest in a diversified portfolio value or mid-cap stocks and let compounding do the growth work for you.',
+      'Freedom Slab': 'Once you are ready to stop working, you can convert part of your growth portfolio into income, either by selling smaller amounts on a regular basis, or (if you are older) converting your portfolio to more income-producing real estate or blue-chip stock portfolio that may fluctuate slightly but likely to give decent returns.',
+      'Fun Money Roof': 'To really get ahead, you need to be aspirational; you need to some risks. If they pay off, you get great returns; if they don’t, you need to be able to write them off and start again. For employed people, it could be your ESOPS or start-up. For business people, it could be a new idea. It could also be alternative investments. And then pursue some intellectually or soul-stimulating project. Or give it away.'
     };
 
     $scope.openArticle = function(categoryname) {
-      if (!localStorageService.cookie.get([categoryname])) {
-
-        $scope.message = {
-          'title': categoryname,
-          'description': $scope.model[categoryname]
-        };
-
-        localStorageService.cookie.set([categoryname], 1, 1800);
-        var modalInstance = $modal.open({
-          templateUrl: 'messageContainer.html',
-          controller: 'messageContainerCtrl',
-          resolve: {
-            article: function() {
-              return $scope.message;
-            }
-          }
-        });
-        // $rootScope.bodyMainClass = $scope.color[categoryname].bodyClass +
-        "-bg";
-
-      } else {
-        $location.path("/category/" + categoryname);
-      }
+      // alert("hi");
+      // if (!localStorageService.cookie.get([categoryname])) {
+      //
+      //   $scope.message = {
+      //     'title': categoryname,
+      //     'description': $scope.modelPopup[categoryname]
+      //   };
+      //
+      //   localStorageService.cookie.set([categoryname], 1, 1800);
+      //   var modalInstance = $modal.open({
+      //     templateUrl: 'messageContainer.html',
+      //     controller: 'messageContainerCtrl',
+      //     resolve: {
+      //       article: function() {
+      //         return $scope.message;
+      //       }
+      //     }
+      //   });
+      //   // $rootScope.bodyMainClass = $scope.color[categoryname].bodyClass +
+      //   // "-bg";
+      //
+      // } else {
+      //   $location.path("/category/" + categoryname);
+      // }
 
     };
 
