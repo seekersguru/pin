@@ -1,12 +1,12 @@
 'use strict';
 
-var express, http, path, app,  server;
+var express, http, path, app, server;
 
 // BinaryServer = require('binaryjs').BinaryServer;
-express      = require('express');
-http         = require('http');
-path         = require('path');
-app          = express();
+express = require('express');
+http = require('http');
+path = require('path');
+app = express();
 // video        = require('./lib/video');
 
 //all environments
@@ -23,11 +23,11 @@ if ('development' == app.get('env')) {
 }
 
 var express = require('express'),
-    path = require('path'),
-    fs = require('fs'),
-    //io = require('socket.io'),
-    http = require('http'),
-    mongoose = require('mongoose');
+  path = require('path'),
+  fs = require('fs'),
+  //io = require('socket.io'),
+     http = require('http'),
+  mongoose = require('mongoose');
 
 
 /**
@@ -36,22 +36,22 @@ var express = require('express'),
 
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-process.env.FB_APP_ID=703341096418077;
-process.env.FB_APP_SECRET="523d6510a56672ae230d91910085612c";
+process.env.FB_APP_ID = 703341096418077;
+process.env.FB_APP_SECRET = "523d6510a56672ae230d91910085612c";
 
 // Application Config
 var config = require('./lib/config/config');
 // config['facebook']['id']=703341096418077;
 // config['facebook']['secret']="523d6510a56672ae230d91910085612c";
 
-config.linkedin={
-  key:'75jcyupgn21hu2',
-  secretkey:'EvgypAvfjwxjxeh0'
+config.linkedin = {
+  key: '75jcyupgn21hu2',
+  secretkey: 'EvgypAvfjwxjxeh0'
 };
 
-config.facebook={
-  id:703341096418077,
-  secret:'523d6510a56672ae230d91910085612c'
+config.facebook = {
+  id: 703341096418077,
+  secret: '523d6510a56672ae230d91910085612c'
 };
 
 config["port"]=3002;
@@ -60,7 +60,7 @@ var db = mongoose.connect(config.mongo.uri, config.mongo.options);
 
 // Bootstrap models
 var modelsPath = path.join(__dirname, 'lib/models');
-fs.readdirSync(modelsPath).forEach(function (file) {
+fs.readdirSync(modelsPath).forEach(function(file) {
   if (/(.*)\.(js$|coffee$)/.test(file)) {
     require(modelsPath + '/' + file);
   }
@@ -70,7 +70,7 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 
 // Populate empty DB with sample data
 // require('./lib/config/dummydata');
-    // }));
+// }));
 
 // Passport Configuration
 var passport = require('./lib/config/passport');
@@ -81,13 +81,13 @@ require('./lib/config/express')(app);
 require('./lib/routes')(app);
 
 
-var  io = require('socket.io'),
- server = http.createServer(app),
- io = io.listen(server),
- favicon = require('static-favicon'),
- logger = require('morgan'),
- cookieParser = require('cookie-parser'),
- bodyParser = require('body-parser');
+var io = require('socket.io'),
+  server = http.createServer(app),
+  io = io.listen(server),
+  favicon = require('static-favicon'),
+  logger = require('morgan'),
+  cookieParser = require('cookie-parser'),
+  bodyParser = require('body-parser');
 
 
 //set up our socket server
@@ -109,10 +109,10 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 
 /// catch 404 and forwarding to error handler
-app.use(function (req, res, next) {
-var err = new Error('Not Found');
-err.status = 404;
-next(err);
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 /// error handlers
@@ -120,23 +120,23 @@ next(err);
 //development error handler
 //will print stacktrace
 if (app.get('env') === 'development') {
-app.use(function (err, req, res, next) {
- res.status(err.status || 500);
- res.render('error', {
-   message: err.message,
-   error: err
- });
-});
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
 }
 
 //production error handler
 //no stacktraces leaked to user
-app.use(function (err, req, res, next) {
-res.status(err.status || 500);
-res.render('error', {
- message: err.message,
- error: {}
-});
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
 
