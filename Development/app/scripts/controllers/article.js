@@ -1,7 +1,9 @@
 'use strict';
 angular.module('pinApp')
-  .controller('ArticleCtrl', function($scope, Auth, $location, $rootScope,
-    $routeParams, $http, articles, $sce, $timeout, $filter, $modal) {
+  .controller('ArticleCtrl', function($scope, $compile, Auth, $location,
+    $rootScope,
+    $routeParams, $http, articles, $sce, $timeout, $filter,
+    localStorageService, $modal) {
     $scope.article = {};
     $scope.descriptionLimit = 80;
     $scope.titleLimit = 45;
@@ -22,30 +24,29 @@ angular.module('pinApp')
     };
 
     $scope.openArticle = function(categoryname) {
-      // alert("hi");
-      // if (!localStorageService.cookie.get([categoryname])) {
-      //
-      //   $scope.message = {
-      //     'title': categoryname,
-      //     'description': $scope.modelPopup[categoryname]
-      //   };
-      //
-      //   localStorageService.cookie.set([categoryname], 1, 1800);
-      //   var modalInstance = $modal.open({
-      //     templateUrl: 'messageContainer.html',
-      //     controller: 'messageContainerCtrl',
-      //     resolve: {
-      //       article: function() {
-      //         return $scope.message;
-      //       }
-      //     }
-      //   });
-      //   // $rootScope.bodyMainClass = $scope.color[categoryname].bodyClass +
-      //   // "-bg";
-      //
-      // } else {
-      //   $location.path("/category/" + categoryname);
-      // }
+      if (!localStorageService.cookie.get([categoryname])) {
+
+        $scope.message = {
+          'title': categoryname,
+          'description': $scope.modelPopup[categoryname]
+        };
+
+        localStorageService.cookie.set([categoryname], 1, 1800);
+        var modalInstance = $modal.open({
+          templateUrl: 'messageContainer.html',
+          controller: 'messageContainerCtrl',
+          resolve: {
+            article: function() {
+              return $scope.message;
+            }
+          }
+        });
+        // $rootScope.bodyMainClass = $scope.color[categoryname].bodyClass +
+        // "-bg";
+
+      } else {
+        $location.path("/category/" + categoryname);
+      }
 
     };
 
@@ -68,13 +69,13 @@ angular.module('pinApp')
     function swap_columns() {
       var w = $(window).width();
       if (w < 768) {
-        $("#arch").html(col3_data);
-        $("#home").html(col1_data);
-        $("#navtop").html(col2_data);
+        $("#arch").html($compile(col3_data)($scope));
+        $("#home").html($compile(col1_data)($scope));
+        $("#navtop").html($compile(col2_data)($scope));
       } else {
-        $("#arch").html(col1_data);
-        $("#home").html(col2_data);
-        $("#navtop").html(col3_data);
+        $("#arch").html($compile(col1_data)($scope));
+        $("#home").html($compile(col2_data)($scope));
+        $("#navtop").html($compile(col3_data)($scope));
       }
     }
 

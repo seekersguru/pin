@@ -38,8 +38,8 @@ angular.module('pinApp', [
     'com.2fdevs.videogular',
     'com.2fdevs.videogular.plugins.controls',
     'com.2fdevs.videogular.plugins.overlayplay',
-    'com.2fdevs.videogular.plugins.poster'
-    // 'LocalStorageModule'
+    'com.2fdevs.videogular.plugins.poster',
+    'LocalStorageModule'
   ])
   .value('nickName', 'anonymous')
   .config(function($compileProvider) {
@@ -55,8 +55,8 @@ angular.module('pinApp', [
     });
   }])
 
-.config(function($routeProvider, $locationProvider, $httpProvider) {
-    // localStorageServiceProvider
+.config(function($routeProvider, $locationProvider, $httpProvider,
+    localStorageServiceProvider) {
     $routeProvider
       .when('/home', {
         templateUrl: 'partials2/main',
@@ -511,9 +511,9 @@ angular.module('pinApp', [
     });
 
     $locationProvider.html5Mode(true);
-    // localStorageServiceProvider
-    //   .setPrefix('Themoneyhans')
-    // .setStorageCookie(1800, '/');
+    localStorageServiceProvider
+      .setPrefix('Themoneyhans')
+      .setStorageCookie(1800, '/');
     // Intercept 401s and redirect you to login
     $httpProvider.interceptors.push(['$q', '$location', function($q,
       $location) {
