@@ -2557,15 +2557,14 @@ h1 {
 }
 @media (max-width: 767px) {
   .modal-content {
-      background-color: transparent;
-      background-image: url("../images/modal-bg-2.png");
-      background-repeat: no-repeat;
-      background-size: 100% auto;
-      border: medium none;
-      box-shadow: none;
-      height: 338px;
-  }
-
+    background-color: transparent;
+    background-image: url("../images/modal-bg-2.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    border: medium none;
+    box-shadow: none;
+    height: 400px;
+}
 
   .modal-header {
       padding: 36px 25px 0;
