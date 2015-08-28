@@ -2,15 +2,15 @@
 
 angular.module('pinApp')
   .controller('EventListCtrl', function($scope, $rootScope, events) {
-    angular.forEach(events, function(eventname, key) {
-      var currentdate = new Date();
-      //
-      // if (new Date(eventname.eventdate) < new Date(currentdate)) {
-      //   events.splice(key, 1);
-      //   console.log(key);
-      // }
-
-    });
+    // angular.forEach(events, function(eventname, key) {
+    //   var currentdate = new Date();
+    //   //
+    //   // if (new Date(eventname.eventdate) < new Date(currentdate)) {
+    //   //   events.splice(key, 1);
+    //   //   console.log(key);
+    //   // }
+    //
+    // });
     $scope.events = events;
 
   });
