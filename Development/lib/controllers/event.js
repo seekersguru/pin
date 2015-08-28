@@ -242,7 +242,7 @@ exports.query = function(req, res) {
 
   /** sorting according to date */
 
-  q.sort('-createdAt');
+  q.sort('eventdate');
 
   /** finally execute */
   q.populate('author', 'name email').exec(function(err, articles) {
@@ -265,7 +265,7 @@ exports.basic = function(req, res) {
 
   /** sorting according to date */
 
-  q.sort('-createdAt');
+  q.sort('eventdate');
   q.where('hans').equals(true);
 
 
