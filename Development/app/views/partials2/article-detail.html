@@ -204,7 +204,7 @@
   
 
 
-  <div class="comments-hr-top">comments</div>
+  <div class="comments-hr-top">Comments</div>
   <ul class="commentList">
     <li ng-repeat="(key,value) in articles.comments" ng-if="currentUser._id==value.user._id || value.user.commentvisible == 'public' || (value.user.commentvisible == 'friends' && checkcommitstatus (currentUser._id,value.following) )  ">
     <div class="clearfix">
