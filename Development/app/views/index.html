@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="fragment" content="!">
     <base href="/">
     <title ng-bind="appTitle"></title>
 
@@ -82,6 +82,9 @@
         window.location.hash = '';
     }
     </script>
+    <script>
+    window.prerenderReady = false;
+    </script>
     <!-- build:js(app) scripts/vendor.js -->
     <!-- bower:js -->
 
@@ -109,9 +112,10 @@
     <script src="bower_components/videogular-poster/vg-poster.js"></script>
     <script src="bower_components/videogular-buffering/vg-buffering.js"></script>
 
-   <!--  <script src="assets/js/vendor.js"></script>
-    <script src="assets/js/main.js"></script>
- -->
+   <!--
+     <script src="assets/js/vendor.js"></script>
+      <script src="assets/js/main.js"></script>
+     -->
 
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/navbar.js"></script>
@@ -137,11 +141,10 @@
     <script src="scripts/filters/filters.js"></script>
 
 </div>
-
-<!--
-NISHU
-!
-
--->
+<script type="text/javascript">
+$(document).ready(function(){
+$("script")[$("script").length-1].remove()
+});
+</script>
 </body>
 </html>

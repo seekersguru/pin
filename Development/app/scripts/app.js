@@ -531,6 +531,7 @@ angular.module('pinApp', [
   })
   .run(function($rootScope, $location, Auth) {
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
+
       $rootScope.bodyMainClass = "";
       $rootScope.appTitle = 'The Money Hans';
       if (next.title) {
@@ -544,6 +545,7 @@ angular.module('pinApp', [
       $rootScope.ogDescription = "PIN Description";
       $rootScope.ogImage = "";
       $rootScope.ogUrl = "http://" + $location.host() + $location.path();
+      window.prerenderReady = true;
 
       if (next.authenticate == false && Auth.isLoggedIn()) {
         $location.path('/articles/01');
@@ -558,6 +560,7 @@ angular.module('pinApp', [
         $location.path('/home');
       }
     });
+
 
     $rootScope.$on('$routeChangeSuccess', function() {});
 
