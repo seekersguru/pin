@@ -108,8 +108,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 
+
+app.use(require('prerender-node')
+  .set('prerenderToken', config.PRERENDER_IO_TOKEN)
+  .set('beforeRender', function(req, done) {
+    // do whatever you need to do
+    console.log("start");
+  })
+  .set('afterRender', function(err, req, prerender_res) {
+    // do whatever you need to do
+    console.log(prerender_res);
+  }));
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
+
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
