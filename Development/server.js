@@ -110,6 +110,7 @@ app.use(cookieParser());
 
 
 app.use(require('prerender-node')
+  // .set('prerenderServiceUrl', 'http://localhost:3000/')
   .set('prerenderToken', config.PRERENDER_IO_TOKEN)
   .set('beforeRender', function(req, done) {
     // do whatever you need to do
