@@ -541,9 +541,9 @@ angular.module('pinApp', [
         $rootScope.redirectPath = $location.path();
       }
 
-      $rootScope.ogTitle = "PIN";
-      $rootScope.ogDescription = "PIN Description";
-      $rootScope.ogImage = "";
+      $rootScope.ogTitle = "The Money Hans";
+      $rootScope.ogDescription = "The Money Hans Description";
+      $rootScope.ogImage = "http://themoneyhans.com/images/logo.png";
       $rootScope.ogUrl = "http://" + $location.host() + $location.path();
       window.prerenderReady = true;
 

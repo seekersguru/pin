@@ -15,6 +15,21 @@ angular.module('pinApp')
       'Growth Pillars', 'Freedom Slab', 'Fun Money Roof'
     ];
 
+    var sitename = "http://" + $location.host() + $location.path();
+    if (articles.length) {
+      $rootScope.appTitle = "Articles";
+      $rootScope.ogTitle = "Articles";
+      $rootScope.ogDescription = "Articles In  The Money Hans";
+
+    } else {
+      $rootScope.appTitle = articles.title;
+      $rootScope.ogTitle = articles.title;
+      $rootScope.ogDescription = articles.title + "The Money Hans";
+      $rootScope.ogImage = articles.media && articles.media.path ? sitename +
+        articles.media.path :
+        sitename + "images/logo.png";
+
+    }
     $scope.modelPopup = {
       'Architect Blueprint': 'Before you build a house, you need a plan. Write down your goals and figure out how much they cost. Also, think about any attitudes or knowledge gaps that might stop you from building your dream house.',
       'Essentials Foundation': 'These are things you cannot afford to lose. The most important is your life and health, so get insurance. The next is having emergency cash for any unforeseen events. Some need to have their house, while others need to have part of their wealth in very safe investments with minimal risk.',
@@ -428,6 +443,7 @@ angular.module('pinApp')
     $rootScope, $routeParams, article, $sce, $http, $upload, $timeout) {
     $scope.category = ['Grow', 'Protect', 'Manage', 'Give'];
     $scope.article = article;
+
 
     $scope.article.tags = "";
     $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI ==
