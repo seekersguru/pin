@@ -15,7 +15,7 @@ angular.module('pinApp')
       'Growth Pillars', 'Freedom Slab', 'Fun Money Roof'
     ];
 
-    var sitename = "http://" + $location.host() + $location.path();
+    var sitename = "http://" + $location.host() + "/";
     if (articles.length) {
       $rootScope.appTitle = "Articles";
       $rootScope.ogTitle = "Articles";
