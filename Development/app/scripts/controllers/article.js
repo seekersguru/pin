@@ -25,7 +25,8 @@ angular.module('pinApp')
       $rootScope.appTitle = articles.title;
       $rootScope.ogTitle = articles.title;
       $rootScope.ogDescription = articles.title + "The Money Hans";
-      $rootScope.ogImage = articles.media && articles.media.path ? articles.media
+      $rootScope.ogImage = articles.media && articles.media.path ? sitename +
+        articles.media
         .path : sitename + "images/logo.png";
 
     }
