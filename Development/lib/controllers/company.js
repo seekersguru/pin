@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-User = mongoose.model('Serviceuser'),
+// User = mongoose.model('Serviceuser'),
 Company = mongoose.model('Company'),
 multipart = require('connect-multiparty'),
 fs = require('fs'),

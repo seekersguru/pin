@@ -1,0 +1,54 @@
+<div class="container">
+<div id="content-section">
+
+
+<div class="row">
+<div class="col-lg-8 col-md-8 col-sm-8">
+
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12">
+<div class="breadcam-link">
+<ul>
+    <li><a href="#"><i class="fa fa-home"></i></a></li>
+/
+ <li><a href="/companies">Directory</a></li>
+/
+ <li><a href="/companies">Company Profile</a></li>
+/
+
+<li class="active">{{article.title}}</li>
+</ul>
+</div> 
+</div>
+
+
+</div> 
+
+<div class="gray-hr"></div>
+
+
+<div class="directory-section">
+ <h1> {{article.title}}</h1>
+ <p><b>Type Institution:  </b>{{article.firmsubtype}}</p>
+ <p><b>Website:  </b>{{article.url}}</p>
+ <p class="articleview" ng-bind-html="article.description | rawHtml "></p>
+<div ng-repeat="(key,value) in article.address" ng-if="value.main==true" >
+ <h4>Main Office</h4>
+<p><b>Country:</b> {{value.country}}</p>
+<p><b>Address:</b> {{value.street}}
+<p> {{value.city}} {{value.state}} {{value.pin}}</p></p>
+<p><b>Phone:</b> {{value.phone}}</p>
+</div>
+ <div class="gray-hr"></div>
+    
+<p><a class="btn readmore-left-bt" type="button" href="/companies"  >Back To Companies </a>
+ <a ng-if="currentUser.role=='admin'" class="btn readmore-bt " type="button" ng-href="/company/edit/{{article._id}}"  >Edit </a></p>
+
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+  <div ng-include="'partials2/right-nav.html'"> </div>
+</div>
+</div>
+</div>
+

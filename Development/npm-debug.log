@@ -1,0 +1,304 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 warn package.json pincom@0.0.0 No description
+5 warn package.json pincom@0.0.0 No repository field.
+6 warn package.json pincom@0.0.0 No README data
+7 verbose readDependencies using package.json deps
+8 verbose install where, deps [ '/home/malay/Projects/pin/Development',
+8 verbose install   [ 'connect-mongo',
+8 verbose install     'ejs',
+8 verbose install     'email-templates',
+8 verbose install     'express',
+8 verbose install     'static-favicon',
+8 verbose install     'morgan',
+8 verbose install     'cookie-parser',
+8 verbose install     'body-parser',
+8 verbose install     'debug',
+8 verbose install     'jade',
+8 verbose install     'stylus',
+8 verbose install     'socket.io',
+8 verbose install     'binaryjs',
+8 verbose install     'lodash',
+8 verbose install     'mongoose',
+8 verbose install     'nodemailer',
+8 verbose install     'passport',
+8 verbose install     'passport-facebook',
+8 verbose install     'passport-google',
+8 verbose install     'passport-twitter',
+8 verbose install     'passport-local',
+8 verbose install     'prerender-node',
+8 verbose install     'express-session',
+8 verbose install     'mongoose-unique-validator',
+8 verbose install     'connect-multiparty',
+8 verbose install     'mongoose-assert',
+8 verbose install     'xlsx',
+8 verbose install     'connect-livereload',
+8 verbose install     'del',
+8 verbose install     'gulp',
+8 verbose install     'gulp-autoprefixer',
+8 verbose install     'gulp-cache',
+8 verbose install     'gulp-concat',
+8 verbose install     'gulp-filter',
+8 verbose install     'gulp-imagemin',
+8 verbose install     'gulp-jshint',
+8 verbose install     'gulp-livereload',
+8 verbose install     'gulp-load-plugins',
+8 verbose install     'gulp-minify-css',
+8 verbose install     'gulp-nodemon',
+8 verbose install     'gulp-notify',
+8 verbose install     'gulp-rename',
+8 verbose install     'gulp-ruby-sass',
+8 verbose install     'gulp-uglify',
+8 verbose install     'main-bower-files',
+8 verbose install     'node-inspector' ] ]
+9 info preinstall pincom@0.0.0
+10 verbose readDependencies using package.json deps
+11 verbose already installed skipping email-templates@1.1.0 /home/malay/Projects/pin/Development
+12 verbose already installed skipping connect-mongo@~0.4.0 /home/malay/Projects/pin/Development
+13 verbose already installed skipping ejs@~0.8.4 /home/malay/Projects/pin/Development
+14 verbose already installed skipping express@~3.5.0 /home/malay/Projects/pin/Development
+15 verbose already installed skipping static-favicon@~1.0.0 /home/malay/Projects/pin/Development
+16 verbose already installed skipping morgan@~1.0.0 /home/malay/Projects/pin/Development
+17 verbose already installed skipping cookie-parser@~1.0.1 /home/malay/Projects/pin/Development
+18 verbose already installed skipping body-parser@~1.0.0 /home/malay/Projects/pin/Development
+19 verbose already installed skipping debug@~0.7.4 /home/malay/Projects/pin/Development
+20 verbose already installed skipping jade@~1.3.0 /home/malay/Projects/pin/Development
+21 verbose already installed skipping stylus@0.42.3 /home/malay/Projects/pin/Development
+22 verbose already installed skipping socket.io@^0.9.16 /home/malay/Projects/pin/Development
+23 verbose already installed skipping binaryjs@0.2.1 /home/malay/Projects/pin/Development
+24 verbose already installed skipping mongoose@~3.8.8 /home/malay/Projects/pin/Development
+25 verbose already installed skipping lodash@^2.4.1 /home/malay/Projects/pin/Development
+26 verbose already installed skipping nodemailer@0.7.1 /home/malay/Projects/pin/Development
+27 verbose already installed skipping passport@~0.2.0 /home/malay/Projects/pin/Development
+28 verbose already installed skipping passport-facebook@~0.1.6 /home/malay/Projects/pin/Development
+29 verbose already installed skipping passport-google@^0.3.0 /home/malay/Projects/pin/Development
+30 verbose already installed skipping passport-local@~0.1.6 /home/malay/Projects/pin/Development
+31 verbose already installed skipping passport-twitter@^1.0.2 /home/malay/Projects/pin/Development
+32 verbose already installed skipping prerender-node@^1.0.6 /home/malay/Projects/pin/Development
+33 verbose already installed skipping express-session@~1.0.0 /home/malay/Projects/pin/Development
+34 verbose already installed skipping mongoose-unique-validator@~0.4.1 /home/malay/Projects/pin/Development
+35 verbose already installed skipping mongoose-assert@~1.0.2 /home/malay/Projects/pin/Development
+36 verbose already installed skipping connect-multiparty@~1.2.5 /home/malay/Projects/pin/Development
+37 verbose already installed skipping xlsx@~0.8.0 /home/malay/Projects/pin/Development
+38 verbose already installed skipping connect-livereload@~0.5.3 /home/malay/Projects/pin/Development
+39 verbose already installed skipping del@~1.1.1 /home/malay/Projects/pin/Development
+40 verbose already installed skipping gulp-autoprefixer@~2.1.0 /home/malay/Projects/pin/Development
+41 verbose cache add [ 'gulp@^3.9.0', null ]
+42 verbose cache add name=undefined spec="gulp@^3.9.0" args=["gulp@^3.9.0",null]
+43 verbose parsed url { protocol: null,
+43 verbose parsed url   slashes: null,
+43 verbose parsed url   auth: null,
+43 verbose parsed url   host: null,
+43 verbose parsed url   port: null,
+43 verbose parsed url   hostname: null,
+43 verbose parsed url   hash: null,
+43 verbose parsed url   search: null,
+43 verbose parsed url   query: null,
+43 verbose parsed url   pathname: 'gulp@^3.9.0',
+43 verbose parsed url   path: 'gulp@^3.9.0',
+43 verbose parsed url   href: 'gulp@^3.9.0' }
+44 verbose cache add name="gulp" spec="^3.9.0" args=["gulp","^3.9.0"]
+45 verbose parsed url { protocol: null,
+45 verbose parsed url   slashes: null,
+45 verbose parsed url   auth: null,
+45 verbose parsed url   host: null,
+45 verbose parsed url   port: null,
+45 verbose parsed url   hostname: null,
+45 verbose parsed url   hash: null,
+45 verbose parsed url   search: null,
+45 verbose parsed url   query: null,
+45 verbose parsed url   pathname: '^3.9.0',
+45 verbose parsed url   path: '^3.9.0',
+45 verbose parsed url   href: '^3.9.0' }
+46 verbose addNamed [ 'gulp', '^3.9.0' ]
+47 verbose addNamed [ null, '>=3.9.0-0 <4.0.0-0' ]
+48 verbose already installed skipping gulp-cache@~0.2.7 /home/malay/Projects/pin/Development
+49 verbose already installed skipping gulp-concat@~2.5.2 /home/malay/Projects/pin/Development
+50 silly lockFile a7ccee77-gulp-3-9-0 gulp@^3.9.0
+51 verbose lock gulp@^3.9.0 /home/malay/.npm/a7ccee77-gulp-3-9-0.lock
+52 verbose already installed skipping gulp-imagemin@~2.2.1 /home/malay/Projects/pin/Development
+53 verbose already installed skipping gulp-filter@~2.0.2 /home/malay/Projects/pin/Development
+54 verbose already installed skipping gulp-jshint@~1.9.2 /home/malay/Projects/pin/Development
+55 verbose already installed skipping gulp-load-plugins@~0.10.0 /home/malay/Projects/pin/Development
+56 verbose already installed skipping gulp-livereload@~3.7.0 /home/malay/Projects/pin/Development
+57 verbose already installed skipping gulp-minify-css@~0.4.6 /home/malay/Projects/pin/Development
+58 verbose cache add [ 'gulp-nodemon@^2.0.3', null ]
+59 verbose cache add name=undefined spec="gulp-nodemon@^2.0.3" args=["gulp-nodemon@^2.0.3",null]
+60 verbose parsed url { protocol: null,
+60 verbose parsed url   slashes: null,
+60 verbose parsed url   auth: null,
+60 verbose parsed url   host: null,
+60 verbose parsed url   port: null,
+60 verbose parsed url   hostname: null,
+60 verbose parsed url   hash: null,
+60 verbose parsed url   search: null,
+60 verbose parsed url   query: null,
+60 verbose parsed url   pathname: 'gulp-nodemon@^2.0.3',
+60 verbose parsed url   path: 'gulp-nodemon@^2.0.3',
+60 verbose parsed url   href: 'gulp-nodemon@^2.0.3' }
+61 verbose cache add name="gulp-nodemon" spec="^2.0.3" args=["gulp-nodemon","^2.0.3"]
+62 verbose parsed url { protocol: null,
+62 verbose parsed url   slashes: null,
+62 verbose parsed url   auth: null,
+62 verbose parsed url   host: null,
+62 verbose parsed url   port: null,
+62 verbose parsed url   hostname: null,
+62 verbose parsed url   hash: null,
+62 verbose parsed url   search: null,
+62 verbose parsed url   query: null,
+62 verbose parsed url   pathname: '^2.0.3',
+62 verbose parsed url   path: '^2.0.3',
+62 verbose parsed url   href: '^2.0.3' }
+63 verbose addNamed [ 'gulp-nodemon', '^2.0.3' ]
+64 verbose addNamed [ null, '>=2.0.3-0 <3.0.0-0' ]
+65 silly lockFile 3339818c-gulp-nodemon-2-0-3 gulp-nodemon@^2.0.3
+66 verbose lock gulp-nodemon@^2.0.3 /home/malay/.npm/3339818c-gulp-nodemon-2-0-3.lock
+67 verbose already installed skipping gulp-rename@~1.2.0 /home/malay/Projects/pin/Development
+68 verbose already installed skipping gulp-notify@~2.2.0 /home/malay/Projects/pin/Development
+69 verbose already installed skipping gulp-ruby-sass@~1.0.0-alpha.3 /home/malay/Projects/pin/Development
+70 verbose already installed skipping gulp-uglify@~1.1.0 /home/malay/Projects/pin/Development
+71 verbose already installed skipping node-inspector@~0.9.1 /home/malay/Projects/pin/Development
+72 verbose already installed skipping main-bower-files@~2.7.0 /home/malay/Projects/pin/Development
+73 silly addNameRange { name: 'gulp', range: '>=3.9.0-0 <4.0.0-0', hasData: false }
+74 silly addNameRange { name: 'gulp-nodemon',
+74 silly addNameRange   range: '>=2.0.3-0 <3.0.0-0',
+74 silly addNameRange   hasData: false }
+75 verbose url raw gulp
+76 verbose url resolving [ 'https://registry.npmjs.org/', './gulp' ]
+77 verbose url resolved https://registry.npmjs.org/gulp
+78 info trying registry request attempt 1 at 11:44:17
+79 verbose etag "AXDEA3NH2EVS92VF2LHRKZOY1"
+80 http GET https://registry.npmjs.org/gulp
+81 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+82 verbose url raw gulp-nodemon
+83 verbose url resolving [ 'https://registry.npmjs.org/', './gulp-nodemon' ]
+84 verbose url resolved https://registry.npmjs.org/gulp-nodemon
+85 info trying registry request attempt 1 at 11:44:17
+86 verbose etag "444UTV7MZMGU2SBSRT6COYVDW"
+87 http GET https://registry.npmjs.org/gulp-nodemon
+88 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+89 info trying registry request attempt 2 at 11:44:27
+90 verbose etag "AXDEA3NH2EVS92VF2LHRKZOY1"
+91 http GET https://registry.npmjs.org/gulp
+92 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+93 info trying registry request attempt 2 at 11:44:27
+94 verbose etag "444UTV7MZMGU2SBSRT6COYVDW"
+95 http GET https://registry.npmjs.org/gulp-nodemon
+96 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+97 info trying registry request attempt 3 at 11:45:27
+98 verbose etag "AXDEA3NH2EVS92VF2LHRKZOY1"
+99 http GET https://registry.npmjs.org/gulp
+100 info trying registry request attempt 3 at 11:45:27
+101 verbose etag "444UTV7MZMGU2SBSRT6COYVDW"
+102 http GET https://registry.npmjs.org/gulp-nodemon
+103 silly registry.get cb [ 304, undefined ]
+104 verbose etag gulp from cache
+105 silly registry.get cb [ 304, undefined ]
+106 verbose etag gulp-nodemon from cache
+107 silly addNameRange number 2 { name: 'gulp', range: '>=3.9.0-0 <4.0.0-0', hasData: true }
+108 silly addNameRange versions [ 'gulp',
+108 silly addNameRange   [ '0.0.1',
+108 silly addNameRange     '0.0.2',
+108 silly addNameRange     '0.0.3',
+108 silly addNameRange     '0.0.4',
+108 silly addNameRange     '0.0.5',
+108 silly addNameRange     '0.0.7',
+108 silly addNameRange     '0.0.8',
+108 silly addNameRange     '0.0.9',
+108 silly addNameRange     '0.1.0',
+108 silly addNameRange     '0.2.0',
+108 silly addNameRange     '1.0.0',
+108 silly addNameRange     '1.1.0',
+108 silly addNameRange     '1.2.0',
+108 silly addNameRange     '1.2.1',
+108 silly addNameRange     '2.0.0',
+108 silly addNameRange     '2.0.1',
+108 silly addNameRange     '2.1.0',
+108 silly addNameRange     '2.2.0',
+108 silly addNameRange     '2.3.0',
+108 silly addNameRange     '2.4.0',
+108 silly addNameRange     '2.4.1',
+108 silly addNameRange     '2.6.0',
+108 silly addNameRange     '2.6.1',
+108 silly addNameRange     '2.7.0',
+108 silly addNameRange     '3.0.0',
+108 silly addNameRange     '3.1.1',
+108 silly addNameRange     '3.1.2',
+108 silly addNameRange     '3.1.3',
+108 silly addNameRange     '3.1.4',
+108 silly addNameRange     '3.2.0',
+108 silly addNameRange     '3.2.1',
+108 silly addNameRange     '3.2.2',
+108 silly addNameRange     '3.2.3',
+108 silly addNameRange     '3.2.4',
+108 silly addNameRange     '3.2.5',
+108 silly addNameRange     '3.3.0',
+108 silly addNameRange     '3.3.1',
+108 silly addNameRange     '3.3.2',
+108 silly addNameRange     '3.3.4',
+108 silly addNameRange     '3.4.0',
+108 silly addNameRange     '3.5.0',
+108 silly addNameRange     '3.5.1',
+108 silly addNameRange     '3.5.2',
+108 silly addNameRange     '3.5.5',
+108 silly addNameRange     '3.5.6',
+108 silly addNameRange     '3.6.0',
+108 silly addNameRange     '3.6.1',
+108 silly addNameRange     '3.6.2',
+108 silly addNameRange     '3.7.0',
+108 silly addNameRange     '3.8.0',
+108 silly addNameRange     '3.8.1',
+108 silly addNameRange     '3.8.2',
+108 silly addNameRange     '3.8.3',
+108 silly addNameRange     '3.8.4',
+108 silly addNameRange     '3.8.5',
+108 silly addNameRange     '3.8.6',
+108 silly addNameRange     '3.8.7',
+108 silly addNameRange     '3.8.8',
+108 silly addNameRange     '3.8.9',
+108 silly addNameRange     '3.8.10',
+108 silly addNameRange     '3.8.11',
+108 silly addNameRange     '3.9.0' ] ]
+109 verbose addNamed [ 'gulp', '3.9.0' ]
+110 verbose addNamed [ '3.9.0', '3.9.0' ]
+111 silly lockFile c2697a61-gulp-3-9-0 gulp@3.9.0
+112 verbose lock gulp@3.9.0 /home/malay/.npm/c2697a61-gulp-3-9-0.lock
+113 silly addNameRange number 2 { name: 'gulp-nodemon',
+113 silly addNameRange   range: '>=2.0.3-0 <3.0.0-0',
+113 silly addNameRange   hasData: true }
+114 silly addNameRange versions [ 'gulp-nodemon',
+114 silly addNameRange   [ '0.0.1',
+114 silly addNameRange     '0.0.2',
+114 silly addNameRange     '0.0.3',
+114 silly addNameRange     '0.1.0',
+114 silly addNameRange     '0.1.1',
+114 silly addNameRange     '0.1.2',
+114 silly addNameRange     '1.0.0',
+114 silly addNameRange     '1.0.1',
+114 silly addNameRange     '1.0.2',
+114 silly addNameRange     '1.0.3',
+114 silly addNameRange     '1.0.4',
+114 silly addNameRange     '1.0.5' ] ]
+115 silly lockFile 3339818c-gulp-nodemon-2-0-3 gulp-nodemon@^2.0.3
+116 silly lockFile 3339818c-gulp-nodemon-2-0-3 gulp-nodemon@^2.0.3
+117 error Error: No compatible version found: gulp-nodemon@'>=2.0.3-0 <3.0.0-0'
+117 error Valid install targets:
+117 error ["0.0.1","0.0.2","0.0.3","0.1.0","0.1.1","0.1.2","1.0.0","1.0.1","1.0.2","1.0.3","1.0.4","1.0.5"]
+117 error     at installTargetsError (/usr/share/npm/lib/cache.js:719:10)
+117 error     at next (/usr/share/npm/lib/cache.js:698:17)
+117 error     at /usr/share/npm/lib/cache.js:675:5
+117 error     at saved (/usr/share/npm/node_modules/npm-registry-client/lib/get.js:142:7)
+117 error     at /usr/lib/nodejs/graceful-fs/polyfills.js:133:7
+117 error     at Object.oncomplete (fs.js:107:15)
+118 error If you need help, you may report this log at:
+118 error     <http://github.com/isaacs/npm/issues>
+118 error or email it to:
+118 error     <npm-@googlegroups.com>
+119 error System Linux 3.13.0-55-generic
+120 error command "/usr/bin/nodejs" "/usr/bin/npm" "install"
+121 error cwd /home/malay/Projects/pin/Development
+122 error node -v v0.10.25
+123 error npm -v 1.3.10
+124 verbose exit [ 1, true ]

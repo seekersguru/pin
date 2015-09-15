@@ -1,0 +1,223 @@
+<div class="container">
+<div id="content-section">
+
+
+<div class="row">
+<div class="col-lg-8 col-md-8 col-sm-8">
+
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12">
+<div class="breadcam-link">
+<ul>
+    <li><a href="/home"><i class="fa fa-home"></i></a></li>
+/
+ <li><a href="#">Directory</a></li>
+/
+ <li><a href="#">Company Profile</a></li>
+/
+    <li class="active">Edit your Company Profile</li>
+</ul>
+</div> 
+</div>
+
+
+</div> 
+
+<div class="gray-hr"></div>
+
+ <div class="directory-section">
+ <h1>Edit Your company Profile</h1> 
+     <form novalidate  name="form" role='form' enctype= 'multipart/form-data' class="">
+        <div class="row">
+          <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
+          <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="title" placeholder="Company Name"  ng-model="article.title" required ng-minlength=2>
+              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill company name.</p>
+              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.minlength">your company name shoud be minimum 2 character long .</p>
+              <p class="text-danger" ng-show="form.title.$error.mongoose">{{ errors.title }} </p>
+
+            </div>
+          </div>
+          </div>
+      
+            <div class="row">
+                <div class="form-group">
+                <div class="col-lg-6 col-md-6 col-sm-6">  
+                    <input type="text" class="form-control" name="url" placeholder="Website Url"  ng-model="article.url" >
+                  </div>
+                </div>
+                </div>
+
+         <div class="row">
+             <div class="form-group">             
+<label>Please choose services</label>
+<br/>
+ <label ng-repeat="service in services">
+  <input
+    type="checkbox"
+    name="selectedServices[]"
+    value="{{service}}"
+    ng-checked="article.services.indexOf(service) > -1"
+    ng-click="toggleSelection(service)"
+  > {{service}}
+</label>
+ 
+</div> 
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <div class="col-lg-6 col-md-6 col-sm-6">  
+                <textarea class="form-control" name="notes" placeholder="Notes"  ng-model="article.notes">
+
+                </textarea>
+              </div>
+            </div>
+          </div>
+      
+
+          <div class="row">
+            <div class="form-group">  
+              <div class="col-lg-6 col-md-6 col-sm-6 ">
+                <select  class="form-control" ng-model="article.firmsupertype" >
+                      <option value=""> ---Select Firm Super Type--- </option>
+                       <option ng-repeat="(key,value) in companyStructure" value="{{key}}" ng-selected="key == article.firmsupertype">{{key}}</option>
+
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">  
+              <div class="col-lg-6 col-md-6 col-sm-6 ">
+                <select  class="form-control" ng-model="article.firmtype" >
+                       <option value=""> ---Select Firm Type--- </option>
+                       <option ng-repeat="(key,value) in companyStructure[article.firmsupertype]" value="{{key}}" ng-selected="key == article.firmtype">{{key}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">  
+              <div class="col-lg-6 col-md-6 col-sm-6 ">
+                <select  class="form-control" ng-model="article.firmsubtype" >
+                       <option value=""> ---Select Firm Sub Type--- </option>
+                       <option ng-repeat="(key,value) in companyStructure[article.firmsupertype][article.firmtype]" value="{{key}}" ng-selected="key == article.firmsubtype">{{key}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" >
+           <div class="col-lg-12 col-md-12 col-sm-12">
+
+            <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
+              <label class="control-label" for="description">Description</label>
+              <text-angular class="rituraj" name="description" ng-model="article.description" required ng-minlength=20 ta-toolbar="[ ['h1', 'h2','quote','insertLink'],['bold', 'italics', 'underline', 'strikeThrough'],['justifyLeft','justifyCenter','justifyRight'],['ul', 'ol'],['insertImage', 'insertVideo']]"> </text-angular>
+
+              <!-- <text-angular class="form-control" rows="5"  name="description" ng-model="article.description" required ng-minlength=20> </text-angular> -->
+              <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.required">Please fill description.</p>
+              <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.minlength">your description shoud be minimum 20 character long .</p>
+              <p class="text-danger" ng-show="form.description.$error.mongoose">{{ errors.description }} </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gray-hr"></div>
+
+<h3>Address</h3>
+
+
+
+
+        <div class="row" ng-repeat="(key,value) in article.addresstimes" ng-class="{'alert alert-success':article.address[key].main}">
+          <h2 class="center-block">Address #{{key+1}}  <b ng-show="article.address[key].main"><i> Selected as a main address</i></b></h2>
+        
+        <div class="gray-hr"></div>
+
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="Street"  ng-model="article.address[key].street" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="City"  ng-model="article.address[key].city" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="State"  ng-model="article.address[key].state" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="Country"  ng-model="article.address[key].country" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="PIN"  ng-model="article.address[key].pin" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="Phone No."  ng-model="article.address[key].phone" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <label>
+                <input type="radio" name="addressmain[]" ng-model="article.address[key].main"  ng-change="changemain(key)" value="true">
+                Want to make As a Main Office address
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <button ng-click="removeaddress(key)" class="center-block"> Remove</button>
+            </div>
+          </div>
+<br/>
+        </div>
+
+<div class="gray-hr"></div>
+     <button ng-click="addAddress()" class="btn btn-info">Add More address</button>
+<div class="gray-hr"></div>
+
+   <!--    <div class="row">
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+                <select name="public" ng-model="article.public">
+                  <option value="">Approve</option>
+                  <option value=1>Yes</option>
+                  <option value=0>No</option>
+                </select>
+        </div>
+        </div>
+</div>
+<br/> -->
+
+    <button class='btn btn-register  btn-openid' ng-disabled="!form.$valid" ng-click="updateArticle(form)" > <i class="fa fa-caret-right"></i> Edit Company</button> 
+
+<!-- <button class="btn btn-prew-direc btn-prew" >
+                 <i class="fa fa-eye"></i> Preview</button>
+ -->
+     </form>
+ 
+<div class="gray-hr"></div>
+
+
+<a  class="btn readmore-bt" type="button" href="/companies">Back to company profile </a>
+
+</div>  
+</div>
+ <div class="col-lg-4 col-md-4 col-sm-4">
+  <div ng-include="'partials2/right-nav.html'"> </div>
+</div>
+</div>
+</div>

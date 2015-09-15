@@ -134,7 +134,12 @@ module.exports = function(app) {
   /**---(',')--Event comments section stop----(',')---**/
 
   app.get('/api/companys', companys.query);
-
+  app.get('/api/companys/basic', companys.basic);
+  app.get('/api/companys/:companyid', companys.show);
+  app.post('/api/companys',   companys.create);
+  app.put('/api/companys/:companyid',companys.update);
+  app.del('/api/companys/:companyid', companys.remove);
+  app.post('/api/companys/upload',  multipartMiddleware, companys.uploadcompanies);
    
   app.post('/api/session', session.login);
   app.del('/api/session', session.logout);
