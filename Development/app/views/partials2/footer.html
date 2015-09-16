@@ -1,5 +1,5 @@
 <footer class="footer" ng-controller="FooterCtrl" id="footer-bg">
-  <div class="footer-above" ng-hide="currentUser">
+  <div class="footer-above" >
     <div class="container-head">
      <div class="footer-link">
        <ul class="clearfix">
@@ -21,7 +21,7 @@
          <p class="read-more"><a href="/register" ng-class="{active:isActive('/register')}">Read More</a></p>
        </li> -->
 
-        <li  >
+        <!-- <li  >
          <h2>About Us</h2>
          <p class="read-more"><a href="/who-we-are" ng-class="{active:isActive('/what-we-do')}">Read More</a></p>
        </li>
@@ -32,39 +32,10 @@
        <li >
          <h2>Privacy</h2>
          <p class="read-more"><a href="/privacy" ng-class="{active:isActive('/privacy')}">Read More</a></p>
-       </li>
+       </li> -->
      </ul>
+           <p>Copyright © Private Investor Network.</p>
    </div>
  </div>
 </div>
-
-<div class="footer-learning" ng-show="currentUser">
-    <div class="container-head">
-      <div class="row">
-        <div class=" col-lg-8">
-          <ul>
-<!--             <li><a href="/articles/01" ng-class="{active:isActive('/articles/01')}">Learn </a></li>
-            <li><a  ng-if="currentUser.role !='user'" href="/share" ng-class="{active:isActive('/share')}">Share </a></li>
-            <li><a href="/discussion-listing" ng-class="{active:isActive('/discussion-listing')}"> DISCUSS </a></li>
-            <li><a href="/connect" ng-class="{active:isActive('/connect')}"> Connect </a></li>
- -->
-            <li><a href="/who-we-are" ng-class="{active:isActive('/what-we-do')}">About Us</a></li>
-            <li><a href="/terms" ng-class="{active:isActive('/terms')}">Terms & Condition</a></li>
-            <li><a href="/privacy" ng-class="{active:isActive('/privacy')}">Privacy</a></li>
-          </ul>
-        </div>
-        <!-- <div class="sigup-newletter col-lg-4">
-        <form class="navbar-form" novalidate  name="form" role='form' ng-submit="searcharticle(form)" >
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="srch-term" ng-model="search" id="srch-term" required>
-            <span class=""><button class="btn subscribe-bt" type="submit"><img src="images/newsletter-arow.png" alt=""></button></span>
-          </div>
-          </form>
-        </div> -->
-      </div>
-      <p>Copyright © Private Investor Network.</p>
-
-    </div>
-  </div>
-
 </footer>

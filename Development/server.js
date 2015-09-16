@@ -43,7 +43,7 @@ process.env.FB_APP_SECRET="523d6510a56672ae230d91910085612c";
 var config = require('./lib/config/config');
 config['facebook']['id']=703341096418077;
 config['facebook']['secret']="523d6510a56672ae230d91910085612c";
-config["port"]=3000;
+config["port"]=3010;
 // Connect to database
 var db = mongoose.connect(config.mongo.uri, config.mongo.options);
 
