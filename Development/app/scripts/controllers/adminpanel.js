@@ -139,11 +139,11 @@ $scope.mmiuserStatus=function(userId){
   var popup=1;
   if(setStatus)
    {
-    messageline="You are approving "+$scope.gridMMIUserData[removeIndex].name+" a mail notification will be sent to  mail id "+$scope.gridMMIUserData[removeIndex].email;
+    messageline="You are approving "+$scope.gridMMIUserData[removeIndex].firstname+" a mail notification will be sent to  mail id "+$scope.gridMMIUserData[removeIndex].email;
    }
   else
    {
-    messageline="You are blocking "+$scope.gridMMIUserData[removeIndex].name+" , email notification will be sent to him that , some problem in your account please contact admin";
+    messageline="You are blocking "+$scope.gridMMIUserData[removeIndex].firstname+" , email notification will be sent to him that , some problem in your account please contact admin";
     popup=0;
    }
 
