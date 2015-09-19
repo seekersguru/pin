@@ -46,7 +46,7 @@ function ngGridFlexibleHeightPlugin(opts) {
 }
 
 angular.module('pinApp')
-  .controller('AdminPanelCtrl', function($scope, User, Article, $http,
+  .controller('AdminPanelCtrl', function($scope, User, MMIUser,Article, $http,
     $location, $window, $modal, Auth, $timeout) {
 
     $scope.viewArticle = function(articleId) {
@@ -125,6 +125,78 @@ angular.module('pinApp')
         // $scope.article={};
       });
     };
+
+$scope.mmiuserStatus=function(userId){
+      var removeIndex = $scope.gridMMIUserData
+      .map(function(item)
+      { 
+        return item._id;
+      })
+      .indexOf(userId);
+
+  var setStatus= !$scope.gridMMIUserData[removeIndex].status,
+  messageline="";
+  var popup=1;
+  if(setStatus)
+   {
+    messageline="You are approving "+$scope.gridMMIUserData[removeIndex].name+" a mail notification will be sent to  mail id "+$scope.gridMMIUserData[removeIndex].email;
+   }
+  else
+   {
+    messageline="You are blocking "+$scope.gridMMIUserData[removeIndex].name+" , email notification will be sent to him that , some problem in your account please contact admin";
+    popup=0;
+   }
+
+  var yes=confirm(messageline);
+  if(yes)
+  {
+      if(popup)
+      {
+        var modalInstance = $modal.open({
+            templateUrl: 'familyofficemmi.html',
+            controller: 'AssignRoleMMICtrl',
+            resolve: {
+                searchable: function () {
+                    return $scope.gridMMIUserData[removeIndex].searchable;
+                },
+                adminrole: function () {
+                    return $scope.gridMMIUserData[removeIndex].adminrole;
+                },
+                familyrole: function () {
+                    return $scope.gridMMIUserData[removeIndex].familyrole;
+                },
+                userid: function () {
+                    return userId;
+                },
+                removeIndex: function () {
+                    return removeIndex;
+                },
+                commentvisible: function () {
+                    return $scope.gridMMIUserData[removeIndex].commentvisible;
+                },
+                roletype: function () {
+                    return $scope.gridMMIUserData[removeIndex].company['roletype'];
+                }
+              }
+        });
+
+      }else{
+        
+        $http({ method: 'PUT', url: '/api/mmiusers/status/'+userId,data:{'status':setStatus}}).
+            success(function (data, status, headers, config) {
+               $scope.gridMMIUserData[removeIndex].status=setStatus;   
+            }).
+            error(function (data, status, headers, config) {
+              // ...
+              // $scope.article={};
+            });
+      }   
+  }
+  else{
+
+  }
+
+};
 
     $scope.userStatus = function(userId) {
       var removeIndex = $scope.gridUserData
@@ -528,52 +600,55 @@ angular.module('pinApp')
 
     };
 
-$scope.companyStatus=function(eventId){
+    $scope.companyStatus = function(eventId) {
       var removeIndex = $scope.gridCompanyData
-      .map(function(item)
-      { 
-        return item._id;
-      })
-      .indexOf(eventId);
+        .map(function(item) {
+          return item._id;
+        })
+        .indexOf(eventId);
 
-  var setStatus= !$scope.gridCompanyData[removeIndex].approve;
-  $http({ method: 'PUT', url: '/api/companys/'+eventId,data:{'public':setStatus}}).
-      success(function (data, status, headers, config) {
-         $scope.gridCompanyData[removeIndex].approve=setStatus;   
+      var setStatus = !$scope.gridCompanyData[removeIndex].approve;
+      $http({
+        method: 'PUT',
+        url: '/api/companys/' + eventId,
+        data: {
+          'public': setStatus
+        }
       }).
-      error(function (data, status, headers, config) {
+      success(function(data, status, headers, config) {
+        $scope.gridCompanyData[removeIndex].approve = setStatus;
+      }).
+      error(function(data, status, headers, config) {
         // ...
         // $scope.article={};
       });
 
-};
+    };
 
 
-$scope.deleteCompany=function(articleId){
-  var yes=confirm('Are you sure you want to delete this Company?');
-  if(yes)
-  {
-    $http({
-      method:"DELETE",
-      url:'/api/companys/'+articleId
-    }).
-    success(function (data,status,headers,config){
-      var removeIndex = $scope.gridCompanyData
-      .map(function(item)
-      { 
-        return item._id;
-      })
-      .indexOf(articleId);
+    $scope.deleteCompany = function(articleId) {
+      var yes = confirm('Are you sure you want to delete this Company?');
+      if (yes) {
+        $http({
+          method: "DELETE",
+          url: '/api/companys/' + articleId
+        }).
+        success(function(data, status, headers, config) {
+            var removeIndex = $scope.gridCompanyData
+              .map(function(item) {
+                return item._id;
+              })
+              .indexOf(articleId);
 
-      $scope.gridCompanyData.splice(removeIndex, 1);
+            $scope.gridCompanyData.splice(removeIndex, 1);
 
-    })
-    .error(function (data,status,headers,config){
+          })
+          .error(function(data, status, headers, config) {
 
-    });
-  }
+          });
+      }
 
- };
+    };
 
     $scope.setSearch = function(search) {
       $location.search(search);
@@ -587,6 +662,13 @@ $scope.deleteCompany=function(articleId){
           $scope.gridUserData = {};
           User.query(function(users) {
             $scope.gridUserData = users.users;
+          });
+          break;
+
+        case 'mmiusers':
+          $scope.gridMMIUserData = {};
+          MMIUser.query(function(users) {
+            $scope.gridMMIUserData = users.users;
           });
           break;
 
@@ -652,19 +734,22 @@ $scope.deleteCompany=function(articleId){
           });
 
           break;
-          
-     case 'company':
-      $scope.gridFamilyData={};
-        $http({ method: 'GET', url: 'api/companys/basic' }).
-          success(function (data, status, headers, config) {
-             $scope.gridCompanyData=data.company;
-             
+
+        case 'company':
+          $scope.gridFamilyData = {};
+          $http({
+            method: 'GET',
+            url: 'api/companys/basic'
           }).
-        error(function (data, status, headers, config) {
+          success(function(data, status, headers, config) {
+            $scope.gridCompanyData = data.company;
 
-        });
+          }).
+          error(function(data, status, headers, config) {
 
-       break;     
+          });
+
+          break;
 
         default:
           break;
@@ -802,6 +887,29 @@ $scope.deleteCompany=function(articleId){
       plugins: [new ngGridFlexibleHeightPlugin()]
     };
 
+
+  $scope.mmiuserData = { data: 'gridMMIUserData' ,
+                        // showGroupPanel: true ,
+                         // enableCellSelection: true,
+                         enableRowSelection: false,
+                         filterOptions: $scope.filterOptions,
+                         columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
+                                    { field: 'firstname' ,displayName:'First Name' },
+                                    { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
+                                    { field: 'email' ,displayName:'Email' },
+                                    // { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'}, 
+                                    { field: 'role' ,displayName:'Role'},
+                                    { field: 'commentvisible' ,displayName:'Commentvisible'},
+                                    { field: 'searchable' ,displayName:'Searchable'},
+                                    { field: 'adminrole' ,displayName:'Adminrole'},
+                                    { field: 'emailVerification' ,displayName:'EmailVerification',cellTemplate:'<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>' },
+                                    { field: 'username' ,displayName:'Username' },
+                                    { field: 'status' ,displayName:'Status',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'},
+                                    { field: 'action' ,displayName:'Action',cellTemplate:'<span ng-if="row.entity.status" class="btn btn-info" ng-click="mmiuserStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="btn btn-info" ng-click="mmiuserStatus(row.entity._id)">Approve</span> '}],
+                        showFooter: true,
+                        plugins: [new ngGridFlexibleHeightPlugin()]
+                      };
+
     var editDeleteFamilyTemplate =
       '<a ng-click="deleteFamily(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a>';
 
@@ -927,30 +1035,51 @@ $scope.deleteCompany=function(articleId){
     };
 
 
- var editDeleteCompanyTemplate = '<a ng-click="deleteCompany(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-href="/company/view/{{row.entity._id}}"  id="view"  class="btn btn-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-href="/company/edit/{{row.entity._id}}"  id="view"  class="btn btn-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
+    var editDeleteCompanyTemplate = '<a ng-click="deleteCompany(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-href="/company/view/{{row.entity._id}}"  id="view"  class="btn btn-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-href="/company/edit/{{row.entity._id}}"  id="view"  class="btn btn-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
-  $scope.companyData = { data: 'gridCompanyData' ,
-                        enableCellSelection: true,
-                        enableRowSelection: false,
-                        filterOptions: $scope.filterOptions,
+    $scope.companyData = {
+      data: 'gridCompanyData',
+      enableCellSelection: true,
+      enableRowSelection: false,
+      filterOptions: $scope.filterOptions,
 
-                        // showGroupPanel: true ,
-                        columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
-                                    { field: 'title' ,displayName:'Title' },
-                                    { field: 'firmsupertype' ,displayName:'SuperType' },
-                                    { field: 'firmtype' ,displayName:'Type' },
-                                    { field: 'firmsubtype' ,displayName:'Sub Type' },
-                                    { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
-                                    // { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="companyStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="copmanyStatus(row.entity._id)">NOT APPROVED</span>'},
-                                    { field: '',displayName:'Action', cellTemplate: editDeleteCompanyTemplate, maxWidth: 100  }],
-                        showFooter: true,
-                        plugins: [new ngGridFlexibleHeightPlugin()]
-                      };
+      // showGroupPanel: true ,
+      columnDefs: [{
+          field: '_id',
+          displayName: 'SN',
+          cellTemplate: '<span> {{row.rowIndex+1}}</span>'
+        }, {
+          field: 'title',
+          displayName: 'Title'
+        }, {
+          field: 'firmsupertype',
+          displayName: 'SuperType'
+        }, {
+          field: 'firmtype',
+          displayName: 'Type'
+        }, {
+          field: 'firmsubtype',
+          displayName: 'Sub Type'
+        }, {
+          field: 'createdAt',
+          displayName: 'Created Date',
+          cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>'
+        },
+        // { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="companyStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="copmanyStatus(row.entity._id)">NOT APPROVED</span>'},
+        {
+          field: '',
+          displayName: 'Action',
+          cellTemplate: editDeleteCompanyTemplate,
+          maxWidth: 100
+        }
+      ],
+      showFooter: true,
+      plugins: [new ngGridFlexibleHeightPlugin()]
+    };
 
-                       
-  
 
-});
+
+  });
 
 
 angular.module('pinApp')
@@ -1069,3 +1198,57 @@ angular.module('pinApp')
     };
 
   });
+
+
+angular.module('pinApp')
+.controller('AssignRoleMMICtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller,searchable,adminrole,familyrole,userid,removeIndex,commentvisible,roletype,$templateCache,$route) {
+  $scope.userupdate={
+    familyrole:familyrole,
+    searchable:searchable,
+    adminrole:adminrole,
+    commentvisible:commentvisible,
+    roletype:roletype
+  };
+
+ $.extend(this, $controller('AdminPanelCtrl', {$scope: $scope}));
+
+ $http({ method: 'GET', url: 'api/family' }).
+    success(function (data, status, headers, config) {
+       $scope.familys=data.familys;
+    }).
+ error(function (data, status, headers, config) {
+
+  });
+
+
+$scope.roletypes=[
+    'CEO/business head',
+    'Management',
+    'Sales/Marketing',
+    'Investment/Product',  
+    'RM/client facing',
+    'Investment Mgmt"',
+    'Product Mgmt'
+    ];  
+
+
+  $scope.saveRole = function () {
+          $http({ method: 'PUT', url: '/api/mmiusers/status/'+userid,data:{'status':1,adminrole:$scope.userupdate.adminrole,familyrole:$scope.userupdate.familyrole,searchable:$scope.userupdate.searchable,commentvisible:$scope.userupdate.commentvisible}}).
+            success(function (data, status, headers, config) {
+               $modalInstance.close();
+               var currentPageTemplate = $route.current.templateUrl;
+                $templateCache.remove(currentPageTemplate);
+                $route.reload();
+
+            }).
+            error(function (data, status, headers, config) {
+             $scope.userupdate={};
+             $modalInstance.dismiss('cancel');
+            });
+      };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+
+});

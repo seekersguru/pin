@@ -480,7 +480,7 @@ $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
       $rootScope.ogUrl =  "http://"+$location.host()+$location.path();
 
       if (next.  authenticate == false && Auth.isLoggedIn()) {
-        $location.path('/articles/01');
+        $location.path('/admin');
       }
 
       if (next.  authenticate && !Auth.isLoggedIn()) {

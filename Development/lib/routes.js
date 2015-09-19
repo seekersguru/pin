@@ -2,6 +2,7 @@
 
 var index = require('./controllers'),
     users = require('./controllers/users'),
+    mmiusers = require('./controllers/serviceuser'),
     nishant = require('./controllers/nishant'),
     session = require('./controllers/session'),
     articles = require('./controllers/article'),
@@ -69,6 +70,20 @@ module.exports = function(app) {
   app.get('/api/users/search/:username/:userid', users.search);
   app.get('/api/users/mycontact/:userid', users.mycontact);
   app.put('/api/users/followingstatus/:followingid', users.connectupdate);
+
+  app.post('/api/mmiusers', mmiusers.create);
+  app.get('/api/mmiusers', mmiusers.query);
+  app.get('/api/mmiusers/:userid', mmiusers.show);
+  app.put('/api/mmiusers/:userid', mmiusers.update);
+  app.put('/api/mmiusers/status/:userid', mmiusers.updatestatus);
+  app.get('/api/mmiusers/checkusername/:username',mmiusers.checkusername);
+  app.get('/user/:id/verify/:token', mmiusers.verifyEmail);
+  app.post('/api/mmiusers/forgot', mmiusers.forgot);
+  app.post('/api/mmiusers/:id/recover', mmiusers.recover);
+  app.post('/api/mmiusers/connect/:userid', mmiusers.connect);
+  app.get('/api/mmiusers/search/:username', mmiusers.search);
+  app.put('/api/mmiusers/followingstatus/:followingid', mmiusers.connectupdate);
+  app.post('/api/mmiusers/upload',  multipartMiddleware, mmiusers.uploadusers);
 
   
 

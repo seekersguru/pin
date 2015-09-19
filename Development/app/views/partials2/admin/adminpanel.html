@@ -12,16 +12,28 @@
             <button class="btn btn-primary" ng-click="setSearch('family')">Family Office </button>
             <button class="btn btn-primary" ng-click="setSearch('expert')">Event Experts </button>
             <button class="btn btn-primary" ng-click="setSearch('event')">Event </button>
-            <a class="btn btn-primary" ng-href="http://moneymanagementindia.net/admin?users" target="_blank"  >MMI Users </a>
-            <a class="btn btn-primary" ng-click="setSearch('company')" target="_blank"  >Companies </a>
+            <button class="btn btn-primary" ng-click="setSearch('mmiusers')">MMI Users</button>
+            <button class="btn btn-primary" ng-click="setSearch('company')" target="_blank"  >Companies </button>
         </div>
 
     </div>
 </div>
 </div>
 
+<script type="text/ng-template" id="mmiusers">
+<h1>MMI Users</h1>
+  <br/>
+ 
+ <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
+      <br/>
+      <br/>
+<div class="gridStyle" ng-grid="mmiuserData">
+
+</div>
+</script>
+
 <script type="text/ng-template" id="users">
-<h1>Users</h1>
+<h1>PIN Users</h1>
   <br/>
  <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
       <br/>
@@ -172,6 +184,61 @@
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
 </script>
+
+<script type="text/ng-template" id="familyofficemmi.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Assign Some Role To User !</h3>
+        </div>
+        <div class="modal-body">
+        <form novalidate  class="form-horizontal" name="form" role='form' ng-submit="saveRole()"  >
+           <div class="form-group">
+            <label for="role" class="col-sm-2 control-label">Role</label>
+          <div class="col-sm-10">
+               <select class="form-control" name="adminrole" ng-model="userupdate.adminrole">
+              <option ng-repeat="(key,value) in userupdate.roletype" value="{{value}}" ng-selected="key == userupdate.adminrole - 1">{{roletypes[value-1]}}</option>
+            </select>
+          </div>
+        </div>
+
+         <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Family Office</label>
+          <div class="col-sm-10">
+              <select class="form-control" ng-model="userupdate.familyrole">
+                  <option ng-repeat="(key,value) in familys" value="{{value._id}}">{{value.name}} </option>
+              </select>
+          </div>
+        </div>
+
+           <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Searchable</label>
+          <div class="col-sm-10">
+           <select ng-model="userupdate.searchable" class="form-control"
+            ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">
+    </select>
+         </div>
+        </div>
+
+      <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Comment Visible to</label>
+                <div class="col-sm-10">
+                 <select ng-model="userupdate.commentvisible" name="commentvisible" class="form-control">
+                   <option value="public">Public</option>
+                    <option value="friends">Friends</option>
+              </select>
+               </div>
+              </div>
+
+         </form>   
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="saveRole()" >OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+</script>
+
+
 
 
 <div ng-include="mainPage" class="container text-center"></div>
