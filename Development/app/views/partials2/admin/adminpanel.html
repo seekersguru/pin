@@ -4,18 +4,117 @@
     <div class="container-fluid text-center">
 <!--         <span class="fancy-text">MENU</span>
         <br>
+
  -->
+<div class="row">
+<div class="admin-panel-bt">
+<ul>
+ <li>
+            <div class="mini-box">
+            <a class="" ng-click="setSearch('users')">
+                <div class="box-icon bg-info">
+                <i class="fa fa-user"></i>
 
-        <div class="btn-group" style="margin:10px">
-            <button class="btn btn-primary" ng-click="setSearch('users')">PIN Users</button>
-            <button class="btn btn-primary" ng-click="setSearch('articles')">Articles</button>
-            <button class="btn btn-primary" ng-click="setSearch('family')">Family Office </button>
-            <button class="btn btn-primary" ng-click="setSearch('expert')">Event Experts </button>
-            <button class="btn btn-primary" ng-click="setSearch('event')">Event </button>
-            <button class="btn btn-primary" ng-click="setSearch('mmiusers')">MMI Users</button>
-            <button class="btn btn-primary" ng-click="setSearch('company')" target="_blank"  >Companies </button>
-        </div>
+                </div>
+                <div class="box-info">
+                     PIN Users
+                </div>
+                </a>
+            </div>
+            </li>
 
+
+             <li>
+            <div class=" mini-box">
+             <a class="" ng-click="setSearch('articles')">
+                <div class="box-icon bg-success">
+                   <i class="fa fa-list-alt"></i>
+
+                </div>
+                <div class="box-info">
+                   Articles
+                </div>
+                </a>
+            </div>
+            </li>
+
+
+             <li>
+            <div class=" mini-box">
+              <a class="" ng-click="setSearch('family')">
+                <div class="box-icon bg-primary">
+                   <i class="fa fa-university"></i>
+
+                </div>
+                <div class="box-info">
+                  Family Office 
+                </div>
+                </a>
+            </div>
+            </li>
+
+             <li>
+            <div class=" mini-box">
+            <a class="" ng-click="setSearch('expert')">
+                <div class="box-icon bg-warning">
+                   <i class="fa fa-calendar"></i>
+
+                </div>
+                <div class="box-info">
+                    Event Experts 
+                </div>
+                </a>
+            </div>
+            </li>
+
+<li>
+            <div class=" mini-box">
+              <a class="" ng-click="setSearch('event')">
+                <div class="box-icon bg-danger">
+                    <i class="fa fa-calendar"></i>
+
+                </div>
+                <div class="box-info">
+                  Event 
+                </div>
+                </a>
+            </div>
+            </li>
+           
+
+             <li>
+            <div class="mini-box">
+             <a class="" ng-click="setSearch('mmiusers')">
+                <div class="box-icon bg-success">
+                    <i class="fa fa-user"></i>
+
+                </div>
+                <div class="box-info">
+                    MMI Users
+                </div>
+                </a>
+            </div>
+            </li>
+            
+             <li>
+            <div class="mini-box">
+            <a class="" ng-click="setSearch('company')" target="_blank"  >
+                <div class="box-icon bg-info">
+                    <i class="fa fa-university"></i>
+
+                </div>
+                <div class="box-info">
+                     Companies 
+                </div>
+                </a>
+            </div>
+            </li>
+</ul>
+</div>
+
+</div>
+       
+</div>
     </div>
 </div>
 </div>
@@ -33,11 +132,11 @@
 </script>
 
 <script type="text/ng-template" id="users">
-<h1>PIN Users</h1>
-  <br/>
- <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
-      <br/>
-      <br/>
+<div class="clearfix filter-search">
+<div class="pull-left"><h1>PIN Users</h1></div>
+ 
+ <div class="pull-right "><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+      </div></div>
 <div class="gridStyle" ng-grid="userData">
 
 </div>

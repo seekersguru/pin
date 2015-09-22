@@ -763,7 +763,7 @@ $scope.mmiuserStatus=function(userId){
 
 
     var editDeleteArticleTemplate =
-      '<a ng-click="deleteArticle(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-href="/articles/view/{{row.entity._id}}"  id="view"  class="btn btn-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-href="/articles/edit/{{row.entity._id}}"  id="view"  class="btn btn-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
+      '<a ng-click="deleteArticle(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-href="/articles/view/{{row.entity._id}}"  id="view"  class="label label-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-href="/articles/edit/{{row.entity._id}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
     $scope.articleData = {
       data: 'gridArticleData',
@@ -881,7 +881,7 @@ $scope.mmiuserStatus=function(userId){
       }, {
         field: 'action',
         displayName: 'Action',
-        cellTemplate: '<span ng-if="row.entity.status" class="btn btn-info" ng-click="userStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="btn btn-info" ng-click="userStatus(row.entity._id)">Approve</span> '
+        cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Approve</span> '
       }],
       showFooter: true,
       plugins: [new ngGridFlexibleHeightPlugin()]
@@ -905,13 +905,13 @@ $scope.mmiuserStatus=function(userId){
                                     { field: 'emailVerification' ,displayName:'EmailVerification',cellTemplate:'<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>' },
                                     { field: 'username' ,displayName:'Username' },
                                     { field: 'status' ,displayName:'Status',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'},
-                                    { field: 'action' ,displayName:'Action',cellTemplate:'<span ng-if="row.entity.status" class="btn btn-info" ng-click="mmiuserStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="btn btn-info" ng-click="mmiuserStatus(row.entity._id)">Approve</span> '}],
+                                    { field: 'action' ,displayName:'Action',cellTemplate:'<span ng-if="row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Approve</span> '}],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };
 
     var editDeleteFamilyTemplate =
-      '<a ng-click="deleteFamily(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a>';
+      '<a ng-click="deleteFamily(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a>';
 
 
     $scope.familyData = {
@@ -936,7 +936,7 @@ $scope.mmiuserStatus=function(userId){
 
 
     var editDeleteExpertTemplate =
-      '<a ng-click="deleteExpert(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a><a ng-href="/expert/edit/{{row.entity._id}}"  id="view"  class="btn btn-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
+      '<a ng-click="deleteExpert(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a><a ng-href="/expert/edit/{{row.entity._id}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
 
     $scope.expertData = {
@@ -978,7 +978,7 @@ $scope.mmiuserStatus=function(userId){
 
 
     var editDeleteEventTemplate =
-      '<a ng-click="deleteEvent(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-href="/event/view/{{row.entity._id}}"  id="view"  class="btn btn-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-href="/event/edit/{{row.entity._id}}"  id="view"  class="btn btn-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
+      '<a ng-click="deleteEvent(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-href="/event/view/{{row.entity._id}}"  id="view"  class="label label-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-href="/event/edit/{{row.entity._id}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
     $scope.eventData = {
       data: 'gridEventData',
@@ -1035,7 +1035,7 @@ $scope.mmiuserStatus=function(userId){
     };
 
 
-    var editDeleteCompanyTemplate = '<a ng-click="deleteCompany(row.entity._id)"  id="delete"  class="btn btn-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-href="/company/view/{{row.entity._id}}"  id="view"  class="btn btn-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-href="/company/edit/{{row.entity._id}}"  id="view"  class="btn btn-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
+    var editDeleteCompanyTemplate = '<a ng-click="deleteCompany(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-href="/company/view/{{row.entity._id}}"  id="view"  class="label label-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-href="/company/edit/{{row.entity._id}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
     $scope.companyData = {
       data: 'gridCompanyData',

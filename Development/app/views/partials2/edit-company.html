@@ -28,7 +28,7 @@
  <div class="directory-section">
  <h1>Edit Your company Profile</h1> 
      <form novalidate  name="form" role='form' enctype= 'multipart/form-data' class="">
-        <div class="row">
+        <div class="row ">
           <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
           <div class="col-lg-6 col-md-6 col-sm-6">  
               <input type="text" class="form-control" name="title" placeholder="Company Name"  ng-model="article.title" required ng-minlength=2>
@@ -49,7 +49,7 @@
                 </div>
 
          <div class="row">
-             <div class="form-group">             
+             <div class="form-group edit-companey-admin">             
 <label>Please choose services</label>
 <br/>
  <label ng-repeat="service in services">
@@ -186,8 +186,8 @@
         </div>
 
 <div class="gray-hr"></div>
-     <button ng-click="addAddress()" class="btn btn-info">Add More address</button>
-<div class="gray-hr"></div>
+     
+<button ng-click="addAddress()" class="btn btn-info">Add More address</button>
 
    <!--    <div class="row">
           <div class="form-group">
@@ -202,7 +202,7 @@
 </div>
 <br/> -->
 
-    <button class='btn btn-register  btn-openid' ng-disabled="!form.$valid" ng-click="updateArticle(form)" > <i class="fa fa-caret-right"></i> Edit Company</button> 
+    <button class='btn btn-info' ng-disabled="!form.$valid" ng-click="updateArticle(form)" >  Edit Company</button> 
 
 <!-- <button class="btn btn-prew-direc btn-prew" >
                  <i class="fa fa-eye"></i> Preview</button>
@@ -210,9 +210,9 @@
      </form>
  
 <div class="gray-hr"></div>
+<br>
 
-
-<a  class="btn readmore-bt" type="button" href="/companies">Back to company profile </a>
+<a  class="btn btn-info" type="button" href="/companies">Back to company profile </a>
 
 </div>  
 </div>
