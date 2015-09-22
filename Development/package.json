@@ -29,7 +29,8 @@
     "socket.io": "^0.9.16",
     "static-favicon": "~1.0.0",
     "stylus": "0.42.3",
-    "xlsx": "~0.8.0"
+    "xlsx": "~0.8.0",
+    "express-useragent": "~0.2.0"
   },
   "devDependencies": {
     "connect-livereload": "~0.5.3",
