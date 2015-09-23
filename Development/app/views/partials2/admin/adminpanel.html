@@ -120,12 +120,11 @@
 </div>
 
 <script type="text/ng-template" id="mmiusers">
-<h1>MMI Users</h1>
-  <br/>
- 
- <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
-      <br/>
-      <br/>
+<div class="clearfix filter-search">
+<div class="pull-left"><h1>MMI Users</h1> </div>
+  <div class="pull-right "><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+     </div>
+     </div>
 <div class="gridStyle" ng-grid="mmiuserData">
 
 </div>
@@ -144,66 +143,64 @@
 
 
 <script type="text/ng-template" id="articles">
-<h1>Articles</h1>
- <br/>
- <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
-      <br/>
-      <br/>
+<div class="clearfix filter-search">
+<div class="pull-left"><h1>Articles</h1></div>
+  <div class="pull-right "><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
+   </div>
 <div class="gridStyle" ng-grid="articleData">
 
 </div>
 </script>
 
 <script type="text/ng-template" id="family">
-<h1>Family</h1>
-  <br/>
-<button class="btn btn-success" ng-click="addFamily()"> Add Family </button> <br/><br/>
+<div class="clearfix  filter-search">
+<div class="col-sm-4"><h1>Family</h1></div>
+  
+<div class="col-sm-4"><button class="btn btn-success" ng-click="addFamily()"> Add Family </button></div>
 
- <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
-      <br/>
-      <br/>
+ <div class="col-sm-4 pull-right"><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
+    </div> 
 <div class="gridStyle" ng-grid="familyData">
 
 </div>
 </script>
 
 <script type="text/ng-template" id="expert">
-<h1>Event Experts</h1>
-  <br/>
-<a class="btn btn-success" ng-href="/add-expert"> Add Expert </a>
-    <br/>
-    <br/>
- <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
-      <br/>
-      <br/>
+<div class="clearfix  filter-search">
+<div class="col-sm-4 "><h1>Event Experts</h1></div>
+
+<div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-expert"> Add Expert </a></div>
+   <div class="col-sm-4 pull-right">
+ <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
+      </div>
 <div class="gridStyle" ng-grid="expertData">
 
 </div>
 </script>
 
 <script type="text/ng-template" id="company">
-<h1>Companies</h1>
-  <br/>
-<a class="btn btn-success" ng-href="/add-company"> Add Company </a> 
+<div class="clearfix  filter-search">
+<div class="col-sm-4 "><h1>Companies</h1></div>
+
+<div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-company"> Add Company </a> </div>
 <!--<a class="btn btn-success" ng-href="/upload-company"> Upload Companies </a> -->
-    <br/>
-    <br/>
- <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
-      <br/>
-      <br/>
+   
+ <div class="col-sm-4 pull-right"><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
+    
+      </div>
 <div class="gridStyle" ng-grid="companyData">
 
 </div>
 </script>
 <script type="text/ng-template" id="event">
-<h1>Events</h1>
-  <br/>
-<a class="btn btn-success" ng-href="/add-event"> Add Event </a>
-    <br/>
-    <br/>
- <strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
-      <br/>
-      <br/>
+<div class="clearfix  filter-search">
+<div class="col-sm-4 "><h1>Events</h1></div>
+
+<div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-event"> Add Event </a></div>
+    
+ <div class="col-sm-4 pull-right"><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
+     
+      </div>
 <div class="gridStyle" ng-grid="eventData">
 
 </div>
