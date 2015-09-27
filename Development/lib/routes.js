@@ -171,7 +171,7 @@ module.exports = function(app) {
 			ua = useragent.parse(source);
 		// console.log(ua);
 		if (ua.isBot) {
-      res.send('<meta property="og:type" content="article"> <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/"> <meta property="og:title" content="Articles"> <meta property="og:description" content="Articles In  The Money Hans"> <meta property="og:image" content="http://themoneyhans.com/images/logo.png"> ');
+      res.send('<meta property="og:type" content="article"> <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/"> <meta property="og:title" content="Articles"> <meta property="og:description" content="Articles In rituraj ratan  The Money Hans"> <meta property="og:image" content="http://themoneyhans.com/images/logo.png"> ');
          // <meta property="og:type" content="article"> <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/"> <meta property="og:title" content="Articles"> <meta property="og:description" content="Articles In  The Money Hans"> <meta property="og:image" content="http://themoneyhans.com/images/logo.png"> 
          // console.log("facebook");
 			// res.statusCode = 302;
