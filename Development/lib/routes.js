@@ -171,11 +171,13 @@ module.exports = function(app) {
 			ua = useragent.parse(source);
 		// console.log(ua);
 		if (ua.isBot) {
-			console.log("facebook");
-			res.statusCode = 302;
-			console.log("http://service.prerender.io/http://themoneyhans.com" + req.url);
-			res.setHeader("Location", "http://service.prerender.io/http://themoneyhans.com" + req.url);
-			res.end();
+      res.send('<meta property="og:type" content="article"> <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/"> <meta property="og:title" content="Articles"> <meta property="og:description" content="Articles In  The Money Hans"> <meta property="og:image" content="http://themoneyhans.com/images/logo.png"> ');
+         // <meta property="og:type" content="article"> <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/"> <meta property="og:title" content="Articles"> <meta property="og:description" content="Articles In  The Money Hans"> <meta property="og:image" content="http://themoneyhans.com/images/logo.png"> 
+         // console.log("facebook");
+			// res.statusCode = 302;
+			// console.log("http://service.prerender.io/http://themoneyhans.com" + req.url);
+			// res.setHeader("Location", "http://service.prerender.io/http://themoneyhans.com" + req.url);
+			// res.end();
 		} else {
 			console.log("our project:");
 			next();
