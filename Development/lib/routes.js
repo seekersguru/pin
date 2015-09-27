@@ -166,7 +166,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/*', function(req, res, next) {
-		console.log(req.isBot);
+		console.log(req);
 		var source = req.headers['user-agent'],
 			ua = useragent.parse(source);
 		// console.log(ua);
