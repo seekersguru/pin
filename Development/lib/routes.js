@@ -178,7 +178,7 @@ module.exports = function(app) {
 		if (ua.isBot) {
 			var articleId=req.originalUrl.split("/");
 			if(articleId.length === 3)
-
+			console.log(articleId);
 					req['params']['articleid']=articleId[2];
 					console.log(req.params);
 
