@@ -180,6 +180,7 @@ module.exports = function(app) {
 			if(articleId.length === 3)
 
 					req['params']['articleid']=articleId;
+					console.log(req.params);
 
 			var data =	 articles.show(req,res);
 			console.log(data);
