@@ -180,15 +180,11 @@ module.exports = function(app) {
 				console.log(articleId);
 
 			if(articleId.length === 4)
-			   console.log(articleId);
-					req['params']['articleid']=articleId[3];
-					console.log(req.params);
+			{
+				 req['params']['articleid']=articleId[3];
+				 return next();
 
-
-			var data =	 articles.show(req,res);
-			console.log(data);
-					console.log(res);
-			res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/articles/view/55bdf76a7095311b3d29a9a1"> <meta property="og:title" content="BUILDING WEALTH IS LIKE BUILDING A HOUSE"> <meta property="og:description" content="BUILDING WEALTH IS LIKE BUILDING A HOUSEThe Money Hans"> <meta property="og:image" content="http://themoneyhans.com/uploads/1439532121359.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="Articles In The Money Hans"/> <meta name="twitter:title" content="The Money Hans"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/logo.png"/> ');
+			}
 
 			// <meta property="og:type" content="article"> <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/"> <meta property="og:title" content="Articles"> <meta property="og:description" content="Articles In  The Money Hans"> <meta property="og:image" content="http://themoneyhans.com/images/logo.png">
 			// console.log("facebook");
@@ -202,6 +198,11 @@ module.exports = function(app) {
 
 		}
 		// next();
+
+	}),articles.show,function(req,res){
+		 console.log(res);
+	 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/articles/view/55bdf76a7095311b3d29a9a1"> <meta property="og:title" content="BUILDING WEALTH IS LIKE BUILDING A HOUSE"> <meta property="og:description" content="BUILDING WEALTH IS LIKE BUILDING A HOUSEThe Money Hans"> <meta property="og:image" content="http://themoneyhans.com/uploads/1439532121359.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="Articles In The Money Hans"/> <meta name="twitter:title" content="The Money Hans"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/logo.png"/> ');
+
 
 	});
 
