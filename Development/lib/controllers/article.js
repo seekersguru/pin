@@ -204,7 +204,30 @@ exports.show=function(req,res){
 	});
 
 };
+// show particluar one article
+exports.botshow=function(req,res){
+	var articleid=req.params.articleid;
+	Article.findById(articleid)
+	.populate('author','name email fullname')
+	.populate('scomments.user','_id fullname following commentvisible')
+	.exec(function(err,article){
+		if(err){
+			console.log(err);
+			return res.json(404,err);
+		}
+		if (!article){
+			console.log('notfound');
+			return res.send(404);
+		}
+		if(article)
+		{
+			return article;
+		}
+		return res.send(403);
 
+	});
+
+};
 /** serach that it is exist or not */
 exports.search= function(req, res){
   var search = req.params.search;
