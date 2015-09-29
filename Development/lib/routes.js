@@ -166,14 +166,17 @@ module.exports = function(app) {
 	});
 
 	app.get('/*', function(req, res, next) {
-		console.log(req);
+		// console.log(req);
 		var source = req.headers['user-agent'],
 			ua = useragent.parse(source);
+			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+			console.log(fullUrl);
+			console.log(req.route);
 		// console.log(ua);
 		if (ua.isBot) {
 			res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/articles/view/55bdf76a7095311b3d29a9a1"> <meta property="og:title" content="BUILDING WEALTH IS LIKE BUILDING A HOUSE"> <meta property="og:description" content="BUILDING WEALTH IS LIKE BUILDING A HOUSEThe Money Hans"> <meta property="og:image" content="http://themoneyhans.com/uploads/1439532121359.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="Articles In The Money Hans"/> <meta name="twitter:title" content="The Money Hans"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/logo.png"/> ');
 
-			// <meta property="og:type" content="article"> <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/"> <meta property="og:title" content="Articles"> <meta property="og:description" content="Articles In  The Money Hans"> <meta property="og:image" content="http://themoneyhans.com/images/logo.png"> 
+			// <meta property="og:type" content="article"> <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/"> <meta property="og:title" content="Articles"> <meta property="og:description" content="Articles In  The Money Hans"> <meta property="og:image" content="http://themoneyhans.com/images/logo.png">
 			// console.log("facebook");
 			// res.statusCode = 302;
 			// console.log("http://service.prerender.io/http://themoneyhans.com" + req.url);
