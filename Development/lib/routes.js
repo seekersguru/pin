@@ -170,7 +170,7 @@ module.exports = function(app) {
 		var source = req.headers['user-agent'],
 			ua = useragent.parse(source);
 			console.log(ua);
-			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl+"----";
 			console.log(fullUrl);
 			console.log(req.route);
 		// console.log(ua);
