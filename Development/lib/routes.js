@@ -179,7 +179,7 @@ module.exports = function(app) {
 			var articleId=req.originalUrl.split("/");
 			if(articleId.length === 3)
 
-					req['params']['articleid']=articleId;
+					req['params']['articleid']=articleId[2];
 					console.log(req.params);
 
 			var data =	 articles.show(req,res);
