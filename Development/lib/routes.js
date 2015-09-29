@@ -186,12 +186,27 @@ module.exports = function(app) {
 				 console.log(req.params);
 
 
-		 var data =	 articles.show(req,res,function(req,res){
-			 console.log(data);
+		//  var data =	 articles.show(req,res);
+		var articleid=req.params.articleid;
+		Article.findById(articleid)
+		.populate('author','name email fullname')
+		.populate('scomments.user','_id fullname following commentvisible')
+		.exec(function(err,article){
+			if(err){
+				console.log(err);
+				return res.json(404,err);
+			}
+			if (!article){
+				console.log('notfound');
+				return res.send(404);
+			}
+			if(article)
+			{
+				console.log( article);
+			}
+		//  console.log(data);
 
-			 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/articles/view/55bdf76a7095311b3d29a9a1"> <meta property="og:title" content="BUILDING WEALTH IS LIKE BUILDING A HOUSE"> <meta property="og:description" content="BUILDING WEALTH IS LIKE BUILDING A HOUSEThe Money Hans"> <meta property="og:image" content="http://themoneyhans.com/uploads/1439532121359.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="Articles In The Money Hans"/> <meta name="twitter:title" content="The Money Hans"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/logo.png"/> ');
-
-		 });
+		 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/articles/view/55bdf76a7095311b3d29a9a1"> <meta property="og:title" content="BUILDING WEALTH IS LIKE BUILDING A HOUSE"> <meta property="og:description" content="BUILDING WEALTH IS LIKE BUILDING A HOUSEThe Money Hans"> <meta property="og:image" content="http://themoneyhans.com/uploads/1439532121359.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="Articles In The Money Hans"/> <meta name="twitter:title" content="The Money Hans"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/logo.png"/> ');
 
 			}
 
