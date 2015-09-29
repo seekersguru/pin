@@ -172,6 +172,7 @@ module.exports = function(app) {
 			console.log(ua);
 			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl+"----";
 			console.log(fullUrl);
+			console.log(req.originalUrl+"66666");
 			console.log(req.route);
 		// console.log(ua);
 		if (ua.isBot) {
