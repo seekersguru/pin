@@ -181,9 +181,9 @@ console.log("start");
 			console.log(articleId);
 			console.log("stop");
 
-			if(articleId.length === 3)
+			if(articleId.length === 4)
 			   console.log(articleId);
-					req['params']['articleid']=articleId[2];
+					req['params']['articleid']=articleId[3];
 					console.log(req.params);
 
 			var data =	 articles.show(req,res);
