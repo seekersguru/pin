@@ -204,7 +204,7 @@ exports.show=function(req,res){
 		}
     else {
       console.log(article);
-      return article;
+      return JSON.stringify(article);
     }
 
 		return res.send(403);
