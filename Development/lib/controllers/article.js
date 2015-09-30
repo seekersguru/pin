@@ -195,10 +195,14 @@ exports.show=function(req,res){
 			console.log('notfound');
 			return res.send(404);
 		}
-		if(article)
+		if(article && !req.params.bot)
 		{
 			return res.json(article);
 		}
+    else {
+      return article;
+    }
+
 		return res.send(403);
 
 	});

@@ -179,7 +179,7 @@ module.exports = function(app) {
 				 req['params']['articleid']=articleId[3];
 				 console.log(req.params);
 
-
+		req.params.bot= true;
 
 		 var data =	 articles.show(req,res);
 		 console.log(data);
