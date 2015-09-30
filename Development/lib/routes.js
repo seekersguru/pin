@@ -164,7 +164,7 @@ module.exports = function(app) {
 		res.send(404);
 	});
 
-	app.get('/*',articles.show);
+	// app.get('/*',articles.show);
 		// console.log(req);
 		// var source = req.headers['user-agent'],
 		// 	ua = useragent.parse(source);
