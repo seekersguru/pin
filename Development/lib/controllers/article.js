@@ -203,6 +203,7 @@ exports.show=function(req,res){
 			return res.json(article);
 		}
     else {
+      console.log(article);
       return article;
     }
 
