@@ -4,6 +4,8 @@ var mongoose = require('mongoose'),
 User = mongoose.model('Serviceuser'),
 Article = mongoose.model('Article'),
 multipart = require('connect-multiparty'),
+useragent = require('express-useragent'),
+device = require('express-device'),
 fs = require('fs'),
 path = require('path'),
 _ = require('lodash');
@@ -182,6 +184,20 @@ exports.removemedia = function(req, res) {
 
 // show particluar one article
 exports.show=function(req,res){
+  // console.log(req);
+  var source = req.headers['user-agent'],
+    ua = useragent.parse(source);
+    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl+"----";
+    if (ua.isBot) {
+    var articleId=req.originalUrl.split("/");
+    if(articleId.length === 4)
+    {
+      console.log(articleId);
+       req['params']['articleid']=articleId[3];
+        req.params.bot= true;
+
+    }
+  }
 	var articleid=req.params.articleid;
 	Article.findById(articleid)
 	.populate('author','name email fullname')
@@ -198,14 +214,18 @@ exports.show=function(req,res){
 
     console.log(req.params.bot);
 
-		if(article && !req.params.bot)
+		if(article)
 		{
-			return res.json(article);
+      if(req.params.bot)
+      {
+        res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/articles/view/55bdf76a7095311b3d29a9a1"> <meta property="og:title" content="'+title+'"> <meta property="og:description" content="'+description+'"> <meta property="og:image" content="http://themoneyhans.com/'+media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+description+'"/> <meta name="twitter:title" content="'+title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/'+media.path+'"/> ');
+
+      }
+      else{
+			     return res.json(article);
+      }
 		}
-    else {
-      console.log(article);
-      return JSON.stringify(article);
-    }
+
 
 		return res.send(403);
 
