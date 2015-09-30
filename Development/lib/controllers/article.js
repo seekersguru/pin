@@ -218,7 +218,7 @@ exports.show=function(req,res){
 		{
       if(req.params.bot)
       {
-        res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/articles/view/55bdf76a7095311b3d29a9a1"> <meta property="og:title" content="'+title+'"> <meta property="og:description" content="'+description+'"> <meta property="og:image" content="http://themoneyhans.com/'+media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+description+'"/> <meta name="twitter:title" content="'+title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/'+media.path+'"/> ');
+        res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/articles/view/55bdf76a7095311b3d29a9a1"> <meta property="og:title" content="'+article.title+'"> <meta property="og:description" content="'+article.description+'"> <meta property="og:image" content="http://themoneyhans.com/'+article.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+article.description+'"/> <meta name="twitter:title" content="'+article.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/'+article.media.path+'"/> ');
 
       }
       else{
