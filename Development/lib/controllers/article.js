@@ -195,6 +195,9 @@ exports.show=function(req,res){
 			console.log('notfound');
 			return res.send(404);
 		}
+
+    console.log(req.params.bot);
+
 		if(article && !req.params.bot)
 		{
 			return res.json(article);
