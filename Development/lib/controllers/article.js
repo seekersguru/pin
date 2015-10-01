@@ -5,6 +5,7 @@ User = mongoose.model('Serviceuser'),
 Article = mongoose.model('Article'),
 multipart = require('connect-multiparty'),
 fs = require('fs'),
+Q = require('q'),
 path = require('path'),
 _ = require('lodash');
 
@@ -182,6 +183,7 @@ exports.removemedia = function(req, res) {
 
 // show particluar one article
 exports.show=function(req,res){
+  var deferred = Q.defer();
 	var articleid=req.params.articleid;
 	Article.findById(articleid)
 	.populate('author','name email fullname')
@@ -204,10 +206,14 @@ exports.show=function(req,res){
 		}
     else {
       console.log(article);
-      return JSON.stringify(article);
+      return deferred.promise(article);
     }
 
-		return res.send(403);
+    if(req.params.bot){
+      return deferred.promise;
+    }else{
+  		return res.send(403);
+    }
 
 	});
 
