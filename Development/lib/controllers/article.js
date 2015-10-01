@@ -205,17 +205,17 @@ exports.show=function(req,res){
 			return res.json(article);
 		}
     else {
-      console.log(article);
-      return deferred.promise(article);
-    }
-
-    if(req.params.bot){
-      return deferred.promise;
-    }else{
-  		return res.send(403);
+      deferred.resolve(article);
     }
 
 	});
+
+  if(req.params.bot){
+    return deferred.promise;
+  }
+
+
+
 
 };
 // show particluar one article
