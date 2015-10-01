@@ -30,6 +30,7 @@
     "q": "^1.4.1",
     "socket.io": "^0.9.16",
     "static-favicon": "~1.0.0",
+    "striptags": "^2.0.3",
     "stylus": "0.42.3",
     "xlsx": "~0.8.0"
   },
