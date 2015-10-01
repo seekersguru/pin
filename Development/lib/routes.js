@@ -11,7 +11,9 @@ var index = require('./controllers'),
 	familys = require('./controllers/family'),
 	companys = require('./controllers/company'),
 	experts = require('./controllers/expert'),
-	countrycity = require('./controllers/countrycity');
+	countrycity = require('./controllers/countrycity'),
+	useragent = require('express-useragent'),
+	device = require('express-device');
 
 
 var middleware = require('./middleware');
@@ -205,7 +207,6 @@ module.exports = function(app) {
 		next();
 
 	});
-
 	// All other routes to use Angular routing in app/scripts/app.js
 	app.get('/partials/*', index.partials);
 	app.get('/partials2/*', index.partials);
