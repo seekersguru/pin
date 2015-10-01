@@ -167,7 +167,6 @@ module.exports = function(app) {
 	});
 
 	app.get('/*',function(req,res,next){
-		console.log(req);
 		var source = req.headers['user-agent'],
 			ua = useragent.parse(source);
 			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl+"----";
@@ -204,7 +203,7 @@ module.exports = function(app) {
 			next();
 
 		}
-	
+
 	});
 	// All other routes to use Angular routing in app/scripts/app.js
 	app.get('/partials/*', index.partials);
