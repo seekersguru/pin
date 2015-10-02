@@ -14,8 +14,7 @@ var index = require('./controllers'),
     countrycity = require('./controllers/countrycity'),
 		useragent = require('express-useragent'),
 		Q = require('q'),
-		striptags = require('striptags'),
-		device = require('express-device');
+		striptags = require('striptags');
 
 var middleware = require('./middleware');
 var multipart = require('connect-multiparty'),
