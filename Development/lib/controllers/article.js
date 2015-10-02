@@ -6,6 +6,7 @@ Article = mongoose.model('Article'),
 multipart = require('connect-multiparty'),
 fs = require('fs'),
 path = require('path'),
+Q = require('q'),
 _ = require('lodash');
 // moment=require('moment');
 
@@ -28,10 +29,10 @@ exports.search= function(req, res){
       console.log(err);
       return res.send(404);
     } else {
-       
+
       return res.json({articles:articles});
     }
-  }); 
+  });
 };
 
 
@@ -70,7 +71,7 @@ exports.create = function(req, res, next) {
 		file = req.files.file;
 
 	if( Object.prototype.toString.call( req.files.file ) === '[object Array]' ) {
-		
+
 		file = req.files.file[0];
 		thumb=req.files.file[1];
 
@@ -114,7 +115,7 @@ exports.create = function(req, res, next) {
         		path:savepaththumb,
         		originalName:thumb.name
         	};
-        		
+
 
         	}
 
@@ -138,13 +139,13 @@ exports.create = function(req, res, next) {
 		        		if(err){
 		        			console.log(err);
 		        			return res.json(400, err);
-		        		} 
+		        		}
 		        		return res.json({article:article});
 		        	});
-		      
+
 		        });
-		      
-		      });	
+
+		      });
 
 
         	}else{
@@ -154,10 +155,10 @@ exports.create = function(req, res, next) {
         		if(err){
         			console.log(err);
         			return res.json(400, err);
-        		} 
+        		}
         		return res.json({article:article});
         	});
-        		
+
         	}
 
         });
@@ -172,7 +173,7 @@ exports.create = function(req, res, next) {
         		if(err){
         			console.log(err);
         			return res.json(400, err);
-        		} 
+        		}
         		return res.json({article:article});
         	});
 
@@ -200,7 +201,7 @@ exports.update = function(req, res) {
 		file = req.files.file;
 
 	if( Object.prototype.toString.call( req.files.file ) === '[object Array]' ) {
-		
+
 		file = req.files.file[0];
 		thumb=req.files.file[1];
 
@@ -234,7 +235,7 @@ exports.update = function(req, res) {
         	{
         		article_data.createdAt= JSON.parse(req.body.createdAt);
        		 }
-        	
+
 
         	article_data.media={
         		extension: file.type,
@@ -251,7 +252,7 @@ exports.update = function(req, res) {
         		path:savepaththumb,
         		originalName:thumb.name
         	};
-        		
+
 
         	}
 
@@ -278,7 +279,7 @@ exports.update = function(req, res) {
 
 		        });
 
-		      });	
+		      });
 
 
         	}else{
@@ -300,15 +301,15 @@ exports.update = function(req, res) {
   else
   {
 
-//if we ra emaking article as a MMI banner 
+//if we ra emaking article as a MMI banner
 //then reset all mmibanner field for article
 // is false this request mainly send by admin section
 
-	if(req.body.banner){ 
+	if(req.body.banner){
 		 Article.where({})
 			    .update({},{ $set: { mmibanner: false }},{ multi: true},function(){
 			    	console.log("mmi banner updated");
-			    	
+
 		    		Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
 								if (err) {
 									console.log(err);
@@ -321,7 +322,7 @@ exports.update = function(req, res) {
 								return res.send(200);
 							});
 			    });
-	
+
 	}else{
 	Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
 		if (err) {
@@ -369,7 +370,7 @@ exports.removemedia = function(req, res) {
 					}
 			});
 		});
-	
+
 		// return res.send(200);
 
 		}
@@ -404,15 +405,17 @@ exports.removethumble = function(req, res) {
 					}
 			});
 		});
-	
+
 		}
 	});
 
 };
 
-// show particluar one article 
+// show particluar one article
 exports.show=function(req,res){
-	var articleid=req.params.articleid;
+  var deferred = Q.defer(),
+    articleid=req.params.articleid;
+
 	Article.findById(articleid)
 	.populate('author','name email')
 	.populate('comments.user','_id fullname following commentvisible')
@@ -425,13 +428,21 @@ exports.show=function(req,res){
 			console.log('notfound');
 			return res.send(404);
 		}
-		if(article)
-		{
-			return res.json(article);
-		}
-		return res.send(403);
+    console.log(req.params.bot);
+
+    if(article && !req.params.bot)
+    {
+      return res.json(article);
+    }
+    else {
+      deferred.resolve(article);
+    }
 
 	});
+  if(req.params.bot){
+    return deferred.promise;
+  }
+
 
 };
 
@@ -450,7 +461,7 @@ exports.query = function(req, res) {
 	if(req.query.pageno){
 		q=q.skip((req.query.pageno-1)*req.query.limit);
 	}
-  
+
   /** public true  */
   q.where('public').equals(true);
   q.where('pin').equals(true);
@@ -487,7 +498,7 @@ exports.basic = function(req, res) {
 			return res.send(404);
 		} else {
 			  for(var i=0; i<articles.length; i++){
-			  	
+
             articles[i] = articles[i].articleInfo;
          }
 			return res.json({articles:articles});
@@ -528,7 +539,7 @@ exports.remove = function(req, res) {
 
 /**============Comment Section Start================**/
 
-// get all comments 
+// get all comments
 
 exports.comment_query=function(req, res){
 
@@ -550,9 +561,9 @@ exports.comment_query=function(req, res){
 		}
 
 			return res.send(403);
-	
+
 	  });
-	
+
 	};
 
 
@@ -582,10 +593,10 @@ exports.comment_query=function(req, res){
 			}
 
 			 return res.send(403);
-		
+
 		  });
   };
-  
+
   //Create comment
   exports.comment_create=function(req, res){
   	var article_id = req.params.articleid;
@@ -620,13 +631,13 @@ exports.comment_query=function(req, res){
 	  });
 
   };
-  
-  
+
+
   //remove comment
   exports.comment_remove=function(req, res){
   	var article_id = req.params.articleid,
   	comment_id = req.params.commentid;
-  
+
   Article.findByIdAndUpdate(
     article_id,
    { $pull: { 'comments': {  _id: comment_id } } },function(err,model){
@@ -639,4 +650,4 @@ exports.comment_query=function(req, res){
 
   };
 
-  /**========== Comment Section Stop =================**/  
+  /**========== Comment Section Stop =================**/

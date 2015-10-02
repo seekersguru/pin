@@ -7,11 +7,15 @@ var index = require('./controllers'),
     articles = require('./controllers/article'),
     events = require('./controllers/event'),
     discussions = require('./controllers/discussion'),
-    familys = require('./controllers/family'), 
+    familys = require('./controllers/family'),
     experts = require('./controllers/expert'),
     companys = require('./controllers/company'),
-    countrycity = require('./controllers/countrycity');
-   
+    countrycity = require('./controllers/countrycity'),
+		useragent = require('express-useragent'),
+		Q = require('q'),
+		striptags = require('striptags');
+
+
 var middleware = require('./middleware');
 var multipart = require('connect-multiparty'),
     multipartMiddleware = multipart();
@@ -22,14 +26,14 @@ var multipart = require('connect-multiparty'),
 module.exports = function(app) {
 
   // Server API Routes
-  
+
   //nishant section start
 
   app.post('/api/nishant', nishant.create);
   app.get('/api/nishant', nishant.query);
 
   //nishant section end
-  
+
   /**---(',')--article section start----(',')---**/
 
   //GET
@@ -70,13 +74,13 @@ module.exports = function(app) {
   app.get('/api/users/mycontact/:userid', users.mycontact);
   app.put('/api/users/followingstatus/:followingid', users.connectupdate);
 
-  
+
 
   app.post('/api/discussions', discussions.create);
   app.get('/api/discussions', discussions.query);
   app.get('/api/discussions/:cid', discussions.checkcid);
-  app.put('/api/discussions/:discussionid', discussions.update); 
-  app.del('/api/discussions/:discussionid', discussions.remove); 
+  app.put('/api/discussions/:discussionid', discussions.update);
+  app.del('/api/discussions/:discussionid', discussions.remove);
 
     /**---(',')--discussion  comments section start----(',')---**/
 
@@ -95,8 +99,8 @@ module.exports = function(app) {
   app.post('/api/family', familys.create);
   app.get('/api/family', familys.query);
   app.get('/api/family/:familyid', familys.show);
-  app.put('/api/family/:familyid', familys.update); 
-  app.del('/api/family/:familyid', familys.remove); 
+  app.put('/api/family/:familyid', familys.update);
+  app.del('/api/family/:familyid', familys.remove);
 
   /**
    * experts section apis
@@ -105,8 +109,8 @@ module.exports = function(app) {
   app.get('/api/expert', experts.query);
   app.get('/api/expert/basic', experts.basic);
   app.get('/api/expert/:expertid', experts.show);
-  app.put('/api/expert/:expertid', experts.update); 
-  app.del('/api/expert/:expertid', experts.remove); 
+  app.put('/api/expert/:expertid', experts.update);
+  app.del('/api/expert/:expertid', experts.remove);
   app.put('/api/expert/removemedia/:expertid', experts.removemedia);
 
    /**---(',')--Event section start----(',')---**/
@@ -122,9 +126,9 @@ module.exports = function(app) {
 
   /**---(',')--Event section stop----(',')---**/
 
-   
+
   /**---(',')--Event comments section start----(',')---**/
-  
+
   app.get('/api/event-comments/:articleid', events.comment_query);
   app.get('/api/event-comments/:articleid/:commentid', events.comment_show);
   app.post('/api/event-comments/:articleid',  events.comment_create);
@@ -140,7 +144,7 @@ module.exports = function(app) {
   app.put('/api/companys/:companyid',companys.update);
   app.del('/api/companys/:companyid', companys.remove);
   app.post('/api/companys/upload',  multipartMiddleware, companys.uploadcompanies);
-   
+
   app.post('/api/session', session.login);
   app.del('/api/session', session.logout);
   app.get('/api/session/facebook', session.fblogin);
@@ -161,6 +165,47 @@ module.exports = function(app) {
   app.get('/api/*', function(req, res) {
     res.send(404);
   });
+
+	app.get('/*',function(req,res,next){
+		var source = req.headers['user-agent'],
+			ua = useragent.parse(source);
+			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl+"----";
+			// console.log(ua);
+		if (ua.isBot) {
+			var articleId=req.originalUrl.split("/");
+			if(articleId.length === 4)
+			{
+				console.log(articleId);
+				 req['params']['articleid']=articleId[3];
+
+				 console.log(req.params);
+
+		req.params.bot= true;
+
+		 articles.show(req,res).then(function(data){
+			 console.log("data aaa gya");
+			 console.log(data);
+			 console.log(req.protocol + '://' + req.get('host'));
+					//  console.log(res);
+			 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/>');
+
+		 });
+
+			}
+
+			// <meta property="og:type" content="article"> <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/"> <meta property="og:title" content="Articles"> <meta property="og:description" content="Articles In  The Money Hans"> <meta property="og:image" content="http://themoneyhans.com/images/logo.png">
+			// console.log("facebook");
+			// res.statusCode = 302;
+			// console.log("http://service.prerender.io/http://themoneyhans.com" + req.url);
+			// res.setHeader("Location", "http://service.prerender.io/http://themoneyhans.com" + req.url);
+			// res.end();
+		} else {
+			console.log("our project:");
+			next();
+
+		}
+
+	});
 
   // All other routes to use Angular routing in app/scripts/app.js
   app.get('/partials/*', index.partials);
