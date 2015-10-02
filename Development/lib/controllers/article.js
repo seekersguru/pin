@@ -6,6 +6,7 @@ Article = mongoose.model('Article'),
 multipart = require('connect-multiparty'),
 fs = require('fs'),
 path = require('path'),
+Q = require('q'),
 _ = require('lodash');
 
 Article.collection.ensureIndex({title: 'text', description: 'text', tags: 'text', mmitags: 'text', category: 'text', mmicategory: 'text', mmisubcategory: 'text'}, function(error) {console.log("get index");});
@@ -63,7 +64,7 @@ exports.create = function(req, res, next) {
         		if(err){
         			console.log(err);
         			return res.json(400, err);
-        		} 
+        		}
         		return res.json({article:article});
         	});
 
@@ -79,7 +80,7 @@ exports.create = function(req, res, next) {
         		if(err){
         			console.log(err);
         			return res.json(400, err);
-        		} 
+        		}
         		return res.json({article:article});
         	});
 
@@ -180,9 +181,10 @@ exports.removemedia = function(req, res) {
 
 };
 
-// show particluar one article 
+// show particluar one article
 exports.show=function(req,res){
-	var articleid=req.params.articleid;
+  var deferred = Q.defer(),
+      articleid=req.params.articleid;
 	Article.findById(articleid)
 	.populate('author','name email fullname')
 	.populate('scomments.user','_id fullname following commentvisible')
@@ -195,13 +197,20 @@ exports.show=function(req,res){
 			console.log('notfound');
 			return res.send(404);
 		}
-		if(article)
+    if(article && !req.params.bot)
 		{
 			return res.json(article);
 		}
-		return res.send(403);
+    else {
+      deferred.resolve(article);
+    }
+
 
 	});
+  
+  if(req.params.bot){
+    return deferred.promise;
+  }
 
 };
 
@@ -219,10 +228,10 @@ exports.search= function(req, res){
       console.log(err);
       return res.send(404);
     } else {
-       
+
       return res.json({articles:articles});
     }
-  }); 
+  });
 };
 
 // show all articles with paging
@@ -240,7 +249,7 @@ exports.query = function(req, res) {
 	if(req.query.pageno){
 		q=q.skip((req.query.pageno-1)*req.query.limit);
 	}
-  
+
   /** public true  */
   q.where('public').equals(true);
   q.where('money').equals(true);
@@ -269,7 +278,7 @@ exports.hansi = function(req, res) {
 	var q=Article.find({'author':'5581b46814016a137dc93cdb'});//hansi id
 	/** apply limit  */
 	q=q.limit(1);
-	
+
   /** public true  */
   q.where('public').equals(true);
   q.where('money').equals(true);
@@ -306,7 +315,7 @@ exports.basic = function(req, res) {
 			return res.send(404);
 		} else {
 			  for(var i=0; i<articles.length; i++){
-			  	
+
             articles[i] = articles[i].articleInfo;
          }
 			return res.json({articles:articles});
@@ -347,7 +356,7 @@ exports.remove = function(req, res) {
 
 /**============Comment Section Start================**/
 
-// get all comments 
+// get all comments
 
 exports.comment_query=function(req, res){
 
@@ -369,9 +378,9 @@ exports.comment_query=function(req, res){
 		}
 
 			return res.send(403);
-	
+
 	  });
-	
+
 	};
 
 
@@ -401,10 +410,10 @@ exports.comment_query=function(req, res){
 			}
 
 			 return res.send(403);
-		
+
 		  });
   };
-  
+
   //Create comment
   exports.comment_create=function(req, res){
   	var article_id = req.params.articleid;
@@ -439,13 +448,13 @@ exports.comment_query=function(req, res){
 	  });
 
   };
-  
-  
+
+
   //remove comment
   exports.comment_remove=function(req, res){
   	var article_id = req.params.articleid,
   	comment_id = req.params.commentid;
-  
+
   Article.findByIdAndUpdate(
     article_id,
    { $pull: { 'scomments': {  _id: comment_id } } },function(err,model){
@@ -458,4 +467,4 @@ exports.comment_query=function(req, res){
 
   };
 
-  /**========== Comment Section Stop =================**/  
+  /**========== Comment Section Stop =================**/
