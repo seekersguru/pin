@@ -177,6 +177,8 @@ module.exports = function(app) {
 
 			var articleId=req.originalUrl.split("/");
 			console.log(articleId);
+
+
 			if(articleId.length === 4)
 			{
 				if(articleId[1]=== 'articles')
@@ -187,23 +189,27 @@ module.exports = function(app) {
 			 		res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/>');
 		 		});
 
-	 	}else if(articleId[1] === 'event')
-	 	{
-		 req['params']['articleid']=articleId[3];
-		 req.params.bot= true;
+			 	}else if(articleId[1] === 'event')
+			 	{
+				 req['params']['articleid']=articleId[3];
+				 req.params.bot= true;
 
-		 events.show(req,res).then(function(data){
-			 console.log(data);
-			 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.bannertext)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.bannertext)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/>');
-		 });
+				 events.show(req,res).then(function(data){
+					 console.log(data);
+					 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.bannertext)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.bannertext)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/>');
+				 });
 
-	 }
-
-
-	 }else{
-		 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="The Money Hans"> <meta property="og:description" content="I started The Money Hans because I want to share my knowledge and 20 years experience in finance with those who need it the most – directly."> <meta property="og:image" content="http://themoneyhans.com/images/ipad-home-nav.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="I started The Money Hans because I want to share my knowledge and 20 years experience in finance with those who need it the most – directly."/> <meta name="twitter:title" content="The Money Hans"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/ipad-home-nav.png"/>');
-
-	 }
+			 }
+	 		}
+			else if(articleId[1].match(/discussion-start/g)){
+				if(articleId[1].split("?")[1]){
+					console.log(articleId[1].split("?")[1]);
+				}
+			}
+			else
+			{
+		 			res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="The Money Hans"> <meta property="og:description" content="I started The Money Hans because I want to share my knowledge and 20 years experience in finance with those who need it the most – directly."> <meta property="og:image" content="http://themoneyhans.com/images/ipad-home-nav.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="I started The Money Hans because I want to share my knowledge and 20 years experience in finance with those who need it the most – directly."/> <meta name="twitter:title" content="The Money Hans"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/ipad-home-nav.png"/>');
+	 		}
 
 			// <meta property="og:type" content="article"> <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/"> <meta property="og:title" content="Articles"> <meta property="og:description" content="Articles In  The Money Hans"> <meta property="og:image" content="http://themoneyhans.com/images/ipad-home-nav.png">
 			// console.log("facebook");
@@ -211,7 +217,8 @@ module.exports = function(app) {
 			// console.log("http://service.prerender.io/http://themoneyhans.com" + req.url);
 			// res.setHeader("Location", "http://service.prerender.io/http://themoneyhans.com" + req.url);
 			// res.end();
-		} else {
+		}
+		 else {
 			console.log("our project:");
 			next();
 
