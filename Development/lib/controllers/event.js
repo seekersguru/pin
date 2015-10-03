@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
   multipart = require('connect-multiparty'),
   fs = require('fs'),
   path = require('path'),
+  Q = require('q'),
   _ = require('lodash');
 
 
@@ -200,7 +201,8 @@ exports.removemedia = function(req, res) {
 
 // show particluar one article
 exports.show = function(req, res) {
-  var articleid = req.params.articleid;
+  var deferred = Q.defer(),
+      articleid = req.params.articleid;
   Event.findById(articleid).populate('author', 'name email')
     .exec(function(err, article) {
       if (err) {
@@ -211,12 +213,20 @@ exports.show = function(req, res) {
         console.log('notfound');
         return res.send(404);
       }
-      if (article) {
+
+      if(article && !req.params.bot)
+      {
         return res.json(article);
       }
-      return res.send(403);
+      else {
+        deferred.resolve(article);
+      }
 
     });
+
+    if(req.params.bot){
+      return deferred.promise;
+    }
 
 };
 
