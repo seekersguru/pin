@@ -168,7 +168,7 @@ module.exports = function(app) {
     res.send(404);
   });
 
-
+//for seo purpouse
 	app.get('/*',function(req,res,next){
 		var source = req.headers['user-agent'],
 			ua = useragent.parse(source);
@@ -196,7 +196,7 @@ module.exports = function(app) {
 
 					 events.show(req,res).then(function(data){
 						 console.log(data);
-						 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.bannertext)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.bannertext)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/>');
+						 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.bannertext)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.bannertext)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="Money Management India"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/>');
 					 });
 
 				 }
@@ -208,13 +208,13 @@ module.exports = function(app) {
 						discussions.checkcid(req,res).then(function(data){
 							data=data[0];
 						 console.log(data);
-						 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"> <meta property="og:image" content="http://themoneyhans.com/images/hunsi-img.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/hunsi-img.png"/>');
+						 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"> <meta property="og:image" content="http://themoneyhans.com/images/hunsi-img.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="Money Management India"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/hunsi-img.png"/>');
 					 });
 					}
 				}
 				else
 				{
-						res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="The Money Hans"> <meta property="og:description" content="I started The Money Hans because I want to share my knowledge and 20 years experience in finance with those who need it the most – directly."> <meta property="og:image" content="http://themoneyhans.com/images/ipad-home-nav.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="I started The Money Hans because I want to share my knowledge and 20 years experience in finance with those who need it the most – directly."/> <meta name="twitter:title" content="The Money Hans"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/ipad-home-nav.png"/>');
+						res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="Money Management India"> <meta property="og:description" content="Money Management India is relevant for professionals in the Indian financial services industry who are involved in retail or institutional savings. It also serves as a central resource for overseas investors investing in India."> <meta property="og:image" content="http://moneymanagementindia.net/images/new-logo.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="Money Management India is relevant for professionals in the Indian financial services industry who are involved in retail or institutional savings. It also serves as a central resource for overseas investors investing in India."/> <meta name="twitter:title" content="Money Management India"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://moneymanagementindia.net/images/new-logo.png"/>');
 				}
 
 			}
