@@ -47,7 +47,7 @@
 
                 </div>
                 <div class="box-info">
-                  Family Office 
+                  Family Office
                 </div>
                 </a>
             </div>
@@ -61,7 +61,7 @@
 
                 </div>
                 <div class="box-info">
-                    Event Experts 
+                    Event Experts
                 </div>
                 </a>
             </div>
@@ -75,12 +75,12 @@
 
                 </div>
                 <div class="box-info">
-                  Event 
+                  Event
                 </div>
                 </a>
             </div>
             </li>
-           
+
 
              <li>
             <div class="mini-box">
@@ -95,7 +95,7 @@
                 </a>
             </div>
             </li>
-            
+
              <li>
             <div class="mini-box">
             <a class="" ng-click="setSearch('company')" target="_blank"  >
@@ -104,7 +104,7 @@
 
                 </div>
                 <div class="box-info">
-                     Companies 
+                     Companies
                 </div>
                 </a>
             </div>
@@ -113,7 +113,7 @@
 </div>
 
 </div>
-       
+
 </div>
     </div>
 </div>
@@ -133,7 +133,7 @@
 <script type="text/ng-template" id="users">
 <div class="clearfix filter-search">
 <div class="pull-left"><h1>PIN Users</h1></div>
- 
+
  <div class="pull-right "><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
       </div></div>
 <div class="gridStyle" ng-grid="userData">
@@ -144,8 +144,10 @@
 
 <script type="text/ng-template" id="articles">
 <div class="clearfix filter-search">
-<div class="pull-left"><h1>Articles</h1></div>
-  <div class="pull-right "><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
+<div class="col-sm-4"><h1>Articles</h1></div>
+<div class="col-sm-4"><a class="btn btn-success" ng-href="/post-article"> Add Article </a></div>
+
+  <div class="col-sm-4 pull-right"><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
    </div>
 <div class="gridStyle" ng-grid="articleData">
 
@@ -155,11 +157,11 @@
 <script type="text/ng-template" id="family">
 <div class="clearfix  filter-search">
 <div class="col-sm-4"><h1>Family</h1></div>
-  
+
 <div class="col-sm-4"><button class="btn btn-success" ng-click="addFamily()"> Add Family </button></div>
 
  <div class="col-sm-4 pull-right"><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
-    </div> 
+    </div>
 <div class="gridStyle" ng-grid="familyData">
 
 </div>
@@ -184,9 +186,9 @@
 
 <div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-company"> Add Company </a> </div>
 <!--<a class="btn btn-success" ng-href="/upload-company"> Upload Companies </a> -->
-   
+
  <div class="col-sm-4 pull-right"><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
-    
+
       </div>
 <div class="gridStyle" ng-grid="companyData">
 
@@ -197,9 +199,9 @@
 <div class="col-sm-4 "><h1>Events</h1></div>
 
 <div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-event"> Add Event </a></div>
-    
+
  <div class="col-sm-4 pull-right"><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
-     
+
       </div>
 <div class="gridStyle" ng-grid="eventData">
 
@@ -324,7 +326,7 @@
                </div>
               </div>
 
-         </form>   
+         </form>
 
         </div>
 
