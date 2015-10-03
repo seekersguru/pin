@@ -174,10 +174,11 @@ module.exports = function(app) {
 			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl+"----";
 			// console.log(ua);
 		if (ua.isBot) {
+
 			var articleId=req.originalUrl.split("/");
+			console.log(articleId);
 			if(articleId.length === 4)
 			{
-				console.log(articleId);
 				if(articleId[1]=== 'articles')
 				{
 				 req['params']['articleid']=articleId[3];
