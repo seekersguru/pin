@@ -2,6 +2,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
+Q = require('q'),
 Discussion = mongoose.model('Discussion');
 
 
@@ -25,7 +26,8 @@ exports.query = function(req, res){
 };
 
 exports.checkcid = function(req, res){
-	var cid=req.params.cid;
+	var deferred = Q.defer(),
+	    cid=req.params.cid;
 	var q = Discussion.find({'cid':cid});
 	console.log(cid);
 	q.exec(function(err, discussion) {
@@ -38,9 +40,22 @@ exports.checkcid = function(req, res){
 			console.log('notfound');
 			return res.send(404);
 		}
- 
-    return res.json({discussion:discussion});
-  });
+
+		if(discussion && !req.params.bot)
+		{
+			return res.json({
+				discussion: discussion
+			});
+		}
+		else {
+			deferred.resolve(discussion);
+		}
+
+	});
+
+		if(req.params.bot){
+			return deferred.promise;
+		}
 
 };
 
@@ -74,7 +89,7 @@ exports.checkcid = function(req, res){
 
  /**============Comment Section Start================**/
 
-// get all comments 
+// get all comments
 
 exports.comment_query=function(req, res){
 
@@ -96,9 +111,9 @@ exports.comment_query=function(req, res){
 		}
 
 			return res.send(403);
-	
+
 	  });
-	
+
 	};
 
 
@@ -128,10 +143,10 @@ exports.comment_query=function(req, res){
 			}
 
 			 return res.send(403);
-		
+
 		  });
   };
-  
+
   //Create comment
   exports.comment_create=function(req, res){
   	var discussion_id = req.params.discussionid;
@@ -166,12 +181,12 @@ exports.comment_query=function(req, res){
 	  });
 
   };
-  
+
   //remove comment
   exports.comment_remove=function(req, res){
   	var discussion_id = req.params.discussionid,
   	comment_id = req.params.commentid;
-  
+
   Discussion.findByIdAndUpdate(
     discussion_id,
    { $pull: { 'comments': {  _id: comment_id } } },function(err,model){
@@ -184,4 +199,4 @@ exports.comment_query=function(req, res){
 
   };
 
-  /**========== Comment Section Stop =================**/  
+  /**========== Comment Section Stop =================**/

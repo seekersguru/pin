@@ -171,40 +171,54 @@ module.exports = function(app) {
 			ua = useragent.parse(source);
 			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl+"----";
 			// console.log(ua);
-		if (ua.isBot) {
-			var articleId=req.originalUrl.split("/");
-			if(articleId.length === 4)
-			{
+			if (ua.isBot) {
+
+				var articleId=req.originalUrl.split("/");
 				console.log(articleId);
-				 req['params']['articleid']=articleId[3];
+				req.params.bot= true;
 
-				 console.log(req.params);
+				if(articleId.length === 4)
+				{
+					if(articleId[1]=== 'articles')
+					{
+					 req['params']['articleid']=articleId[3];
+						articles.show(req,res).then(function(data){
+						res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/>');
+					});
 
-		req.params.bot= true;
+					}else if(articleId[1] === 'event')
+					{
+					 req['params']['articleid']=articleId[3];
 
-		 articles.show(req,res).then(function(data){
-			 console.log("data aaa gya");
-			 console.log(data);
-			 console.log(req.protocol + '://' + req.get('host'));
-					//  console.log(res);
-			 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/>');
 
-		 });
+					 events.show(req,res).then(function(data){
+						 console.log(data);
+						 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.bannertext)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.bannertext)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/>');
+					 });
+
+				 }
+				}
+				else if(articleId[1].match(/discussion-start/g)){
+					var cid=articleId[1].split("=")[1];
+					if(cid){
+						req['params']['cid']=cid;
+						discussions.checkcid(req,res).then(function(data){
+							data=data[0];
+						 console.log(data);
+						 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Private Investor Network"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"> <meta property="og:image" content="http://themoneyhans.com/images/hunsi-img.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/hunsi-img.png"/>');
+					 });
+					}
+				}
+				else
+				{
+						res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Private Investor Network"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="Private Investor Network"> <meta property="og:description" content="Hansi has 20 years of financial services industry experience, primarily in investment research and consulting for the wealth management industry."> <meta property="og:image" content="http://indianpin.net/images/logo.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="Hansi has 20 years of financial services industry experience, primarily in investment research and consulting for the wealth management industry."/> <meta name="twitter:title" content="Private Investor Network"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://indianpin.net/images/logo.png"/>');
+				}
+			}
+			 else {
+				console.log("our project:");
+				next();
 
 			}
-
-			// <meta property="og:type" content="article"> <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="http://themoneyhans.com/"> <meta property="og:title" content="Articles"> <meta property="og:description" content="Articles In  The Money Hans"> <meta property="og:image" content="http://themoneyhans.com/images/logo.png">
-			// console.log("facebook");
-			// res.statusCode = 302;
-			// console.log("http://service.prerender.io/http://themoneyhans.com" + req.url);
-			// res.setHeader("Location", "http://service.prerender.io/http://themoneyhans.com" + req.url);
-			// res.end();
-		} else {
-			console.log("our project:");
-			next();
-
-		}
-
 	});
 
   // All other routes to use Angular routing in app/scripts/app.js
