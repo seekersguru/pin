@@ -205,6 +205,7 @@ module.exports = function(app) {
 				if(cid){
 					req['params']['cid']=cid;
 					discussions.checkcid(req,res).then(function(data){
+						data=data[0];
  					 console.log(data);
  					 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.title)+'"> <meta property="og:image" content="http://themoneyhans.com/images/hunsi-img.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.title)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/hunsi-img.png"/>');
  				 });
