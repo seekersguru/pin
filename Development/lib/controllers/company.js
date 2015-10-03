@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 User = mongoose.model('Serviceuser'),
 Company = mongoose.model('Company'),
 multipart = require('connect-multiparty'),
+Q = require('q'),
 fs = require('fs'),
 path = require('path'),
 _ = require('lodash');
@@ -13,13 +14,13 @@ _ = require('lodash');
 exports.create = function(req, res, next) {
        	console.log(req.body);
         	// req.body.tags=req.body.tags;
-        	console.log(req.body); 
+        	console.log(req.body);
         	var company=new Company(req.body);
         	company.save(function(err,company){
         		if(err){
         			console.log(err);
         			return res.json(400, err);
-        		} 
+        		}
         		return res.json({company:company});
         	});
 
@@ -46,10 +47,11 @@ exports.update = function(req, res) {
 
 };
 
-// show particluar one article 
+// show particluar one article
 exports.show=function(req,res){
-	var companyid=req.params.companyid;
-	Company.findById(companyid)
+  var deferred = Q.defer(),
+   companyid=req.params.companyid;
+	 Company.findById(companyid)
 	.exec(function(err,copmany){
 		if(err){
 			console.log(err);
@@ -59,13 +61,20 @@ exports.show=function(req,res){
 			console.log('notfound');
 			return res.send(404);
 		}
-		if(copmany)
-		{
-			return res.json(copmany);
-		}
-		return res.send(403);
+    if(copmany && !req.params.bot)
+    {
+      return res.json(copmany);
+    }
+    else {
+      deferred.resolve(copmany);
+    }
 
-	});
+
+  });
+
+  if(req.params.bot){
+    return deferred.promise;
+  }
 
 };
 
@@ -84,7 +93,7 @@ exports.query = function(req, res) {
 	if(req.query.pageno){
 		q=q.skip((req.query.pageno-1)*req.query.limit);
 	}
-  
+
   /** public true  */
   // q.where('public').equals(true);
 
@@ -120,7 +129,7 @@ exports.basic = function(req, res) {
 			return res.send(404);
 		} else {
 			  for(var i=0; i<company.length; i++){
-			  	
+
             company[i] = company[i].companyInfo;
          }
 			return res.json({company:company});
@@ -170,7 +179,7 @@ exports.uploadcompanies = function(req, res, next) {
         fs.unlink(tmp_path, function() {
           if (err) throw err;
           console.log('File uploaded to: ' + target_path + ' - ' + file.size + ' bytes');
-          return res.send(200);    
+          return res.send(200);
         });
 
       });

@@ -189,7 +189,16 @@ module.exports = function(app) {
 						res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/>');
 					});
 
-					}else if(articleId[1] === 'event')
+					}
+					else if(articleId[1]=== 'company')
+					{
+					 req['params']['companyid']=articleId[3];
+						companys.show(req,res).then(function(data){
+						res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/>');
+					});
+
+					}
+					else if(articleId[1] === 'event')
 					{
 					 req['params']['articleid']=articleId[3];
 
