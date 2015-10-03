@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-	Discussion = mongoose.model('Discussion');
+		Q = require('q'),
+  	Discussion = mongoose.model('Discussion');
 
 
 exports.query = function(req, res) {
@@ -26,11 +27,12 @@ exports.query = function(req, res) {
 };
 
 exports.checkcid = function(req, res) {
-	var cid = req.params.cid;
+	var deferred = Q.defer(),
+	   cid = req.params.cid;
 	var q = Discussion.find({
 		'cid': cid
 	});
-	console.log(cid);
+
 	q.exec(function(err, discussion) {
 		if (err) {
 			console.log(err);
@@ -42,11 +44,21 @@ exports.checkcid = function(req, res) {
 			return res.send(404);
 		}
 
-		return res.json({
-			discussion: discussion
-		});
+		if(discussion && !req.params.bot)
+		{
+			return res.json({
+				discussion: discussion
+			});
+		}
+    else {
+      deferred.resolve(discussion);
+    }
+
 	});
 
+	  if(req.params.bot){
+	    return deferred.promise;
+	  }
 };
 
 /**

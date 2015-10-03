@@ -177,22 +177,21 @@ module.exports = function(app) {
 
 			var articleId=req.originalUrl.split("/");
 			console.log(articleId);
-
+			req.params.bot= true;
 
 			if(articleId.length === 4)
 			{
 				if(articleId[1]=== 'articles')
 				{
 				 req['params']['articleid']=articleId[3];
-				 	req.params.bot= true;
-		 			articles.show(req,res).then(function(data){
+					articles.show(req,res).then(function(data){
 			 		res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/>');
 		 		});
 
 			 	}else if(articleId[1] === 'event')
 			 	{
 				 req['params']['articleid']=articleId[3];
-				 req.params.bot= true;
+
 
 				 events.show(req,res).then(function(data){
 					 console.log(data);
@@ -202,8 +201,13 @@ module.exports = function(app) {
 			 }
 	 		}
 			else if(articleId[1].match(/discussion-start/g)){
-				if(articleId[1].split("?")[1]){
-					console.log(articleId[1].split("?")[1]);
+				var cid=articleId[1].split("=")[1];
+				if(cid){
+					req['params']['cid']=cid;
+					discussions.checkcid(req,res).then(function(data){
+ 					 console.log(data);
+ 					 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.title)+'"> <meta property="og:image" content="http://themoneyhans.com/images/hunsi-img.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.title)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/hunsi-img.png"/>');
+ 				 });
 				}
 			}
 			else
