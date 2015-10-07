@@ -129,7 +129,7 @@ angular.module('pinApp')
 $scope.mmiuserStatus=function(userId){
       var removeIndex = $scope.gridMMIUserData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(userId);
@@ -181,16 +181,16 @@ $scope.mmiuserStatus=function(userId){
         });
 
       }else{
-        
+
         $http({ method: 'PUT', url: '/api/mmiusers/status/'+userId,data:{'status':setStatus}}).
             success(function (data, status, headers, config) {
-               $scope.gridMMIUserData[removeIndex].status=setStatus;   
+               $scope.gridMMIUserData[removeIndex].status=setStatus;
             }).
             error(function (data, status, headers, config) {
               // ...
               // $scope.article={};
             });
-      }   
+      }
   }
   else{
 
@@ -767,6 +767,7 @@ $scope.mmiuserStatus=function(userId){
 
     $scope.articleData = {
       data: 'gridArticleData',
+      enableColumnResize : true,
       enableCellSelection: true,
       enableRowSelection: false,
       filterOptions: $scope.filterOptions,
@@ -778,19 +779,22 @@ $scope.mmiuserStatus=function(userId){
           cellTemplate: '<span> {{row.rowIndex+1}}</span>'
         }, {
           field: 'title',
-          displayName: 'Title'
+          displayName: 'Title',
+          width: '500px'
         }, {
           field: 'author',
-          displayName: 'Author'
+          displayName: 'Author',
+          width: '150px'
         },
         // { field: 'tags' ,displayName:'Tags' },
-        {
-          field: 'comments',
-          displayName: 'Comment'
-        }, {
-          field: 'category',
-          displayName: 'Category'
-        },
+        // {
+        //   field: 'comments',
+        //   displayName: 'Comment'
+        // },
+        //  {
+        //   field: 'category',
+        //   displayName: 'Category'
+        // },
         // { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
         {
           field: 'approve',
@@ -897,7 +901,7 @@ $scope.mmiuserStatus=function(userId){
                                     { field: 'firstname' ,displayName:'First Name' },
                                     { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'email' ,displayName:'Email' },
-                                    // { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'}, 
+                                    // { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'},
                                     { field: 'role' ,displayName:'Role'},
                                     { field: 'commentvisible' ,displayName:'Commentvisible'},
                                     { field: 'searchable' ,displayName:'Searchable'},
@@ -1225,11 +1229,11 @@ $scope.roletypes=[
     'CEO/business head',
     'Management',
     'Sales/Marketing',
-    'Investment/Product',  
+    'Investment/Product',
     'RM/client facing',
     'Investment Mgmt"',
     'Product Mgmt'
-    ];  
+    ];
 
 
   $scope.saveRole = function () {
