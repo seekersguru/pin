@@ -1,3 +1,4 @@
+
 <!-- Fixed navbar -->
 <nav class="navbar navbar-blue" ng-controller="NavbarCtrl" >
   <div class="container-head">
@@ -10,11 +11,45 @@
       </button>
       <!--logo area-->
       <div class="logo">
-  ADMIN PANEL gfg
+  ADMIN PANEL 
         <!-- <a href="/" ng-if="currentUser.role != 'admin'" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><img src="images/logo.png" alt="Private Investment Network"></a>
         <a href="/admin?users" ng-if="currentUser.role == 'admin'" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" ><img src="images/logo.png" alt="Private Investment Network"></a> -->
         <!-- <b style="color: white">ADMIN PANEL FOR PIN , MMI & MONEYHANS</b> -->
       </div>
+       <ul class="nav navbar-nav admin-nav-top">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Article <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Add New</a></li>
+                <li><a href="#">Manage Content</a></li>
+                
+              </ul>
+            </li>
+             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Event <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Add New</a></li>
+                <li><a href="#">Manage Content</a></li>
+                
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">MMI User</a></li>
+                <li><a href="#">Pin User</a></li>
+                
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Directory <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Add New</a></li>
+                <li><a href="#">Manage Content</a></li>
+                
+              </ul>
+            </li>
+          </ul>
       <!--end-->
     </div>
     <div id="navbar" class="navbar-collapse collapse">
