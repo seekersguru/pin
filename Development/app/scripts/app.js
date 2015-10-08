@@ -137,9 +137,9 @@ angular.module('pinApp', [
     authenticate: false
 
   })
-  .when('/what-we-do', {
+  .when('/disquss', {
     templateUrl: 'partials2/what.html',
-    authenticate: false
+    authenticate: true
 
   })
   .when('/who-we-are', {
