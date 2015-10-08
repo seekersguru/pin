@@ -129,6 +129,12 @@ angular.module('pinApp', [
     authenticate: false
 
   })
+  .when('/add-user', {
+    templateUrl: 'partials2/register',
+    controller:'RegisterCtrl',
+    authenticate: true
+
+  })
   .when('/video', {
     templateUrl: 'partials2/video'
   })

@@ -209,14 +209,27 @@ $scope.mmiuserStatus=function(userId){
         messageline = "";
       var popup = 1;
       if (setStatus) {
-        messageline = "You are approving " + $scope.gridUserData[
+        if(!$scope.gridUserData[removeIndex].madebyadmin){
+          messageline = "You are approving " + $scope.gridUserData[
             removeIndex].name +
           " a mail notification will be sent to  mail id " + $scope.gridUserData[
             removeIndex].email;
+          }else{
+            messageline = "You are approving " + $scope.gridUserData[
+              removeIndex].name +" but you made this account so mail will not send to this user";
+          }
       } else {
+        if(!$scope.gridUserData[removeIndex].madebyadmin){
         messageline = "You are blocking " + $scope.gridUserData[removeIndex]
           .name +
           " , email notification will be sent to him that , some problem in your account please contact admin";
+        }else{
+
+          messageline = "You are blocking " + $scope.gridUserData[removeIndex]
+            .name +
+            " but you made this account so mail will not send to this user";
+
+        }
         popup = 0;
       }
 
@@ -849,40 +862,53 @@ $scope.mmiuserStatus=function(userId){
         field: 'name',
         displayName: 'Name'
       }, {
-        field: 'createdAt',
-        displayName: 'Created Date',
-        cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>'
-      }, {
         field: 'email',
-        displayName: 'Email'
-      }, {
-        field: 'band',
-        displayName: 'Band',
-        cellTemplate: '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'
-      }, {
-        field: 'role',
-        displayName: 'Role'
-      }, {
-        field: 'commentvisible',
-        displayName: 'Commentvisible'
-      }, {
-        field: 'searchable',
-        displayName: 'Searchable'
-      }, {
-        field: 'adminrole',
-        displayName: 'Adminrole'
-      }, {
+        displayName: 'Email',
+        width:'200px'
+      },
+      //  {
+      //   field: 'band',
+      //   displayName: 'Band',
+      //   cellTemplate: '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'
+      // },
+      //  {
+      //   field: 'role',
+      //   displayName: 'Role'
+      // },
+       {
+        field: 'familyrole.name',
+        displayName: 'FamilyRole'
+      },
+      //  {
+      //   field: 'commentvisible',
+      //   displayName: 'Commentvisible'
+      // },
+      //  {
+      //   field: 'searchable',
+      //   displayName: 'Searchable'
+      // }, {
+      //   field: 'adminrole',
+      //   displayName: 'Adminrole'
+      // },
+       {
         field: 'emailVerification',
         displayName: 'EmailVerification',
         cellTemplate: '<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>'
-      }, {
-        field: 'username',
-        displayName: 'Username'
-      }, {
+      },
+      //  {
+      //   field: 'username',
+      //   displayName: 'Username'
+      // },
+       {
         field: 'status',
         displayName: 'Status',
         cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
-      }, {
+      },
+      {
+       field: 'createdAt',
+       displayName: 'Created Date',
+       cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>'
+     }, {
         field: 'action',
         displayName: 'Action',
         cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Approve</span> '

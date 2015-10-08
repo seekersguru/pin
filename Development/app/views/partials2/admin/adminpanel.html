@@ -122,19 +122,19 @@
 <script type="text/ng-template" id="mmiusers">
 <div class="clearfix filter-search">
 <div class="pull-left"><h1>MMI Users</h1> </div>
+
   <div class="pull-right "><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
      </div>
      </div>
 <div class="gridStyle" ng-grid="mmiuserData">
-
 </div>
 </script>
 
 <script type="text/ng-template" id="users">
 <div class="clearfix filter-search">
-<div class="pull-left"><h1>PIN Users</h1></div>
-
- <div class="pull-right "><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+<div class="col-sm-4"><h1>PIN Users</h1></div>
+<div class="col-sm-4"><a class="btn btn-success" ng-href="/add-user?admin=1"> Add User </a></div>
+ <div class="col-sm-4  pull-right "><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
       </div></div>
 <div class="gridStyle" ng-grid="userData">
 
