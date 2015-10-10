@@ -15,7 +15,7 @@ _ = require('lodash');
 
 
 exports.query = function(req, res){
-  var q = User.find({role: {'$ne':'admin' }});
+  var q = User.find({role: {'$ne':'admin' }}).populate('familyrole','name');
   if (req.query.array_foll){
     if(typeof req.query.array_foll === typeof {}){
       q = q.where('_id').in(req.query.array_foll);
@@ -63,7 +63,7 @@ exports.adminrole = function(req, res){
   });
 };
 
-// show particluar one user 
+// show particluar one user
 exports.show=function(req,res){
   var userid=req.params.userid;
   User.findById(userid).populate('author','name email')
@@ -98,7 +98,7 @@ exports.checkusername= function(req, res, next){
       console.log(users);
       return res.json({users:users});
     }
-  }); 
+  });
 };
 
 /** checkusername that it is exist or not */
@@ -120,7 +120,7 @@ exports.search= function(req, res){
         }
       return res.json({users:users});
     }
-  }); 
+  });
 };
 
 /** checkusername that it is exist or not */
@@ -137,7 +137,7 @@ exports.mycontact= function(req, res){
         }
       return res.json({users:users});
     }
-  }); 
+  });
 };
 
 /** checkusername that it is exist or not */
@@ -161,7 +161,7 @@ exports.connect= function(req, res){
   exports.connectupdate=function(req, res){
      // user_id = req.params.userid,
     var following_id = req.params.followingid;
-    
+
     console.log(following_id);
     console.log(req.body);
 
@@ -176,20 +176,20 @@ exports.connect= function(req, res){
           return res.send(err);
         }
         return res.json(model);
-    
+
     });
 
   };
 
 
-  
+
 
 //update users
 
 exports.update = function(req, res) {
   var userid = req.params.userid;
   var user_data = req.body;
-  
+
   User.findOneAndUpdate({_id: userid}, user_data, function(err, user) {
     if (err) {
       console.log(err);
@@ -206,14 +206,14 @@ exports.update = function(req, res) {
     //   (new AdminApproveEmail(user, {loginLink: login_link})).send(function(e) {
     //     return res.send(200);
     //   });
-      
+
     // }else{
 
     //   console.log("else");
       return res.send(200);
-   
+
     // }
-    
+
   });
 
 
@@ -223,7 +223,7 @@ exports.update = function(req, res) {
 exports.updatestatus = function(req, res) {
   var userid = req.params.userid;
   var user_data = req.body;
-  
+
   User.findOneAndUpdate({_id: userid}, user_data, function(err, user) {
     if (err) {
       console.log(err);
@@ -236,23 +236,34 @@ exports.updatestatus = function(req, res) {
     if(user_data.status)
     {
       console.log("if");
-      var login_link = [req.headers.host, 'login'].join('/');
-      (new AdminApproveEmail(user, {loginLink: login_link})).send(function(e) {
+      if(user.madebyadmin){
+        console.log("without mail update");
         return res.send(200);
-      });
-      
+      }else{
+        var login_link = [req.headers.host, 'login'].join('/');
+        (new AdminApproveEmail(user, {loginLink: login_link})).send(function(e) {
+          return res.send(200);
+        });
+
+      }
+
     }else{
 
       console.log("else");
+      if(user.madebyadmin){
+        console.log("without mail update");
+        return res.send(200);
+      }else{
 
       var site_link = [req.headers.host].join('/'),
           mail = "privateinvestmentnetwork@gmail.com";
       (new AdminBlockEmail(user, {siteLink: site_link,mail:mail})).send(function(e) {
         return res.send(200);
       });
+    }
 
     }
-    
+
   });
 
 
@@ -265,22 +276,36 @@ exports.updatestatus = function(req, res) {
  exports.create = function (req, res, next) {
   var data = req.body;
   data.band='';
+
+  if(data.admin){
+    data.emailVerification= {
+        verified : true
+    }
+    data.madebyadmin=true;
+  }
+
  var newUser = new User(data);
+
+
  newUser.provider = 'local';
  newUser.save(function(err, savedUser) {
  if (err) return res.json(400, err);
     if (err) return res.json(400, err);
-    console.log(req.headers.host);
+    // console.log(req.headers.host);
+    console.log(data);
+    if(!data.admin){
     var activation_link = [req.headers.host, 'user', savedUser._id,'verify',  savedUser.emailVerification.token].join('/');
     (new ActivationEmail(savedUser, {activationLink: activation_link})).send(function(e) {
       return res.send(savedUser.userInfo);
     });
-   // return res.send(savedUser.userInfo);
+  }else{
+    return res.send(savedUser.userInfo);
+  }
 });
 
 };
 
-exports.verifyEmail = function (req, res, next) { 
+exports.verifyEmail = function (req, res, next) {
   var userId = req.params.id;
   var token = req.params.token;
     User.findById(userId, function(err, user) {
@@ -295,7 +320,7 @@ exports.verifyEmail = function (req, res, next) {
         // });
 
         if (err) return res.send(err);
-        return res.redirect('/settings'); 
+        return res.redirect('/settings');
 
       });
 
@@ -385,7 +410,7 @@ exports.uploaduser = function(req, res, next) {
         fs.unlink(tmp_path, function() {
           if (err) throw err;
           console.log('File uploaded to: ' + target_path + ' - ' + file.size + ' bytes');
-          return res.send(200);    
+          return res.send(200);
         });
 
       });

@@ -4,7 +4,7 @@
 angular.module('pinApp')
   .controller('RegisterCtrl',['$scope','$location','$rootScope','Auth','$http', function ($scope, $location,$rootScope ,Auth,$http) {
     // $scope.user = {};
-   
+
    $scope.getCountries = function() {
       return $http.get('/api/countries')
       .then(function(response){
@@ -13,9 +13,9 @@ angular.module('pinApp')
         });
       });
     };
- 
+
  $scope.allcountry=$scope.getCountries();
- 
+
    $scope.getCities = function(val) {
       return $http.get('/api/cities/'+val)
       .then(function(response){
@@ -35,7 +35,7 @@ angular.module('pinApp')
       'country':'India'
     }
     };
-    var precountry=$scope.user.address.country; 
+    var precountry=$scope.user.address.country;
 
     $scope.checkcountry=function(){
        if(precountry !== $scope.user.address.country)
@@ -70,11 +70,11 @@ angular.module('pinApp')
      $scope.checkUsername =function(form){
       form['username'].$setValidity('mongoose', true);
       $scope.errors['username'] = '';
-      $scope.checkmessage=''; 
+      $scope.checkmessage='';
 
       if($scope.user.username){
        $scope.checkusername=1;
-       
+
        Auth.checkUsername({
            username:$scope.user.username
          })
@@ -84,11 +84,11 @@ angular.module('pinApp')
              form['username'].$setValidity('mongoose', false);
              $scope.errors['username'] = 'username already available :(';
              // $("#username").focus();
-              
+
           }else{
              form['username'].$setValidity('mongoose', true);
              $scope.errors['username'] = 'Username available. ';
-             $scope.checkmessage='Username available.'; 
+             $scope.checkmessage='Username available.';
              // $("#street").focus();
           }
           $scope.checkusername=0;
@@ -113,7 +113,7 @@ angular.module('pinApp')
 
      };
 
-    
+
     $scope.$watch('user.username', function(n, o) {
         if($scope.user.username){
           $scope.user.username = $scope.user.username.replace(/\s/g, "");
@@ -122,8 +122,8 @@ angular.module('pinApp')
         if(n && n.length > 16){
           $scope.user.username = o;
         }
-      });    
-   
+      });
+
 
      $scope.register = function(form) {
       $scope.submitted = true;
@@ -146,14 +146,15 @@ angular.module('pinApp')
           interests3: $scope.user.interests3,
           interests4: $scope.user.interests4,
           other: $scope.user.other,
-          password:$scope.user.password
+          password:$scope.user.password,
+          admin:(window.location.search=="?admin=1")
         })
         .then( function() {
           // Account created, redirect to home
           $scope.emailSent = true;
           $scope.registerDone=1;
           // $location.path('/login').search({'register': 1});
-          $location.path('/notification').search({ 'type':'register'});
+          $location.path('/admin').search({ 'users':'1'});
         })
         .catch( function(err) {
           err = err.data;
@@ -168,6 +169,3 @@ angular.module('pinApp')
     };
 
   }]);
-
-
-  

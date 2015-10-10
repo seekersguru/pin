@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     crypto = require('crypto');
-  
+
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 mongoose.set('debug', true);
 
@@ -54,13 +54,11 @@ var UserSchema = new Schema({
   photo: String,
   bio: String,
   following:[
-  
   {
    user:{type: Schema.Types.ObjectId, ref:'User'},
    status:{type: Boolean, default:false},
    name:String
  }
-
  ],
 
   nFollowers:{type: Number, default: 0},
@@ -70,6 +68,7 @@ var UserSchema = new Schema({
   searchable:{type: Boolean, default:true},
   commentvisible:{type: String, default: 'public', 'enum' : ['public','friends']},
   other:String,
+  madebyadmin:{type: Boolean, default:false}
 });
 
 /**
@@ -120,7 +119,8 @@ UserSchema
       'familyrole':this.familyrole,
       'searchable':this.searchable,
       'commentvisible':this.commentvisible,
-      'status':this.status
+      'status':this.status,
+      'madebyadmin':this.madebyadmin
 
         };
   });
@@ -261,7 +261,7 @@ UserSchema.methods = {
     };
   },
   setForgotPassword : function () {
-    if (!(this.forgotPassword && 
+    if (!(this.forgotPassword &&
         this.forgotPassword.token &&
         this.forgotPassword.validTill > Date.now())) {
       this.forgotPassword =  {

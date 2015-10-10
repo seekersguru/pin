@@ -129,7 +129,7 @@ angular.module('pinApp')
 $scope.mmiuserStatus=function(userId){
       var removeIndex = $scope.gridMMIUserData
       .map(function(item)
-      { 
+      {
         return item._id;
       })
       .indexOf(userId);
@@ -181,16 +181,16 @@ $scope.mmiuserStatus=function(userId){
         });
 
       }else{
-        
+
         $http({ method: 'PUT', url: '/api/mmiusers/status/'+userId,data:{'status':setStatus}}).
             success(function (data, status, headers, config) {
-               $scope.gridMMIUserData[removeIndex].status=setStatus;   
+               $scope.gridMMIUserData[removeIndex].status=setStatus;
             }).
             error(function (data, status, headers, config) {
               // ...
               // $scope.article={};
             });
-      }   
+      }
   }
   else{
 
@@ -209,14 +209,27 @@ $scope.mmiuserStatus=function(userId){
         messageline = "";
       var popup = 1;
       if (setStatus) {
-        messageline = "You are approving " + $scope.gridUserData[
+        if(!$scope.gridUserData[removeIndex].madebyadmin){
+          messageline = "You are approving " + $scope.gridUserData[
             removeIndex].name +
           " a mail notification will be sent to  mail id " + $scope.gridUserData[
             removeIndex].email;
+          }else{
+            messageline = "You are approving " + $scope.gridUserData[
+              removeIndex].name +" but you made this account so mail will not send to this user";
+          }
       } else {
+        if(!$scope.gridUserData[removeIndex].madebyadmin){
         messageline = "You are blocking " + $scope.gridUserData[removeIndex]
           .name +
           " , email notification will be sent to him that , some problem in your account please contact admin";
+        }else{
+
+          messageline = "You are blocking " + $scope.gridUserData[removeIndex]
+            .name +
+            " but you made this account so mail will not send to this user";
+
+        }
         popup = 0;
       }
 
@@ -767,6 +780,7 @@ $scope.mmiuserStatus=function(userId){
 
     $scope.articleData = {
       data: 'gridArticleData',
+      enableColumnResize : true,
       enableCellSelection: true,
       enableRowSelection: false,
       filterOptions: $scope.filterOptions,
@@ -778,19 +792,22 @@ $scope.mmiuserStatus=function(userId){
           cellTemplate: '<span> {{row.rowIndex+1}}</span>'
         }, {
           field: 'title',
-          displayName: 'Title'
+          displayName: 'Title',
+          width: '500px'
         }, {
           field: 'author',
-          displayName: 'Author'
+          displayName: 'Author',
+          width: '150px'
         },
         // { field: 'tags' ,displayName:'Tags' },
-        {
-          field: 'comments',
-          displayName: 'Comment'
-        }, {
-          field: 'category',
-          displayName: 'Category'
-        },
+        // {
+        //   field: 'comments',
+        //   displayName: 'Comment'
+        // },
+        //  {
+        //   field: 'category',
+        //   displayName: 'Category'
+        // },
         // { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
         {
           field: 'approve',
@@ -845,40 +862,53 @@ $scope.mmiuserStatus=function(userId){
         field: 'name',
         displayName: 'Name'
       }, {
-        field: 'createdAt',
-        displayName: 'Created Date',
-        cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>'
-      }, {
         field: 'email',
-        displayName: 'Email'
-      }, {
-        field: 'band',
-        displayName: 'Band',
-        cellTemplate: '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'
-      }, {
-        field: 'role',
-        displayName: 'Role'
-      }, {
-        field: 'commentvisible',
-        displayName: 'Commentvisible'
-      }, {
-        field: 'searchable',
-        displayName: 'Searchable'
-      }, {
-        field: 'adminrole',
-        displayName: 'Adminrole'
-      }, {
+        displayName: 'Email',
+        width:'200px'
+      },
+      //  {
+      //   field: 'band',
+      //   displayName: 'Band',
+      //   cellTemplate: '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'
+      // },
+      //  {
+      //   field: 'role',
+      //   displayName: 'Role'
+      // },
+       {
+        field: 'familyrole.name',
+        displayName: 'FamilyRole'
+      },
+      //  {
+      //   field: 'commentvisible',
+      //   displayName: 'Commentvisible'
+      // },
+      //  {
+      //   field: 'searchable',
+      //   displayName: 'Searchable'
+      // }, {
+      //   field: 'adminrole',
+      //   displayName: 'Adminrole'
+      // },
+       {
         field: 'emailVerification',
         displayName: 'EmailVerification',
         cellTemplate: '<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>'
-      }, {
-        field: 'username',
-        displayName: 'Username'
-      }, {
+      },
+      //  {
+      //   field: 'username',
+      //   displayName: 'Username'
+      // },
+       {
         field: 'status',
         displayName: 'Status',
         cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
-      }, {
+      },
+      {
+       field: 'createdAt',
+       displayName: 'Created Date',
+       cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>'
+     }, {
         field: 'action',
         displayName: 'Action',
         cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Approve</span> '
@@ -897,7 +927,7 @@ $scope.mmiuserStatus=function(userId){
                                     { field: 'firstname' ,displayName:'First Name' },
                                     { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'email' ,displayName:'Email' },
-                                    // { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'}, 
+                                    // { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'},
                                     { field: 'role' ,displayName:'Role'},
                                     { field: 'commentvisible' ,displayName:'Commentvisible'},
                                     { field: 'searchable' ,displayName:'Searchable'},
@@ -1225,11 +1255,11 @@ $scope.roletypes=[
     'CEO/business head',
     'Management',
     'Sales/Marketing',
-    'Investment/Product',  
+    'Investment/Product',
     'RM/client facing',
     'Investment Mgmt"',
     'Product Mgmt'
-    ];  
+    ];
 
 
   $scope.saveRole = function () {

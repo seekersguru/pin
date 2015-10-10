@@ -129,6 +129,12 @@ angular.module('pinApp', [
     authenticate: false
 
   })
+  .when('/add-user', {
+    templateUrl: 'partials2/register',
+    controller:'RegisterCtrl',
+    authenticate: true
+
+  })
   .when('/video', {
     templateUrl: 'partials2/video'
   })
@@ -137,9 +143,9 @@ angular.module('pinApp', [
     authenticate: false
 
   })
-  .when('/what-we-do', {
+  .when('/disquss', {
     templateUrl: 'partials2/what.html',
-    authenticate: false
+    authenticate: true
 
   })
   .when('/who-we-are', {

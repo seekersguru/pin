@@ -45,12 +45,7 @@ a:hover {
     width: 100%;
     z-index: 5;
 }
-.logo {
-    padding-right: 25px; color:#fff; 
-    padding-top: 0; top:20px; 
-    position: absolute; font-size:24px; 
-    z-index: 5;
-}
+
 .container-head {
     margin: 0 auto;
     max-width: 1145px;
@@ -2259,12 +2254,7 @@ a:hover {
     width: 100%;
     z-index: 5;
 }
-.logo {
-    padding-right: 25px;
-    padding-top: 0;
-    position: absolute;
-    z-index: 5;
-}
+
 .container-head {
     margin: 0 auto;
     max-width: 1145px;
@@ -2744,10 +2734,17 @@ a:hover {
     background:#222533; 
     border-radius: 0;
     margin-top: 0;
-    min-height: 70px;
+    min-height: 62px;
 }
 .navbar-blue .navbar-nav > li > a {
-    color: #c8c8c8;
+    color: #fff;
+}
+.logo{float:left; margin-right:35px; padding-top:22px; font-size:24px; color:#fff;    }
+.navbar-nav > li > a {
+    border-left: 1px solid #383c55;
+    font-size: 16px;
+    padding-bottom: 21px;
+    padding-top: 21px;
 }
 ul.nav.navbar-nav.navbar-welcome.navbar-right > li > a {
     border-left: medium none;
@@ -2793,11 +2790,11 @@ ul.nav.navbar-nav.navbar-welcome.navbar-right > li > a span {
     border: 1px solid #ddd;
 }
 .navbar-blue .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    background-color: transparent;
-    color: #e6c55d;
+    background-color:#383c55;
+    color: #fff;
 }
 .navbar-blue .navbar-nav > .active > a, .navbar-blue .navbar-nav > .active > a:hover, .navbar-blue .navbar-nav > .active > a:focus {
-    background-color: #333;
+    background-color: #383c55;
     color: #fff;
 }
 .become-bt {
@@ -2999,22 +2996,37 @@ li.dropdown {
 }
 .dropdown-menu {
     background-clip: padding-box;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    background-color: #383c55;
+    border: none;
     border-radius: 0;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.176);
+    box-shadow: none;
     display: none;
     float: left;
-    font-size: 14px;
+    font-size: 15px;
     left: 0;
     list-style: outside none none;
     margin: 2px 0 0;
     min-width: 175px;
-    padding: 5px 0;
+    padding: 0px 0;
     position: absolute;
     text-align: left;
     top: 100%;
     z-index: 1000;
+}
+.dropdown-menu > li > a {
+    border-top: 1px solid #4d516d;
+    clear: both;
+    color: #fff;
+    display: block; font-size:15px; 
+    font-weight: normal;
+    line-height: 1.42857;
+    padding: 8px 20px;
+    white-space: nowrap;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: #222534;
+    color: #fff;
+    text-decoration: none;
 }
 .articles-section-2 {
     -moz-border-bottom-colors: none;
