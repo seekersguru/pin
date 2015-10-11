@@ -507,7 +507,7 @@ exports.basic = function(req, res) {
 			console.log(err);
 			return res.send(404);
 		} else {
-			  for(var i=0; i<(articles.length; i++){
+			  for(var i=0; i < articles.length; i++){
             console.log(articles[i].articleInfo.author);
             articles[i] = articles[i].articleInfo;
           }
