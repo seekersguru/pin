@@ -143,6 +143,59 @@
 
 
 <script type="text/ng-template" id="articles">
+<table class="table table-striped">
+<tbody>
+<tr>
+<th>Type</th>
+<td><select class="form-control" ng-model="articleFilter.type">
+<option value="">All</option>
+<option value="text">Text</option>
+<option value="image">Video/Image</option>
+</select></td>
+</tr>
+<tr>
+<th>Author</th>
+<td><select class="form-control" ng-model="articleFilter.author">
+<option value="">All</option>
+<option ng-repeat="(key,article) in originalArticalData | unique:'author'" value="{{article.author}}">{{article.author}}</option>
+</select>
+</td>
+</tr>
+<tr>
+  <th>Approve</th>
+  <td><select class="form-control" ng-model="articleFilter.approve">
+  <option value="">All</option>
+  <option ng-repeat="(key,article) in originalArticalData | unique:'approve'" value="{{article.approve}}">{{approves[article.approve]}}</option>
+  </select>
+  </td>
+</tr>
+<tr>
+  <th>Date</th>
+  <td>
+  <input type="text" class="form-control" datepicker-popup="dd-MM-yyyy" ng-model="articleFilter.createdAt" />
+   </td>
+</tr>
+
+</tbody>
+<tfoot>
+  <tr>
+    <th colspan="2">
+    <button class="btn btn-info" ng-click="filterArticle()">Apply Filter</button>
+
+    </th>
+  </tr>
+</tfoot>
+</table>
+<br/>
+<!--
+<select name="" ng-model="filterOptions.filterColumn">
+<option value="Author">Author</option>
+<option value="Approve">Approve</option>
+<option value="createdAt">createdAt</option>
+<option value="Title">Title</option>
+</select>
+<input type="text" ng-model="filterOptions.filterText"/>
+-->
 <div class="clearfix filter-search">
 <div class="col-sm-4"><h1>Articles</h1></div>
 <div class="col-sm-4"><a class="btn btn-success" ng-href="/post-article"> Add Article </a></div>

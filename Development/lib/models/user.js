@@ -40,7 +40,7 @@ var UserSchema = new Schema({
     token: String,
     validTill : Date
   },
-  role: {type: String, default: 'user', 'enum' : ['user','admin','expert']},
+  role: {type: String, default: 'expert', 'enum' : ['user','admin','expert']},
   adminrole:String,
   familyrole:{type: Schema.Types.ObjectId, ref:'Family'},
   hashedPassword: String,

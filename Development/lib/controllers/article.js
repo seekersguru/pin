@@ -6,13 +6,11 @@ Article = mongoose.model('Article'),
 multipart = require('connect-multiparty'),
 fs = require('fs'),
 path = require('path'),
-_ = require('lodash');
+_ = require('lodash'),
+count=0;
 // moment=require('moment');
 
 Article.collection.ensureIndex({title: 'text', description: 'text', tags: 'text', mmitags: 'text', category: 'text', mmicategory: 'text', mmisubcategory: 'text'}, function(error) {console.log("get index");});
-
-
-
 
 /** serach that it is exist or not */
 exports.search= function(req, res){
@@ -28,10 +26,10 @@ exports.search= function(req, res){
       console.log(err);
       return res.send(404);
     } else {
-       
+
       return res.json({articles:articles});
     }
-  }); 
+  });
 };
 
 
@@ -70,7 +68,7 @@ exports.create = function(req, res, next) {
 		file = req.files.file;
 
 	if( Object.prototype.toString.call( req.files.file ) === '[object Array]' ) {
-		
+
 		file = req.files.file[0];
 		thumb=req.files.file[1];
 
@@ -114,7 +112,7 @@ exports.create = function(req, res, next) {
         		path:savepaththumb,
         		originalName:thumb.name
         	};
-        		
+
 
         	}
 
@@ -138,13 +136,13 @@ exports.create = function(req, res, next) {
 		        		if(err){
 		        			console.log(err);
 		        			return res.json(400, err);
-		        		} 
+		        		}
 		        		return res.json({article:article});
 		        	});
-		      
+
 		        });
-		      
-		      });	
+
+		      });
 
 
         	}else{
@@ -154,10 +152,10 @@ exports.create = function(req, res, next) {
         		if(err){
         			console.log(err);
         			return res.json(400, err);
-        		} 
+        		}
         		return res.json({article:article});
         	});
-        		
+
         	}
 
         });
@@ -172,7 +170,7 @@ exports.create = function(req, res, next) {
         		if(err){
         			console.log(err);
         			return res.json(400, err);
-        		} 
+        		}
         		return res.json({article:article});
         	});
 
@@ -200,7 +198,7 @@ exports.update = function(req, res) {
 		file = req.files.file;
 
 	if( Object.prototype.toString.call( req.files.file ) === '[object Array]' ) {
-		
+
 		file = req.files.file[0];
 		thumb=req.files.file[1];
 
@@ -234,7 +232,7 @@ exports.update = function(req, res) {
         	{
         		article_data.createdAt= JSON.parse(req.body.createdAt);
        		 }
-        	
+
 
         	article_data.media={
         		extension: file.type,
@@ -251,7 +249,7 @@ exports.update = function(req, res) {
         		path:savepaththumb,
         		originalName:thumb.name
         	};
-        		
+
 
         	}
 
@@ -278,7 +276,7 @@ exports.update = function(req, res) {
 
 		        });
 
-		      });	
+		      });
 
 
         	}else{
@@ -300,15 +298,15 @@ exports.update = function(req, res) {
   else
   {
 
-//if we ra emaking article as a MMI banner 
+//if we ra emaking article as a MMI banner
 //then reset all mmibanner field for article
 // is false this request mainly send by admin section
 
-	if(req.body.banner){ 
+	if(req.body.banner){
 		 Article.where({})
 			    .update({},{ $set: { mmibanner: false }},{ multi: true},function(){
 			    	console.log("mmi banner updated");
-			    	
+
 		    		Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
 								if (err) {
 									console.log(err);
@@ -321,7 +319,7 @@ exports.update = function(req, res) {
 								return res.send(200);
 							});
 			    });
-	
+
 	}else{
 	Article.findOneAndUpdate({_id: article_id}, article_data, function(err, article) {
 		if (err) {
@@ -369,7 +367,7 @@ exports.removemedia = function(req, res) {
 					}
 			});
 		});
-	
+
 		// return res.send(200);
 
 		}
@@ -404,13 +402,13 @@ exports.removethumble = function(req, res) {
 					}
 			});
 		});
-	
+
 		}
 	});
 
 };
 
-// show particluar one article 
+// show particluar one article
 exports.show=function(req,res){
 	var articleid=req.params.articleid;
 	Article.findById(articleid)
@@ -450,7 +448,7 @@ exports.query = function(req, res) {
 	if(req.query.pageno){
 		q=q.skip((req.query.pageno-1)*req.query.limit);
 	}
-  
+
   /** public true  */
   q.where('public').equals(true);
   q.where('pin').equals(true);
@@ -473,28 +471,62 @@ exports.query = function(req, res) {
 };
 // show all articles with basic info
 exports.basic = function(req, res) {
-
-	var q=Article.find({});
-
+	var q=Article.find({}),
+     Query ='',
+     spiceArray=[];
 	/** sorting according to date */
+  q.sort('-createdAt');
 
-	q.sort('-createdAt');
+  if(req.query && req.query.filter){
+    Query=JSON.parse(req.query.filter);
+
+    if(Query.approve)
+    {
+        q.where('public').equals(Query.approve);
+    }
+
+    if(Query.type == 'image'){
+      q.where('media').ne(null);
+    }
+    else if(Query.type == 'text'){
+      q.where('media').equals(null);
+
+    }
+
+
+  }
+  q.populate('author','name email');
 
 	/** finally execute */
-		q.populate('author','name email').exec(function(err, articles) {
+		q.exec(function(err, articles) {
 		if (err) {
 			console.log(err);
 			return res.send(404);
 		} else {
-			  for(var i=0; i<articles.length; i++){
-			  	
-            articles[i] = articles[i].articleInfo;
-         }
-			return res.json({articles:articles});
+			  for(var i=0; i < articles.length; i++){
+
+          if(Query && Query.author){
+            if(Query.author !== articles[i].articleInfo.author){
+              spiceArray.push(i);
+            }
+          }
+          articles[i] = articles[i].articleInfo;
+        }
+        console.log(spiceArray);
+        if(spiceArray.length)
+        {
+
+          var b = spiceArray.length;
+          while (b--) {
+                articles.splice(spiceArray[b], 1);
+            }
+        }
+        Article.count({}, function( err, count){
+
+		        return res.json({articles:articles,totalElement:count});
+        })
 		}
-	});
-
-
+  });
 };
 
 exports.remove = function(req, res) {
@@ -528,7 +560,7 @@ exports.remove = function(req, res) {
 
 /**============Comment Section Start================**/
 
-// get all comments 
+// get all comments
 
 exports.comment_query=function(req, res){
 
@@ -550,9 +582,9 @@ exports.comment_query=function(req, res){
 		}
 
 			return res.send(403);
-	
+
 	  });
-	
+
 	};
 
 
@@ -582,10 +614,10 @@ exports.comment_query=function(req, res){
 			}
 
 			 return res.send(403);
-		
+
 		  });
   };
-  
+
   //Create comment
   exports.comment_create=function(req, res){
   	var article_id = req.params.articleid;
@@ -620,13 +652,13 @@ exports.comment_query=function(req, res){
 	  });
 
   };
-  
-  
+
+
   //remove comment
   exports.comment_remove=function(req, res){
   	var article_id = req.params.articleid,
   	comment_id = req.params.commentid;
-  
+
   Article.findByIdAndUpdate(
     article_id,
    { $pull: { 'comments': {  _id: comment_id } } },function(err,model){
@@ -639,4 +671,4 @@ exports.comment_query=function(req, res){
 
   };
 
-  /**========== Comment Section Stop =================**/  
+  /**========== Comment Section Stop =================**/
