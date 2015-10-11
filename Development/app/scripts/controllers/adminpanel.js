@@ -67,7 +67,70 @@ angular.module('pinApp')
       });
     };
 
+    $scope.approves={
+      true:"Approve",
+      false:"Not Approve"
+    }
+    //variable define for getting the total no of items to be displayed
+    $scope.totalServerItems = 0;
 
+    //these are the paging(pagination) options
+    $scope.pagingOptions = {
+         //no of records that need to be displayed per page will be depend on pagesizes
+         pageSizes: [1,2,3],
+         pageSize: 1,
+         //this is for the page no that is selected
+         currentPage: 1
+    };
+
+    $scope.articleFilter={};
+    $scope.setArticlePagingData=function(){
+    $scope.gridArticleData = data.articles;
+             if (!$scope.$$phase) {
+                 $scope.$apply();
+             }
+    }
+    $scope.filterArticle=function(){
+      var data;
+      var page = $scope.pagingOptions.currentPage;
+      var pageSize = $scope.pagingOptions.pageSize;
+      var searchText=$scope.filterOptions.filterText;
+      //if filter text is there then this condition will execute
+      if (searchText) {
+      var ft = searchText.toLowerCase();
+      $http({
+        method: 'GET',
+        url: 'api/articles/basic?filter='+ JSON.stringify($scope.articleFilter)
+      }).
+      success(function(data, status, headers, config) {
+          //with data must send the total no of items as well
+          $scope.totalServerItems=data.totalElement;
+          //here's the list of data to be displayed
+          data.articles = data.articles.filter(function(item) {
+              return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+          });
+          $scope.gridArticleData = data.articles;
+          // $scope.setArticlePagingData(data,page,pageSize);
+      }).
+      error(function(data, status, headers, config) {
+
+      });
+    }else{
+      $http({
+        method: 'GET',
+        url: 'api/articles/basic?filter='+ JSON.stringify($scope.articleFilter)
+      }).
+      success(function(data, status, headers, config) {
+        $scope.gridArticleData = data.articles;
+        // $scope.totalServerItems=data.totalElement;
+        // $scope.setArticlePagingData(data,page,pageSize);
+
+      }).
+      error(function(data, status, headers, config) {
+
+      });
+    }
+    }
 
     $scope.updateBand = function(data, band) {
       data.band = band;
@@ -693,6 +756,7 @@ $scope.mmiuserStatus=function(userId){
           }).
           success(function(data, status, headers, config) {
             $scope.gridArticleData = data.articles;
+            $scope.originalArticalData= angular.copy(data.articles);
 
           }).
           error(function(data, status, headers, config) {
@@ -773,13 +837,36 @@ $scope.mmiuserStatus=function(userId){
       filterText: '',
       filterColumn: ''
     };
+    //according to the data coming from server side,pagination will be set accordingly
+       $scope.setPagingData = function(data, page, pageSize){
+           $scope.myData = data;
+           if (!$scope.$$phase) {
+               $scope.$apply();
+           }
+       };
 
+       //watch for pagination option.here pagingOptions will be watched each time value changes and then set the data accordingly
+       $scope.$watch('pagingOptions', function (newVal, oldVal) {
+           if (newVal !== oldVal || newVal.currentPage !== oldVal.currentPage) {
+             $scope.filterArticle($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+           }
+       }, true);
+
+       $scope.$watch('filterOptions', function (newVal, oldVal) {
+           if (newVal !== oldVal) {
+             $scope.filterArticle($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+           }
+       }, true);
 
     var editDeleteArticleTemplate =
       '<a ng-click="deleteArticle(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a><a ng-href="/articles/view/{{row.entity._id}}"  id="view"  class="label label-success" data-toggle="tooltip"><i class="fa fa-eye"></i></a><a ng-href="/articles/edit/{{row.entity._id}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
     $scope.articleData = {
       data: 'gridArticleData',
+      enablePaging: true,
+      showFooter: true,
+      totalServerItems: 'totalServerItems',
+      pagingOptions: $scope.pagingOptions,
       enableColumnResize : true,
       enableCellSelection: true,
       enableRowSelection: false,

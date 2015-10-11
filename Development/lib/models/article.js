@@ -64,6 +64,7 @@ ArticleSchema
       'money':this.money,
       'hans':this.hans,
       'mmibanner':this.mmibanner,
+      'media':media
     };
   });
 
