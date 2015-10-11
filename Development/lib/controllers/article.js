@@ -471,12 +471,14 @@ exports.query = function(req, res) {
 };
 // show all articles with basic info
 exports.basic = function(req, res) {
-	var q=Article.find({});
+	var q=Article.find({}),
+     Query ='',
+     spiceArray=[];
 	/** sorting according to date */
   q.sort('-createdAt');
 
   if(req.query && req.query.filter){
-    var Query=JSON.parse(req.query.filter);
+    Query=JSON.parse(req.query.filter);
 
     if(Query.approve)
     {
@@ -503,22 +505,24 @@ exports.basic = function(req, res) {
 		} else {
 			  for(var i=0; i < articles.length; i++){
 
-          if(Query && Query.filter && Query.filter.author){
-
-            console.log(Query.filter.author+"----"+articles[i].articleInfo.author);
-            console.log(Query.filter.author === articles[i].articleInfo.author);
-            console.log(Query.filter.author == articles[i].articleInfo.author);
-
-            if(Query.filter.author === articles[i].articleInfo.author){
-              articles[i] = articles[i].articleInfo;
+          if(Query && Query.author){
+            if(Query.author !== articles[i].articleInfo.author){
+              spiceArray.push(i);
             }
+          }
+          articles[i] = articles[i].articleInfo;
+        }
+        console.log(spiceArray);
+        if(spiceArray.length)
+        {
 
-          }
-          else{
-            articles[i] = articles[i].articleInfo;
-          }
+          var b = spiceArray.length;
+          while (b--) {
+                articles.splice(spiceArray[b], 1);
+            }
         }
         Article.count({}, function( err, count){
+
 		        return res.json({articles:articles,totalElement:count});
         })
 		}
