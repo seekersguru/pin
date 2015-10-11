@@ -783,6 +783,7 @@ $scope.mmiuserStatus=function(userId){
       enableColumnResize : true,
       enableCellSelection: true,
       enableRowSelection: false,
+      showFilter: true,
       filterOptions: $scope.filterOptions,
 
       // showGroupPanel: true ,
@@ -853,6 +854,7 @@ $scope.mmiuserStatus=function(userId){
       // showGroupPanel: true ,
       // enableCellSelection: true,
       enableRowSelection: false,
+        showFilter: true,
       filterOptions: $scope.filterOptions,
       columnDefs: [{
         field: '_id',
