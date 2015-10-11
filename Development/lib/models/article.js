@@ -54,7 +54,7 @@ ArticleSchema
     return {
       '_id': this._id,
       'title': this.title,
-      'author': this.author.name || 'Hansi',
+      'author': this.author,
       'tags': this.tags.toString(),
       'comments':this.comments.length,
       'createdAt':this.createdAt,
