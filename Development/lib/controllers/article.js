@@ -482,34 +482,35 @@ exports.basic = function(req, res) {
     {
         q.where('public').equals(Query.approve);
     }
+    if(Query.author){
+      q.populate('author',{'name':Query.author});
+    }
 
+    if(Query.type == 'image'){
+      q.where('media').ne(null);
+    }else if(Query.type == 'text'){
+      q.where('media').equals(null);
+
+    }
+
+  }else{
+    q.populate('author','name email');
   }
 
 	/** finally execute */
-		q.populate('author','name email').exec(function(err, articles) {
+		q.exec(function(err, articles) {
 		if (err) {
 			console.log(err);
 			return res.send(404);
 		} else {
 			  for(var i=0; i<articles.length; i++){
-          if(req.query && req.query.filter && req.query.filter.author){
-
-            if(req.query && req.query.filter && req.query.filter.author == articles[i].articleInfo.author.name)
-            {
-              articles[i] = articles[i].articleInfo;
-            }
-          }
-          else{
             articles[i] = articles[i].articleInfo;
           }
-
-         Article.count({}, function( err, count){
-
-			        return res.json({articles:articles,totalElement:count});
-      })
+        Article.count({}, function( err, count){
+		        return res.json({articles:articles,totalElement:count});
+        })
 		}
-  }
-	});
+  });
 
 
 };
