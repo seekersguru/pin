@@ -491,19 +491,9 @@ exports.basic = function(req, res) {
 
     }
 
-    if(Query.author){
-      console.log(Query.author);
-      q.populate('author',null,{'name':Query.author});
-    }
-    else{
-      q.populate('author','name email');
-    }
 
-
-
-  }else{
-    q.populate('author','name email');
   }
+  q.populate('author','name email');
 
 	/** finally execute */
 		q.exec(function(err, articles) {
@@ -512,15 +502,23 @@ exports.basic = function(req, res) {
 			return res.send(404);
 		} else {
 			  for(var i=0; i < articles.length; i++){
+
+          if(req.query && req.query.filter && req.query && req.query.filter.author){
+
+            if(req.query.filter.author === articles[i].articleInfo.author){
+              articles[i] = articles[i].articleInfo;
+            }
+
+          }
+          else{
             articles[i] = articles[i].articleInfo;
           }
+        }
         Article.count({}, function( err, count){
 		        return res.json({articles:articles,totalElement:count});
         })
 		}
   });
-
-
 };
 
 exports.remove = function(req, res) {
