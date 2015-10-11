@@ -482,9 +482,11 @@ exports.basic = function(req, res) {
     {
         q.where('public').equals(Query.approve);
     }
+
     if(Query.author){
-      q.populate('author',{'name':Query.author});
-    }else{
+      q.populate('author','name email',{'name':Query.author});
+    }
+    else{
       q.populate('author','name email');
     }
 
