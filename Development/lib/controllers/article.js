@@ -504,6 +504,9 @@ exports.basic = function(req, res) {
 			  for(var i=0; i < articles.length; i++){
 
           if(req.query && req.query.filter && req.query && req.query.filter.author){
+            console.log(req.query.filter.author+"----"+articles[i].articleInfo.author);
+            console.log(req.query.filter.author === articles[i].articleInfo.author);
+            console.log(req.query.filter.author == articles[i].articleInfo.author);
 
             if(req.query.filter.author === articles[i].articleInfo.author){
               articles[i] = articles[i].articleInfo;
