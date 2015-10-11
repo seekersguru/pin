@@ -483,19 +483,23 @@ exports.basic = function(req, res) {
         q.where('public').equals(Query.approve);
     }
 
+    if(Query.type == 'image'){
+      q.where('media').ne(null);
+    }
+    else if(Query.type == 'text'){
+      q.where('media').equals(null);
+
+    }
+
     if(Query.author){
-      q.populate('author','name email',{'name':Query.author});
+      console.log(Query.author);
+      q.populate('author',null,{'name':Query.author});
     }
     else{
       q.populate('author','name email');
     }
 
-    if(Query.type == 'image'){
-      q.where('media').ne(null);
-    }else if(Query.type == 'text'){
-      q.where('media').equals(null);
 
-    }
 
   }else{
     q.populate('author','name email');
@@ -508,7 +512,6 @@ exports.basic = function(req, res) {
 			return res.send(404);
 		} else {
 			  for(var i=0; i < articles.length; i++){
-            console.log(articles[i].articleInfo.author);
             articles[i] = articles[i].articleInfo;
           }
         Article.count({}, function( err, count){
