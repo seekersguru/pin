@@ -866,7 +866,7 @@ $scope.mmiuserStatus=function(userId){
       enablePaging: true,
       showFooter: true,
       totalServerItems: 'totalServerItems',
-      pagingOptions: $scope.pagingOptions,
+      // pagingOptions: $scope.pagingOptions,
       enableColumnResize : true,
       enableCellSelection: true,
       enableRowSelection: false,
