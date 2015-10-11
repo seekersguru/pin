@@ -484,6 +484,8 @@ exports.basic = function(req, res) {
     }
     if(Query.author){
       q.populate('author',{'name':Query.author});
+    }else{
+      q.populate('author','name email');
     }
 
     if(Query.type == 'image'){
