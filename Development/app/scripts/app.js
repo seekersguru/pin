@@ -72,9 +72,10 @@ angular.module('pinApp', [
             article) {
             var deferred = $q.defer();
             var query = angular.copy($route.current.params);
-            query.limit = 100;
+            query.limit = 10;
+            query.pageno=1;
             article.get(query, function(articles) {
-                deferred.resolve(articles.articles);
+                deferred.resolve(articles);
               },
               function(err) {
                 deferred.reject();
@@ -91,9 +92,10 @@ angular.module('pinApp', [
             article) {
             var deferred = $q.defer();
             var query = angular.copy($route.current.params);
-            query.limit = 100;
+            query.limit = 10;
+            query.pageno=1;
             article.get(query, function(articles) {
-                deferred.resolve(articles.articles);
+                deferred.resolve(articles);
               },
               function(err) {
                 deferred.reject();
@@ -183,9 +185,10 @@ angular.module('pinApp', [
             article) {
             var deferred = $q.defer();
             var query = angular.copy($route.current.params);
-            query.limit = 100;
+            query.limit = 10;
+            query.pageno=1;
             article.get(query, function(articles) {
-                deferred.resolve(articles.articles);
+                deferred.resolve(articles);
               },
               function(err) {
                 deferred.reject();
@@ -242,7 +245,8 @@ angular.module('pinApp', [
             Article.get({
                 articleId: $route.current.params.articleid
               }, function(article) {
-                deferred.resolve(article);
+                var articles={articles:article}
+                deferred.resolve(articles);
               },
               function(err) {
                 deferred.reject();
