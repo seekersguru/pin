@@ -265,7 +265,7 @@ exports.query = function(req, res) {
 			console.log(err);
 			return res.send(404);
 		} else {
-      Article.count({},function(err,count){
+      q.count(function(err,count){
 			     return res.json({articles:articles,total:count,current:pageno});
          });
 		}
