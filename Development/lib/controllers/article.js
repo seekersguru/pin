@@ -207,7 +207,7 @@ exports.show=function(req,res){
 
 
 	});
-  
+
   if(req.params.bot){
     return deferred.promise;
   }
@@ -237,10 +237,12 @@ exports.search= function(req, res){
 // show all articles with paging
 exports.query = function(req, res) {
 
-	var limit=req.query.limit;
+	var limit=req.query.limit,
+      pageno=parseInt(req.query.pageno) || 1;
 
 	var q=Article.find({});
 	/** apply limit  */
+  console.log(req.query);
 	if(req.query.limit){
 		q=q.limit(req.query.limit);
 	}
@@ -249,7 +251,6 @@ exports.query = function(req, res) {
 	if(req.query.pageno){
 		q=q.skip((req.query.pageno-1)*req.query.limit);
 	}
-
   /** public true  */
   q.where('public').equals(true);
   q.where('money').equals(true);
@@ -264,7 +265,9 @@ exports.query = function(req, res) {
 			console.log(err);
 			return res.send(404);
 		} else {
-			return res.json({articles:articles});
+      Article.count({},function(err,count){
+			     return res.json({articles:articles,total:count,current:pageno});
+         });
 		}
 	});
 

@@ -13,11 +13,11 @@
 /
     <li class="active">Articale submit</li>
 </ul>
-</div> 
+</div>
 </div>
 
 
-</div> 
+</div>
 
 <div class="gray-hr"></div>
 
@@ -25,13 +25,13 @@
   <div class="col-lg-12 col-md-12 col-sm-12">
 
     <div class="submit-articale-section">
-     <h1>Submit Your Article</h1> 
+     <h1>Submit Your Article</h1>
      <div class="register-form-hr"></div>
      <form novalidate  name="form" role='form' enctype= 'multipart/form-data' class="">
       <button ng-click="template(1)" class="register-bt">Template 1</button>
       <div class="dashboard-section">
         <div class="row register-form-row-pad">
-          <div class="col-lg-9 col-md-9 col-sm-9 paddingr-7">  
+          <div class="col-lg-9 col-md-9 col-sm-9 paddingr-7">
             <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
               <input type="text" class="form-control" name="title" placeholder="Title"  ng-model="article.title" required ng-minlength=5>
               <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill title.</p>
@@ -87,11 +87,11 @@
 -->        <i class="text-danger" ng-show="form.file.$error.required">*required</i>
 <br/>
 <img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
-height:100px;width: 100px">  
+height:100px;width: 100px">
 <br/>
-<span class="progress" ng-show="mainFIle[0].progress >= 0">    
+<span class="progress" ng-show="mainFIle[0].progress >= 0">
   <div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
-</span> 
+</span>
 <span ng-show="mainFIle[0].result">Upload Successful</span>
 <!-- <button >Submit</button> -->
 
@@ -111,10 +111,10 @@ height:100px;width: 100px">
 
 
 <!-- <button type="submit" ng-disabled="form.$invalid" class='btn btn-success' >Add</button>  -->
-<button ng-show="filearticle" class='btn register-bt' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Add</button> 
-<button ng-hide="filearticle" class='btn register-bt' ng-disabled="!form.$valid" ng-click="saveArticle(form)" >Add</button> 
+<button ng-show="filearticle" class='btn register-bt' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Add</button>
+<button ng-hide="filearticle" class='btn register-bt' ng-disabled="!form.$valid" ng-click="saveArticle(form)" >Add</button>
 <!-- <button class='btn register-bt' ng-click=" preview = !preview " >Preview</button>  -->
-        <!-- <button  type="reset" ng-click="reset(form)" class='btn btn-warning'>Reset</button> 
+        <!-- <button  type="reset" ng-click="reset(form)" class='btn btn-warning'>Reset</button>
         <a  href="/dashboard" class='btn btn-danger'>Cancel</a>  -->
         <p ng-show="articleDone"><span>*</span> Thank you for contribution. your articale will be moderated by the admin.we will notify you shortly.</p>
         <br></br>
@@ -126,19 +126,19 @@ height:100px;width: 100px">
 <!-- <div class="row" ng-show="preview" > -->
 <div class="row" >
 <div class="preview-outer">
-<div class="preview-area">  
-<div class="preview-eye"><i class="fa fa-eye"></i> Preview</div>  
-<div class="preview-shadow">  
+<div class="preview-area">
+<div class="preview-eye"><i class="fa fa-eye"></i> Preview</div>
+<div class="preview-shadow">
     <h1>{{article.title}}</h1>
     <div class="green-hr"></div>
-    
+
       <!-- <img src="images/learn-img.png" class="pull-right" alt=""> -->
       <div  class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
-        <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive"> 
+        <img src="images/articels001.jpg"  title="{{article.title}}" ng-show="mainFIle[0].dataUrl == null" class="img-responsive">
 
         <img  ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="img-responsive" >
 
-        
+
     </div>
 
     <p>{{article.createdAt | date:"MMMM d, yyyy" }}</p>
@@ -151,7 +151,7 @@ height:100px;width: 100px">
      </form>
 
 
-   </div>  
+   </div>
 
  </div>
 

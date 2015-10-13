@@ -1,12 +1,14 @@
 'use strict';
 angular.module('pinApp')
-.controller('ArticleCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,articles,$sce,$timeout,$filter) {
+.controller('ArticleCtrl', function ($scope,Auth,$location,Article,$rootScope,$routeParams,$http,articles,$sce,$timeout,$filter) {
+
   $scope.article={};
   $scope.descriptionLimit=80;
   $scope.titleLimit=45;
   $scope.currentPage = 0;
   $scope.pageSize = 20;
   $scope.numberOfPage=25;
+  $scope.limit=10;
   $scope.category=['Grow','Protect','Manage','Give'];
   $scope.color={
     'Grow':
@@ -40,21 +42,18 @@ $scope.mmicategorysetting={
   'icon-img':'investment-icon.jpg',
   'classname':'investment-iocn'
 },
-
 'WM/distribution':
 {
   'main-image':'welath-img.png',
   'icon-img':'wealth.png',
   'classname':'wealth-iocn'
 },
-
 'Communication':
 {
   'main-image':'communicationlarge-img.png',
   'icon-img':'cummunaction.png',
   'classname':'communication-iocn'
 }
-
 };
 
 $scope.mmicategory=[
@@ -106,8 +105,36 @@ $scope.mmicategory=[
       ]
   }
   ];
-$scope.articles=articles;
-$scope.exceptonearticle=angular.copy(articles);
+  console.log(articles);
+$scope.articles=articles.articles;
+$scope.pageno=articles.current;
+$scope.total=articles.total;
+
+$scope.loadMore = function(){
+$scope.startLoading=true;
+  var query={
+              limit : $scope.limit,
+              pageno: $scope.pageno+1
+            };
+    Article.get(query, function(articles) {
+      $.each(articles.articles,function(i,article){
+        article.description = $sce.trustAsHtml($filter('htmlToPlaintext')($filter('limitTo')(article.description, $scope.descriptionLimit)));
+
+        $scope.exceptonearticle.push(article);
+
+      })
+      $scope.pageno=articles.current;
+      $scope.total=articles.total;
+      $scope.startLoading=false;
+
+      // $scope.pageno=
+    },
+    function(err) {
+    });
+};
+
+// articles=articles.articles;
+$scope.exceptonearticle=angular.copy(articles.articles);
 if( Object.prototype.toString.call( $scope.exceptonearticle ) === '[object Array]' ) {
   var removeIndex=0;
      removeIndex = $scope.exceptonearticle
@@ -120,13 +147,13 @@ if( Object.prototype.toString.call( $scope.exceptonearticle ) === '[object Array
   if(removeIndex <= 0)
    {
       $scope.exceptonearticle.splice(0, 1);
-      $scope.bannerArticle=articles[0];
+      $scope.bannerArticle=articles.articles[0];
 
    }
    else
    {
         $scope.mainlist=$scope.exceptonearticle.splice(removeIndex,1);
-        $scope.bannerArticle=articles[removeIndex];
+        $scope.bannerArticle=articles.articles[removeIndex];
 
    }
 
