@@ -49,8 +49,6 @@ angular.module('pinApp')
   .controller('AdminPanelCtrl', function($scope, User, MMIUser,Article, $http,
     $location, $window, $modal, Auth, $timeout) {
 
-
-
       // function cb(start, end) {
       //     $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
       // }
@@ -66,7 +64,6 @@ angular.module('pinApp')
       //        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
       //     }
       // }, cb);
-
 
     $scope.viewArticle = function(articleId) {
       window.open('/articles/view/' + articleId, '_blank');
@@ -103,6 +100,7 @@ angular.module('pinApp')
     };
 
     $scope.articleFilter={};
+    $scope.mmiFilter={};
     $scope.setArticlePagingData=function(){
     $scope.gridArticleData = data.articles;
              if (!$scope.$$phase) {
@@ -141,6 +139,48 @@ angular.module('pinApp')
       }).
       success(function(data, status, headers, config) {
         $scope.gridArticleData = data.articles;
+        // $scope.totalServerItems=data.totalElement;
+        // $scope.setArticlePagingData(data,page,pageSize);
+
+      }).
+      error(function(data, status, headers, config) {
+
+      });
+    }
+    }
+
+    $scope.filterMMIUsers=function(){
+      var data;
+      var page = $scope.pagingOptions.currentPage;
+      var pageSize = $scope.pagingOptions.pageSize;
+      var searchText=$scope.filterOptions.filterText;
+      //if filter text is there then this condition will execute
+      if (searchText) {
+      var ft = searchText.toLowerCase();
+      $http({
+        method: 'GET',
+        url: 'api/mmiusers?filter='+ JSON.stringify($scope.mmiFilter)
+      }).
+      success(function(users, status, headers, config) {
+          //with data must send the total no of items as well
+          // $scope.totalServerItems=data.totalElement;
+          //here's the list of data to be displayed
+          users.users = users.users.filter(function(item) {
+              return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+          });
+          $scope.gridMMIUserData = users.users;
+          // $scope.setArticlePagingData(data,page,pageSize);
+      }).
+      error(function(data, status, headers, config) {
+
+      });
+    }else{
+      $http({
+        method: 'GET',
+        url: 'api/mmiusers?filter='+ JSON.stringify($scope.mmiFilter)
+      }).
+      success(function(users, status, headers, config) {
+        $scope.gridMMIUserData = users.users;
         // $scope.totalServerItems=data.totalElement;
         // $scope.setArticlePagingData(data,page,pageSize);
 
@@ -762,8 +802,20 @@ $scope.mmiuserStatus=function(userId){
 
         case 'mmiusers':
           $scope.gridMMIUserData = {};
+          $http({
+            method: 'GET',
+            url: 'api/companys/basic?verybasic=1'
+          }).
+          success(function(data, status, headers, config) {
+            $scope.basicCompanies = data.company;
+
+          }).
+          error(function(data, status, headers, config) {
+
+          });
           MMIUser.query(function(users) {
             $scope.gridMMIUserData = users.users;
+            $scope.originalMMIUsersData= angular.copy(users.users);
           });
           break;
 
@@ -873,7 +925,12 @@ $scope.mmiuserStatus=function(userId){
 
        $scope.$watch('filterOptions', function (newVal, oldVal) {
            if (newVal !== oldVal) {
-             $scope.filterArticle($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+             if($scope.mainPage === 'articles'){
+               $scope.filterArticle($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+            }else  if($scope.mainPage === 'mmiusers'){
+              $scope.filterMMIUsers($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+
+            }
            }
        }, true);
 
@@ -1031,19 +1088,19 @@ $scope.mmiuserStatus=function(userId){
                          // enableCellSelection: true,
                          enableRowSelection: false,
                          filterOptions: $scope.filterOptions,
-                         columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>'},
+                         columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>',width:'50px'},
                                     { field: 'firstname' ,displayName:'First Name' },
-                                    { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
+                                    // { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
                                     { field: 'email' ,displayName:'Email' },
                                     // { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'},
-                                    { field: 'role' ,displayName:'Role'},
-                                    { field: 'commentvisible' ,displayName:'Commentvisible'},
-                                    { field: 'searchable' ,displayName:'Searchable'},
-                                    { field: 'adminrole' ,displayName:'Adminrole'},
-                                    { field: 'emailVerification' ,displayName:'EmailVerification',cellTemplate:'<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>' },
-                                    { field: 'username' ,displayName:'Username' },
-                                    { field: 'status' ,displayName:'Status',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'},
-                                    { field: 'action' ,displayName:'Action',cellTemplate:'<span ng-if="row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Approve</span> '}],
+                                    // { field: 'role' ,displayName:'Role'},
+                                    // { field: 'commentvisible' ,displayName:'Commentvisible'},
+                                    // { field: 'searchable' ,displayName:'Searchable'},
+                                    // { field: 'adminrole' ,displayName:'Adminrole'},
+                                    // { field: 'emailVerification' ,displayName:'EmailVerification',cellTemplate:'<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>' },
+                                    // { field: 'username' ,displayName:'Username' },
+                                    { field: 'status' ,displayName:'Status',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>',width:'250px'},
+                                    { field: 'action' ,displayName:'Action',cellTemplate:'<span ng-if="row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Approve</span> ',width:'150px'}],
                         showFooter: true,
                         plugins: [new ngGridFlexibleHeightPlugin()]
                       };

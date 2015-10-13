@@ -126,69 +126,57 @@
 <th>Company</th>
 <td><select class="form-control" ng-model="mmiFilter.company">
 <option value="">All</option>
-// <option ng-repeat="(key,company) in originalArticalData | unique:'author'" value="{{article.author}}">{{article.author}}</option>
+<option ng-repeat="(key,company) in basicCompanies | unique:'title'" value="{{company._id}}">{{company.title}}</option>
 </select></td>
-</tr>
-<tr>
+
 <th>Role type</th>
-<td><select class="form-control" ng-model="mmiFilter.author">
+<td><select class="form-control" ng-model="mmiFilter.role">
 <option value="">All</option>
-// <option ng-repeat="(key,article) in originalArticalData | unique:'author'" value="{{article.author}}">{{article.author}}</option>
+ <option ng-repeat="(key,role) in  ['user','admin','expert'] " value="{{role}}">{{role}}</option>
 </select>
 </td>
 </tr>
 <tr>
   <th>City</th>
-  <td><select class="form-control" ng-model="mmiFilter.approve">
+  <td><select class="form-control" ng-model="mmiFilter.city">
   <option value="">All</option>
-  <option ng-repeat="(key,article) in originalArticalData | unique:'approve'" value="{{article.approve}}">{{approves[article.approve]}}</option>
+  <option ng-repeat="(key,user) in originalMMIUsersData | unique:'city'" value="{{user.city}}">{{user.city}}</option>
   </select>
   </td>
-</tr>
-<tr>
+
   <th>Registration process</th>
-  <td><select class="form-control" ng-model="mmiFilter.approve">
+  <td><select class="form-control" ng-model="mmiFilter.linkedin">
   <option value="">All</option>
-  <option ng-repeat="(key,article) in originalArticalData | unique:'approve'" value="{{article.approve}}">{{approves[article.approve]}}</option>
+  <option value="direct">Direct</option>
+  <option value="linkedin">Linkedin</option>
   </select>
   </td>
 </tr>
 <tr>
   <th>Status</th>
-  <td><select class="form-control" ng-model="mmiFilter.approve">
+  <td><select class="form-control" ng-model="mmiFilter.status">
   <option value="">All</option>
-  <option ng-repeat="(key,article) in originalArticalData | unique:'approve'" value="{{article.approve}}">{{approves[article.approve]}}</option>
+  <option value="true">Approved</option>
+  <option value="false">Not Approved</option>
   </select>
   </td>
-</tr>
-<tr>
-<tr>
   <th>Email verification </th>
-  <td><select class="form-control" ng-model="mmiFilter.approve">
+  <td><select class="form-control" ng-model="mmiFilter.emailVerification">
   <option value="">All</option>
-  <option ng-repeat="(key,article) in originalArticalData | unique:'approve'" value="{{article.approve}}">{{approves[article.approve]}}</option>
+  <option value="true">Done</option>
+  <option value="false">Pending</option>
   </select>
   </td>
 </tr>
 <tr>
 <tr>
-  <th>Action</th>
-  <td><select class="form-control" ng-model="mmiFilter.approve">
+<th>Action</th>
+  <td><select class="form-control" ng-model="mmiFilter.status">
   <option value="">All</option>
-  <option ng-repeat="(key,article) in originalArticalData | unique:'approve'" value="{{article.approve}}">{{approves[article.approve]}}</option>
+  <option value="true">Approve</option>
+  <option value="false">Block</option>
   </select>
   </td>
-</tr>
-<tr>
-<tr>
-  <th>Newsletter</th>
-  <td><select class="form-control" ng-model="mmiFilter.approve">
-  <option value="">All</option>
-  <option ng-repeat="(key,article) in originalArticalData | unique:'approve'" value="{{article.approve}}">{{approves[article.approve]}}</option>
-  </select>
-  </td>
-</tr>
-<tr>
   <th>Date registered</th>
   <td>
   <input type="text" class="form-control" id="reportrange" datepicker-popup="dd-MM-yyyy" ng-model="mmiFilter.createdAt" />

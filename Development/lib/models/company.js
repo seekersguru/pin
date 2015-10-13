@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.Types.ObjectId;
-    
+
 /**
  * Company Schema
  */
@@ -31,7 +31,7 @@ var CompanySchema = new Schema({
            }],
   pin: { type: Boolean, default: true },
   money: { type: Boolean, default: true },
-  notes:String         
+  notes:String
 
 });
 
@@ -67,6 +67,15 @@ CompanySchema
       'createdAt':this.createdAt,
       'roletype':this.roletype,
       'approve':this.public
+    };
+  });
+// Basic info to identify the current authenticated user in the app
+CompanySchema
+  .virtual('companySmallInfo')
+  .get(function() {
+    return {
+      '_id': this._id,
+      'title': this.title,
     };
   });
 

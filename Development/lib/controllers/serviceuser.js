@@ -15,7 +15,10 @@ _ = require('lodash');
 
 
 exports.query = function(req, res){
-  var q = User.find({role: {'$ne':'admin' }}).populate('company','roletype');
+  var Query = '',
+     spiceArray=[],
+    //  q = User.find({role: {'$ne':'admin' }}).populate('company','roletype');
+     q = User.find({role: {'$ne':'admin' }}).populate('company','roletype');
   if (req.query.array_foll){
     if(typeof req.query.array_foll === typeof {}){
       q = q.where('_id').in(req.query.array_foll);
@@ -27,6 +30,42 @@ exports.query = function(req, res){
     return res.json(404);
   }
 
+  if(req.query && req.query.filter){
+    Query=JSON.parse(req.query.filter);
+
+    if(Query.status)
+    {
+        q.where('status').equals(Query.status);
+    }
+
+    if(Query.emailVerification)
+    {
+        q.where('emailVerification').equals(Query.emailVerification);
+    }
+
+    if(Query.linkedin)
+    {
+        q.where('linkedin').ne(null);
+    }
+
+    if(Query.role)
+    {
+        q.where('role').equals(Query.role);
+    }
+
+    if(Query.city)
+    {
+        q.where('address.city').equals(Query.city);
+    }
+
+    if(Query.role)
+    {
+        q.where('role').equals(Query.role);
+    }
+
+  }
+
+
   q.exec(function(err, users) {
     if (err) {
       console.log(err);
@@ -34,7 +73,20 @@ exports.query = function(req, res){
     } else {
       // if(req.user.role !== 'admin'){
         for(var i=0; i<users.length; i++){
+          if(Query && Query.company){
+            if(Query.company !== users[i].profile.company._id){
+              spiceArray.push(i);
+            }
+          }
           users[i] = users[i].profile;
+        }
+
+        if(spiceArray.length)
+        {
+          var b = spiceArray.length;
+          while (b--) {
+                users.splice(spiceArray[b], 1);
+            }
         }
       // }
       return res.json({users:users});
@@ -42,7 +94,7 @@ exports.query = function(req, res){
   });
 };
 
-// show particluar one user 
+// show particluar one user
 exports.show=function(req,res){
   var userid=req.params.userid;
   User.findById(userid).populate('author','name email')
@@ -77,7 +129,7 @@ exports.checkusername= function(req, res, next){
       console.log(users);
       return res.json({users:users});
     }
-  }); 
+  });
 };
 
 /** checkusername that it is exist or not */
@@ -99,7 +151,7 @@ exports.search= function(req, res){
         }
       return res.json({users:users});
     }
-  }); 
+  });
 };
 
 /** checkusername that it is exist or not */
@@ -123,7 +175,7 @@ exports.connect= function(req, res){
   exports.connectupdate=function(req, res){
      // user_id = req.params.userid,
     var following_id = req.params.followingid;
-    
+
     console.log(following_id);
     console.log(req.body);
 
@@ -138,20 +190,20 @@ exports.connect= function(req, res){
           return res.send(err);
         }
         return res.json(model);
-    
+
     });
 
   };
 
 
-  
+
 
 //update users
 
 exports.update = function(req, res) {
   var userid = req.params.userid;
   var user_data = req.body;
-  
+
   User.findOneAndUpdate({_id: userid}, user_data, function(err, user) {
     if (err) {
       console.log(err);
@@ -168,14 +220,14 @@ exports.update = function(req, res) {
     //   (new AdminApproveEmail(user, {loginLink: login_link})).send(function(e) {
     //     return res.send(200);
     //   });
-      
+
     // }else{
 
     //   console.log("else");
       return res.send(200);
-   
+
     // }
-    
+
   });
 
 
@@ -185,7 +237,7 @@ exports.update = function(req, res) {
 exports.updatestatus = function(req, res) {
   var userid = req.params.userid;
   var user_data = req.body;
-  
+
   User.findOneAndUpdate({_id: userid}, user_data, function(err, user) {
     if (err) {
       console.log(err);
@@ -202,7 +254,7 @@ exports.updatestatus = function(req, res) {
       (new AdminApproveEmail(user, {loginLink: login_link})).send(function(e) {
         return res.send(200);
       });
-      
+
     }else{
 
       console.log("else");
@@ -214,7 +266,7 @@ exports.updatestatus = function(req, res) {
       });
 
     }
-    
+
   });
 
 
@@ -242,7 +294,7 @@ exports.updatestatus = function(req, res) {
 
 };
 
-exports.verifyEmail = function (req, res, next) { 
+exports.verifyEmail = function (req, res, next) {
   var userId = req.params.id;
   var token = req.params.token;
     User.findById(userId, function(err, user) {
@@ -257,7 +309,7 @@ exports.verifyEmail = function (req, res, next) {
         // });
 
         if (err) return res.send(err);
-        return res.redirect('/settings'); 
+        return res.redirect('/settings');
 
       });
 
@@ -346,7 +398,7 @@ exports.uploadusers = function(req, res, next) {
         fs.unlink(tmp_path, function() {
           if (err) throw err;
           console.log('File uploaded to: ' + target_path + ' - ' + file.size + ' bytes');
-          return res.send(200);    
+          return res.send(200);
         });
 
       });
