@@ -257,7 +257,7 @@ exports.query = function(req, res) {
 
 	/** sorting according to date */
 
-	q.sort('-createdAt');
+	// q.sort('-createdAt');
 
 	/** finally execute */
 	q.populate('author','name email fullname').exec(function(err, articles) {
