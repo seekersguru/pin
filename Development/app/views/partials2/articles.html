@@ -92,8 +92,8 @@
 </div>
 </div>
 
-<button class="btn readmore-bt" ng-click="loadMore()" ng-hide="pageno*limit >= total" ng-disabled="startLoading">Load More</button>
-
+<!-- <button class="btn readmore-bt" ng-click="loadMore()" ng-hide="pageno*limit >= total" ng-disabled="startLoading">Load More</button> -->
+<p class="pull-right load-more"><a ng-click="loadMore()" ng-hide="pageno*limit >= total" ng-disabled="startLoading"> Load more <i class="fa fa-chevron-down"></i> </a></p>
 </div>
 <div class="col-lg-4 col-md-4 col-sm-4">
   <div ng-include="'partials2/right-nav.html'"> </div>
