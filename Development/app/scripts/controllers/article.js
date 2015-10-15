@@ -188,13 +188,13 @@ setTimeout(function(){
 
 
 $scope.comments=articles.scomments;
-if($location.path()=="/articles/view/"+articles._id && articles.media)
+if($location.path()=="/articles/view/"+articles.articles._id && articles.articles.media)
 {
 
   $scope.config=
   {
     'sources': [
-    {src: $sce.trustAsResourceUrl('../'+articles.media.path), type: 'video/mp4'}
+    {src: $sce.trustAsResourceUrl('../'+articles.articles.media.path), type: 'video/mp4'}
     ],
     'theme': 'bower_components/videogular-themes-default/videogular.css',
     'plugins': {
