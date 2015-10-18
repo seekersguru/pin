@@ -1187,7 +1187,9 @@ $scope.mmiuserStatus=function(userId){
         field: 'linkedin',
         displayName: 'Linkedin',
         cellClass: 'grid-align'
-      }, {
+      },
+      { field: 'createdAt' ,displayName:'Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',cellClass: 'grid-align'  },
+      {
         field: '',
         displayName: 'Action',
         cellTemplate: editDeleteExpertTemplate,
