@@ -34,6 +34,7 @@ angular.module('pinApp', [
   'chieffancypants.loadingBar',
   'ngTagsInput',
   'ngSocial',
+  'ngBootstrap',
   // 'angulartics',
   // 'angulartics.google.analytics',
   'duScroll',

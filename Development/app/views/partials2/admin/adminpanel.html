@@ -170,6 +170,14 @@
 </tr>
 <tr>
 <tr>
+<th>Date registered</th>
+<td>
+<input  class="form-control"
+    type="daterange"
+    ranges="ranges"
+    format="DD MMMM YYYY"
+    ng-model="mmiFilter.createdAt" />
+</td>
 <th>Action</th>
   <td><select class="form-control" ng-model="mmiFilter.status">
   <option value="">All</option>
@@ -177,14 +185,7 @@
   <option value="false">Block</option>
   </select>
   </td>
-  <th>Date registered</th>
-  <td>
-  <input type="text" class="form-control" id="reportrange" datepicker-popup="dd-MM-yyyy" ng-model="mmiFilter.createdAt" />
-  <!--<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
-      <span></span> <b class="caret"></b>
-  </div>
-     --></td>
+
 </tr>
 
 </tbody>
@@ -229,33 +230,35 @@
 <option value="">All</option>
 <option value="text">Text</option>
 <option value="image">Video/Image</option>
-</select></td>
-</tr>
-<tr>
+</select>
+</td>
+
 <th>Author</th>
-<td><select class="form-control" ng-model="articleFilter.author">
+<td>
+<select class="form-control" ng-model="articleFilter.author">
 <option value="">All</option>
 <option ng-repeat="(key,article) in originalArticalData | unique:'author'" value="{{article.author}}">{{article.author}}</option>
 </select>
 </td>
 </tr>
 <tr>
+
+  <th>Date</th>
+  <td>
+  <input
+  class="form-control"
+      type="daterange"
+      ranges="ranges"
+      format="DD MMMM YYYY"
+      ng-model="articleFilter.createdAt" />
+</td>
+
   <th>Approve</th>
   <td><select class="form-control" ng-model="articleFilter.approve">
   <option value="">All</option>
   <option ng-repeat="(key,article) in originalArticalData | unique:'approve'" value="{{article.approve}}">{{approves[article.approve]}}</option>
   </select>
   </td>
-</tr>
-<tr>
-  <th>Date</th>
-  <td>
-  <input type="text" class="form-control" id="reportrange" datepicker-popup="dd-MM-yyyy" ng-model="articleFilter.createdAt" />
-  <!--<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
-      <span></span> <b class="caret"></b>
-  </div>
-     --></td>
 </tr>
 
 </tbody>

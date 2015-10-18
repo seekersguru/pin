@@ -439,6 +439,7 @@ exports.query = function(req, res) {
 	var limit=req.query.limit;
 
 	var q=Article.find({});
+
 	/** apply limit  */
 	if(req.query.limit){
 		q=q.limit(req.query.limit);
@@ -452,8 +453,8 @@ exports.query = function(req, res) {
   /** public true  */
   q.where('public').equals(true);
   q.where('pin').equals(true);
+  /** sorting according to date */
 
-	/** sorting according to date */
 
 	q.sort('-createdAt');
 
@@ -493,6 +494,11 @@ exports.basic = function(req, res) {
 
     }
 
+    if(Query.createdAt && Query.createdAt.startDate && Query.createdAt.endDate){
+    console.log(Query);
+     q.where({createdAt: {$gte:  Query.createdAt.startDate,$lte: Query.createdAt.endDate}});
+
+    }
 
   }
   q.populate('author','name email');
