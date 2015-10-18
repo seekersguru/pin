@@ -105,8 +105,9 @@ angular.module('pinApp')
          currentPage: 1
     };
 
-    $scope.articleFilter={createdAt:{ endDate: moment(),startDate:moment().subtract(2, 'year')}};
-    $scope.mmiFilter={createdAt:{ endDate: moment(),startDate:moment().subtract(2, 'year')}};
+    $scope.articleFilter={createdAt:{ endDate: moment(),startDate:moment()}};
+    $scope.mmiFilter={createdAt:{ endDate: moment(),startDate:moment()}};
+    $scope.pinFilter={createdAt:{ endDate: moment(),startDate:moment()}};
     $scope.setArticlePagingData=function(){
     $scope.gridArticleData = data.articles;
              if (!$scope.$$phase) {
@@ -187,6 +188,47 @@ angular.module('pinApp')
       }).
       success(function(users, status, headers, config) {
         $scope.gridMMIUserData = users.users;
+        // $scope.totalServerItems=data.totalElement;
+        // $scope.setArticlePagingData(data,page,pageSize);
+
+      }).
+      error(function(data, status, headers, config) {
+
+      });
+    }
+    }
+    $scope.filterPINUsers=function(){
+      var data;
+      var page = $scope.pagingOptions.currentPage;
+      var pageSize = $scope.pagingOptions.pageSize;
+      var searchText=$scope.filterOptions.filterText;
+      //if filter text is there then this condition will execute
+      if (searchText) {
+      var ft = searchText.toLowerCase();
+      $http({
+        method: 'GET',
+        url: 'api/users?filter='+ JSON.stringify($scope.pinFilter)
+      }).
+      success(function(users, status, headers, config) {
+          //with data must send the total no of items as well
+          // $scope.totalServerItems=data.totalElement;
+          //here's the list of data to be displayed
+          users.users = users.users.filter(function(item) {
+              return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+          });
+          $scope.gridUserData = users.users;
+          // $scope.setArticlePagingData(data,page,pageSize);
+      }).
+      error(function(data, status, headers, config) {
+
+      });
+    }else{
+      $http({
+        method: 'GET',
+        url: 'api/users?filter='+ JSON.stringify($scope.pinFilter)
+      }).
+      success(function(users, status, headers, config) {
+        $scope.gridUserData = users.users;
         // $scope.totalServerItems=data.totalElement;
         // $scope.setArticlePagingData(data,page,pageSize);
 
@@ -801,8 +843,21 @@ $scope.mmiuserStatus=function(userId){
       switch ($scope.mainPage) {
         case 'users':
           $scope.gridUserData = {};
+          $http({
+            method: 'GET',
+            url: 'api/family'
+          }).
+          success(function(data, status, headers, config) {
+            $scope.basicFamilys = data.familys;
+
+          }).
+          error(function(data, status, headers, config) {
+
+          });
           User.query(function(users) {
             $scope.gridUserData = users.users;
+            $scope.originalPINUsersData= angular.copy(users.users);
+
           });
           break;
 
@@ -935,7 +990,8 @@ $scope.mmiuserStatus=function(userId){
                $scope.filterArticle($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
             }else  if($scope.mainPage === 'mmiusers'){
               $scope.filterMMIUsers($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-
+            }else  if($scope.mainPage === 'pinusers'){
+              $scope.filterPINUsers($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
             }
            }
        }, true);

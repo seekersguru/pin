@@ -15,7 +15,9 @@ _ = require('lodash');
 
 
 exports.query = function(req, res){
-  var q = User.find({role: {'$ne':'admin' }}).populate('familyrole','name');
+  var Query = '',
+     spiceArray=[],
+     q = User.find({role: {'$ne':'admin' }}).populate('familyrole','name');
   if (req.query.array_foll){
     if(typeof req.query.array_foll === typeof {}){
       q = q.where('_id').in(req.query.array_foll);
@@ -27,6 +29,39 @@ exports.query = function(req, res){
     return res.json(404);
   }
 
+  if(req.query && req.query.filter){
+    Query=JSON.parse(req.query.filter);
+
+    if(Query.status)
+    {
+        q.where('status').equals(Query.status);
+    }
+
+    if(Query.emailVerification)
+    {
+        q.where('emailVerification.verified').equals(Query.emailVerification);
+    }
+
+    if(Query.role)
+    {
+        q.where('role').equals(Query.role);
+    }
+
+    if(Query.city)
+    {
+        q.where('address.city').equals(Query.city);
+    }
+
+    if(Query.role)
+    {
+        q.where('role').equals(Query.role);
+    }
+
+    if(Query.createdAt && Query.createdAt.startDate && Query.createdAt.endDate){
+     q.where({createdAt: {$gte:  Query.createdAt.startDate,$lte: Query.createdAt.endDate}});
+    }
+
+  }
   q.exec(function(err, users) {
     if (err) {
       console.log(err);
@@ -34,7 +69,28 @@ exports.query = function(req, res){
     } else {
       // if(req.user.role !== 'admin'){
         for(var i=0; i<users.length; i++){
+          if(Query && Query.family){
+            if(users[i].profile.familyrole == null)
+            {
+              console.log("null");
+              spiceArray.push(i);
+
+            }else if(Query.family != users[i].profile.familyrole._id ){
+              console.log("id not matchnull");
+
+               spiceArray.push(i);
+            }
+          }
+
           users[i] = users[i].profile;
+        }
+
+        if(spiceArray.length)
+        {
+          var b = spiceArray.length;
+          while (b--) {
+                users.splice(spiceArray[b], 1);
+            }
         }
       // }
       return res.json({users:users});

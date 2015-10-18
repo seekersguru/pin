@@ -210,6 +210,79 @@
 </script>
 
 <script type="text/ng-template" id="users">
+<table class="table table-striped">
+<tbody>
+<tr>
+<th>Family Office</th>
+<td><select class="form-control" ng-model="pinFilter.family">
+<option value="">All</option>
+<option ng-repeat="(key,family) in basicFamilys | unique:'title'" value="{{family._id}}">{{family.name}}</option>
+</select></td>
+
+<th>Role type</th>
+<td><select class="form-control" ng-model="pinFilter.role">
+<option value="">All</option>
+ <option ng-repeat="(key,role) in  ['user','admin','expert'] " value="{{role}}">{{role}}</option>
+</select>
+</td>
+</tr>
+<tr>
+  <th>City</th>
+  <td><select class="form-control" ng-model="pinFilter.city">
+  <option value="">All</option>
+  <option ng-repeat="(key,user) in originalPINUsersData | unique:'city'" value="{{user.city}}">{{user.city}}</option>
+  </select>
+  </td>
+
+
+  <th>Status</th>
+  <td><select class="form-control" ng-model="pinFilter.status">
+  <option value="">All</option>
+  <option value="true">Approved</option>
+  <option value="false">Not Approved</option>
+  </select>
+  </td>
+  </tr>
+  <tr>
+  <th>Email verification </th>
+  <td><select class="form-control" ng-model="pinFilter.emailVerification">
+  <option value="">All</option>
+  <option value="true">Done</option>
+  <option value="false">Pending</option>
+  </select>
+  </td>
+  <th>Action</th>
+    <td><select class="form-control" ng-model="pinFilter.status">
+    <option value="">All</option>
+    <option value="true">Approve</option>
+    <option value="false">Block</option>
+    </select>
+    </td>
+</tr>
+<tr>
+<th>Date registered</th>
+<td colspan=3>
+<input  class="form-control"
+    type="daterange"
+    ranges="ranges"
+    format="DD MMMM YYYY"
+    ng-model="pinFilter.createdAt" />
+</td>
+
+
+</tr>
+
+</tbody>
+<tfoot>
+  <tr>
+    <th colspan="2">
+    <button class="btn btn-info" ng-click="filterPINUsers()">Apply Filter</button>
+
+    </th>
+  </tr>
+</tfoot>
+</table>
+<br/>
 <div class="clearfix filter-search">
 <div class="col-sm-4"><h1>PIN Users</h1></div>
 <div class="col-sm-4"><a class="btn btn-success" ng-href="/add-user?admin=1"> Add User </a></div>

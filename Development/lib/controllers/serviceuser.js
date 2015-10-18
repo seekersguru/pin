@@ -40,7 +40,7 @@ exports.query = function(req, res){
 
     if(Query.emailVerification)
     {
-        q.where('emailVerification').equals(Query.emailVerification);
+        q.where('emailVerification.verified').equals(Query.emailVerification);
     }
 
     if(Query.linkedin){

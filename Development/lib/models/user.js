@@ -120,6 +120,7 @@ UserSchema
       'searchable':this.searchable,
       'commentvisible':this.commentvisible,
       'status':this.status,
+      'city':this.address.city,
       'madebyadmin':this.madebyadmin
 
         };
