@@ -950,18 +950,24 @@ $scope.mmiuserStatus=function(userId){
       filterOptions: $scope.filterOptions,
 
       // showGroupPanel: true ,
-      columnDefs: [{
+      columnDefs: [
+        {
           field: '_id',
           displayName: 'SN',
-          cellTemplate: '<span> {{row.rowIndex+1}}</span>'
-        }, {
+          cellTemplate: '<span> {{row.rowIndex+1}}</span>',
+          cellClass: 'grid-align',
+          width: '30px'
+        },
+         {
           field: 'title',
           displayName: 'Title',
-          width: '500px'
+          width: '440px',
+        cellClass: 'grid-align'
         }, {
           field: 'author',
           displayName: 'Author',
-          width: '150px'
+          width: '110px',
+        cellClass: 'grid-align'
         },
         // { field: 'tags' ,displayName:'Tags' },
         // {
@@ -972,26 +978,27 @@ $scope.mmiuserStatus=function(userId){
         //   field: 'category',
         //   displayName: 'Category'
         // },
-        // { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
+        { field: 'createdAt' ,displayName:'Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',cellClass: 'grid-align' },
         {
           field: 'approve',
           displayName: 'Approve',
+          width: '100px',
           cellTemplate: '<span ng-if="row.entity.approve" class="label label-success" ng-click="articleStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="articleStatus(row.entity._id)">NOT APPROVED</span>'
         }, {
           field: 'pin',
-          displayName: 'Pin',
+          displayName: 'PIN',
           cellTemplate: '<span ng-if="row.entity.pin" class="label label-success" ng-click="articlePin(row.entity._id)">SHOW</span><span ng-if="!row.entity.pin" class="label label-danger" ng-click="articlePin(row.entity._id)">NOT SHOW</span>'
         },
 
         {
           field: 'money',
-          displayName: 'Money',
+          displayName: 'MMI',
           cellTemplate: '<span ng-if="row.entity.money" class="label label-success" ng-click="articleMoney(row.entity._id)">SHOW</span><span ng-if="!row.entity.money" class="label label-danger" ng-click="articleMoney(row.entity._id)">NOT SHOW</span>'
         },
 
         {
           field: 'hans',
-          displayName: 'Hans',
+          displayName: 'TMH',
           cellTemplate: '<span ng-if="row.entity.hans" class="label label-success" ng-click="articleHans(row.entity._id)">SHOW</span><span ng-if="!row.entity.hans" class="label label-danger" ng-click="articleHans(row.entity._id)">NOT SHOW</span>'
         },
 
@@ -1022,14 +1029,18 @@ $scope.mmiuserStatus=function(userId){
       columnDefs: [{
         field: '_id',
         displayName: 'SN',
-        cellTemplate: '<span> {{row.rowIndex+1}}</span>'
+        cellTemplate: '<span> {{row.rowIndex+1}}</span>',
+        cellClass: 'grid-align',
+        width: '30px'
       }, {
         field: 'name',
-        displayName: 'Name'
+        displayName: 'Name',
+        cellClass: 'grid-align'
       }, {
         field: 'email',
         displayName: 'Email',
-        width:'200px'
+        width:'200px',
+        cellClass: 'grid-align'
       },
       //  {
       //   field: 'band',
@@ -1042,8 +1053,15 @@ $scope.mmiuserStatus=function(userId){
       // },
        {
         field: 'familyrole.name',
-        displayName: 'FamilyRole'
+        displayName: 'FamilyRole',
+        cellClass: 'grid-align'
       },
+      {
+       field: 'createdAt',
+       displayName: 'Date',
+       cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
+       cellClass: 'grid-align'
+     },
       //  {
       //   field: 'commentvisible',
       //   displayName: 'Commentvisible'
@@ -1069,11 +1087,7 @@ $scope.mmiuserStatus=function(userId){
         displayName: 'Status',
         cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
       },
-      {
-       field: 'createdAt',
-       displayName: 'Created Date',
-       cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>'
-     }, {
+     {
         field: 'action',
         displayName: 'Action',
         cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Approve</span> '
@@ -1088,10 +1102,11 @@ $scope.mmiuserStatus=function(userId){
                          // enableCellSelection: true,
                          enableRowSelection: false,
                          filterOptions: $scope.filterOptions,
-                         columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>',width:'50px'},
-                                    { field: 'firstname' ,displayName:'First Name' },
-                                    // { field: 'createdAt' ,displayName:'Created Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>' },
-                                    { field: 'email' ,displayName:'Email' },
+                         columnDefs: [{ field: '_id' ,displayName:'SN',cellTemplate:'<span> {{row.rowIndex+1}}</span>',
+                         cellClass: 'grid-align',
+                         width: '30px'},
+                                    { field: 'firstname' ,displayName:'First Name',cellClass: 'grid-align' },
+                                    { field: 'email' ,displayName:'Email',cellClass: 'grid-align' },
                                     // { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'},
                                     // { field: 'role' ,displayName:'Role'},
                                     // { field: 'commentvisible' ,displayName:'Commentvisible'},
@@ -1099,6 +1114,7 @@ $scope.mmiuserStatus=function(userId){
                                     // { field: 'adminrole' ,displayName:'Adminrole'},
                                     // { field: 'emailVerification' ,displayName:'EmailVerification',cellTemplate:'<span ng-if="row.entity.emailVerification" class="label label-success">Done</span><span ng-if="!row.entity.emailVerification" class="label label-danger" >Pending</span>' },
                                     // { field: 'username' ,displayName:'Username' },
+                                    { field: 'createdAt' ,displayName:'Date',cellTemplate:'<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',cellClass: 'grid-align'  },
                                     { field: 'status' ,displayName:'Status',cellTemplate:'<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>',width:'250px'},
                                     { field: 'action' ,displayName:'Action',cellTemplate:'<span ng-if="row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Approve</span> ',width:'150px'}],
                         showFooter: true,
@@ -1118,11 +1134,14 @@ $scope.mmiuserStatus=function(userId){
       columnDefs: [{
         field: '_id',
         displayName: 'SN',
-        cellTemplate: '<span> {{row.rowIndex+1}}</span>'
+        cellTemplate: '<span> {{row.rowIndex+1}}</span>',
+        cellClass: 'grid-align',
+        width: '30px'
       }, {
         field: 'name',
         displayName: 'Name',
         cellTemplate: '<input  type="text" ng-model="row.entity.name" ng-blur="updateFamily(row.entity,row.entity.name)" ng-value="row.entity.name" />'
+
       }],
       // { field: '',displayName:'Action', cellTemplate: editDeleteFamilyTemplate, maxWidth: 100  }],
       showFooter: true,
@@ -1143,24 +1162,31 @@ $scope.mmiuserStatus=function(userId){
       columnDefs: [{
         field: '_id',
         displayName: 'SN',
-        cellTemplate: '<span> {{row.rowIndex+1}}</span>'
+        cellTemplate: '<span> {{row.rowIndex+1}}</span>',
+        cellClass: 'grid-align',
+        width: '30px'
       }, {
         field: 'media',
         displayName: 'Profile',
-        cellTemplate: '<img style="height:70px;width:70px;"ng-src="{{row.entity.media.path}}">'
+        cellTemplate: '<img style="height:70px;width:70px;"ng-src="{{row.entity.media.path}}">',
+        cellClass: 'grid-align'
       }, {
         field: 'name',
         displayName: 'Name',
-        cellTemplate: '<input  type="text" ng-model="row.entity.name" ng-blur="updateExpert(row.entity,row.entity.name)" ng-value="row.entity.name" />'
+        cellTemplate: '<input  type="text" ng-model="row.entity.name" ng-blur="updateExpert(row.entity,row.entity.name)" ng-value="row.entity.name" />',
+        cellClass: 'grid-align'
       }, {
         field: 'designation',
-        displayName: 'Designation'
+        displayName: 'Designation',
+        cellClass: 'grid-align'
       }, {
         field: 'mail',
-        displayName: 'Mail'
+        displayName: 'Mail',
+        cellClass: 'grid-align'
       }, {
         field: 'linkedin',
-        displayName: 'Linkedin'
+        displayName: 'Linkedin',
+        cellClass: 'grid-align'
       }, {
         field: '',
         displayName: 'Action',
@@ -1185,38 +1211,49 @@ $scope.mmiuserStatus=function(userId){
       columnDefs: [{
           field: '_id',
           displayName: 'SN',
-          cellTemplate: '<span> {{row.rowIndex+1}}</span>'
+          cellTemplate: '<span> {{row.rowIndex+1}}</span>',
+          cellClass: 'grid-align',
+          width: '30px'
         }, {
           field: 'title',
-          displayName: 'Title'
+          displayName: 'Title',
+        cellClass: 'grid-align',
+        width: '420px'
+
         }, {
           field: 'author',
-          displayName: 'Author'
+          displayName: 'Author',
+        cellClass: 'grid-align',
+        width: '120px'
         },
         // { field: 'expert' ,displayName:'Expert' },
         // { field: 'comments' ,displayName:'Comments' },
         {
           field: 'category',
-          displayName: 'Category'
+          displayName: 'Category',
+        cellClass: 'grid-align'
         }, {
           field: 'eventdate',
-          displayName: 'Event Date',
-          cellTemplate: '<span> {{row.entity.eventdate|date:"dd-MMMM-yyyy"}}</span>'
+          displayName: 'Date',
+          cellTemplate: '<span> {{row.entity.eventdate|date:"dd-MM-yyyy"}}</span>',
+        cellClass: 'grid-align'
         }, {
           field: 'approve',
           displayName: 'Approve',
-          cellTemplate: '<span ng-if="row.entity.approve" class="label label-success" ng-click="eventStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="eventStatus(row.entity._id)">NOT APPROVED</span>'
+          cellTemplate: '<span ng-if="row.entity.approve" class="label label-success" ng-click="eventStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="eventStatus(row.entity._id)">NOT APPROVED</span>',
+          width: '110px'
+
         }, {
           field: 'pin',
           displayName: 'PIN',
           cellTemplate: '<span ng-if="row.entity.pin" class="label label-success" ng-click="eventPin(row.entity._id)">SHOWN</span><span ng-if="!row.entity.pin" class="label label-danger" ng-click="eventPin(row.entity._id)">NOT SHOWN</span>'
         }, {
           field: 'money',
-          displayName: 'Money',
+          displayName: 'MMI',
           cellTemplate: '<span ng-if="row.entity.money" class="label label-success" ng-click="eventMoney(row.entity._id)">SHOWN</span><span ng-if="!row.entity.money" class="label label-danger" ng-click="eventMoney(row.entity._id)">NOT SHOWN</span>'
         }, {
           field: 'hans',
-          displayName: 'Hans',
+          displayName: 'TMH',
           cellTemplate: '<span ng-if="row.entity.hans" class="label label-success" ng-click="eventHans(row.entity._id)">SHOWN</span><span ng-if="!row.entity.hans" class="label label-danger" ng-click="eventHans(row.entity._id)">NOT SHOWN</span>'
         }, {
           field: '',
@@ -1242,23 +1279,32 @@ $scope.mmiuserStatus=function(userId){
       columnDefs: [{
           field: '_id',
           displayName: 'SN',
-          cellTemplate: '<span> {{row.rowIndex+1}}</span>'
+          cellTemplate: '<span> {{row.rowIndex+1}}</span>',
+          cellClass: 'grid-align',
+          width: '30px'
         }, {
           field: 'title',
-          displayName: 'Title'
+          displayName: 'Title',
+        cellClass: 'grid-align',
+        width: '350px'
         }, {
           field: 'firmsupertype',
-          displayName: 'SuperType'
+          displayName: 'SuperType',
+        cellClass: 'grid-align',
+          width: '90px'
         }, {
           field: 'firmtype',
-          displayName: 'Type'
+          displayName: 'Type',
+        cellClass: 'grid-align'
         }, {
           field: 'firmsubtype',
-          displayName: 'Sub Type'
+          displayName: 'Sub Type',
+        cellClass: 'grid-align'
         }, {
           field: 'createdAt',
-          displayName: 'Created Date',
-          cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MMMM-yyyy"}}</span>'
+          displayName: 'Date',
+          cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
+        cellClass: 'grid-align'
         },
         // { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="companyStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="copmanyStatus(row.entity._id)">NOT APPROVED</span>'},
         {
