@@ -8,7 +8,7 @@
  -->
 <div class="row">
 <div class="admin-panel-bt">
-<ul>
+<!-- <ul>
  <li>
             <div class="mini-box">
             <a class="" ng-click="setSearch('users')">
@@ -109,7 +109,7 @@
                 </a>
             </div>
             </li>
-</ul>
+</ul> -->
 </div>
 
 </div>
@@ -120,6 +120,84 @@
 </div>
 
 <script type="text/ng-template" id="mmiusers">
+<table class="table table-striped">
+<tbody>
+<tr>
+<th>Company</th>
+<td><select class="form-control" ng-model="mmiFilter.company">
+<option value="">All</option>
+<option ng-repeat="(key,company) in basicCompanies | unique:'title'" value="{{company._id}}">{{company.title}}</option>
+</select></td>
+
+<th>Role type</th>
+<td><select class="form-control" ng-model="mmiFilter.role">
+<option value="">All</option>
+ <option ng-repeat="(key,role) in  ['user','admin','expert'] " value="{{role}}">{{role}}</option>
+</select>
+</td>
+</tr>
+<tr>
+  <th>City</th>
+  <td><select class="form-control" ng-model="mmiFilter.city">
+  <option value="">All</option>
+  <option ng-repeat="(key,user) in originalMMIUsersData | unique:'city'" value="{{user.city}}">{{user.city}}</option>
+  </select>
+  </td>
+
+  <th>Registration process</th>
+  <td><select class="form-control" ng-model="mmiFilter.linkedin">
+  <option value="">All</option>
+  <option value="direct">Direct</option>
+  <option value="linkedin">Linkedin</option>
+  </select>
+  </td>
+</tr>
+<tr>
+  <th>Status</th>
+  <td><select class="form-control" ng-model="mmiFilter.status">
+  <option value="">All</option>
+  <option value="true">Approved</option>
+  <option value="false">Not Approved</option>
+  </select>
+  </td>
+  <th>Email verification </th>
+  <td><select class="form-control" ng-model="mmiFilter.emailVerification">
+  <option value="">All</option>
+  <option value="true">Done</option>
+  <option value="false">Pending</option>
+  </select>
+  </td>
+</tr>
+<tr>
+<tr>
+<th>Action</th>
+  <td><select class="form-control" ng-model="mmiFilter.status">
+  <option value="">All</option>
+  <option value="true">Approve</option>
+  <option value="false">Block</option>
+  </select>
+  </td>
+  <th>Date registered</th>
+  <td>
+  <input type="text" class="form-control" id="reportrange" datepicker-popup="dd-MM-yyyy" ng-model="mmiFilter.createdAt" />
+  <!--<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+      <span></span> <b class="caret"></b>
+  </div>
+     --></td>
+</tr>
+
+</tbody>
+<tfoot>
+  <tr>
+    <th colspan="2">
+    <button class="btn btn-info" ng-click="filterMMIUsers()">Apply Filter</button>
+
+    </th>
+  </tr>
+</tfoot>
+</table>
+<br/>
 <div class="clearfix filter-search">
 <div class="pull-left"><h1>MMI Users</h1> </div>
 
@@ -172,8 +250,12 @@
 <tr>
   <th>Date</th>
   <td>
-  <input type="text" class="form-control" datepicker-popup="dd-MM-yyyy" ng-model="articleFilter.createdAt" />
-   </td>
+  <input type="text" class="form-control" id="reportrange" datepicker-popup="dd-MM-yyyy" ng-model="articleFilter.createdAt" />
+  <!--<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+      <span></span> <b class="caret"></b>
+  </div>
+     --></td>
 </tr>
 
 </tbody>

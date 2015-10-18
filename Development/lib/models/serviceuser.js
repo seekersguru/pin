@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     crypto = require('crypto');
-  
+
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 mongoose.set('debug', true);
 
@@ -53,7 +53,7 @@ var UserSchema = new Schema({
   photo: String,
   bio: String,
   following:[
-  
+
   {
    user:{type: Schema.Types.ObjectId, ref:'User'},
    status:{type: Boolean, default:false},
@@ -119,6 +119,7 @@ UserSchema
       'searchable':this.searchable,
       'commentvisible':this.commentvisible,
       'company':this.company,
+      'city':this.address.city,
       'status':this.status
 
         };
@@ -260,7 +261,7 @@ UserSchema.methods = {
     };
   },
   setForgotPassword : function () {
-    if (!(this.forgotPassword && 
+    if (!(this.forgotPassword &&
         this.forgotPassword.token &&
         this.forgotPassword.validTill > Date.now())) {
       this.forgotPassword =  {

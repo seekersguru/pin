@@ -18,19 +18,10 @@
       </div>
        <ul class="nav navbar-nav admin-nav-top">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Article <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Content <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/post-article">Add New</a></li>
                 <li><a href="/admin?articles">Manage Content</a></li>
-
-              </ul>
-            </li>
-             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Event <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="/add-event">Add New</a></li>
-                <li><a href="/admin?event">Manage Content</a></li>
-                <li><a href="/admin?expert">Event experts</a></li>
 
               </ul>
             </li>
@@ -42,13 +33,26 @@
 
               </ul>
             </li>
+
             <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Event <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li><a href="/add-event">Add New</a></li>
+               <li><a href="/admin?event">Manage Events</a></li>
+               <li><a href="/admin?expert">Event Experts</a></li>
+
+             </ul>
+           </li>
+           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Directory <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/add-company">Add New</a></li>
-                <li><a href="/admin?company">Manage Content</a></li>
+                <li><a href="/admin?company">Manage Directory </a></li>
 
               </ul>
+            </li>
+            <li class="dropdown">
+              <a href="/admin?family"> Family Office</a>
             </li>
             <li class="dropdown">
               <a href="/disquss"> Disquss  Admin Detail</a>
@@ -57,7 +61,7 @@
       <!--end-->
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
+    <!-- <ul class="nav navbar-nav">
 
      <li  ng-show="!currentUser" ng-class="{'desktop-hide': !currentUser}" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" ><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li>
 
@@ -67,11 +71,11 @@
 
      <li ng-show="!currentUser" ng-class="{'desktop-hide': !currentUser}" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><a href="/register" ng-class="{active: isActive('/register')}">Join</a></li>
 
-    <li ng-show="currentUser" ng-class="{'desktop-hide': currentUser}" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li>
+    <li ng-show="currentUser" ng-class="{'desktop-hide': currentUser}" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li> -->
 
 <!--     <li class="desktop-hide" ng-show="currentUser"><a href="/register" ng-class="{active: isActive('/articles/01')}">Article</a></li>
  -->
-    </ul>
+    <!-- </ul> -->
 
       <form class="navbar-form navbar-right" name="form" ng-submit="login(form)" novalidate  >
         <div ng-hide="currentUser || isActive('/login')" >
