@@ -105,8 +105,8 @@ angular.module('pinApp')
          currentPage: 1
     };
 
-    $scope.articleFilter={createdAt:{ endDate: moment(),startDate:moment().subtract(1, 'year')}};
-    $scope.mmiFilter={createdAt:{ endDate: moment(),startDate:moment().subtract(1, 'year')}};
+    $scope.articleFilter={createdAt:{ endDate: moment(),startDate:moment().subtract(2, 'year')}};
+    $scope.mmiFilter={createdAt:{ endDate: moment(),startDate:moment().subtract(2, 'year')}};
     $scope.setArticlePagingData=function(){
     $scope.gridArticleData = data.articles;
              if (!$scope.$$phase) {
