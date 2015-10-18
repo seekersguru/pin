@@ -1158,6 +1158,7 @@ $scope.mmiuserStatus=function(userId){
       // showGroupPanel: true ,
       // enableCellSelection: true,
       enableRowSelection: false,
+       rowHeight: 80,
       filterOptions: $scope.filterOptions,
       columnDefs: [{
         field: '_id',

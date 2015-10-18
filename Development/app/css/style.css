@@ -5041,3 +5041,7 @@ margin:0 auto 10px auto;
 .grid-align {
       text-align: left;
   }
+.grid-align-height {
+      text-align: left;
+      height: 400px;
+  }
