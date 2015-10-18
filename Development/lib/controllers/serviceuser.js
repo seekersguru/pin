@@ -43,10 +43,16 @@ exports.query = function(req, res){
         q.where('emailVerification').equals(Query.emailVerification);
     }
 
-    if(Query.linkedin)
-    {
-        q.where('linkedin').ne(null);
-    }
+    if(Query.linkedin){
+
+      if(Query.linkedin === 'linkedin')
+      {
+          q.where('linkedin').ne(null);
+      }
+      else if(Query.linkedin === 'direct'){
+          q.where('linkedin').exists(false);
+      }
+   }
 
     if(Query.role)
     {
