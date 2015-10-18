@@ -194,7 +194,7 @@ if($location.path()=="/articles/view/"+articles.articles._id && articles.article
   $scope.config=
   {
     'sources': [
-    {src: $sce.trustAsResourceUrl('../'+articles.articles.media.path), type: 'video/mp4'}
+    {src: $sce.trustAsResourceUrl('http://moneymanagementindia.net//'+articles.articles.media.path), type: 'video/mp4'}
     ],
     'theme': 'bower_components/videogular-themes-default/videogular.css',
     'plugins': {
