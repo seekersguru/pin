@@ -63,6 +63,12 @@ exports.query = function(req, res){
         q.where('role').equals(Query.role);
     }
 
+    if(Query.createdAt && Query.createdAt.startDate && Query.createdAt.endDate){
+    console.log(Query);
+     q.where({createdAt: {$gte:  Query.createdAt.startDate,$lte: Query.createdAt.endDate}});
+
+    }
+
   }
 
 

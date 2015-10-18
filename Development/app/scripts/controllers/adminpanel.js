@@ -48,7 +48,13 @@ function ngGridFlexibleHeightPlugin(opts) {
 angular.module('pinApp')
   .controller('AdminPanelCtrl', function($scope, User, MMIUser,Article, $http,
     $location, $window, $modal, Auth, $timeout) {
-
+      $scope.ranges = {
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract(1,'days'), moment().subtract(1,'days')],
+        'Last 7 days': [moment().subtract(7,'days'), moment()],
+        'Last 30 days': [moment().subtract(30,'days'), moment()],
+        'This month': [moment().startOf('month'), moment().endOf('month')]
+      };
       // function cb(start, end) {
       //     $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
       // }
@@ -99,8 +105,8 @@ angular.module('pinApp')
          currentPage: 1
     };
 
-    $scope.articleFilter={};
-    $scope.mmiFilter={};
+    $scope.articleFilter={createdAt:{ endDate: moment(),startDate:moment().subtract(1, 'year')}};
+    $scope.mmiFilter={createdAt:{ endDate: moment(),startDate:moment().subtract(1, 'year')}};
     $scope.setArticlePagingData=function(){
     $scope.gridArticleData = data.articles;
              if (!$scope.$$phase) {
