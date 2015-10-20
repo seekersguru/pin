@@ -202,12 +202,20 @@ angular.module('pinApp')
       var page = $scope.pagingOptions.currentPage;
       var pageSize = $scope.pagingOptions.pageSize;
       var searchText=$scope.filterOptions.filterText;
+      var url='';
+      if($scope.mainPage === 'users')
+      {
+        url ='api/users?filter=';
+      }else{
+        url ='api/contentexpert?filter=';
+      }
+
       //if filter text is there then this condition will execute
       if (searchText) {
       var ft = searchText.toLowerCase();
       $http({
         method: 'GET',
-        url: 'api/users?filter='+ JSON.stringify($scope.pinFilter)
+        url: url + JSON.stringify($scope.pinFilter)
       }).
       success(function(users, status, headers, config) {
           //with data must send the total no of items as well
@@ -225,7 +233,7 @@ angular.module('pinApp')
     }else{
       $http({
         method: 'GET',
-        url: 'api/users?filter='+ JSON.stringify($scope.pinFilter)
+        url: url+ JSON.stringify($scope.pinFilter)
       }).
       success(function(users, status, headers, config) {
         $scope.gridUserData = users.users;
@@ -859,6 +867,34 @@ $scope.mmiuserStatus=function(userId){
             $scope.originalPINUsersData= angular.copy(users.users);
 
           });
+          break;
+
+        case 'contentexpert':
+          $scope.gridUserData = {};
+
+          $http({
+            method: 'GET',
+            url: 'api/family'
+          }).
+          success(function(data, status, headers, config) {
+            $scope.basicFamilys = data.familys;
+          }).
+          error(function(data, status, headers, config) {
+
+          });
+
+          $http({
+            method: 'GET',
+            url: 'api/contentexpert'
+          }).
+          success(function(data, status, headers, config) {
+            $scope.gridUserData = data.users;
+            $scope.originalPINUsersData= angular.copy(data.users);
+          }).
+          error(function(data, status, headers, config) {
+
+          });
+
           break;
 
         case 'mmiusers':
