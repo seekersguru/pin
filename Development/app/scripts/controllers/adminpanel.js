@@ -894,7 +894,6 @@ $scope.mmiuserStatus=function(userId){
           error(function(data, status, headers, config) {
 
           });
-
           break;
 
         case 'mmiusers':
@@ -1026,7 +1025,7 @@ $scope.mmiuserStatus=function(userId){
                $scope.filterArticle($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
             }else  if($scope.mainPage === 'mmiusers'){
               $scope.filterMMIUsers($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-            }else  if($scope.mainPage === 'pinusers'){
+            }else  if($scope.mainPage === 'users' || $scope.mainPage === 'contentexpert'){
               $scope.filterPINUsers($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
             }
            }
