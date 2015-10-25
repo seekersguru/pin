@@ -64,6 +64,7 @@ var UserSchema = new Schema({
   nFollowers:{type: Number, default: 0},
   showAge: {type:Boolean, default: false},
   dob:{type:Date, default: Date.now},
+  lastLogin:{type:Date, default: Date.now},
   status:{type: Boolean, default:false},
   searchable:{type: Boolean, default:true},
   commentvisible:{type: String, default: 'public', 'enum' : ['public','friends']},
@@ -121,7 +122,9 @@ UserSchema
       'commentvisible':this.commentvisible,
       'status':this.status,
       'city':this.address.city,
-      'madebyadmin':this.madebyadmin
+      'madebyadmin':this.madebyadmin,
+      'lastLogin':this.lastLogin
+
 
         };
   });

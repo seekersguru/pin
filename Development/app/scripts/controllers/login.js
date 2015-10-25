@@ -10,7 +10,7 @@ angular.module('pinApp')
     $scope.registerStatus = Object.keys($location.search())[0] || 'test';
     $scope.errormessage=$location.search()[$scope.registerStatus] || '';
     $scope.field=Object.keys($location.search())[1] || 'field';
-    
+
 
     $scope.login = function(form) {
 
@@ -26,7 +26,7 @@ angular.module('pinApp')
           if($rootScope.currentUser.role=='admin')
             {
 
-            $location.path('/admin').search({'users':1});
+            $location.path('/admin').search({'adminusers':1});
 
             }else{
               // if ($rootScope.redirectPath) {
@@ -34,9 +34,9 @@ angular.module('pinApp')
               //   $rootScope.redirectPath = undefined;
               //   $location.path(path);
               // } else {
-                
-                  
-                $location.path('/articles/01');
+
+
+                $location.path('/admin');
 
               // }
           }
@@ -51,7 +51,7 @@ angular.module('pinApp')
             $scope.errors[error.field] = error.message;
           });
           $scope.registerStatus='test';
-          
+
         });
       }
     };

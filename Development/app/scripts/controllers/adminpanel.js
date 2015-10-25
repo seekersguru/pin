@@ -1169,18 +1169,19 @@ angular.module('pinApp')
           displayName: 'UserName',
           width: '200px',
           cellClass: 'grid-align'
-        }, {
-          field: 'createdAt',
-          displayName: 'Date',
-          cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
-          cellClass: 'grid-align'
         },
-
         {
-          field: 'status',
-          displayName: 'Status',
-          cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
+          field: 'lastLogin',
+          displayName: 'Last logged in ',
+          cellTemplate: '<span> {{row.entity.lastLogin|date:"dd-MM-yyyy hh:mm:ss"}}</span>',
+          cellClass: 'grid-align'
         }
+        // ,
+        // {
+        //   field: 'status',
+        //   displayName: 'Status',
+        //   cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
+        // }
         //  {
         //     field: 'action',
         //     displayName: 'Action',

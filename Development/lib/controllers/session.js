@@ -18,17 +18,25 @@ exports.logout = function (req, res) {
  * Login
  */
 exports.login = function (req, res, next) {
-  
+
   var stratergy = 'local';
   passport.authenticate(stratergy ,function(err, user, info) {
     var error = err || info;
-    if (error) return res.json(401, error);    
+    if (error) return res.json(401, error);
     req.logIn(user, function(err) {
-      
+
       if (err) return res.send(err);
-      res.json(req.user.userInfo);
+
+      User.findOneAndUpdate({_id: req.user._id}, {'lastLogin':Date.now()}, function(err, loginuser) {
+        if (err) {
+          console.log(err);
+          return res.json(400, err);
+        }
+        res.json(req.user.userInfo);
+      });
+
     });
-  
+
   })(req, res, next);
 };
 
