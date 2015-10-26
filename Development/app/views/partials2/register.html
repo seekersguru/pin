@@ -10,44 +10,44 @@
 
 
 <div class="inner-section">
- <h1>Register with us</h1> 
+ <h1>Add Content Expert</h1>
 <div class="register-form-hr"></div>
         <form class="register-form"  role="form"  name="form"  ng-submit="register(form)" novalidate>
         <!-- <div class="alert alert-success" role="alert" ng-show="registerDone">
             You are successfully register. For Login Please <a href="/login"><b>Click Here</b></a>
         </div> -->
 
-        <div class="row">
+        <!-- <div class="row">
            <!-- <div class="form-group" ng-class="{'has-error':form.fullname.$error.required && submitted,'has-success':form.fullname.$valid && submitted}"> -->
-           <div class="form-group" >
+           <!--<div class="form-group" >
            <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
            <input type="text" name="fullname" class="form-control" placeholder="Family Office / Family Name " ng-model="user.fullname"
           />
-          <div class="error-massege"> 
+          <div class="error-massege">
            <p class="text-danger" ng-show="form.fullname.$error.required && submitted">Please provide your full name.</p>
            </div>
        </div>
            </div>
-           </div>
+           </div> -->
 
 
             <div class="row">
            <div class="form-group" ng-class="{'has-error':form.name.$error.required && submitted,'has-success':form.name.$valid && submitted}">
-           <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
+           <div class="col-lg-12 col-md-12 col-sm-12">
            <input required type="text" name="name"  class="form-control" ng-model="user.name" placeholder="Name *" />
-           <div class="error-massege">  
+           <div class="error-massege">
            <p class="text-danger" ng-show="form.name.$error.required && submitted">Please provide a name that will show when you post comments on the site.</p>
            </div>
 </div>
            </div>
            </div>
 
-
+<!--
           <div class="row">
            <div class="form-group" ng-class="{'has-error': form.username.$error.required && submitted,'has-success':form.username.$valid && submitted}">
            <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
            <input required type="text" name="username" class="form-control" placeholder="Alias/Username * " id="username" ng-model="user.username" ng-blur="checkUsername(form)"  />
-           <div class="error-massege"> 
+           <div class="error-massege">
             <p class="text-danger" ng-show="form.username.$error.required && submitted && !form.username.$error.mongoose" >Please fill your alias name or username.</p>
             <p class="text-danger" ng-show="form.username.$error.mongoose">
             {{ errors.username }}
@@ -56,18 +56,18 @@
             {{ checkmessage }}
            </p>
            </div>
-           
+
 </div>
 <div class="col-lg-3"> <div class="btn btn-info" type="button" id="checkmessage" ng-click="checkUsername(form)" ng-disabled="checkusername"> <i class="fa fa-angle-left"></i>  Check Availability </div></div>
    </div>
- </div>
+ </div> -->
 
 
 
-<div class="row register-form-row-pad">
+<!-- <div class="row register-form-row-pad">
 <div class="col-lg-4 col-md-4 col-sm-4 paddingr-7">
 <div class="form-group"  >
-              
+
 <input type="text" name="address" ng-model="user.address.street" id="street" class="form-control" placeholder="Street Address "/>
 
  </div>
@@ -77,12 +77,12 @@
 <div class="form-group" ng-class="{'has-error':form.city.$error.required && submitted,'has-success':form.city.$valid && submitted}">
 <input type="text" required name="city" ng-model="user.address.city" class="form-control" placeholder="City *"  typeahead="address for address in getCities(user.address.country)" typeahead-loading="loadingLocationscity"/>
 <i ng-show="loadingLocationscity" class="glyphicon glyphicon-refresh"></i>
-<div class="error-massege">           
+<div class="error-massege">
 <p class="text-danger" ng-show="form.city.$error.required && submitted">Please indicate city. </p>
 </div>
   </div>
 </div>
- 
+
 <div class="col-lg-4 col-md-4 col-sm-4 paddingl-7">
 <div class="form-group">
 <input type="text" name="country" ng-blur="checkcountry()" ng-model="user.address.country" class="form-control" placeholder="Country"  typeahead="address for address in allcountry" typeahead-loading="loadingLocations"/>
@@ -90,13 +90,13 @@
   </div>
 </div>
 
-</div>
+</div> -->
 
 <div class="row ">
-<div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
+<div class="col-lg-12 col-md-12 col-sm-12">
 <div class="form-group" ng-class="{'has-error':form.email.$error.required && submitted,'has-success':form.email.$valid && submitted}">
    <input required type="email" validateEmail name="email"  class="form-control" placeholder="Email *" ng-model="user.email" mongoose-error />
-<div class="error-massege"> 
+<div class="error-massege">
    <p class="text-danger" ng-show="form.email.$error.required  && submitted">Please provide a valid email address.</p>
    <p class="text-danger" ng-show="form.email.$error.email && submitted">
                   Please provide a valid email address.
@@ -107,15 +107,17 @@
    </div>
    </div>
 </div>
+</div>
+<!-- <div class="row ">
 
-<div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
+<div class="col-lg-12 col-md-12 col-sm-12">
 <div class="form-group" ng-class="{'has-error':form.password.$error.required && submitted,'has-success':form.password.$valid  && submitted }" >
                 <input required type="password" name="password"  class="form-control" placeholder="password *" ng-model="user.password" ng-minlength=5 mongoose-error />
-                <div class="error-massege"> 
+                <div class="error-massege">
                 <p class="text-danger" ng-show="form.password.$error.required && submitted">Please select a password.</p>
-                
+
                 <p class="text-danger" ng-show="form.password.$error.minlength && submitted">your password shoud be minimum 5 character long .</p>
-                
+
                 <p class="text-danger" ng-show="form.password.$error.mongoose">
                  {{ errors.password }}
                 </p>
@@ -127,23 +129,23 @@
 
 </div>
 
-</div> 
+</div> -->
 
 
 
 
 
-<div class="row register-form-row-pad">
+<!-- <div class="row register-form-row-pad">
 <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
-<div class="form-group">             
+<div class="form-group">
  <select class="form-control" name="member" ng-model="user.member" >
-    
+
     <option value="" tooltip="Please choose member type.">Select Member type </option>
     <option value="Family" tooltip="the UHNI or wealth owner">Family </option>
     <option value="FO staff" tooltip="who works in single family office">FO staff</option>
     <option value="Adviser" tooltip="accountant or consultant to the family">Adviser</option>
     <option value="NextGen" tooltip="still family, but not decision-maker; UHNI's children">NextGen</option>
-   
+
   </select>
 </div>
 </div>
@@ -151,16 +153,16 @@
 <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
 <div class="form-group" ng-class="{'has-error':form.nominated.$error.required && submitted,'has-success':form.nominated.$valid && submitted}">
  <input type="text" required name="nominated" class="form-control" placeholder="Nominated by *" ng-model="user.nominated" />
- <div class="error-massege"> 
+ <div class="error-massege">
 <p class="text-danger" ng-show="form.nominated.$error.required && submitted">Please indicate who nominated you for membership. </p>
 </div>
 </div>
 </div>
 
-</div> 
+</div> -->
 
 
-<div class="row">
+<!-- <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
 <div class="form-group">
  <input type="text" name="other" class="form-control" placeholder="Other " ng-model="user.other" />
@@ -171,17 +173,17 @@
 <div class="form-group" >
               <input  type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone" />
               <!-- <p class="text-danger" ng-show="form.phone.$error.required && submitted">Please fill Phone/Mobile.</p> -->
-           </div>
+          <!-- </div>
 
 </div>
 
-</div> 
+</div> -->
 <!-- <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6">
- -->             
+ -->
 
 <!-- <div class="intrest-area">
-<h4>Select area of interests</h4> 
+<h4>Select area of interests</h4>
 <div class="checkbox " ng-repeat="interest in interests">
   <label><input
     type="checkbox"
@@ -195,15 +197,15 @@
 </div>
 </div> -->
 
-<div class="intrest-area">
-<h4>Select Area of intrest</h4> 
+<!-- <div class="intrest-area">
+<h4>Select Area of intrest</h4>
 
  <div class="checkbox">
   <label><input type="checkbox" value="keeping abreast of" ng-model="user.interests1">A) keeping abreast of:
  <label class="radio-inline"><input type="radio" ng-model="user.interests11"  checked="checked" name="optradio" value="Investments">Investments</label>
 <label class="radio-inline"><input type="radio" ng-model="user.interests11" name="optradio" value="Wealth planing">Wealth planing</label>
-<label class="radio-inline"><input type="radio" ng-model="user.interests11" name="optradio" value="Adminstrations">Adminstrations</label> 
-<label class="radio-inline"><input type="radio" ng-model="user.interests11" name="optradio" value="Philanthropy">Philanthropy</label> 
+<label class="radio-inline"><input type="radio" ng-model="user.interests11" name="optradio" value="Adminstrations">Adminstrations</label>
+<label class="radio-inline"><input type="radio" ng-model="user.interests11" name="optradio" value="Philanthropy">Philanthropy</label>
   </label>
 </div>
 <div class="checkbox">
@@ -215,18 +217,18 @@
 <div class="checkbox ">
   <label><input type="checkbox" value="Networking and discussion with peers" ng-model="user.interests4" >D) Researching investment products </label>
 </div>
-</div>
-<!-- <p><span>*</span> Admin will check the nominated by before approving membership;<br> 
+</div> -->
+<!-- <p><span>*</span> Admin will check the nominated by before approving membership;<br>
    will also put family into a Wealth band (30m+, 5-30m, <5m)</p>
  -->
 
    <button class="btn btn-primary" type="submit" >
-              
-                        Register <i class="fa fa-angle-right"></i>
+
+                        Add <i class="fa fa-angle-right"></i>
                       </button>
         </form>
 
-</div>  
+</div>
 
 
 </div>

@@ -31,9 +31,10 @@ angular.module('pinApp')
     'member':'',
     'interests':'',
     'address':{
-      'city':'',
+      'city':'Jaipur',
       'country':'India'
-    }
+    },
+    'adminrole': "Experts"
     };
     var precountry=$scope.user.address.country;
 
@@ -128,25 +129,28 @@ angular.module('pinApp')
      $scope.register = function(form) {
       $scope.submitted = true;
   		$scope.registerDone=0;
+      var d = new Date();
+      var n = d.getTime();
       if(form.$valid) {
         Auth.createUser({
-          fullname: $scope.user.fullname,
+          fullname: "--",
           name:  $scope.user.name,
-          username:  $scope.user.username,
+          username:  n,
           alias: $scope.user.alias,
           address: $scope.user.address,
           email: $scope.user.email,
           phone: $scope.user.phone,
-          membertype: $scope.user.member,
-          nominated: $scope.user.nominated,
-          interests: $scope.user.interests,
-          interests1: $scope.user.interests1,
-          interests11: $scope.user.interests11,
-          interests2: $scope.user.interests2,
-          interests3: $scope.user.interests3,
-          interests4: $scope.user.interests4,
-          other: $scope.user.other,
-          password:$scope.user.password,
+          membertype: "Family",
+          nominated: "Hansi",
+          adminrole: "Experts",
+          // interests: $scope.user.interests,
+          // interests1: $scope.user.interests1,
+          // interests11: $scope.user.interests11,
+          // interests2: $scope.user.interests2,
+          // interests3: $scope.user.interests3,
+          // interests4: $scope.user.interests4,
+          // other: $scope.user.other,
+          password:n.toString(),
           admin:(window.location.search=="?admin=1")
         })
         .then( function() {
@@ -154,7 +158,7 @@ angular.module('pinApp')
           $scope.emailSent = true;
           $scope.registerDone=1;
           // $location.path('/login').search({'register': 1});
-          $location.path('/admin').search({ 'users':'1'});
+          $location.path('/admin').search({ 'contentexpert':'1'});
         })
         .catch( function(err) {
           err = err.data;

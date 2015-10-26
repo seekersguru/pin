@@ -474,6 +474,80 @@ angular.module('pinApp')
       }
 
     };
+    $scope.contentexpertStatus = function(userId) {
+      var removeIndex = $scope.gridContentExpertData
+        .map(function(item) {
+          return item._id;
+        })
+        .indexOf(userId);
+
+      var setStatus = !$scope.gridContentExpertData[removeIndex].status,
+        messageline = "";
+      var popup = 1;
+      if (setStatus) {
+        if (!$scope.gridContentExpertData[removeIndex].madebyadmin) {
+          messageline = "You are approving " + $scope.gridContentExpertData[
+              removeIndex].name +
+            " a mail notification will be sent to  mail id " + $scope.gridContentExpertData[
+              removeIndex].email;
+        } else {
+          messageline = "You are approving " + $scope.gridContentExpertData[
+            removeIndex].name + " but you made this account so mail will not send to this user";
+        }
+      } else {
+        if (!$scope.gridContentExpertData[removeIndex].madebyadmin) {
+          messageline = "You are blocking " + $scope.gridContentExpertData[removeIndex]
+            .name +
+            " , email notification will be sent to him that , some problem in your account please contact admin";
+        } else {
+
+          messageline = "You are blocking " + $scope.gridContentExpertData[removeIndex]
+            .name +
+            " but you made this account so mail will not send to this user";
+
+        }
+        popup = 0;
+      }
+
+      var yes = confirm(messageline);
+      if (yes) {
+        if (popup) {
+          $http({
+            method: 'PUT',
+            url: '/api/users/status/' + userId,
+            data: {
+              'status': setStatus
+            }
+          }).
+          success(function(data, status, headers, config) {
+            $scope.gridContentExpertData[removeIndex].status = setStatus;
+          }).
+          error(function(data, status, headers, config) {
+            // ...
+            // $scope.article={};
+          });
+        } else {
+
+          $http({
+            method: 'PUT',
+            url: '/api/users/status/' + userId,
+            data: {
+              'status': setStatus
+            }
+          }).
+          success(function(data, status, headers, config) {
+            $scope.gridContentExpertData[removeIndex].status = setStatus;
+          }).
+          error(function(data, status, headers, config) {
+            // ...
+            // $scope.article={};
+          });
+        }
+      } else {
+
+      }
+
+    };
     $scope.articleStatus = function(articleId) {
       var removeIndex = $scope.gridArticleData
         .map(function(item) {
@@ -897,7 +971,7 @@ angular.module('pinApp')
           break;
 
         case 'contentexpert':
-          $scope.gridUserData = {};
+          $scope.gridContentExpertData = {};
 
           $http({
             method: 'GET',
@@ -915,8 +989,8 @@ angular.module('pinApp')
             url: 'api/contentexpert'
           }).
           success(function(data, status, headers, config) {
-            $scope.gridUserData = data.users;
-            $scope.originalPINUsersData = angular.copy(data.users);
+            $scope.gridContentExpertData = data.users;
+            $scope.originalContentExpertData = angular.copy(data.users);
           }).
           error(function(data, status, headers, config) {
 
@@ -1192,6 +1266,52 @@ angular.module('pinApp')
       plugins: [new ngGridFlexibleHeightPlugin()]
     };
 
+    $scope.contentexpertData = {
+      data: 'gridContentExpertData',
+      // showGroupPanel: true ,
+      // enableCellSelection: true,
+      enableRowSelection: false,
+      showFilter: true,
+      filterOptions: $scope.filterOptions,
+      columnDefs: [{
+          field: '_id',
+          displayName: 'SN',
+          cellTemplate: '<span> {{row.rowIndex+1}}</span>',
+          cellClass: 'grid-align',
+          width: '30px'
+        },
+         {
+          field: 'name',
+          displayName: 'Name',
+          cellClass: 'grid-align'
+        },
+         {
+          field: 'email',
+          displayName: 'Email',
+          width: '200px',
+          cellClass: 'grid-align'
+        },
+       {
+          field: 'createdAt',
+          displayName: 'Date',
+          cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
+          cellClass: 'grid-align'
+        },
+        {
+          field: 'status',
+          displayName: 'Status',
+          cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
+        },
+         {
+          field: 'action',
+          displayName: 'Action',
+          cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Approve</span> '
+        }
+      ],
+      showFooter: true,
+      plugins: [new ngGridFlexibleHeightPlugin()]
+    };
+
     $scope.userData = {
       data: 'gridUserData',
       // showGroupPanel: true ,
@@ -1205,11 +1325,13 @@ angular.module('pinApp')
           cellTemplate: '<span> {{row.rowIndex+1}}</span>',
           cellClass: 'grid-align',
           width: '30px'
-        }, {
+        },
+         {
           field: 'name',
           displayName: 'Name',
           cellClass: 'grid-align'
-        }, {
+        },
+         {
           field: 'email',
           displayName: 'Email',
           width: '200px',
