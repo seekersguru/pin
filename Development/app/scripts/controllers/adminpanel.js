@@ -474,6 +474,22 @@ angular.module('pinApp')
       }
 
     };
+
+    $scope.userDetail = function(userid,type) {
+          var modalInstance = $modal.open({
+            templateUrl: 'viewDetail.html',
+            controller: 'ViewDetailCtrl',
+            resolve: {
+              userId: function() {
+                 return userid;
+              },
+              type:function(){
+                return type;
+              }
+            }
+          });
+        };
+
     $scope.contentexpertStatus = function(userId) {
       var removeIndex = $scope.gridContentExpertData
         .map(function(item) {
@@ -1380,10 +1396,14 @@ angular.module('pinApp')
           field: 'status',
           displayName: 'Status',
           cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
-        }, {
+        },{
           field: 'action',
           displayName: 'Action',
           cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Approve</span> '
+        },{
+          field: 'detail',
+          displayName: 'Detail',
+          cellTemplate: '<span  class="label label-info" ng-click="userDetail(row.entity._id,1)">Detail</span>'
         }
       ],
       showFooter: true,
@@ -1434,6 +1454,10 @@ angular.module('pinApp')
           displayName: 'Action',
           cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Approve</span> ',
           width: '150px'
+        },{
+          field: 'detail',
+          displayName: 'Detail',
+          cellTemplate: '<span  class="label label-info" ng-click="userDetail(row.entity._id,0)">Detail</span>'
         }
       ],
       showFooter: true,
@@ -1707,6 +1731,27 @@ angular.module('pinApp')
     };
   });
 
+
+angular.module('pinApp')
+  .controller('ViewDetailCtrl', function($scope, $modalInstance, $rootScope,User,$http,
+    userId,type) {
+      if(type)
+      {
+        User.get({id: userId},function(user){
+          $scope.userDetailData=user;
+        });
+      }else{
+        $http.get("/api/mmiusers/"+userId).then(function(user){
+          $scope.userDetailData=user.data;
+          $scope.$apply();
+        });
+      }
+
+      $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
+      };
+
+    });
 
 angular.module('pinApp')
   .controller('AssignRoleCtrl', function($scope, $modalInstance, $rootScope,
