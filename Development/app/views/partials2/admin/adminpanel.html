@@ -554,7 +554,25 @@
     <h3 class="modal-title">User Details</h3>
 </div>
 <div class="modal-body">
-<pre>{{ userDetailData | json }}</pre>
+<!--<pre>{{ userDetailData | json }}</pre>-->
+<table class="table">
+<tr ng-if="!userType && userDetailData.linkedin"><th><img ng-src="userDetailData.linkedinphoto"></th><th><a ng-href="{{userDetailData.linkedinphoto}}" >Linkedin Public Profile URL</a></th></tr>
+
+<tr><th>Name</th><td>{{userDetailData.name || userDetailData.firstname }} {{ userDetailData.lastname}}</td></tr>
+<tr><th>username</th><td>{{userDetailData.username}}</td></tr>
+<tr><th>Email</th><td>{{userDetailData.email}}</td></tr>
+<tr><th>Phone</th><td>{{userDetailData.phone}}</td></tr>
+<tr ng-if="userType"><th>Nominated By</th><td>{{userDetailData.nominated}}</td></tr>
+<tr><th>Date Of Birth</th><td>{{userDetailData.dob | date:"dd-MM-yyyy"}}</td></tr>
+<tr ng-if="userType"><th>MemberType</th><td>{{userDetailData.membertype}}</td></tr>
+<tr><th>Created At</th><td>{{userDetailData.createdAt | date:"dd-MM-yyyy"}}</td></tr>
+<tr ng-if="!userType"><th >Company</th><td>{{userDetailData.company.title}}</td></tr>
+<tr ng-if="!userType"><th >Office</th><td>{{ userDetailData.company.address[userDetailData.companyaddress].street}},{{ userDetailData.company.address[userDetailData.companyaddress].city}},{{ userDetailData.company.address[userDetailData.companyaddress].state}} ,{{ userDetailData.company.address[userDetailData.companyaddress].country}}</td></tr>
+<tr ng-if="userType"><th >Role</th> <td>{{ userDetailData.role }}</td></tr>
+<tr ng-if="!userType"><th >Role</th><td>{{roletypes[userDetailData.adminrole]}}</td></tr>
+
+<tr><th>Address</th><td>{{userDetailData.address.street}}, {{userDetailData.address.city}}  ,{{userDetailData.address.country}}</td></tr>
+<table>
 </div>
 <div class="modal-footer">
     <button class="btn btn-warning" ng-click="cancel()">Close</button>

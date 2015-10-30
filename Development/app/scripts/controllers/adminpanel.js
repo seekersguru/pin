@@ -1735,6 +1735,8 @@ angular.module('pinApp')
 angular.module('pinApp')
   .controller('ViewDetailCtrl', function($scope, $modalInstance, $rootScope,User,$http,
     userId,type) {
+      $scope.userType=type;
+
       if(type)
       {
         User.get({id: userId},function(user){
@@ -1746,6 +1748,16 @@ angular.module('pinApp')
           $scope.$apply();
         });
       }
+
+      $scope.roletypes=[
+   'CEO/business head',
+   'Management',
+   'Sales/Marketing',
+   'Investment/Product',
+   'RM/client facing',
+   'Investment Mgmt',
+   'Product Mgmt'
+   ];
 
       $scope.cancel = function() {
         $modalInstance.dismiss('cancel');

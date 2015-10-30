@@ -109,7 +109,7 @@ exports.query = function(req, res){
 // show particluar one user
 exports.show=function(req,res){
   var userid=req.params.userid;
-  User.findById(userid).populate('author','name email')
+  User.findById(userid).populate('author','name email').populate('company','title address roletype')
   .exec(function(err,user){
     if(err){
       console.log(err);
