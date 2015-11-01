@@ -486,10 +486,20 @@ exports.basic = function(req, res) {
         q.where('public').equals(Query.approve);
     }
 
-    if(Query.type == 'image'){
+    if(Query.type === 'image'){
       q.where('media').ne(null);
+      q.where('thumblemedia').equals(null);
+      
+
     }
-    else if(Query.type == 'text'){
+    
+    if(Query.type === 'video'){
+      q.where('media').ne(null);
+      q.where('thumblemedia').ne(null);
+
+    }
+
+    else if(Query.type === 'text'){
       q.where('media').equals(null);
 
     }

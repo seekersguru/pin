@@ -106,23 +106,32 @@ angular.module('pinApp')
     };
 
     $scope.articleFilter = {
-      createdAt: {
-        endDate: moment(),
-        startDate: moment()
-      }
+
     };
     $scope.mmiFilter = {
-      createdAt: {
-        endDate: moment(),
-        startDate: moment()
-      }
+
     };
     $scope.pinFilter = {
-      createdAt: {
-        endDate: moment(),
-        startDate: moment()
-      }
+
     };
+
+    setTimeout(function() {
+      $scope.articleFilter['createdAt']= {
+        endDate: '',
+        startDate: ''
+      };
+      $scope.mmiFilter['createdAt']= {
+        endDate: '',
+        startDate: ''
+      };
+
+      $scope.pinFilter['createdAt'] ={
+        endDate: '',
+        startDate: ''
+      };
+      $scope.$apply();
+    }, 1000);
+
     $scope.setArticlePagingData = function() {
       $scope.gridArticleData = data.articles;
       if (!$scope.$$phase) {
@@ -475,20 +484,20 @@ angular.module('pinApp')
 
     };
 
-    $scope.userDetail = function(userid,type) {
-          var modalInstance = $modal.open({
-            templateUrl: 'viewDetail.html',
-            controller: 'ViewDetailCtrl',
-            resolve: {
-              userId: function() {
-                 return userid;
-              },
-              type:function(){
-                return type;
-              }
-            }
-          });
-        };
+    $scope.userDetail = function(userid, type) {
+      var modalInstance = $modal.open({
+        templateUrl: 'viewDetail.html',
+        controller: 'ViewDetailCtrl',
+        resolve: {
+          userId: function() {
+            return userid;
+          },
+          type: function() {
+            return type;
+          }
+        }
+      });
+    };
 
     $scope.contentexpertStatus = function(userId) {
       var removeIndex = $scope.gridContentExpertData
@@ -1259,8 +1268,7 @@ angular.module('pinApp')
           displayName: 'UserName',
           width: '200px',
           cellClass: 'grid-align'
-        },
-        {
+        }, {
           field: 'lastLogin',
           displayName: 'Last logged in ',
           cellTemplate: '<span> {{row.entity.lastLogin|date:"dd-MM-yyyy hh:mm:ss"}}</span>',
@@ -1290,40 +1298,34 @@ angular.module('pinApp')
       showFilter: true,
       filterOptions: $scope.filterOptions,
       columnDefs: [{
-          field: '_id',
-          displayName: 'SN',
-          cellTemplate: '<span> {{row.rowIndex+1}}</span>',
-          cellClass: 'grid-align',
-          width: '30px'
-        },
-         {
-          field: 'name',
-          displayName: 'Name',
-          cellClass: 'grid-align'
-        },
-         {
-          field: 'email',
-          displayName: 'Email',
-          width: '200px',
-          cellClass: 'grid-align'
-        },
-       {
-          field: 'createdAt',
-          displayName: 'Date',
-          cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
-          cellClass: 'grid-align'
-        },
-        {
-          field: 'status',
-          displayName: 'Status',
-          cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
-        },
-         {
-          field: 'action',
-          displayName: 'Action',
-          cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Approve</span> '
-        }
-      ],
+        field: '_id',
+        displayName: 'SN',
+        cellTemplate: '<span> {{row.rowIndex+1}}</span>',
+        cellClass: 'grid-align',
+        width: '30px'
+      }, {
+        field: 'name',
+        displayName: 'Name',
+        cellClass: 'grid-align'
+      }, {
+        field: 'email',
+        displayName: 'Email',
+        width: '200px',
+        cellClass: 'grid-align'
+      }, {
+        field: 'createdAt',
+        displayName: 'Date',
+        cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
+        cellClass: 'grid-align'
+      }, {
+        field: 'status',
+        displayName: 'Status',
+        cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
+      }, {
+        field: 'action',
+        displayName: 'Action',
+        cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Approve</span> '
+      }],
       showFooter: true,
       plugins: [new ngGridFlexibleHeightPlugin()]
     };
@@ -1341,13 +1343,11 @@ angular.module('pinApp')
           cellTemplate: '<span> {{row.rowIndex+1}}</span>',
           cellClass: 'grid-align',
           width: '30px'
-        },
-         {
+        }, {
           field: 'name',
           displayName: 'Name',
           cellClass: 'grid-align'
-        },
-         {
+        }, {
           field: 'email',
           displayName: 'Email',
           width: '200px',
@@ -1396,11 +1396,11 @@ angular.module('pinApp')
           field: 'status',
           displayName: 'Status',
           cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
-        },{
+        }, {
           field: 'action',
           displayName: 'Action',
           cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Approve</span> '
-        },{
+        }, {
           field: 'detail',
           displayName: 'Detail',
           cellTemplate: '<span  class="label label-info" ng-click="userDetail(row.entity._id,1)">Detail</span>'
@@ -1454,7 +1454,7 @@ angular.module('pinApp')
           displayName: 'Action',
           cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Approve</span> ',
           width: '150px'
-        },{
+        }, {
           field: 'detail',
           displayName: 'Detail',
           cellTemplate: '<span  class="label label-info" ng-click="userDetail(row.entity._id,0)">Detail</span>'
@@ -1733,37 +1733,38 @@ angular.module('pinApp')
 
 
 angular.module('pinApp')
-  .controller('ViewDetailCtrl', function($scope, $modalInstance, $rootScope,User,$http,
-    userId,type) {
-      $scope.userType=type;
+  .controller('ViewDetailCtrl', function($scope, $modalInstance, $rootScope, User, $http,
+    userId, type) {
+    $scope.userType = type;
 
-      if(type)
-      {
-        User.get({id: userId},function(user){
-          $scope.userDetailData=user;
-        });
-      }else{
-        $http.get("/api/mmiusers/"+userId).then(function(user){
-          $scope.userDetailData=user.data;
-          $scope.$apply();
-        });
-      }
+    if (type) {
+      User.get({
+        id: userId
+      }, function(user) {
+        $scope.userDetailData = user;
+      });
+    } else {
+      $http.get("/api/mmiusers/" + userId).then(function(user) {
+        $scope.userDetailData = user.data;
+        $scope.$apply();
+      });
+    }
 
-      $scope.roletypes=[
-   'CEO/business head',
-   'Management',
-   'Sales/Marketing',
-   'Investment/Product',
-   'RM/client facing',
-   'Investment Mgmt',
-   'Product Mgmt'
-   ];
+    $scope.roletypes = [
+      'CEO/business head',
+      'Management',
+      'Sales/Marketing',
+      'Investment/Product',
+      'RM/client facing',
+      'Investment Mgmt',
+      'Product Mgmt'
+    ];
 
-      $scope.cancel = function() {
-        $modalInstance.dismiss('cancel');
-      };
+    $scope.cancel = function() {
+      $modalInstance.dismiss('cancel');
+    };
 
-    });
+  });
 
 angular.module('pinApp')
   .controller('AssignRoleCtrl', function($scope, $modalInstance, $rootScope,
