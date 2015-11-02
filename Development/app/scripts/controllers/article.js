@@ -188,7 +188,7 @@ setTimeout(function(){
 
 
 $scope.comments=articles.scomments;
-if($location.path()=="/articles/view/"+articles.articles._id && articles.articles.media)
+if($location.path()=="/articles/view/"+articles.articles._id && articles.articles.thumblemedia )
 {
 
   $scope.config=
@@ -198,7 +198,7 @@ if($location.path()=="/articles/view/"+articles.articles._id && articles.article
     ],
     'theme': 'bower_components/videogular-themes-default/videogular.css',
     'plugins': {
-      'poster': 'http://www.videogular.com/assets/images/videogular.png'
+      'poster': 'http://moneymanagementindia.net//'+articles.articles.thumblemedia.path
     }
   };
 
