@@ -213,7 +213,7 @@ angular.module('pinApp')
       .rightnav = "right-nav.html";
 
     $scope.comments = articles.scomments;
-    if ($location.path() == "/articles/view/" + articles._id && articles.media) {
+    if ($location.path() == "/articles/view/" + articles._id && articles.thumblemedia) {
 
       $scope.config = {
         'sources': [{
@@ -222,7 +222,7 @@ angular.module('pinApp')
         }],
         'theme': 'bower_components/videogular-themes-default/videogular.css',
         'plugins': {
-          'poster': 'http://http://themoneyhans.com/'+articles.articles.thumblemedia.path
+          'poster': 'http://http://themoneyhans.com/'+articles.thumblemedia.path
         }
       };
 
