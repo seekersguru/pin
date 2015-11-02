@@ -222,7 +222,7 @@ angular.module('pinApp')
         }],
         'theme': 'bower_components/videogular-themes-default/videogular.css',
         'plugins': {
-          'poster': 'http://http://themoneyhans.com/'+articles.thumblemedia.path
+          'poster': $sce.trustAsResourceUrl('../' + articles.thumblemedia.path)
         }
       };
 
