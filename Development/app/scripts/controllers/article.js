@@ -378,6 +378,30 @@ angular.module('pinApp')
 
   $scope.searchterm=$routeParams.search;
   $scope.articleload=0;
+  
+$scope.mmicategorysetting={
+'Investments':
+{
+  'main-image':'investment-img.png',
+  'icon-img':'investment-icon.jpg',
+  'classname':'investment-iocn'
+},
+
+'WM/distribution':
+{
+  'main-image':'welath-img.png',
+  'icon-img':'wealth.png',
+  'classname':'wealth-iocn'
+},
+
+'Communication':
+{
+  'main-image':'communicationlarge-img.png',
+  'icon-img':'cummunaction.png',
+  'classname':'communication-iocn'
+}
+
+};
 
     $http({ method: 'GET', url: '/api/articles/search/'+$routeParams.search}).
         success(function (data, status, headers, config) {
