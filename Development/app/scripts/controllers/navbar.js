@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-	.controller('NavbarCtrl', ['$scope','$location','$rootScope','Auth','$http','$modal', function($scope,$location,$rootScope,Auth,$http,$modal){
+	.controller('NavbarCtrl', ['$scope','$location','$rootScope','Auth','$http','$modal','$sce','$filter', function($scope,$location,$rootScope,Auth,$http,$modal,$sce,$filter){
 
 	// active menu option
 	$scope.isActive = function(route) {
@@ -108,8 +108,11 @@ $scope.popuplogin=function(){
     }).
     success(function (data,status,headers,config){
 
+     
+      $.each(data.articles,function(i,article){
+           article.description = $sce.trustAsHtml($filter('htmlToPlaintext')($filter('limitTo')(article.description, $scope.descriptionLimit)));
+           });
       $scope.hansiArticles=data.articles;
-
     })
 
     .error(function (data,status,headers,config){
