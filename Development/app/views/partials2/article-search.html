@@ -69,9 +69,8 @@
         <img  ng-src="images/{{mmicategorysetting[value.mmicategory]['main-image']}}" class="img-responsive" title="{{value.title}}">
         </a>
       </div>
-<h2>{{value.title}}</h2>
-<p><small>by</small> {{value.author.name}}</p>
-
+<h2 class="articale-title-h">{{value.title | htmlToPlaintext | limitTo:60 }}</h2>
+<p><small>by</small> {{value.author.fullname || value.author.name}}</p>
 <p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml"></p>
  <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value._id}}">Read more </a></p>
  </div> 
