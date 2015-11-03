@@ -8,7 +8,7 @@ angular.module('pinApp')
   $scope.currentPage = 0;
   $scope.pageSize = 20;
   $scope.numberOfPage=25;
-  $scope.limit=10;
+  $scope.limit=12;
   $scope.category=['Grow','Protect','Manage','Give'];
   $scope.color={
     'Grow':
