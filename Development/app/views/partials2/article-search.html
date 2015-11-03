@@ -37,15 +37,38 @@
 <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in articles">
 <div class="content-block">
 <div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
-          <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">   
+          <a ng-href="/articles/view/{{value._id}}">
 
-          <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
+            <img ng-if="!value.media.path" ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">
+
+            <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
+            
+          
+          <div class="shadow-img">
+
+<div class="{{mmicategorysetting[value.mmicategory].classname}}">{{value.mmicategory}}</div>
+</div>
+</a>
+
           </div>
           <div ng-if='value.media.extension.indexOf("video") > -1' class="block-image">
 
-          <img  src="images/video-play.png" class="img-responsive" title="{{value.title}}">           
+          <a ng-href="/articles/view/{{value._id}}">
+           <img  ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}">
+          
+
+          <div class="play-iocn"></div>
+         
+<div class="shadow-img">
+<div class="communication-iocn">{{value.mmisubcategory}}</div>
+</div>
+ </a>
       </div>
-   
+  <div ng-if='!value.media' class="block-image">
+          <a ng-href="/articles/view/{{value._id}}">
+        <img  ng-src="images/{{mmicategorysetting[value.mmicategory]['main-image']}}" class="img-responsive" title="{{value.title}}">
+        </a>
+      </div>
 <h2>{{value.title}}</h2>
 <p><small>by</small> {{value.author.name}}</p>
 
