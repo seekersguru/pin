@@ -407,13 +407,15 @@ $scope.mmicategorysetting={
 
 $http({ method: 'GET', url: '/api/articles/search/'+$routeParams.search}).
         success(function (data, status, headers, config) {
-          $scope.articles=data.articles;
+          
           $scope.articleload=1;
+          $.each(data.articles,function(i,article){
+           article.description = $sce.trustAsHtml($filter('htmlToPlaintext')($filter('limitTo')(article.description, $scope.descriptionLimit)));
+           });
+          $scope.articles=data.articles;
         })
         .error(function (data, status, headers, config) {
-        $.each(data.articles,function(i,article){
-           article.description = $sce.trustAsHtml($filter('htmlToPlaintext')($filter('limitTo')(article.description, $scope.descriptionLimit)));
-        });
+        
       });
 
 });
