@@ -373,7 +373,7 @@ $scope.changePage = function(){
 });
 
 angular.module('pinApp')
-.controller('ArticleSearchCtrl', function ($scope,$http,$sce,$upload,$timeout,$routeParams) {
+.controller('ArticleSearchCtrl', function ($scope,$http,$sce,$upload,$timeout,$routeParams,$filter) {
 
 
   $scope.searchterm=$routeParams.search;
