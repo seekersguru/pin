@@ -405,18 +405,19 @@ $scope.mmicategorysetting={
 
 };
 
-    $http({ method: 'GET', url: '/api/articles/search/'+$routeParams.search}).
+$http({ method: 'GET', url: '/api/articles/search/'+$routeParams.search}).
         success(function (data, status, headers, config) {
           $scope.articles=data.articles;
           $scope.articleload=1;
         })
         .error(function (data, status, headers, config) {
-      $.each(data.articles,function(i,article){
-        article.description = $sce.trustAsHtml($filter('htmlToPlaintext')($filter('limitTo')(article.description, $scope.descriptionLimit)));
-
+        $.each(data.articles,function(i,article){
+           article.description = $sce.trustAsHtml($filter('htmlToPlaintext')($filter('limitTo')(article.description, $scope.descriptionLimit)));
         });
+      });
 
 });
+
 
 angular.module('pinApp')
 .controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,article,$sce,$http,$upload,$timeout) {
