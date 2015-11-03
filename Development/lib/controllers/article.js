@@ -221,6 +221,8 @@ exports.search= function(req, res){
   var q = Article.find({$text:{$search:search}});
 
   q.where('public').equals(true);
+  q.where('money').equals(true);
+  
   // q.where('searchable').equals(true);
 
    q.populate('author','name email fullname').exec(function(err,articles) {
