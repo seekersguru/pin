@@ -378,7 +378,9 @@ angular.module('pinApp')
 
   $scope.searchterm=$routeParams.search;
   $scope.articleload=0;
-  
+  $scope.descriptionLimit=80;
+
+
 $scope.mmicategorysetting={
 'Investments':
 {
@@ -409,6 +411,8 @@ $scope.mmicategorysetting={
           $scope.articleload=1;
         })
         .error(function (data, status, headers, config) {
+      $.each(data.articles,function(i,article){
+        article.description = $sce.trustAsHtml($filter('htmlToPlaintext')($filter('limitTo')(article.description, $scope.descriptionLimit)));
 
         });
 
