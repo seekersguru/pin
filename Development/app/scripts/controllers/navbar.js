@@ -2,7 +2,7 @@
 
 angular.module('pinApp')
 	.controller('NavbarCtrl', ['$scope','$location','$rootScope','Auth','$http','$modal','$sce','$filter', function($scope,$location,$rootScope,Auth,$http,$modal,$sce,$filter){
-$scope.descriptionLimit=120;
+$scope.descriptionLimit=200;
 	// active menu option
 	$scope.isActive = function(route) {
       return $location.path() === route;
