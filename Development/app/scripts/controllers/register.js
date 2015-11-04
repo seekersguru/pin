@@ -43,6 +43,17 @@ angular.module('pinApp')
     'address':{
       'city':'',
       'country':'India'
+    },
+    companyname:{
+      title:'',
+      address:[{
+        'street':'',
+        'city':'',
+        'state':'',
+        'country':'',
+        'pin':'',
+        'phone':''
+      }]
     }
     };
     var precountry=$scope.user.address.country; 
@@ -153,7 +164,9 @@ angular.module('pinApp')
           email: $scope.user.email,
           phone: $scope.user.phone,
           adminrole: $scope.user.adminrole,
-          notes: $scope.user.notes,
+          // notes: $scope.user.notes,
+          companyname: $scope.user.companyname,
+          // notes: $scope.user.notes,
           interests: $scope.user.interests,
           // other: $scope.user.other,
           password:$scope.user.password,

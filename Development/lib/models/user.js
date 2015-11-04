@@ -39,6 +39,7 @@ var UserSchema = new Schema({
   adminrole:String,
   familyrole:{type: Schema.Types.ObjectId, ref:'Family'},
   company:{type: Schema.Types.ObjectId, ref:'Company'},
+  companyname:String,
   companyaddress:String,
   hashedPassword: String,
   provider: String,
