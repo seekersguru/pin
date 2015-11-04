@@ -394,20 +394,25 @@ h6 {
 #content-section .mar-tp15 {
     margin-top: 30px;
 }
+
 #content-section .load-more .fa.fa-chevron-down {
-    color: #c5c5c5;
-    font-size: 12px;
+    font-size: 11px;
     margin-left: 8px;
+    
 }
 #content-section .load-more a {
-    color: #373737;
+    background-color: #eeeeee;
     display: block;
-    font-size: 13px;
-    font-style: italic;
+    background-color: #eeeeee;
+    color: #373737;
+    font-size: 13px;    
+    padding: 6px 15px 6px 15px;
+    font-style: italic; border-radius:4px; 
     text-decoration: none;
 }
 #content-section .load-more a:hover {
-    color: #0a386a;
+    color: #fff;
+    background-color: #002752; border-radius:4px; 
 }
 .gray-hr {
     background-color: #ededed;
