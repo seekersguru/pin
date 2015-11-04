@@ -163,18 +163,38 @@
 
 
 <div class="row register-form-row-pad">
+
+            <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
+<div class="form-group" >
+              <input  type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone"
+                        tooltip="Please fill your phone/mobilenumber." 
+          tooltip-placement="bottom"
+/>
+              <!-- <p class="text-danger" ng-show="form.phone.$error.required && submitted">Please fill Phone/Mobile.</p> -->
+           </div>
+</div>
+
 <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
 <div class="form-group">             
  <select class="form-control" name="member" ng-model="user.company"   tooltip="Please choose company." 
           tooltip-placement="bottom" ng-change="changeaddress()">
     
     <option value="">--Select Company-- </option>
+    <option value="add-new">Add New Company </option>
     <option ng-repeat="(key,value) in companies" value="{{value._id}}">{{value.title}}</option>
   </select>
 </div>
 </div>
 
-<div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
+
+
+</div> 
+
+
+
+<div class="row register-form-row-pad" >
+
+<div class="col-lg-6 col-md-6 col-sm-6 paddingl-7" ng-hide="user.company === 'add-new' ">
 <div class="form-group">
  <select class="form-control" name="member" ng-model="user.companyaddress"   tooltip="Please choose company address." 
           tooltip-placement="bottom">
@@ -185,12 +205,7 @@
 </div>
 </div>
 
-</div> 
-
-
-
-<div class="row register-form-row-pad">
-<div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
+<div class="col-lg-6 col-md-6 col-sm-6 paddingr-7" ng-hide="user.company === 'add-new' ">
 <div class="form-group">             
  <select class="form-control" name="adminrole" ng-model="user.adminrole" >
    <option value="">--Select Role type-- </option>
@@ -215,21 +230,12 @@
 
 
 
-            <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
-<div class="form-group" >
-              <input  type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone"
-                        tooltip="Please fill your phone/mobilenumber." 
-          tooltip-placement="bottom"
-/>
-              <!-- <p class="text-danger" ng-show="form.phone.$error.required && submitted">Please fill Phone/Mobile.</p> -->
-           </div>
-</div>
-
 
 </div> 
 
 
-<div class="row register-form-row-pad">
+<div class="row register-form-row-pad" ng-show="user.company === 'add-new' ">
+<hr>
 <!-- <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
 <div class="form-group">             
  <select class="form-control" name="interests" ng-model="user.interests" tooltip="Please choose interests." 
@@ -256,13 +262,57 @@
  -->
 
 
-<div class="col-lg-12 col-md-12 col-sm-12 paddingr-7">
+<!-- <div class="col-lg-12 col-md-12 col-sm-12 paddingr-7">
 <div class="form-group">
  <textarea name="notes" class="form-control" placeholder="Notes " ng-model="user.notes" >
         </textarea>
 </div>
-</div>
+</div> -->
+<div class="col-lg-12 col-md-12 col-sm-12 paddingr-7" ng-show="user.company === 'add-new' ">
+            <div class="form-group" ng-class="{'has-error':form.companyname.$dirty && form.companyname.$error.required,'has-success':form.companyname.$valid}">
+                <input type="text" class="form-control" name="companyname" placeholder="Company Name"  ng-model="user.companyname.title" ng-minlength=2>
+                <p class="text-danger" ng-show="form.companyname.$dirty && form.companyname.$error.required">Please fill company name.</p>
+                <p class="text-danger" ng-show="form.companyname.$dirty && form.companyname.$error.minlength">your company name shoud be minimum 2 character long .</p>
+                <p class="text-danger" ng-show="form.companyname.$error.mongoose">{{ errors.companyname }} </p>
 
+            </div>
+          </div>
+
+        <h2 class="center-block"> <b><i> Company address</i></b></h2>
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="Street"  ng-model="user.companyname.address[0].street" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="City"  ng-model="user.companyname.address[0].city" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="State"  ng-model="user.companyname.address[0].state" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="Country"  ng-model="user.companyname.address[0].country" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="PIN"  ng-model="user.companyname.address[0].pin" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="Company Phone No."  ng-model="user.companyname.address[0].phone" >
+            </div>
+          </div>
+      
 </div> 
 <!-- <p><span>*</span> Admin will check the nominated by before approving membership;<br> 
    will also put family into a Wealth band (30m+, 5-30m, <5m)</p>

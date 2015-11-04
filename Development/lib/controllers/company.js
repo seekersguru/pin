@@ -137,6 +137,29 @@ exports.basic = function(req, res) {
 	});
 
 
+};// show all articles with basic info
+exports.register = function(req, res) {
+
+	var q=Company.find({'firmtype': {$ne : null}});
+
+	/** sorting according to date */
+	q.sort('title');
+
+	/** finally execute */
+		q.exec(function(err, company) {
+		if (err) {
+			console.log(err);
+			return res.send(404);
+		} else {
+			  for(var i=0; i<company.length; i++){
+
+            company[i] = company[i].companyInfo;
+         }
+			return res.json({company:company});
+		}
+	});
+
+
 };
 
 exports.remove = function(req, res) {

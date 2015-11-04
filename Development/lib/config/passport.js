@@ -184,7 +184,9 @@ profile = profile._json;
         linkedin: profile,
         photo: photo_url,
         username:profile.firstName,
-        password:token
+        password:token,
+        emailVerification:{verified:true},
+        status:true
       });
       console.log('New');
       user.save(function(err) {
