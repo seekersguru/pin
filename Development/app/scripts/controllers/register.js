@@ -68,7 +68,7 @@ angular.module('pinApp')
 
     };
 
-      $http({ method: 'GET', url: 'api/companys/basic' }).
+      $http({ method: 'GET', url: 'api/companys/register' }).
           success(function (data, status, headers, config) {
              $scope.companies=data.company;
              

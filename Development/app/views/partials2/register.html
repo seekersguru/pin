@@ -270,7 +270,7 @@
 </div> -->
 <div class="col-lg-12 col-md-12 col-sm-12 paddingr-7" ng-show="user.company === 'add-new' ">
             <div class="form-group" ng-class="{'has-error':form.companyname.$dirty && form.companyname.$error.required,'has-success':form.companyname.$valid}">
-                <input type="text" class="form-control" name="companyname" placeholder="Company Name"  ng-model="user.companyname.title" required ng-minlength=2>
+                <input type="text" class="form-control" name="companyname" placeholder="Company Name"  ng-model="user.companyname.title" ng-minlength=2>
                 <p class="text-danger" ng-show="form.companyname.$dirty && form.companyname.$error.required">Please fill company name.</p>
                 <p class="text-danger" ng-show="form.companyname.$dirty && form.companyname.$error.minlength">your company name shoud be minimum 2 character long .</p>
                 <p class="text-danger" ng-show="form.companyname.$error.mongoose">{{ errors.companyname }} </p>

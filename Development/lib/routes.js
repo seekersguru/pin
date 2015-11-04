@@ -116,6 +116,7 @@ module.exports = function(app) {
 
   app.get('/api/companys', companys.query);
   app.get('/api/companys/basic', companys.basic);
+  app.get('/api/companys/register', companys.register);
   app.get('/api/companys/:companyid', companys.show);
   app.post('/api/companys',   companys.create);
   app.put('/api/companys/:companyid',companys.update);

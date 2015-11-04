@@ -256,36 +256,36 @@ exports.updatestatus = function(req, res) {
 exports.create = function(req, res, next) {
   var data = req.body;
   data.band = '';
-  if (data.company === "add-new" ) {
-      delete data['company'];
-  } 
-  else {
-    delete data['companyname'];
-  }
+  if (data.company === "add-new") {
+    var company = new Company(data.companyname);
+    company.save(function(err, company) {
+      if (err) {
+        console.log(err);
+        return res.json(400, err);
+      }
+      delete data.companyname;
+      data.company = company._id;
 
-  var newUser = new User(data);
-  newUser.provider = 'local';
-  
-  newUser.save(function(err, savedUser) {
-    if (err) return res.json(400, err);
-    if (err) return res.json(400, err);
-    if (data.company === "add-new") {
-      var company = new Company(data.companyname);
-      company.save(function(err, company) {
-        if (err) {
-          console.log(err);
-          return res.json(400, err);
-        }
+      var newUser = new User(data);
+      newUser.provider = 'local';
+
+      newUser.save(function(err, savedUser) {
+        if (err) return res.json(400, err);
+        if (err) return res.json(400, err);
         var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/');
         (new ActivationEmail(savedUser, {
           activationLink: activation_link
         })).send(function(e) {
           return res.send(savedUser.userInfo);
         });
-
       });
+    });
 
-    } else {
+  } else {
+    var newUser = new User(data);
+    newUser.provider = 'local';
+    newUser.save(function(err, savedUser) {
+      if (err) return res.json(400, err);
       console.log(req.headers.host);
       var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/');
       (new ActivationEmail(savedUser, {
@@ -293,9 +293,8 @@ exports.create = function(req, res, next) {
       })).send(function(e) {
         return res.send(savedUser.userInfo);
       });
-    }
-    // return res.send(savedUser.userInfo);
-  });
+    });
+  }
 
 };
 
