@@ -60,7 +60,7 @@ UserEmail.prototype.send = function(cb) {
  */
 var ActivationEmail = function(user, locals) {
   UserEmail.call(this, user, 'activation', locals);
-  this.email.subject = 'Please Activate your MMI Account';
+  this.email.subject = 'Welcome to Money Management India';
 };
 ActivationEmail.prototype = Object.create(UserEmail.prototype);
 
