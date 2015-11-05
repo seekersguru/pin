@@ -84,7 +84,9 @@
         <div id="navbar" class="navbar-collapse collapse">
         
           <ul class="navbar-right">
-          <div class="top-link" ng-hide="currentUser" ><a  href="/register" ng-class="{active: isActive('/register')}">Register</a>  |  <a href="/login" ng-class="{active: isActive('/login')}">Member Login </a> </div>
+          <div class="top-link" ng-hide="currentUser" >
+          <!-- <a  href="/register" ng-class="{active: isActive('/register')}">Register</a>  |   -->
+          <a href="/login" ng-class="{active: isActive('/login')}">Member Login </a> </div>
 
           <div class="top-link" ng-show="currentUser" >Welcome {{currentUser.firstname}} | <a href="/admin" ng-class="{active: isActive('/admin')}"> admin</a> | <a ng-click="logout()" href="#"><i class="fa fa-sign-out"></i> Sign-out</a></div>
 
