@@ -36,8 +36,8 @@ Email.prototype.send = function(cb) {
  */
 var UserEmail = function(user, templateName, locals) {
   Email.call(this);
-  this.email.to =  user.name + ' <' + user.email + '>';
-  this.email.subject = 'Greetings from PIN';
+  this.email.to =  user.firstname + ' <' + user.email + '>';
+  this.email.subject = 'Greetings from MMI';
   this.templateName  = templateName;
   this.locals = _.merge({user: user}, locals || {});
 };
@@ -60,7 +60,7 @@ UserEmail.prototype.send = function(cb) {
  */
 var ActivationEmail = function(user, locals) {
   UserEmail.call(this, user, 'activation', locals);
-  this.email.subject = 'Please Activate your PIN Account';
+  this.email.subject = 'Please Activate your MMI Account';
 };
 ActivationEmail.prototype = Object.create(UserEmail.prototype);
 
@@ -69,7 +69,7 @@ ActivationEmail.prototype = Object.create(UserEmail.prototype);
  */
 var AdminApproveEmail = function(user, locals) {
   UserEmail.call(this, user, 'adminapprove', locals);
-  this.email.subject = 'Admin Approved Your PIN Account';
+  this.email.subject = 'Admin Approved Your MMI Account';
 };
 
 AdminApproveEmail.prototype = Object.create(UserEmail.prototype);
@@ -79,7 +79,7 @@ AdminApproveEmail.prototype = Object.create(UserEmail.prototype);
  */
 var AdminBlockEmail = function(user, locals) {
   UserEmail.call(this, user, 'adminblock', locals);
-  this.email.subject = 'Admin Block Your PIN Account';
+  this.email.subject = 'Admin Block Your MMI Account';
 };
 
 AdminBlockEmail.prototype = Object.create(UserEmail.prototype);
@@ -89,12 +89,12 @@ AdminBlockEmail.prototype = Object.create(UserEmail.prototype);
  */
 var ForgotPasswordEmail = function(user, locals) {
   UserEmail.call(this, user, 'forgot', locals);
-  this.email.subject = 'Link to reset PIN password';
+  this.email.subject = 'Link to reset MMI password';
 };
 ForgotPasswordEmail.prototype = Object.create(UserEmail.prototype);
 
 /**
- * Class to send email to contact@PIN when we get an ContactUs Query
+ * Class to send email to contact@MMI when we get an ContactUs Query
  */
 var ContactUsEmail = function(locals) {
   UserEmail.call(this, {name: 'MMI ContactUs Query Replier', email: 'admin@moneymanagementindia.net'}, 'contactus', locals);
