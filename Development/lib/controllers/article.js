@@ -244,7 +244,10 @@ exports.query = function(req, res) {
 
 	var q=Article.find({});
 	/** apply limit  */
-  console.log(req.query);
+   	if(req.query.mmisubcategory){
+ 	   q.where('mmisubcategory').equals(req.query.mmisubcategory);
+	}
+	
 	if(req.query.limit){
 		q=q.limit(req.query.limit);
 	}

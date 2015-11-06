@@ -56,6 +56,8 @@ $scope.mmicategorysetting={
 }
 };
 
+
+
 $scope.mmicategory=[
    {
     'name':'Investments',
@@ -105,10 +107,21 @@ $scope.mmicategory=[
       ]
   }
   ];
-  console.log(articles);
+$scope.selectcategory=$location.search() && $location.search().mmisubcategory ? $location.search().mmisubcategory:'';
+setTimeout(function(){
+  $("#sel1").val($scope.selectcategory);
+},300);
+
+console.log(articles);
 $scope.articles=articles.articles;
 $scope.pageno=articles.current;
 $scope.total=articles.total;
+
+ $scope.$watch('selectcategory',function(newValue,oldvalue) {
+    if(!$location.search() || $location.search() && $location.search().mmisubcategory !== newValue){
+       $location.path('/home').search({mmisubcategory:newValue});
+    }
+  });
 
 $scope.loadMore = function(){
 $scope.startLoading=true;
@@ -218,7 +231,7 @@ $scope.getLatest=function(){
 
 };
 
-$scope.getLatest();
+// $scope.getLatest();
 
 
 $scope.deleteComment=function(commentId){

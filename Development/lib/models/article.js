@@ -20,6 +20,8 @@ var ArticleSchema = new Schema({
   tags: [String],
   keywords: [String],
   category: String,
+  mmicategory:String,
+  mmisubcategory:String,
   merchs: {},
   // comments: [{ user: { type: ObjectId, ref: 'User' },
   //              username:String,
