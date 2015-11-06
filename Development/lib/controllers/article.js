@@ -240,11 +240,13 @@ exports.search= function(req, res){
 exports.query = function(req, res) {
 
 	var limit=req.query.limit,
-      pageno=parseInt(req.query.pageno) || 1;
+      pageno=parseInt(req.query.pageno) || 1,
+      countObject={'public':true,'money':true};
 
 	var q=Article.find({});
 	/** apply limit  */
    	if(req.query.mmisubcategory){
+   		countObject.mmisubcategory=req.query.mmisubcategory;
  	   q.where('mmisubcategory').equals(req.query.mmisubcategory);
 	}
 	
@@ -260,6 +262,7 @@ exports.query = function(req, res) {
   q.where('public').equals(true);
   q.where('money').equals(true);
 
+
 	/** sorting according to date */
 
 	 q.sort('-createdAt');
@@ -270,7 +273,7 @@ exports.query = function(req, res) {
 			console.log(err);
 			return res.send(404);
 		} else {
-      Article.count({},function(err,count){
+		      Article.count(countObject,function(err,count){
 			     return res.json({articles:articles,total:count,current:pageno});
          });
 		}
