@@ -101,7 +101,7 @@ gulp.task('scripts', function() {
 gulp.task('images', function() {
   return gulp.src('app/images/**/*')
     // .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-    .pipe(gulp.dest('dist/assets/img'))
+    .pipe(gulp.dest('dist/assets/images'))
     .pipe(notify({ message: 'Images task complete' }));
 });
 

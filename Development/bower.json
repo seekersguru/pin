@@ -31,7 +31,6 @@
     "videogular-themes-default": "1.1.0",
     "videogular-overlay-play": "1.1.0",
     "ng-grid": "2.0.14",
-    "addresspicker": "*",
     "jquery-ui": "~1.11.4",
     "owl.carousel": "*",
     "js-xlsx": "~0.8.0"
