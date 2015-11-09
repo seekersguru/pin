@@ -256,7 +256,7 @@ exports.updatestatus = function(req, res) {
 exports.create = function(req, res, next) {
   var data = req.body;
   data.band = '';
-  if (data.company === "add-new") {
+  if (data.company === "add-new" && data.companyname.title ) {
     var company = new Company(data.companyname);
     company.save(function(err, company) {
       if (err) {
@@ -282,6 +282,10 @@ exports.create = function(req, res, next) {
     });
 
   } else {
+    if(data.company === "add-new"){
+      delete data['company'];
+      delete data['companyname']; 
+    }
     var newUser = new User(data);
     newUser.provider = 'local';
     newUser.save(function(err, savedUser) {
