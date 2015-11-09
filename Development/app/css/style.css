@@ -428,6 +428,7 @@ h2 {
 }
 .architect-bt a {
     color: #000;
+    cursor: pointer;
 }
 .architect-bt a:hover {
     color: #000;
