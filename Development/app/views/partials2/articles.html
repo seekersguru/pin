@@ -60,7 +60,7 @@
 
 <div class="video-img"  ng-if='value.media.extension.indexOf("video") > -1'>
  <div class="video-hight"><img ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}"> </div>
- <div class="play-icon"><img src="images/play-icon.png" alt=""></div>
+ <div class="play-icon"><a ng-href="/articles/view/{{value._id}}"><img src="images/play-icon.png" alt=""></a></div>
  <div class="{{ color[value.hanscategory].videoclass }}">{{value.title}}</div>
 </div>
 </div>

@@ -109,13 +109,13 @@ angular.module('pinApp')
       'Essentials Foundation': {
         'caption': 'caption-red',
         'colorclass': 'red-box',
-        'videoclass': 'video-caption-blue',
+        'videoclass': 'video-caption-red',
         'bodyClass': 'foundation'
       },
       'Growth Pillars': {
         'caption': 'caption-aqua',
         'colorclass': 'blue-box',
-        'videoclass': 'video-caption-red',
+        'videoclass': 'video-caption-blue',
         'bodyClass': 'growth'
       },
       'Freedom Slab': {
