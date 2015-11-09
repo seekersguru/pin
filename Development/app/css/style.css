@@ -241,6 +241,7 @@ h2 {
     text-align: center;
     top: 328px;
     width: 308px;
+    cursor: pointer;
     z-index: 14;
 }
 #nav ul li + li a {
@@ -598,6 +599,34 @@ article .arrow-articale {
 }
 .video-caption-blue {
     background-color: rgba(31, 174, 214, 0.8);
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    bottom: 0;
+    color: #fff;
+    font-family: "clear_sansbold";
+    font-size: 15px;
+    height: 45px;
+    line-height: 45px;
+    padding-left: 15px;
+    position: absolute;
+    width: 100%;
+}
+.video-caption-red {
+    background-color: rgba(128, 128, 128, 0.75);
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    bottom: 0;
+    color: #fff;
+    font-family: "clear_sansbold";
+    font-size: 15px;
+    height: 45px;
+    line-height: 45px;
+    padding-left: 15px;
+    position: absolute;
+    width: 100%;
+}
+.video-caption-yallow {
+    background-color: #f7b84d;;
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
     bottom: 0;
@@ -2291,6 +2320,7 @@ ul.ed-iocn {
     right: 0;
     top: 404px;
     width: auto;
+    cursor: pointer;
 }
 #nav ul li a:hover {
     background-image: none;
@@ -2471,6 +2501,7 @@ h1 {
 #nav ul li a {
     top: 397px;
     width: auto;
+    cursor: pointer;
 }
 #nav ul li a:hover {
     background-image: none;
@@ -2628,7 +2659,7 @@ ul.ed-iocn {
    text-overflow: ellipsis
 }
 .video-hight img {
-    height: auto;
+    height: 200px;
     width: 100%;
 }
 .inner-doodles-right-4 {
@@ -2688,6 +2719,7 @@ body {
     right: 0;
     top: 357px;
     width: auto;
+    cursor: pointer;
 }
 #nav ul li a:hover {
     background-image: none;
