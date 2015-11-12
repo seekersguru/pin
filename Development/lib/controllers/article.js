@@ -255,8 +255,12 @@ exports.query = function(req, res) {
 	}
 
 	/** skip  */
-	if(req.query.pageno){
+	if(req.query.pageno==1)
+	{
 		q=q.skip((req.query.pageno-1)*req.query.limit);
+	}else if(req.query.pageno > 1){
+		q=q.skip((req.query.pageno-1)*req.query.limit-2);
+
 	}
   /** public true  */
   q.where('public').equals(true);
