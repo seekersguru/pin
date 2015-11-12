@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-  .factory('User', function ($resource) {
+  .factory('User', ['$resource',function ($resource) {
     return $resource('/api/users/:id', {id: '@_id'}, 
     { //parameters default
       update: {
@@ -50,4 +50,4 @@ angular.module('pinApp')
       },
       
 	});
-  });
+  }]);

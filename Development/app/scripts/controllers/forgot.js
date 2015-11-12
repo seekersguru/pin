@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-  .controller('ForgotCtrl', function ($scope, Auth) {
+  .controller('ForgotCtrl', ['$scope','Auth',function ($scope, Auth) {
     $scope.email = {};
     $scope.errors = {};
     $scope.success = false;
@@ -22,4 +22,4 @@ angular.module('pinApp')
         }); 
       }     
     };
-  });
+  }]);

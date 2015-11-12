@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-  .factory('Expert', function ($resource) {
+  .factory('Expert', ['$resource',function ($resource) {
     return $resource('/api/expert/:expertId', {articleId: '@_id'},
                      {
                        'save': {method: 'POST', params:{articleId: ''}},
@@ -12,4 +12,4 @@ angular.module('pinApp')
                        }
                      }
                     );
-  });
+  }]);

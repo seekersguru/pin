@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-  .factory('Auth', function Auth($location, $rootScope, Session, User, $cookieStore, $window) {
+  .factory('Auth', ['$location','$rootScope','Session','User','$cookieStore','$window',function Auth($location, $rootScope, Session, User, $cookieStore, $window) {
     
     // Get currentUser from cookie
     $rootScope.currentUser = $cookieStore.get('user') || null;
@@ -151,4 +151,4 @@ angular.module('pinApp')
           }).$promise;
       },
     };
-  });
+  }]);

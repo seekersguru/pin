@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-.controller('CompanyCtrl', function ($scope,$rootScope,companys) {
+.controller('CompanyCtrl', ['$scope','$rootScope','companys',function ($scope,$rootScope,companys) {
 
 $scope.companys=companys.copmanys;
 $scope.search={
@@ -85,10 +85,10 @@ $scope.companyStructure={
         'Association':[1,2,3,4]
       }
 };
-});
+}]);
 
 angular.module('pinApp')
-.controller('EventViewCtrl', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope,events) {
+.controller('EventViewCtrl', ['$scope','$http','$timeout','$compile','$upload','$location','$rootScope','events',function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope,events) {
 
   $scope.usingFlash = FileAPI && FileAPI.upload != null;
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
@@ -127,10 +127,10 @@ angular.module('pinApp')
 
 
 
-});
+}]);
 
 angular.module('pinApp')
-.controller('CompanyEditViewCtrl', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope,company) {
+.controller('CompanyEditViewCtrl',['$scope','$http','$timeout','$compile','$upload','$location','$rootScope','company', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope,company) {
 
   $scope.article={};
   $scope.article=company;
@@ -323,10 +323,10 @@ $scope.setscope=function(){
 
   };
 
-});
+}]);
 
 angular.module('pinApp')
-.controller('CompanyAddCtrl', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope) {
+.controller('CompanyAddCtrl',['$scope','$http','$timeout','$compile','$upload','$location','$rootScope', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope) {
 
 $scope.article={};
 $scope.article.addresstimes=[1];
@@ -529,4 +529,4 @@ $scope.setscope=function(){
   };
 
 
-});
+}]);

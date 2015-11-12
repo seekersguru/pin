@@ -70,7 +70,7 @@ angular.module('pinApp').directive('validationMessage', function () {
         }
     });
 
-angular.module('pinApp').directive('validationTooltip', function ($timeout) {
+angular.module('pinApp').directive('validationTooltip', ['$timeout',function ($timeout) {
         return {
             restrict: 'E',
             transclude: true,
@@ -119,4 +119,4 @@ angular.module('pinApp').directive('validationTooltip', function ($timeout) {
             }
 
         }
-    });
+    }]);

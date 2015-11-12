@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-.controller('ConnectCtrl', function ($scope,$rootScope,$http) {
+.controller('ConnectCtrl', ['$scope','$rootScope','$http',function ($scope,$rootScope,$http) {
   $scope.connect={};
 
   $scope.searchFriends=function(form){
@@ -78,4 +78,4 @@ $scope.followUser=function(userId,key){
 
 };
 
-});
+}]);

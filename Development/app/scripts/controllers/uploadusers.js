@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-.controller('UploadUsersCtrl', function ($scope,$rootScope,$http,$route,$timeout,$upload ) {
+.controller('UploadUsersCtrl', ['$scope','$rootScope','$http','$route','$timeout','$upload',function ($scope,$rootScope,$http,$route,$timeout,$upload ) {
   $scope.article={};
   $scope.loaddata=0;
    $scope.companyStructure={
@@ -341,4 +341,4 @@ oReq.send();
 }
 
 
-});
+}]);

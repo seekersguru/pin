@@ -1,6 +1,6 @@
 'use strict';
 angular.module('pinApp')
-.controller('ArticleCtrl', function ($scope,Auth,$location,Article,$rootScope,$routeParams,$http,articles,$sce,$timeout,$filter) {
+.controller('ArticleCtrl', ['$scope','Auth','$location','Article','$rootScope','$routeParams','$http','articles','$sce','$timeout','$filter',function ($scope,Auth,$location,Article,$rootScope,$routeParams,$http,articles,$sce,$timeout,$filter) {
 
   $scope.article={};
   $scope.descriptionLimit=80;
@@ -384,10 +384,10 @@ $scope.changePage = function(){
 
   };
 
-});
+}]);
 
 angular.module('pinApp')
-.controller('ArticleSearchCtrl', function ($scope,$http,$sce,$upload,$timeout,$routeParams,$filter) {
+.controller('ArticleSearchCtrl', ['$scope','$http','$sce','$upload','$timeout','$routeParams','$filter',function ($scope,$http,$sce,$upload,$timeout,$routeParams,$filter) {
 
 
   $scope.searchterm=$routeParams.search;
@@ -432,11 +432,11 @@ $http({ method: 'GET', url: '/api/articles/search/'+$routeParams.search}).
         
       });
 
-});
+}]);
 
 
 angular.module('pinApp')
-.controller('ArticleViewEditCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,article,$sce,$http,$upload,$timeout) {
+.controller('ArticleViewEditCtrl', ['$scope','Auth','$location','$rootScope','$routeParams','article','$sce','$http','$upload','$timeout',function ($scope,Auth,$location,$rootScope,$routeParams,article,$sce,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
   $scope.article=article;
 
@@ -657,10 +657,10 @@ $scope.uploadPic = function(files) {
       });
     }
   };
-});
+}]);
 
 angular.module('pinApp')
-.controller('ArticleAddCtrl', function ($scope,Auth,$location,$rootScope,$routeParams,$http,$upload,$timeout) {
+.controller('ArticleAddCtrl',['$scope','Auth','$location','$rootScope','$routeParams','$http','$upload','$timeout', function ($scope,Auth,$location,$rootScope,$routeParams,$http,$upload,$timeout) {
   $scope.category=['Grow','Protect','Manage','Give'];
 
   $scope.article={};
@@ -869,4 +869,4 @@ $scope.article.tags=['tag1','tag2'];
     $scope.form.$setPristine();
   };
 
-});
+}]);

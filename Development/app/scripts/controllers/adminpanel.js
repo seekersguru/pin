@@ -42,7 +42,7 @@ function ngGridFlexibleHeightPlugin (opts) {
 }
 
 angular.module('pinApp')
-.controller('AdminPanelCtrl', function($scope, User,Article,$http, $location, $window ,$modal, Auth, $timeout) {
+.controller('AdminPanelCtrl', ['$scope','User','Article','$http','$location','$window ','$modal','Auth','$timeout',function($scope, User,Article,$http, $location, $window ,$modal, Auth, $timeout) {
 
 $scope.viewArticle=function(articleId){
   window.open('/articles/view/'+articleId,'_blank');
@@ -581,10 +581,10 @@ plugins: [new ngGridFlexibleHeightPlugin()]
                        
   
 
-});
+}]);
 
 angular.module('pinApp')
-.controller('FamilyCtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller,$route,$templateCache) {
+.controller('FamilyCtrl', ['$scope','$modalInstance','$rootScope','$http','$location','$window','$controller','$route','$templateCache',function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller,$route,$templateCache) {
 
  $.extend(this, $controller('AdminPanelCtrl', {$scope: $scope}));
 
@@ -633,11 +633,11 @@ $scope.family={};
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
-});
+}]);
 
 
 angular.module('pinApp')
-.controller('AssignRoleCtrl', function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller,searchable,adminrole,familyrole,userid,removeIndex,commentvisible,roletype,$templateCache,$route) {
+.controller('AssignRoleCtrl', ['$scope','$modalInstance','$rootScope','$http','$location','$window','$controller','searchable','adminrole','familyrole','userid','removeIndex','commentvisible','roletype','$templateCache','$route',function ($scope, $modalInstance,$rootScope,$http,$location,$window,$controller,searchable,adminrole,familyrole,userid,removeIndex,commentvisible,roletype,$templateCache,$route) {
   $scope.userupdate={
     familyrole:familyrole,
     searchable:searchable,
@@ -687,4 +687,4 @@ $scope.roletypes=[
     $modalInstance.dismiss('cancel');
   };
 
-});
+}]);

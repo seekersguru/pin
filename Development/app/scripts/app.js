@@ -62,7 +62,7 @@ angular.module('pinApp', [
     });
   }])
 
-.config(function($routeProvider, $locationProvider, $httpProvider) {
+.config(['$routeProvider','$locationProvider','$httpProvider',function($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .when('/home', {
         templateUrl: 'partials2/articles',
@@ -521,8 +521,8 @@ angular.module('pinApp', [
         }
       };
     }]);
-  })
-  .run(function($rootScope, $location, Auth) {
+  }])
+  .run(['$rootScope','$location','Auth',function($rootScope, $location, Auth) {
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
 
       $rootScope.appTitle = 'Connecting Indian money industry';
@@ -554,4 +554,4 @@ angular.module('pinApp', [
 
     $rootScope.$on('$routeChangeSuccess', function() {});
 
-  });
+  }]);

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-.controller('ExpertEditViewCtrl', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope,expert) {
+.controller('ExpertEditViewCtrl', ['$scope','$http','$timeout','$compile','$upload','$location','$rootScope','expert',function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope,expert) {
 
    $scope.usingFlash = FileAPI && FileAPI.upload != null;
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
@@ -167,10 +167,10 @@ $scope.uploadPic = function(files) {
     }
   };
 
-});
+}]);
 
 angular.module('pinApp')
-.controller('ExpertCtrl', function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope) {
+.controller('ExpertCtrl', ['$scope','$http','$timeout','$compile','$upload','$location','$rootScope',function ($scope, $http, $timeout, $compile, $upload,$location,$rootScope) {
 
   $scope.usingFlash = FileAPI && FileAPI.upload != null;
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
@@ -334,4 +334,4 @@ $scope.uploadPic = function(files) {
     $scope.form.$setPristine();
   };
 
-});
+}]);

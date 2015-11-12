@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-  .controller('LoginCtrl', function ($scope, Auth,$location, $rootScope) {
+  .controller('LoginCtrl', ['$scope','Auth','$location','$rootScope',function ($scope, Auth,$location, $rootScope) {
     $scope.user = {};
     $scope.errors = {};
     $rootScope.changeFooterNishant = 1;
@@ -55,4 +55,4 @@ angular.module('pinApp')
         });
       }
     };
-  });
+  }]);
