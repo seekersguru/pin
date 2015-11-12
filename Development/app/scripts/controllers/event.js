@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-  .controller('EventListCtrl', function($scope, $rootScope, events) {
+  .controller('EventListCtrl', ['$scope','$rootScope','events',function($scope, $rootScope, events) {
     // angular.forEach(events, function(eventname, key) {
     //   var currentdate = new Date();
     //   //
@@ -13,10 +13,10 @@ angular.module('pinApp')
     // });
     $scope.events = events;
 
-  });
+  }]);
 
 angular.module('pinApp')
-  .controller('EventViewCtrl', function($scope, $http, $timeout, $compile,
+  .controller('EventViewCtrl', ['$scope','$http','$timeout','$compile','$upload','$location','$rootScope','events',function($scope, $http, $timeout, $compile,
     $upload, $location, $rootScope, events) {
     $timeout(function() {
 
@@ -83,10 +83,10 @@ angular.module('pinApp')
 
 
 
-  });
+  }]);
 
 angular.module('pinApp')
-  .controller('EventEditCtrl', function($scope, $http, $timeout, $compile,
+  .controller('EventEditCtrl', ['$scope','$http','$timeout','$compile','$upload','$location','$rootScope','events',function($scope, $http, $timeout, $compile,
     $upload, $location, $rootScope, events) {
 
     $scope.category = ['Grow', 'Protect', 'Manage', 'Give'];
@@ -402,10 +402,10 @@ angular.module('pinApp')
       }
     };
 
-  });
+  }]);
 
 angular.module('pinApp')
-  .controller('EventCtrl', function($scope, $http, $timeout, $compile, $upload,
+  .controller('EventCtrl', ['$scope','$http','$timeout','$compile','$upload','$location','$rootScope',function($scope, $http, $timeout, $compile, $upload,
     $location, $rootScope) {
 
 
@@ -720,4 +720,4 @@ angular.module('pinApp')
       $scope.article.location.zoom = $('#zoom').val();
     };
 
-  });
+  }]);

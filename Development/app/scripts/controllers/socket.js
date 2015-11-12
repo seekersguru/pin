@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('pinApp')
-.controller('SocketCtrl', function ($log, $scope, nickName,$rootScope,$location,$http,$timeout) {
+.controller('SocketCtrl', ['$log','$scope','nickName','$rootScope','$location','$http','$timeout',function ($log, $scope, nickName,$rootScope,$location,$http,$timeout) {
   if($rootScope.currentUser)
   {
     nickName=$rootScope.currentUser.firstname;
@@ -318,4 +318,4 @@ if(form.$valid)
   //     $scope.messageLog = ew Date(), data.source, data.payload) + $scope.messageLog;
   //   });
   // });
-});
+}]);

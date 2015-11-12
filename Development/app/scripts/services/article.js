@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-  .factory('Article', function ($resource) {
+  .factory('Article', ['$resource',function ($resource) {
     return $resource('/api/articles/:articleId', {articleId: '@_id'},
                      {
                        'save': {method: 'POST', params:{articleId: ''}},
@@ -12,4 +12,4 @@ angular.module('pinApp')
                        }
                      }
                     );
-  });
+  }]);

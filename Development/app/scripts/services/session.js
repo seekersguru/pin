@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('pinApp')
-  .factory('Session', function ($resource) {
+  .factory('Session', ['$resource',function ($resource) {
     return $resource('/api/session/');
-  });
+  }]);

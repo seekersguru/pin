@@ -11,6 +11,12 @@ var transporter = nodemailer.createTransport("SMTP",{
         user: 'privateinvestmentnetwork',
         pass: 'networkinvestmentprivate'
     }
+
+    // service: 'falconide',
+    // auth: {
+    //     user: 'moneymanagementindianet',
+    //     pass: 'Adm@1234'
+    // }
 });
 
 var templatesDir = config.root + config.emailTemplatesPath;

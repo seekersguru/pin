@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pinApp')
-  .controller('RecoverCtrl', function ($scope, Auth, $routeParams) {
+  .controller('RecoverCtrl', ['$scope','Auth','$routeParams',function ($scope, Auth, $routeParams) {
     $scope.submitted = false;
     $scope.success = false;
     $scope.token = $routeParams.token;
@@ -23,5 +23,5 @@ angular.module('pinApp')
        });
       }
     };
-  });
+  }]);
     

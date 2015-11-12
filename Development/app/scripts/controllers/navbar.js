@@ -158,7 +158,7 @@ $scope.getDiscussionslist();
 
             }else{
           
-        if ($rootScope.redirectPath && $rootScope.redirectPath !== '/register' ) {
+        if ($rootScope.redirectPath && $rootScope.redirectPath !== '/register') {
           var path = $rootScope.redirectPath;
           $rootScope.redirectPath = undefined;
           $location.path(path);
@@ -183,7 +183,7 @@ $scope.getDiscussionslist();
 
 
 angular.module('pinApp')
-  .controller('NavLoginCtrl', function ($scope, Auth,$location, $rootScope,$modalInstance) {
+  .controller('NavLoginCtrl', ['$scope','Auth','$location','$rootScope','$modalInstance',function ($scope, Auth,$location, $rootScope,$modalInstance) {
     $scope.user = {};
     $scope.errors = {};
     $rootScope.changeFooterNishant = 1;
@@ -245,4 +245,4 @@ angular.module('pinApp')
   $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
   };
-  });
+  }]);
