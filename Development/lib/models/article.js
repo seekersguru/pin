@@ -44,7 +44,8 @@ var ArticleSchema = new Schema({
                name:String,
                 path:String,
                 originalName:String
-              }
+              },
+ youtubeurl:String             
 });
 
 // Basic info to identify the current authenticated user in the app

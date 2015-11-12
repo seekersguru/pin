@@ -7,6 +7,9 @@ angular.module('pinApp')
   $scope.currentPage = 0;
   $scope.pageSize = 20;
   $scope.numberOfPage=25;
+  if($scope.articles.youtubeurl){
+    $scope.articleyoutubeurl = $sce.trustAsResourceUrl($scope.articles.youtubeurl);
+  }
 
   $scope.category=['Grow','Protect','Manage','Give'];
   $scope.hanscategory=['Architect Blueprint','Essentials Foundation','Growth Pillars','Freedom Slab','Fun Money Roof'];
@@ -511,7 +514,8 @@ $scope.uploadPic = function(files) {
       mmisubcategorycategory:$scope.article.mmisubcategorycategory,
       mmitags:$scope.article.mmitags,
       tags:$scope.article.tags,
-      column:$scope.article.column
+      column:$scope.article.column,
+      youtubeurl:$scope.article.youtubeurl
        };
 
      var mainfiles=[];
