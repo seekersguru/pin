@@ -488,9 +488,8 @@ exports.basic = function(req, res) {
 
     if(Query.type === 'image'){
       q.where('media').ne(null);
-      q.where('thumblemedia').equals(null);
-      q.where('youtubeurl').exists(false);
-
+      // q.where('thumblemedia').equals(null);
+      q.where('youtubeurl').equals(null);
     }
     
     if(Query.type === 'video'){
