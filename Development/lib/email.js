@@ -6,12 +6,12 @@ var sesTransport = require('nodemailer').createTransport('SES'),
     _ = require('lodash');
 
 var transporter = nodemailer.createTransport("SMTP",{
-    service: 'gmail',
+    host: 'smtp.falconide.com',
+    port: 25,
     auth: {
-        user: 'privateinvestmentnetwork',
-        pass: 'networkinvestmentprivate'
+        user: 'moneymanagementindianet',
+        pass: 'Adm@1234'
     }
-
     // service: 'falconide',
     // auth: {
     //     user: 'moneymanagementindianet',
