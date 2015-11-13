@@ -66,7 +66,8 @@ ArticleSchema
       'hans':this.hans,
       'mmibanner':this.mmibanner,
       'media':this.media,
-      'thumblemedia':this.thumblemedia
+      'thumblemedia':this.thumblemedia,
+      'youtubeurl':this.youtubeurl
     };
   });
 

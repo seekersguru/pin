@@ -496,6 +496,7 @@ exports.basic = function(req, res) {
     if(Query.type === 'video'){
       q.where('media').ne(null);
       q.where('thumblemedia').ne(null);
+      q.where('youtubeurl').equals('null');
 
     }
 
