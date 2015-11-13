@@ -488,7 +488,7 @@ exports.basic = function(req, res) {
 
     if(Query.type === 'image'){
       q.where('media').ne(null);
-      q.where('thumblemedia').equals(null);
+      // q.where('thumblemedia').equals(null);
       q.where('youtubeurl').equals(null);
       
 
@@ -496,14 +496,14 @@ exports.basic = function(req, res) {
     
     if(Query.type === 'video'){
       q.where('media').ne(null);
-      q.where('thumblemedia').ne(null);
-      q.where('youtubeurl').equals(null);
-
-    }
-
-    if(Query.type === 'youtube'){
+      // q.where('thumblemedia').ne(null);
       q.where('youtubeurl').ne(null);
+
     }
+
+    // if(Query.type === 'youtube'){
+    //   q.where('youtubeurl').ne(null);
+    // }
 
 
     else if(Query.type === 'text'){
