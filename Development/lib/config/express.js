@@ -12,7 +12,7 @@ var express = require('express'),
  */
 module.exports = function(app) {
   app.configure('development', function(){
-    app.use(require('connect-livereload')());
+    // app.use(require('connect-livereload')());
 
     // Disable caching of scripts for easier testing
     app.use(function noCache(req, res, next) {
@@ -34,9 +34,9 @@ module.exports = function(app) {
   });
 
   app.configure('production', function(){
-    app.use(express.favicon(path.join(config.root, 'public', 'favicon.ico')));
-    app.use(express.static(path.join(config.root, 'public')));
-    app.set('views', config.root + '/views');
+    app.use(express.favicon(path.join(config.root, 'app/images', 'favicon.ico')));
+    app.use(express.static(path.join(config.root, 'app')));
+    app.set('views', config.root + '/app/views');
   });
 
   app.configure(function(){
