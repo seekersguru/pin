@@ -499,6 +499,11 @@ exports.basic = function(req, res) {
 
     }
 
+    if(Query.type === 'youtube'){
+      q.where('youtubeurl').ne(null);
+    }
+
+
     else if(Query.type === 'text'){
       q.where('media').equals(null);
 
