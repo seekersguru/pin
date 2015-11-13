@@ -1,115 +1,99 @@
 <div class="container">
-<div id="content-section">
+    <div id="content-section">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 filter-dropdown">
+                        <select class="form-control fliter" id="sel1" ng-model="selectcategory">
+                            <option value="">--Select Category--</option>
+                            <optgroup ng-repeat="(key,mmicat) in  mmicategory" label="{{mmicat.name}}">
+                                <option ng-repeat="(key,value) in  mmicat.sub" value="{{value.name}}">{{ value.name }} </option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="gray-hr"></div>
+                <div class="clearfix">
+                    <div class="breadcam">
+                        <div class="investment"><span><img ng-src="images/{{mmicategorysetting[bannerArticle.mmicategory]['icon-img']}}" alt=""></span><a href="#">{{bannerArticle.mmicategory | uppercase}}</a> <i class="fa fa-chevron-right"></i> {{bannerArticle.mmisubcategory}} </div>
+                    </div>
+                    <div class="date">
+                        {{bannerArticle.createdAt |date:"MMMM d , yyyy" }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div ng-if='bannerArticle.youtubeurl && bannerArticle.media.extension.indexOf("image") > -1' class="home-image">
+                            <img ng-src="../{{bannerArticle.media.path}}" class="img-responsive" title="{{bannerArticle.title}}">
+                            <div class="play-iocn"></div>
+                        </div>
 
-<div class="row">
-<div class="col-lg-8 col-md-8 col-sm-8">
-<div class="row">
-<div class="col-lg-4 col-md-4 col-sm-4 filter-dropdown">
- <select class="form-control fliter" id="sel1" ng-model="selectcategory">
-    <option value="">--Select Category--</option>
-    <optgroup ng-repeat="(key,mmicat) in  mmicategory" label="{{mmicat.name}}">
-
-         <option ng-repeat="(key,value) in  mmicat.sub" value="{{value.name}}">{{ value.name }} </option>
-
-    </optgroup>
-
-  </select>
-</div>
-</div>
-<div class="gray-hr"></div>
-
-
-<div class="clearfix">
-<div class="breadcam">
-
-<div class="investment"><span><img ng-src="images/{{mmicategorysetting[bannerArticle.mmicategory]['icon-img']}}" alt=""></span><a href="#">{{bannerArticle.mmicategory | uppercase}}</a> <i class="fa fa-chevron-right"></i> {{bannerArticle.mmisubcategory}}  </div>
-</div>
-<div class="date">
- {{bannerArticle.createdAt  |date:"MMMM d , yyyy" }}
-</div>
-</div>
-
-
-<div class="row">
- <div   class="col-lg-6 col-md-6 col-sm-6" >
-   <div ng-if='bannerArticle.media.extension.indexOf("image") > -1' class="home-image">
-          <img ng-if="!bannerArticle.media.path" ng-src="images/{{mmicategorysetting[bannerArticle.mmicategory].main-image}}" class="img-responsive" title="{{bannerArticle.title}}">
-          <img ng-if="bannerArticle.media.path" ng-src="../{{bannerArticle.media.path}}" title="{{bannerArticle.title}}" class="img-responsive">
-          </div>
-          <div ng-if='bannerArticle.media.extension.indexOf("video") > -1' class="home-image">
-          <img  ng-src="../{{bannerArticle.thumblemedia.path}}" class="img-responsive" title="{{bannerArticle.title}}">
-                <div class="play-iocn"></div>
-      <!-- <div class="shadow-img">
+                        <div ng-if='!bannerArticle.youtubeurl && bannerArticle.media.extension.indexOf("image") > -1' class="home-image">
+                            <img ng-if="!bannerArticle.media.path" ng-src="images/{{mmicategorysetting[bannerArticle.mmicategory].main-image}}" class="img-responsive" title="{{bannerArticle.title}}">
+                            <img ng-if="bannerArticle.media.path" ng-src="../{{bannerArticle.media.path}}" title="{{bannerArticle.title}}" class="img-responsive">
+                        </div>
+                        <div ng-if='!bannerArticle.youtubeurl && bannerArticle.media.extension.indexOf("video") > -1' class="home-image">
+                            <img ng-src="../{{bannerArticle.thumblemedia.path}}" class="img-responsive" title="{{bannerArticle.title}}">
+                            <div class="play-iocn"></div>
+                            <!-- <div class="shadow-img">
       <div class="communication-iocn">{{bannerArticle.mmicategory}}</div>
       </div>       -->
-      </div>
-      </div>
-
-      <div class="col-lg-6 col-md-6 col-sm-12 ">
-<h1>{{bannerArticle.title}}</h1>
-<p><small>by</small> {{bannerArticle.author.fullname || bannerArticle.author.name}}</p>
-<p ng-bind-html="bannerArticle.description | limitTo:descriptionLimit | rawHtml"></p>
-<p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{bannerArticle._id}}">Continue Reading </a></p>
-</div>
-
-</div>
-
-
-<div class="gray-hr"></div>
-
-
-<div class="row">
-
-<div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in exceptonearticle | filter:{ mmisubcategory: selectcategory }"  >
-<div class="content-block">
-<div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
-          <a ng-href="/articles/view/{{value._id}}">
-
-            <img ng-if="!value.media.path" ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">
-
-            <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
-            
-          
-          <div class="shadow-img">
-
-<div class="{{mmicategorysetting[value.mmicategory].classname}}">{{value.mmicategory}}</div>
-</div>
-</a>
-
-          </div>
-          <div ng-if='value.media.extension.indexOf("video") > -1' class="block-image">
-
-          <a ng-href="/articles/view/{{value._id}}">
-           <img  ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}">
-          
-
-          <div class="play-iocn"></div>
-         
-<div class="shadow-img">
-<div class="communication-iocn">{{value.mmisubcategory}}</div>
-</div>
- </a>
-      </div>
-  <div ng-if='!value.media' class="block-image">
-          <a ng-href="/articles/view/{{value._id}}">
-        <img  ng-src="images/{{mmicategorysetting[value.mmicategory]['main-image']}}" class="img-responsive" title="{{value.title}}">
-        </a>
-      </div>
-
-<h2 class="articale-title-h">{{value.title | htmlToPlaintext | limitTo:60 }}</h2>
-<p><small>by</small> {{value.author.fullname || value.author.name}}</p>
-
-<p ng-bind-html="value.description + '...'"> </p>
-<p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value._id}}">Read more </a></p>
-</div>
-</div>
-</div>
-
-<p class="pull-right load-more btn"><a ng-click="loadMore()" ng-hide="pageno*limit >= total" ng-disabled="startLoading"> Load more <i class="fa fa-chevron-down"></i> </a></p>
-
-</div>
-<div class="col-lg-4 col-md-4 col-sm-4">
-  <div ng-include="'partials2/right-nav.html'"> </div>
-</div>
-</div>
-</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 ">
+                        <h1>{{bannerArticle.title}}</h1>
+                        <p><small>by</small> {{bannerArticle.author.fullname || bannerArticle.author.name}}</p>
+                        <p ng-bind-html="bannerArticle.description | limitTo:descriptionLimit | rawHtml"></p>
+                        <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{bannerArticle._id}}">Continue Reading </a></p>
+                    </div>
+                </div>
+                <div class="gray-hr"></div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in exceptonearticle | filter:{ mmisubcategory: selectcategory }">
+                        <div class="content-block">
+                            <div ng-if='!value.youtubeurl && value.media.extension.indexOf("image") > -1' class="block-image">
+                                <a ng-href="/articles/view/{{value._id}}">
+                                    <img ng-if="!value.media.path" ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">
+                                    <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
+                                    <div class="shadow-img">
+                                        <div class="{{mmicategorysetting[value.mmicategory].classname}}">{{value.mmicategory}}</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div ng-if='!value.youtubeurl && value.media.extension.indexOf("video") > -1' class="block-image">
+                                <a ng-href="/articles/view/{{value._id}}">
+                                    <img ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}">
+                                    <div class="play-iocn"></div>
+                                    <div class="shadow-img">
+                                        <div class="communication-iocn">{{value.mmisubcategory}}</div>
+                                    </div>
+                                </a>
+                            </div>
+                           <div ng-if='value.youtubeurl && value.media.extension.indexOf("image") > -1' class="block-image">
+                                <a ng-href="/articles/view/{{value._id}}">
+                                    <img ng-src="../{{value.media.path}}" class="img-responsive" title="{{value.title}}">
+                                    <div class="play-iocn"></div>
+                                    <div class="shadow-img">
+                                        <div class="communication-iocn">{{value.mmisubcategory}}</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div ng-if='!value.media' class="block-image">
+                                <a ng-href="/articles/view/{{value._id}}">
+                                    <img ng-src="images/{{mmicategorysetting[value.mmicategory]['main-image']}}" class="img-responsive" title="{{value.title}}">
+                                </a>
+                            </div>
+                            <h2 class="articale-title-h">{{value.title | htmlToPlaintext | limitTo:60 }}</h2>
+                            <p><small>by</small> {{value.author.fullname || value.author.name}}</p>
+                            <p ng-bind-html="value.description + '...'"> </p>
+                            <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value._id}}">Read more </a></p>
+                        </div>
+                    </div>
+                </div>
+                <p class="pull-right load-more btn"><a ng-click="loadMore()" ng-hide="pageno*limit >= total" ng-disabled="startLoading"> Load more <i class="fa fa-chevron-down"></i> </a></p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div ng-include="'partials2/right-nav.html'"> </div>
+            </div>
+        </div>
+    </div>
