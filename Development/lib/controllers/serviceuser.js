@@ -262,7 +262,7 @@ exports.updatestatus = function(req, res) {
     if(user_data.status)
     {
       console.log("if");
-      var login_link = [req.headers.host, 'login'].join('/');
+      var login_link = ['http://moneymanagementindia.net', 'login'].join('/');
       (new AdminApproveEmail(user, {loginLink: login_link,name:user.firstname})).send(function(e) {
         return res.send(200);
       });
@@ -271,7 +271,7 @@ exports.updatestatus = function(req, res) {
 
       console.log("else");
 
-      var site_link = [req.headers.host].join('/'),
+      var site_link = ['http://moneymanagementindia.net'].join('/'),
           mail = "admin@moneymanagementindia.net";
       (new AdminBlockEmail(user, {siteLink: site_link,mail:mail,name:user.firstname})).send(function(e) {
         return res.send(200);

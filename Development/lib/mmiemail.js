@@ -19,7 +19,7 @@ var transporter = nodemailer.createTransport("SMTP",{
     // }
 });
 
-var templatesDir = config.root + config.emailTemplatesPath;
+var templatesDir = config.root + config.emailMMITemplatesPath;
 /**
  * Email class
  * Basic email sending functionality
