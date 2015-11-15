@@ -204,7 +204,8 @@ setTimeout(function(){
 },1000);
 
 
-$scope.comments=articles.scomments;
+$scope.comments=$scope.articles.scomments || [];
+
 if($location.path()=="/articles/view/"+articles.articles._id && articles.articles.thumblemedia )
 {
 
@@ -245,7 +246,7 @@ $scope.deleteComment=function(commentId){
   {
     $http({
       method:"DELETE",
-      url:'/api/comments/'+articles._id+"/"+commentId
+      url:'/api/comments/'+$scope.articles._id+"/"+commentId
     }).
     success(function (data,status,headers,config){
       $scope.deleteStatus=1;
@@ -274,7 +275,7 @@ $scope.addComment=function(form){
  {
     var comment={ user: $rootScope.currentUser._id ,username:$rootScope.currentUser.name, post: $scope.article.comment};
 
-    $http({ method: 'POST', url: '/api/comments/'+articles._id,data:comment }).
+    $http({ method: 'POST', url: '/api/comments/'+$scope.articles._id,data:comment }).
     success(function (data, status, headers, config) {
           // ...
           console.log(data);
@@ -300,7 +301,7 @@ if(form.$valid)
  {
   var comment={ post: editcomment,username:$rootScope.currentUser.name,user:$rootScope.currentUser._id};
 
-    $http({ method: 'PUT', url: '/api/comments/'+articles._id+'/'+commentId,data:comment}).
+    $http({ method: 'PUT', url: '/api/comments/'+$scope.articles._id+'/'+commentId,data:comment}).
     success(function (data, status, headers, config) {
           // $scope.form.$setPristine();
 
