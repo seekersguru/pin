@@ -381,7 +381,7 @@ exports.updatestatus = function(req, res) {
         console.log("without mail update");
         return res.send(200);
       }else{
-        var login_link = [req.headers.host, 'login'].join('/');
+        var login_link = ['http://indianpin.net', 'login'].join('/');
         (new AdminApproveEmail(user, {loginLink: login_link})).send(function(e) {
           return res.send(200);
         });
@@ -396,7 +396,7 @@ exports.updatestatus = function(req, res) {
         return res.send(200);
       }else{
 
-      var site_link = [req.headers.host].join('/'),
+      var site_link = ['http://indianpin.net'].join('/'),
           mail = "privateinvestmentnetwork@gmail.com";
       (new AdminBlockEmail(user, {siteLink: site_link,mail:mail})).send(function(e) {
         return res.send(200);
