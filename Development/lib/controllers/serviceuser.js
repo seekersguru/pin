@@ -263,7 +263,7 @@ exports.updatestatus = function(req, res) {
     {
       console.log("if");
       var login_link = [req.headers.host, 'login'].join('/');
-      (new AdminApproveEmail(user, {loginLink: login_link})).send(function(e) {
+      (new AdminApproveEmail(user, {loginLink: login_link,name:user.firstname})).send(function(e) {
         return res.send(200);
       });
 
@@ -272,8 +272,8 @@ exports.updatestatus = function(req, res) {
       console.log("else");
 
       var site_link = [req.headers.host].join('/'),
-          mail = "privateinvestmentnetwork@gmail.com";
-      (new AdminBlockEmail(user, {siteLink: site_link,mail:mail})).send(function(e) {
+          mail = "admin@moneymanagementindia.net";
+      (new AdminBlockEmail(user, {siteLink: site_link,mail:mail,name:user.firstname})).send(function(e) {
         return res.send(200);
       });
 
