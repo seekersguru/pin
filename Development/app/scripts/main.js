@@ -1520,7 +1520,7 @@ $scope.addComment=function(form){
 
  if(form.$valid)
  {
-    var comment={ user: $rootScope.currentUser._id ,username:$rootScope.currentUser.name, post: $scope.article.comment};
+    var comment={ user: $rootScope.currentUser._id ,username:$rootScope.currentUser.username, post: $scope.article.comment};
 
     $http({ method: 'POST', url: '/api/comments/'+$scope.articles._id,data:comment }).
     success(function (data, status, headers, config) {
@@ -1529,7 +1529,7 @@ $scope.addComment=function(form){
           comment.posted=new Date();
           comment._id=data.scomments[data.scomments.length-1]._id;
 
-          $scope.comments.push({ user:{ _id: $rootScope.currentUser._id,fullname:$rootScope.currentUser.fullname,following:$rootScope.currentUser.following },username:$rootScope.currentUser.name, post: $scope.article.comment,posted : new Date()});
+          $scope.comments.push({ user:{ _id: $rootScope.currentUser._id,fullname:$rootScope.currentUser.fullname,following:$rootScope.currentUser.following },username:$rootScope.currentUser.username, post: $scope.article.comment,posted : new Date()});
 
           $scope.article={};
 
@@ -1546,7 +1546,7 @@ $scope.addComment=function(form){
 $scope.editComment=function(form,commentId,editcomment,key){
 if(form.$valid)
  {
-  var comment={ post: editcomment,username:$rootScope.currentUser.name,user:$rootScope.currentUser._id};
+  var comment={ post: editcomment,username:$rootScope.currentUser.username,user:$rootScope.currentUser._id};
 
     $http({ method: 'PUT', url: '/api/comments/'+$scope.articles._id+'/'+commentId,data:comment}).
     success(function (data, status, headers, config) {
