@@ -26,7 +26,7 @@ var templatesDir = config.root + config.emailTemplatesPath;
  */
 var Email = function(email) {
   this.email = email||{};
-  this.email.from = this.email.from ||'MMI TEAM <admin@moneymanagementindia.net>';
+  this.email.from = this.email.from ||'Money Management India <admin@moneymanagementindia.net>';
   this.email.text = this.email.text || this.email.message;
 };
 Email.prototype.send = function(cb) {
@@ -43,7 +43,7 @@ Email.prototype.send = function(cb) {
 var UserEmail = function(user, templateName, locals) {
   Email.call(this);
   this.email.to =  user.firstname + ' <' + user.email + '>';
-  this.email.subject = 'Greetings from MMI';
+  this.email.subject = 'Greetings from Money Management India';
   this.templateName  = templateName;
   this.locals = _.merge({user: user}, locals || {});
 };
@@ -75,7 +75,7 @@ ActivationEmail.prototype = Object.create(UserEmail.prototype);
  */
 var AdminApproveEmail = function(user, locals) {
   UserEmail.call(this, user, 'adminapprove', locals);
-  this.email.subject = 'Admin Approved Your MMI Account';
+  this.email.subject = 'Admin Approved Your Money Management India Account';
 };
 
 AdminApproveEmail.prototype = Object.create(UserEmail.prototype);
@@ -85,7 +85,7 @@ AdminApproveEmail.prototype = Object.create(UserEmail.prototype);
  */
 var AdminBlockEmail = function(user, locals) {
   UserEmail.call(this, user, 'adminblock', locals);
-  this.email.subject = 'Admin Block Your MMI Account';
+  this.email.subject = 'Admin Block Your Money Management India Account';
 };
 
 AdminBlockEmail.prototype = Object.create(UserEmail.prototype);
@@ -95,15 +95,15 @@ AdminBlockEmail.prototype = Object.create(UserEmail.prototype);
  */
 var ForgotPasswordEmail = function(user, locals) {
   UserEmail.call(this, user, 'forgot', locals);
-  this.email.subject = 'Link to reset MMI password';
+  this.email.subject = 'Link to reset Money Management India password';
 };
 ForgotPasswordEmail.prototype = Object.create(UserEmail.prototype);
 
 /**
- * Class to send email to contact@MMI when we get an ContactUs Query
+ * Class to send email to contact@Money Management India when we get an ContactUs Query
  */
 var ContactUsEmail = function(locals) {
-  UserEmail.call(this, {name: 'MMI ContactUs Query Replier', email: 'admin@moneymanagementindia.net'}, 'contactus', locals);
+  UserEmail.call(this, {name: 'Money Management India ContactUs Query Replier', email: 'admin@moneymanagementindia.net'}, 'contactus', locals);
   this.email.subject = 'New ContactUs Query from : '+ locals.contactus.email;
 };
 ContactUsEmail.prototype = Object.create(UserEmail.prototype);
