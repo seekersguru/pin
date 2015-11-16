@@ -61,7 +61,7 @@ UserEmail.prototype.send = function(cb) {
  */
 var ActivationEmail = function(user, locals) {
   UserEmail.call(this, user, 'activation', locals);
-  this.email.subject = 'Please Activate your PIN Account';
+  this.email.subject = 'Welcome to Private Investor Network';
 };
 ActivationEmail.prototype = Object.create(UserEmail.prototype);
 
@@ -70,7 +70,7 @@ ActivationEmail.prototype = Object.create(UserEmail.prototype);
  */
 var AdminApproveEmail = function(user, locals) {
   UserEmail.call(this, user, 'adminapprove', locals);
-  this.email.subject = 'Admin Approved Your PIN Account';
+  this.email.subject = 'Welcome to Private Investor Network – Your account is approved';
 };
 
 AdminApproveEmail.prototype = Object.create(UserEmail.prototype);
@@ -93,7 +93,7 @@ AdminBlockEmail.prototype = Object.create(UserEmail.prototype);
  */
 var ForgotPasswordEmail = function(user, locals) {
   UserEmail.call(this, user, 'forgot', locals);
-  this.email.subject = 'Link to reset PIN password';
+  this.email.subject = 'Link to reset Private Investor Network password';
 };
 ForgotPasswordEmail.prototype = Object.create(UserEmail.prototype);
 

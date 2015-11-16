@@ -398,9 +398,9 @@ exports.updatestatus = function(req, res) {
 
       var site_link = ['http://indianpin.net'].join('/'),
           mail = "privateinvestmentnetwork@gmail.com";
-      (new AdminBlockEmail(user, {siteLink: site_link,mail:mail})).send(function(e) {
+      // (new AdminBlockEmail(user, {siteLink: site_link,mail:mail})).send(function(e) {
         return res.send(200);
-      });
+      // });
     }
 
     }
