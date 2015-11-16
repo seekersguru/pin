@@ -4318,19 +4318,16 @@ angular.module('pinApp')
      
      $scope.changeaddress=function(){
 
-     var removeIndex = $scope.companies
-      .map(function(item)
-      { 
-        return item._id;
-      })
-      .indexOf($scope.user.company);
+      if ($scope.user.company && $scope.user.company !== 'add-new') {
+        var removeIndex = $scope.companies
+          .map(function(item) {
+            return item._id;
+          })
+          .indexOf($scope.user.company);
 
-      $scope.companyaddress=$scope.companies[removeIndex].address;
-      $scope.selectroletypes=$scope.companies[removeIndex].roletype;
-
-      // for (var i = 0; i < $scope.companies[removeIndex].address.length-1; i++) {
-      //       $scope.companyaddress.push($scope.companies[removeIndex].address[i]);
-      // }
+        $scope.companyaddress = $scope.companies[removeIndex].address;
+        $scope.selectroletypes = $scope.companies[removeIndex].roletype;
+      }
 
      };   
 
