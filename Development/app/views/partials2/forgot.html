@@ -1,18 +1,32 @@
 <!-- ng-click="facebookLogin()" -->
-<div class="container-fluid po-reletive">
-  <div class="container-head">
-    <div class="row">
+<div class="container">
+  <div id="content-section">
+  <div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12">
 
-     <div class="inner-section">
-          <div class="alert alert-success" role="alert" ng-show="success">
+<div class="breadcam-link">
+<ul>
+    <li><a href="#"><i class="fa fa-home"></i></a></li>
+/
+    <li class="active">Forgot Password</li>
+</ul>
+</div> 
+ <div class="gray-hr"></div>
+
+  <div class="notification-section"> 
+    <div class="modal-header">
+      <h3 class="modal-title">Forgot Password</h3>
+    </div>
+     <div class="modal-body">
+      <div class="inner-section">
+      <div class="register-form-hr"></div>
+      <div class="alert alert-success" role="alert" ng-show="success">
                     <strong>On the way!</strong> We have just sent you an email with a password reset link. Please check your inbox and visit the link to reset your password.
                   </div>
-
       <form ng-hide="success" class="form" name="forgotForm" ng-submit="forgotPassword(forgotForm)" novalidate>
         <div class="panel panel-info ">
           <div class="panel-body">
             <div class="col-lg-12">     
-              <h1 style="margin-top:0px;">Forgot Password</h1>   
               <div class="register-form-hr"></div>                 
               <div class="row login-pad">                                   
                 <div class="col-lg-12 ">
@@ -30,9 +44,10 @@
                    </p>              
                    <p class="text-danger">{{ errors.other }}</p>
                  </div>
-                 <button ng-disabled="submitDisabled" type="submit" class="btn register-bt"> Submit </button>
+                 <button ng-disabled="submitDisabled" type="submit" class="btn btn-register btn-openid"><i class="fa fa-caret-right"></i>Submit </button>
                </form>
-             </div>  
-           </div>
-         </div>
-       </div>
+              </div>
+              </div>
+            </div>
+          </div>
+    </div>
