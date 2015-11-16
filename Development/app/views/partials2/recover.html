@@ -1,31 +1,25 @@
-<!-- ng-click="facebookLogin()" -->
-<div class="container-fluid po-reletive">
-  <div class="container-head">
-    <div class="row">
-      <div class="pull-left">
-        <div class="mar-back-img">
-          <!-- Become a member section -->
-          <div class="tree-container-inner">
-            <div id="nav">
-              <ul>
-               <li><a href="/who-is-this-site-for" ng-class="{active: isActive('/who-is-this-site-for')}">Who</a></li>
-               <li><a href="/what-we-do" ng-class="{active: isActive('/what-we-do')}">what</a></li> 
-               <li><a href="/who-we-are" ng-class="{active: isActive('/who-we-are')}">about</a></li> 
-               <li><a href="/register" ng-class="{active: isActive('/register')}">join</a></li>  
-             </ul> 
-           </div>
-         </div>
-       </div>
-     </div>
+<div class="container">
+  <div id="content-section">
+  <div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12">
 
-     <div class="inner-section">
-      <div class="panel panel-info ">
-        <div class="panel-body">
-          <div class="col-lg-12">     
-          <h1 style="margin-top:0px;">Reset Password</h1>   
-            <div class="register-form-hr"></div>                 
-            <div class="row login-pad">                                   
-              <div class="col-lg-12 ">
+<div class="breadcam-link">
+<ul>
+    <li><a href="#"><i class="fa fa-home"></i></a></li>
+/
+    <li class="active">Reset Password</li>
+</ul>
+</div> 
+
+  <div class="gray-hr"></div>
+     <div class="notification-section"> 
+    <div class="modal-header">
+      <h3 class="modal-title">Reset Password</h3>
+    </div>
+    <div class="modal-body">
+      <div class="inner-section">
+        <div class="register-form-hr"></div>
+
                 <p ng-hide="success">Almost there! Please enter your new password</p>
                 <div class="alert alert-success" role="alert" ng-show="success">
                   <strong>Done!</strong> Your password has been resetted. Please <a href="/login">login</a> with your new password to continue.
@@ -63,13 +57,10 @@
                 </p>
               </div>
 
-              <button type="submit" class="btn register-bt"> Reset </button>
-            </form>     </div>  
+              <button type="submit" class="btn btn-register btn-openid"><i class="fa fa-caret-right"></i> Reset </button>
+            </form>   
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-</div>
-</div>
