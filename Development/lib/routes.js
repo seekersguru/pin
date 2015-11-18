@@ -152,6 +152,7 @@ module.exports = function(app) {
 
 
   app.post('/api/session', session.login);
+  app.get('/api/session/autologin', session.autologin);
   app.del('/api/session', session.logout);
   app.get('/api/session/facebook', session.fblogin);
   app.get('/api/session/facebook/callback', session.fbcallback);
@@ -245,4 +246,5 @@ module.exports = function(app) {
             res.render('index', {css: false});
           });
   app.get('/*', middleware.setUserCookie, index.index);
+  // app.get('/autologin',middleware.auth, index.index);
 };

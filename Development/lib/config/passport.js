@@ -78,6 +78,38 @@ passport.use('local', new LocalStrategy({
     });
   }
 ));
+// add other strategies for more authentication flexibility
+passport.use('auto', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password' // this is the virtual field on the model
+  },
+  function(email, password, done) {
+    User.findOne({hashedPassword: password},
+       function(err, user) {
+      if (err) return done(err);
+        if (!user) {
+        return done(null, false, {
+          message : {
+            message: 'This email is not registered',
+            type: 'not_found',
+            field: 'email'
+          }
+        });
+      }
+      if (!user.checkpassword(password)) {
+        return done(null, false, {
+          message: {
+            message: 'This token is not correct',
+            type: 'incorrect_token',
+            field: 'autologin'
+          }
+        });
+      }
+      
+     return done(null, user);
+    });
+  }
+));
 
 passport.use('admin-local', new LocalStrategy({
     usernameField: 'email',

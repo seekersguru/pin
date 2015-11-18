@@ -14,6 +14,18 @@ exports.logout = function (req, res) {
   res.send(200);
 };
 
+exports.autologin=function(req,res,next){
+ req.logout();  
+req.body.email=req.query.email;
+req.body.password=req.query.token;
+console.log(req.body);
+console.log(req.query);
+var stratergy = 'auto';
+ passport.authenticate(stratergy, {
+    failureRedirect: '/login/',
+    successRedirect: '/'
+    })(req, res, next);
+};
 /**
  * Login
  */
