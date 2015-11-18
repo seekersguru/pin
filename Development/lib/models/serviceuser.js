@@ -57,7 +57,7 @@ var UserSchema = new Schema({
   
   {
    user:{type: Schema.Types.ObjectId, ref:'User'},
-   status:{type: Boolean, default:false},
+   status:{type: Boolean, default:true},
    name:String
  }
 
