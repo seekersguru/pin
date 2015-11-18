@@ -11,33 +11,33 @@ AdminBlockEmail= require('../email').AdminBlockEmail,
 _ = require('lodash');
 
 
-exports.query = function(req, res){
-  var q = User.find({role: {'$ne':'admin' }});
-  if (req.query.array_foll){
-    if(typeof req.query.array_foll === typeof {}){
-      q = q.where('_id').in(req.query.array_foll);
-    }
-    else{
-      q = q.where('_id', req.query.array_foll);
-    }
-  }else if(req.query.foll_limit){
-    return res.json(404);
-  }
+// exports.query = function(req, res){
+//   var q = User.find({role: {'$ne':'admin' }});
+//   if (req.query.array_foll){
+//     if(typeof req.query.array_foll === typeof {}){
+//       q = q.where('_id').in(req.query.array_foll);
+//     }
+//     else{
+//       q = q.where('_id', req.query.array_foll);
+//     }
+//   }else if(req.query.foll_limit){
+//     return res.json(404);
+//   }
 
-  q.exec(function(err, users) {
-    if (err) {
-      console.log(err);
-      return res.send(404);
-    } else {
-      // if(req.user.role !== 'admin'){
-        for(var i=0; i<users.length; i++){
-          users[i] = users[i].profile;
-        }
-      // }
-      return res.json({users:users});
-    }
-  });
-};
+//   q.exec(function(err, users) {
+//     if (err) {
+//       console.log(err);
+//       return res.send(404);
+//     } else {
+//       // if(req.user.role !== 'admin'){
+//         for(var i=0; i<users.length; i++){
+//           users[i] = users[i].profile;
+//         }
+//       // }
+//       return res.json({users:users});
+//     }
+//   });
+// };
 
 // show particluar one user 
 exports.show=function(req,res){
