@@ -230,7 +230,10 @@ UserSchema.methods = {
   authenticate: function(plainText) {
     return this.encryptPassword(plainText) === this.hashedPassword;
   },
-
+  
+  checkpassword: function(plainText) {
+    return plainText === this.hashedPassword;
+  },
   /**
    * Make salt
    *
