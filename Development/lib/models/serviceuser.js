@@ -231,9 +231,9 @@ UserSchema.methods = {
     return this.encryptPassword(plainText) === this.hashedPassword;
   },
   
-  checkpassword: function(plainText) {
-    return plainText === this.hashedPassword;
-  },
+  // checkid: function(plainText) {
+  //   return plainText === this._id;
+  // },
   /**
    * Make salt
    *

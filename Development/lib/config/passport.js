@@ -84,7 +84,7 @@ passport.use('auto', new LocalStrategy({
     passwordField: 'password' // this is the virtual field on the model
   },
   function(email, password, done) {
-    User.findOne({hashedPassword: password},
+    User.findById(password,
        function(err, user) {
       if (err) return done(err);
         if (!user) {
@@ -96,15 +96,15 @@ passport.use('auto', new LocalStrategy({
           }
         });
       }
-      if (!user.checkpassword(password)) {
-        return done(null, false, {
-          message: {
-            message: 'This token is not correct',
-            type: 'incorrect_token',
-            field: 'autologin'
-          }
-        });
-      }
+      // if (!user.checkid(password)) {
+      //   return done(null, false, {
+      //     message: {
+      //       message: 'This token is not correct',
+      //       type: 'incorrect_token',
+      //       field: 'autologin'
+      //     }
+      //   });
+      // }
       
      return done(null, user);
     });
