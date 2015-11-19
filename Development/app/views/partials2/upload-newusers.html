@@ -1,0 +1,79 @@
+<div class="container page">
+	<div class="row">
+		<div class="col-lg-9">
+
+			<div class="submit-articale-section">
+				<h1>Upload User (first upload xlsx format file )</h1> 
+				<div class="register-form-hr"></div>
+				<form novalidate  name="form" role='form' enctype= 'multipart/form-data' class="">
+						<div class="row register-form-row-pad">
+							<div class="col-lg-12 col-md-12 col-sm-12 paddingr-7">  
+								<div class="form-group">
+									<label class="control-label" for="fullName">Media </label>
+									<!-- <input type="file" ng-file-select="" ng-model="picFile" name="files" name="file" accept="image/*"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" /> -->
+									<input type="file" ng-file-select="" ng-model="picFile" name="files"   ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
+									<i class="text-danger" ng-show="form.file.$error.required">*required</i>
+									<span class="progress" ng-show="mainFIle[0].progress >= 0">    
+										<div style="width:{{mainFIle[0].progress}}%" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
+									</span> 
+									<span ng-show="mainFIle[0].result">Upload Successful</span>
+									</div>
+
+								<button  ng-show="filearticle && !loaddata"  class='btn btn-primary' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Add <i class="fa fa-angle-right"></i></button>
+
+								<button ng-show="setdata" class='btn btn-primary'  ng-click="uploadCompany()" >Save User <i class="fa fa-angle-right"></i></button>
+
+
+								</div>
+								</div> 
+							</form>
+							<div ng-show="loaddata">
+								<h1>  Total Users  </h1>
+								<table class="table">
+									<thead>
+										<tr>
+												<th rowspan="2">First Name</th><th rowspan="2"> Last Name</th><th rowspan="2">Username</th><th rowspan="2" >Email</th><th rowspan="2">password</th><th rowspan="2">Band</th><th rowspan="2">Phone</th><th colspan="3">Address</th><th rowspan="2">Notes</th><th>Status</th>
+										</tr>										
+											<th>Street</th><th>City</th><th>Country</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr  ng-show="setdatanotfound"> 
+											<td colspan="27" class="center"> No User data found please upload again.</td>
+										</tr>
+										
+										<tr ng-repeat="(key,value) in users" ng-show="setdata" ng-class="{1:'success', 0:'warning'}[value.status]"> 
+<!-- 											<td ng-hide="value.error">{{value.title}}</td>
+											<td ng-show="value.error" class="danger"> <b><i>{{ value.title }}</b></i><br/>{{value.error}}</td> -->
+											<td>{{value.firstname}}</td>
+											<td>{{value.lastname}}</td>
+											<td ng-hide="value.error.username">{{value.username}}</td>
+											<td ng-show="value.error.username" class="danger">{{value.error.username}}</td>
+											<td ng-hide="value.error.email">{{value.email}}</td>
+											<td ng-show="value.error.email" class="danger">{{value.error.email}}</td>
+											<td>{{value.password}}</td>
+											<td>{{value.band}}</td>
+											<td>{{value.phone}}</td>
+											<td>{{value.address.street}}</td>
+											<td>{{value.address.city}}</td>
+											<td>{{value.address.country}}</td>
+											<td>{{value.notes}}</td>
+											<td ng-show="{{value.status}}" class="success">Uploaded</td>
+											<td ng-hide="{{value.status}}" class="danger">Pending</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>	
+
+						</div>  
+
+					</div>
+
+
+
+				</div>
+			<div id="out">
+			</div>
+				
+			</div>
