@@ -4,6 +4,20 @@ angular.module('pinApp')
 .controller('NotificationCtrl', ['$scope','$location','$rootScope','Auth','$routeParams','$http', function($scope,$location,$rootScope,Auth,$routeParams,$http){
 
 	$scope.type=$routeParams.type;
+if($routeParams.email && $routeParams.token){
+$scope.type='unsubcribe'; 	
+$http({ method: 'PUT', url: '/api/users/'+$routeParams.token,data:{'unsubcribe':true}}).
+	   	success(function (data, status, headers, config) {
+			 
+		}).
+		error(function (data, status, headers, config) {
+      // ...
+      // $scope.article={};
+    });
+
+
+}
+
 if($rootScope.currentUser)
 {
 	
@@ -30,5 +44,6 @@ if($rootScope.currentUser)
 
 	};
 }
+
 
 }]);

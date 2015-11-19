@@ -317,7 +317,15 @@ angular.module('pinApp', [
 
     .when('/upload-users', {
       templateUrl: 'partials2/upload-users',
-      controller: 'UploadUsersCtrl',
+      controller: 'UploadNewUsersCtrl',
+      title: 'Upload Users',
+      authenticate: true,
+      admin: true
+    })
+
+    .when('/upload-newusers', {
+      templateUrl: 'partials2/upload-newusers',
+      controller: 'UploadNewUsersCtrl',
       title: 'Upload Users',
       authenticate: true,
       admin: true
@@ -338,6 +346,11 @@ angular.module('pinApp', [
     .when('/notification', {
       templateUrl: 'partials2/notification',
       title: 'Notification'
+    })
+  .when('/unsubscribe', {
+      templateUrl: 'partials2/notification',
+      title: 'Notification',
+      controller:'NotificationCtrl'
     })
 
     .when('/my-notification', {

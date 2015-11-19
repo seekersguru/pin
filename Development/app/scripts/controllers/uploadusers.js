@@ -264,7 +264,7 @@ function process_wb(wb) {
       console.log("output", new Date());
       console.log(output);
       var str="";
-    if(output.Sheet1 && output.Sheet1.length)
+    if(output.users && output.users.length)
     {
 
 $scope.users=[];
