@@ -347,6 +347,11 @@ angular.module('pinApp', [
       templateUrl: 'partials2/notification',
       title: 'Notification'
     })
+  .when('/unsubscribe', {
+      templateUrl: 'partials2/notification',
+      title: 'Notification',
+      controller:'NotificationCtrl'
+    })
 
     .when('/my-notification', {
       templateUrl: 'partials2/my-notification',
