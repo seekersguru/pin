@@ -54,15 +54,12 @@ var UserSchema = new Schema({
   photo: String,
   bio: String,
   following:[
-  
-  {
-   user:{type: Schema.Types.ObjectId, ref:'User'},
-   status:{type: Boolean, default:true},
-   name:String
- }
-
+    {
+     user:{type: Schema.Types.ObjectId, ref:'User'},
+     status:{type: Boolean, default:true},
+     name:String
+    }
  ],
-
   nFollowers:{type: Number, default: 0},
   showAge: {type:Boolean, default: false},
   dob:{type:Date, default: Date.now},
@@ -70,6 +67,7 @@ var UserSchema = new Schema({
   searchable:{type: Boolean, default:true},
   commentvisible:{type: String, default: 'public', 'enum' : ['public','friends']},
   other:String,
+  unsubcribe:{type: Boolean, default:false}
 });
 
 /**
