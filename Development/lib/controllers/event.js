@@ -235,7 +235,7 @@ exports.query = function(req, res) {
 
   var limit = req.query.limit;
 var cutoff = new Date();
-cutoff.setDate(cutoff.getDate());
+cutoff.setDate(cutoff.getDate()-1);
 // MyModel.find({modificationDate: {$lt: cutoff}},
   var q = Event.find({eventdate:{$gt: cutoff}});
   /** apply limit  */
