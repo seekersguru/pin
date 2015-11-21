@@ -63,7 +63,7 @@ var UserSchema = new Schema({
   nFollowers:{type: Number, default: 0},
   showAge: {type:Boolean, default: false},
   dob:{type:Date, default: Date.now},
-  status:{type: Boolean, default:false},
+  status:{type: Boolean, default:true},
   searchable:{type: Boolean, default:true},
   commentvisible:{type: String, default: 'public', 'enum' : ['public','friends']},
   other:String,
