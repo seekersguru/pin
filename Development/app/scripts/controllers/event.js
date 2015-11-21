@@ -158,8 +158,10 @@ angular.module('pinApp')
     google.maps.event.addListener(map, 'idle', function() {
       $('#zoom').val(map.getZoom());
     });
+
     $scope.setscopeval = function() {
       $('#locality').val($scope.article.location.locality);
+      // $('#exactlocality').val($scope.article.location.customaddress);
       $('#sublocality').val($scope.article.location.sublocality);
       $('#district').val($scope.article.location.district);
       $('#state').val($scope.article.location.state);
@@ -186,7 +188,9 @@ angular.module('pinApp')
       }
 
 
+
       $scope.article_put.location.locality = $('#locality').val();
+      // $scope.article.location.customaddress = $('#exactlocality').val();
       $scope.article_put.location.sublocality = $('#sublocality').val();
       $scope.article_put.location.district = $('#district').val();
       $scope.article_put.location.state = $('#state').val();
@@ -246,7 +250,9 @@ angular.module('pinApp')
         category: $scope.article.category,
         type: $scope.article.type,
         location: {
-          address: $scope.article.location.address
+          address: $scope.article.location.address,
+          customaddress: $scope.article.location.customaddress
+
         },
         eventdate: $scope.article.eventdate
 
@@ -697,6 +703,7 @@ angular.module('pinApp')
 
 
       $scope.article.location.locality = $('#locality').val();
+      // $scope.article.location.customaddress = $('#exactlocality').val();
       $scope.article.location.sublocality = $('#sublocality').val();
       $scope.article.location.district = $('#district').val();
       $scope.article.location.state = $('#state').val();

@@ -27,7 +27,8 @@ var EventSchema = new Schema({
             }],
   registered:[{ type: ObjectId, ref: 'User' }],
   location:{
-    address:String,
+  address:String,
+  customaddress:String,
   locality:String,
   sublocality:String,
   district:String,
