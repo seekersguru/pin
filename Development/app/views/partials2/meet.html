@@ -25,7 +25,7 @@
 <div class="discussions-section">
 
 
-  <div class="eventdetail-box">
+  <div class="eventdetail-box" ng-if="events.length">
   <div class="clearfix">
   <div class="event-icon"><img alt="" ng-src="images/{{events[0].type}}.png"></div>
   <div class="event-content">
@@ -38,6 +38,10 @@
   <div class="date">{{events[0].eventdate | date:"EEE, MMMM dd, yyyy"}}</div>
   <a type="submit" class="btn btn-primary"  ng-href="/event/view/{{events[0]._id}}">
   See details<i class="fa fa-angle-right"></i></a>
+  </div>
+  
+  <div class="eventdetail-box"  ng-if="!events.length">
+      <h2> No event found. </h2>
   </div>
 
 <div class="row meet-row-mar">
