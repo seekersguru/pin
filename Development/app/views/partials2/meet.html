@@ -17,10 +17,10 @@
 
 <div class="gray-hr"></div>
 
-<div class="event-detais-section">
+<div class="event-detais-section" ng-if="events.length">
 
 
-<div class="meet-baner-img">
+<div class="meet-baner-img" >
 <div>
 
 <h1>{{events[0].title | uppercase}}</h1>
@@ -36,6 +36,8 @@
 
 </div>
 </div>
+
+
 
 
 
@@ -72,6 +74,9 @@
 
 <div class="gray-hr"></div>
 </div>
+<div class="event-detais-section" ng-if="!events.length">
+      <h2> No event found. </h2>
+  </div>
 </div>
 
 <div class="col-lg-4 col-md-4 col-sm-4">
