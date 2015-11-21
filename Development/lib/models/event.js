@@ -57,6 +57,7 @@ var EventSchema = new Schema({
   }],
   location: {
     address: String,
+    customaddress: String,
     locality: String,
     sublocality: String,
     district: String,
