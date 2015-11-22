@@ -4990,7 +4990,7 @@ $scope.uploadPic = function(files) {
       $http({ method: 'POST', url: '/api/companys',data:value }).
       success(function (data, status, headers, config) {
         $scope.companies[key].status=1;
-        $scope.companies[key].address[0]['main']=1;
+        // $scope.companies[key].address[0]['main']=1;
       }).
       error(function (data, status, headers, config) {
         // ...
@@ -5102,8 +5102,8 @@ $scope.companies=[];
   ],
         
 
-  'pin':output.companies[i].pin,
-  'money':output.companies[i].money,
+  'pin':true,
+  'money':true,
   'url':output.companies[i].url,
   'notes':output.companies[i].notes,
   'description':output.companies[i].description,
@@ -5374,7 +5374,9 @@ $scope.uploadPic = function(files) {
 
   angular.forEach($scope.users, function(value, key) {
       // $scope.form.$setPristine();
-      $http({ method: 'POST', url: '/api/users',data:value }).
+      setTimeout(function(){
+        console.log($scope.users[key]);
+        $http({ method: 'POST', url: '/api/users',data:value }).
       success(function (data, status, headers, config) {
         $scope.users[key].status=1;
       }).
@@ -5387,6 +5389,7 @@ $scope.uploadPic = function(files) {
         });
 
       });
+    },1000);
   });                   
 
     
@@ -5443,16 +5446,21 @@ $scope.users=[];
   'companyname':{'title':output.users[i].companyname},     
   'firstname':output.users[i].firstname,
   'lastname':output.users[i].lastname,
-  'username':output.users[i].username,
+  'username':output.users[i].username || output.users[i].firstname,
   'email':output.users[i].email,
   'password':'test@123',
   'phone':output.users[i].phone,
+  'custom_job':output.users[i].custtom_job_title,
   'address':  {  
     'city':output.users[i].city,
     'country':'India'
   },   
   'notes':'',
-  'status':1
+  'status':1,
+  'emailVerification' : {
+        "verified" : true
+  },
+  'createdAt':output.users[i].createdAt
    
   };
 

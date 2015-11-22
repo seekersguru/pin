@@ -12,19 +12,48 @@ _ = require('lodash');
 
 //create
 exports.create = function(req, res, next) {
-       	console.log(req.body);
-        	// req.body.tags=req.body.tags;
-        	console.log(req.body);
-        	var company=new Company(req.body);
-        	company.save(function(err,company){
-        		if(err){
-        			console.log(err);
-        			return res.json(400, err);
-        		}
-        		return res.json({company:company});
-        	});
+	console.log(req.body);
+	// req.body.tags=req.body.tags;
+	var q = Company.findOne({
+		'title': req.body.title
+	});
+	/** finally execute */
+	q.exec(function(err, alreadycompany) {
+		if (err) {
+			console.log(err);
+		}
+		if (!alreadycompany) { //if already not exist then new save
+			var company = new Company(req.body);
+			company.save(function(err, company) {
+				if (err) {
+					console.log(err);
+					return res.json(400, err);
+				}
+				return res.json({
+					company: company
+				});
+			});
+		} else {
+			Company.findOneAndUpdate({ //if already  exist then update
+				_id: alreadycompany._id
+			}, req.body, function(err, updatedcompany) {
+				if (err) {
+					console.log(err);
+					return res.json(400, err);
+				}
+				if (!updatedcompany) {
+					console.log('notfound');
+					return res.send(404);
+				}
+				return res.json({
+					company: updatedcompany
+				});
+			});
+		}
+	});
+};
 
-  };
+
 
 //update
 exports.update = function(req, res) {

@@ -25,6 +25,7 @@ var UserSchema = new Schema({
   membertype:String,
   nominated:String,
   interests:String,
+  custom_job:String,
   band:Number,
   notes:String,
   emailVerification: {
