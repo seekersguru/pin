@@ -292,12 +292,12 @@ exports.create = function(req, res, next) {
     newUser.save(function(err, savedUser) {
       if (err) return res.json(400, err);
       if (err) return res.json(400, err);
-      var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/');
-      (new ActivationEmail(savedUser, {
-        activationLink: activation_link
-      })).send(function(e) {
+      // var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/');
+      // (new ActivationEmail(savedUser, {
+      //   activationLink: activation_link
+      // })).send(function(e) {
         return res.send(savedUser.userInfo);
-      });
+      // });
     });
 
     });
@@ -330,12 +330,12 @@ exports.create = function(req, res, next) {
   newUser.save(function(err, savedUser) {
     if (err) return res.json(400, err);
     console.log(req.headers.host);
-    var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/');
-    (new ActivationEmail(savedUser, {
-      activationLink: activation_link
-    })).send(function(e) {
+    // var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/');
+    // (new ActivationEmail(savedUser, {
+    //   activationLink: activation_link
+    // })).send(function(e) {
       return res.send(savedUser.userInfo);
-    });
+    // });
   });
 }
 
