@@ -293,7 +293,7 @@ exports.create = function(req, res, next) {
       if (err) return res.json(400, err);
       if (err) return res.json(400, err);
       var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/'),
-      auto_login_link=[req.headers.host, 'api/session/autologin'].join('/')+'?email='+savedUser.email+'&token'+savedUser._id;
+      auto_login_link=[req.headers.host, 'api/session/autologin'].join('/')+'?email='+savedUser.email+'&token='+savedUser._id;
       (new ActivationEmail(savedUser, {
         activationLink: activation_link,
         autoLoginLink:auto_login_link
@@ -333,7 +333,7 @@ exports.create = function(req, res, next) {
     if (err) return res.json(400, err);
     console.log(req.headers.host);
     var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/'),
-      auto_login_link=[req.headers.host, 'api/session/autologin'].join('/')+'?email='+savedUser.email+'&token'+savedUser._id;
+      auto_login_link=[req.headers.host, 'api/session/autologin'].join('/')+'?email='+savedUser.email+'&token='+savedUser._id;
       (new ActivationEmail(savedUser, {
         activationLink: activation_link,
         autoLoginLink:auto_login_link
