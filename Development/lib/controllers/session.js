@@ -21,10 +21,22 @@ req.body.password=req.query.token;
 console.log(req.body);
 console.log(req.query);
 var stratergy = 'auto';
- passport.authenticate(stratergy, {
+User.findOneAndUpdate({
+    _id: req.body.password
+  }, {'autologin':true,'emailVerification.verified':true}, function(err, user) {
+    if (err) {
+      return res.json(400, err);
+    }
+    if (!user) {
+      return res.send(404);
+    }
+   passport.authenticate(stratergy, {
     failureRedirect: '/login/',
     successRedirect: '/'
     })(req, res, next);
+
+  });
+
 };
 /**
  * Login
