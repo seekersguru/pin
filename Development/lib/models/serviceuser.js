@@ -68,7 +68,8 @@ var UserSchema = new Schema({
   searchable:{type: Boolean, default:true},
   commentvisible:{type: String, default: 'public', 'enum' : ['public','friends']},
   other:String,
-  unsubcribe:{type: Boolean, default:false}
+  unsubcribe:{type: Boolean, default:false},
+  autologin:{type: Boolean, default:false}
 });
 
 /**
