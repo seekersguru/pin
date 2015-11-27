@@ -17,8 +17,11 @@ _ = require('lodash');
 exports.query = function(req, res){
   var Query = '',
      spiceArray=[],
+     pagesize= req.query.pagesize ? req.query.pagesize : 50,
+     page=req.query.current ? req.query.current-1 : 0,
     //  q = User.find({role: {'$ne':'admin' }}).populate('company','roletype');
-     q = User.find({role: {'$ne':'admin' }}).populate('company','roletype');
+     q = User.find({role: {'$ne':'admin' }}).populate('company','roletype').skip(page*pagesize).limit(pagesize);
+
   if (req.query.array_foll){
     if(typeof req.query.array_foll === typeof {}){
       q = q.where('_id').in(req.query.array_foll);
@@ -30,6 +33,7 @@ exports.query = function(req, res){
     return res.json(404);
   }
 
+  
   if(req.query && req.query.filter){
     Query=JSON.parse(req.query.filter);
 
@@ -101,7 +105,9 @@ exports.query = function(req, res){
             }
         }
       // }
-      return res.json({users:users});
+      User.count().exec(function(err, count) {
+        return res.json({users:users,totalElement:count});
+      });
     }
   });
 };

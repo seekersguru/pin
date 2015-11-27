@@ -94,13 +94,13 @@ angular.module('pinApp')
         false: "Not Approve"
       }
       //variable define for getting the total no of items to be displayed
-    $scope.totalServerItems = 0;
+  $scope.totalServerItems = 0;
 
     //these are the paging(pagination) options
     $scope.pagingOptions = {
       //no of records that need to be displayed per page will be depend on pagesizes
-      pageSizes: [1, 2, 3],
-      pageSize: 1,
+      pageSizes: [10,20,30,40,50,60,70,80,90,100],
+      pageSize: 50,
       //this is for the page no that is selected
       currentPage: 1
     };
@@ -132,7 +132,7 @@ angular.module('pinApp')
       $scope.$apply();
     }, 1000);
 
-    $scope.setArticlePagingData = function() {
+    $scope.setPagingData = function() {
       $scope.gridArticleData = data.articles;
       if (!$scope.$$phase) {
         $scope.$apply();
@@ -152,13 +152,13 @@ angular.module('pinApp')
         }).
         success(function(data, status, headers, config) {
           //with data must send the total no of items as well
-          $scope.totalServerItems = data.totalElement;
+        $scope.totalServerItems = data.totalElement;
           //here's the list of data to be displayed
           data.articles = data.articles.filter(function(item) {
             return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
           });
           $scope.gridArticleData = data.articles;
-          // $scope.setArticlePagingData(data,page,pageSize);
+          // $scope.setPagingData(data,page,pageSize);
         }).
         error(function(data, status, headers, config) {
 
@@ -170,8 +170,8 @@ angular.module('pinApp')
         }).
         success(function(data, status, headers, config) {
           $scope.gridArticleData = data.articles;
-          // $scope.totalServerItems=data.totalElement;
-          // $scope.setArticlePagingData(data,page,pageSize);
+           $scope.totalServerItems=data.totalElement;
+          // $scope.setPagingData(data,page,pageSize);
 
         }).
         error(function(data, status, headers, config) {
@@ -190,17 +190,18 @@ angular.module('pinApp')
         var ft = searchText.toLowerCase();
         $http({
           method: 'GET',
-          url: 'api/mmiusers?filter=' + JSON.stringify($scope.mmiFilter)
+          url: 'api/mmiusers?filter=' + JSON.stringify($scope.mmiFilter),
+          params:{pagesize:pageSize,current:page}
         }).
         success(function(users, status, headers, config) {
           //with data must send the total no of items as well
-          // $scope.totalServerItems=data.totalElement;
+           $scope.totalServerItems=users.totalElement;
           //here's the list of data to be displayed
           users.users = users.users.filter(function(item) {
             return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
           });
           $scope.gridMMIUserData = users.users;
-          // $scope.setArticlePagingData(data,page,pageSize);
+          // $scope.setPagingData(data,page,pageSize);
         }).
         error(function(data, status, headers, config) {
 
@@ -208,12 +209,13 @@ angular.module('pinApp')
       } else {
         $http({
           method: 'GET',
-          url: 'api/mmiusers?filter=' + JSON.stringify($scope.mmiFilter)
+          url: 'api/mmiusers?filter=' + JSON.stringify($scope.mmiFilter),
+          params:{pagesize:pageSize,current:page}
         }).
         success(function(users, status, headers, config) {
           $scope.gridMMIUserData = users.users;
-          // $scope.totalServerItems=data.totalElement;
-          // $scope.setArticlePagingData(data,page,pageSize);
+           $scope.totalServerItems=users.totalElement;
+          // $scope.setPagingData(data,page,pageSize);
 
         }).
         error(function(data, status, headers, config) {
@@ -248,7 +250,7 @@ angular.module('pinApp')
             return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
           });
           $scope.gridUserData = users.users;
-          // $scope.setArticlePagingData(data,page,pageSize);
+          // $scope.setPagingData(data,page,pageSize);
         }).
         error(function(data, status, headers, config) {
 
@@ -261,7 +263,7 @@ angular.module('pinApp')
         success(function(users, status, headers, config) {
           $scope.gridUserData = users.users;
           // $scope.totalServerItems=data.totalElement;
-          // $scope.setArticlePagingData(data,page,pageSize);
+          // $scope.setPagingData(data,page,pageSize);
 
         }).
         error(function(data, status, headers, config) {
@@ -1037,7 +1039,9 @@ angular.module('pinApp')
           });
           MMIUser.query(function(users) {
             $scope.gridMMIUserData = users.users;
+            $scope.totalServerItems=users.totalElement;
             $scope.originalMMIUsersData = angular.copy(users.users);
+            // $scope.setPagingData();
           });
           break;
 
@@ -1132,7 +1136,7 @@ angular.module('pinApp')
     };
     //according to the data coming from server side,pagination will be set accordingly
     $scope.setPagingData = function(data, page, pageSize) {
-      $scope.myData = data;
+      // $scope.myData = data;
       if (!$scope.$$phase) {
         $scope.$apply();
       }
@@ -1141,8 +1145,16 @@ angular.module('pinApp')
     //watch for pagination option.here pagingOptions will be watched each time value changes and then set the data accordingly
     $scope.$watch('pagingOptions', function(newVal, oldVal) {
       if (newVal !== oldVal || newVal.currentPage !== oldVal.currentPage) {
-        $scope.filterArticle($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-      }
+          
+          if ($scope.mainPage === 'articles') {
+            $scope.filterArticle($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+          } else if ($scope.mainPage === 'mmiusers') {
+            $scope.filterMMIUsers($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+          } else if ($scope.mainPage === 'users' || $scope.mainPage === 'contentexpert') {
+            $scope.filterPINUsers($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+          }
+
+       }
     }, true);
 
     $scope.$watch('filterOptions', function(newVal, oldVal) {
@@ -1162,9 +1174,9 @@ angular.module('pinApp')
 
     $scope.articleData = {
       data: 'gridArticleData',
-      enablePaging: true,
-      showFooter: true,
-      totalServerItems: 'totalServerItems',
+      // enablePaging: true,
+      // showFooter: true,
+      // totalServerItems: 'totalServerItems',
       // pagingOptions: $scope.pagingOptions,
       enableColumnResize: true,
       enableCellSelection: true,
@@ -1415,6 +1427,11 @@ angular.module('pinApp')
       data: 'gridMMIUserData',
       // showGroupPanel: true ,
       // enableCellSelection: true,
+      enablePaging: true,
+      showFooter: true,
+      totalServerItem :'totalServerItems',
+      pagingOptions: $scope.pagingOptions,
+      enableColumnResize: true,
       enableRowSelection: false,
       filterOptions: $scope.filterOptions,
       columnDefs: [{
