@@ -278,70 +278,83 @@ exports.create = function(req, res, next) {
           if (companydata) {
             delete data.companyname;
             data.company = companydata._id;
+            var newUser = new User(data);
+            newUser.provider = 'local';
+
+            newUser.save(function(err, savedUser) {
+              if (err) return res.json(400, err);
+              if (err) return res.json(400, err);
+              var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/'),
+                auto_login_link = [req.headers.host, 'api/session/autologin'].join('/') + '?email=' + savedUser.email + '&token=' + savedUser._id;
+              (new ActivationEmail(savedUser, {
+                activationLink: activation_link,
+                autoLoginLink: auto_login_link
+              })).send(function(e) {
+                return res.send(savedUser.userInfo);
+              });
+            });
           }
 
 
         });
       } else {
         data.company = company._id;
+        var newUser = new User(data);
+        newUser.provider = 'local';
+
+        newUser.save(function(err, savedUser) {
+          if (err) return res.json(400, err);
+          if (err) return res.json(400, err);
+          var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/'),
+            auto_login_link = [req.headers.host, 'api/session/autologin'].join('/') + '?email=' + savedUser.email + '&token=' + savedUser._id;
+          (new ActivationEmail(savedUser, {
+            activationLink: activation_link,
+            autoLoginLink: auto_login_link
+          })).send(function(e) {
+            return res.send(savedUser.userInfo);
+          });
+        });
       }
+    });
 
-       var newUser = new User(data);
+  } else {
+
+
+    //     var newUser = new User(data);
+    //     newUser.provider = 'local';
+
+    //     newUser.save(function(err, savedUser) {
+    //       if (err) return res.json(400, err);
+    //       if (err) return res.json(400, err);
+    //       var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/');
+    //       (new ActivationEmail(savedUser, {
+    //         activationLink: activation_link
+    //       })).send(function(e) {
+    //         return res.send(savedUser.userInfo);
+    //       });
+    //     });
+    //   });
+
+    // } else {
+    if (data.company == "add-new") {
+      delete data['company'];
+      delete data['companyname'];
+    }
+    var newUser = new User(data);
     newUser.provider = 'local';
-
     newUser.save(function(err, savedUser) {
       if (err) return res.json(400, err);
-      if (err) return res.json(400, err);
+      console.log(req.headers.host);
       var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/'),
-      auto_login_link=[req.headers.host, 'api/session/autologin'].join('/')+'?email='+savedUser.email+'&token='+savedUser._id;
+        auto_login_link = [req.headers.host, 'api/session/autologin'].join('/') + '?email=' + savedUser.email + '&token=' + savedUser._id;
       (new ActivationEmail(savedUser, {
         activationLink: activation_link,
-        autoLoginLink:auto_login_link
+        autoLoginLink: auto_login_link
       })).send(function(e) {
         return res.send(savedUser.userInfo);
       });
     });
-
-    });
-
-  }else{
-
-
-//     var newUser = new User(data);
-//     newUser.provider = 'local';
-
-//     newUser.save(function(err, savedUser) {
-//       if (err) return res.json(400, err);
-//       if (err) return res.json(400, err);
-//       var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/');
-//       (new ActivationEmail(savedUser, {
-//         activationLink: activation_link
-//       })).send(function(e) {
-//         return res.send(savedUser.userInfo);
-//       });
-//     });
-//   });
-
-// } else {
-  if (data.company == "add-new") {
-    delete data['company'];
-    delete data['companyname'];
   }
-  var newUser = new User(data);
-  newUser.provider = 'local';
-  newUser.save(function(err, savedUser) {
-    if (err) return res.json(400, err);
-    console.log(req.headers.host);
-    var activation_link = [req.headers.host, 'user', savedUser._id, 'verify', savedUser.emailVerification.token].join('/'),
-      auto_login_link=[req.headers.host, 'api/session/autologin'].join('/')+'?email='+savedUser.email+'&token='+savedUser._id;
-      (new ActivationEmail(savedUser, {
-        activationLink: activation_link,
-        autoLoginLink:auto_login_link
-      })).send(function(e) {
-      return res.send(savedUser.userInfo);
-    });
-  });
-}
 
 };
 

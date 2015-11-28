@@ -13,6 +13,10 @@ _ = require('lodash');
 //create
 exports.create = function(req, res, next) {
 	console.log(req.body);
+	if(req.body._id){
+		delete req.body._id;
+	}
+	comsole.log(req.body);
 	// req.body.tags=req.body.tags;
 	var q = Company.findOne({
 		'title': req.body.title
