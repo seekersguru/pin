@@ -34,21 +34,21 @@ exports.create = function(req, res, next) {
 				});
 			});
 		} else {
-			Company.findOneAndUpdate({ //if already  exist then update
-				_id: alreadycompany._id
-			}, req.body, function(err, updatedcompany) {
-				if (err) {
-					console.log(err);
-					return res.json(400, err);
-				}
-				if (!updatedcompany) {
-					console.log('notfound');
-					return res.send(404);
-				}
-				return res.json({
-					company: updatedcompany
-				});
-			});
+			// Company.findOneAndUpdate({ //if already  exist then update
+			// 	_id: alreadycompany._id
+			// }, req.body, function(err, updatedcompany) {
+			// 	if (err) {
+			// 		console.log(err);
+			// 		return res.json(400, err);
+			// 	}
+			// 	if (!updatedcompany) {
+			// 		console.log('notfound');
+			// 		return res.send(404);
+			// 	}
+			// 	return res.json({
+			// 		company: updatedcompany
+			// 	});
+			// });
 		}
 	});
 };

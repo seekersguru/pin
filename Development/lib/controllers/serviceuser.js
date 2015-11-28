@@ -258,7 +258,7 @@ exports.create = function(req, res, next) {
     getcompanyid = '';
 
   data.band = '';
-  if (data.company === "add-new" && data.companyname.title) {
+  if (data.company == "add-new" && data.companyname.title) {
 
     var q = Company.findOne({
       'title': data.companyname.title
@@ -323,7 +323,7 @@ exports.create = function(req, res, next) {
 //   });
 
 // } else {
-  if (data.company === "add-new") {
+  if (data.company == "add-new") {
     delete data['company'];
     delete data['companyname'];
   }

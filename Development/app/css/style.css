@@ -248,6 +248,7 @@ h6 {
 .top-link {
     margin-bottom: 4px;
     margin-top: 15px;
+    text-align: right;
 }
 .top-link .dropdown {
     float: left;
