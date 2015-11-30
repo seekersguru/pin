@@ -1947,7 +1947,7 @@ h2 {
 #footer-bg ul {
     list-style: outside none none;
     margin: 0 -8px 11px;
-    padding: 0;
+    padding: 0 2px;
 }
 #footer-bg .copyright .copyright-text {
     color: #dddddd;
