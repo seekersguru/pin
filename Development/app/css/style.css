@@ -1943,11 +1943,12 @@ h2 {
 #footer-bg .footer-social ul{float:none; }
 #footer-bg ul li a {
     float: none;
+    padding: 0 2px;
 }
 #footer-bg ul {
     list-style: outside none none;
     margin: 0 -8px 11px;
-    padding: 0 2px;
+    padding: 0;
 }
 #footer-bg .copyright .copyright-text {
     color: #dddddd;
