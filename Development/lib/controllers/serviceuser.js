@@ -20,7 +20,7 @@ exports.query = function(req, res){
      pagesize= req.query.pagesize ? req.query.pagesize : 50,
      page=req.query.current ? req.query.current-1 : 0,
     //  q = User.find({role: {'$ne':'admin' }}).populate('company','roletype');
-     q = User.find({role: {'$ne':'admin' }}).populate('company','roletype').skip(page*pagesize).limit(pagesize);
+     q = User.find({role: {'$ne':'admin' }}).populate('company','title roletype').skip(page*pagesize).limit(pagesize);
 
   if (req.query.array_foll){
     if(typeof req.query.array_foll === typeof {}){

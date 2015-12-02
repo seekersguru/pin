@@ -108,6 +108,7 @@ UserSchema
     return {
       '_id': this._id,
       'firstname': this.firstname,
+      'lastname': this.lastname,
       'createdAt':this.createdAt,
       'email': this.email,
       'role': this.role,

@@ -1442,11 +1442,18 @@ angular.module('pinApp')
           width: '30px'
         }, {
           field: 'firstname',
-          displayName: 'First Name',
+          displayName: 'Name',
+          cellTemplate: '<span> {{row.entity.firstname }} {{ row.entity.lastname }}</span>',
           cellClass: 'grid-align'
         }, {
           field: 'email',
           displayName: 'Email',
+          cellClass: 'grid-align'
+        },
+        {
+          field: 'company',
+          displayName: 'Company',
+          cellTemplate: '<span> {{row.entity.company.title}}</span>',
           cellClass: 'grid-align'
         },
         // { field: 'band' ,displayName:'Band',cellTemplate : '<span ng-show="!row.entity.status" >{{ row.entity.band }}</span><span ng-show="row.entity.status"><input  type="text" ng-model="row.entity.band" ng-blur="updateBand(row.entity,row.entity.band)" ng-value="row.entity.band" /></span>'},
@@ -1460,21 +1467,22 @@ angular.module('pinApp')
           field: 'createdAt',
           displayName: 'Date',
           cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
-          cellClass: 'grid-align'
+          width: '120px'
         }, {
           field: 'status',
           displayName: 'Status',
           cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>',
-          width: '250px'
+          width: '120px'
         }, {
           field: 'action',
           displayName: 'Action',
           cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="mmiuserStatus(row.entity._id)">Approve</span> ',
-          width: '150px'
+          width: '80px'
         }, {
           field: 'detail',
           displayName: 'Detail',
-          cellTemplate: '<span  class="label label-info" ng-click="userDetail(row.entity._id,0)">Detail</span>'
+          cellTemplate: '<span  class="label label-info" ng-click="userDetail(row.entity._id,0)">Detail</span>',
+          width: '80px'
         }
       ],
       showFooter: true,
