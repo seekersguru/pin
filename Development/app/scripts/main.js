@@ -239,20 +239,28 @@ angular.module('pinApp', [
         templateUrl: 'partials2/article-detail',
         controller: 'ArticleCtrl',
         resolve: {
-          articles: ['$q', '$route', 'Article', function($q, $route,
-            Article) {
+            articles: ['$q', '$route', 'Article','$http','$rootScope', function($q, $route,
+            Article,$http,$rootScope) {
             var deferred = $q.defer();
-            Article.get({
-                articleId: $route.current.params.articleid
-              }, function(article) {
-                var articles={articles:article}
-                deferred.resolve(articles);
-              },
-              function(err) {
-                deferred.reject();
-              });
+            $http.get('/api/articles/url/'+$route.current.params.articleid)
+            .success(function(article) {
+               var articles={articles:article};
+               $rootScope.ogTitle = articles.title; 
+               deferred.resolve(articles);
+            }).error(deferred.reject);
+
+            // Article.get({
+            //     articleId: $route.current.params.articleid
+            //   }, function(article) {
+            //     var articles={articles:article}
+            //     deferred.resolve(articles);
+            //   },
+            //   function(err) {
+            //     deferred.reject();
+            //   });
             return deferred.promise;
           }]
+
 
         },
         // authenticate: true
