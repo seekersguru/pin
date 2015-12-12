@@ -53,7 +53,7 @@ exports.create = function(req, res, next) {
 	var data = _.pick(req.body, 'type') ,
 	uploadPath =  '/uploads';
 	console.log(req.files);
-	req.body.url=req.body.title.replace(/[^a-zA-Z ]/g, "").toLowerCase().split(' ').join('-');
+	req.body.url=req.body.title.trim().replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().split(' ').join('-');
  
 	// if(req.body.createdAt)
 	// {	console.log(req.body.createdAt);
