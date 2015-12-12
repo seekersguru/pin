@@ -44,7 +44,7 @@
                         <h1>{{bannerArticle.title}}</h1>
                         <p><small>by</small> {{bannerArticle.author.fullname || bannerArticle.author.name}}</p>
                         <p ng-bind-html="bannerArticle.description | limitTo:descriptionLimit | rawHtml"></p>
-                        <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{bannerArticle._id}}">Continue Reading </a></p>
+                        <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{bannerArticle.url}}">Continue Reading </a></p>
                     </div>
                 </div>
                 <div class="gray-hr"></div>
@@ -86,7 +86,7 @@
                             <h2 class="articale-title-h">{{value.title | htmlToPlaintext | limitTo:60 }}</h2>
                             <p><small>by</small> {{value.author.fullname || value.author.name}}</p>
                             <p ng-bind-html="value.description + '...'"> </p>
-                            <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value._id}}">Read more </a></p>
+                            <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value.url}}">Read more </a></p>
                         </div>
                     </div>
                 </div>

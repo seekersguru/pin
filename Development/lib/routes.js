@@ -41,6 +41,7 @@ module.exports = function(app) {
   app.get('/api/hansiarticles', articles.hansi);
   app.get('/api/articles/basic', articles.basic);
   app.get('/api/articles/:articleid', articles.show);
+  app.get('/api/articles/url/:url', articles.showurl);
   app.post('/api/articles',  multipartMiddleware, articles.create);
   app.put('/api/articles/:articleid', multipartMiddleware,articles.update);
   app.del('/api/articles/:articleid', articles.remove);
