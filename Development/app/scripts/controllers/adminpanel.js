@@ -588,7 +588,7 @@ angular.module('pinApp')
         url: '/api/articles/' + articleId,
         data: {
           'public': setStatus,
-          'url':$scope.gridArticleData[removeIndex].replace(/[^a-zA-Z ]/g, "").toLowerCase().split(' ').join('-');
+          'url':$scope.gridArticleData[removeIndex].title.replace(/[^a-zA-Z ]/g, "").toLowerCase().split(' ').join('-')
         }
       }).
       success(function(data, status, headers, config) {
