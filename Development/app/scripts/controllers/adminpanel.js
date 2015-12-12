@@ -587,8 +587,7 @@ angular.module('pinApp')
         method: 'PUT',
         url: '/api/articles/' + articleId,
         data: {
-          'public': setStatus,
-          'url':$scope.gridArticleData[removeIndex].title.toLowerCase().split(' ').join('-')
+          'public': setStatus
         }
       }).
       success(function(data, status, headers, config) {

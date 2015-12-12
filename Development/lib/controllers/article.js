@@ -39,7 +39,7 @@ exports.search= function(req, res){
  */
  exports.upload = function (req, res, next) {
  	var data = _.pick(req.body, 'type'),
- 	uploadPath = path.normalize(cfg.data + '/uploads'),
+ 	uploadPath = path.normalize(data + '/uploads'),
  	file = req.files.file;
         console.log(file.name); //original name (ie: sunset.png)
         console.log(file.path); //tmp path (ie: /tmp/12345-xyaz.png)
@@ -53,6 +53,8 @@ exports.create = function(req, res, next) {
 	var data = _.pick(req.body, 'type') ,
 	uploadPath =  '/uploads';
 	console.log(req.files);
+	req.body.url=req.body.title.toLowerCase().split(' ').join('-');
+ 
 	// if(req.body.createdAt)
 	// {	console.log(req.body.createdAt);
 	// 	req.body.createdAt=moment(req.body.createdAt).calendar();
