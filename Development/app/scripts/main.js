@@ -412,10 +412,9 @@ angular.module('pinApp', [
           events: ['$q', '$route', 'Event','$http','$rootScope',function($q, $route, Event,$http,$rootScope) {
             var deferred = $q.defer();
             $http.get('/api/events/url/'+$route.current.params.eventid)
-            .success(function(article) {
-               var articles={articles:article};
-               $rootScope.ogTitle = articles.title; 
-               deferred.resolve(articles);
+            .success(function(events) {
+               $rootScope.ogTitle = events.title; 
+               deferred.resolve(events);
             }).error(deferred.reject);
             return deferred.promise;
           }]
