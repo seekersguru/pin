@@ -411,14 +411,12 @@ angular.module('pinApp', [
         resolve: {
           events: ['$q', '$route', 'Event', function($q, $route, Event) {
             var deferred = $q.defer();
-            Event.get({
-                articleId: $route.current.params.eventid
-              }, function(event) {
-                deferred.resolve(event);
-              },
-              function(err) {
-                deferred.reject();
-              });
+            $http.get('/api/events/url/'+$route.current.params.eventid)
+            .success(function(article) {
+               var articles={articles:article};
+               $rootScope.ogTitle = articles.title; 
+               deferred.resolve(articles);
+            }).error(deferred.reject);
             return deferred.promise;
           }]
 
@@ -545,10 +543,10 @@ angular.module('pinApp', [
         $rootScope.redirectPath = $location.path();
       }
 
-      $rootScope.ogTitle = "PIN";
-      $rootScope.ogDescription = "PIN Description";
-      $rootScope.ogImage = "";
-      $rootScope.ogUrl = "http://" + $location.host() + $location.path();
+      $rootScope.ogTitle = 'Connecting Indian family offices';
+      $rootScope.ogDescription = 'Networking and content to grow and protect wealth for Indian family offices and UHNI families, edited by Hansi Mehrotra, #LinkedInTopVoices';
+      $rootScope.ogImage = '';
+      $rootScope.ogUrl = 'http://' + $location.host() + $location.path();
 
       if (next.authenticate == false && Auth.isLoggedIn()) {
         $location.path('/articles/01');

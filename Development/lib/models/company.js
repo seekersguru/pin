@@ -31,7 +31,8 @@ var CompanySchema = new Schema({
            }],
   pin: { type: Boolean, default: true },
   money: { type: Boolean, default: true },
-  notes:String         
+  notes:String
+
 
 });
 
@@ -63,11 +64,13 @@ CompanySchema
       'firmtype':this.firmtype,
       'firmsubtype':this.firmsubtype,
       'address':this.address,
-      'url':this.url,
+      'url':this.url || this.title.trim().replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().split(' ').join('-'),
       'createdAt':this.createdAt,
       'roletype':this.roletype,
       'approve':this.public
+
     };
   });
+
 
 mongoose.model('Company', CompanySchema);

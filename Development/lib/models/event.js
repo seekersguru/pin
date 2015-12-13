@@ -12,6 +12,7 @@ var EventSchema = new Schema({
     type: String,
     required: true
   },
+  url:String,
   author: {
     type: ObjectId,
     ref: 'User'
@@ -116,7 +117,8 @@ EventSchema
       // 'comments':this.comments.length,
       'eventdate': this.eventdate,
       'category': this.category,
-      'approve': this.public
+      'approve': this.public,
+      'url':this.url || this.title.trim().replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().split(' ').join('-')
     };
   });
 
