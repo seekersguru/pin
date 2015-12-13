@@ -409,7 +409,7 @@ angular.module('pinApp', [
         controller: 'EventViewCtrl',
         title: 'Meet Event',
         resolve: {
-          events: ['$q', '$route', 'Event', function($q, $route, Event) {
+          events: ['$q', '$route', 'Event','$http','$rootScope',function($q, $route, Event,$http,$rootScope) {
             var deferred = $q.defer();
             $http.get('/api/events/url/'+$route.current.params.eventid)
             .success(function(article) {
