@@ -40,6 +40,7 @@ var EventSchema = new Schema({
   zoom:Number
   },
   eventdate: Date,
+  url:String,
   keywords: [String],
   category: String,
   type: String,

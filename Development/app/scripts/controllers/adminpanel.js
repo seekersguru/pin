@@ -721,7 +721,9 @@ angular.module('pinApp')
         method: 'PUT',
         url: '/api/events/' + eventId,
         data: {
-          'public': setStatus
+          'public': setStatus,
+          'url':$scope.gridEventData[removeIndex].title.trim().replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().split(' ').join('-')
+          
         }
       }).
       success(function(data, status, headers, config) {

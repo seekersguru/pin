@@ -27,6 +27,8 @@ exports.create = function(req, res, next) {
 
   var data = _.pick(req.body, 'type'),
     uploadPath = '/uploads';
+    req.body.url=req.body.title.trim().replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().split(' ').join('-');
+
   console.log(req.files);
   if (req.files && req.files.file) {
 
