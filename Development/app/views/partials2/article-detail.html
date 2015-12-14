@@ -213,7 +213,7 @@
    <!-- <a ng-if="currentUser.role=='admin'" class="btn readmore-bt " type="button" ng-href="/articles/edit/{{articles._id}}"  >Edit </a></p> -->
 
   
-  <h3>comments</h3>
+  <h3>Comments</h3>
   <ul class="commentList">
 
 <li ng-repeat="(key,value) in articles.scomments" ng-if="currentUser._id==value.user._id || value.user.commentvisible == 'public' || (value.user.commentvisible == 'friends' && checkcommitstatus (currentUser._id,value.following) )  ">
@@ -281,6 +281,7 @@
         <br/>
     
     </li>
+    <li ng-if="!articles.scomments.length">No comments yet</li>
 </ul>
 <div class="actionBox" ng-if="currentUser._id" >
  <h3>Post Your Comment</h3>
