@@ -495,19 +495,25 @@ angular.module('pinApp', [
       controller: 'CompanyEditViewCtrl',
       title: 'View Company',
       resolve: {
-        company: ['$q', '$route', 'Company', function($q, $route, Company) {
+        company: ['$q', '$route', 'Company','$http','$rootScope', function($q, $route, Company,$http,$rootScope) {
           var deferred = $q.defer();
-          Company.get({
-              companyId: $route.current.params.companyid
-            }, function(event) {
-              deferred.resolve(event);
-            },
-            function(err) {
-              deferred.reject();
-            });
-          return deferred.promise;
-        }]
+          $http.get('/api/companys/url/'+$route.current.params.companyid)
+            .success(function(article) {
+               $rootScope.ogTitle = article.title; 
+               deferred.resolve(article);
+            }).error(deferred.reject);
 
+            // Article.get({
+            //     articleId: $route.current.params.articleid
+            //   }, function(article) {
+            //     var articles={articles:article}
+            //     deferred.resolve(articles);
+            //   },
+            //   function(err) {
+            //     deferred.reject();
+            //   });
+            return deferred.promise;
+          }]
       },
     })
 
