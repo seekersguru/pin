@@ -1120,27 +1120,6 @@ angular.module('pinApp')
           }).
           success(function(data, status, headers, config) {
             $scope.gridCompanyData = data.company;
-            $.each(data.company,function(i,company){
-              setTimeout(function(){
-                console.log(company._id +' , ' + company.title.trim().replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().split(' ').join('-'));
-
-                 $http({
-                method: 'PUT',
-                url: '/api/companys/' + company._id,
-                data: {
-                  'url': company.title.trim().replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().split(' ').join('-')
-                  }
-                }).
-                success(function(data, status, headers, config) {
-                  $scope.gridCompanyData[removeIndex].approve = setStatus;
-                }).
-                error(function(data, status, headers, config) {
-                  // ...
-                  // $scope.article={};
-                });
-              },1000);
-
-            });
 
           }).
           error(function(data, status, headers, config) {
