@@ -119,7 +119,7 @@ module.exports = function(app) {
   app.get('/api/companys/basic', companys.basic);
   app.get('/api/companys/register', companys.register);
   app.get('/api/companys/:companyid', companys.show);
-  // app.get('/api/companys/url/:url', companys.showurl);
+  app.get('/api/companys/url/:url', companys.showurl);
   app.post('/api/companys',   companys.create);
   app.put('/api/companys/:companyid',companys.update);
   app.del('/api/companys/:companyid', companys.remove);
