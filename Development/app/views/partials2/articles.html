@@ -35,7 +35,7 @@
 <div class="{{ color[value.hanscategory].colorclass }}" ng-class="{'white-box':currentCategoryName }">
 
   <div class="entry-thumb" ng-if='value.media.extension.indexOf("image") > -1'>
-   <a  ng-href="/articles/view/{{value._id}}"><img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive" alt=""></a>
+   <a  ng-href="/articles/view/{{value.url}}"><img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive" alt=""></a>
  </div>
 
  <!-- <div ng-if='!value.media' class="block-image">
@@ -45,22 +45,22 @@
   <div class="entry-content">
 
   <div class="entry-title">
-  <h3><a ng-href="/articles/view/{{value._id}}">{{value.title}}
+  <h3><a ng-href="/articles/view/{{value.url}}">{{value.title}}
  </a></h3>
   </div>
   <div class="entry-date">{{value.createdAt | date:"MMMM d , yyyy" }}</div>
     <div class="entry-meta">
-     <span><img src="images/comment-icon.png" alt=""></span> <span class="disqus-comment-count" data-disqus-url="{{HOSTPATH}}/articles/view/{{value._id}}"> <!-- Count will be inserted here --> </span> Comments
+     <span><img src="images/comment-icon.png" alt=""></span> <span class="disqus-comment-count" data-disqus-url="{{HOSTPATH}}/articles/view/{{value.url}}"> <!-- Count will be inserted here --> </span> Comments
     </div>
   </div>
-<div class="arrow-articale"><a ng-href="/articles/view/{{value._id}}"><img src="images/articale-aarow.png" alt=""></a></div>
+<div class="arrow-articale"><a ng-href="/articles/view/{{value.url}}"><img src="images/articale-aarow.png" alt=""></a></div>
  <!-- end:entry-content -->
  </div>
 </article>
 
 <div class="video-img"  ng-if='value.media.extension.indexOf("video") > -1'>
  <div class="video-hight"><img ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}"> </div>
- <div class="play-icon"><a ng-href="/articles/view/{{value._id}}"><img src="images/play-icon.png" alt=""></a></div>
+ <div class="play-icon"><a ng-href="/articles/view/{{value.url}}"><img src="images/play-icon.png" alt=""></a></div>
  <div class="{{ color[value.hanscategory].videoclass }}">{{value.title}}</div>
 </div>
 </div>

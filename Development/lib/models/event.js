@@ -97,7 +97,8 @@ var EventSchema = new Schema({
     name: String,
     path: String,
     originalName: String
-  }
+  },
+  url:String
 });
 
 // Basic info to identify the current authenticated user in the app
@@ -113,7 +114,8 @@ EventSchema
       // 'comments':this.comments.length,
       'eventdate': this.eventdate,
       'category': this.category,
-      'approve': this.public
+      'approve': this.public,
+      'url':this.url
     };
   });
 

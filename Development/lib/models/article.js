@@ -37,7 +37,8 @@ var ArticleSchema = new Schema({
                name:String,
                 path:String,
                 originalName:String
-              }
+              },
+ url:String
 });
 
 // Basic info to identify the current authenticated user in the app
@@ -52,6 +53,7 @@ ArticleSchema
       'comments':this.scomments.length,
       'createdAt':this.createdAt,
       'category':this.category,
+      'url':this.url,
       'hansicategory':this.hansicategory,
       'approve':this.public
     };
