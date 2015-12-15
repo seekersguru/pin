@@ -43,6 +43,7 @@ module.exports = function(app) {
 	app.get('/api/hansiarticles', articles.hansi);
 	app.get('/api/articles/basic', articles.basic);
 	app.get('/api/articles/:articleid', articles.show);
+	app.get('/api/articles/url/:url', articles.showurl);
 	app.post('/api/articles', multipartMiddleware, articles.create);
 	app.put('/api/articles/:articleid', multipartMiddleware, articles.update);
 	app.del('/api/articles/:articleid', articles.remove);
@@ -129,6 +130,7 @@ module.exports = function(app) {
 	app.get('/api/events', events.query);
 	app.get('/api/events/basic', events.basic);
 	app.get('/api/events/:articleid', events.show);
+	app.get('/api/events/url/:url', events.showurl);
 	app.post('/api/events', events.create);
 	app.put('/api/events/:articleid', multipartMiddleware, events.update);
 	app.del('/api/events/:articleid', events.remove);
