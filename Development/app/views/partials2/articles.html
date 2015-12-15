@@ -52,7 +52,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in exceptonearticle | filter:{ mmisubcategory: selectcategory }">
                         <div class="content-block">
                             <div ng-if='!value.youtubeurl && value.media.extension.indexOf("image") > -1' class="block-image">
-                                <a ng-href="/articles/view/{{value._id}}">
+                                <a ng-href="/articles/view/{{value.url}}">
                                     <img ng-if="!value.media.path" ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">
                                     <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}" class="img-responsive">
                                     <div class="shadow-img">
@@ -61,7 +61,7 @@
                                 </a>
                             </div>
                             <div ng-if='!value.youtubeurl && value.media.extension.indexOf("video") > -1' class="block-image">
-                                <a ng-href="/articles/view/{{value._id}}">
+                                <a ng-href="/articles/view/{{value.url}}">
                                     <img ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}">
                                     <div class="play-iocn"></div>
                                     <div class="shadow-img">
@@ -70,7 +70,7 @@
                                 </a>
                             </div>
                            <div ng-if='value.youtubeurl && value.media.extension.indexOf("image") > -1' class="block-image">
-                                <a ng-href="/articles/view/{{value._id}}">
+                                <a ng-href="/articles/view/{{value.url}}">
                                     <img ng-src="../{{value.media.path}}" class="img-responsive" title="{{value.title}}">
                                     <div class="play-iocn"></div>
                                     <div class="shadow-img">
@@ -79,7 +79,7 @@
                                 </a>
                             </div>
                             <div ng-if='!value.media' class="block-image">
-                                <a ng-href="/articles/view/{{value._id}}">
+                                <a ng-href="/articles/view/{{value.url}}">
                                     <img ng-src="images/{{mmicategorysetting[value.mmicategory]['main-image']}}" class="img-responsive" title="{{value.title}}">
                                 </a>
                             </div>
