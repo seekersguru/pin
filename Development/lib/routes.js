@@ -190,7 +190,7 @@ module.exports = function(app) {
 					if(articleId[1]=== 'articles')
 					{
 					 req['params']['articleid']=articleId[3];
-						articles.show(req,res).then(function(data){
+						articles.showurl(req,res).then(function(data){
 						res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="Money Management India"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/>');
 					});
 
@@ -198,7 +198,7 @@ module.exports = function(app) {
 					else if(articleId[1] === 'company')
 					{
 					 req['params']['companyid']=articleId[3];
-						companys.show(req,res).then(function(data){
+						companys.showurl(req,res).then(function(data){
 							console.log(data);
 						res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="http://moneymanagementindia.net/images/new-logo.png><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="Money Management India"/> <meta name="twitter:image:src" content="http://moneymanagementindia.net/images/new-logo.png"/>');
 					});
@@ -209,7 +209,7 @@ module.exports = function(app) {
 					 req['params']['articleid']=articleId[3];
 
 
-					 events.show(req,res).then(function(data){
+					 events.showurl(req,res).then(function(data){
 						 console.log(data);
 						 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.bannertext)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.bannertext)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="Money Management India"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/>');
 					 });
