@@ -36,7 +36,7 @@
   <p ng-bind-html="events[0].bannertext | limitTo:600 | rawHtml "></p>
 
   <div class="date">{{events[0].eventdate | date:"EEE, MMMM dd, yyyy"}}</div>
-  <a type="submit" class="btn btn-primary"  ng-href="/event/view/{{events[0]._id}}">
+  <a type="submit" class="btn btn-primary"  ng-href="/event/view/{{events[0].url}}">
   See details<i class="fa fa-angle-right"></i></a>
   </div>
   
@@ -50,7 +50,7 @@
    <div class="clearfix">
    <div class="event-icon"><img alt="" class="img-responsive" ng-src="images/{{value.type}}.png"></div>
    <div class="event-content">
-   <h3><a ng-href="/event/view/{{value._id}}"> @ {{value.title}} - {{value.location.locality}}</a></h3>
+   <h3><a ng-href="/event/view/{{value.url}}"> @ {{value.title}} - {{value.location.locality}}</a></h3>
    <p>{{value.eventdate | date:"EEE, MMMM dd, yyyy"}}</p>
    <p> {{events[0].location.locality }} {{events[0].location.state}} {{events[0].location.country}}</p>
     </div>
