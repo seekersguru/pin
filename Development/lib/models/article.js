@@ -27,6 +27,7 @@ var ArticleSchema = new Schema({
   hanscategory:String,
   mmicategory:String,
   mmisubcategory:String,
+  url:String,
   column:{ type:Number, default:1},
   merchs: {},
   comments: [{ user: { type: ObjectId, ref: 'User' },

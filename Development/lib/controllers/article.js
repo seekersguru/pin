@@ -446,6 +446,38 @@ exports.show=function(req,res){
 
 };
 
+// show particluar one article
+exports.showurl = function(req, res) {
+	var deferred = Q.defer(),
+		url = req.params.url;
+	Article.find({'url':url})
+	.populate('author','name email')
+	.populate('comments.user','_id fullname following commentvisible')
+		.exec(function(err, article) {
+			if (err) {
+				console.log(err);
+				return res.json(404, err);
+			}
+			if (!article) {
+				console.log('notfound');
+				return res.send(404);
+			}
+			if (article && !req.params.bot) {
+				return res.json(article[0]);
+			} else {
+				deferred.resolve(article[0]);
+			}
+
+
+		});
+
+	if (req.params.bot) {
+		return deferred.promise;
+	}
+
+};
+
+
 // show all articles with paging
 exports.query = function(req, res) {
 

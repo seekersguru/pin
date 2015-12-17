@@ -43,7 +43,7 @@
 <p class="articleview" ng-bind-html="events[0].bannertext | rawHtml "></p>
 </div>
 
-<P><a class="btn btn-info" ng-href="/event/view/{{events[0]._id}}" >See Details </a>
+<P><a class="btn btn-info" ng-href="/event/view/{{events[0].url}}" >See Details </a>
 </P>
 </div>
 </div>
@@ -62,7 +62,7 @@
    
    <div class="row event-row-mar">
      <div class="col-lg-6 col-md-6 col-sm-6" ng-repeat="(key,value) in events" ng-show="!$first">
-     <a ng-href="/event/view/{{value._id}}"> <div class="event-box clearfix">
+     <a ng-href="/event/view/{{value.url}}"> <div class="event-box clearfix">
         <div class="event-iocn">
          <img ng-src="images/{{value.type }}.jpg" alt=""> 
        </div> 

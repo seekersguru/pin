@@ -214,18 +214,30 @@ angular.module('pinApp', [
     templateUrl: 'partials2/article-detail',
     controller:'ArticleCtrl',
     resolve:{
-      articles: ['$q', '$route', 'Article', function($q, $route, Article) {
-        var deferred = $q.defer();
-        Article.get({articleId: $route.current.params.articleid}, function(article) {
-          deferred.resolve(article);
-        },
-        function(err){
-          deferred.reject();
-        });
-        return deferred.promise;
-      }]
+     articles: ['$q', '$route', 'Article','$http','$rootScope', function($q, $route,
+            Article,$http,$rootScope) {
+            var deferred = $q.defer();
+            $http.get('/api/articles/url/'+$route.current.params.articleid)
+            .success(function(article) {
+               // var articles={articles:article};
+               $rootScope.ogTitle = article.title; 
+               deferred.resolve(article);
+            }).error(deferred.reject);
 
-    },
+            // Article.get({
+            //     articleId: $route.current.params.articleid
+            //   }, function(article) {
+            //     var articles={articles:article}
+            //     deferred.resolve(articles);
+            //   },
+            //   function(err) {
+            //     deferred.reject();
+            //   });
+            return deferred.promise;
+          }]
+
+
+        },
     authenticate: true
   })
   .when('/articles/edit/:id', {
@@ -361,18 +373,17 @@ angular.module('pinApp', [
     controller: 'EventViewCtrl',
     title: 'Meet Event',
       resolve:{
-      events: ['$q', '$route', 'Event', function($q, $route, Event) {
-        var deferred = $q.defer();
-        Event.get({articleId: $route.current.params.eventid}, function(event) {
-          deferred.resolve(event);
-        },
-        function(err){
-          deferred.reject();
-        });
-        return deferred.promise;
-      }]
+      events: ['$q', '$route', 'Event','$http','$rootScope',function($q, $route, Event,$http,$rootScope) {
+            var deferred = $q.defer();
+            $http.get('/api/events/url/'+$route.current.params.eventid)
+            .success(function(events) {
+               $rootScope.ogTitle = events.title; 
+               deferred.resolve(events);
+            }).error(deferred.reject);
+            return deferred.promise;
+          }]
 
-    },
+        },
 })
 .when('/event/edit/:eventid', {
     templateUrl: 'partials2/edit-event',
