@@ -36,7 +36,7 @@
               </div> 
               <h3 class="articles-head"><a href="#">{{value.title}}</a></h3>
               <p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml"></p>
-              <div class="btn-gold"><a ng-href="/articles/view/{{value._id}}">Readmore</a></div>
+              <div class="btn-gold"><a ng-href="/articles/view/{{value.url}}">Readmore</a></div>
               <div class="clearfix"></div>
             </div>
           </div>
@@ -136,16 +136,16 @@
 <div class="creations-container">
 <div class="row" id="article-container">
  <div  ng-repeat="(key,value) in articles" class="article-post"  ng-class="{true:'col-lg-8 col-md-8 col-sm-8 {{value.category}}',false:'col-lg-4 col-md-4 col-sm-4 {{value.category}}'}[value.column == 2]" >
-  <a ng-href="/articles/view/{{value._id}}">
+  <a ng-href="/articles/view/{{value.url}}">
   <div class="post-box">
       <div class="" ng-class="color[value.category].caption">
-       <a ng-href="/articles/view/{{value._id}}"><div><img src="images/post-hover-img.png" alt=""></div>
-       <div class="read-more"><a ng-href="/articles/view/{{value._id}}">Read more</a></div>
+       <a ng-href="/articles/view/{{value.url}}"><div><img src="images/post-hover-img.png" alt=""></div>
+       <div class="read-more"><a ng-href="/articles/view/{{value.url}}">Read more</a></div>
        </a>
       </div>
 
 <div class="" ng-class="color[value.category].colorclass">
- <a ng-href="/articles/view/{{value._id}}">
+ <a ng-href="/articles/view/{{value.url}}">
  <div ng-if='value.media.extension.indexOf("image") > -1' class="artical-img">
           <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive" title="{{value.title}}">           
           <img ng-if="value.media.path" ng-src="../{{value.media.path}}" title="{{value.title}}">
@@ -157,7 +157,7 @@
           <img ng-if="value.thumblemedia.path" ng-src="../{{value.thumblemedia.path}}" title="{{value.title}}">        
     </div>
           <div class="inner-area"> 
-<h3 class="articles-head"><a ng-href="/articles/view/{{value._id}}">{{value.title}}</a></h3>
+<h3 class="articles-head"><a ng-href="/articles/view/{{value.url}}">{{value.title}}</a></h3>
 <p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml" ng-if='!value.media'></p>
  </div>
  </a>

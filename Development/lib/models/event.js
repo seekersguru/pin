@@ -16,6 +16,7 @@ var EventSchema = new Schema({
   money: { type: Boolean, default: true },
   hans: { type: Boolean, default: true },
   mainImage: String,
+  url:String,
   discovered: { type: Boolean, default: false, index: true },
   agenda:{type:String, required:true},
   bannertext:{type:String,required:true},

@@ -40,6 +40,7 @@ module.exports = function(app) {
   app.get('/api/articles', articles.query);
   app.get('/api/articles/basic', articles.basic);
   app.get('/api/articles/:articleid', articles.show);
+  app.get('/api/articles/url/:url', articles.showurl);
   app.post('/api/articles',  multipartMiddleware, articles.create);
   app.put('/api/articles/:articleid', multipartMiddleware,articles.update);
   app.del('/api/articles/:articleid', articles.remove);
@@ -118,6 +119,7 @@ module.exports = function(app) {
   app.get('/api/events', events.query);
   app.get('/api/events/basic', events.basic);
   app.get('/api/events/:articleid', events.show);
+  app.get('/api/events/url/:url', events.showurl);
   app.post('/api/events',   events.create);
   app.put('/api/events/:articleid', multipartMiddleware,events.update);
   app.del('/api/events/:articleid', events.remove);
@@ -182,7 +184,7 @@ module.exports = function(app) {
 					if(articleId[1]=== 'articles')
 					{
 					 req['params']['articleid']=articleId[3];
-						articles.show(req,res).then(function(data){
+						articles.showurl(req,res).then(function(data){
 						res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/>');
 					});
 
@@ -191,7 +193,7 @@ module.exports = function(app) {
 					 req['params']['articleid']=articleId[3];
 
 
-					 events.show(req,res).then(function(data){
+					 events.showurl(req,res).then(function(data){
 						 console.log(data);
 						 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.bannertext)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.bannertext)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/>');
 					 });
