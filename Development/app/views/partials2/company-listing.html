@@ -49,6 +49,7 @@
 
 </div>
 
+
 <div class="alphalist">
 <ul>
   <!-- <li ng-click="activateLetter('')" ><a  ng-class="{'active':activeLetter==''}">ALL</a></li> -->
@@ -60,8 +61,11 @@
 </div>
 </form>
 
+<p><h2 ng-show="searchStart && (companys  | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter).length"> Number of search results <strong>{{ searchStart && (companys  | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter).length}} </strong></h2></p>
+
 
 <div id="upcomming-event">
+
 <ul>
 <li ng-repeat="(key,value) in companys | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter | orderBy:'title'" ng-show="searchStart">
 <h2><a href="/company/view/{{value.url}}">{{value.title}}</a></h2>
