@@ -201,6 +201,8 @@ angular.module('pinApp', [
       .when('/articles/search/:search', {
         templateUrl: 'partials2/article-search',
         controller: 'ArticleSearchCtrl',
+        authenticate: true
+        
       })
       .when('/post-article', {
         templateUrl: 'partials2/post-article',
@@ -217,6 +219,7 @@ angular.module('pinApp', [
       .when('/event', {
         templateUrl: 'partials2/meet',
         controller: 'EventListCtrl',
+        authenticate: true,
         resolve: {
           events: ['$q', '$route', 'Event', function($q, $route, events) {
             var deferred = $q.defer();
@@ -238,6 +241,7 @@ angular.module('pinApp', [
       .when('/articles/view/:articleid', {
         templateUrl: 'partials2/article-detail',
         controller: 'ArticleCtrl',
+        authenticate: true,
         resolve: {
             articles: ['$q', '$route', 'Article','$http','$rootScope', function($q, $route,
             Article,$http,$rootScope) {
@@ -407,6 +411,7 @@ angular.module('pinApp', [
       .when('/event/view/:eventid', {
         templateUrl: 'partials2/artical-details-meet',
         controller: 'EventViewCtrl',
+        authenticate: true,
         title: 'Meet Event',
         resolve: {
           events: ['$q', '$route', 'Event','$http','$rootScope',function($q, $route, Event,$http,$rootScope) {
@@ -445,6 +450,7 @@ angular.module('pinApp', [
       templateUrl: 'partials2/company-listing',
       title: 'Company Listing',
       controller: 'CompanyCtrl',
+      authenticate: true,
       resolve: {
         companys: ['$q', '$route', 'Company', function($q, $route,
           Company) {
@@ -493,6 +499,7 @@ angular.module('pinApp', [
     .when('/company/view/:companyid', {
       templateUrl: 'partials2/company-details',
       controller: 'CompanyEditViewCtrl',
+      authenticate: true,
       title: 'View Company',
       resolve: {
         company: ['$q', '$route', 'Company','$http','$rootScope', function($q, $route, Company,$http,$rootScope) {
