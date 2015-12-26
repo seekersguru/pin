@@ -166,6 +166,46 @@
 </div>  
 </div>
 <div class="dot-hr"></div>
+<div class="share-button clearfix">
+<div class="facebook-share">
+  <a class="btn btn-facebook" 
+  socialshare
+  socialshare-provider="facebook"
+  socialshare-text="{{articles.title}}"
+  socialshare-media="../{{ articles.media.path || articles.thumblemedia.path }}"
+  >
+    <i class="fa fa-facebook"></i>
+    <span>Facebook</span>
+  </a>
+ <!--  <span class="count"></span> -->
+</div>
+
+<div class="twitter-share">
+  <a class="btn btn-twitter"
+  socialshare
+  socialshare-provider="twitter"
+  socialshare-text="{{articles.title}}"
+  socialshare-media="{{articles.media.path || articles.thumblemedia.path }}"
+  >
+    <i class="fa fa-twitter"></i>
+    <span>Tweet</span>
+  </a>
+ <!--  <span class="count"></span> -->
+</div>
+
+<div class="google-plus-share">
+  <a class="btn btn-google-plus"
+  socialshare
+  socialshare-provider="google+"
+  socialshare-text="{{articles.title}}"
+  socialshare-media="{{articles.media.path || articles.thumblemedia.path }}"
+  >
+    <i class="fa fa-google-plus"></i>
+    <span>+1</span>
+  </a>
+ <!--  <span class="count"></span> -->
+</div>
+</div>
 <div class="row-mar">
 
       <!-- <div ng-if='!articles.media' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
