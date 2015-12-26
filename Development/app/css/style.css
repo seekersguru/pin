@@ -2286,6 +2286,25 @@ td {
         background-color: #0099d4;
         color:#fff; 
   }
+
+  .btn-linkedin{   background-color: #0170AC;
+    text-shadow: 1px 1px 0 #23639a; border: 0 none;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 12px;
+    padding: 0 8px; }  
+  .btn-linkedin:hover{
+        background-color: #287bbc;
+        color:#fff; 
+  }
   .count {
   position: relative;
   background: #fff;

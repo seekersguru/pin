@@ -185,7 +185,7 @@
   socialshare
   socialshare-provider="twitter"
   socialshare-text="{{articles.title}}"
-  socialshare-media="{{articles.media.path || articles.thumblemedia.path }}"
+  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}"
   >
     <i class="fa fa-twitter"></i>
     <span>Tweet</span>
@@ -198,10 +198,24 @@
   socialshare
   socialshare-provider="google+"
   socialshare-text="{{articles.title}}"
-  socialshare-media="{{articles.media.path || articles.thumblemedia.path }}"
+  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}"
   >
     <i class="fa fa-google-plus"></i>
-    <span>+1</span>
+    <span>google+</span>
+  </a>
+ <!--  <span class="count"></span> -->
+</div>
+
+<div class="google-plus-share">
+  <a class="btn btn-linkedin"
+  socialshare
+  socialshare-provider="linkedin"
+  socialshare-text="{{articles.title}}"
+  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}"
+
+  >
+    <i class="fa fa-linkedin"></i>
+    <span>Linkedin</span>
   </a>
  <!--  <span class="count"></span> -->
 </div>
