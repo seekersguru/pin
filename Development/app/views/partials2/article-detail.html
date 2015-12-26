@@ -169,7 +169,8 @@
     <div class="col-lg-9 col-md-9 col-sm-9 ">
      <h1>{{articles.title}}</h1>
     <div class="green-hr"></div>
-    <div >
+
+    <div>
       <!-- <div ng-if='!articles.media' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
         <img src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
 
@@ -189,14 +190,74 @@
     </div>
 
     <p class="date-articale">{{articles.createdAt | date:"MMMM d, yyyy" }}</p>
+    <div class="share-button clearfix">
+<div class="facebook-share">
+  <a class="btn btn-facebook" 
+  socialshare
+  socialshare-provider="facebook"
+  socialshare-text="{{articles.title}}"
+  socialshare-media="../{{ articles.media.path || articles.thumblemedia.path }}"
+  >
+    <i class="fa fa-facebook"></i>
+    <span>Facebook</span>
+  </a>
+ <!--  <span class="count"></span> -->
+</div>
+
+<div class="twitter-share">
+  <a class="btn btn-twitter"
+  socialshare
+  socialshare-provider="twitter"
+  socialshare-text="{{articles.title}}"
+  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}"
+  >
+    <i class="fa fa-twitter"></i>
+    <span>Tweet</span>
+  </a>
+ <!--  <span class="count"></span> -->
+</div>
+
+<div class="google-plus-share">
+  <a class="btn btn-google-plus"
+  socialshare
+  socialshare-provider="google+"
+  socialshare-text="{{articles.title}}"
+  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}"
+  >
+    <i class="fa fa-google-plus"></i>
+    <span>google+</span>
+  </a>
+ <!--  <span class="count"></span> -->
+</div>
+
+<div class="google-plus-share">
+  <a class="btn btn-linkedin"
+  socialshare
+  socialshare-provider="linkedin"
+  socialshare-text="{{articles.title}}"
+  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}"
+ 
+  >
+    <i class="fa fa-linkedin"></i>
+    <span>Linkedin</span>
+  </a>
+ <!--  <span class="count"></span> -->
+</div>
+</div>
+
+
     <p class="articleview" ng-bind-html="articles.description | rawHtml "></p>
     
 
 <div>
-<div class="author-hr"></div>
+<div class="author-hr">
+  
+</div>
 <div class="auther-name">{{articles.author.name}}</div>
+
 <!-- <div class="auther-disc">Head of Private Banking   |   Lorem Ipsum Industries</div>	 -->
 </div>
+
 
     <p class="btn-articale-mar"><a class="btn btn-info" type="button" href="/articles/01"  ><i class="fa fa-angle-left"></i> Back To Articles </a>
    <a ng-if="currentUser.role=='admin'" class="btn btn-primary " type="button" ng-href="/articles/edit/{{articles._id}}"  > Edit <i class="fa fa-angle-right"></i> </a></p>
