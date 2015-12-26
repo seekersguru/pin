@@ -2230,3 +2230,102 @@ td {
 .alphalist ul li a{ font-size:16px; color: #032c5a; text-transform:uppercase; cursor:pointer;}
 .alphalist ul li a:hover{  color: #259f64; }
 .alphalist ul li a.active{color: #259f64;}
+
+    .share-button{margin:15px 0; clear:both;  }
+    .btn-facebook{ background-color: #3b5998;
+    text-shadow: 1px 1px 0 #1b2947; border: 0 none;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 12px;
+    padding: 0 8px; }
+ .btn-facebook:hover{
+    background-color: #2d4373;
+    color:#fff; 
+}
+    .btn-google-plus{ background-color: #d34836;
+    text-shadow: 1px 1px 0 #69241b; border: 0 none;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 12px;
+    padding: 0 8px; }
+      .btn-google-plus:hover{
+ background-color: #b03626;
+ color:#fff; 
+      }
+    .btn-twitter{   background-color: #00aced;
+    text-shadow: 1px 1px 0 #00506e; border: 0 none;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 12px;
+    padding: 0 8px; }  
+  .btn-twitter:hover{
+        background-color: #0099d4;
+        color:#fff; 
+  }
+  .count {
+  position: relative;
+  background: #fff;
+  border: 1px solid #888;
+  background-color: #fff;
+    border: 1px solid #aeaeae;
+    border-radius: 2px;
+    color: #555;
+    cursor: default;
+    display: block;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 15px 0 8px;
+    padding: 0 7px;
+    position: relative;
+}
+.count:after, .count:before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.count:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-right-color: #fff;
+  border-width: 5px;
+  margin-top: -5px;
+}
+.count:before {
+  border-color: rgba(136, 136, 136, 0);
+  border-right-color: #888;
+  border-width: 6px;
+  margin-top: -6px;
+}
