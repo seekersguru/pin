@@ -3030,3 +3030,24 @@ h1 {
   border-width: 6px;
   margin-top: -6px;
 }
+.btn-mail{background-color: #fff;
+    text-shadow: 1px 1px 0 #ddd; border: 0 none;
+    border-radius: 2px;
+    color: #333;
+    border:solid 1px #333;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 24px;
+    margin: 0;
+    padding: 0 8px; }  
+  .btn-mail:hover{
+        background-color: #fff;
+        color:#888; 
+        border:solid 1px #888;
+  }
+
