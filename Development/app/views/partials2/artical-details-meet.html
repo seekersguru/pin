@@ -83,7 +83,9 @@ Venue
   </div>
   <div class="col-lg-4 col-md-4 col-sm-4 padding-left0">
 <div class="address">
- <p> {{events.location.address}}</p>
+<p ng-if="!events.location.customaddress"> {{events.location.address}}</p>
+ <p ng-if="events.location.customaddress"> {{events.location.customaddress}}</p>
+
 
  <p>{{events.location.city}}</p>
 
