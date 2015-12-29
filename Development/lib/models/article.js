@@ -38,7 +38,8 @@ var ArticleSchema = new Schema({
                 path:String,
                 originalName:String
               },
- url:String
+ url:String,
+ youtubeurl:String
 });
 
 // Basic info to identify the current authenticated user in the app
@@ -55,7 +56,8 @@ ArticleSchema
       'category':this.category,
       'url':this.url,
       'hansicategory':this.hansicategory,
-      'approve':this.public
+      'approve':this.public,
+      'youtubeurl':this.youtubeurl
     };
   });
 
