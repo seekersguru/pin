@@ -30,7 +30,7 @@
 <div class="row">
 <div class="col-md-6 col-sm-6 padr-30" ng-repeat="(key,value) in exceptonearticle">
 
-<article ng-if='!value.youtubeurl && (!value.media.extension || value.media.extension.indexOf("video") <= -1') >
+<article ng-if='!value.media.extension || value.media.extension.indexOf("video") <= -1' >
 
 <div class="{{ color[value.hanscategory].colorclass }}" ng-class="{'white-box':currentCategoryName }">
 
@@ -58,19 +58,11 @@
  </div>
 </article>
 
-<div class="video-img"  ng-if='!value.youtubeurl && value.media.extension.indexOf("video") > -1'>
+<div class="video-img"  ng-if='value.media.extension.indexOf("video") > -1'>
  <div class="video-hight"><img ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}"> </div>
  <div class="play-icon"><a ng-href="/articles/view/{{value.url}}"><img src="images/play-icon.png" alt=""></a></div>
  <div class="{{ color[value.hanscategory].videoclass }}">{{value.title}}</div>
 </div>
-
-
-<div class="video-img"  ng-if='value.youtubeurl && value.media.extension.indexOf("image") > -1'>
- <div class="video-hight"><img ng-src="../{{value.media.path}}" class="img-responsive" title="{{value.title}}"> </div>
- <div class="play-icon"><a ng-href="/articles/view/{{value.url}}"><img src="images/play-icon.png" alt=""></a></div>
- <div class="{{ color[value.hanscategory].videoclass }}">{{value.title}}</div>
-</div>
-
 </div>
 </div>
 </div>
