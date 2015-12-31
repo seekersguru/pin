@@ -4556,8 +4556,20 @@ $scope.color={
       ]
   }
   ];
+  $scope.subtopic={
+    'Wealth planning':'WM/distribution',
+    'Business issues':'WM/distribution',
+    'Advisory process':'WM/distribution',
+    'Traditional':'Investments',
+    'Alternative':'Investments',
+    'Portfolios Construction':'Investments',
+    'Markets':'Investments',
+    'Investor comms':'Communication'
+  }
 
-
+    $scope.changeparenttopic=function(){
+     $scope.chat.topic=$scope.subtopic[$scope.chat.subtopic];
+    }
     $scope.changetopic=function(){
 
      var removeIndex = $scope.topicnames
@@ -4730,7 +4742,7 @@ if(form.$valid)
       $scope.chat.authormmi=$rootScope.currentUser._id;
       $http({ method: 'POST', url: '/api/discussions',data:$scope.chat }).
       success(function (data, status, headers, config) {
-       // $location.path('/discussion-start').search('cid',$scope.chatid);
+       $location.path('/discussion-start').search('cid',$scope.chat.cid);
         $scope.forsubmit=0;
         $scope.chatlist.push($scope.chat);
         $scope.form.$setPristine();

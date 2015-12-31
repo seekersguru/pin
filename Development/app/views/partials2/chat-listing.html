@@ -46,14 +46,24 @@
             <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">  
             <div class="form-group">
-              <select  class="form-control" name="topicnames" ng-model="search.topic" ng-change="changelookuptopic()">
+              <!-- <select  class="form-control" name="topicnames" ng-model="search.topic" ng-change="changelookuptopic()">
                <option value=""> ---Select Topic--- </option>
                <option ng-repeat="(key,value) in topicnames" value="{{value.name}}">{{value.name}}</option>
+              </select>
+ -->
+
+
+
+              <select class="form-control fliter" id="sel1" ng-model="search.topic">
+                  <option value="">--Select Topic--</option>
+                    <optgroup ng-repeat="(key,mmicat) in  topicnames" label="{{mmicat.name}}">
+                      <option ng-repeat="(key,value) in  mmicat.sub" value="{{value.name}}" >{{ value.name }} </option>
+                    </optgroup>
               </select>
 
             </div>
           </div>
-
+<!-- 
           <div class="col-lg-6 col-md-6 col-sm-6">
               <div class="form-group">
                 <select  class="form-control" name="mmisubcategory" ng-model="search.subtopic" >
@@ -62,7 +72,7 @@
                 </select>
             </div>
 
-          </div>
+          </div> -->
 
         </div>
 
@@ -110,6 +120,8 @@
    <img src="images/user-icon.png" alt=""> <span>160</span>/325
   </div> -->
  </div> 
+  
+
 </div>
 
 </div>
@@ -155,21 +167,26 @@
             <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">  
             <div class="form-group">
-              <select  class="form-control" name="topicnames" ng-model="chat.topic" ng-change="changetopic()">
+             <!--  <select  class="form-control" name="topicnames" ng-model="chat.topic" ng-change="changetopic()">
                <option value=""> ---Select Topic--- </option>
                <option ng-repeat="(key,value) in topicnames" value="{{value.name}}">{{value.name}}</option>
+              </select> -->
+                <select class="form-control fliter" id="sel1" ng-model="chat.subtopic" ng-change="changeparenttopic()">
+                  <option value="">--Select Topic--</option>
+                    <optgroup ng-repeat="(key,mmicat) in  topicnames" label="{{mmicat.name}}">
+                      <option ng-repeat="(key,value) in  mmicat.sub"  id="sub-{{value.name}}" value="{{value.name}}" >{{ value.name }} </option>
+                    </optgroup>
               </select>
-
             </div>
           </div>
 
           <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="form-group">
+             <!--  <div class="form-group">
                 <select  class="form-control" name="mmisubcategory" ng-model="chat.subtopic" >
                   <option value=""> ---Select Sub Topic--- </option>
                   <option ng-repeat="(key,value) in subtopicnames" value="{{value.name}}">{{value.name}}</option>
                 </select>
-            </div>
+            </div> -->
 
           </div>
 
