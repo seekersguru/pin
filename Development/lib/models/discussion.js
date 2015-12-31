@@ -40,6 +40,7 @@ DiscussionSchema
       '_id': this._id,
       'title': this.title,
       'topic':this.topic,
+      'subtopic':this.subtopic,
       'cid': this.cid,
        };
   });
