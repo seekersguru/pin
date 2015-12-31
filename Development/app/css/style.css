@@ -5045,3 +5045,6 @@ margin:0 auto 10px auto;
       text-align: left;
       height: 400px;
   }
+.service-label{
+    display: block !important;
+}
