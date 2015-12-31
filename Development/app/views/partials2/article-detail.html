@@ -30,67 +30,27 @@
   <div class="date-articale">{{articles.createdAt |date:"MMMM d , yyyy"}} </div>
 </div>
 
-<div class="share-button clearfix">
-<!-- <div class="facebook-share">
-  <a class="btn btn-facebook" 
-  socialshare
-  socialshare-provider="facebook"
-  socialshare-text="{{articles.title}}"
-  socialshare-media="../{{ articles.media.path || articles.thumblemedia.path }}"
-  >
-    <i class="fa fa-facebook"></i>
-    <span>Facebook</span>
-  </a>
-</div>
- -->
-<div class="twitter-share">
-  <a class="btn btn-twitter"
+
+<div class="sharebutton clearfix">
+ <ul>
+  <!-- <li><a href="" class="facebook"><i class="fa fa-facebook"></i></a></li> -->
+ <li><a 
   socialshare
   socialshare-provider="twitter"
   socialshare-text="{{articles.title}}"
-  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}"
-  >
-    <i class="fa fa-twitter"></i>
-    <span>Tweet</span>
-  </a>
- <!--  <span class="count"></span> -->
-</div>
-
-<div class="google-plus-share">
-  <a class="btn btn-google-plus"
-  socialshare
-  socialshare-provider="google+"
-  socialshare-text="{{articles.title}}"
-  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}"
-  >
-    <i class="fa fa-google-plus"></i>
-    <span>google+</span>
-  </a>
- <!--  <span class="count"></span> -->
-</div>
-
-<div class="google-plus-share">
-  <a class="btn btn-linkedin"
-  socialshare
+  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}" class="twitter"><i class="fa fa-twitter"></i></a></li> 
+  <li><a socialshare
   socialshare-provider="linkedin"
   socialshare-text="{{articles.title}}"
-  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}"
- 
-  >
-    <i class="fa fa-linkedin"></i>
-    <span>Linkedin</span>
-  </a>
- <!--  <span class="count"></span> -->
+  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}"class="linkdin"><i class="fa fa-linkedin"></i></a></li>
+  <li><a socialshare
+  socialshare-provider="google+"
+  socialshare-text="{{articles.title}}"
+  socialshare-media="../{{articles.media.path || articles.thumblemedia.path }}" class="google"><i class="fa fa-google-plus"></i></a></li>
+  <li><a href="mailto:?&subject={{articles.title}}&body={{articles.description | htmlToPlaintext}}" class="mail"><i class="fa fa-envelope"></i></a></li> 
+ </ul> 
 </div>
-<div class="google-plus-share">
-  <a class="btn btn-mail"
-  href="mailto:?&subject={{articles.title}}&body={{articles.description | htmlToPlaintext}}">
-    <i class="fa fa-envelope"></i>
-    <span>Mail</span>
-  </a>
- <!--  <span class="count"></span> -->
-</div>
-</div>
+
   <div class="row-mar">
 
     <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-5 pull-right imge-pad text-right">
