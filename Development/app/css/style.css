@@ -3050,4 +3050,76 @@ h1 {
         color:#888; 
         border:solid 1px #888;
   }
+.sharebutton ul {
+    float: left;
+    list-style: outside none none;
+    margin: 15px 0 12px;
+    padding: 0; border-top:none; 
+}
+ .sharebutton ul li {
+    float: left;
+    font-size: 1.8rem; border-bottom:none; 
+}
+ .sharebutton ul li a.facebook {
+    background-color: #3b5998;
+    color: #fff;
+    float: left;
+    margin-right: 10px;
+   height:30px; width:30px; text-align:center; line-height:32px;    
+    text-decoration: none;
+}
+ .sharebutton ul li a.facebook:hover {
+    color: #fff;
+    background-color:#2f4980; 
+}
+
+.sharebutton ul li a.twitter {
+    background-color: #30b4db;
+    color: #fff;
+    float: left;
+    margin-right: 10px;
+  height:30px; width:30px; text-align:center; line-height:32px;
+    text-decoration: none;
+}
+ .sharebutton ul li a.twitter:hover {
+    color: #fff;
+    background-color:#27a4c9; 
+}
+ .sharebutton ul li a.linkdin {
+    background-color: #1373b3;
+    color: #fff;
+    margin-right: 10px;
+    float: left;
+     height:30px; width:30px; text-align:center; line-height:32px;
+    text-decoration: none;
+}
+ .sharebutton ul li a.linkdin:hover {
+    color: #fff;
+     background-color: #04679b;
+}
+ .sharebutton ul li a.google {
+    background-color: #d34836;
+    color: #fff;
+    margin-right: 10px;
+    float: left;
+  height:30px; width:30px; text-align:center; line-height:32px;
+    text-decoration: none;
+}
+ .sharebutton ul li a.google:hover {
+    color: #fff;
+    background-color:#b03626; 
+}
+ .sharebutton ul li a.mail {
+    background-color: #fff;
+    color: #333;
+    margin-right: 10px;
+    border:solid 1px #333;
+    float: left;
+    height:30px; width:30px; text-align:center; line-height:28px;
+    text-decoration: none;
+}
+ .sharebutton ul li a.mail:hover {
+    color: #888;
+    border:solid 1px #888;
+}
 
