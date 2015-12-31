@@ -14,6 +14,7 @@ var ArticleSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   public: { type: Boolean, default: false },
   mainImage: String,
+  tmh:{ type: Boolean, default: false },
   discovered: { type: Boolean, default: false, index: true },
   description:{type:String, required:true},
   nFavorites:{ type:Number, default:0},
@@ -57,7 +58,8 @@ ArticleSchema
       'url':this.url,
       'hansicategory':this.hansicategory,
       'approve':this.public,
-      'youtubeurl':this.youtubeurl
+      'youtubeurl':this.youtubeurl,
+      'tmh':this.tmh
     };
   });
 

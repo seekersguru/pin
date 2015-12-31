@@ -181,25 +181,25 @@
     </div>
 </script>
 <!-- for money hans -->
-<div class="container">
+<div class="container" ng-controller="NavbarCtrl"> 
 <div class="row pad-top-80">
 <div class="logo">
 <a href="/"><img src="images/logo.png" alt=""></a>
 </div>
 
    <div class="col-md-3 search">
-        <!-- <form role="search">
+        <form  role='form' name="form" ng-submit="searcharticle(form)" novalidate>
           <div id="custom-search-input">
                             <div class="input-group">
-                                <input type="text" class="search-query form-control" placeholder="Search" />
+                                <input type="text" ng-model="search" class="search-query form-control" placeholder="Search" required/>
                                 <span class="input-group-btn">
-                                    <button class="btn btn-danger" type="button">
+                                    <button class="btn btn-danger" type="submit" ng-click="searcharticle(form)">
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </span>
                             </div>
                         </div>
-        </form> -->
+        </form>
       </div>
       </div>
 </div>
