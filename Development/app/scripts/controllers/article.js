@@ -34,6 +34,11 @@ angular.module('pinApp')
     'image':'purple-chat.jpg'
 }
 };
+
+if($scope.articles.youtubeurl){
+    $scope.articleyoutubeurl = $sce.trustAsResourceUrl($scope.articles.youtubeurl);
+}
+
 $scope.rightnav="right-nav.html";
 
 setTimeout(function(){
