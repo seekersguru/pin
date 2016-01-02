@@ -610,7 +610,7 @@ a:hover {
     position: absolute;
     top: 63px;
     width: 90px;
-    z-index: 0;
+    z-index: 1;
 }
 .register-bt {
     background-color: #253863;

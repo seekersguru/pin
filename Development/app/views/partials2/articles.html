@@ -1,11 +1,9 @@
-
-  <!-- <div class="container"> -->
-    <!-- Articles section -->
-    <!-- <div class="member-us-section article-inner">
+<!-- <div class="container"> -->
+<!-- Articles section -->
+<!-- <div class="member-us-section article-inner">
       <h1 class="text-center">Articles</h1>
     </div> -->
-
-    <!-- article listing Start-->
+<!-- article listing Start-->
 <!--     <div class="row">
 
       <div class="col-lg-4" ng-repeat="(key,value) in articles">
@@ -45,13 +43,9 @@
 
       </div>
  -->
-
-
-
-      <!-- article listing Stop-->
-
-      <!--end-->
-      <!-- <div class="row-fluid" style="margin-top:20px;text-align:center" >
+<!-- article listing Stop-->
+<!--end-->
+<!-- <div class="row-fluid" style="margin-top:20px;text-align:center" >
         <div class="col-xs-12" style="margin-top:30px;">
           <a href="#sorter" du-smooth-scroll class="btn btn-default" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1;changePage()">
             Previous
@@ -77,103 +71,94 @@
           </a>
         </div>
       </div>
- -->      <!-- /container -->
-    <!-- </div> -->
-
-
-
-
+ -->
+<!-- /container -->
+<!-- </div> -->
 <div class="container-head learning-section">
-
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-6">
-  <ul class="breadcrumb">
-    <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
-    <li><a class="active" >LEARN</a></li>
-</ul>
-</div>  
-<div class="col-lg-6 col-md-6 col-sm-6">
-  <div class="row ">
-<div class="col-lg-6 col-md-6 col-sm-6 padding-top7">
-<div class="pull-right clear-filter"><a data-filter=""><i class="fa fa-times"></i>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <ul class="breadcrumb">
+                <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a class="active">LEARN</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="row ">
+                <div class="col-lg-6 col-md-6 col-sm-6 padding-top7">
+                    <div class="pull-right clear-filter"><a data-filter=""><i class="fa fa-times"></i>
  Clear filter</a></div>
-</div>
-
-<div class="col-lg-6 col-md-6 col-sm-6 padding-top7">
-<form novalidate  name="form" role='form' ng-submit="searcharticle(form)">
-<div class="form-group">
- <input  type="text" placeholder="Search" name="srch-term" ng-model="search" id="srch-term" required class="form-control" placeholder="Search">
-</div>
-</form>
-</div>
-
-</div>
-</div> 
-
-
-</div>
-
-
-<div class="row">
-<div class="col-lg-9 col-md-9 col-sm-9">
-<div class="learn-nav creations-filter">
- <ul class="clearfix filterArticle">
-
-  <!-- <li><a href="#Grow" data-filter=".Grow" class="current">Grow</a></li>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 padding-top7">
+                    <form novalidate name="form" role='form' ng-submit="searcharticle(form)">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search" name="srch-term" ng-model="search" id="srch-term" required class="form-control" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <div class="learn-nav creations-filter">
+                <ul class="clearfix filterArticle">
+                    <!-- <li><a href="#Grow" data-filter=".Grow" class="current">Grow</a></li>
     <li><a href="#Protect" data-filter=".Protect">Protect</a></li> 
       <li> <a href="#Manage" data-filter=".Manage">Manage</a></li> 
         <li><a href="#Give" data-filter=".Give">Give</a></li>  
     -->
-    <li><a  data-filter=".Grow" >Grow</a></li>
-    <li><a  data-filter=".Protect">Protect</a></li> 
-    <li> <a  data-filter=".Manage">Manage</a></li> 
-    <li><a  data-filter=".Give">Give</a></li>  
- 
- </ul> 
-</div>  
+                    <li><a data-filter=".Grow">Grow</a></li>
+                    <li><a data-filter=".Protect">Protect</a></li>
+                    <li> <a data-filter=".Manage">Manage</a></li>
+                    <li><a data-filter=".Give">Give</a></li>
+                </ul>
+            </div>
+            <div class="creations-container">
+                <div class="row" id="article-container">
+                    <div ng-repeat="(key,value) in articles" class="article-post" ng-class="{true:'col-lg-8 col-md-8 col-sm-8 {{value.category}}',false:'col-lg-4 col-md-4 col-sm-4 {{value.category}}'}[value.column == 2]">
+                        <a ng-href="/articles/view/{{value.url}}">
+                            <div class="post-box">
+                                <div class="" ng-class="color[value.category].caption">
+                                    <a ng-href="/articles/view/{{value.url}}">
+                                        <div><img src="images/post-hover-img.png" alt=""></div>
+                                        <div class="read-more"><a ng-href="/articles/view/{{value.url}}">Read more</a></div>
+                                    </a>
+                                </div>
+                                <div class="" ng-class="color[value.category].colorclass">
+                                    <a ng-href="/articles/view/{{value.url}}">
 
-
-<div class="creations-container">
-<div class="row" id="article-container">
- <div  ng-repeat="(key,value) in articles" class="article-post"  ng-class="{true:'col-lg-8 col-md-8 col-sm-8 {{value.category}}',false:'col-lg-4 col-md-4 col-sm-4 {{value.category}}'}[value.column == 2]" >
-  <a ng-href="/articles/view/{{value.url}}">
-  <div class="post-box">
-      <div class="" ng-class="color[value.category].caption">
-       <a ng-href="/articles/view/{{value.url}}"><div><img src="images/post-hover-img.png" alt=""></div>
-       <div class="read-more"><a ng-href="/articles/view/{{value.url}}">Read more</a></div>
-       </a>
-      </div>
-
-<div class="" ng-class="color[value.category].colorclass">
- <a ng-href="/articles/view/{{value.url}}">
- <div ng-if='value.media.extension.indexOf("image") > -1' class="artical-img">
+ <div ng-if='!value.youtubeurl && value.media.extension.indexOf("video") < -1' class="artical-img">
           <img ng-if="!value.media.path" src="images/articels001.jpg" class="img-responsive bw" title="{{value.title}}">           
           <img ng-if="value.media.path" ng-src="../{{value.media.path}}" class="bw" title="{{value.title}}">
-          </div>
-          <div ng-if='value.media.extension.indexOf("video") > -1' class="artical-video">
-          <div class="video-play-icon"></div>
+  </div>
+  <div ng-if='!value.youtubeurl && value.media.extension.indexOf("video") > -1' class="artical-video">
+        <div class="video-play-icon"></div>
 
           <img ng-if="!value.thumblemedia.path" src="images/video-play.jpg" class="img-responsive" title="{{value.title}}">           
           <img ng-if="value.thumblemedia.path" ng-src="../{{value.thumblemedia.path}}" class="bw" title="{{value.title}}">        
     </div>
+   <div ng-if='value.youtubeurl && value.media.extension.indexOf("image") > -1' class="artical-video">
+        <div class="video-play-icon"></div>
+
+          <img ng-if="!value.media.path" src="images/video-play.jpg" class="img-responsive" title="{{value.title}}">           
+          <img ng-if="value.media.path" ng-src="../{{value.media.path}}" class="bw" title="{{value.title}}">        
+    </div>
+
           <div class="inner-area"> 
 <h3 class="articles-head"><a ng-href="/articles/view/{{value.url}}">{{value.title}}</a></h3>
-<p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml" ng-if='!value.media'></p>
- </div>
- </a>
-</div>
-</a>
-</div>
-
- </div>
-</div>
-<!-- <p><button class="btn load-more" type="button">  Load More </button></p> -->
-</div>
-</div>
-
-
-<div class="col-lg-3 col-md-3 col-sm-3">
-  <div ng-include="'partials2/right-nav.html'"> </div>
-</div>
+                                    <p ng-bind-html="value.description | limitTo:descriptionLimit | rawHtml" ng-if='!value.media'></p>
+                                </div>
+                        </a>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- <p><button class="btn load-more" type="button">  Load More </button></p> -->
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3">
+        <div ng-include="'partials2/right-nav.html'"> </div>
+    </div>
 </div>
 </div>
