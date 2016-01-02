@@ -197,7 +197,7 @@
         <img src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
 
       </div> -->
-      <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
+<!--       <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
         <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive bw"> 
 
         <img ng-if="articles.media.path"  ng-src="../{{articles.media.path}}" title="{{articles.title}}" class="img-responsive bw">
@@ -210,6 +210,48 @@
         </vg-media>
       </videogular>
     </div>
+ -->
+
+
+
+      <div ng-if='articles.youtubeurl' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
+       <iframe width="420" height="315" ng-src="{{articleyoutubeurl}}" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div ng-if='!articles.youtubeurl && articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
+        <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive bw"> 
+
+        <img ng-if="articles.media.path"  ng-src="../{{articles.media.path}}" title="{{articles.title}}" class="img-responsive bw">
+      </div>
+      <div ng-if='!articles.youtubeurl &&  articles.media && articles.media.extension.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
+        <videogular vg-theme='config.theme' >
+          <vg-media 
+          vg-src="config.sources" 
+          vg-native-controls="true"  >
+        </vg-media>
+        <!-- <vg-controls>
+            <vg-play-pause-button></vg-play-pause-button>
+            <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+            <vg-scrub-bar>
+                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+            </vg-scrub-bar>
+            <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+            <vg-time-display>{{ totalTime | date:'mm:ss':'+0000' }}</vg-time-display>
+            <vg-volume>
+                <vg-mute-button></vg-mute-button>
+                <vg-volume-bar></vg-volume-bar>
+            </vg-volume>
+            <vg-fullscreen-button></vg-fullscreen-button>
+        </vg-controls>
+         --><vg-overlay-play></vg-overlay-play>
+        <vg-poster vg-url='config.plugins.poster'></vg-poster>
+      </videogular>
+    </div>
+
+
+
+
+
 
     <p class="date-articale">{{articles.createdAt | date:"MMMM d, yyyy" }}</p>
 
