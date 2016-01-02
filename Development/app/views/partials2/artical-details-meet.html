@@ -20,8 +20,8 @@
 <div class="register-form-hr"></div>
 
 <div class="meet-baner-img">
-<img  ng-if="!events.media" src="images/meet-baner-img-2.jpg" class="img-responsive" alt="">
-<img  ng-if="events.media" src="{{events.media.path}}" class="img-responsive" alt="">
+<img  ng-if="!events.media" src="images/meet-baner-img-2.jpg" class="img-responsive bw" alt="">
+<img  ng-if="events.media" src="{{events.media.path}}" class="img-responsive bw" alt="">
 
 <div class="baner-content">
 <div>
@@ -62,7 +62,7 @@ AGENDA
                    <span><img src="images/mail-icon.png" alt=""></span>
                 </div>
 
-<div><img ng-src="{{val.flag}}" class="img-responsive" alt=""></div>
+<div><img ng-src="{{val.flag}}" class="img-responsive bw" alt=""></div>
 </div>
   <h5>{{val.name}}</h5>
   <p>{{val.designation}}</p>
