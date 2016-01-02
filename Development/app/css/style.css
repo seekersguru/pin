@@ -5142,6 +5142,9 @@ ul.ed-iocn {
     float: left;
     font-size: 1.8rem; border-bottom:none; 
 }
+ .sharebutton ul li {
+        cursor: pointer;
+}
  .sharebutton ul li a.facebook {
     background-color: #3b5998;
     color: #fff;
