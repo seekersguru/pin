@@ -173,7 +173,7 @@ module.exports = function(app) {
 	app.get('/*',function(req,res,next){
 		var source = req.headers['user-agent'],
 			ua = useragent.parse(source);
-			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl+"----";
+			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 			// console.log(ua);
 		if (ua.isBot) {
 
