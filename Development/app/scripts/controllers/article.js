@@ -515,7 +515,8 @@ $scope.uploadPic = function(files) {
       mmitags:$scope.article.mmitags,
       tags:$scope.article.tags,
       column:$scope.article.column,
-      youtubeurl:$scope.article.youtubeurl
+      youtubeurl:$scope.article.youtubeurl,
+      metadescription:$scope.article.metadescription
        };
 
      var mainfiles=[];
