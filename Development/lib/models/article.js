@@ -18,6 +18,7 @@ var ArticleSchema = new Schema({
   discovered: { type: Boolean, default: false, index: true },
   description:{type:String, required:true},
   nFavorites:{ type:Number, default:0},
+  metadescription:String,
   tags: [String],
   keywords: [String],
   category: String,
