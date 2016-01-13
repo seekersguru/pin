@@ -84,7 +84,7 @@
                                 </a>
                             </div>
                             <h2 class="articale-title-h">{{value.title | htmlToPlaintext | limitTo:60 }}</h2>
-                            <p><small>by</small> {{value.author.fullname || value.author.name}}</p>
+                            <p><small>by</small> {{value.author.name || value.author.fullname }}</p>
                             <p ng-bind-html="value.description + '...'"> </p>
                             <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value.url}}">Read more </a></p>
                         </div>
