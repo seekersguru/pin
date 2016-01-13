@@ -133,7 +133,7 @@ angular.module('pinApp')
       var n = d.getTime();
       if(form.$valid) {
         Auth.createUser({
-          fullname: "--",
+          fullname: $scope.user.name,
           name:  $scope.user.name,
           username:  n,
           alias: $scope.user.alias,
