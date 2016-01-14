@@ -225,9 +225,16 @@ angular.module('pinApp', [
         resolve: {
           articles: ['$q', '$route', 'Article', function($q, $route,
             Article) {
-            var deferred = $q.defer();
+            var deferred = $q.defer(),
+              categoryURL={
+                'architect-blueprint':'Architect Blueprint',
+                 'essentials-foundation':'Essentials Foundation',
+                 'growth-pillars':'Growth Pillars',
+                 'freedom-slab':'Freedom Slab',
+                 'fun-money-roof':'Fun Money Roof'
+                };
             Article.bycategory({
-                category: $route.current.params.categoryname
+                category: categoryURL[$route.current.params.categoryname]
               }, function(articles) {
                 deferred.resolve(articles.articles);
               },

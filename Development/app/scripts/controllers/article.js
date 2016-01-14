@@ -4,6 +4,13 @@ angular.module('pinApp')
     $rootScope,
     $routeParams, $http, articles, $sce, $timeout, $filter,
     localStorageService, $modal) {
+    var categoryURL={
+                'architect-blueprint':'Architect Blueprint',
+                 'essentials-foundation':'Essentials Foundation',
+                 'growth-pillars':'Growth Pillars',
+                 'freedom-slab':'Freedom Slab',
+                 'fun-money-roof':'Fun Money Roof'
+                };
     $scope.article = {};
     $scope.descriptionLimit = 80;
     $scope.titleLimit = 45;
@@ -14,6 +21,13 @@ angular.module('pinApp')
     $scope.hanscategory = ['Architect Blueprint', 'Essentials Foundation',
       'Growth Pillars', 'Freedom Slab', 'Fun Money Roof'
     ];
+
+    $scope.hanscategoryURL={'Architect Blueprint':'architect-blueprint',
+                           'Essentials Foundation':'essentials-foundation',
+                           'Growth Pillars':'growth-pillars',
+                            'Freedom Slab':'freedom-slab',
+                           'Fun Money Roof':'fun-money-roof'
+    };
 
     var sitename = "http://" + $location.host() + "/";
     if (articles.length) {
@@ -30,6 +44,7 @@ angular.module('pinApp')
         .path : sitename + "images/logo.png";
 
     }
+
     $scope.modelPopup = {
       'Architect Blueprint': 'Before you build a house, you need a plan. Write down your goals and figure out how much they cost. Also, think about any attitudes or knowledge gaps that might stop you from building your dream house.',
       'Essentials Foundation': 'These are things you cannot afford to lose. The most important is your life and health, so get insurance. The next is having emergency cash for any unforeseen events. Some need to have their house, while others need to have part of their wealth in very safe investments with minimal risk.',
@@ -60,7 +75,7 @@ angular.module('pinApp')
         // "-bg";
 
       } else {
-        $location.path("/category/" + categoryname);
+        $location.path("/category/" + $scope.hanscategoryURL[categoryname]);
       }
 
     };
@@ -197,7 +212,7 @@ angular.module('pinApp')
     //if in url category is found then apply color and
     //category name to article listing section
     if ($routeParams.categoryname) {
-      $scope.currentCategoryName = $routeParams.categoryname;
+      $scope.currentCategoryName = categoryURL[$routeParams.categoryname];
       $rootScope.bodyMainClass = $scope.color[$scope.currentCategoryName]
         .bodyClass +
         "-bg";
@@ -207,6 +222,9 @@ angular.module('pinApp')
       $rootScope.bodyDoodleMainClass = '';
       $rootScope.bodyMainClass = '';
     }
+
+    $rootScope.appTitle = $scope.currentCategoryName + '-The Money Hans';
+    $rootScope.ogTitle = $scope.currentCategoryName + '-The Money Hans';
     $scope.articles = articles;
     $scope.exceptonearticle = angular.copy(articles);
     $scope
