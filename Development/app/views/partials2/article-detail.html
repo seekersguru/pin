@@ -159,7 +159,7 @@
  <h1> {{articles.title}}</h1>
 <div class="clearfix">
 <div class="pull-left">
-<p>by {{articles.author.name | uppercase}}  </p>
+<p>by {{( articles.author.fullname || articles.author.name  )| uppercase}}  </p>
 </div>
 <div class="pull-right">
 <p>{{articles.createdAt |date:"MMMM d , yyyy"}} </p>
