@@ -215,8 +215,16 @@ exports.show = function(req, res) {
 				return res.send(404);
 			}
 			if (article && !req.params.bot) {
+				if(article.author.fullname === '--')
+				{
+					article.author.fullname = article.author.name;
+				}
 				return res.json(article);
 			} else {
+				if(article.author.fullname === '--')
+				{
+					article.author.fullname = article.author.name;
+				}
 				deferred.resolve(article);
 			}
 
