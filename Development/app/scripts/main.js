@@ -85,6 +85,27 @@ angular.module('pinApp', [
           }]
         }
       })
+      .when('/category/:categoryname', {
+        templateUrl: 'partials2/articles',
+        controller: 'ArticleCtrl',
+        resolve: {
+          articles: ['$q', '$route', 'Article', function($q, $route,
+            article) {
+            var deferred = $q.defer();
+            var query = angular.copy($route.current.params);
+            query.limit = 10;
+            query.pageno=1;
+            query.mmisubcategory=$route.current.params.categoryname || '';
+            article.get(query, function(articles) {
+                deferred.resolve(articles);
+              },
+              function(err) {
+                deferred.reject();
+              });
+            return deferred.promise;
+          }]
+        }
+      })
       .when('/', {
         templateUrl: 'partials2/articles',
         controller: 'ArticleCtrl',
@@ -1336,18 +1357,22 @@ $scope.mmicategory=[
     'sub': [
     {
       'name':'Traditional',
+      'url':'traditional',
       'tags':['Equities','Fixed Interest','Real Estate', 'Cash','Global']
     },
     {
       'name':'Alternative',
+      'url':'alternative',
       'tags':['Private Equity', 'Hedge Fund', 'Venture, Angel', 'Real Estate']
     },
     {
       'name':'Portfolios Construction',
+      'url':'portfolios-construction',
       'tags':[]
     },
     {
       'name':'Markets',
+      'url':'markets',
       'tags':[]
     }
     ]
@@ -1357,14 +1382,17 @@ $scope.mmicategory=[
     'sub':[
           {
           'name':'Wealth planning',
+          'url':'wealth-planning',
           'tags':['Trusts', 'Wills', 'Governance']
           },
           {
             'name':'Business issues',
+            'url':'business-issues',
             'tags':['Strategy', 'marketing', 'sales, operations']
           },
           {
             'name':'Advisory process',
+            'url':'advisory-process',
             'tags':['Client onboarding', 'risk profiling','behavioural finance']
           }
         ]
@@ -1374,19 +1402,32 @@ $scope.mmicategory=[
     'sub': [
       {
       'name':'Investor comms',
+      'url':'investor-comms',
       'tags':[]
        }
       ]
   }
   ];
+
+   $scope.categoryNameWithUrl={
+    'investor-comms' : 'Investor comms',
+    'advisory-process': 'Advisory process',
+    'business-issues':  'Business issues',
+    'wealth-planning' : 'Wealth planning',
+    'markets':'Markets',
+    'portfolios-construction':'Portfolios Construction',
+    'alternative': 'Alternative',
+    'traditional':'Traditional'
+ };
+
  if(!$routeParams.articleid ){
-    $scope.selectcategory=$location.search() && $location.search().mmisubcategory ? $location.search().mmisubcategory:'';
+    $scope.selectcategory=$routeParams && $routeParams.categoryname ? $routeParams.categoryname:'';
     setTimeout(function(){
       $("#sel1").val($scope.selectcategory);
     },300);
    $scope.$watch('selectcategory',function(newValue,oldvalue) {
-    if(!$location.search() || $location.search() && $location.search().mmisubcategory !== newValue){
-       $location.path('/home').search({mmisubcategory:newValue});
+    if(newValue){
+       $location.path('/category/'+newValue);
     }
   });
   }

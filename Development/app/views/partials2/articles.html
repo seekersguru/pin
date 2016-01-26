@@ -7,7 +7,7 @@
                         <select class="form-control fliter" id="sel1" ng-model="selectcategory">
                             <option value="">--Select Category--</option>
                             <optgroup ng-repeat="(key,mmicat) in  mmicategory" label="{{mmicat.name}}">
-                                <option ng-repeat="(key,value) in  mmicat.sub" value="{{value.name}}">{{ value.name }} </option>
+                                <option ng-repeat="(key,value) in  mmicat.sub" value="{{value.url}}">{{ value.name }} </option>
                             </optgroup>
                         </select>
                     </div>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="gray-hr"></div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in exceptonearticle | filter:{ mmisubcategory: selectcategory }">
+                    <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in exceptonearticle | filter:{ mmisubcategory: categoryNameWithUrl[selectcategory] }">
                         <div class="content-block">
                             <div ng-if='!value.youtubeurl && value.media.extension.indexOf("image") > -1' class="block-image">
                                 <a ng-href="/articles/view/{{value.url}}">
