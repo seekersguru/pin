@@ -330,6 +330,17 @@ exports.query = function(req, res) {
 	var q = Article.find({});
 	/** apply limit  */
 	if (req.query.mmisubcategory) {
+		var  categoryNameWithUrl={
+    'investor-comms' : 'Investor comms',
+    'advisory-process': 'Advisory process',
+    'business-issues':  'Business issues',
+    'wealth-planning' : 'Wealth planning',
+    'markets':'Markets',
+    'portfolios-construction':'Portfolios Construction',
+    'alternative': 'Alternative',
+    'traditional':'Traditional'
+ };
+		req.query.mmisubcategory=categoryNameWithUrl[req.query.mmisubcategory];
 		countObject.mmisubcategory = req.query.mmisubcategory;
 		q.where('mmisubcategory').equals(req.query.mmisubcategory);
 	}

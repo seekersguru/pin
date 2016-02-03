@@ -40,7 +40,8 @@ var ArticleSchema = new Schema({
                 originalName:String
               } ,
  youtubeurl:String,
- url:String
+ url:String,
+ metadescription:String
 
 });
 

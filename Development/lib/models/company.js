@@ -31,7 +31,9 @@ var CompanySchema = new Schema({
            }],
   pin: { type: Boolean, default: true },
   money: { type: Boolean, default: true },
-  notes:String
+  notes:String,
+  metadescription:String
+
 
 
 });
