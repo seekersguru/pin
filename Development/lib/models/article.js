@@ -28,6 +28,8 @@ var ArticleSchema = new Schema({
   mmicategory:String,
   mmisubcategory:String,
   metadescription:String,
+  metatitle:String,
+  metakeywords:String,
   column:{ type:Number, default:1},
   merchs: {},
   comments: [{ user: { type: ObjectId, ref: 'User' },

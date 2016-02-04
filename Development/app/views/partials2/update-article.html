@@ -129,12 +129,31 @@
                   <input type="text" class="form-control" ng-model="article.youtubeurl"  placeholder="video url like https://www.youtube.com/watch?v=YqeW9_5kURI"/>
               </div>
             </div>
-    <div class="row">
+            
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                  <label>Meta Title</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-10">
+                  <input type="text" class="form-control" ng-model="article.metatitle"  placeholder="please write title which you want to pick up in SEO"/>
+              </div>
+            </div>
+
+           <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-2">
                   <label>Meta Description</label>
                   </div>
                   <div class="col-lg-10 col-md-10 col-sm-10">
                     <textarea class="form-control" ng-model="article.metadescription" placeholder="write shortdescription for this article it will use for SEO purpose">
+                    </textarea>
+                 </div>
+            </div>  
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                  <label>Meta Keywords</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-10">
+                    <textarea class="form-control" ng-model="article.metakeywords" placeholder="write metakeyword for this article this is like comma separed words  like   mmi, moneyhans,indianpin">
                     </textarea>
                  </div>
             </div>
