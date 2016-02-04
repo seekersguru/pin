@@ -960,9 +960,16 @@ angular.module('pinApp')
       description: article.description
     };
 
+    $scope.hanscategoryURL={'Architect Blueprint':'architect-blueprint',
+                           'Essentials Foundation':'essentials-foundation',
+                           'Growth Pillars':'growth-pillars',
+                            'Freedom Slab':'freedom-slab',
+                           'Fun Money Roof':'fun-money-roof'
+    };
+
     $scope.closeMessagePopup = function() {
       $modalInstance.close();
-      $location.path("/category/" + article.title);
+      $location.path("/category/" + $scope.hanscategoryURL[article.title]);
       // $rootScope.bodyMainClass = '';
 
     }
