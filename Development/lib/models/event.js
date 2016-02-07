@@ -44,6 +44,8 @@ var EventSchema = new Schema({
   keywords: [String],
   category: String,
   metadescription:String,
+  metatitle:String,
+  metakeywords:String,
   type: String,
   merchs: {},
   comments: [{ user: { type: ObjectId, ref: 'User' },

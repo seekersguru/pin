@@ -248,6 +248,8 @@ angular.module('pinApp')
         agenda: $scope.article.agenda,
         bannertext: $scope.article.bannertext,
         metadescription: $scope.article.metadescription,
+        metatitle:$scope.article.metatitle,
+        metakeywords:$scope.article.metakeywords,
         category: $scope.article.category,
         type: $scope.article.type,
         location: {
@@ -344,6 +346,8 @@ angular.module('pinApp')
         agenda: $scope.article.agenda,
         bannertext: $scope.article.bannertext,
         metadescription: $scope.article.metadescription,
+        metatitle:$scope.article.metatitle,
+        metakeywords:$scope.article.metakeywords,
         category: $scope.article.category,
         type: $scope.article.type,
         location: {
