@@ -19,6 +19,8 @@ var ArticleSchema = new Schema({
   description:{type:String, required:true},
   nFavorites:{ type:Number, default:0},
   metadescription:String,
+  metatitle:String,
+  metakeywords:String,
   tags: [String],
   keywords: [String],
   category: String,

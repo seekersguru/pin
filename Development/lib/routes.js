@@ -180,6 +180,7 @@ module.exports = function(app) {
 			var articleId=req.originalUrl.split("/");
 			console.log(articleId);
 			req.params.bot= true;
+			var keywords='Money ,Hans ,Hunt ,Huns ,Hansi ,Hansi Mehrotra ,Personal finance ,Investments ,Mutual funds ,Insurance ,Wealth ,Numbers ,Calculations ,independent expert ,financial planning ,budget ,best mutual fund ,basics of money ,how to learn about money ,how to invest ,how to save ,behavioural finance ,retirement ,donot put all eggs in one basket ,what is investing';
 
 			if(articleId.length === 4)
 			{
@@ -187,8 +188,10 @@ module.exports = function(app) {
 				{
 				 req['params']['url']=articleId[3];
 					articles.showurl(req,res).then(function(data){
-					var seoDesc=data.metadescription ? data.metadescription :data.description;
-			 		res.send('<meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/>');
+					var seoDesc=data.metadescription ? data.metadescription :data.description,
+					 seoTitle=data.metatitle ? data.metatitle :data.title + ' - The Money Hans',
+					 seoKeywords=data.metakeywords ? data.metakeywords :keywords;
+			 		res.send('<html><head><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+seoTitle+'"> <meta name="keywords" content="'+seoKeywords+'"><meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+seoTitle+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/></head><body><h1>'+seoTitle+'</h1><p>'+seoDesc+'</p></body></html>');
 		 		});
 
 			 	}else if(articleId[1] === 'event')
@@ -197,8 +200,11 @@ module.exports = function(app) {
 
 
 				 events.showurl(req,res).then(function(data){
-				 	 var seoDesc=data.metadescription ? data.metadescription :data.bannertext;
-					 res.send('<meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/>');
+				 	 var seoDesc=data.metadescription ? data.metadescription :data.bannertext,
+				 	  	 seoTitle=(data.metatitle ? data.metatitle :data.title) + ' - The Money Hans',
+						 seoKeywords=data.metakeywords ? data.metakeywords :keywords;
+			 		
+					 res.send('<html><head><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+seoTitle+'">  <meta name="keywords" content="'+seoKeywords+'"><meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+seoTitle+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="he Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/></head><body><h1>'+seoTitle+'</h1><p>'+seoDesc+'</p></body></html>');
 				 });
 
 			 }

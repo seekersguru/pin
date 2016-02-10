@@ -74,6 +74,8 @@ var EventSchema = new Schema({
   type: String,
   merchs: {},
   metadescription:String,
+  metatitle:String,
+  metakeywords:String,
 
   // comments: [{ user: { type: ObjectId, ref: 'User' },
   //              username:String,
