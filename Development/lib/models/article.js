@@ -41,7 +41,9 @@ var ArticleSchema = new Schema({
               } ,
  youtubeurl:String,
  url:String,
- metadescription:String
+ metadescription:String,
+ metakeywords:String,
+ metatitle:String
 
 });
 
