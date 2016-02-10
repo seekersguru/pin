@@ -182,8 +182,9 @@ module.exports = function(app) {
 			if (ua.isBot) {
 
 				var articleId=req.originalUrl.split("/");
-				console.log(articleId);
 				req.params.bot= true;
+				var keywords='wealth ,family office ,single family office ,asset management ,Hansi ,Hansi Mehrotra ,investments ,financial planning ,Mutual funds ,Insurance ,best mutual fund ,behavioural finance ,value investing ,economy ,how to select mutual funds ,portfolio construction ,credit ratings';
+
 
 				if(articleId.length === 4)
 				{
@@ -191,16 +192,18 @@ module.exports = function(app) {
 					{
 					 req['params']['url']=articleId[3];
 						articles.showurl(req,res).then(function(data){
-            var seoDesc=data.metadescription ? data.metadescription :data.description;
-						res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="Money Management India"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/>');
-					});
+           				var seoDesc=data.metadescription ? data.metadescription :data.description,
+							 seoTitle=data.metatitle ? data.metatitle :data.title + ' - Money Management India',
+					 		 seoKeywords=data.metakeywords ? data.metakeywords :keywords;
+			 				 res.send('<html><head><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+seoTitle+'"> <meta name="keywords" content="'+seoKeywords+'"><meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+seoTitle+'"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="The Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/></head><body><h1>'+seoTitle+'</h1><p>'+data.description+'</p></body></html>');
+		 			});
 
 					}
 					else if(articleId[1] === 'company')
 					{
 					 req['params']['url']=articleId[3];
 						companys.showurl(req,res).then(function(data){
-						res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="http://moneymanagementindia.net/images/new-logo.png><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="Money Management India"/> <meta name="twitter:image:src" content="http://moneymanagementindia.net/images/new-logo.png"/>');
+						res.send('<html><head><meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.description)+'"> <meta property="og:image" content="http://moneymanagementindia.net/images/new-logo.png><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.description)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="Money Management India"/> <meta name="twitter:image:src" content="http://moneymanagementindia.net/images/new-logo.png"/></head><body><h1>'+data.title+'</h1><p>'+data.description+'</p></body></html>');
 					});
 
 					}
@@ -210,9 +213,11 @@ module.exports = function(app) {
 
 
 					 events.showurl(req,res).then(function(data){
-           var seoDesc=data.metadescription ? data.metadescription :data.bannertext;
-						 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="Money Management India"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/>');
-					 });
+         			 var seoDesc=data.metadescription ? data.metadescription :data.bannertext,
+				 	  	 seoTitle=(data.metatitle ? data.metatitle :data.title) + ' - Money Management India',
+						 seoKeywords=data.metakeywords ? data.metakeywords :keywords;
+		 				 res.send('<html><head><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+seoTitle+'">  <meta name="keywords" content="'+seoKeywords+'"><meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+seoTitle+'"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="The Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/></head><body><h1>'+seoTitle+'</h1><p>'+data.description+'</p></body></html>');
+				 			 });
 
 				 }
 				}
@@ -223,7 +228,7 @@ module.exports = function(app) {
 						discussions.checkcid(req,res).then(function(data){
 							data=data[0];
 						 console.log(data);
-						 res.send('<meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"> <meta property="og:image" content="http://themoneyhans.com/images/hunsi-img.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="Money Management India"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/hunsi-img.png"/>');
+						 res.send('<html><head><meta property="og:type" content="article">   <meta property="og:site_name" content="Money Management India"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"> <meta property="og:image" content="http://themoneyhans.com/images/hunsi-img.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@maddyzonenews"/> <meta name="twitter:domain" content="Money Management India"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/hunsi-img.png"/></head></html>');
 					 });
 					}
 				}
