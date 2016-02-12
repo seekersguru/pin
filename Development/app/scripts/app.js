@@ -153,6 +153,11 @@ angular.module('pinApp', [
       .when('/who-we-are', {
         templateUrl: 'partials2/about.html'
       })
+      .when('/sitemap', {
+        templateUrl: 'partials2/sitemap.html',
+         controller: 'SitemapCtrl',
+
+      })
       .when('/contact-us', {
         templateUrl: 'partials2/contact-us.html'
       })

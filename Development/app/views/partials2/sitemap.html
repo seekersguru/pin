@@ -1,0 +1,125 @@
+
+<div class="container">
+<div id="breadcam">
+ <ul>
+ <li><a href="#"><img src="images/home-icon.png" alt=""></a></li>
+  <li><img src="images/arwwo-bardcam.png" alt=""></li>
+   <li>Sitemap</li>
+ </ul>
+</div>
+
+</div>
+
+<div class="container">
+<div class="inner-doodles-tophead-meet"></div>
+<div class="row mar-bot40">
+<div class="inner-doodles-drownig"></div>
+<div class="inner-doodles-men"></div>
+<div class="inner-doodles-right-1"></div>
+<div class="inner-doodles-right-2"></div>
+<div class="inner-doodles-right-3"></div>
+<div class="inner-doodles-right-4"></div>
+<!--architect area-->
+<div class="col-md-12 col-sm-12 padr-30">
+<h2>Sitemap</h2>
+<div class="discussions-section">
+
+
+
+<div class="row-mar">
+
+<div class="row chat-2mar15">
+ <div class="col-lg-12">
+<div class="discussions-section">
+<div class="eventdetail-box">
+
+<div class="inner-section">
+
+<h3><b>Home</b></h3>
+
+<ul>
+ <li >
+  <a href="/"> Home </a>
+  </li>
+</ul>
+
+<h3><b>Category</b></h3>
+
+<ul>
+ <li ng-repeat="(name,url) in hanscategoryURL track by $index">
+  <a ng-href="/category{{url}}"> {{name}} </a>
+    
+  </li>
+</ul>
+
+
+<h3><b>Articles</b></h3>
+
+<ul>
+  <li ng-repeat="(key,value) in pinarticles track by $index">
+  <a ng-href="/articles/view/{{value.url}}"> {{value.title}} </a>
+    
+  </li>
+</ul>
+
+
+
+<h3><b>Events</b></h3>
+
+<ul>
+  <li ng-repeat="(key,value) in pineventlist track by $index">
+   <a ng-href="/event/view/{{value.url}}"> @ {{value.title}} - {{value.location.locality}}</a>
+  </li>
+</ul>
+
+<h3><b>Discussions</b></h3>
+<ul>
+  <li ng-repeat="(key,value) in pindiscussionslist track by $index">
+  <a ng-href="/discussion-start?cid={{value.cid}}">  # {{value.title}} </a>
+    
+  </li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+
+
+
+</div>
+ </div>
+ </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+</div>
+<!--end-->
+
+
+
+
+
+
+</div>
