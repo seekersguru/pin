@@ -16,6 +16,63 @@ $scope.descriptionLimit=200;
       });   
   };
 
+$scope.mmicategoryList=[
+   {
+    'name':'Investments',
+    'sub': [
+    {
+      'name':'Traditional',
+      'url':'traditional',
+      'tags':['Equities','Fixed Interest','Real Estate', 'Cash','Global']
+    },
+    {
+      'name':'Alternative',
+      'url':'alternative',
+      'tags':['Private Equity', 'Hedge Fund', 'Venture, Angel', 'Real Estate']
+    },
+    {
+      'name':'Portfolios Construction',
+      'url':'portfolios-construction',
+      'tags':[]
+    },
+    {
+      'name':'Markets',
+      'url':'markets',
+      'tags':[]
+    }
+    ]
+    },
+  {
+    'name':'WM/distribution',
+    'sub':[
+          {
+          'name':'Wealth planning',
+          'url':'wealth-planning',
+          'tags':['Trusts', 'Wills', 'Governance']
+          },
+          {
+            'name':'Business issues',
+            'url':'business-issues',
+            'tags':['Strategy', 'marketing', 'sales, operations']
+          },
+          {
+            'name':'Advisory process',
+            'url':'advisory-process',
+            'tags':['Client onboarding', 'risk profiling','behavioural finance']
+          }
+        ]
+   },
+  {
+    'name':'Communication',
+    'sub': [
+      {
+      'name':'Investor comms',
+      'url':'investor-comms',
+      'tags':[]
+       }
+      ]
+  }
+  ];
 
 $scope.mmicategorysetting={
 'Investments':
