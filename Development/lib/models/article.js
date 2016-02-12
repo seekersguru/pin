@@ -58,6 +58,7 @@ ArticleSchema
       'tags': this.tags.toString(),
       'comments':this.scomments.length,
       'createdAt':this.createdAt,
+      'url':this.url,
       'category':this.category,
       'approve':this.public
     };

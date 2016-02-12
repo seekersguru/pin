@@ -142,6 +142,9 @@ angular.module('pinApp', [
         controller: 'SocketCtrl',
         authenticate: true
       })
+      .when('/sitemap', {
+        templateUrl: 'partials2/sitemap',
+      })
       .when('/discussion-start', {
         templateUrl: 'partials2/discussion-start',
         controller: 'SocketCtrl',
@@ -3980,6 +3983,63 @@ $scope.descriptionLimit=200;
   };
 
 
+$scope.mmicategory=[
+   {
+    'name':'Investments',
+    'sub': [
+    {
+      'name':'Traditional',
+      'url':'traditional',
+      'tags':['Equities','Fixed Interest','Real Estate', 'Cash','Global']
+    },
+    {
+      'name':'Alternative',
+      'url':'alternative',
+      'tags':['Private Equity', 'Hedge Fund', 'Venture, Angel', 'Real Estate']
+    },
+    {
+      'name':'Portfolios Construction',
+      'url':'portfolios-construction',
+      'tags':[]
+    },
+    {
+      'name':'Markets',
+      'url':'markets',
+      'tags':[]
+    }
+    ]
+    },
+  {
+    'name':'WM/distribution',
+    'sub':[
+          {
+          'name':'Wealth planning',
+          'url':'wealth-planning',
+          'tags':['Trusts', 'Wills', 'Governance']
+          },
+          {
+            'name':'Business issues',
+            'url':'business-issues',
+            'tags':['Strategy', 'marketing', 'sales, operations']
+          },
+          {
+            'name':'Advisory process',
+            'url':'advisory-process',
+            'tags':['Client onboarding', 'risk profiling','behavioural finance']
+          }
+        ]
+   },
+  {
+    'name':'Communication',
+    'sub': [
+      {
+      'name':'Investor comms',
+      'url':'investor-comms',
+      'tags':[]
+       }
+      ]
+  }
+  ];
 $scope.mmicategorysetting={
 'Investments':
 {
@@ -4086,7 +4146,27 @@ $scope.popuplogin=function(){
 
   };
 
+  $scope.getArticle=function(){
+    $scope.eventlist=[];
+     $http({
+      method:"GET",
+      url:'api/articles/basic'
+    }).
+    success(function (data,status,headers,config){
+
+      $scope.basicArticles=data.articles;
+    })
+
+    .error(function (data,status,headers,config){
+
+    });
+
+
+
+  };
+
   $scope.getHansiArticle();
+  $scope.getArticle();
 
   $scope.searcharticle=function(form)
   {

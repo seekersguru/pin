@@ -1,0 +1,65 @@
+ <div class="container">
+<div id="content-section">
+<div class="row" ng-controller="NavbarCtrl">
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+<div class="inner-section">
+<br>
+ <h1>Sitemap</h1> 
+
+<h3><b>Home</b></h3>
+
+<ul>
+ <li >
+  <a href="/"> Home </a>
+  </li>
+</ul>
+
+<h3><b>Category</b></h3>
+
+<ul>
+ <li ng-repeat="(key,value) in mmicategory">
+  {{value.name}}
+    <ul>
+      <li ng-repeat="(subname,subvalue) in value.sub">
+        <a ng-href="/category/{{subvalue.url}}"> {{subvalue.name}} </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+<h3><b>Articles</b></h3>
+
+<ul>
+  <li ng-repeat="(key,value) in basicArticles track by $index">
+  <a ng-href="/articles/view/{{value.url}}"> {{value.title}} </a>
+    
+  </li>
+</ul>
+
+
+
+<h3><b>Events</b></h3>
+
+<ul>
+  <li ng-repeat="(key,value) in pineventlist" ng-if="value"><a ng-href="/event/view/{{value.url}}">{{value.title}} -- {{ value.eventdate | date:"d-MMMM-yyyy" }}</a></li> 
+            
+</ul>
+
+<h3><b>Discussions</b></h3>
+<ul>
+  <li ng-repeat="(key,value) in pindiscussionslist track by $index">
+  <a ng-href="/discussion-start?cid={{value.cid}}">  # {{value.title}} </a>
+    
+  </li>
+</ul>
+
+</div> 
+</div> 
+</div>
+
+</div>
+</div>
+
+<!-- /container -->
