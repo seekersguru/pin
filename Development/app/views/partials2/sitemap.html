@@ -29,7 +29,7 @@
 </ul>
 
 
-<h3><b>Articles</b></h3>
+<h3><b>Contents</b></h3>
 
 <ul>
   <li ng-repeat="(key,value) in basicArticles track by $index">
@@ -43,7 +43,7 @@
 <h3><b>Events</b></h3>
 
 <ul>
-  <li ng-repeat="(key,value) in pineventlist" ng-if="value"><a ng-href="/event/view/{{value.url}}">{{value.title}} -- {{ value.eventdate | date:"d-MMMM-yyyy" }}</a></li> 
+  <li ng-repeat="(key,value) in pineventlist track by $index" ng-if="value"><a ng-href="/event/view/{{value.url}}">{{value.title}} -- {{ value.eventdate | date:"d-MMMM-yyyy" }}</a></li> 
             
 </ul>
 
