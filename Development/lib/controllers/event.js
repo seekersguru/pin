@@ -314,8 +314,8 @@ exports.basic = function(req, res) {
 
   q.sort('eventdate');
   q.where('hans').equals(true);
-
-
+  q.where('public').equals(true);
+  
   /** finally execute */
   q.populate('author', 'name email').exec(function(err, articles) {
     if (err) {

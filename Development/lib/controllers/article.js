@@ -373,6 +373,9 @@ exports.basic = function(req, res) {
 	/** sorting according to date */
 
 	q.sort('-createdAt');
+  	q.where('hans').equals(true);
+    q.where('public').equals(true);
+
 
 	/** finally execute */
 		q.populate('author','name email fullname').exec(function(err, articles) {
