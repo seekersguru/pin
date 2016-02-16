@@ -15,12 +15,12 @@ var index = require('./controllers'),
 	useragent = require('express-useragent'),
 	Q = require('q'),
 	striptags = require('striptags'),
-	device = require('express-device');
+  device = require('express-device'),
+	sitemap = require('./controllers/sitemap');
 
-
-var middleware = require('./middleware');
-var multipart = require('connect-multiparty'),
-	multipartMiddleware = multipart();
+  var middleware = require('./middleware');
+  var multipart = require('connect-multiparty'),
+  	multipartMiddleware = multipart();
 
 /**
  * Application routes
@@ -49,6 +49,9 @@ module.exports = function(app) {
 	app.del('/api/articles/:articleid', articles.remove);
 	app.put('/api/articles/removemedia/:articleid', articles.removemedia);
 	app.get('/api/articles/search/:search', articles.search);
+ 
+  app.get('/sitemap.xml', sitemap.generatesitemap);
+ 
 
 	/**---(',')--article comments section start----(',')---**/
 
