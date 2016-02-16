@@ -14,7 +14,8 @@ var index = require('./controllers'),
     countrycity = require('./controllers/countrycity'),
 		useragent = require('express-useragent'),
 		Q = require('q'),
-		striptags = require('striptags');
+		striptags = require('striptags'),
+    sitemap = require('./controllers/sitemap');
 
 var middleware = require('./middleware');
 var multipart = require('connect-multiparty'),
@@ -47,6 +48,8 @@ module.exports = function(app) {
   app.del('/api/articles/:articleid', articles.remove);
   app.put('/api/articles/removemedia/:articleid', articles.removemedia);
   app.get('/api/articles/search/:search',articles.search);
+  app.get('/sitemap.xml', sitemap.generatesitemap);
+
 
   /**---(',')--article comments section start----(',')---**/
 
