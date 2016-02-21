@@ -834,6 +834,30 @@ angular.module('pinApp')
 
     };
 
+    $scope.deleteMMIUser = function(articleId) {
+      var yes = confirm('Are you sure you want to delete this MMIUser?');
+      if (yes) {
+        $http({
+          method: "DELETE",
+          url: '/api/mmiusers/' + articleId
+        }).
+        success(function(data, status, headers, config) {
+            var removeIndex = $scope.gridMMIUserData
+              .map(function(item) {
+                return item._id;
+              })
+              .indexOf(articleId);
+
+            $scope.gridMMIUserData.splice(removeIndex, 1);
+
+          })
+          .error(function(data, status, headers, config) {
+
+          });
+      }
+
+    };
+
 
     $scope.deleteFamily = function(familyId) {
       var yes = confirm(
@@ -1424,6 +1448,8 @@ angular.module('pinApp')
       showFooter: true,
       plugins: [new ngGridFlexibleHeightPlugin()]
     };
+var editDeleteMMMIuserTemplate =
+      '<a ng-click="deleteMMIUser(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a>';
 
 
     $scope.mmiuserData = {
@@ -1486,6 +1512,11 @@ angular.module('pinApp')
           displayName: 'Detail',
           cellTemplate: '<span  class="label label-info" ng-click="userDetail(row.entity._id,0)">Detail</span>',
           width: '80px'
+        },{
+          field: '',
+          displayName: '',
+          cellTemplate: editDeleteMMMIuserTemplate,
+          maxWidth: 100
         }
       ],
       showFooter: true,

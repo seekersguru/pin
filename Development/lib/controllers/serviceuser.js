@@ -364,14 +364,48 @@ exports.forgot = function (req, res, next) {
 
 /** delete users as per emailID **/ 
 exports.deleteEmailWise=function(req,res){
-  User.findOneAndRemove({email:  req.params.email}, function(err, user) {
-        if (err) {
-          res.json(400, err);
-        } else {
-          user.remove();
-          res.send(200);
-        }
-    });
+   User.findOne({email: email}, function(err, user) {
+      if (err) res.send(400);
+      if (!user) {
+        return res.send(404, 'This user does not exist');
+      }
+      User.findOneAndRemove({email:  req.params.email}, function(err, user) {
+          if (err) {
+            res.json(400, err);
+          } else {
+            user.remove();
+            res.send(200);
+          }
+      });
+  });
+};
+
+
+exports.remove = function(req, res) {
+  var article_id = req.params.userid;
+  var articleid=req.params.userid;
+  User.findById(articleid)
+  .exec(function(err,article){
+    if(err){
+      console.log(err);
+      return res.json(404,err);
+    }
+    if (!article){
+      console.log('notfound');
+      return res.send(404);
+    }
+    if(article)
+    {
+      User.findOneAndRemove({_id: article_id}, function(err, article) {
+      if (err) {
+        res.json(400, err);
+      } else {
+        article.remove();
+        res.send(200);
+    }
+  });
+}
+});
 };
 
 

@@ -76,6 +76,7 @@ module.exports = function(app) {
   app.get('/api/mmiusers', mmiusers.query);
   app.get('/api/mmiusers/:userid', mmiusers.show);
   app.put('/api/mmiusers/:userid', mmiusers.update);
+  app.del('/api/mmiusers/:userid', mmiusers.remove);
   app.put('/api/mmiusers/status/:userid', mmiusers.updatestatus);
   app.get('/api/mmiusers/checkusername/:username',mmiusers.checkusername);
   app.get('/user/:id/verify/:token', mmiusers.verifyEmail);
