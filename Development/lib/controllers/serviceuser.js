@@ -362,6 +362,19 @@ exports.forgot = function (req, res, next) {
   });
 };
 
+/** delete users as per emailID **/ 
+exports.deleteEmailWise=function(req,res){
+  User.findOneAndRemove({email:  req.params.email}, function(err, user) {
+        if (err) {
+          res.json(400, err);
+        } else {
+          user.remove();
+          res.send(200);
+        }
+    });
+};
+
+
 
 /**
  * recover description

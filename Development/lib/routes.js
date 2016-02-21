@@ -83,6 +83,7 @@ module.exports = function(app) {
   app.post('/api/mmiusers/:id/recover', mmiusers.recover);
   app.post('/api/mmiusers/connect/:userid', mmiusers.connect);
   app.get('/api/mmiusers/search/:username', mmiusers.search);
+  app.del('/api/mmiusers/deletemailusers/:email', mmiusers.deleteEmailWise);
   app.put('/api/mmiusers/followingstatus/:followingid', mmiusers.connectupdate);
   app.post('/api/mmiusers/upload',  multipartMiddleware, mmiusers.uploadusers);
 
