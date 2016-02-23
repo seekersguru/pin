@@ -1,0 +1,60 @@
+<div class="container-head learning-section">
+
+  <div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-9">
+      <ul class="breadcrumb">
+        <li><a href="/home"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="active">ATTACHMENT</li>
+      </ul>
+    </div>  
+    
+
+ </div>
+
+
+ <div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+
+    <div class="submit-articale-section"    >
+     <h1>Submit Your Attachment</h1> 
+     <div class="register-form-hr"></div>
+     <form novalidate  name="form" role='form' enctype= 'multipart/form-data' class="">
+      <div class="dashboard-section">
+        <div class="row register-form-row-pad">
+          <div class="col-lg-9 col-md-9 col-sm-9 paddingr-7">  
+            <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
+              <input type="text" class="form-control" name="title" placeholder="Title"  ng-model="article.title" required ng-minlength=2>
+              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill title.</p>
+              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.minlength">your title shoud be minimum 2 character long .</p>
+              <p class="text-danger" ng-show="form.title.$error.mongoose"> {{ errors.title }} </p>
+
+            </div>
+          </div>
+        </div>
+
+</div>
+
+<div class="form-group">
+     <label class="control-label" for="fullName">Attachment </label>
+
+     <input type="file" required ng-file-select="" ng-model="picFile" name="files" name="file"  ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" accept="'image/*'" />
+    <i class="text-danger" ng-show="form.file.$error.required">*required</i>
+<br/>
+<img ng-show="mainFIle[0].dataUrl != null" ng-src="{{mainFIle[0].dataUrl}}" class="thumb" style="
+height:100px;width: 100px">  
+<br/>
+<span class="progress" ng-show="mainFIle[0].progress >= 0">    
+  <div style="width:{{mainFIle[0].progress}}% ;background: green;" ng-bind="mainFIle[0].progress + '%'" class="ng-binding"></div>
+</span> 
+<span ng-show="mainFIle[0].result">Upload Successful</span>
+
+</div>
+  <button class='btn register-bt' ng-disabled="!form.$valid" ng-click="uploadPic(mainFIle)" >Add</button> 
+ 
+</form>
+</div>  
+</div>
+
+</div>
+</div>
+

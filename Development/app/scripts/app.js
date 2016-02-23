@@ -330,6 +330,13 @@ angular.module('pinApp', [
   authenticate: true,
   admin: true
 })
+.when('/add-attachment', {
+  templateUrl: 'partials2/add-attachment',
+  title: 'Add Attachment',
+  controller:'AttachmentCtrl',
+  authenticate: true,
+  admin: true
+})
 .when('/upload-users', {
   templateUrl: 'partials2/uploaduser',
   title: 'Upload users',

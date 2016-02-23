@@ -48,12 +48,12 @@ module.exports = function(app) {
     //GET
   app.get('/api/attachments', attachments.query);
   app.get('/api/attachments/basic', attachments.basic);
-  app.get('/api/attachments/:articleid', attachments.show);
+  app.get('/api/attachments/:attachmentid', attachments.show);
   app.post('/api/attachments',  multipartMiddleware, attachments.create);
-  app.put('/api/attachments/:articleid', multipartMiddleware,attachments.update);
-  app.del('/api/attachments/:articleid', attachments.remove);
-  app.put('/api/attachments/removemedia/:articleid', attachments.removemedia);
-  app.put('/api/attachments/removethumble/:articleid', attachments.removethumble);
+  app.put('/api/attachments/:attachmentid', multipartMiddleware,attachments.update);
+  app.del('/api/attachments/:attachmentid', attachments.remove);
+  app.put('/api/attachments/removemedia/:attachmentid', attachments.removemedia);
+  app.put('/api/attachments/removethumble/:attachmentid', attachments.removethumble);
 
 
   /**---(',')--article comments section start----(',')---**/

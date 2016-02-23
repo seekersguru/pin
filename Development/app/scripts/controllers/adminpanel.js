@@ -834,6 +834,30 @@ angular.module('pinApp')
 
     };
 
+    $scope.deleteAttachment = function(articleId) {
+      var yes = confirm('Are you sure you want to delete this Attachment?');
+      if (yes) {
+        $http({
+          method: "DELETE",
+          url: '/api/attachments/' + articleId
+        }).
+        success(function(data, status, headers, config) {
+            var removeIndex = $scope.gridAttachmentsData
+              .map(function(item) {
+                return item._id;
+              })
+              .indexOf(articleId);
+
+            $scope.gridAttachmentsData.splice(removeIndex, 1);
+
+          })
+          .error(function(data, status, headers, config) {
+
+          });
+      }
+
+    };
+
     $scope.deleteMMIUser = function(articleId) {
       var yes = confirm('Are you sure you want to delete this MMIUser?');
       if (yes) {
@@ -1622,7 +1646,7 @@ var editDeleteMMMIuserTemplate =
     };
 
     var editDeleteAttachmentTemplate =
-      '<a ng-click="deleteAttachment(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a><a ng-href="/attachment/edit/{{row.entity._id}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
+      '<a ng-click="deleteAttachment(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a>';
 
 
     $scope.attachmentData = {
@@ -1642,21 +1666,38 @@ var editDeleteMMMIuserTemplate =
         field: 'media',
         displayName: 'Profile',
         cellTemplate: '<img style="height:70px;width:70px;"ng-src="{{row.entity.media.path}}">',
-        cellClass: 'grid-align'
+        cellClass: 'grid-align',
+        width: '80px'
       }, {
         field: 'title',
         displayName: 'Title',
         cellClass: 'grid-align'
-      }, {
+      },
+       {
+        field: 'media',
+        displayName: 'Type',
+        cellTemplate: '<span>{{row.entity.media.extension}}</span>',
+        cellClass: 'grid-align'
+      },
+       {
+        field: 'media',
+        displayName: 'address',
+        cellTemplate: '<textarea style="width: 383px;height:73px">http://themoneyhans.com/{{row.entity.media.path }}</textarea>',
+         cellClass: 'grid-align',
+        width: '400px'
+      },
+       {
         field: 'createdAt',
         displayName: 'Date',
         cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
-        cellClass: 'grid-align'
+         cellClass: 'grid-align',
+        width: '100px'
       }, {
         field: '',
         displayName: 'Action',
         cellTemplate: editDeleteAttachmentTemplate,
-        maxWidth: 100
+        cellClass: 'grid-align',
+         width: '100px'
       }],
       showFooter: true,
       plugins: [new ngGridFlexibleHeightPlugin()]

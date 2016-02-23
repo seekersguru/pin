@@ -13,10 +13,8 @@ _ = require('lodash');
 
 	var data = _.pick(req.body, 'type') ,
 	uploadPath =  '/uploads';
-	console.log(req.files);
 	req.body.url=req.body.title.trim().replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().split(' ').join('-');
- 
-	if(req.files && req.files.file)
+ if(req.files && req.files.file)
 	{
 
 		var file =" ",
@@ -72,8 +70,6 @@ _ = require('lodash');
 
         	}
 
-
-        	req.body.createdAt=JSON.parse(req.body.createdAt);
 			// req.body.tags=JSON.parse(req.body.tags);
         	if(thumb)
         	{

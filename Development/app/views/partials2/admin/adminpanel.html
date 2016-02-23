@@ -263,7 +263,7 @@
         <div class="col-sm-4">
             <h1>Family</h1></div>
         <div class="col-sm-4">
-            <button class="btn btn-success" ng-click="addFamily()"> Add Family </button>
+            <button class="btn btn-success" ng-click=""addFamily"()"> Add Family </button>
         </div>
         <div class="col-sm-4 pull-right">
             <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
@@ -272,22 +272,20 @@
     <div class="gridStyle" ng-grid="familyData">
     </div>
 </script>
-
 <script type="text/ng-template" id="attachments">
     <div class="clearfix  filter-search">
         <div class="col-sm-4">
             <h1>Attachments</h1></div>
         <div class="col-sm-4">
-            <button class="btn btn-success" ng-disabled="true" ng-click="addAttachment()"> Add Attachment </button>
+            <a class="btn btn-success" ng-href="/add-attachment"> Add Attachment </a>
         </div>
         <div class="col-sm-4 pull-right">
             <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
         </div>
     </div>
-    <div class="gridStyle" ng-grid="familyData">
+    <div class="gridStyle" ng-grid="attachmentData">
     </div>
 </script>
-
 <script type="text/ng-template" id="expert">
     <div class="clearfix  filter-search">
         <div class="col-sm-4 ">

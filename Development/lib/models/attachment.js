@@ -13,8 +13,6 @@ var AttachmentSchema = new Schema({
   hans: { type: Boolean, default: true },
   mmibanner: { type: Boolean, default: false },
   mainImage: String,
-  discovered: { type: Boolean, default: false, index: true },
-  description:{type:String, required:true},
   metadescription:String,
   metatitle:String,
   metakeywords:String,
@@ -33,7 +31,7 @@ var AttachmentSchema = new Schema({
 
 // Basic info to identify the current authenticated user in the app
 AttachmentSchema
-  .virtual('articleInfo')
+  .virtual('attachmentInfo')
   .get(function() {
     return {
       '_id': this._id,
