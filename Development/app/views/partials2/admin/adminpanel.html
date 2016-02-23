@@ -1,640 +1,503 @@
 <div class="container page">
-<div class="row">
-<div class="col-xs-12">
-    <div class="container-fluid text-center">
-<!--         <span class="fancy-text">MENU</span>
-        <br>
-
- -->
-<div class="row">
-<div class="admin-panel-bt">
-<!-- <ul>
- <li>
-            <div class="mini-box">
-            <a class="" ng-click="setSearch('users')">
-                <div class="box-icon bg-info">
-                <i class="fa fa-user"></i>
-
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="container-fluid text-center">
+                <div class="row">
+                    <div class="admin-panel-bt">
+                    </div>
                 </div>
-                <div class="box-info">
-                     PIN Users
-                </div>
-                </a>
             </div>
-            </li>
-
-
-             <li>
-            <div class=" mini-box">
-             <a class="" ng-click="setSearch('articles')">
-                <div class="box-icon bg-success">
-                   <i class="fa fa-list-alt"></i>
-
-                </div>
-                <div class="box-info">
-                   Articles
-                </div>
-                </a>
-            </div>
-            </li>
-
-
-             <li>
-            <div class=" mini-box">
-              <a class="" ng-click="setSearch('family')">
-                <div class="box-icon bg-primary">
-                   <i class="fa fa-university"></i>
-
-                </div>
-                <div class="box-info">
-                  Family Office
-                </div>
-                </a>
-            </div>
-            </li>
-
-             <li>
-            <div class=" mini-box">
-            <a class="" ng-click="setSearch('expert')">
-                <div class="box-icon bg-warning">
-                   <i class="fa fa-calendar"></i>
-
-                </div>
-                <div class="box-info">
-                    Event Experts
-                </div>
-                </a>
-            </div>
-            </li>
-
-<li>
-            <div class=" mini-box">
-              <a class="" ng-click="setSearch('event')">
-                <div class="box-icon bg-danger">
-                    <i class="fa fa-calendar"></i>
-
-                </div>
-                <div class="box-info">
-                  Event
-                </div>
-                </a>
-            </div>
-            </li>
-
-
-             <li>
-            <div class="mini-box">
-             <a class="" ng-click="setSearch('mmiusers')">
-                <div class="box-icon bg-success">
-                    <i class="fa fa-user"></i>
-
-                </div>
-                <div class="box-info">
-                    MMI Users
-                </div>
-                </a>
-            </div>
-            </li>
-
-             <li>
-            <div class="mini-box">
-            <a class="" ng-click="setSearch('company')" target="_blank"  >
-                <div class="box-icon bg-info">
-                    <i class="fa fa-university"></i>
-
-                </div>
-                <div class="box-info">
-                     Companies
-                </div>
-                </a>
-            </div>
-            </li>
-</ul> -->
-</div>
-
-</div>
-
-</div>
+        </div>
     </div>
 </div>
-</div>
-
 <script type="text/ng-template" id="adminusers">
-<div class="clearfix filter-search">
-<div class="pull-left"><h1>Admin for PIN/MMI/TMH</h1> </div>
-
-  <!--<div class="pull-right ">
-  <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
-     </div>
-    --> </div>
-<div class="gridStyle" ng-grid="adminuserData">
-</div>
+    <div class="clearfix filter-search">
+        <div class="pull-left">
+            <h1>Admin for PIN/MMI/TMH</h1> </div>
+    </div>
+    <div class="gridStyle" ng-grid="adminuserData">
+    </div>
 </script>
 <script type="text/ng-template" id="mmiusers">
-<table class="table table-striped">
-<tbody>
-<tr>
-<th>Company</th>
-<td><select class="form-control" ng-model="mmiFilter.company">
-<option value="">All</option>
-<option ng-repeat="(key,company) in basicCompanies | unique:'title'" value="{{company._id}}">{{company.title}}</option>
-</select></td>
-
-<th>Role type</th>
-<td><select class="form-control" ng-model="mmiFilter.role">
-<option value="">All</option>
- <option ng-repeat="(key,role) in  ['user','expert'] " value="{{role}}">{{role}}</option>
-</select>
-</td>
-</tr>
-<tr>
-  <th>City</th>
-  <td><select class="form-control" ng-model="mmiFilter.city">
-  <option value="">All</option>
-  <option ng-repeat="(key,user) in originalMMIUsersData | unique:'city'" value="{{user.city}}">{{user.city}}</option>
-  </select>
-  </td>
-
-  <th>Registration process</th>
-  <td><select class="form-control" ng-model="mmiFilter.linkedin">
-  <option value="">All</option>
-  <option value="direct">Direct</option>
-  <option value="linkedin">Linkedin</option>
-  </select>
-  </td>
-</tr>
-<tr>
-  <th>Status</th>
-  <td><select class="form-control" ng-model="mmiFilter.status">
-  <option value="">All</option>
-  <option value="true">Approved</option>
-  <option value="false">Not Approved</option>
-  </select>
-  </td>
-  <th>Email verification </th>
-  <td><select class="form-control" ng-model="mmiFilter.emailVerification">
-  <option value="">All</option>
-  <option value="true">Done</option>
-  <option value="false">Pending</option>
-  </select>
-  </td>
-</tr>
-<tr>
-<tr>
-<th>Date registered</th>
-<td>
-<input  class="form-control"
-    type="daterange"
-    ranges="ranges"
-    format="DD MMMM YYYY"
-    ng-model="mmiFilter.createdAt" />
-</td>
-<th>Action</th>
-  <td><select class="form-control" ng-model="mmiFilter.status">
-  <option value="">All</option>
-  <option value="true">Approve</option>
-  <option value="false">Block</option>
-  </select>
-  </td>
-
-</tr>
-
-</tbody>
-<tfoot>
-  <tr>
-    <th colspan="2">
-    <button class="btn btn-info" ng-click="filterMMIUsers()">Apply Filter</button>
-
-    </th>
-  </tr>
-</tfoot>
-</table>
-<br/>
-<div class="clearfix filter-search">
-<div class="pull-left"><h1>MMI Users</h1> </div>
-
-  <div class="pull-right "><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
-     </div>
-     </div>
-<div class="gridStyle" ng-grid="mmiuserData">
-</div>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Company</th>
+                <td>
+                    <select class="form-control" ng-model="mmiFilter.company">
+                        <option value="">All</option>
+                        <option ng-repeat="(key,company) in basicCompanies | unique:'title'" value="{{company._id}}">{{company.title}}</option>
+                    </select>
+                </td>
+                <th>Role type</th>
+                <td>
+                    <select class="form-control" ng-model="mmiFilter.role">
+                        <option value="">All</option>
+                        <option ng-repeat="(key,role) in  ['user','expert'] " value="{{role}}">{{role}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>
+                    <select class="form-control" ng-model="mmiFilter.city">
+                        <option value="">All</option>
+                        <option ng-repeat="(key,user) in originalMMIUsersData | unique:'city'" value="{{user.city}}">{{user.city}}</option>
+                    </select>
+                </td>
+                <th>Registration process</th>
+                <td>
+                    <select class="form-control" ng-model="mmiFilter.linkedin">
+                        <option value="">All</option>
+                        <option value="direct">Direct</option>
+                        <option value="linkedin">Linkedin</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>
+                    <select class="form-control" ng-model="mmiFilter.status">
+                        <option value="">All</option>
+                        <option value="true">Approved</option>
+                        <option value="false">Not Approved</option>
+                    </select>
+                </td>
+                <th>Email verification </th>
+                <td>
+                    <select class="form-control" ng-model="mmiFilter.emailVerification">
+                        <option value="">All</option>
+                        <option value="true">Done</option>
+                        <option value="false">Pending</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <tr>
+                    <th>Date registered</th>
+                    <td>
+                        <input class="form-control" type="daterange" ranges="ranges" format="DD MMMM YYYY" ng-model="mmiFilter.createdAt" />
+                    </td>
+                    <th>Action</th>
+                    <td>
+                        <select class="form-control" ng-model="mmiFilter.status">
+                            <option value="">All</option>
+                            <option value="true">Approve</option>
+                            <option value="false">Block</option>
+                        </select>
+                    </td>
+                </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="2">
+                    <button class="btn btn-info" ng-click="filterMMIUsers()">Apply Filter</button>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+    <br/>
+    <div class="clearfix filter-search">
+        <div class="pull-left">
+            <h1>MMI Users</h1> </div>
+        <div class="pull-right ">
+            <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+        </div>
+    </div>
+    <div class="gridStyle" ng-grid="mmiuserData">
+    </div>
 </script>
-
 <script type="text/ng-template" id="users">
-<table class="table table-striped">
-<tbody>
-<tr>
-<th>Family Office</th>
-<td><select class="form-control" ng-model="pinFilter.family">
-<option value="">All</option>
-<option ng-repeat="(key,family) in basicFamilys | unique:'title'" value="{{family._id}}">{{family.name}}</option>
-</select></td>
-
-<th>Role type</th>
-<td><select class="form-control" ng-model="pinFilter.role">
-<option value="">All</option>
- <option ng-repeat="(key,role) in  ['user','expert'] " value="{{role}}">{{role}}</option>
-</select>
-</td>
-</tr>
-<tr>
-  <th>City</th>
-  <td><select class="form-control" ng-model="pinFilter.city">
-  <option value="">All</option>
-  <option ng-repeat="(key,user) in originalPINUsersData | unique:'city'" value="{{user.city}}">{{user.city}}</option>
-  </select>
-  </td>
-
-
-  <th>Status</th>
-  <td><select class="form-control" ng-model="pinFilter.status">
-  <option value="">All</option>
-  <option value="true">Approved</option>
-  <option value="false">Not Approved</option>
-  </select>
-  </td>
-  </tr>
-  <tr>
-  <th>Email verification </th>
-  <td><select class="form-control" ng-model="pinFilter.emailVerification">
-  <option value="">All</option>
-  <option value="true">Done</option>
-  <option value="false">Pending</option>
-  </select>
-  </td>
-  <th>Action</th>
-    <td><select class="form-control" ng-model="pinFilter.status">
-    <option value="">All</option>
-    <option value="true">Approve</option>
-    <option value="false">Block</option>
-    </select>
-    </td>
-</tr>
-<tr>
-<th>Date registered</th>
-<td colspan=3>
-<input  class="form-control"
-    type="daterange"
-    ranges="ranges"
-    format="DD MMMM YYYY"
-    ng-model="pinFilter.createdAt" />
-</td>
-
-
-</tr>
-
-</tbody>
-<tfoot>
-  <tr>
-    <th colspan="2">
-    <button class="btn btn-info" ng-click="filterPINUsers()">Apply Filter</button>
-
-    </th>
-  </tr>
-</tfoot>
-</table>
-<br/>
-<div class="clearfix filter-search">
-<div class="col-sm-4"><h1>PIN Users</h1></div>
-<div class="col-sm-4">
-<!--<a class="btn btn-success" ng-href="/add-user?admin=1"> Add User </a>-->
-</div>
- <div class="col-sm-4  pull-right "><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
-      </div></div>
-<div class="gridStyle" ng-grid="userData">
-
-</div>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Family Office</th>
+                <td>
+                    <select class="form-control" ng-model="pinFilter.family">
+                        <option value="">All</option>
+                        <option ng-repeat="(key,family) in basicFamilys | unique:'title'" value="{{family._id}}">{{family.name}}</option>
+                    </select>
+                </td>
+                <th>Role type</th>
+                <td>
+                    <select class="form-control" ng-model="pinFilter.role">
+                        <option value="">All</option>
+                        <option ng-repeat="(key,role) in  ['user','expert'] " value="{{role}}">{{role}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>
+                    <select class="form-control" ng-model="pinFilter.city">
+                        <option value="">All</option>
+                        <option ng-repeat="(key,user) in originalPINUsersData | unique:'city'" value="{{user.city}}">{{user.city}}</option>
+                    </select>
+                </td>
+                <th>Status</th>
+                <td>
+                    <select class="form-control" ng-model="pinFilter.status">
+                        <option value="">All</option>
+                        <option value="true">Approved</option>
+                        <option value="false">Not Approved</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Email verification </th>
+                <td>
+                    <select class="form-control" ng-model="pinFilter.emailVerification">
+                        <option value="">All</option>
+                        <option value="true">Done</option>
+                        <option value="false">Pending</option>
+                    </select>
+                </td>
+                <th>Action</th>
+                <td>
+                    <select class="form-control" ng-model="pinFilter.status">
+                        <option value="">All</option>
+                        <option value="true">Approve</option>
+                        <option value="false">Block</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Date registered</th>
+                <td colspan=3>
+                    <input class="form-control" type="daterange" ranges="ranges" format="DD MMMM YYYY" ng-model="pinFilter.createdAt" />
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="2">
+                    <button class="btn btn-info" ng-click="filterPINUsers()">Apply Filter</button>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+    <br/>
+    <div class="clearfix filter-search">
+        <div class="col-sm-4">
+            <h1>PIN Users</h1></div>
+        <div class="col-sm-4">
+            <!--<a class="btn btn-success" ng-href="/add-user?admin=1"> Add User </a>-->
+        </div>
+        <div class="col-sm-4  pull-right ">
+            <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+        </div>
+    </div>
+    <div class="gridStyle" ng-grid="userData">
+    </div>
 </script>
 <script type="text/ng-template" id="contentexpert">
-<!--<table class="table table-striped">
-<tbody>
-<tr>
-<th>Date registered</th>
-<td >
-<input  class="form-control"
-    type="daterange"
-    ranges="ranges"
-    format="DD MMMM YYYY"
-    ng-model="contentexpertFilter.createdAt" />
-</td>
-<th>Action</th>
-  <td><select class="form-control" ng-model="contentexpertFilter.status">
-  <option value="">All</option>
-  <option value="true">Approve</option>
-  <option value="false">Block</option>
-  </select>
-  </td>
-
-</tr>
-
-</tbody>
-<tfoot>
-  <tr>
-    <th colspan="2">
-    <button class="btn btn-info" ng-click="filterContentExpertUsers()">Apply Filter</button>
-
-    </th>
-  </tr>
-</tfoot>
-</table>-->
-<br/>
-<div class="clearfix filter-search">
-<div class="col-sm-4"><h1>Content Experts</h1></div>
-<div class="col-sm-4"><a class="btn btn-success" ng-href="/add-user?admin=1"> Add Content Expert </a></div>
- <div class="col-sm-4  pull-right "><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
-      </div></div>
-<div class="gridStyle" ng-grid="contentexpertData">
-
-</div>
-</script>
-
-
-<script type="text/ng-template" id="articles">
-<table class="table table-striped">
-<tbody>
-<tr>
-<th>Type</th>
-<td><select class="form-control" ng-model="articleFilter.type">
-<option value="">All</option>
-<option value="text">Text</option>
-<option value="image">Image</option>
-<option value="video">Video</option>
-</select>
-</td>
-
-<th>Author</th>
-<td>
-<select class="form-control" ng-model="articleFilter.author">
-<option value="">All</option>
-<option ng-repeat="(key,article) in originalArticalData | unique:'author'" value="{{article.author}}">{{article.author}}</option>
-</select>
-</td>
-</tr>
-<tr>
-
-  <th>Date</th>
-  <td>
-  <input
-  class="form-control"
-      type="daterange"
-      ranges="ranges"
-      format="DD MMMM YYYY"
-      ng-model="articleFilter.createdAt" />
-</td>
-
-  <th>Approve</th>
-  <td><select class="form-control" ng-model="articleFilter.approve">
-  <option value="">All</option>
-  <option ng-repeat="(key,article) in originalArticalData | unique:'approve'" value="{{article.approve}}">{{approves[article.approve]}}</option>
-  </select>
-  </td>
-</tr>
-
-</tbody>
-<tfoot>
-  <tr>
-    <th colspan="2">
-    <button class="btn btn-info" ng-click="filterArticle()">Apply Filter</button>
-
-    </th>
-  </tr>
-</tfoot>
-</table>
-<br/>
-<!--
-<select name="" ng-model="filterOptions.filterColumn">
-<option value="Author">Author</option>
-<option value="Approve">Approve</option>
-<option value="createdAt">createdAt</option>
-<option value="Title">Title</option>
-</select>
-<input type="text" ng-model="filterOptions.filterText"/>
--->
-<div class="clearfix filter-search">
-<div class="col-sm-4"><h1>Articles</h1></div>
-<div class="col-sm-4"><a class="btn btn-success" ng-href="/post-article"> Add Article </a></div>
-
-  <div class="col-sm-4 pull-right"><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
-   </div>
-<div class="gridStyle" ng-grid="articleData">
-
-</div>
-</script>
-
-<script type="text/ng-template" id="family">
-<div class="clearfix  filter-search">
-<div class="col-sm-4"><h1>Family</h1></div>
-
-<div class="col-sm-4"><button class="btn btn-success" ng-click="addFamily()"> Add Family </button></div>
-
- <div class="col-sm-4 pull-right"><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
+    <br/>
+    <div class="clearfix filter-search">
+        <div class="col-sm-4">
+            <h1>Content Experts</h1></div>
+        <div class="col-sm-4"><a class="btn btn-success" ng-href="/add-user?admin=1"> Add Content Expert </a></div>
+        <div class="col-sm-4  pull-right ">
+            <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+        </div>
     </div>
-<div class="gridStyle" ng-grid="familyData">
+    <div class="gridStyle" ng-grid="contentexpertData">
+    </div>
+</script>
+<script type="text/ng-template" id="articles">
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Type</th>
+                <td>
+                    <select class="form-control" ng-model="articleFilter.type">
+                        <option value="">All</option>
+                        <option value="text">Text</option>
+                        <option value="image">Image</option>
+                        <option value="video">Video</option>
+                    </select>
+                </td>
+                <th>Author</th>
+                <td>
+                    <select class="form-control" ng-model="articleFilter.author">
+                        <option value="">All</option>
+                        <option ng-repeat="(key,article) in originalArticalData | unique:'author'" value="{{article.author}}">{{article.author}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>
+                    <input class="form-control" type="daterange" ranges="ranges" format="DD MMMM YYYY" ng-model="articleFilter.createdAt" />
+                </td>
+                <th>Approve</th>
+                <td>
+                    <select class="form-control" ng-model="articleFilter.approve">
+                        <option value="">All</option>
+                        <option ng-repeat="(key,article) in originalArticalData | unique:'approve'" value="{{article.approve}}">{{approves[article.approve]}}</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="2">
+                    <button class="btn btn-info" ng-click="filterArticle()">Apply Filter</button>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+    <br/>
+    <div class="clearfix filter-search">
+        <div class="col-sm-4">
+            <h1>Articles</h1></div>
+        <div class="col-sm-4"><a class="btn btn-success" ng-href="/post-article"> Add Article </a></div>
+        <div class="col-sm-4 pull-right">
+            <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+        </div>
+    </div>
+    <div class="gridStyle" ng-grid="articleData">
+    </div>
+</script>
+<script type="text/ng-template" id="family">
+    <div class="clearfix  filter-search">
+        <div class="col-sm-4">
+            <h1>Family</h1></div>
+        <div class="col-sm-4">
+            <button class="btn btn-success" ng-click="addFamily()"> Add Family </button>
+        </div>
+        <div class="col-sm-4 pull-right">
+            <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+        </div>
+    </div>
+    <div class="gridStyle" ng-grid="familyData">
+    </div>
+</script>
 
-</div>
+<script type="text/ng-template" id="attachments">
+    <div class="clearfix  filter-search">
+        <div class="col-sm-4">
+            <h1>Attachments</h1></div>
+        <div class="col-sm-4">
+            <button class="btn btn-success" ng-disabled="true" ng-click="addAttachment()"> Add Attachment </button>
+        </div>
+        <div class="col-sm-4 pull-right">
+            <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+        </div>
+    </div>
+    <div class="gridStyle" ng-grid="familyData">
+    </div>
 </script>
 
 <script type="text/ng-template" id="expert">
-<div class="clearfix  filter-search">
-<div class="col-sm-4 "><h1>Event Experts</h1></div>
-
-<div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-expert"> Add Expert </a></div>
-   <div class="col-sm-4 pull-right">
- <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
-      </div>
-<div class="gridStyle" ng-grid="expertData">
-
-</div>
+    <div class="clearfix  filter-search">
+        <div class="col-sm-4 ">
+            <h1>Event Experts</h1></div>
+        <div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-expert"> Add Expert </a></div>
+        <div class="col-sm-4 pull-right">
+            <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+        </div>
+    </div>
+    <div class="gridStyle" ng-grid="expertData">
+    </div>
 </script>
-
 <script type="text/ng-template" id="company">
-<div class="clearfix  filter-search">
-<div class="col-sm-4 "><h1>Companies</h1></div>
-
-<div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-company"> Add Company </a> </div>
-<!--<a class="btn btn-success" ng-href="/upload-company"> Upload Companies </a> -->
-
- <div class="col-sm-4 pull-right"><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
-
-      </div>
-<div class="gridStyle" ng-grid="companyData">
-
-</div>
+    <div class="clearfix  filter-search">
+        <div class="col-sm-4 ">
+            <h1>Companies</h1></div>
+        <div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-company"> Add Company </a> </div>
+        <!--<a class="btn btn-success" ng-href="/upload-company"> Upload Companies </a> -->
+        <div class="col-sm-4 pull-right">
+            <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+        </div>
+    </div>
+    <div class="gridStyle" ng-grid="companyData">
+    </div>
 </script>
 <script type="text/ng-template" id="event">
-<div class="clearfix  filter-search">
-<div class="col-sm-4 "><h1>Events</h1></div>
-
-<div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-event"> Add Event </a></div>
-
- <div class="col-sm-4 pull-right"><input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string></div>
-
-      </div>
-<div class="gridStyle" ng-grid="eventData">
-
-</div>
+    <div class="clearfix  filter-search">
+        <div class="col-sm-4 ">
+            <h1>Events</h1></div>
+        <div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-event"> Add Event </a></div>
+        <div class="col-sm-4 pull-right">
+            <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
+        </div>
+    </div>
+    <div class="gridStyle" ng-grid="eventData">
+    </div>
 </script>
-
 <script type="text/ng-template" id="familymodal.html">
-        <div class="modal-header">
-            <h3 class="modal-title">Add New family !</h3>
-        </div>
-        <div class="modal-body">
-        <form novalidate  name="form" role='form' ng-submit="saveFamily()"  >
-        <div class="form-group" ng-class="{'has-error':form.name.$dirty && form.name.$error.required,'has-success':form.name.$valid}">
-              <input type="text" class="form-control" name="name" placeholder="Name"  ng-model="family.name" id="familyname" required ng-minlength=5>
-              <p class="text-danger" ng-show="form.name.$dirty && form.name.$error.required">Please fill name.</p>
-
+    <div class="modal-header">
+        <h3 class="modal-title">Add New family !</h3>
+    </div>
+    <div class="modal-body">
+        <form novalidate name="form" role='form' ng-submit="saveFamily()">
+            <div class="form-group" ng-class="{'has-error':form.name.$dirty && form.name.$error.required,'has-success':form.name.$valid}">
+                <input type="text" class="form-control" name="name" placeholder="Name" ng-model="family.name" id="familyname" required ng-minlength=5>
+                <p class="text-danger" ng-show="form.name.$dirty && form.name.$error.required">Please fill name.</p>
             </div>
-         </form>
-
-        </div>
-
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="saveFamily()" >OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="saveFamily()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
 </script>
-
 <script type="text/ng-template" id="familyoffice.html">
-        <div class="modal-header">
-            <h3 class="modal-title">Assign Some Role To User !</h3>
-        </div>
-        <div class="modal-body">
-        <form novalidate  class="form-horizontal" name="form" role='form' ng-submit="saveRole()"  >
-           <div class="form-group">
-            <label for="role" class="col-sm-2 control-label">Role</label>
-          <div class="col-sm-10">
-               <select class="form-control" name="adminrole" ng-model="userupdate.adminrole">
-            <option value="Acconts">Accounts</option>
-            <option value="Experts">Experts</option>
-            </select>
-          </div>
-        </div>
-
-         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Family Office</label>
-          <div class="col-sm-10">
-              <select class="form-control" ng-model="userupdate.familyrole">
-                  <option ng-repeat="(key,value) in familys" value="{{value._id}}">{{value.name}} </option>
-              </select>
-          </div>
-        </div>
-
-           <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Searchable</label>
-          <div class="col-sm-10">
-           <select ng-model="userupdate.searchable" class="form-control"
-            ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">
-    </select>
-         </div>
-        </div>
-
-      <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Comment Visible to</label>
+    <div class="modal-header">
+        <h3 class="modal-title">Assign Some Role To User !</h3>
+    </div>
+    <div class="modal-body">
+        <form novalidate class="form-horizontal" name="form" role='form' ng-submit="saveRole()">
+            <div class="form-group">
+                <label for="role" class="col-sm-2 control-label">Role</label>
                 <div class="col-sm-10">
-                 <select ng-model="userupdate.commentvisible" name="commentvisible" class="form-control">
-                   <option value="public">Public</option>
-                    <option value="friends">Friends</option>
-              </select>
-               </div>
-              </div>
-
-         </form>
-
-        </div>
-
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="saveRole()" >OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
+                    <select class="form-control" name="adminrole" ng-model="userupdate.adminrole">
+                        <option value="Acconts">Accounts</option>
+                        <option value="Experts">Experts</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Family Office</label>
+                <div class="col-sm-10">
+                    <select class="form-control" ng-model="userupdate.familyrole">
+                        <option ng-repeat="(key,value) in familys" value="{{value._id}}">{{value.name}} </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Searchable</label>
+                <div class="col-sm-10">
+                    <select ng-model="userupdate.searchable" class="form-control" ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Comment Visible to</label>
+                <div class="col-sm-10">
+                    <select ng-model="userupdate.commentvisible" name="commentvisible" class="form-control">
+                        <option value="public">Public</option>
+                        <option value="friends">Friends</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="saveRole()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
 </script>
-
 <script type="text/ng-template" id="viewDetail.html">
-<div class="modal-header">
-    <h3 class="modal-title">User Details</h3>
-</div>
-<div class="modal-body">
-<!--<pre>{{ userDetailData | json }}</pre>-->
-<table class="table">
-<tr ng-if="!userType && userDetailData.linkedin"><th><img src="{{userDetailData.linkedin.pictureUrl}}"></th><th><a href="{{userDetailData.linkedin.publicProfileUrl}}" >Linkedin Public Profile URL</a></th></tr>
-
-<tr><th>Name</th><td>{{userDetailData.name || userDetailData.firstname }} {{ userDetailData.lastname}}</td></tr>
-<tr><th>username</th><td>{{userDetailData.username}}</td></tr>
-<tr><th>Email</th><td>{{userDetailData.email}}</td></tr>
-<tr><th>Phone</th><td>{{userDetailData.phone}}</td></tr>
-<tr ng-if="userType"><th>Nominated By</th><td>{{userDetailData.nominated}}</td></tr>
-<!--<tr><th>Date Of Birth</th><td>{{userDetailData.dob | date:"dd-MM-yyyy"}}</td></tr>-->
-<tr ng-if="userType"><th>MemberType</th><td>{{userDetailData.membertype}}</td></tr>
-<tr><th>Created At</th><td>{{userDetailData.createdAt | date:"dd-MM-yyyy"}}</td></tr>
-<tr ng-if="!userType"><th >Company</th><td>{{userDetailData.company.title}}</td></tr>
-<tr ng-if="!userType"><th >Office</th><td>{{ userDetailData.company.address[userDetailData.companyaddress].street}},{{ userDetailData.company.address[userDetailData.companyaddress].city}},{{ userDetailData.company.address[userDetailData.companyaddress].state}} ,{{ userDetailData.company.address[userDetailData.companyaddress].country}}</td></tr>
-<tr ng-if="userType"><th >Role</th> <td>{{ userDetailData.role }}</td></tr>
-<tr ng-if="!userType"><th >Role</th><td>{{roletypes[userDetailData.adminrole]}}</td></tr>
-
-<tr><th>Address</th><td>{{userDetailData.address.street}}, {{userDetailData.address.city}}  ,{{userDetailData.address.country}}</td></tr>
-<table>
-</div>
-<div class="modal-footer">
-    <button class="btn btn-warning" ng-click="cancel()">Close</button>
-</div>
+    <div class="modal-header">
+        <h3 class="modal-title">User Details</h3>
+    </div>
+    <div class="modal-body">
+        <!--<pre>{{ userDetailData | json }}</pre>-->
+        <table class="table">
+            <tr ng-if="!userType && userDetailData.linkedin">
+                <th><img src="{{userDetailData.linkedin.pictureUrl}}"></th>
+                <th><a href="{{userDetailData.linkedin.publicProfileUrl}}">Linkedin Public Profile URL</a></th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{userDetailData.name || userDetailData.firstname }} {{ userDetailData.lastname}}</td>
+            </tr>
+            <tr>
+                <th>username</th>
+                <td>{{userDetailData.username}}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{userDetailData.email}}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{userDetailData.phone}}</td>
+            </tr>
+            <tr ng-if="userType">
+                <th>Nominated By</th>
+                <td>{{userDetailData.nominated}}</td>
+            </tr>
+            <!--<tr><th>Date Of Birth</th><td>{{userDetailData.dob | date:"dd-MM-yyyy"}}</td></tr>-->
+            <tr ng-if="userType">
+                <th>MemberType</th>
+                <td>{{userDetailData.membertype}}</td>
+            </tr>
+            <tr>
+                <th>Created At</th>
+                <td>{{userDetailData.createdAt | date:"dd-MM-yyyy"}}</td>
+            </tr>
+            <tr ng-if="!userType">
+                <th>Company</th>
+                <td>{{userDetailData.company.title}}</td>
+            </tr>
+            <tr ng-if="!userType">
+                <th>Office</th>
+                <td>{{ userDetailData.company.address[userDetailData.companyaddress].street}},{{ userDetailData.company.address[userDetailData.companyaddress].city}},{{ userDetailData.company.address[userDetailData.companyaddress].state}} ,{{ userDetailData.company.address[userDetailData.companyaddress].country}}</td>
+            </tr>
+            <tr ng-if="userType">
+                <th>Role</th>
+                <td>{{ userDetailData.role }}</td>
+            </tr>
+            <tr ng-if="!userType">
+                <th>Role</th>
+                <td>{{roletypes[userDetailData.adminrole]}}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{userDetailData.address.street}}, {{userDetailData.address.city}} ,{{userDetailData.address.country}}</td>
+            </tr>
+            <table>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="cancel()">Close</button>
+    </div>
 </script>
 <script type="text/ng-template" id="familyofficemmi.html">
-        <div class="modal-header">
-            <h3 class="modal-title">Assign Some Role To User !</h3>
-        </div>
-        <div class="modal-body">
-        <form novalidate  class="form-horizontal" name="form" role='form' ng-submit="saveRole()"  >
-           <div class="form-group">
-            <label for="role" class="col-sm-2 control-label">Role</label>
-          <div class="col-sm-10">
-               <select class="form-control" name="adminrole" ng-model="userupdate.adminrole">
-              <option ng-repeat="(key,value) in userupdate.roletype" value="{{value}}" ng-selected="key == userupdate.adminrole - 1">{{roletypes[value-1]}}</option>
-            </select>
-          </div>
-        </div>
-
-         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Family Office</label>
-          <div class="col-sm-10">
-              <select class="form-control" ng-model="userupdate.familyrole">
-                  <option ng-repeat="(key,value) in familys" value="{{value._id}}">{{value.name}} </option>
-              </select>
-          </div>
-        </div>
-
-           <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Searchable</label>
-          <div class="col-sm-10">
-           <select ng-model="userupdate.searchable" class="form-control"
-            ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">
-    </select>
-         </div>
-        </div>
-
-      <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Comment Visible to</label>
+    <div class="modal-header">
+        <h3 class="modal-title">Assign Some Role To User !</h3>
+    </div>
+    <div class="modal-body">
+        <form novalidate class="form-horizontal" name="form" role='form' ng-submit="saveRole()">
+            <div class="form-group">
+                <label for="role" class="col-sm-2 control-label">Role</label>
                 <div class="col-sm-10">
-                 <select ng-model="userupdate.commentvisible" name="commentvisible" class="form-control">
-                   <option value="public">Public</option>
-                    <option value="friends">Friends</option>
-              </select>
-               </div>
-              </div>
-
-         </form>
-
-        </div>
-
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="saveRole()" >OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
+                    <select class="form-control" name="adminrole" ng-model="userupdate.adminrole">
+                        <option ng-repeat="(key,value) in userupdate.roletype" value="{{value}}" ng-selected="key == userupdate.adminrole - 1">{{roletypes[value-1]}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Family Office</label>
+                <div class="col-sm-10">
+                    <select class="form-control" ng-model="userupdate.familyrole">
+                        <option ng-repeat="(key,value) in familys" value="{{value._id}}">{{value.name}} </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Searchable</label>
+                <div class="col-sm-10">
+                    <select ng-model="userupdate.searchable" class="form-control" ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Comment Visible to</label>
+                <div class="col-sm-10">
+                    <select ng-model="userupdate.commentvisible" name="commentvisible" class="form-control">
+                        <option value="public">Public</option>
+                        <option value="friends">Friends</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="saveRole()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
 </script>
-
-
-
-
 <div ng-include="mainPage" class="container text-center"></div>
-
 </div>

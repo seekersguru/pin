@@ -11,7 +11,8 @@ var index = require('./controllers'),
     familys = require('./controllers/family'),
     experts = require('./controllers/expert'),
     companys = require('./controllers/company'),
-    countrycity = require('./controllers/countrycity');
+    countrycity = require('./controllers/countrycity'),
+    attachments = require('./controllers/attachment');
 
 var middleware = require('./middleware');
 var multipart = require('connect-multiparty'),
@@ -43,6 +44,16 @@ module.exports = function(app) {
   app.put('/api/articles/removemedia/:articleid', articles.removemedia);
   app.put('/api/articles/removethumble/:articleid', articles.removethumble);
   app.get('/api/articles/search/:search',articles.search);
+
+    //GET
+  app.get('/api/attachments', attachments.query);
+  app.get('/api/attachments/basic', attachments.basic);
+  app.get('/api/attachments/:articleid', attachments.show);
+  app.post('/api/attachments',  multipartMiddleware, attachments.create);
+  app.put('/api/attachments/:articleid', multipartMiddleware,attachments.update);
+  app.del('/api/attachments/:articleid', attachments.remove);
+  app.put('/api/attachments/removemedia/:articleid', attachments.removemedia);
+  app.put('/api/attachments/removethumble/:articleid', attachments.removethumble);
 
 
   /**---(',')--article comments section start----(',')---**/

@@ -1152,6 +1152,22 @@ angular.module('pinApp')
 
           break;
 
+        case 'attachments':
+          $scope.gridAttachmentsData = {};
+          $http({
+            method: 'GET',
+            url: 'api/attachments/basic'
+          }).
+          success(function(data, status, headers, config) {
+            $scope.gridAttachmentsData = data.attachments;
+
+          }).
+          error(function(data, status, headers, config) {
+
+          });
+
+          break;
+
         default:
           break;
       }
@@ -1599,6 +1615,47 @@ var editDeleteMMMIuserTemplate =
         field: '',
         displayName: 'Action',
         cellTemplate: editDeleteExpertTemplate,
+        maxWidth: 100
+      }],
+      showFooter: true,
+      plugins: [new ngGridFlexibleHeightPlugin()]
+    };
+
+    var editDeleteAttachmentTemplate =
+      '<a ng-click="deleteAttachment(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a><a ng-href="/attachment/edit/{{row.entity._id}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
+
+
+    $scope.attachmentData = {
+      data: 'gridAttachmentsData',
+      // showGroupPanel: true ,
+      // enableCellSelection: true,
+      enableRowSelection: false,
+      rowHeight: 80,
+      filterOptions: $scope.filterOptions,
+      columnDefs: [{
+        field: '_id',
+        displayName: 'SN',
+        cellTemplate: '<span> {{row.rowIndex+1}}</span>',
+        cellClass: 'grid-align',
+        width: '30px'
+      }, {
+        field: 'media',
+        displayName: 'Profile',
+        cellTemplate: '<img style="height:70px;width:70px;"ng-src="{{row.entity.media.path}}">',
+        cellClass: 'grid-align'
+      }, {
+        field: 'title',
+        displayName: 'Title',
+        cellClass: 'grid-align'
+      }, {
+        field: 'createdAt',
+        displayName: 'Date',
+        cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
+        cellClass: 'grid-align'
+      }, {
+        field: '',
+        displayName: 'Action',
+        cellTemplate: editDeleteAttachmentTemplate,
         maxWidth: 100
       }],
       showFooter: true,
