@@ -74,7 +74,17 @@
               </div>
             </div>
           </div>
-
+        
+        <div class="row">
+            <div class="form-group">
+              <div class="col-lg-6 col-md-6 col-sm-6 ">
+              <label>Show on Site</label>
+                 <select class="form-control" ng-model="article.public"
+                   ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">
+                </select>
+              </div>
+            </div>
+          </div>
 
           <div class="row">
             <div class="form-group">

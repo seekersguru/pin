@@ -268,9 +268,8 @@ $scope.setscope=function(){
       firmsubtype:$scope.article.firmsubtype,
       services:$scope.article.services,
       notes:$scope.article.notes,
-      roletype:$scope.companyStructure[$scope.article.firmsupertype][$scope.article.firmtype][$scope.article.firmsubtype]
-
-      // public:$scope.article.public
+      roletype:$scope.companyStructure[$scope.article.firmsupertype][$scope.article.firmtype][$scope.article.firmsubtype],
+      public:$scope.article.public
     };
 
     if(form.$valid)
@@ -278,7 +277,7 @@ $scope.setscope=function(){
       $http({ method: 'PUT', url: '/api/companys/'+$scope.article._id,data:$scope.article_put }).
       success(function (data, status, headers, config) {
         // ...
-        $location.path('/company/view/'+data.company._id);
+        $location.path('/admin').search('company');
 
 
       }).

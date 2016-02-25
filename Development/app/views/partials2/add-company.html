@@ -82,6 +82,19 @@
           <div class="row">
             <div class="form-group">
               <div class="col-lg-6 col-md-6 col-sm-6 ">
+              <label>Show on Site</label>
+                <select  class="form-control" ng-model="article.public" >
+                  <option value=""> ---Select--- </option>
+                      <option value="true">Yes</option>
+                      <option value="false">No</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <div class="col-lg-6 col-md-6 col-sm-6 ">
                 <select  class="form-control" ng-model="article.firmsupertype" >
                       <option value=""> ---Select Firm Super Type--- </option>
                        <option ng-repeat="(key,value) in companyStructure" value="{{key}}"  >{{key}}</option>
