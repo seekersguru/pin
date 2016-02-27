@@ -191,8 +191,8 @@
           tooltip-placement="bottom" ng-change="changeaddress()">
     
     <option value="">--Select Company-- </option>
-    <option value="add-new">Add New Company </option>
-    <option ng-repeat="(key,value) in companies" value="{{value._id}}">{{value.title}}</option>
+    <!-- <option value="add-new">Add New Company </option> -->
+    <option ng-repeat="(key,value) in companies"  ng-selected="user.company == value._id" value="{{value._id}}">{{value.title}}</option>
   </select>
 </div>
 </div>
@@ -211,7 +211,7 @@
  <select class="form-control" name="member" ng-model="user.companyaddress"   tooltip="Please choose company address." 
           tooltip-placement="bottom">
     <option value="">--Select Company Address-- </option>
-    <option ng-repeat="(key,value) in companyaddress" value="{{key}}">{{value.street }} {{value.city }} {{value.state }} {{value.country| uppercase }} {{value.pin}}</option>
+    <option ng-repeat="(key,value) in companyaddress" ng-selected="user.companyaddress == key" value="{{key}}">{{value.street }} {{value.city }} {{value.state }} {{value.country| uppercase }} {{value.pin}}</option>
   </select>
 
 </div>
@@ -223,7 +223,7 @@
 
  <select class="form-control" name="adminrole" ng-model="user.adminrole" >
    <option value="">--Select Role type-- </option>
-   <option ng-repeat="(key,value) in selectroletypes" value="{{value}}">{{roletypes[value-1]}}</option> 
+   <option ng-repeat="(key,value) in selectroletypes" ng-selected="user.adminrole == value" value="{{value}}">{{roletypes[value-1]}}</option> 
    
   </select>
 </div>
