@@ -5,7 +5,6 @@ function adjust_window_code(){
 
   var append_footer=$("footer").html();
   if (append_footer){
-    alert(append_footer);
     $("footer").html("");
     $("#container_div").html(append_footer + $("#container_div").html());
     alert(1);
@@ -243,6 +242,23 @@ angular.module('pinApp', [
         var deferred = $q.defer();
         Article.get({articleId: $route.current.params.id}, function(article) {
           article.author = article.author._id;
+          deferred.resolve(article);
+        },
+        function(err){
+          deferred.reject();
+        });
+        return deferred.promise;
+      }]
+    },
+    authenticate: true
+  })
+  .when('/mmiusers/edit/:id', {
+    templateUrl: 'partials2/edit-serviceuser',
+    controller:'MMIuserEditCtrl',
+    resolve: {
+      serviceuser: ['$q', '$route', 'MMIUser', function($q, $route, MMIUser) {
+        var deferred = $q.defer();
+        MMIUser.get({id: $route.current.params.id}, function(article) {
           deferred.resolve(article);
         },
         function(err){

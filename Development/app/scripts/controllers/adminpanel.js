@@ -1489,7 +1489,7 @@ angular.module('pinApp')
       plugins: [new ngGridFlexibleHeightPlugin()]
     };
 var editDeleteMMMIuserTemplate =
-      '<a ng-click="deleteMMIUser(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a>';
+      '<a ng-click="deleteMMIUser(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a><a ng-href="/mmiusers/edit/{{row.entity._id}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
 
     $scope.mmiuserData = {
