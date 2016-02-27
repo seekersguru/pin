@@ -24,203 +24,331 @@
 <div class="gray-hr"></div>
 
  <div class="directory-section">
- <h1>Edit Your company Profile</h1>
-     <form novalidate  name="form" role='form' enctype= 'multipart/form-data' class="">
-        <div class="row ">
-          <div class="form-group" ng-class="{'has-error':form.title.$dirty && form.title.$error.required,'has-success':form.title.$valid}">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-              <input type="text" class="form-control" name="title" placeholder="Company Name"  ng-model="article.title" required ng-minlength=2>
-              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.required">Please fill company name.</p>
-              <p class="text-danger" ng-show="form.title.$dirty && form.title.$error.minlength">your company name shoud be minimum 2 character long .</p>
-              <p class="text-danger" ng-show="form.title.$error.mongoose">{{ errors.title }} </p>
-
-            </div>
-          </div>
-          </div>
+   <form class="register-form"  role="form"  name="form"  ng-submit="register(form)" novalidate>
+        <!-- <div class="alert alert-success" role="alert" ng-show="registerDone">
+            You are successfully register. For Login Please <a href="/login"><b>Click Here</b></a>
+        </div> -->
 
             <div class="row">
-                <div class="form-group">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <input type="text" class="form-control" name="url" placeholder="Website Url"  ng-model="article.url" >
-                  </div>
-                </div>
-                </div>
-
-         <div class="row">
-             <div class="form-group edit-companey-admin">
-<label>Please choose services</label>
-<br/>
- <label class="service-label" ng-repeat="service in services">
-  <input
-    type="checkbox"
-    name="selectedServices[]"
-    value="{{service}}"
-    ng-checked="article.services.indexOf(service) > -1"
-    ng-click="toggleSelection(service)"
-  > {{service}}
-</label>
-
+           <div class="form-group" ng-class="{'has-error':form.firstname.$error.required && submitted,'has-success':form.firstname.$valid && submitted}">
+           <div class="col-lg-6 col-md-6 col-sm-6">
+           <label>First Name</label>
+           <input required type="text" name="firstname"  class="form-control" ng-model="user.firstname" placeholder="First Name *"
+          tooltip="Please fill your firstname ." 
+          tooltip-placement="bottom"
+          tooltip-trigger="{{{true: 'focus', false: 'never'}[form.firstname.$error.required && submitted]}}"
+          />
+           <div class="error-massege">  
+           <p class="text-danger" ng-show="form.firstname.$error.required && submitted">Please fill your FirstName .</p>
+           </div>
 </div>
-          </div>
+           </div>
+           </div>
 
-          <div class="row">
-            <div class="form-group">
-              <div class="col-lg-6 col-md-6 col-sm-6">
-                <textarea class="form-control" name="notes" placeholder="Notes"  ng-model="article.notes">
-
-                </textarea>
-              </div>
-            </div>
-          </div>
-        
         <div class="row">
-            <div class="form-group">
-              <div class="col-lg-6 col-md-6 col-sm-6 ">
-              <label>Show on Site</label>
-                 <select class="form-control" ng-model="article.public"
-                   ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">
-                </select>
-              </div>
-            </div>
-          </div>
+           <!-- <div class="form-group" ng-class="{'has-error':form.fullname.$error.required && submitted,'has-success':form.fullname.$valid && submitted}"> -->
+           <div class="form-group" >
+           <div class="col-lg-6 col-md-6 col-sm-6">
+           <label>Last Name</label>
+           <input type="text" name="fullname" class="form-control" placeholder="Last Name" ng-model="user.lastname"
+          />
+          <div class="error-massege"> 
+           <p class="text-danger" ng-show="form.lastname.$error.required && submitted">Please fill your Lastname .</p>
+           </div>
+       </div>
+           </div>
+           </div>
 
-          <div class="row">
-            <div class="form-group">
-              <div class="col-lg-6 col-md-6 col-sm-6 ">
-                <select  class="form-control" ng-model="article.firmsupertype" >
-                      <option value=""> ---Select Firm Super Type--- </option>
-                       <option ng-repeat="(key,value) in companyStructure" value="{{key}}" ng-selected="key == article.firmsupertype">{{key}}</option>
+        <!--   <div class="row">
+           <div class="form-group" ng-class="{'has-error': form.username.$error.required && submitted,'has-success':form.username.$valid && submitted}">
+           <div class="col-lg-6 col-md-6 col-sm-6">
+           <input required type="text" name="username" class="form-control" placeholder="Alias/Username * " ng-model="user.username" ng-blur="checkUsername(form)"
+          tooltip="Please fill your alias name or username." 
+          tooltip-placement="bottom"
 
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <div class="col-lg-6 col-md-6 col-sm-6 ">
-                <select  class="form-control" ng-model="article.firmtype" >
-                       <option value=""> ---Select Firm Type--- </option>
-                       <option ng-repeat="(key,value) in companyStructure[article.firmsupertype]" value="{{key}}" ng-selected="key == article.firmtype">{{key}}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <div class="col-lg-6 col-md-6 col-sm-6 ">
-                <select  class="form-control" ng-model="article.firmsubtype" >
-                       <option value=""> ---Select Firm Sub Type--- </option>
-                       <option ng-repeat="(key,value) in companyStructure[article.firmsupertype][article.firmtype]" value="{{key}}" ng-selected="key == article.firmsubtype">{{key}}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" >
-           <div class="col-lg-12 col-md-12 col-sm-12">
-
-            <div class="form-group" ng-class="{'has-error':form.description.$dirty && form.description.$error.required,'has-success':form.description.$valid}">
-              <label class="control-label" for="description">Description</label>
-              <text-angular class="rituraj" name="description" ng-model="article.description" required ng-minlength=20 ta-toolbar="[ ['h1', 'h2','quote','insertLink'],['bold', 'italics', 'underline', 'strikeThrough'],['justifyLeft','justifyCenter','justifyRight'],['ul', 'ol'],['insertImage', 'insertVideo']]"> </text-angular>
-
-              <!-- <text-angular class="form-control" rows="5"  name="description" ng-model="article.description" required ng-minlength=20> </text-angular> -->
-              <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.required">Please fill description.</p>
-              <p class="text-danger" ng-show="form.description.$dirty && form.description.$error.minlength">your description shoud be minimum 20 character long .</p>
-              <p class="text-danger" ng-show="form.description.$error.mongoose">{{ errors.description }} </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gray-hr"></div>
-
-<h3>Address</h3>
-
-
-
-
-        <div class="row" ng-repeat="(key,value) in article.addresstimes" ng-class="{'alert alert-success':article.address[key].main}">
-          <h2 class="center-block">Address #{{key+1}}  <b ng-show="article.address[key].main"><i> Selected as a main address</i></b></h2>
-
-        <div class="gray-hr"></div>
-
-
-          <div class="form-group">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <input type="text" class="form-control" name="adrress[]" placeholder="Street"  ng-model="article.address[key].street" >
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <input type="text" class="form-control" name="adrress[]" placeholder="City"  ng-model="article.address[key].city" >
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <input type="text" class="form-control" name="adrress[]" placeholder="State"  ng-model="article.address[key].state" >
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <input type="text" class="form-control" name="adrress[]" placeholder="Country"  ng-model="article.address[key].country" >
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <input type="text" class="form-control" name="adrress[]" placeholder="PIN"  ng-model="article.address[key].pin" >
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <input type="text" class="form-control" name="adrress[]" placeholder="Phone No."  ng-model="article.address[key].phone" >
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <label>
-                <input type="radio" name="addressmain[]" ng-model="article.address[key].main"  ng-change="changemain(key)" value="true">
-                Want to make As a Main Office address
-              </label>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <button ng-click="removeaddress(key)" class="center-block"> Remove</button>
-            </div>
-          </div>
-<br/>
-        </div>
-
-<div class="gray-hr"></div>
-
-<button ng-click="addAddress()" class="btn btn-info">Add More address</button>
-
-   <!--    <div class="row">
-          <div class="form-group">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <select name="public" ng-model="article.public">
-                  <option value="">Approve</option>
-                  <option value=1>Yes</option>
-                  <option value=0>No</option>
-                </select>
-        </div>
-        </div>
+           />
+           <div class="error-massege"> 
+            <p class="text-danger" ng-show="form.username.$error.required && submitted && !form.username.$error.mongoose" >Please fill your alias name or username.</p>
+            <p class="text-danger" ng-show="form.username.$error.mongoose">
+            {{ errors.username }}
+           </p>
+           <p class="text-success" ng-show="checkmessage">
+            {{ checkmessage }}
+           </p>
+           </div>
+           
 </div>
-<br/> -->
+<div class="col-lg-3 col-md-3 col-sm-3"> <div class="btn Check-availability btn-opp" type="button" id="checkmessage" ng-click="checkUsername(form)" ng-disabled="checkusername"><i class="fa fa-caret-right"></i>   Check Availability </div></div>
+   </div>
+ </div> -->
 
-    <button class='btn btn-info' ng-disabled="!form.$valid" ng-click="updateArticle(form)" >  Edit Company</button>
 
-<!-- <button class="btn btn-prew-direc btn-prew" >
-                 <i class="fa fa-eye"></i> Preview</button>
+<!-- 
+<div class="row register-form-row-pad">
+<div class="col-lg-4 col-md-4 col-sm-4 paddingr-7">
+<div class="form-group"  >
+              
+<input type="text" name="address" ng-model="user.address.street" class="form-control" placeholder="Street Address "
+          tooltip="Please fill your street address." 
+          tooltip-placement="bottom"
+/>
+
+ </div>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-4 paddingr-7 paddingl-7">
+<div class="form-group" ng-class="{'has-error':form.city.$error.required && submitted,'has-success':form.city.$valid && submitted}">
+<input type="text" required name="city" ng-model="user.address.city" class="form-control" placeholder="City *"
+
+          tooltip="Please fill your city name." 
+          tooltip-placement="bottom"
+          tooltip-trigger="{{{true: 'focus', false: 'never'}[form.city.$error.required && submitted]}}"
+           typeahead="address for address in getCities(user.address.country)" typeahead-loading="loadingLocationscity"/>
+<i ng-show="loadingLocationscity" class="glyphicon glyphicon-refresh"></i>          
+<div class="error-massege">           
+<p class="text-danger" ng-show="form.city.$error.required && submitted">Please fill city name. </p>
+</div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-4 paddingl-7">
+<div class="form-group">
+<input type="text" name="country" ng-blur="checkcountry()" ng-model="user.address.country" class="form-control" placeholder="Country"
+
+          tooltip="Please fill your country name." 
+          tooltip-placement="bottom"
+
+          typeahead="address for address in allcountry" typeahead-loading="loadingLocations"/>
+<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+  </div>
+</div>
+
+</div> -->
+
+<div class="row ">
+<div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
+<label>Email</label>
+<div class="form-group" ng-class="{'has-error':form.email.$error.required && submitted,'has-success':form.email.$valid && submitted}">
+   <input required type="email" validateEmail name="email"  class="form-control" placeholder="Email *" ng-model="user.email" mongoose-error
+         tooltip="Please fill your valid email address." 
+          tooltip-placement="bottom"
+
+/>
+<div class="error-massege"> 
+   <p class="text-danger" ng-show="form.email.$error.required  && submitted">Please fill Email .</p>
+   <p class="text-danger" ng-show="form.email.$error.email && submitted">
+                  Doesn't look like a valid email.
+              </p>
+   <p class="text-danger" ng-show="form.email.$error.mongoose">
+    {{ errors.email }}
+   </p>
+   </div>
+   </div>
+</div>
+<!-- 
+ <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
+              <div class="form-group" ng-class="{'has-error':form.password.$error.required && submitted,'has-success':form.password.$valid  && submitted }" >
+                <input required type="password" name="password"  class="form-control" placeholder="password *" ng-model="user.password" ng-minlength=5 mongoose-error
+
+          tooltip="Please fill your password." 
+          tooltip-placement="bottom"
+/>
+                <div class="error-massege"> 
+                <p class="text-danger" ng-show="form.password.$error.required && submitted">Please fill   Password.</p>
+                
+                <p class="text-danger" ng-show="form.password.$error.minlength && submitted">your password shoud be minimum 5 character long .</p>
+                
+                <p class="text-danger" ng-show="form.password.$error.mongoose">
+                 {{ errors.password }}
+                </p>
+                </div>
+
+              </div>
+            </div> -->
+
+
+</div> 
+
+
+
+<div class="row register-form-row-pad">
+
+            <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
+            <label>Phone Number</label>
+<div class="form-group" >
+              <input  type="text" name="phone" class="form-control" placeholder="Phone / Mobile" ng-model="user.phone"
+                        tooltip="Please fill your phone/mobilenumber." 
+          tooltip-placement="bottom"
+/>
+              <!-- <p class="text-danger" ng-show="form.phone.$error.required && submitted">Please fill Phone/Mobile.</p> -->
+           </div>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
+<div class="form-group">
+<label>Select Company</label>             
+ <select class="form-control" name="member" ng-model="user.company"   tooltip="Please choose company." 
+          tooltip-placement="bottom" ng-change="changeaddress()">
+    
+    <option value="">--Select Company-- </option>
+    <option value="add-new">Add New Company </option>
+    <option ng-repeat="(key,value) in companies" value="{{value._id}}">{{value.title}}</option>
+  </select>
+</div>
+</div>
+
+
+
+</div> 
+
+
+
+<div class="row register-form-row-pad" >
+
+<div class="col-lg-6 col-md-6 col-sm-6 paddingl-7" ng-hide="user.company === 'add-new' ">
+<div class="form-group">
+<label>Select Company Address</label> 
+ <select class="form-control" name="member" ng-model="user.companyaddress"   tooltip="Please choose company address." 
+          tooltip-placement="bottom">
+    <option value="">--Select Company Address-- </option>
+    <option ng-repeat="(key,value) in companyaddress" value="{{key}}">{{value.street }} {{value.city }} {{value.state }} {{value.country| uppercase }} {{value.pin}}</option>
+  </select>
+
+</div>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 paddingr-7" ng-hide="user.company === 'add-new' ">
+<div class="form-group">    
+<label>Select Role type</label> 
+
+ <select class="form-control" name="adminrole" ng-model="user.adminrole" >
+   <option value="">--Select Role type-- </option>
+   <option ng-repeat="(key,value) in selectroletypes" value="{{value}}">{{roletypes[value-1]}}</option> 
+   
+  </select>
+</div>
+</div>
+
+<!-- <div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
+<div class="form-group" ng-class="{'has-error':form.nominated.$error.required && submitted,'has-success':form.nominated.$valid && submitted}">
+ <input type="text" required name="nominated" class="form-control" placeholder="Nominated by *" ng-model="user.nominated"
+          tooltip="Please fill your nominated name." 
+          tooltip-placement="bottom"
+          tooltip-trigger="{{{true: 'focus', false: 'never'}[form.nominated.$error.required && submitted]}}"
+ />
+ <div class="error-massege"> 
+<p class="text-danger" ng-show="form.nominated.$error.required && submitted">Please fill nominated name. </p>
+</div>
+</div>
+</div> -->
+
+
+
+
+</div> 
+<div class="row register-form-row-pad" ng-show="user.company === 'add-new' ">
+<hr>
+<!-- <div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
+<div class="form-group">             
+ <select class="form-control" name="interests" ng-model="user.interests" tooltip="Please choose interests." 
+          tooltip-placement="bottom">
+
+    <option value="">Select Interest </option>
+    <option value="Investment ideas">Investment ideas </option>
+    <option value="Wealth planning issues">Wealth planning issues</option>
+    <option value="Philanthropy">Philanthropy</option>
+    <option value="Administration">Administration</option>
+    <option value="Roundtables">Roundtables</option>
+    <option value="Conferences">Conferences</option>
+   
+  </select>
+</div>
+</div>
  -->
-     </form>
 
-<div class="gray-hr"></div>
+<div class="col-lg-12 col-md-12 col-sm-12 paddingr-7" ng-show="user.company === 'add-new' ">
+            <div class="form-group" ng-class="{'has-error':form.companyname.$dirty && form.companyname.$error.required,'has-success':form.companyname.$valid}">
+                <input type="text" class="form-control" name="companyname" placeholder="Company Name"  ng-model="user.companyname.title" ng-minlength=2>
+                <p class="text-danger" ng-show="form.companyname.$dirty && form.companyname.$error.required">Please fill company name.</p>
+                <p class="text-danger" ng-show="form.companyname.$dirty && form.companyname.$error.minlength">your company name shoud be minimum 2 character long .</p>
+                <p class="text-danger" ng-show="form.companyname.$error.mongoose">{{ errors.companyname }} </p>
+
+            </div>
+          </div>
+
+        <h2 class="center-block"> <b><i> Company address</i></b></h2>
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="Street"  ng-model="user.companyname.address[0].street" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="City"  ng-model="user.companyname.address[0].city" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="State"  ng-model="user.companyname.address[0].state" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="Country"  ng-model="user.companyname.address[0].country" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="PIN"  ng-model="user.companyname.address[0].pin" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6">  
+              <input type="text" class="form-control" name="adrress[]" placeholder="Company Phone No."  ng-model="user.companyname.address[0].phone" >
+            </div>
+          </div>
+      
+</div> 
+<!-- <p><span>*</span> Admin will check the nominated by before approving membership;<br> 
+   will also put family into a Wealth band (30m+, 5-30m, <5m)</p>
+ -->
+
+<div class="row register-form-row-pad" >
+<div class="col-lg-6 col-md-6 col-sm-6 paddingr-7">
+<div class="form-group">
+<label>Other</label>
+ <input type="text" name="other" class="form-control" placeholder="Other " ng-model="user.other"  />
+</div>
+</div>
+
+
+
+<div class="col-lg-12 col-md-12 col-sm-12 paddingr-7">
+<div class="form-group">
+<label>Notes</label>
+
+ <textarea name="notes" class="form-control" placeholder="Notes " ng-model="user.notes" >
+        </textarea>
+</div>
+</div>
+
+</div>
+
+   <button class="btn btn-register btn-openid" type="submit" >
+       <i class="fa fa-caret-right"></i>       
+                        Edit
+                      </button>
+
+  <a  class="btn btn-info" type="button" href="/admin?mmiusers">Cancel</a>
+
+        </form>
+
+<div class="gray-hr"></div>`
 <br>
 
-<a  class="btn btn-info" type="button" href="/admin?company">Back to company profile </a>
 
 </div>
 </div>

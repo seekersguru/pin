@@ -66,7 +66,8 @@ CompanySchema
       'url':this.url,
       'createdAt':this.createdAt,
       'roletype':this.roletype,
-      'approve':this.public
+      'approve':this.public,
+      'adminrole':this.adminrole
     };
   });
 // Basic info to identify the current authenticated user in the app
