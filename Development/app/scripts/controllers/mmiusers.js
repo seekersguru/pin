@@ -175,7 +175,7 @@ angular.module('pinApp')
             notes: $scope.user.notes,
             companyname: $scope.user.companyname,
             // interests: $scope.user.interests,
-            // other: $scope.user.other,
+            other: $scope.user.other,
             // password: $scope.user.password,
             company: $scope.user.company,
             companyaddress: $scope.user.companyaddress,

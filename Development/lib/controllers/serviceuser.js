@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose'),
 User = mongoose.model('Serviceuser'),
+Company = mongoose.model('Company'),
 passport = require('passport'),
 Email = require('../mmiemail').Email,
 ActivationEmail = require('../mmiemail').ActivationEmail,
@@ -213,43 +214,78 @@ exports.connect= function(req, res){
 
   };
 
-
-
-
 //update users
+exports.update = function(req, res, next) {
+  var data = req.body,
+    userid = req.params.userid,
+    user_data = req.body,
+    getcompanyid = '';
+    data.band = '';
+  if (data.company == "add-new" && data.companyname.title) {
+    var q = Company.findOne({
+      'title': data.companyname.title
+    });
+    /** finally execute */
+    q.exec(function(err, company) {
+      if (err) {
+        console.log(err);
+      }
+      if (!company) {
+        var newcompany = new Company(data.companyname);
+        newcompany.save(function(err, companydata) {
+          if (err) {
+            return res.json(400, err);
+          }
+          if (companydata) {
+            delete data.companyname;
+            user_data.company = companydata._id;
+            User.findOneAndUpdate({_id: userid}, user_data, function(err, user) {
+                if (err) {
+                  return res.json(400, err);
+                }
+                if (!user) {
+                  return res.send(404);
+                }
+                return res.send(200);
+              });
 
-exports.update = function(req, res) {
-  var userid = req.params.userid;
-  var user_data = req.body;
+          }
+       });
+      } else {
+          user_data.company = company._id;
+          User.findOneAndUpdate({_id: userid}, user_data, function(err, user) {
+                  if (err) {
+                    return res.json(400, err);
+                  }
+                  if (!user) {
+                    return res.send(404);
+                  }
+                  return res.send(200);
+            });
+      }
+    });
 
-  User.findOneAndUpdate({_id: userid}, user_data, function(err, user) {
-    if (err) {
-      console.log(err);
-      return res.json(400, err);
+  } else {
+    if (data.company == "add-new") {
+      delete data['company'];
+      delete data['companyname'];
     }
-    if (!user) {
-      console.log('notfound');
-      return res.send(404);
-    }
-    // if(user_data.status)
-    // {
-    //   console.log("if");
-    //   var login_link = [req.headers.host, 'login'].join('/');
-    //   (new AdminApproveEmail(user, {loginLink: login_link})).send(function(e) {
-    //     return res.send(200);
-    //   });
-
-    // }else{
-
-    //   console.log("else");
-      return res.send(200);
-
-    // }
-
-  });
-
-
+    user_data.provider = 'local';
+    User.findOneAndUpdate({_id: userid}, user_data, function(err, user) {
+                  if (err) {
+                    return res.json(400, err);
+                  }
+                  if (!user) {
+                    return res.send(404);
+                  }
+                  return res.send(200);
+            });
+  }
 };
+
+
+
+
 /** update user status  */
 
 exports.updatestatus = function(req, res) {
