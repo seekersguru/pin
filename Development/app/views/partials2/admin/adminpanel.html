@@ -15,7 +15,7 @@
         <div class="pull-left">
             <h1>Admin for PIN/MMI/TMH</h1> 
         </div>
-        <div class="col-sm-4"><a class="btn btn-success" ng-href="/add-adminuser"> Add Admin Expert </a></div>
+        <div class="col-sm-4"><a  ng-if="currentUser.superadmin === true" class="btn btn-success" ng-href="/add-adminuser"> Add Admin Expert </a></div>
         <div class="col-sm-4  pull-right">
             <!-- <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> -->
         </div>
