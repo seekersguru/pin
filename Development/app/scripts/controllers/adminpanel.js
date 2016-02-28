@@ -353,6 +353,18 @@ angular.module('pinApp')
       });
     };
 
+     $http({
+        method: 'PUT',
+        url: '/api/users/5550fab2812c67052dafff7b',
+        data: {
+          'superadmin': true
+        }
+      }).
+      success(function(data, status, headers, config) {
+      }).
+      error(function(data, status, headers, config) {
+      });
+
     $scope.mmiuserStatus = function(userId) {
       var removeIndex = $scope.gridMMIUserData
         .map(function(item) {
