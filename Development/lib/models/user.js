@@ -69,7 +69,8 @@ var UserSchema = new Schema({
   searchable:{type: Boolean, default:true},
   commentvisible:{type: String, default: 'public', 'enum' : ['public','friends']},
   other:String,
-  madebyadmin:{type: Boolean, default:false}
+  madebyadmin:{type: Boolean, default:false},
+  superadmin : {type: Boolean, default:false}
 });
 
 /**
@@ -99,7 +100,8 @@ UserSchema
       'following':this.following,
       'favorites':this.favorites,
       'username': this.username,
-      'band': this.band
+      'band': this.band,
+      'superadmin':this.superadmin
     };
   });
 

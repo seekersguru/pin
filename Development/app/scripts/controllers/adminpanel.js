@@ -329,6 +329,30 @@ angular.module('pinApp')
       });
     };
 
+    $scope.adminStatus = function(userId) {
+     var removeIndex = $scope.gridAdminUserData
+        .map(function(item) {
+          return item._id;
+        })
+        .indexOf(userId);
+
+      var setStatus = !$scope.gridAdminUserData[removeIndex].status;
+      $http({
+        method: 'PUT',
+        url: '/api/users/'+ userId,
+        data: {
+          'status': setStatus
+        }
+      }).
+      success(function(data, status, headers, config) {
+         $scope.gridAdminUserData[removeIndex].status = setStatus;
+      }).
+      error(function(data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
+    };
+
     $scope.mmiuserStatus = function(userId) {
       var removeIndex = $scope.gridMMIUserData
         .map(function(item) {
@@ -882,6 +906,30 @@ angular.module('pinApp')
 
     };
 
+    $scope.deleteAdminUser = function(articleId) {
+      var yes = confirm('Are you sure you want to delete this Admin User?');
+      if (yes) {
+        $http({
+          method: "DELETE",
+          url: '/api/users/' + articleId
+        }).
+        success(function(data, status, headers, config) {
+            var removeIndex = $scope.gridAdminUserData
+              .map(function(item) {
+                return item._id;
+              })
+              .indexOf(articleId);
+
+            $scope.gridAdminUserData.splice(removeIndex, 1);
+
+          })
+          .error(function(data, status, headers, config) {
+
+          });
+      }
+
+    };
+
 
     $scope.deleteFamily = function(familyId) {
       var yes = confirm(
@@ -1322,6 +1370,9 @@ angular.module('pinApp')
       showFooter: true,
       plugins: [new ngGridFlexibleHeightPlugin()]
     };
+   
+   var editDeleteADMINuserTemplate =
+      '<a ng-if="currentUser.superadmin === true && currentUser._id !== row.entity._id" ng-click="deleteAdminUser(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a><a ng-if="currentUser.superadmin === true && currentUser._id !== row.entity._id" ng-href="/adminuser/edit/{{row.entity._id}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
 
     $scope.adminuserData = {
       data: 'gridAdminUserData',
@@ -1352,18 +1403,23 @@ angular.module('pinApp')
           displayName: 'Last logged in ',
           cellTemplate: '<span> {{row.entity.lastLogin|date:"dd-MM-yyyy hh:mm:ss"}}</span>',
           cellClass: 'grid-align'
-        }
+        },
         // ,
         // {
         //   field: 'status',
         //   displayName: 'Status',
         //   cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
         // }
-        //  {
-        //     field: 'action',
-        //     displayName: 'Action',
-        //     cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="userStatus(row.entity._id)">Approve</span> '
-        //   }
+         {
+            field: 'action',
+            displayName: 'Status',
+            cellTemplate: '<div ng-if="currentUser.superadmin === true && currentUser._id !== row.entity._id" ><span ng-if="row.entity.status" class="label label-info" ng-click="adminStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="adminStatus(row.entity._id)">Approve</span></div> '
+        },{
+          field: '',
+          displayName: '',
+          cellTemplate: editDeleteADMINuserTemplate,
+          maxWidth: 100
+        }
       ],
       showFooter: true,
       plugins: [new ngGridFlexibleHeightPlugin()]

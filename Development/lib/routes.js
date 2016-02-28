@@ -69,6 +69,7 @@ module.exports = function(app) {
   app.post('/api/users', users.create);
   app.get('/api/users', users.query);
   app.get('/api/contentexpert', users.contentexpert);
+  app.del('/api/users/:userid', users.remove);
   app.post('/api/users/upload',  multipartMiddleware, users.uploaduser);
   app.get('/api/users/adminrole', users.adminrole);
   app.get('/api/users/:userid', users.show);

@@ -23,7 +23,7 @@ angular.module('pinApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          if($rootScope.currentUser.role=='admin')
+          if($rootScope.currentUser.role === 'admin')
             {
 
             $location.path('/admin').search({'adminusers':1});

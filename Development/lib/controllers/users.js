@@ -562,3 +562,31 @@ exports.uploaduser = function(req, res, next) {
       return res.send(403, 'invalid');
     }
   };
+
+
+exports.remove = function(req, res) {
+  var article_id = req.params.userid;
+  var articleid=req.params.userid;
+  User.findById(articleid)
+  .exec(function(err,article){
+    if(err){
+      console.log(err);
+      return res.json(404,err);
+    }
+    if (!article){
+      console.log('notfound');
+      return res.send(404);
+    }
+    if(article)
+    {
+      User.findOneAndRemove({_id: article_id}, function(err, article) {
+      if (err) {
+        res.json(400, err);
+      } else {
+        article.remove();
+        res.send(200);
+    }
+  });
+}
+});
+};  
