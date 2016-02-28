@@ -1372,7 +1372,7 @@ angular.module('pinApp')
     };
    
    var editDeleteADMINuserTemplate =
-      '<a ng-if="currentUser.superadmin === true && currentUser._id !== row.entity._id" ng-click="deleteAdminUser(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a><a ng-if="currentUser.superadmin === true && currentUser._id !== row.entity._id" ng-href="/adminuser/edit/{{row.entity._id}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>';
+      '<span ng-if="currentUser.superadmin === true && currentUser._id !== row.entity._id" ><span ng-if="row.entity.status" class="label label-info" ng-click="adminStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="adminStatus(row.entity._id)">Approve</span></span> <a ng-if="currentUser.superadmin === true && currentUser._id !== row.entity._id" ng-click="deleteAdminUser(row.entity._id)"  id="delete"  class="label label-warning" data-toggle="tooltip">Delete <i class="fa fa-trash-o"></i></a>';
 
     $scope.adminuserData = {
       data: 'gridAdminUserData',
@@ -1411,9 +1411,9 @@ angular.module('pinApp')
         //   cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
         // }
          {
-            field: 'action',
+            field: 'status',
             displayName: 'Status',
-            cellTemplate: '<div ng-if="currentUser.superadmin === true && currentUser._id !== row.entity._id" ><span ng-if="row.entity.status" class="label label-info" ng-click="adminStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="adminStatus(row.entity._id)">Approve</span></div> '
+            cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
         },{
           field: '',
           displayName: '',

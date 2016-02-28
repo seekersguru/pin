@@ -128,7 +128,7 @@ angular.module('pinApp')
 
      $scope.register = function(form) {
       $scope.submitted = true;
-  		$scope.registerDone=0;
+      $scope.registerDone=0;
       var d = new Date();
       var n = d.getTime();
       if(form.$valid) {
@@ -171,5 +171,50 @@ angular.module('pinApp')
         });
       }
     };
+     $scope.addAdmin = function(form) {
+      $scope.submitted = true;
+  		$scope.registerDone=0;
+      var d = new Date();
+      var n = d.getTime();
+      if(form.$valid) {
+        Auth.createUser({
+          fullname: $scope.user.name,
+          name:  $scope.user.name,
+          username:  n,
+          alias: $scope.user.alias,
+          address: $scope.user.address,
+          email: $scope.user.email,
+          phone: $scope.user.phone,
+          membertype: "Family",
+          nominated: "Hansi",
+          adminrole: "Experts",
+          role:"admin",
+          status:true,
+          searchable:true,
+          password:$scope.user.password,
+          admin:(window.location.search=="?admin=1"),
+          emailVerification: {
+              verified :true
+          }
+        })
+        .then( function() {
+          // Account created, redirect to home
+          $scope.emailSent = true;
+          $scope.registerDone=1;
+          // $location.path('/login').search({'register': 1});
+          $location.path('/admin').search({ 'adminusers':'1'});
+        })
+        .catch( function(err) {
+          err = err.data;
+          $scope.errors = {};
+          // Update validity of form fields that match the mongoose errors
+          angular.forEach(err.errors, function(error, field) {
+            form[field].$setValidity('mongoose', false);
+            $scope.errors[field] = error.message;
+          });
+        });
+      }
+    };
+
 
   }]);

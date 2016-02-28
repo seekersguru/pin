@@ -1,0 +1,76 @@
+<div class="container-fluid po-reletive">
+<div class="container-head">
+<div class="row">
+<div class="pull-left">
+<div class="mar-back-img-inner">
+<!-- Become a member section -->
+<div ng-include="'partials2/left-navbar.html'"> </div>
+</div>
+</div>
+
+
+<div class="inner-section">
+ <h1>Add Admin User</h1>
+<div class="register-form-hr"></div>
+        <form class="register-form"  role="form"  name="form"  ng-submit="addAdmin(form)" novalidate>
+       
+            <div class="row">
+           <div class="form-group" ng-class="{'has-error':form.name.$error.required && submitted,'has-success':form.name.$valid && submitted}">
+           <div class="col-lg-12 col-md-12 col-sm-12">
+           <input required type="text" name="name"  class="form-control" ng-model="user.name" placeholder="Name *" />
+           <div class="error-massege">
+           <p class="text-danger" ng-show="form.name.$error.required && submitted">Please provide a name.</p>
+           </div>
+</div>
+           </div>
+           </div>
+
+
+<div class="row ">
+<div class="col-lg-12 col-md-12 col-sm-12">
+<div class="form-group" ng-class="{'has-error':form.email.$error.required && submitted,'has-success':form.email.$valid && submitted}">
+   <input required type="email" validateEmail name="email"  class="form-control" placeholder="Email *" ng-model="user.email" mongoose-error />
+<div class="error-massege">
+   <p class="text-danger" ng-show="form.email.$error.required  && submitted">Please provide a valid email address.</p>
+   <p class="text-danger" ng-show="form.email.$error.email && submitted">
+                  Please provide a valid email address.
+              </p>
+   <p class="text-danger" ng-show="form.email.$error.mongoose">
+    {{ errors.email }}
+   </p>
+   </div>
+   </div>
+</div>
+</div>
+<div class="row ">
+<div class="col-lg-6 col-md-6 col-sm-6 paddingl-7">
+<div class="form-group" ng-class="{'has-error':form.password.$error.required && submitted,'has-success':form.password.$valid  && submitted }" >
+                <input required type="password" name="password"  class="form-control" placeholder="password *" ng-model="user.password" ng-minlength=5 mongoose-error />
+                <div class="error-massege"> 
+                <p class="text-danger" ng-show="form.password.$error.required && submitted">Please select a password.</p>
+                
+                <p class="text-danger" ng-show="form.password.$error.minlength && submitted">your password shoud be minimum 5 character long .</p>
+                
+                <p class="text-danger" ng-show="form.password.$error.mongoose">
+                 {{ errors.password }}
+                </p>
+                </div>
+
+</div>
+</div>
+</div>
+   <button class="btn btn-primary" type="submit" >
+        Add <i class="fa fa-angle-right"></i>
+    </button>
+</form>
+</div>
+
+
+</div>
+</div>
+
+<!-- /container -->
+<!--<div class="register-pen"><img src="images/register-pen.png" alt=""></div>-->
+
+
+</div>

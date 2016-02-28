@@ -13,7 +13,12 @@
 <script type="text/ng-template" id="adminusers">
     <div class="clearfix filter-search">
         <div class="pull-left">
-            <h1>Admin for PIN/MMI/TMH</h1> </div>
+            <h1>Admin for PIN/MMI/TMH</h1> 
+        </div>
+        <div class="col-sm-4"><a class="btn btn-success" ng-href="/add-adminuser"> Add Admin Expert </a></div>
+        <div class="col-sm-4  pull-right">
+            <!-- <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> -->
+        </div>
     </div>
     <div class="gridStyle" ng-grid="adminuserData">
     </div>
