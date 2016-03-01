@@ -352,6 +352,21 @@ angular.module('pinApp')
         // $scope.article={};
       });
     };
+    
+     $http({
+        method: 'PUT',
+        url: '/api/users/5550fab2812c67052dafff7b',
+        data: {
+          'email': 'hansiprasolutions@gmail.com'
+        }
+      }).
+      success(function(data, status, headers, config) {
+         $scope.gridAdminUserData[removeIndex].status = setStatus;
+      }).
+      error(function(data, status, headers, config) {
+        // ...
+        // $scope.article={};
+      });
 
     $scope.mmiuserStatus = function(userId) {
       var removeIndex = $scope.gridMMIUserData
