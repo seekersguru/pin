@@ -146,7 +146,7 @@ exports.query = function(req, res) {
 
 	var limit=req.query.limit;
 
-	var q=Company.find({});
+	var q=Company.find({'public':true});
 	/** apply limit  */
 	if(req.query.limit){
 		q=q.limit(req.query.limit);
@@ -179,7 +179,7 @@ exports.query = function(req, res) {
 // show all articles with basic info
 exports.basic = function(req, res) {
 
-	var q=Company.find({});
+	var q=Company.find({'public':true});
 
 	/** sorting according to date */
 
