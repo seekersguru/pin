@@ -1005,11 +1005,11 @@ angular.module('pinApp')
     };
 
     $scope.companyStatus = function(eventId) {
-      var removeIndex = $scope.gridCompanyData
-        .map(function(item) {
-          return item._id;
-        })
-        .indexOf(eventId);
+      // var removeIndex = $scope.gridCompanyData
+      //   .map(function(item) {
+      //     return item._id;
+      //   })
+      //   .indexOf(eventId);
 
       // var setStatus = !$scope.gridCompanyData[removeIndex].approve;
       $http({
