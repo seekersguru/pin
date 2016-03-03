@@ -1005,22 +1005,22 @@ angular.module('pinApp')
     };
 
     $scope.companyStatus = function(eventId) {
-      // var removeIndex = $scope.gridCompanyData
-      //   .map(function(item) {
-      //     return item._id;
-      //   })
-      //   .indexOf(eventId);
+      var removeIndex = $scope.gridCompanyData
+        .map(function(item) {
+          return item._id;
+        })
+        .indexOf(eventId);
 
-      // var setStatus = !$scope.gridCompanyData[removeIndex].approve;
+      var setStatus = !$scope.gridCompanyData[removeIndex].approve;
       $http({
         method: 'PUT',
         url: '/api/companys/' + eventId,
         data: {
-          'public': true
+          'public': setStatus
         }
       }).
       success(function(data, status, headers, config) {
-        // $scope.gridCompanyData[removeIndex].approve = setStatus;
+        $scope.gridCompanyData[removeIndex].approve = setStatus;
       }).
       error(function(data, status, headers, config) {
         // ...
@@ -1029,12 +1029,6 @@ angular.module('pinApp')
 
     };
 
-
-      var abc=['55ad3d1d159df6c35ec2036f','55ad3d1d159df6c35ec20371','55ad3d1d159df6c35ec20373','55ad3d1d159df6c35ec20375','55ad3d1d159df6c35ec20377','55ad3d1d159df6c35ec20379','55ad3d1d159df6c35ec2037b','55ad3d1d159df6c35ec2037d','55ad3d1d159df6c35ec2037f','55ad3d1d159df6c35ec20381','55ad3d1d159df6c35ec20383','55ad3d1d159df6c35ec20385','55ad3d1e159df6c35ec20387','55ad3d1e159df6c35ec20389','55ad3d1e159df6c35ec2038b','55ad3d1e159df6c35ec2038d','55ad3d1e159df6c35ec2038f','55ad3d1e159df6c35ec20391','55ad3d1e159df6c35ec20393','55ad3d1e159df6c35ec20395','55ad3d1e159df6c35ec20397','55ad3d1e159df6c35ec20399','55ad3d1e159df6c35ec2039b','55ad3d1e159df6c35ec2039d','55ad3d1e159df6c35ec2039f','55ad3d1e159df6c35ec203a1','55ad3d1f159df6c35ec203a3','55ad3d1f159df6c35ec203a5','55ad3d1f159df6c35ec203a7','55ad3d1f159df6c35ec203a9','55ad3d1f159df6c35ec203ab','55ad3d1f159df6c35ec203ad','55ad3d1f159df6c35ec203af','55ad3d1f159df6c35ec203b1','55ad3d1f159df6c35ec203b3','55ad3d1f159df6c35ec203b5','55ad3d1f159df6c35ec203b7','55ad3d1f159df6c35ec203b9','55ad3d1f159df6c35ec203bb','55ad3d1f159df6c35ec203bd','55ad3d1f159df6c35ec203bf','55ad3d1f159df6c35ec203c1','55ad3d20159df6c35ec203c3','55ad3d20159df6c35ec203c5','55ad3d20159df6c35ec203c7','55ad3d20159df6c35ec203c9','55ad3d20159df6c35ec203cb','55ad3d20159df6c35ec203cd','55ad3d20159df6c35ec203cf','55ad3d20159df6c35ec203d1','55ad3d20159df6c35ec203d3','55ad3d20159df6c35ec203d5','55ad3d20159df6c35ec203d7','55ad3d20159df6c35ec203d9','55ad3d21159df6c35ec203db','55ad3d21159df6c35ec203dd','55ad3d21159df6c35ec203df','55ad3d21159df6c35ec203e1','55ad3d21159df6c35ec203e3','55ad3d21159df6c35ec203e5','55ad3d21159df6c35ec203e7','55ad3d21159df6c35ec203e9','55ad3d21159df6c35ec203eb','55ad3d21159df6c35ec203ed','55ad3d21159df6c35ec203ef','55ad3d21159df6c35ec203f1','55ad3d22159df6c35ec203f3','55ad3d22159df6c35ec203f5','55ad3d22159df6c35ec203f7','55ad3d22159df6c35ec203f9','55ad3d22159df6c35ec203fb','55ad3d22159df6c35ec203fd','55ad3d22159df6c35ec203ff','55ad3d22159df6c35ec20401','55ad3d22159df6c35ec20403','55ad3d22159df6c35ec20405','55ad3d22159df6c35ec20407','55ad3d22159df6c35ec20409','55ad3d22159df6c35ec2040b','55ad3d22159df6c35ec2040d','55ad3d22159df6c35ec2040f','55ad3d22159df6c35ec20411','55ad3d22159df6c35ec20413','55ad3d22159df6c35ec20415','55ad3d23159df6c35ec20417','55ad3d23159df6c35ec20419','55ad3d23159df6c35ec2041b','55ad3d23159df6c35ec2041d','55ad3d23159df6c35ec2041f','55ad3d23159df6c35ec20421','55ad3d23159df6c35ec20423','55ad3d23159df6c35ec20425','55ad3d23159df6c35ec20427','55ad3d23159df6c35ec20429','55ad3d23159df6c35ec2042b','55ad3d23159df6c35ec2042d','55ad3d23159df6c35ec2042f','55ad3d23159df6c35ec20431','55ad3d24159df6c35ec20432','55ad3d24159df6c35ec20433','55ad3d24159df6c35ec20435','55ad3d24159df6c35ec20437','55ad3d24159df6c35ec20439','55ad3d24159df6c35ec2043b','55ad3d24159df6c35ec2043d','55ad3d24159df6c35ec2043f','55ad3d24159df6c35ec20441','55ad3d24159df6c35ec20443','55ad3d24159df6c35ec20445','55ad3d24159df6c35ec20447','55ad3d24159df6c35ec20449','55ad3d24159df6c35ec2044b','55ad3d24159df6c35ec2044d','55ad3d24159df6c35ec2044f','55ad3d25159df6c35ec20451','55ad3d25159df6c35ec20453','55ad3d25159df6c35ec20455','55ad3d25159df6c35ec20457','55ad3d25159df6c35ec20459','55ad3d25159df6c35ec2045b','55ad3d25159df6c35ec2045d','55ad3d25159df6c35ec2045f','55ad3d25159df6c35ec20461','55ad3d25159df6c35ec20463','55ad3d25159df6c35ec20465','55ad3d25159df6c35ec20467','55ad3d25159df6c35ec20469','55ad3d25159df6c35ec2046b','55ad3d25159df6c35ec2046d','55ad3d26159df6c35ec2046f','55ad3d26159df6c35ec20471','55ad3d26159df6c35ec20473','55ad3d26159df6c35ec20475','55ad3d26159df6c35ec20477','55ad3d26159df6c35ec20479','55ad3d26159df6c35ec2047b','55ad3d26159df6c35ec2047d','55ad3d26159df6c35ec2047f','55ad3d26159df6c35ec20481','55ad3d26159df6c35ec20483','55ad3d26159df6c35ec20485','55ad3d26159df6c35ec20487','55ad3d26159df6c35ec20489','55ad3d26159df6c35ec2048b','55ad3d26159df6c35ec2048d','55ad3d26159df6c35ec2048f','55ad3d27159df6c35ec20491','55ad3d27159df6c35ec20493','55ad3d27159df6c35ec20495','55ad3d27159df6c35ec20497','55ad3d27159df6c35ec20499','55ad3d27159df6c35ec2049b','55ad3d27159df6c35ec2049d','55ad3d27159df6c35ec2049f','55ad3d27159df6c35ec204a1','55ad3d27159df6c35ec204a3','55ad3d27159df6c35ec204a5','55ad3d27159df6c35ec204a7','55ad3d27159df6c35ec204a9','55ad3d27159df6c35ec204ab','55ad3d27159df6c35ec204ad','55ad3d27159df6c35ec204af','55ad3d28159df6c35ec204b1','55ad3d28159df6c35ec204b3','55ad3d28159df6c35ec204b5','55ad3d28159df6c35ec204b7','55ad3d28159df6c35ec204b9','55ad3d28159df6c35ec204bb','55ad3d28159df6c35ec204bd','55ad3d28159df6c35ec204bf','55ad3d28159df6c35ec204c1','55ad3d28159df6c35ec204c3','55ad3d29159df6c35ec204c5','55ad3d29159df6c35ec204c7','55ad3d29159df6c35ec204c9','55ad3d29159df6c35ec204cb','55ad3d29159df6c35ec204cd','55ad3d29159df6c35ec204cf','55ad3d29159df6c35ec204d1','55ad3d29159df6c35ec204d3','55ad3d29159df6c35ec204d5','55ad3d29159df6c35ec204d7','55ad3d29159df6c35ec204d9','55ad3d29159df6c35ec204db','55ad3d29159df6c35ec204dd','55ad3d29159df6c35ec204df','55ad3d29159df6c35ec204e1','55ad3d29159df6c35ec204e3','55ad3d29159df6c35ec204e5','55ad3d2a159df6c35ec204e7','55ad3d2a159df6c35ec204e9','55ad3d2a159df6c35ec204eb','55ad3d2a159df6c35ec204ed','55ad3d2a159df6c35ec204ef','55ad3d2a159df6c35ec204f1','55ad3d2a159df6c35ec204f3','55ad3d2a159df6c35ec204f5','55ad3d2a159df6c35ec204f7','55ad3d2a159df6c35ec204f9','55ad3d2a159df6c35ec204fb','55ad3d2a159df6c35ec204fd','55ad3d2a159df6c35ec204ff','55ad3d2b159df6c35ec20501','55ad3d2b159df6c35ec20503','55ad3d2b159df6c35ec20505','55ad3d2b159df6c35ec20507','55ad3d2b159df6c35ec20509','55ad3d2b159df6c35ec2050b','55ad3d2b159df6c35ec2050d','55ad3d2b159df6c35ec2050f','55ad3d2b159df6c35ec20511','55ad3d2b159df6c35ec20513','55ad3d2b159df6c35ec20515','55ad3d2c159df6c35ec20517','55ad3d2c159df6c35ec20519','55ad3d2c159df6c35ec2051b','55ad3d2c159df6c35ec2051d','55ad3d2c159df6c35ec2051f','55ad3d2c159df6c35ec20521','55ad3d2c159df6c35ec20523','55ad3d2c159df6c35ec20525','55ad3d2c159df6c35ec20527','55ad3d2c159df6c35ec20529','55ad3d2c159df6c35ec2052b','55ad3d2c159df6c35ec2052d','55ad3d2c159df6c35ec2052f','55ad3d2c159df6c35ec20531','55ad3d2c159df6c35ec20533','55ad3d2c159df6c35ec20535','55ad3d2c159df6c35ec20537','55ad3d2c159df6c35ec20539','55ad3d2d159df6c35ec2053b','55ad3d2d159df6c35ec2053d','55ad3d2d159df6c35ec2053f','55ad3d2d159df6c35ec20541','55ad3d2d159df6c35ec20543','55ad3d2d159df6c35ec20545','55ad3d2d159df6c35ec20547','55ad3d2d159df6c35ec20549','55ad3d2d159df6c35ec2054b','55ad3d2d159df6c35ec2054d','55ad3d2d159df6c35ec2054f','55ad3d2d159df6c35ec20551','55ad3d2e159df6c35ec20553','55ad3d2e159df6c35ec20555','55ad3d2e159df6c35ec20557','55ad3d2e159df6c35ec20559','55ad3d2e159df6c35ec2055b','55ad3d2e159df6c35ec2055d','55ad3d2e159df6c35ec2055f','55ad3d2e159df6c35ec20561','55ad3d2e159df6c35ec20563','55ad3d2e159df6c35ec20565','55ad3d2e159df6c35ec20567','55ad3d2e159df6c35ec20569','55ad3d2e159df6c35ec2056b','55ad3d2f159df6c35ec2056d','55ad3d2f159df6c35ec2056f','55ad3d2f159df6c35ec20571','55ad3d2f159df6c35ec20573','55ad3d2f159df6c35ec20575','55ad3d2f159df6c35ec20577','55ad3d2f159df6c35ec20579','55ad3d2f159df6c35ec2057b','55ad3d2f159df6c35ec2057d','55ad3d2f159df6c35ec2057f','55ad3d2f159df6c35ec20581','55ad3d2f159df6c35ec20583','55ad3d2f159df6c35ec20585','563a4ec91f3582227f15fa14','563adc651f3582227f15fa17']
-      for(var i = 0;i<abc.length;i++){
-        $scope.companyStatus(abc[i]);
-      }
-     
 
 
     $scope.deleteCompany = function(articleId) {
@@ -1875,7 +1869,7 @@ var editDeleteMMMIuserTemplate =
           cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
           cellClass: 'grid-align'
         },
-        { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="companyStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="copmanyStatus(row.entity._id)">NOT APPROVED</span>'},
+        { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger">NOT APPROVED</span>'},
         {
           field: '',
           displayName: 'Action',
