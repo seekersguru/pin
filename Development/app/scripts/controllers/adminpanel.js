@@ -1868,8 +1868,7 @@ var editDeleteMMMIuserTemplate =
           cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
           cellClass: 'grid-align'
         },
-
-        //{ field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="companyStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="copmanyStatus(row.entity._id)">NOT APPROVED</span>'},
+        // { field: 'approve' ,displayName:'Approve',cellTemplate:'<span ng-if="row.entity.approve" class="label label-success" ng-click="companyStatus(row.entity._id)">APPROVED</span><span ng-if="!row.entity.approve" class="label label-danger" ng-click="copmanyStatus(row.entity._id)">NOT APPROVED</span>'},
         {
           field: '',
           displayName: 'Action',
