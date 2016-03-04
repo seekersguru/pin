@@ -266,7 +266,7 @@ angular.module('pinApp', [
       .when('/articles/view/:articleid', {
         templateUrl: 'partials2/article-detail',
         controller: 'ArticleCtrl',
-        authenticate: true,
+        // authenticate: true,
         resolve: {
             articles: ['$q', '$route', 'Article','$http','$rootScope', function($q, $route,
             Article,$http,$rootScope) {
