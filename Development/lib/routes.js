@@ -178,7 +178,9 @@ module.exports = function(app) {
 			ua = useragent.parse(source);
 			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 			// console.log(ua);
-		if (ua.isBot) {
+			
+		if (ua.isBot || req.originalUrl.match("_escaped_fragment_") !== null) {
+			req.originalUrl=req.originalUrl.replace("?_escaped_fragment_","");
 
 			var articleId=req.originalUrl.split("/");
 			console.log(articleId);
