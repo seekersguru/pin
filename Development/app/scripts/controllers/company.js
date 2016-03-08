@@ -262,7 +262,7 @@ $scope.setscope=function(){
       description:$scope.article.description,
       organization:$scope.article.organization,
       address:$scope.article.address,
-      url:$scope.article.url,
+      websiteUrl:$scope.article.websiteUrl,
       firmsupertype:$scope.article.firmsupertype,
       firmtype:$scope.article.firmtype,
       firmsubtype:$scope.article.firmsubtype,

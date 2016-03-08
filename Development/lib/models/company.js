@@ -20,6 +20,7 @@ var CompanySchema = new Schema({
   firmsubtype: String,
   roletype: [],
   url:String,
+  websiteUrl:String,
   address: [{
              street: String,
              city:String,
@@ -64,6 +65,7 @@ CompanySchema
       'firmsubtype':this.firmsubtype,
       'address':this.address,
       'url':this.url,
+      'websiteUrl':this.websiteUrl,
       'createdAt':this.createdAt,
       'roletype':this.roletype,
       'approve':this.public,

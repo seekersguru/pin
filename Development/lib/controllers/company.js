@@ -14,6 +14,7 @@ exports.create = function(req, res, next) {
        	console.log(req.body);
         	// req.body.tags=req.body.tags;
         	console.log(req.body);
+			req.body.url=req.body.title.trim().replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().split(' ').join('-');
         	var company=new Company(req.body);
         	company.save(function(err,company){
         		if(err){
