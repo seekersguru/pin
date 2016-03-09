@@ -1,4 +1,5 @@
-User-Agent: *
-Disallow: 
+# robotstxt.org
+
+User-agent: *
 
 Sitemap: http://themoneyhans.com/sitemap.xml
