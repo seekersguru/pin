@@ -182,9 +182,17 @@ exports.excel = function(req, res){
       return res.send(404);
     } else {
       var resultArray=[['EMAIL','COMPANY','USERNAME','FIRSTNAME','SURNAME','JOBTITLE','DATEREGISTRATION','MOBILE','CITY','AUTOLOGIN']];
+      var roleType=['CEO/business head',
+      'Management',
+      'Sales/Marketing',
+      'Investment/Product',
+      'RM/client facing',
+      'Investment Mgmt',
+      'Product Mgmt']
       // if(req.user.role !== 'admin'){
         for(var i=0; i<users.length; i++){
-          resultArray.push([users[i].email,users[i].company !== null ? users[i].company.title:null,users[i].username,users[i].firstname,users[i].lastname,users[i].adminrole,new Date(users[i].createdAt),users[i].phone,users[i].address !== null ? users[i].address.city: null,'http://moneymanagementindia.net/api/session/autologin?email='+users[i]._id+'&token='+users[i]._id]);
+
+          resultArray.push([users[i].email,users[i].company !== null ? users[i].company.title:null,users[i].username,users[i].firstname,users[i].lastname, users[i].adminrole ? roleType[users[i].adminrole -1]:null,new Date(users[i].createdAt),users[i].phone,users[i].address !== null ? users[i].address.city: null,'http://moneymanagementindia.net/api/session/autologin?email='+users[i]._id+'&token='+users[i]._id]);
         }
       return res.json(resultArray);
     }
