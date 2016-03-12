@@ -113,6 +113,84 @@ exports.query = function(req, res){
   });
 };
 
+exports.excel = function(req, res){
+  var Query = '',
+     spiceArray=[],
+     q = User.find({role: {'$ne':'admin' }}).populate('company','title roletype');
+
+  if (req.query.array_foll){
+    if(typeof req.query.array_foll === typeof {}){
+      q = q.where('_id').in(req.query.array_foll);
+    }
+    else{
+      q = q.where('_id', req.query.array_foll);
+    }
+  }else if(req.query.foll_limit){
+    return res.json(404);
+  }
+
+  
+  if(req.query && req.query.filter){
+    Query=JSON.parse(req.query.filter);
+
+    if(Query.status)
+    {
+        q.where('status').equals(Query.status);
+    }
+
+    if(Query.emailVerification)
+    {
+        q.where('emailVerification.verified').equals(Query.emailVerification);
+    }
+
+    if(Query.linkedin){
+
+      if(Query.linkedin === 'linkedin')
+      {
+          q.where('linkedin').ne(null);
+      }
+      else if(Query.linkedin === 'direct'){
+          q.where('linkedin').exists(false);
+      }
+   }
+
+    if(Query.role)
+    {
+        q.where('role').equals(Query.role);
+    }
+
+    if(Query.city)
+    {
+        q.where('address.city').equals(Query.city);
+    }
+
+    if(Query.role)
+    {
+        q.where('role').equals(Query.role);
+    }
+
+    if(Query.createdAt && Query.createdAt.startDate && Query.createdAt.endDate){
+     q.where({createdAt: {$gte:  Query.createdAt.startDate,$lte: Query.createdAt.endDate}});
+    }
+
+  }
+
+
+  q.exec(function(err, users) {
+    if (err) {
+      console.log(err);
+      return res.send(404);
+    } else {
+      var resultArray=[['EMAIL','COMPANY','USERNAME','FIRSTNAME','SURNAME','JOBTITLE','DATEREGISTRATION','MOBILE','CITY','AUTOLOGIN']];
+      // if(req.user.role !== 'admin'){
+        for(var i=0; i<users.length; i++){
+          resultArray.push([users[i].email,users[i].company !== null ? users[i].company.title:null,users[i].username,users[i].firstname,users[i].lastname,users[i].adminrole,new Date(users[i].createdAt),users[i].phone,users[i].address !== null ? users[i].address.city: null,'http://moneymanagementindia.net/api/session/autologin?email='+users[i]._id+'&token='+users[i]._id]);
+        }
+      return res.json(resultArray);
+    }
+  });
+};
+
 // show particluar one user
 exports.show=function(req,res){
   var userid=req.params.userid;

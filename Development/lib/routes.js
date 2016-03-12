@@ -86,6 +86,7 @@ module.exports = function(app) {
 
   app.post('/api/mmiusers', mmiusers.create);
   app.get('/api/mmiusers', mmiusers.query);
+  app.get('/api/mmiusersexcel', mmiusers.excel);
   app.get('/api/mmiusers/:userid', mmiusers.show);
   app.put('/api/mmiusers/:userid', mmiusers.update);
   app.del('/api/mmiusers/:userid', mmiusers.remove);
