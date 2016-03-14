@@ -309,11 +309,12 @@
 </script>
 <script type="text/ng-template" id="company">
     <div class="clearfix  filter-search">
-        <div class="col-sm-4 ">
+        <div class="col-sm-3 ">
             <h1>Companies</h1></div>
-        <div class="col-sm-4 "><a class="btn btn-success" ng-href="/add-company"> Add Company </a> </div>
+        <div class="col-sm-3 "><a class="btn btn-success" ng-href="/add-company"> Add Company </a> </div>
+         <div class="col-sm-3 "><button class="btn btn-info" ng-click="ExportCompany()"> Export Company </button> </div>
         <!--<a class="btn btn-success" ng-href="/upload-company"> Upload Companies </a> -->
-        <div class="col-sm-4 pull-right">
+        <div class="col-sm-3 pull-right">
             <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
         </div>
     </div>

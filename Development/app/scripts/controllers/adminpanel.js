@@ -325,6 +325,29 @@ angular.module('pinApp')
       }
     };
 
+    $scope.ExportCompany = function() {
+      var data;
+        $http({
+          method: 'GET',
+          url: 'api/companyexcel'
+        }).
+        success(function(users, status, headers, config) {
+          /* original data */
+          var data = users;
+          var ws_name = "Companies";
+          var wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
+          /* add worksheet to workbook */
+          wb.SheetNames.push(ws_name);
+          wb.Sheets[ws_name] = ws;
+          var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
+          saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), "companies.xlsx");
+
+        }).
+        error(function(data, status, headers, config) {
+
+        });
+    };
+
     $scope.filterPINUsers = function() {
       var data;
       var page = $scope.pagingOptions.currentPage;

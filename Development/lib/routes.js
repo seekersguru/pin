@@ -165,6 +165,7 @@ module.exports = function(app) {
   /**---(',')--Event comments section stop----(',')---**/
 
   app.get('/api/companys', companys.query);
+  app.get('/api/companyexcel', companys.excel);
   app.get('/api/companys/basic', companys.basic);
   app.get('/api/companys/:companyid', companys.show);
   app.post('/api/companys',   companys.create);
