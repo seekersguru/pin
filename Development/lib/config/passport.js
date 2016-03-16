@@ -199,6 +199,8 @@ passport.use(new LinkedinStrategy({
     //   return done(err, user);
     // });
 profile = profile._json;
+profile.token = token;
+profile.tokenSecret =tokenSecret;
   var photo_url =profile.pictureUrl;
   console.log('Profile');
   return User.findOne({
