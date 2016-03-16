@@ -276,7 +276,7 @@ angular.module('pinApp')
         });
       }
     };
-    $scope.ExportPINUsers = function() {
+    $scope.ExportNetCorePINUsers = function() {
       var data;
       var searchText = $scope.filterOptions.filterText;
       //if filter text is there then this condition will execute
@@ -306,6 +306,55 @@ angular.module('pinApp')
         $http({
           method: 'GET',
           url: 'api/mmiusersexcel?filter=' + JSON.stringify($scope.mmiFilter)
+        }).
+        success(function(users, status, headers, config) {
+          /* original data */
+          var data = users;
+          var ws_name = "MMIUsers";
+          var wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
+          /* add worksheet to workbook */
+          wb.SheetNames.push(ws_name);
+          wb.Sheets[ws_name] = ws;
+          var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
+          saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), "mmiusers.xlsx");
+
+        }).
+        error(function(data, status, headers, config) {
+
+        });
+      }
+    };
+
+    $scope.ExportPINUsers = function() {
+      var data;
+      var searchText = $scope.filterOptions.filterText;
+      //if filter text is there then this condition will execute
+      if (searchText) {
+        var ft = searchText.toLowerCase();
+        $http({
+          method: 'GET',
+          url: 'api/mmiusersexcelfull?filter=' + JSON.stringify($scope.mmiFilter)
+        }).
+        success(function(users, status, headers, config) {
+          /* original data */
+          var data = users;
+          var ws_name = "MMIUsers";
+          var wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
+          /* add worksheet to workbook */
+          wb.SheetNames.push(ws_name);
+          wb.Sheets[ws_name] = ws;
+          var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
+          saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), "mmiusers.xlsx");
+
+          // $scope.setPagingData(data,page,pageSize);
+        }).
+        error(function(data, status, headers, config) {
+
+        });
+      } else {
+        $http({
+          method: 'GET',
+          url: 'api/mmiusersexcelfull?filter=' + JSON.stringify($scope.mmiFilter)
         }).
         success(function(users, status, headers, config) {
           /* original data */
