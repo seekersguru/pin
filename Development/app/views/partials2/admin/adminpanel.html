@@ -13,9 +13,9 @@
 <script type="text/ng-template" id="adminusers">
     <div class="clearfix filter-search">
         <div class="pull-left">
-            <h1>Admin for PIN/MMI/TMH</h1> 
+            <h1>Admin for PIN/MMI/TMH</h1>
         </div>
-        <div class="col-sm-4"><a  ng-if="currentUser.superadmin === true" class="btn btn-success" ng-href="/add-adminuser"> Add Admin Expert </a></div>
+        <div class="col-sm-4"><a ng-if="currentUser.superadmin === true" class="btn btn-success" ng-href="/add-adminuser"> Add Admin Expert </a></div>
         <div class="col-sm-4  pull-right">
             <!-- <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> -->
         </div>
@@ -95,18 +95,15 @@
         </tbody>
         <tfoot>
             <tr>
-                <th >
+                <th>
                     <button class="btn btn-info" ng-click="filterMMIUsers()">Apply Filter</button>
                 </th>
-
-                 <th >
+                <th>
                     <button class="btn btn-info" ng-click="ExportNetCorePINUsers()">NetCore Format Export</button>
                 </th>
-
-                <th >
+                <th>
                     <button class="btn btn-info" ng-click="ExportPINUsers()">Full Detail Export</button>
                 </th>
-
             </tr>
         </tfoot>
     </table>
@@ -277,7 +274,7 @@
         <div class="col-sm-4">
             <h1>Family</h1></div>
         <div class="col-sm-4">
-            <button class="btn btn-success" ng-click=""addFamily"()"> Add Family </button>
+            <button class="btn btn-success" ng-click="" addFamily "()"> Add Family </button>
         </div>
         <div class="col-sm-4 pull-right">
             <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
@@ -313,13 +310,36 @@
     </div>
 </script>
 <script type="text/ng-template" id="company">
+<table class="table table-striped">
+        <tbody>
+           <tr>
+                <th>Approve</th>
+                <td>
+                    <select class="form-control" ng-model="companyFilter.status">
+                        <option value="">All</option>
+                        <option value="true">Approved</option>
+                        <option value="false">Not Approved</option>
+                    </select>
+                </td>
+             </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    <button class="btn btn-info" ng-click="filterCompany()">Apply Filter</button>
+                </th>
+                <th>
+                    <button class="btn btn-info" ng-click="ExportCompany()"> Export Companies</button>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
     <div class="clearfix  filter-search">
-        <div class="col-sm-3 ">
+        <div class="col-sm-4 ">
             <h1>Companies</h1></div>
-        <div class="col-sm-3 "><a class="btn btn-success" ng-href="/add-company"> Add Company </a> </div>
-         <div class="col-sm-3 "><button class="btn btn-info" ng-click="ExportCompany()"> Export Company </button> </div>
+        <div class="col-sm-4"><a class="btn btn-success" ng-href="/add-company"> Add Company </a> </div>
         <!--<a class="btn btn-success" ng-href="/upload-company"> Upload Companies </a> -->
-        <div class="col-sm-3 pull-right">
+        <div class="col-sm-4 pull-right">
             <input type="text" class="form-control" ng-model="filterOptions.filterText" /><span>Search:</span> </string>
         </div>
     </div>

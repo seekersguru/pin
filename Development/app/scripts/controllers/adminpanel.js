@@ -164,6 +164,9 @@ angular.module('pinApp')
     $scope.mmiFilter = {
 
     };
+    $scope.companyFilter = {
+
+    };
     $scope.pinFilter = {
 
     };
@@ -373,12 +376,26 @@ angular.module('pinApp')
         });
       }
     };
+    $scope.filterCompany = function() {
+      var data;
+      var searchText = $scope.filterOptions.filterText;
+        $http({
+          method: 'GET',
+          url: 'api/companys/basic?filter=' + JSON.stringify($scope.companyFilter)
+        }).
+        success(function(users, status, headers, config) {
+          $scope.gridCompanyData = users.company;
+        }).
+        error(function(data, status, headers, config) {
+
+        });
+    };
 
     $scope.ExportCompany = function() {
       var data;
         $http({
           method: 'GET',
-          url: 'api/companyexcel'
+          url: 'api/companyexcel?filter=' + JSON.stringify($scope.companyFilter)
         }).
         success(function(users, status, headers, config) {
           /* original data */

@@ -76,6 +76,17 @@ exports.query = function(req, res) {
 	var limit=req.query.limit;
 
 	var q=Company.find({});
+
+	if(req.query && req.query.filter){
+    var Query=JSON.parse(req.query.filter);
+
+    if(Query.status)
+    {
+        q.where('public').equals(Query.status);
+    }
+
+	}	
+
 	/** apply limit  */
 	if(req.query.limit){
 		q=q.limit(req.query.limit);
@@ -110,6 +121,16 @@ exports.excel = function(req, res) {
 
 	
 	var q=Company.find({});
+
+	if(req.query && req.query.filter){
+    var Query=JSON.parse(req.query.filter);
+
+    if(Query.status)
+    {
+        q.where('public').equals(Query.status);
+    }
+
+	}	
 	
   	/** sorting according to date */
 	q.sort('title');
@@ -159,6 +180,16 @@ exports.excel = function(req, res) {
 exports.basic = function(req, res) {
 
 	var q=Company.find({});
+
+	if(req.query && req.query.filter){
+    var Query=JSON.parse(req.query.filter);
+
+    if(Query.status)
+    {
+        q.where('public').equals(Query.status);
+    }
+
+	}	
 
 	/** sorting according to date */
 
