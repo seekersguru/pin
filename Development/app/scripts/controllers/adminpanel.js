@@ -1352,6 +1352,22 @@ angular.module('pinApp')
           });
 
           break;
+          case 'discussion':
+          $scope.gridArticleData = {};
+          $http({
+            method: 'GET',
+            url: 'api/discussions'
+          }).
+          success(function(data, status, headers, config) {
+            $scope.gridDiscussionData = data.discussion;
+            $scope.originalDiscussionData = angular.copy(data.discussion);
+
+          }).
+          error(function(data, status, headers, config) {
+
+          });
+
+          break;
 
         case 'family':
           $scope.gridFamilyData = {};
@@ -1653,6 +1669,55 @@ angular.module('pinApp')
         displayName: 'Action',
         cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Approve</span> '
       }],
+      showFooter: true,
+      plugins: [new ngGridFlexibleHeightPlugin()]
+    };
+
+    $scope.discussionData = {
+      data: 'gridDiscussionData',
+      // showGroupPanel: true ,
+      // enableCellSelection: true,
+      enableRowSelection: false,
+      showFilter: true,
+      filterOptions: $scope.filterOptions,
+      columnDefs: [{
+        field: '_id',
+        displayName: 'SN',
+        cellTemplate: '<span> {{row.rowIndex+1}}</span>',
+        cellClass: 'grid-align',
+        width: '30px'
+      }, {
+        field: 'title',
+        displayName: 'Title',
+        cellClass: 'grid-align'
+      }, {
+        field: 'topic',
+        displayName: 'Topic',
+        width: '200px',
+        cellClass: 'grid-align'
+      }, {
+        field: 'createdAt',
+        displayName: 'Date',
+        cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
+        cellClass: 'grid-align'
+      },
+        {
+          field: 'pin',
+          displayName: 'Showing on PIN',
+          cellTemplate: '<span ng-if="row.entity.pin" class="label label-success" >YES</span><span ng-if="!row.entity.pin" class="label label-danger">NO</span>'
+        },
+
+        {
+          field: 'money',
+          displayName: 'Showing on MMI',
+          cellTemplate: '<span ng-if="row.entity.money" class="label label-success" >YES</span><span ng-if="!row.entity.money" class="label label-danger" >NO</span>'
+        }
+      //   {
+      //   field: 'action',
+      //   displayName: 'Action',
+      //   cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="discussionStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="discussionStatus(row.entity._id)">Approve</span> '
+      // }
+      ],
       showFooter: true,
       plugins: [new ngGridFlexibleHeightPlugin()]
     };

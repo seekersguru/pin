@@ -19,8 +19,9 @@ var DiscussionSchema = new Schema({
                posted: {type: Date, default: Date.now}
              }],
  pin: { type: Boolean, default: false},           
- money: { type: Boolean, default: false}
-                      
+ money: { type: Boolean, default: false},
+ createdAt: { type: Date, default: Date.now }
+                     
 });
 
 // Public Discussion information
@@ -32,6 +33,9 @@ DiscussionSchema
       'title': this.title,
       'topic':this.topic,
       'cid': this.cid,
+      'createdAt':this.createdAt,
+      'pin':this.pin,
+      'money':this.money
        };
   });
 
