@@ -83,7 +83,7 @@ $scope.deleteComment=function(commentId){
   {
     $http({
       method:"DELETE",
-      url:'/api/discussion-comments/'+$scope.discussion._id+"/"+commentId
+      url:'/api/discussion-comments/'+$scope.discussion._id+'/'+commentId+'?type='+($scope.discussion.pin ? 'pin' : 'mmi')
     }).
     success(function (data,status,headers,config){
       $scope.deleteStatus=1;
@@ -138,7 +138,7 @@ $scope.addComment=function(form){
 $scope.editComment=function(form,commentId,editcomment,key){
 if(form.$valid)
  {
-  var comment={ post: editcomment,username:$rootScope.currentUser.name,user:$rootScope.currentUser._id};  
+  var comment={ post: editcomment,type:($scope.discussion.pin ? 'pin' : 'mmi' )};  
 
     $http({ method: 'PUT', url: '/api/discussion-comments/'+$scope.discussion._id+'/'+commentId,data:comment}).
     success(function (data, status, headers, config) {

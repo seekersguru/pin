@@ -153,17 +153,31 @@ exports.comment_query=function(req, res){
   exports.comment_update=function(req, res){
   	var discussion_id = req.params.discussionid,
   	comment_id = req.params.commentid;
-  	Discussion.update({'comments._id': comment_id}, {'$set': {
-    'comments.$.post': req.body.post,
-    'comments.$.username': req.body.username,
-    'comments.$.user': req.body.user,
-	   }}, function(err,model) {
+  	if(req.body.type === 'pin'){
+		Discussion.update({'comments._id': comment_id}, {'$set': {
+    		'comments.$.post': req.body.post,
+       	}}, function(err,model) {
+	   	if(err){
+        	console.log(err);
+        	return res.send(err);
+        }
+    	    return res.json(model);
+	    });
+
+  	}else{
+
+  		Discussion.update({'scomments._id': comment_id}, {'$set': {
+    		'scomments.$.post': req.body.post,
+       	}}, function(err,model) {
 	   	if(err){
         	console.log(err);
         	return res.send(err);
         }
         return res.json(model);
-	  });
+	   });
+
+  	}
+  
 
   };
   
@@ -171,17 +185,28 @@ exports.comment_query=function(req, res){
   exports.comment_remove=function(req, res){
   	var discussion_id = req.params.discussionid,
   	comment_id = req.params.commentid;
-  
-  Discussion.findByIdAndUpdate(
-    discussion_id,
-   { $pull: { 'comments': {  _id: comment_id } } },function(err,model){
- 	   if(err){
-        	console.log(err);
-        	return res.send(err);
-        }
-        return res.json(model);
-  });
+  	if(req.query.type === 'pin'){
+		 Discussion.findByIdAndUpdate(
+		    discussion_id,
+		   { $pull: { 'comments': {  _id: comment_id } } },function(err,model){
+		 	   if(err){
+		        	console.log(err);
+		        	return res.send(err);
+		        }
+		        return res.json(model);
+		  });
+  	}else{
+  		 Discussion.findByIdAndUpdate(
+		    discussion_id,
+		   { $pull: { 'scomments': {  _id: comment_id } } },function(err,model){
+		 	   if(err){
+		        	console.log(err);
+		        	return res.send(err);
+		        }
+		        return res.json(model);
+		  });
 
+  	}
   };
 
   /**========== Comment Section Stop =================**/  

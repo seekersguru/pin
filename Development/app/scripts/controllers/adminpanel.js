@@ -1715,8 +1715,9 @@ angular.module('pinApp')
         {
         field: 'action',
         displayName: 'Action',
-        cellTemplate: '<a ng-href="/discussion-start?cid={{row.entity.cid}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a><span ng-if="row.entity.status" class="label label-info" ng-click="discussionStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="discussionStatus(row.entity._id)">Approve</span> '
+        cellTemplate: '<a ng-href="/discussion-start?cid={{row.entity.cid}}"  id="view"  class="label label-info" data-toggle="tooltip">Comments <i class="fa  fa-comment"></i></a>'
       }
+      // <span ng-if="row.entity.status" class="label label-info" ng-click="discussionStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="discussionStatus(row.entity._id)">Approve</span> 
       ],
       showFooter: true,
       plugins: [new ngGridFlexibleHeightPlugin()]
