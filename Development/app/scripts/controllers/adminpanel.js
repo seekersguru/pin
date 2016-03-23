@@ -1711,12 +1711,12 @@ angular.module('pinApp')
           field: 'money',
           displayName: 'Showing on MMI',
           cellTemplate: '<span ng-if="row.entity.money" class="label label-success" >YES</span><span ng-if="!row.entity.money" class="label label-danger" >NO</span>'
-        }
-      //   {
-      //   field: 'action',
-      //   displayName: 'Action',
-      //   cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="discussionStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="discussionStatus(row.entity._id)">Approve</span> '
-      // }
+        },
+        {
+        field: 'action',
+        displayName: 'Action',
+        cellTemplate: '<a ng-href="/discussion-start?cid={{row.entity.cid}}"  id="view"  class="label label-info" data-toggle="tooltip"><i class="fa fa-pencil"></i></a><span ng-if="row.entity.status" class="label label-info" ng-click="discussionStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="discussionStatus(row.entity._id)">Approve</span> '
+      }
       ],
       showFooter: true,
       plugins: [new ngGridFlexibleHeightPlugin()]

@@ -18,6 +18,11 @@ var DiscussionSchema = new Schema({
                post: String,
                posted: {type: Date, default: Date.now}
              }],
+   scomments: [{ user: { type: ObjectId, ref: 'User' },
+               username:String,
+               post: String,
+               posted: {type: Date, default: Date.now}
+             }],
  pin: { type: Boolean, default: false},           
  money: { type: Boolean, default: false},
  createdAt: { type: Date, default: Date.now }

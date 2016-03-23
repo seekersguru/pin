@@ -48,7 +48,7 @@ $scope.color={
  $http({ method: 'GET', url: '/api/discussions/'+$location.search()['cid'] }).
       success(function (data, status, headers, config) {
         $scope.discussion=data.discussion[0];
-        $scope.comments=$scope.discussion.comments;
+        $scope.comments=$scope.discussion.pin ? $scope.discussion.comments : $scope.discussion.scomments ;
 
       })
 
@@ -223,22 +223,5 @@ if(form.$valid)
     // $scope.message = '';
 
   };
-
-  // $scope.$on('socket:broadcast', function(event, data) {
-    
-  //   $log.debug('got a message', event.name);
-  //   if (!data.payload) {
-  //     $log.error('invalid message', 'event', event, 'data', JSON.stringify(data));
-  //     return;
-  //   }else{
-  //     // save in db with 
-  //     // userid:$rootScope.currentUser._id
-  //     // data.payload
-
-  //   }
-
-  //   $scope.$apply(function() {
-  //     $scope.messageLog = ew Date(), data.source, data.payload) + $scope.messageLog;
-  //   });
-  // });
+  
 });
