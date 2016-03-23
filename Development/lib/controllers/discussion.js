@@ -118,7 +118,8 @@ exports.comment_query=function(req, res){
 			}
 			if(discussion)
 			{
-				var comments=discussion[0].comments;
+
+				var comments=discussion[0].pin ? discussion[0].comments : discussion[0].scomments;
 				  for(var i=0; i<comments.length; i++){
 	           if(comment_id == comments[i]._id){
 	           	return res.json(comments[i]);
