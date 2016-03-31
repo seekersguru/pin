@@ -37,6 +37,7 @@ module.exports = function(app) {
   //GET
   app.get('/api/articles', articles.query);
   app.get('/api/articles/basic', articles.basic);
+  app.get('/api/articles/newbasic', articles.basic);
   app.get('/api/articles/:articleid', articles.show);
   app.post('/api/articles',  multipartMiddleware, articles.create);
   app.put('/api/articles/:articleid', multipartMiddleware,articles.update);

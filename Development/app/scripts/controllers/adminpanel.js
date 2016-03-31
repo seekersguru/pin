@@ -1340,7 +1340,7 @@ angular.module('pinApp')
           $scope.gridArticleData = {};
           $http({
             method: 'GET',
-            url: 'api/articles/basic'
+            url: 'api/articles/newbasic'
           }).
           success(function(data, status, headers, config) {
             $scope.gridArticleData = data.articles;
