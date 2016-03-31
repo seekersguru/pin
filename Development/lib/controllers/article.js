@@ -547,7 +547,86 @@ exports.basic = function(req, res) {
         Article.count({}, function( err, count){
 
 		        return res.json({articles:articles,totalElement:count});
-        })
+        });
+		}
+  });
+};
+// show all articles with basic info
+exports.newbasic = function(req, res) {
+	var q=Article.find({}),
+     Query ='',
+     spiceArray=[];
+	/** sorting according to date */
+  q.sort('-createdAt');
+
+  if(req.query && req.query.filter){
+    Query=JSON.parse(req.query.filter);
+
+    if(Query.approve)
+    {
+        q.where('public').equals(Query.approve);
+    }
+
+    if(Query.type === 'image'){
+      q.where('media').ne(null);
+      // q.where('thumblemedia').equals(null);
+      q.where('youtubeurl').equals(null);
+    }
+    
+    if(Query.type === 'video'){
+      q.where('media').ne(null);
+      // q.where('thumblemedia').ne(null);
+      q.where('youtubeurl').ne(null);
+
+    }
+
+    // if(Query.type === 'youtube'){
+    //   q.where('youtubeurl').ne(null);
+    // }
+
+
+    else if(Query.type === 'text'){
+      q.where('media').equals(null);
+
+    }
+
+    if(Query.createdAt && Query.createdAt.startDate && Query.createdAt.endDate){
+    console.log(Query);
+     q.where({createdAt: {$gte:  Query.createdAt.startDate,$lte: Query.createdAt.endDate}});
+
+    }
+
+  }
+  q.populate('author','name email');
+
+	/** finally execute */
+		q.exec(function(err, articles) {
+		if (err) {
+			console.log(err);
+			return res.send(404);
+		} else {
+			  for(var i=0; i < articles.length; i++){
+
+          if(Query && Query.author){
+            if(Query.author !== articles[i].articleInfo.author){
+              spiceArray.push(i);
+            }
+          }
+          articles[i] = articles[i].articleInfo;
+        }
+        console.log(spiceArray);
+        if(spiceArray.length)
+        {
+
+          var b = spiceArray.length;
+          while (b--) {
+                articles.splice(spiceArray[b], 1);
+            }
+        }
+        Article.count({}, function( err, count){
+
+		        return res.json({articles:articles,totalElement:count});
+        });
 		}
   });
 };
