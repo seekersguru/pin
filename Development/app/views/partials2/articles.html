@@ -24,16 +24,16 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                       <div ng-if='bannerArticle.youtubeurl && bannerArticle.media.extension.indexOf("image") > -1' class="home-image">
-                            <img ng-src="http://moneymanagementindia.net/{{bannerArticle.media.path}}" class="img-responsive" title="{{bannerArticle.title}}">
+                            <img ng-src="http://themoneyhans.com/{{bannerArticle.media.path}}" class="img-responsive" title="{{bannerArticle.title}}">
                             <div class="play-iocn"></div>
                         </div>
 
                         <div ng-if='!bannerArticle.youtubeurl && bannerArticle.media.extension.indexOf("image") > -1' class="home-image">
-                            <img ng-if="!bannerArticle.media.path" ng-src="http://moneymanagementindia.net/images/{{mmicategorysetting[bannerArticle.mmicategory].main-image}}" class="img-responsive" title="{{bannerArticle.title}}">
-                            <img ng-if="bannerArticle.media.path" ng-src="http://moneymanagementindia.net/{{bannerArticle.media.path}}" title="{{bannerArticle.title}}" class="img-responsive">
+                            <img ng-if="!bannerArticle.media.path" ng-src="http://themoneyhans.com/images/{{mmicategorysetting[bannerArticle.mmicategory].main-image}}" class="img-responsive" title="{{bannerArticle.title}}">
+                            <img ng-if="bannerArticle.media.path" ng-src="http://themoneyhans.com/{{bannerArticle.media.path}}" title="{{bannerArticle.title}}" class="img-responsive">
                         </div>
                         <div ng-if='!bannerArticle.youtubeurl && bannerArticle.media.extension.indexOf("video") > -1' class="home-image">
-                            <img ng-src="http://moneymanagementindia.net/{{bannerArticle.thumblemedia.path}}" class="img-responsive" title="{{bannerArticle.title}}">
+                            <img ng-src="http://themoneyhans.com/{{bannerArticle.thumblemedia.path}}" class="img-responsive" title="{{bannerArticle.title}}">
                             <div class="play-iocn"></div>
                             <!-- <div class="shadow-img">
       <div class="communication-iocn">{{bannerArticle.mmicategory}}</div>
@@ -53,8 +53,8 @@
                         <div class="content-block">
                             <div ng-if='!value.youtubeurl && value.media.extension.indexOf("image") > -1' class="block-image">
                                 <a ng-href="/articles/view/{{value.url}}">
-                                    <img ng-if="!value.media.path" ng-src="http://moneymanagementindia.net/images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">
-                                    <img ng-if="value.media.path" ng-src="http://moneymanagementindia.net/{{value.media.path}}" title="{{value.title}}" class="img-responsive">
+                                    <img ng-if="!value.media.path" ng-src="http://themoneyhans.com/images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">
+                                    <img ng-if="value.media.path" ng-src="http://themoneyhans.com/{{value.media.path}}" title="{{value.title}}" class="img-responsive">
                                     <div class="shadow-img">
                                         <div class="{{mmicategorysetting[value.mmicategory].classname}}">{{value.mmicategory}}</div>
                                     </div>
@@ -62,7 +62,7 @@
                             </div>
                             <div ng-if='!value.youtubeurl && value.media.extension.indexOf("video") > -1' class="block-image">
                                 <a ng-href="/articles/view/{{value.url}}">
-                                    <img ng-src="http://moneymanagementindia.net/{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}">
+                                    <img ng-src="http://themoneyhans.com/{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}">
                                     <div class="play-iocn"></div>
                                     <div class="shadow-img">
                                         <div class="communication-iocn">{{value.mmisubcategory}}</div>
@@ -71,7 +71,7 @@
                             </div>
                            <div ng-if='value.youtubeurl && value.media.extension.indexOf("image") > -1' class="block-image">
                                 <a ng-href="/articles/view/{{value.url}}">
-                                    <img ng-src="http://moneymanagementindia.net/{{value.media.path}}" class="img-responsive" title="{{value.title}}">
+                                    <img ng-src="http://themoneyhans.com/{{value.media.path}}" class="img-responsive" title="{{value.title}}">
                                     <div class="play-iocn"></div>
                                     <div class="shadow-img">
                                         <div class="communication-iocn">{{value.mmisubcategory}}</div>
