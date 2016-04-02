@@ -54,7 +54,7 @@ config.facebook={
   secret:'523d6510a56672ae230d91910085612c'
 };
 
-config["port"]=3003;
+config["port"]=3002;
 // Connect to database
 var db = mongoose.connect(config.mongo.uri, config.mongo.options);
 
