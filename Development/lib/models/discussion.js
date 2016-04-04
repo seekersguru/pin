@@ -19,7 +19,8 @@ var DiscussionSchema = new Schema({
                posted: {type: Date, default: Date.now}
              }],
  pin: { type: Boolean, default: false},           
- money: { type: Boolean, default: false}
+ money: { type: Boolean, default: false},
+ status: { type: Boolean, default: true}
                       
 });
 
