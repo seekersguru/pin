@@ -25,6 +25,8 @@ var DiscussionSchema = new Schema({
              }],
  pin: { type: Boolean, default: false},           
  money: { type: Boolean, default: false},
+ tmh: { type: Boolean, default: false},
+ status: { type: Boolean, default: true},
  createdAt: { type: Date, default: Date.now }
                      
 });
@@ -40,7 +42,9 @@ DiscussionSchema
       'cid': this.cid,
       'createdAt':this.createdAt,
       'pin':this.pin,
-      'money':this.money
+      'money':this.money,
+      'tmh':this.tmh,
+      'status':this.status
        };
   });
 

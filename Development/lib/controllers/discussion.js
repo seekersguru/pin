@@ -59,11 +59,27 @@ exports.checkcid = function(req, res){
 
  };
 
+//update users
 
- exports.update = function(req, res) {
+exports.update = function(req, res) {
+  var discussionid = req.params.discussionid;
+  var user_data = req.body;
+
+  Discussion.findOneAndUpdate({_id: discussionid}, user_data, function(err, user) {
+    if (err) {
+      console.log(err);
+      return res.json(400, err);
+    }
+    if (!user) {
+      console.log('notfound');
+      return res.send(404);
+    }
+	  return res.send(200);
+  
+  });
 
 
- };
+};
 
  exports.remove = function(req, res) {
 
