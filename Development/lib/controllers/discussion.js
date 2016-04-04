@@ -9,6 +9,7 @@ Discussion = mongoose.model('Discussion');
 exports.query = function(req, res){
 	var q = Discussion.find({});
 	q.where('money').equals(true);
+	q.where('status').equals(true);
 	q.exec(function(err, discussion) {
 		if (err) {
 			console.log(err);

@@ -28,6 +28,10 @@ var DiscussionSchema = new Schema({
              }],
   pin: { type: Boolean, default: false},           
   money: { type: Boolean, default: false},
+   status: {
+    type: Boolean,
+    default: true
+  },
   createdAt: { type: Date, default: Date.now },
   
 });
