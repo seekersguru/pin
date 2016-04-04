@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
 exports.query = function(req, res) {
 	var q = Discussion.find({});
 	q.where('hans').equals(true);
+	q.where('status').equals(true);
 	q.exec(function(err, discussion) {
 		if (err) {
 			console.log(err);
