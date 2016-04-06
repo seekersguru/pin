@@ -56,7 +56,6 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 });
 
 
-app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3009'));
 // Populate empty DB with sample data
 // require('./lib/config/dummydata');
     // }));
