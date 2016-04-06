@@ -41,9 +41,6 @@ process.env.FB_APP_SECRET = "523d6510a56672ae230d91910085612c";
 
 // Application Config
 var config = require('./lib/config/config');
-// config['facebook']['id']=703341096418077;
-// config['facebook']['secret']="523d6510a56672ae230d91910085612c";
-
 config.linkedin = {
   key: '75jcyupgn21hu2',
   secretkey: 'EvgypAvfjwxjxeh0'
@@ -89,6 +86,7 @@ var io = require('socket.io'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser');
 
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3009'));
 
 //set up our socket server
 require('./sockets/base')(io);
