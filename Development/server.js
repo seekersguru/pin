@@ -107,6 +107,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3009'));
 
 /// catch 404 and forwarding to error handler
 app.use(function (req, res, next) {
