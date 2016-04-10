@@ -86,7 +86,7 @@ var io = require('socket.io'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser');
 
-app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3009'));
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3008'));
 
 //set up our socket server
 require('./sockets/base')(io);
