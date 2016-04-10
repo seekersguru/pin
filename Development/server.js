@@ -56,7 +56,6 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 });
 
 
-
 // Populate empty DB with sample data
 // require('./lib/config/dummydata');
     // }));
@@ -87,6 +86,7 @@ server.listen(config.port);
 
 //optional - set socket.io logging level
 io.set('log level', 1000);
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3009'));
 
 
 
