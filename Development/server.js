@@ -51,7 +51,7 @@ config.facebook = {
   secret: '523d6510a56672ae230d91910085612c'
 };
 
-config["port"] = 3002;
+config["port"] = 3005;
 // Connect to database
 var db = mongoose.connect(config.mongo.uri, config.mongo.options);
 
@@ -86,7 +86,7 @@ var io = require('socket.io'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser');
 
-app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3009'));
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3008'));
 
 //set up our socket server
 require('./sockets/base')(io);
