@@ -65,7 +65,7 @@
                                     <img ng-src="http://themoneyhans.com/{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}">
                                     <div class="play-iocn"></div>
                                     <div class="shadow-img">
-                                        <div class="communication-iocn">{{value.mmisubcategory}}</div>
+                                        <div class="{{mmicategorysetting[value.mmicategory].classname}}">{{value.mmisubcategory}}</div>
                                     </div>
                                 </a>
                             </div>
@@ -74,7 +74,7 @@
                                     <img ng-src="http://themoneyhans.com/{{value.media.path}}" class="img-responsive" title="{{value.title}}">
                                     <div class="play-iocn"></div>
                                     <div class="shadow-img">
-                                        <div class="communication-iocn">{{value.mmisubcategory}}</div>
+                                        <div class="{{mmicategorysetting[value.mmicategory].classname}}">{{value.mmisubcategory}}</div>
                                     </div>
                                 </a>
                             </div>
