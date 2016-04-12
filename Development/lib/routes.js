@@ -173,70 +173,69 @@ module.exports = function(app) {
 		res.send(404);
 	});
 
-	// app.get('/*',function(req,res,next){
-	// 	var source = req.headers['user-agent'],
-	// 		ua = useragent.parse(source);
-	// 		var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-	// 		// console.log(ua);
+	app.get('/*',function(req,res,next){
+		var source = req.headers['user-agent'],
+			ua = useragent.parse(source);
+			var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+			// console.log(ua);
 			
-	// 	if (ua.isBot || req.originalUrl.match("_escaped_fragment_") !== null) {
-	// 		req.originalUrl=req.originalUrl.replace("?_escaped_fragment_","");
+		if (ua.isBot || req.originalUrl.match("_escaped_fragment_") !== null) {
+			req.originalUrl=req.originalUrl.replace("?_escaped_fragment_","");
 
-	// 		var articleId=req.originalUrl.split("/");
-	// 		console.log(articleId);
-	// 		req.params.bot= true;
-	// 		var keywords='Money ,Hans ,Hunt ,Huns ,Hansi ,Hansi Mehrotra ,Personal finance ,Investments ,Mutual funds ,Insurance ,Wealth ,Numbers ,Calculations ,independent expert ,financial planning ,budget ,best mutual fund ,basics of money ,how to learn about money ,how to invest ,how to save ,behavioural finance ,retirement ,donot put all eggs in one basket ,what is investing';
+			var articleId=req.originalUrl.split("/");
+			console.log(articleId);
+			req.params.bot= true;
+			var keywords='Money ,Hans ,Hunt ,Huns ,Hansi ,Hansi Mehrotra ,Personal finance ,Investments ,Mutual funds ,Insurance ,Wealth ,Numbers ,Calculations ,independent expert ,financial planning ,budget ,best mutual fund ,basics of money ,how to learn about money ,how to invest ,how to save ,behavioural finance ,retirement ,donot put all eggs in one basket ,what is investing';
 
-	// 		if(articleId.length === 4)
-	// 		{
-	// 			if(articleId[1]=== 'articles')
-	// 			{
-	// 			 req['params']['url']=articleId[3];
-	// 				articles.showurl(req,res).then(function(data){
-	// 				var seoDesc=data.metadescription ? data.metadescription :data.description,
-	// 				 seoTitle=data.metatitle ? data.metatitle :data.title + ' - The Money Hans',
-	// 				 seoKeywords=data.metakeywords ? data.metakeywords :keywords;
-	// 		 		res.send('<html><head><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+seoTitle+'"> <meta name="keywords" content="'+seoKeywords+'"><meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+seoTitle+'"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="The Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/></head><body><h1>'+seoTitle+'</h1><p>'+data.description+'</p></body></html>');
-	// 	 		});
+			if(articleId.length === 4)
+			{
+				if(articleId[1]=== 'articles')
+				{
+				 req['params']['url']=articleId[3];
+					articles.showurl(req,res).then(function(data){
+					var seoDesc=data.metadescription ? data.metadescription :data.description,
+					 seoTitle=data.metatitle ? data.metatitle :data.title + ' - The Money Hans',
+					 seoKeywords=data.metakeywords ? data.metakeywords :keywords;
+			 		res.send('<html><head><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+seoTitle+'"> <meta name="keywords" content="'+seoKeywords+'"><meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+seoTitle+'"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="The Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.media.path+' "/></head><body><h1>'+seoTitle+'</h1><p>'+data.description+'</p></body></html>');
+		 		});
 
-	// 		 	}else if(articleId[1] === 'event')
-	// 		 	{
-	// 			 req['params']['url']=articleId[3];
+			 	}else if(articleId[1] === 'event')
+			 	{
+				 req['params']['url']=articleId[3];
 
 
-	// 			 events.showurl(req,res).then(function(data){
-	// 			 	 var seoDesc=data.metadescription ? data.metadescription :data.bannertext,
-	// 			 	  	 seoTitle=(data.metatitle ? data.metatitle :data.title) + ' - The Money Hans',
-	// 					 seoKeywords=data.metakeywords ? data.metakeywords :keywords;
+				 events.showurl(req,res).then(function(data){
+				 	 var seoDesc=data.metadescription ? data.metadescription :data.bannertext,
+				 	  	 seoTitle=(data.metatitle ? data.metatitle :data.title) + ' - The Money Hans',
+						 seoKeywords=data.metakeywords ? data.metakeywords :keywords;
 			 		
-	// 				 res.send('<html><head><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+seoTitle+'">  <meta name="keywords" content="'+seoKeywords+'"><meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+seoTitle+'"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="The Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/></head><body><h1>'+seoTitle+'</h1><p>'+data.description+'</p></body></html>');
-	// 			 });
+					 res.send('<html><head><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans">   <meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+seoTitle+'">  <meta name="keywords" content="'+seoKeywords+'"><meta property="og:description" content="'+striptags(seoDesc)+'"> <meta property="og:image" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+'"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(seoDesc)+'"/> <meta name="twitter:title" content="'+seoTitle+'"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="The Money Hans"/> <meta name="twitter:image:src" content="'+req.protocol + '://' + req.get('host')+'/'+data.expert[0].flag+' "/></head><body><h1>'+seoTitle+'</h1><p>'+data.description+'</p></body></html>');
+				 });
 
-	// 		 }
-	//  		}
-	// 		else if(articleId[1].match(/discussion-start/g)){
-	// 			var cid=articleId[1].split("=")[1];
-	// 			if(cid){
-	// 				req['params']['cid']=cid;
-	// 				discussions.checkcid(req,res).then(function(data){
-	// 					data=data[0];
- // 					  res.send('<html><head><meta property="og:type" content="article"> <meta property="article:publisher" content="https://www.facebook.com/themoneyhans"><meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"> <meta property="og:image" content="http://themoneyhans.com/images/hunsi-img.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="The Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/hunsi-img.png"/></head><body><h1>'+data.title+'</h1><p>'+data.title+'</p></body></html>');
- // 				 });
-	// 			}
-	// 		}
-	// 		else
-	// 		{
-	// 	 		res.send('<html><head><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans"><meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="The Money Hans"> <meta name="keywords" content="Money ,Hans ,Hunt ,Huns ,Hansi ,Hansi Mehrotra ,Personal finance ,Investments ,Mutual funds ,Insurance ,Wealth ,Numbers ,Calculations ,independent expert ,financial planning ,budget ,best mutual fund ,basics of money ,how to learn about money ,how to invest ,how to save ,behavioural finance ,retirement ,donot put all eggs in one basket ,what is investing"><meta property="og:description" content="Learn about money (personal finance, investments) from independent expert, Hansi Mehrotra, #LinkedInTopVoices"> <meta property="og:image" content="http://themoneyhans.com/images/hunsi-img.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="Learn about money (personal finance, investments) from independent expert, Hansi Mehrotra, #LinkedInTopVoices"/> <meta name="twitter:title" content="The Money Hans"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="The Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/hunsi-img.png"/></head><body><h1>The Money Hans</h1><p>Learn about money (personal finance, investments) from independent expert, Hansi Mehrotra, #LinkedInTopVoices</p></body></html>');
-	//  		}
+			 }
+	 		}
+			else if(articleId[1].match(/discussion-start/g)){
+				var cid=articleId[1].split("=")[1];
+				if(cid){
+					req['params']['cid']=cid;
+					discussions.checkcid(req,res).then(function(data){
+						data=data[0];
+ 					  res.send('<html><head><meta property="og:type" content="article"> <meta property="article:publisher" content="https://www.facebook.com/themoneyhans"><meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="'+data.title+'"> <meta property="og:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"> <meta property="og:image" content="http://themoneyhans.com/images/hunsi-img.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="'+striptags(data.title)+ " --- "+ data.topic +'"/> <meta name="twitter:title" content="'+data.title+'"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="The Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/hunsi-img.png"/></head><body><h1>'+data.title+'</h1><p>'+data.title+'</p></body></html>');
+ 				 });
+				}
+			}
+			else
+			{
+		 		res.send('<html><head><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/themoneyhans"><meta property="og:site_name" content="The Money Hans"> <meta property="og:url" content="'+fullUrl+'"> <meta property="og:title" content="The Money Hans"> <meta name="keywords" content="Money ,Hans ,Hunt ,Huns ,Hansi ,Hansi Mehrotra ,Personal finance ,Investments ,Mutual funds ,Insurance ,Wealth ,Numbers ,Calculations ,independent expert ,financial planning ,budget ,best mutual fund ,basics of money ,how to learn about money ,how to invest ,how to save ,behavioural finance ,retirement ,donot put all eggs in one basket ,what is investing"><meta property="og:description" content="Learn about money (personal finance, investments) from independent expert, Hansi Mehrotra, #LinkedInTopVoices"> <meta property="og:image" content="http://themoneyhans.com/images/hunsi-img.png"><meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:description" content="Learn about money (personal finance, investments) from independent expert, Hansi Mehrotra, #LinkedInTopVoices"/> <meta name="twitter:title" content="The Money Hans"/> <meta name="twitter:site" content="@TheMoneyHans"/> <meta name="twitter:domain" content="The Money Hans"/> <meta name="twitter:image:src" content="http://themoneyhans.com/images/hunsi-img.png"/></head><body><h1>The Money Hans</h1><p>Learn about money (personal finance, investments) from independent expert, Hansi Mehrotra, #LinkedInTopVoices</p></body></html>');
+	 		}
 
-	// 	}
-	// 	 else {
-	// 		console.log("our project:");
-	// 		next();
+		}
+		 else {
+			next();
 
-	// 	}
+		}
 
-	// });
+	});
 	// All other routes to use Angular routing in app/scripts/app.js
 	app.get('/partials/*', index.partials);
 	app.get('/partials2/*', index.partials);
