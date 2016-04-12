@@ -580,7 +580,7 @@ angular.module('pinApp', [
         $rootScope.redirectPath = $location.path();
       }
 
-      $rootScope.ogTitle = 'Connecting Indian family offices';
+      $rootScope.ogTitle = 'Connecting Indian money industry';
       $rootScope.ogDescription = 'Networking and content to grow and protect wealth for Indian family offices and UHNI families, edited by Hansi Mehrotra, #LinkedInTopVoices';
       $rootScope.ogImage = '';
       $rootScope.ogUrl = 'http://' + $location.host() + $location.path();
