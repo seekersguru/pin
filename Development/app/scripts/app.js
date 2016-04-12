@@ -553,8 +553,8 @@ angular.module('pinApp', [
         $rootScope.redirectPath = $location.path();
       }
 
-      $rootScope.ogTitle = "PIN";
-      $rootScope.ogDescription = "PIN Description";
+      $rootScope.ogTitle = "Connecting Indian money industry";
+      $rootScope.ogDescription = "Connecting Indian money industry";
       $rootScope.ogImage = "";
       $rootScope.ogUrl = "http://" + $location.host() + $location.path();
 
