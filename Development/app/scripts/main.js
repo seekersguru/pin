@@ -225,8 +225,8 @@ angular.module('pinApp', [
       })
       .when('/articles/search/:search', {
         templateUrl: 'partials2/article-search',
-        controller: 'ArticleSearchCtrl',
-        authenticate: true
+        controller: 'ArticleSearchCtrl'
+        // authenticate: true
         
       })
       .when('/post-article', {
