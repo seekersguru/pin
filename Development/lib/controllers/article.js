@@ -267,55 +267,77 @@ exports.showurl = function(req, res) {
 
 };
 
+// /** serach that it is exist or not */
+// exports.search = function(req, res) {
+// 	var search = req.params.search;
+// 	var regex = new RegExp(search, 'i'); // 'i' makes it case insensitive
+// 	MainUser.find({
+// 		'name': search
+// 	}).exec(
+// 		function(err, user) {
+
+// 			var q = '';
+// 			if (err) {
+// 				console.log(err);
+// 				return res.json(404, err);
+// 			}
+// 			if (!user) {
+
+// 				q= Article.find({
+// 					$text: {
+// 						$search: search
+// 					}
+// 				});
+// 			}
+// 			if (user) {
+// 				q= Article.find(
+// 					{
+// 						author: user._id
+// 					}
+// 				);
+// 			}
+// 			q.where('public').equals(true);
+// 				q.where('money').equals(true);
+
+// 				// q.where('searchable').equals(true);
+
+// 				q.populate('author', 'name email fullname').exec(function(err, articles) {
+// 					if (err) {
+// 						console.log(err);
+// 						return res.send(404);
+// 					} else {
+
+// 						return res.json({
+// 							articles: articles
+// 						});
+// 					}
+// 				});
+
+// 		});
+
+// };
+// 
 /** serach that it is exist or not */
-exports.search = function(req, res) {
-	var search = req.params.search;
-	var regex = new RegExp(search, 'i'); // 'i' makes it case insensitive
-	MainUser.find({
-		'name': search
-	}).exec(
-		function(err, user) {
+exports.search= function(req, res){
+  var search = req.params.search;
+  var regex = new RegExp(search, 'i');  // 'i' makes it case insensitive
+  var q = Article.find({$text:{$search:search}});
 
-			var q = '';
-			if (err) {
-				console.log(err);
-				return res.json(404, err);
-			}
-			if (!user) {
+  q.where('public').equals(true);
+  q.where('money').equals(true);
+  // q.where('searchable').equals(true);
 
-				q= Article.find({
-					$text: {
-						$search: search
-					}
-				});
-			}
-			if (user) {
-				q= Article.find(
-					{
-						author: user._id
-					}
-				);
-			}
-			q.where('public').equals(true);
-				q.where('money').equals(true);
+   q.populate('author','name email fullname').exec(function(err,articles) {
+    if (err) {
+      console.log(err);
+      return res.send(404);
+    } else {
 
-				// q.where('searchable').equals(true);
-
-				q.populate('author', 'name email fullname').exec(function(err, articles) {
-					if (err) {
-						console.log(err);
-						return res.send(404);
-					} else {
-
-						return res.json({
-							articles: articles
-						});
-					}
-				});
-
-		});
-
+      return res.json({articles:articles});
+    }
+  });
 };
+
 
 // show all articles with paging
 exports.query = function(req, res) {
