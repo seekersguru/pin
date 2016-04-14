@@ -58,7 +58,7 @@ angular.module('pinApp')
 
     $scope.errors = {};
     angular.extend($scope.user,serviceuser);
-    $scope.user.company=serviceuser.company._id;
+    $scope.user.company=serviceuser.company ? serviceuser.company._id :null;
     var precountry = $scope.user.address.country;
 
     $scope.checkcountry = function() {
