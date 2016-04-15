@@ -101,7 +101,7 @@ exports.query = function(req, res){
 exports.contentexpert = function(req, res){
   var Query = '',
      spiceArray=[],
-     q = User.find({madebyadmin: true}).populate('familyrole','name');
+     q = User.find({adminrole: 'Experts'}).populate('familyrole','name');
     //  q.where('madebyadmin').equals(false);
   if (req.query.array_foll){
     if(typeof req.query.array_foll === typeof {}){

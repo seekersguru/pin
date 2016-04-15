@@ -1684,14 +1684,19 @@ angular.module('pinApp')
         cellTemplate: '<span> {{row.entity.createdAt|date:"dd-MM-yyyy"}}</span>',
         cellClass: 'grid-align'
       }, {
+        field: 'madebyadmin',
+        displayName: 'Made by Admin',
+        cellTemplate: '<span ng-if="row.entity.madebyadmin" class="label label-success" >Yes</span><span ng-if="!row.entity.madebyadmin" class="label label-danger" >No</span>'
+      }, {
         field: 'status',
         displayName: 'Status',
         cellTemplate: '<span ng-if="row.entity.status" class="label label-success" >APPROVED</span><span ng-if="!row.entity.status" class="label label-danger" >NOT APPROVED</span>'
       }, {
         field: 'action',
         displayName: 'Action',
-        cellTemplate: '<span ng-if="row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Approve</span> '
-      }],
+        cellTemplate: '<span ng-if="row.entity.madebyadmin"><span ng-if="row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Block</span><span ng-if="!row.entity.status" class="label label-info" ng-click="contentexpertStatus(row.entity._id)">Approve</span></span> '
+      }
+      ],
       showFooter: true,
       plugins: [new ngGridFlexibleHeightPlugin()]
     };
