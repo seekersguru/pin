@@ -130,6 +130,23 @@ UserSchema
 
         };
   });
+// Public profile information
+UserSchema
+  .virtual('contentExpert')
+  .get(function() {
+    return {
+      '_id': this._id,
+      'name': this.name,
+      'createdAt':this.createdAt,
+      'email': this.email,
+      'role': this.role,
+      'username': this.username,
+      'adminrole':this.adminrole,
+      'searchable':this.searchable,
+      'status':this.status,
+      'madebyadmin':this.madebyadmin,
+      };
+  });
 
 UserSchema
   .virtual('all')

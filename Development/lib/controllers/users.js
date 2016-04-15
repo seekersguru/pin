@@ -109,7 +109,7 @@ exports.contentexpert = function(req, res){
       return res.send(404);
     } else {
         for(var i=0; i<users.length; i++){
-          users[i] = users[i].profile;
+          users[i] = users[i].contentExpert;
         }
       return res.json({users:users});
     }
