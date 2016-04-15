@@ -101,7 +101,7 @@ exports.query = function(req, res){
 exports.contentexpert = function(req, res){
   var Query = '',
      spiceArray=[],
-     q = User.find({adminrole: 'Experts'});
+     q = User.find({adminrole: 'Experts',role: {'$ne':'user' }});
 
     q.exec(function(err, users) {
     if (err) {
