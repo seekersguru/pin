@@ -1622,14 +1622,16 @@ angular.module('pinApp')
         }, {
           field: 'email',
           displayName: 'Email',
-          width: '200px',
+          width: '300px',
           cellClass: 'grid-align'
-        }, {
-          field: 'username',
-          displayName: 'UserName',
-          width: '200px',
-          cellClass: 'grid-align'
-        }, {
+        },
+        //  {
+        //   field: 'username',
+        //   displayName: 'UserName',
+        //   width: '200px',
+        //   cellClass: 'grid-align'
+        // },
+         {
           field: 'lastLogin',
           displayName: 'Last logged in ',
           cellTemplate: '<span> {{row.entity.lastLogin|date:"dd-MM-yyyy hh:mm:ss"}}</span>',
