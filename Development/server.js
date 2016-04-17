@@ -15,6 +15,8 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3008'));
+
 //app.use(app.router);
 
 //development only
@@ -107,7 +109,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3008'));
 
 /// catch 404 and forwarding to error handler
 app.use(function (req, res, next) {
