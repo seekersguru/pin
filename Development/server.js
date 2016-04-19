@@ -1,13 +1,14 @@
 'use strict';
 
-var express, http, path, app,  server;
+var express, http, path, app,  server,fs,mongoose;
 
 // BinaryServer = require('binaryjs').BinaryServer;
 express      = require('express');
 http         = require('http');
 path         = require('path');
 app          = express();
-// video        = require('./lib/video');
+fs = require('fs');
+mongoose = require('mongoose');
 
 //all environments
 app.use(express.favicon());
@@ -17,25 +18,6 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3008'));
 
-//app.use(app.router);
-
-//development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
-
-var express = require('express'),
-    path = require('path'),
-    fs = require('fs'),
-    //io = require('socket.io'),
-    http = require('http'),
-    mongoose = require('mongoose');
-
-
-/**
- * Main application file
- */
-
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 process.env.FB_APP_ID=703341096418077;
@@ -43,8 +25,6 @@ process.env.FB_APP_SECRET="523d6510a56672ae230d91910085612c";
 
 // Application Config
 var config = require('./lib/config/config');
-// config['facebook']['id']=703341096418077;
-// config['facebook']['secret']="523d6510a56672ae230d91910085612c";
 
 config.linkedin={
   key:'75jcyupgn21hu2',
@@ -69,11 +49,6 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 });
 
 
-
-// Populate empty DB with sample data
-// require('./lib/config/dummydata');
-    // }));
-
 // Passport Configuration
 var passport = require('./lib/config/passport');
 
@@ -83,25 +58,13 @@ require('./lib/config/express')(app);
 require('./lib/routes')(app);
 
 
-var  io = require('socket.io'),
- server = http.createServer(app),
- io = io.listen(server),
+var  server = http.createServer(app),
  favicon = require('static-favicon'),
  logger = require('morgan'),
  cookieParser = require('cookie-parser'),
  bodyParser = require('body-parser');
-
-
-//set up our socket server
-require('./sockets/base')(io);
-
-//start the server
-server.listen(config.port);
-
-//optional - set socket.io logging level
-io.set('log level', 1000);
-
-
+ //start the server
+ server.listen(config.port);
 
 //middleware settings
 app.use(favicon());
@@ -117,7 +80,6 @@ err.status = 404;
 next(err);
 });
 
-/// error handlers
 
 //development error handler
 //will print stacktrace
@@ -140,6 +102,5 @@ res.render('error', {
  error: {}
 });
 });
-
 
 exports = module.exports = app;
