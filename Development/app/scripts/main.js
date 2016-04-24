@@ -5205,7 +5205,7 @@ $scope.companies=[];
     for (var i = 0; i < output.companies.length; i++) {
       
       var temp={
-'title':output.companies[i].title,
+'title':output.companies[i].title || output.companies[i].company,
 'firmsupertype':output.companies[i].firmsupertype,
 'firmtype':output.companies[i].firmtype,
 'firmsubtype':output.companies[i].firmsubtype,
@@ -5256,7 +5256,7 @@ $scope.companies=[];
 
   'pin':true,
   'money':true,
-  'url':output.companies[i].url,
+  'websiteUrl':output.companies[i].url,
   'notes':output.companies[i].notes,
   'description':output.companies[i].description,
   'status':0
@@ -5264,7 +5264,7 @@ $scope.companies=[];
 
   };
   
-     $scope.companies.push(temp);
+  $scope.companies.push(temp);
  }
  $scope.setdata=1;
   $scope.loaddata=1;
@@ -5276,7 +5276,7 @@ $scope.companies=[];
   }
 }
 
-var url = "uploads/companies.xlsx";
+var url = "uploads/companies.xls";
 
 var oReq;
 function startparsing()
