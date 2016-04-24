@@ -41,7 +41,12 @@ exports.create = function(req, res, next) {
 		} else {
 			Company.findOneAndUpdate({ //if already  exist then update
 				_id: alreadycompany._id
-			}, {'websiteUrl':req.body.websiteUrl}, function(err, updatedcompany) {
+			},
+
+			{ 'websiteUrl':req.body.websiteUrl,
+			  'url':req.body.title.trim().replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().split(' ').join('-')
+			},
+			 function(err, updatedcompany) {
 				if (err) {
 					console.log(err);
 					return res.json(400, err);
