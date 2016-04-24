@@ -30,7 +30,7 @@
 <div class="directory-section">
  <h1> {{article.title}}</h1>
  <p><b>Type Institution:  </b>{{article.firmsubtype}}</p>
- <p><b>Website:  </b>{{article.url}}</p>
+ <p><b>Website:  </b> <a ng-href="{{article.websiteUrl}}" target="_blank" >{{article.websiteUrl}}</a></p>
  <p class="articleview" ng-bind-html="article.description | rawHtml "></p>
 <div ng-repeat="(key,value) in article.address" ng-if="value.main==true" >
  <h4>Main Office</h4>
