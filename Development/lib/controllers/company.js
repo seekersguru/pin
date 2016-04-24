@@ -27,6 +27,7 @@ exports.create = function(req, res, next) {
 			console.log(err);
 		}
 		if (!alreadycompany) { //if already not exist then new save
+			req.body.public = true;
 			var company = new Company(req.body);
 			company.save(function(err, company) {
 				if (err) {
