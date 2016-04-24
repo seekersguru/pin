@@ -16,7 +16,7 @@ exports.create = function(req, res, next) {
 	if(req.body._id){
 		delete req.body._id;
 	}
-	comsole.log(req.body);
+	console.log(req.body);
 	// req.body.tags=req.body.tags;
 	var q = Company.findOne({
 		'title': req.body.title
@@ -27,6 +27,7 @@ exports.create = function(req, res, next) {
 			console.log(err);
 		}
 		if (!alreadycompany) { //if already not exist then new save
+			req.body.public = true;
 			var company = new Company(req.body);
 			company.save(function(err, company) {
 				if (err) {
@@ -38,21 +39,21 @@ exports.create = function(req, res, next) {
 				});
 			});
 		} else {
-			// Company.findOneAndUpdate({ //if already  exist then update
-			// 	_id: alreadycompany._id
-			// }, req.body, function(err, updatedcompany) {
-			// 	if (err) {
-			// 		console.log(err);
-			// 		return res.json(400, err);
-			// 	}
-			// 	if (!updatedcompany) {
-			// 		console.log('notfound');
-			// 		return res.send(404);
-			// 	}
-			// 	return res.json({
-			// 		company: updatedcompany
-			// 	});
-			// });
+			Company.findOneAndUpdate({ //if already  exist then update
+				_id: alreadycompany._id
+			}, {'websiteUrl':req.body.websiteUrl}, function(err, updatedcompany) {
+				if (err) {
+					console.log(err);
+					return res.json(400, err);
+				}
+				if (!updatedcompany) {
+					console.log('notfound');
+					return res.send(404);
+				}
+				return res.json({
+					company: updatedcompany
+				});
+			});
 		}
 	});
 };
