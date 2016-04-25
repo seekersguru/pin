@@ -61,18 +61,18 @@
 </div>
 </form>
 
-<p><h2 ng-show="searchStart && (companys  | filter:(search.title || search.firmsubtype ) | startsWithLetter : activeLetter).length"> Number of search results <strong>{{ searchStart && (companys  | filter:(search.title || search.firmsubtype ) | startsWithLetter : activeLetter).length}} </strong></h2></p>
+<p><h2 ng-show="searchStart && (companys  | filter:search | startsWithLetter : activeLetter).length"> Number of search results <strong>{{ searchStart && (companys  | filter: search | startsWithLetter : activeLetter).length}} </strong></h2></p>
 
 
 <div id="upcomming-event">
 
 <ul>
-<li ng-repeat="(key,value) in companys | filter:(search.title || search.firmsubtype ) | startsWithLetter : activeLetter | orderBy:'title'" ng-show="searchStart">
+<li ng-repeat="(key,value) in companys | filter:search | startsWithLetter : activeLetter | orderBy:'title'" ng-show="searchStart">
 <h2><a href="/company/view/{{value.url}}">{{value.title}}</a></h2>
 <p>{{value.organization}}</p>
 </li>
 
-<li ng-show="searchStart && (companys  | filter:(search.title || search.firmsubtype ) | startsWithLetter : activeLetter).length==0">
+<li ng-show="searchStart && (companys  | filter:search | startsWithLetter : activeLetter).length==0">
 <h2> No Result Found. </h2>
 </li>
 
