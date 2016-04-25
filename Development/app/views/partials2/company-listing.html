@@ -37,7 +37,7 @@
 </div>
 </div>
 <div class="col-lg-4 col-md-4 col-sm-4 filter-dropdown">
- <select ng-model="search.firmtype" name ="organization" class="form-control" ng-change="setSearchSubType()">
+ <select ng-model="search.firmsubtype" name ="organization" class="form-control" ng-change="setSearchSubType()">
     <option value="">--Search By Type and SubType--</option>
     <optgroup ng-repeat="(typekey,type) in  companyStructure" label="{{typekey}}">
          <option ng-repeat="(subkey,subtype) in  type" value="{{subkey}}">{{ subkey}} </option>
@@ -61,18 +61,18 @@
 </div>
 </form>
 
-<p><h2 ng-show="searchStart && (companys  | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter).length"> Number of search results <strong>{{ searchStart && (companys  | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter).length}} </strong></h2></p>
+<p><h2 ng-show="searchStart && (companys  | filter:(search.title || search.firmsubtype ) | startsWithLetter : activeLetter).length"> Number of search results <strong>{{ searchStart && (companys  | filter:(search.title || search.firmsubtype ) | startsWithLetter : activeLetter).length}} </strong></h2></p>
 
 
 <div id="upcomming-event">
 
 <ul>
-<li ng-repeat="(key,value) in companys | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter | orderBy:'title'" ng-show="searchStart">
+<li ng-repeat="(key,value) in companys | filter:(search.title || search.firmsubtype ) | startsWithLetter : activeLetter | orderBy:'title'" ng-show="searchStart">
 <h2><a href="/company/view/{{value.url}}">{{value.title}}</a></h2>
 <p>{{value.organization}}</p>
 </li>
 
-<li ng-show="searchStart && (companys  | filter:(search.title || search.firmtype ) | startsWithLetter : activeLetter).length==0">
+<li ng-show="searchStart && (companys  | filter:(search.title || search.firmsubtype ) | startsWithLetter : activeLetter).length==0">
 <h2> No Result Found. </h2>
 </li>
 
