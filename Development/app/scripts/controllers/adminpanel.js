@@ -170,7 +170,8 @@ angular.module('pinApp')
     $scope.pinFilter = {
 
     };
-
+    $scope.companyFilter.status =true;
+    
     setTimeout(function() {
       $scope.articleFilter['createdAt']= {
         endDate: '',
@@ -1443,7 +1444,7 @@ angular.module('pinApp')
           $scope.gridFamilyData = {};
           $http({
             method: 'GET',
-            url: 'api/companys/basic'
+            url: 'api/companys/basic?filter=' + JSON.stringify($scope.companyFilter)
           }).
           success(function(data, status, headers, config) {
             $scope.gridCompanyData = data.company;
