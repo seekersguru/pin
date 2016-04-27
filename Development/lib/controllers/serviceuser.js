@@ -64,6 +64,11 @@ exports.query = function(req, res){
         q.where('role').equals(Query.role);
     }
 
+    if(Query.adminrole)
+    {
+        q.where('adminrole').equals(Query.adminrole);
+    }
+
     if(Query.city)
     {
         q.where('address.city').equals(Query.city);
@@ -159,6 +164,11 @@ exports.excel = function(req, res){
         q.where('role').equals(Query.role);
     }
 
+    if(Query.adminrole)
+    {
+        q.where('adminrole').equals(Query.adminrole);
+    }
+
     if(Query.city)
     {
         q.where('address.city').equals(Query.city);
@@ -242,6 +252,11 @@ exports.fullexcel = function(req, res){
     if(Query.role)
     {
         q.where('role').equals(Query.role);
+    }
+
+    if(Query.adminrole)
+    {
+        q.where('adminrole').equals(Query.adminrole);
     }
 
     if(Query.city)

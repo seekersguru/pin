@@ -188,7 +188,15 @@ angular.module('pinApp')
       };
       $scope.$apply();
     }, 1000);
-
+    $scope.roletypes = [
+      'CEO/business head',
+      'Management',
+      'Sales/Marketing',
+      'Investment/Product',
+      'RM/client facing',
+      'Investment Mgmt',
+      'Product Mgmt'
+    ];
     $scope.setPagingData = function() {
       $scope.gridArticleData = data.articles;
       if (!$scope.$$phase) {

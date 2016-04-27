@@ -92,6 +92,16 @@
                         </select>
                     </td>
                 </tr>
+                <tr>
+                <th colspan="2"> RoleType</th>
+                <td colspan="2">
+                <select ng-model="mmiFilter.adminrole" class="form-control">
+                    <option value="" >ALL</option>
+                    <option ng-repeat="(key,adminrole) in roletypes" value="{{key+1}}"> {{ adminrole}} </option>
+                </select>
+                    
+                </td>
+                </tr>
         </tbody>
         <tfoot>
             <tr>
