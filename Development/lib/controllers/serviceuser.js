@@ -78,6 +78,9 @@ exports.query = function(req, res){
     {
         q.where('role').equals(Query.role);
     }
+    if(Query.company){
+       q.where('company').equals(Query.company);
+      }
 
     if(Query.createdAt && Query.createdAt.startDate && Query.createdAt.endDate){
     console.log(Query);
@@ -95,11 +98,6 @@ exports.query = function(req, res){
     } else {
       // if(req.user.role !== 'admin'){
         for(var i=0; i<users.length; i++){
-          if(Query && Query.company){
-            if(Query.company !== users[i].profile.company._id){
-              spiceArray.push(i);
-            }
-          }
           users[i] = users[i].profile;
         }
 
@@ -178,6 +176,10 @@ exports.excel = function(req, res){
     {
         q.where('role').equals(Query.role);
     }
+     if(Query.company){
+       q.where('company').equals(Query.company);
+     }
+
 
     if(Query.createdAt && Query.createdAt.startDate && Query.createdAt.endDate){
      q.where({createdAt: {$gte:  Query.createdAt.startDate,$lte: Query.createdAt.endDate}});
@@ -268,6 +270,10 @@ exports.fullexcel = function(req, res){
     {
         q.where('role').equals(Query.role);
     }
+    if(Query.company){
+       q.where('company').equals(Query.company);
+    }
+
 
     if(Query.createdAt && Query.createdAt.startDate && Query.createdAt.endDate){
      q.where({createdAt: {$gte:  Query.createdAt.startDate,$lte: Query.createdAt.endDate}});
