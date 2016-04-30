@@ -38,6 +38,8 @@ var UserSchema = new Schema({
     validTill : Date
   },
   role: {type: String, default: 'user', 'enum' : ['user','admin','expert']},
+  jobtitle:String,
+  roleType:String,
   adminrole:String,
   familyrole:{type: Schema.Types.ObjectId, ref:'Family'},
   company:{type: Schema.Types.ObjectId, ref:'Company'},
