@@ -38,6 +38,8 @@ var UserSchema = new Schema({
   },
   role: {type: String, default: 'user', 'enum' : ['user','admin','expert']},
   adminrole:String,
+  jobtitle:String,
+  roleType:String,
   familyrole:{type: Schema.Types.ObjectId, ref:'Family'},
   company:{type: Schema.Types.ObjectId, ref:'Company'},
   companyaddress:String,
