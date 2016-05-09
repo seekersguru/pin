@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dev stack</title>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="js/rangeSlider.css">
+<link rel="stylesheet" href="js/ion.rangeSlider.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="js/jquery.mCustomScrollbar.css">
+
+
+</head>
+<body ng-app = "myModule">
+
+
+ 
+
+<m2s-globe points="earthquakesVm.points"
+           point-lat="d.location.lat"
+           point-lng="d.location.lng"
+           point-id="d.$id"
+           draggable="true"
+           graticule="false"
+           point-click="earthquakesVm.pointClicked(d)"
+           point-radius="(d.mag * d.mag) / 3"
+           point-stroke-width="1"
+           point-fill="d.alert"
+           class="earthquakes-globe"
+           enter-anim-delay="i * 25"
+           exit-anim-delay="i * 25"
+    ></m2s-globe>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
+
+<script type="text/javascript" src="app/bower_components/d3/d3.min.js"></script>
+<script type="text/javascript" src="app/bower_components/topojson/topojson.js"></script>
+<script src="app/bower_components/angular-globe/angular-globe-with-map.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<style>.earthquakes-globe .m2s-globe-land-top {
+  fill: #FFB300;
+}
+.earthquakes-globe .m2s-globe-water {
+  fill: #81D4FA;
+}</style>
+<script>
+(function(angular) { 
+ 'use strict';
+  angular
+    .module('myModule', ['madvas.angular-globe'])
+    .controller('EarthquakesCtrl', EarthquakesCtrl);
+
+  /* @ngInject */
+  function EarthquakesCtrl($firebaseArray) {
+    /* jshint validthis: true */
+    var vm = this;
+    var continents = ['europe', 'asia', 'africa', 'north_america', 'south_america', 'antartica', 'oceanic'];
+    var ref = new Firebase('https://publicdata-earthquakes.firebaseio.com/by_continent/');
+    var magnitudes = _.range(6, 10);
+    vm.pointClicked = pointClicked;
+    vm.getDate = getDate;
+    activate();
+
+    ////////////////
+
+    function activate() {
+      vm.points = _.flatten(_.map(continents, function(continent) {
+        return _.map(magnitudes, function(mag) {
+          return {
+            values : $firebaseArray(ref.child(continent + '/' + mag))
+          };
+        });
+      }));
+    }
+
+    function pointClicked(d) {
+      vm.selected = d;
+    }
+
+    function getDate(date) {
+      return new Date(date);
+    }
+  }
+   
+}(angular));
+</script>
+</body>
+</html>

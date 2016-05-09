@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dev stack Table</title>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/ng-table.min.css">
+<link rel="stylesheet" href="css/angular-tooltips.min.css">
+
+</head>
+<body ng-app="myModule" ng-controller="TableCtrl as vm">
+ <script type="text/ng-template" id="myPopoverTemplate.html">
+  		<p>hi there testing</p>
+  		 
+  	</script>
+	<table  style='border:1px red solid;width:100%' show-filter="false">
+		<thead>
+			<tr>
+			 <th style='background-color: black;  height: 175px;border:1px gray solid;text-align: center;'>KIND ::&nbsp;</th>
+				<th
+				
+				  
+				 ng-repeat='(key, value) in headers'
+					style='background-color: black;  height: 175px;border:1px gray solid;text-align: center;'>
+					
+					<a class="btn btn-medium center-content radius3 bg-purple color-white" 
+					tooltips tooltip-template="<p style='width:150px'>{{desctool[key]}}</p>" tooltip-side="bottom">
+					<img
+					src='{{value}}' style=' width: 100px' />
+					
+					
+	 
+      </a>
+					
+					</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr   ng-repeat='(key1, value1) in categoryKinds'>
+			 <td style='  width: 10px;border:1px gray solid;padding-top: 10px'>KIND ::{{key1}}</td>
+				<td style='  width: 100px;border:1px gray solid;padding: 10px' ng-repeat='(key, value) in headers' align="center" valign="top"  >
+				&nbsp;
+				{{namedatawarhouse[key+'_'+key1]}}
+				<br><br>
+				 
+				<img
+					src="{{idarray[key+'_'+key1]}}" style=' width: 100px' 
+					 tooltips tooltip-template="<p style='width:150px'><a href='{{linkdata[key+key1+1]}}' target='_new'>Datawarehouse</a> |
+					 <a href='{{linkdata[key+key1+2]}}' target='_new'>HDFS</a> </p>" tooltip-side="bottom"/>
+					
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script src="js/jquery.min.js"></script>
+
+	<script src="js/bootstrap.min.js"></script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+	<script type="text/javascript"
+		src="app/bower_components/angular-globe/angular-globe-with-map.min.js"></script>
+	<script type="text/javascript"
+		src="js/angular-tooltips.min.js"></script>
+	<script src="js/ng-table.min.js"></script>
+	<script type="text/javascript" src="js/custom/TableCtrl.js"></script>
+
+
+</body>
+</html>

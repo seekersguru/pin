@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dev stack</title>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="js/rangeSlider.css">
+<link rel="stylesheet" href="js/ion.rangeSlider.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="js/jquery.mCustomScrollbar.css">
+<style>
+.advanced-globe .m2s-globe-land-top {
+  fill: #95ca55;
+}
+.advanced-globe .m2s-globe-water {
+  fill: #007ec3;
+}
+.globe_wrap{
+	height:350px;
+	float:left;
+}
+.globe-controls{
+	border:5px solid #ccc;
+	padding:20px;
+}
+</style>
+
+</head>
+<body ng-app="myModule" ng-controller="ExpertCtrl as expertVm">
+ 
+
+
+
+<globe-container>
+    <div class="globe_wrap" name="globe">
+      <m2s-globe 
+			map-data="expertVm.mapData" 
+			points="expertVm.points" 
+			point-lat="d.position.latitude" 
+			point-lng="d.position.longitude" 
+			point-fill="d.cityColor" 
+			point-click="expertVm.pointClicked(d, c, el)" 
+			point-radius="5" 
+			rotate-angle="[100, 0]" 
+			draggable="true" 
+			class="advanced-globe" 
+			map-type="countries"
+			size="300"
+			point-stroke-width="1"
+			graticule="false">
+		</m2s-globe>
+    </div>
+  <div name="globe-controls">
+    <div>Selected Item: {{ expertVm.selected.name }}</div>
+    <div>Latitude: {{ expertVm.selected.position.latitude }}</div>
+    <div>Longitud: {{ expertVm.selected.position.longitude }}</div>
+    <div>Source Link: <a href="{{ expertVm.selected.link }}">{{ expertVm.selected.link }}</a></div>
+    <div>Feed Details: {{ expertVm.selected.details }}</div>
+  </div>
+</globe-container>
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
+
+<script type="text/javascript" src="app/bower_components/angular-touch/angular-touch.min.js"></script>
+<script type="text/javascript" src="app/bower_components/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="app/bower_components/angular-aria/angular-aria.min.js"></script>
+<script type="text/javascript" src="app/bower_components/angular-material/angular-material.min.js"></script>
+<script type="text/javascript" src="app/bower_components/angularfire/dist/angularfire.min.js"></script>
+<script type="text/javascript" src="app/bower_components/d3/d3.min.js"></script>
+<script type="text/javascript" src="app/bower_components/topojson/topojson.js"></script>
+<script type="text/javascript" src="app/bower_components/lodash/lodash.js"></script>
+<script type="text/javascript" src="app/bower_components/highlightjs/highlight.pack.js"></script>
+<script type="text/javascript" src="app/bower_components/angular-highlightjs/angular-highlightjs.min.js"></script>
+<script type="text/javascript" src="app/bower_components/ng-multi-transclude/src/multi-transclude.js"></script>
+<script type="text/javascript" src="app/bower_components/angulartics/dist/angulartics.min.js"></script>
+<script type="text/javascript" src="app/bower_components/angulartics/dist/angulartics-ga.min.js"></script>
+
+
+<!-- <script type="text/javascript" src="app/bower_components/angular-globe/app.js"></script> -->
+<script type="text/javascript" src="app/bower_components/angular-globe/angular-globe-with-map.min.js"></script>
+<!-- <script type="text/javascript" src="app/bower_components/angular-globe/pages/expert/ExpertCtrl.js"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script>
+(function(angular) {
+  'use strict';
+
+  angular
+    .module('myModule',['madvas.angular-globe'])
+    .controller('ExpertCtrl', ExpertCtrl);
+
+  /* @ngInject */
+  function ExpertCtrl($http, $interval) {
+    /* jshint validthis: true */
+    var vm = this;
+    vm.pointClicked = pointClicked;
+    vm.selected = {a : 'gasd'};
+    activate();
+
+    ////////////////
+
+    function activate() {
+      $interval(function() {
+        if (!vm.points) {
+          return;
+        }
+        _.each(vm.points[0].values, function(city) {
+          city.cityColor = getRandomColor();
+        });
+      }, 500);
+      /**
+       * You can load custom GeoJSON data as map into globe
+       * If you have data in topojson, you have to convert it to GeoJSON like this:
+       */
+
+      $http.get('app/bower_components/angular-globe/pages/core/expert.json').then(function(res) {
+        vm.points = [
+          {
+            values : res.data
+          }
+        ];
+      });
+    }
+
+    function getRandomColor() {
+      //return 'rgb(' + _.random(255) + ', ' + _.random(255) + ', ' + _.random(255) + ')';
+    }
+
+    function pointClicked(city) {
+      vm.selected = city;
+    }
+  }
+}(angular));
+</script>
+</body>
+</html>
