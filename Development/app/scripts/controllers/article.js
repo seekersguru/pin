@@ -227,7 +227,7 @@ angular.module('pinApp')
     $rootScope.ogTitle = $scope.currentCategoryName + '-The Money Hans';
     $scope.articles = articles;
     if($scope.articles.youtubeurl){
-      $scope.articleyoutubeurl = $sce.trustAsResourceUrl($scope.articles.youtubeurl);
+      $scope.articleyoutubeurl = $sce.trustAsResourceUrl($scope.articles.youtubeurl.replace("watch?v=", "v/"));
     }
     $scope.exceptonearticle = angular.copy(articles);
     $scope
