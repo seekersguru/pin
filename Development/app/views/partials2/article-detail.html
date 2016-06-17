@@ -53,7 +53,7 @@
 
   <div class="row-mar">
 
-    <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-5 pull-right imge-pad text-right">
+ <!--    <div ng-if='articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-5 pull-right imge-pad text-right">
       <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive">
 
       <img ng-if="articles.media.path"  ng-src="../{{articles.media.path}}" title="{{articles.title}}" class="img-responsive">
@@ -66,7 +66,26 @@
       </vg-media>
       
     </videogular>
-  </div>
+  </div> -->
+
+
+   <div ng-if='articles.youtubeurl' class="col-lg-7 col-md-7 col-sm-7 pull-right mar-img-l">
+       <iframe width="420" height="315" ng-src="{{articleyoutubeurl}}" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div ng-if='!articles.youtubeurl && articles.media && articles.media.extension.indexOf("image") > -1' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
+        <img ng-if="!articles.media.path" src="images/articels001.jpg"  title="{{articles.title}}" class="img-responsive"> 
+
+        <img ng-if="articles.media.path"  ng-src="../{{articles.media.path}}" title="{{articles.title}}" class="img-responsive">
+      </div>
+      <div ng-if='!articles.youtubeurl &&  articles.media && articles.media.extension.indexOf("video") > -1' class="col-lg-7 col-md-7 col-sm-7 imge-pad">
+        <videogular vg-theme='config.theme' >
+          <vg-media 
+          vg-src="config.sources" 
+          vg-native-controls="true"  >
+        </vg-media>
+         </videogular>
+    </div>
 
   <p class="articleview" ng-bind-html="articles.description | rawHtml "></p>
 
