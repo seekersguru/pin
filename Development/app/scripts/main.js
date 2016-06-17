@@ -1438,7 +1438,7 @@ $scope.articles=articles.articles;
 $scope.pageno=articles.current;
 $scope.total=articles.total;
 if($scope.articles.youtubeurl){
-    $scope.articleyoutubeurl = $sce.trustAsResourceUrl($scope.articles.youtubeurl);
+    $scope.articleyoutubeurl = $sce.trustAsResourceUrl($scope.articles.youtubeurl.replace("watch?v=", "v/"));
 }
 
 
