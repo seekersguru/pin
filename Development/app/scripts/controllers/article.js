@@ -226,6 +226,9 @@ angular.module('pinApp')
     $rootScope.appTitle = $scope.currentCategoryName + '-The Money Hans';
     $rootScope.ogTitle = $scope.currentCategoryName + '-The Money Hans';
     $scope.articles = articles;
+    if($scope.articles.youtubeurl){
+      $scope.articleyoutubeurl = $sce.trustAsResourceUrl($scope.articles.youtubeurl);
+    }
     $scope.exceptonearticle = angular.copy(articles);
     $scope
       .rightnav = "right-nav.html";
