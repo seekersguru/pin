@@ -54,29 +54,29 @@ angular.module('pinApp')
     };
 
     $scope.openArticle = function(categoryname) {
-      if (!localStorageService.cookie.get([categoryname])) {
+      // if (!localStorageService.cookie.get([categoryname])) {
 
-        $scope.message = {
-          'title': categoryname,
-          'description': $scope.modelPopup[categoryname]
-        };
+      //   $scope.message = {
+      //     'title': categoryname,
+      //     'description': $scope.modelPopup[categoryname]
+      //   };
 
-        localStorageService.cookie.set([categoryname], 1, 1800);
-        var modalInstance = $modal.open({
-          templateUrl: 'messageContainer.html',
-          controller: 'messageContainerCtrl',
-          resolve: {
-            article: function() {
-              return $scope.message;
-            }
-          }
-        });
-        // $rootScope.bodyMainClass = $scope.color[categoryname].bodyClass +
-        // "-bg";
+      //   localStorageService.cookie.set([categoryname], 1, 1800);
+      //   var modalInstance = $modal.open({
+      //     templateUrl: 'messageContainer.html',
+      //     controller: 'messageContainerCtrl',
+      //     resolve: {
+      //       article: function() {
+      //         return $scope.message;
+      //       }
+      //     }
+      //   });
+      //   // $rootScope.bodyMainClass = $scope.color[categoryname].bodyClass +
+      //   // "-bg";
 
-      } else {
+      // } else {
         $location.path("/category/" + $scope.hanscategoryURL[categoryname]);
-      }
+      // }
 
     };
 
