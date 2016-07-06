@@ -47,7 +47,7 @@ Desk</h2>
 <li ng-repeat="hansiArticle in hansiArticles">
 <article class="entry-item">
   <div class="entry-thumb" ng-if='hansiArticle.media.extension.indexOf("image") > -1'>
-   <a ng-href="/articles/view/{{hansiArticle.url}}"`>
+   <a ng-href="/articles/{{mmicategorysetting[hansiArticle.mmicategory].url}}/{{hansiArticle.url}}"`>
     <img ng-if="!hansiArticle.media.path" ng-src="images/{{mmicategorysetting[hansiArticle.mmicategory].main-image}}" class="img-responsive" title="{{hansiArticle.title}}">   
 
           <img ng-if="hansiArticle.media.path" ng-src="../{{hansiArticle.media.path}}" title="{{hansiArticle.title}}" class="img-responsive">
@@ -56,7 +56,7 @@ Desk</h2>
      <!-- end:entry-thumb -->
   <div class="clearfix" ng-class="{'entry-content' : (hansiArticle.media.extension.indexOf('image') < 0)} ">
   <div class="entry-title"> 
-  <h2><a ng-href="/articles/view/{{hansiArticle.url}}">{{hansiArticle.title}}</a></h2>
+  <h2><a ng-href="/articles/{{mmicategorysetting[hansiArticle.mmicategory].url}}/{{hansiArticle.url}}">{{hansiArticle.title}}</a></h2>
 <p ng-bind-html="hansiArticle.description + '...'"> </p>
   </div>                                          
   </div>
