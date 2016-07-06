@@ -252,7 +252,7 @@ angular.module('pinApp', [
         },
         // authenticate: true
       })
-      .when('/articles/view/:articleid', {
+      .when('/articles/:category/:articleid', {
         templateUrl: 'partials2/article-detail',
         controller: 'ArticleCtrl',
         resolve: {
