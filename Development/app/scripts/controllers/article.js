@@ -41,19 +41,23 @@ $scope.mmicategorysetting={
 {
   'main-image':'investment-img.png',
   'icon-img':'investment-icon.jpg',
-  'classname':'investment-iocn'
+  'classname':'investment-iocn',
+  'url':'investments'
 },
 'WM/distribution':
 {
   'main-image':'welath-img.png',
   'icon-img':'wealth.png',
-  'classname':'wealth-iocn'
+  'classname':'wealth-iocn',
+   'url':'WM-distribution'
 },
 'Communication':
 {
   'main-image':'communicationlarge-img.png',
   'icon-img':'cummunaction.png',
-  'classname':'communication-iocn'
+  'classname':'communication-iocn',
+  'url':'communication'
+
 }
 };
 
@@ -398,31 +402,30 @@ angular.module('pinApp')
   $scope.articleload=0;
   $scope.descriptionLimit=80;
 
-
 $scope.mmicategorysetting={
 'Investments':
 {
   'main-image':'investment-img.png',
   'icon-img':'investment-icon.jpg',
-  'classname':'investment-iocn'
+  'classname':'investment-iocn',
+  'url':'investments'
 },
-
 'WM/distribution':
 {
   'main-image':'welath-img.png',
   'icon-img':'wealth.png',
-  'classname':'wealth-iocn'
+  'classname':'wealth-iocn',
+   'url':'WM-distribution'
 },
-
 'Communication':
 {
   'main-image':'communicationlarge-img.png',
   'icon-img':'cummunaction.png',
-  'classname':'communication-iocn'
+  'classname':'communication-iocn',
+  'url':'communication'
+
 }
-
 };
-
 $http({ method: 'GET', url: '/api/articles/search/'+$routeParams.search}).
         success(function (data, status, headers, config) {
           

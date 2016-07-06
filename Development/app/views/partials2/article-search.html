@@ -37,7 +37,7 @@
 <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in articles">
 <div class="content-block">
 <div ng-if='value.media.extension.indexOf("image") > -1' class="block-image">
-          <a ng-href="/articles/view/{{value._id}}">
+          <a ng-href="/articles/{{mmicategorysetting[value.mmicategory].url}}/{{value.url}}/{{value._id}}">
 
             <img ng-if="!value.media.path" ng-src="images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">
 
@@ -53,7 +53,7 @@
           </div>
           <div ng-if='value.media.extension.indexOf("video") > -1' class="block-image">
 
-          <a ng-href="/articles/view/{{value._id}}">
+          <a ng-href="/articles/{{mmicategorysetting[value.mmicategory].url}}/{{value.url}}/{{value._id}}">
            <img  ng-src="../{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}">
           
 
@@ -65,14 +65,14 @@
  </a>
       </div>
   <div ng-if='!value.media' class="block-image">
-          <a ng-href="/articles/view/{{value._id}}">
+          <a ng-href="/articles/{{mmicategorysetting[value.mmicategory].url}}/{{value.url}}/{{value._id}}">
         <img  ng-src="images/{{mmicategorysetting[value.mmicategory]['main-image']}}" class="img-responsive" title="{{value.title}}">
         </a>
       </div>
 <h2 class="articale-title-h">{{value.title | htmlToPlaintext | limitTo:60 }}</h2>
 <p><small>by</small> {{value.author.fullname || value.author.name}}</p>
 <p ng-bind-html="value.description + '...'"> </p>
- <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value._id}}">Read more </a></p>
+ <p><a type="button" class="btn readmore-bt" ng-href="/articles/{{mmicategorysetting[value.mmicategory].url}}/{{value.url}}/{{value._id}}">Read more </a></p>
  </div> 
 </div> 
 </div>
