@@ -235,7 +235,7 @@ angular.module('pinApp', [
 
         }
       })
-      .when('/articles/view/:articleid', {
+      .when('/articles/:category/:articleid', {
         templateUrl: 'partials2/article-detail',
         controller: 'ArticleCtrl',
         resolve: {

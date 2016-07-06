@@ -44,7 +44,7 @@
                         <h1>{{bannerArticle.title}}</h1>
                         <p><small>by</small> {{bannerArticle.author.fullname || bannerArticle.author.name}}</p>
                         <p ng-bind-html="bannerArticle.description | limitTo:descriptionLimit | rawHtml"></p>
-                        <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{bannerArticle.url}}">Continue Reading </a></p>
+                        <p><a type="button" class="btn readmore-bt" ng-href="/articles/{{mmicategorysetting[bannerArticle.mmicategory].url}}/{{bannerArticle.url}}">Continue Reading </a></p>
                     </div>
                 </div>
                 <div class="gray-hr"></div>
@@ -52,7 +52,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="(key,value) in exceptonearticle | filter:{ mmisubcategory: categoryNameWithUrl[selectcategory] }">
                         <div class="content-block">
                             <div ng-if='!value.youtubeurl && value.media.extension.indexOf("image") > -1' class="block-image">
-                                <a ng-href="/articles/view/{{value.url}}">
+                                <a ng-href="/articles/{{mmicategorysetting[value.mmicategory].url}}/{{value.url}}">
                                     <img ng-if="!value.media.path" ng-src="http://themoneyhans.com/images/{{mmicategorysetting[value.mmicategory].main-image}}" class="img-responsive" title="{{value.title}}">
                                     <img ng-if="value.media.path" ng-src="http://themoneyhans.com/{{value.media.path}}" title="{{value.title}}" class="img-responsive">
                                     <div class="shadow-img">
@@ -61,7 +61,7 @@
                                 </a>
                             </div>
                             <div ng-if='!value.youtubeurl && value.media.extension.indexOf("video") > -1' class="block-image">
-                                <a ng-href="/articles/view/{{value.url}}">
+                                <a ng-href="/articles/{{mmicategorysetting[value.mmicategory].url}}/{{value.url}}">
                                     <img ng-src="http://themoneyhans.com/{{value.thumblemedia.path}}" class="img-responsive" title="{{value.title}}">
                                     <div class="play-iocn"></div>
                                     <div class="shadow-img">
@@ -70,7 +70,7 @@
                                 </a>
                             </div>
                            <div ng-if='value.youtubeurl && value.media.extension.indexOf("image") > -1' class="block-image">
-                                <a ng-href="/articles/view/{{value.url}}">
+                                <a ng-href="/articles/{{mmicategorysetting[value.mmicategory].url}}/{{value.url}}">
                                     <img ng-src="http://themoneyhans.com/{{value.media.path}}" class="img-responsive" title="{{value.title}}">
                                     <div class="play-iocn"></div>
                                     <div class="shadow-img">
@@ -79,14 +79,14 @@
                                 </a>
                             </div>
                             <div ng-if='!value.media' class="block-image">
-                                <a ng-href="/articles/view/{{value.url}}">
+                                <a ng-href="/articles/{{mmicategorysetting[value.mmicategory].url}}/{{value.url}}">
                                     <img ng-src="images/{{mmicategorysetting[value.mmicategory]['main-image']}}" class="img-responsive" title="{{value.title}}">
                                 </a>
                             </div>
                             <h2 class="articale-title-h">{{value.title | htmlToPlaintext | limitTo:60 }}</h2>
                             <p><small>by</small> {{value.author.fullname || value.author.name }}</p>
                             <p ng-bind-html="value.description + '...'"> </p>
-                            <p><a type="button" class="btn readmore-bt" ng-href="/articles/view/{{value.url}}">Read more </a></p>
+                            <p><a type="button" class="btn readmore-bt" ng-href="/articles/{{mmicategorysetting[value.mmicategory].url}}/{{value.url}}">Read more </a></p>
                         </div>
                     </div>
                 </div>
