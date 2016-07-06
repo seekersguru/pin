@@ -440,7 +440,12 @@ angular.module('pinApp')
 angular.module('pinApp')
   .controller('ArticleSearchCtrl', function($scope, $http, $sce,
     $timeout, $routeParams) {
-
+    $scope.hanscategoryURL={'Architect Blueprint':'architect-blueprint',
+                           'Essentials Foundation':'essentials-foundation',
+                           'Growth Pillars':'growth-pillars',
+                            'Freedom Slab':'freedom-slab',
+                           'Fun Money Roof':'fun-money-roof'
+    };
     $scope.color = {
       'Architect Blueprint': {
         'caption': 'caption',
