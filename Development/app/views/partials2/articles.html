@@ -30,7 +30,7 @@
 <div class="row">
 <div class="col-md-6 col-sm-6 padr-30" ng-repeat="(key,value) in exceptonearticle">
 
-<article ng-if='!value.youtubeurl && (!value.media.extension || value.media.extension.indexOf("image") > -1)' >
+<article ng-if='(!value.youtubeurl || value.youtubeurl === "null") && (!value.media.extension || value.media.extension.indexOf("image") > -1)' >
 
 <div class="{{ color[value.hanscategory].colorclass }}" ng-class="{'white-box':currentCategoryName }">
 
