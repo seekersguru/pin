@@ -297,6 +297,27 @@ h2 {
 .video-hight img {
     height: 198px;
 }
+.video-hight  {
+    opacity: 0.2;
+    height: 198px;
+    border-radius: 18px
+}
+
+.video-height-green {
+    background-color: rgba(135, 188, 31, 0.8); 
+}
+.video-height-blue {
+    background-color: rgba(31, 174, 214, 0.8);
+}
+
+.video-height-red {
+    background-color: rgba(128, 128, 128, 0.75);
+}
+
+.video-height-yallow {
+    background-color: #f7b84d;
+}
+
 #left-nav ul li {
     list-style: outside none none;
     margin: 0;
