@@ -446,7 +446,8 @@ exports.basic = function(req, res) {
 	/** sorting according to date */
 
 	q.sort('-createdAt');
-
+	q.where('public').equals(true);
+	q.where('money').equals(true);
 	/** finally execute */
 	q.populate('author', 'name email fullname').exec(function(err, articles) {
 		if (err) {
