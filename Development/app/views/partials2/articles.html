@@ -64,7 +64,7 @@
  <div class="{{ color[value.hanscategory].videoclass }}">{{value.title}}</div>
 </div>
 
-<div class="video-img"  ng-if='value.youtubeurl'>
+<div class="video-img"  ng-if='value.youtubeurl && value.youtubeurl !== null'>
  <div class="video-hight {{ color[value.hanscategory].videoheightclass }}">
  <a ng-href="/articles/{{hanscategoryURL[value.hanscategory]}}/{{value.url}}">
     <img ng-if="value.media && value.media.path" ng-src="../{{value.media.path}}" class="img-responsive" title="{{value.title}}">
