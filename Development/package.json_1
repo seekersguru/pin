@@ -1,0 +1,73 @@
+{
+  "name": "pincom",
+  "version": "0.0.0",
+  "dependencies": {
+    "binaryjs": "0.2.1",
+    "body-parser": "~1.0.0",
+    "connect-mongo": "~0.4.0",
+    "connect-multiparty": "~1.2.5",
+    "cookie-parser": "~1.0.1",
+    "debug": "~0.7.4",
+    "ejs": "~0.8.4",
+    "email-templates": "1.1.0",
+    "express": "~3.5.0",
+    "express-session": "~1.0.0",
+    "express-useragent": "^0.2.0",
+    "jade": "~1.3.0",
+    "lodash": "^2.4.1",
+    "mongoose": "~3.8.8",
+    "mongoose-assert": "~1.0.2",
+    "mongoose-unique-validator": "~0.4.1",
+    "morgan": "~1.0.0",
+    "nodemailer": "0.7.1",
+    "passport": "~0.2.0",
+    "passport-facebook": "~0.1.6",
+    "passport-google": "^0.3.0",
+    "passport-linkedin": "^0.1.3",
+    "passport-local": "~0.1.6",
+    "passport-twitter": "^1.0.2",
+    "prerender-node": "^1.0.6",
+    "q": "^1.4.1",
+    "socket.io": "^0.9.16",
+    "static-favicon": "~1.0.0",
+    "striptags": "^2.0.3",
+    "stylus": "0.42.3",
+    "xlsx": "~0.8.0",
+    "sitemap": "~1.5.0"
+  },
+  "devDependencies": {
+    "connect-livereload": "~0.5.3",
+    "del": "~1.1.1",
+    "gulp": "3.8.11",
+    "gulp-autoprefixer": "~2.1.0",
+    "gulp-cache": "~0.2.7",
+    "gulp-concat": "~2.5.2",
+    "gulp-filter": "~2.0.2",
+    "gulp-imagemin": "~2.2.1",
+    "gulp-jshint": "~1.9.2",
+    "gulp-livereload": "~3.7.0",
+    "gulp-load-plugins": "~0.10.0",
+    "gulp-minify-css": "~0.4.6",
+    "gulp-nodemon": "~1.0.5",
+    "gulp-notify": "~2.2.0",
+    "gulp-rename": "~1.2.0",
+    "gulp-ruby-sass": "~1.0.0-alpha.3",
+    "gulp-uglify": "~1.1.0",
+    "main-bower-files": "~2.7.0",
+    "node-inspector": "~0.9.1",
+    "passport-linkedin": "^0.1.3"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "start-server": "gulp develop",
+    "start": "node server.js"
+  },
+  "main": "Gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
+}
