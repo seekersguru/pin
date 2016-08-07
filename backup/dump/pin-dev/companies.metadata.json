@@ -1,0 +1,1 @@
+{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "pin-dev.companies", "name" : "_id_" }, { "v" : 1, "key" : { "title" : 1 }, "unique" : true, "ns" : "pin-dev.companies", "name" : "title_1", "background" : true, "safe" : null } ] }
