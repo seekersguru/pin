@@ -86,7 +86,7 @@ server.listen(config.port);
 
 //optional - set socket.io logging level
 io.set('log level', 1000);
-app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3009'));
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://52.74.128.74:3008'));
 
 
 
