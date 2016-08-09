@@ -1,1 +1,0 @@
-{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "pin-dev.events", "name" : "_id_" }, { "v" : 1, "key" : { "discovered" : 1 }, "ns" : "pin-dev.events", "name" : "discovered_1", "background" : true, "safe" : null } ] }
