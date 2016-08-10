@@ -1370,7 +1370,7 @@ angular.module('pinApp')
           for (var i = emailArray.length - 1; i >= 0; i--) {
                $http({
                 method: 'DELETE',
-                url: '/api/mmiusers/deletemailusers/'+emailArray[i];
+                url: '/api/mmiusers/deletemailusers/'+emailArray[i]
               }).
               success(function(data, status, headers, config) {
                 console.log('delete---'+email);
