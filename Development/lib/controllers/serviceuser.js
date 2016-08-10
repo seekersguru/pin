@@ -592,6 +592,7 @@ exports.forgot = function (req, res, next) {
 
 /** delete users as per emailID **/ 
 exports.deleteEmailWise=function(req,res){
+  var email=req.params.email;
    User.findOne({email: email}, function(err, user) {
       if (err) res.send(400);
       if (!user) {
