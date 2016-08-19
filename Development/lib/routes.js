@@ -91,6 +91,8 @@ module.exports = function(app) {
   app.get('/api/mmiusersexcelfull', mmiusers.fullexcel);
   app.get('/api/mmiusers/:userid', mmiusers.show);
   app.put('/api/mmiusers/:userid', mmiusers.update);
+  app.put('/api/mmiusers/updateemailusers/:email', mmiusers.updateEmailWise);
+
   app.del('/api/mmiusers/:userid', mmiusers.remove);
   app.put('/api/mmiusers/status/:userid', mmiusers.updatestatus);
   app.get('/api/mmiusers/checkusername/:username',mmiusers.checkusername);

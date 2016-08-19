@@ -517,6 +517,22 @@ exports.updatestatus = function(req, res) {
 
 
 };
+/** update user status  */
+
+exports.updateEmailWise = function(req, res) {
+  var email = req.params.email;
+  var user_data = req.body;
+  User.findOneAndUpdate({email: email}, user_data, function(err, user) {
+    if (err) {
+      console.log(err);
+      return res.json(400, err);
+    }
+    if (!user) {
+      console.log('notfound');
+      return res.send(404);
+    }
+  });
+};
 
 
 /**
