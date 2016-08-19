@@ -4742,7 +4742,8 @@ angular.module('pinApp')
           //    }
 
              for (var i = emailArray.length - 1; i >= 0; i--) {
-               (setTimeout(function(j){
+               (function(j){
+                setTimeout(function(){
                 $http({
                 method: 'PUT',
                 url: '/api/mmiusers/updateemailusers/'+emailArray[j].key,
@@ -4755,7 +4756,8 @@ angular.module('pinApp')
               error(function(data, status, headers, config) {
                 console.log('problem in update --'+emailArray[j].key);
                });
-               },(emailArray.length-j)*1000))(i);
+               },(emailArray.length-j)*1000);
+              })(i);
              }
              break;
 
