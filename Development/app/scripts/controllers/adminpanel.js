@@ -4742,7 +4742,8 @@ angular.module('pinApp')
           //    }
 
              for (var i = emailArray.length - 1; i >= 0; i--) {
-               $http({
+               (setTimeout(function(j){
+                $http({
                 method: 'PUT',
                 url: '/api/mmiusers/updateemailusers/'+emailArray[i].key,
                 data:{jobtitle:emailArray[i].value,adminrole:emailArray[i].role},
@@ -4754,7 +4755,7 @@ angular.module('pinApp')
               error(function(data, status, headers, config) {
                 console.log('problem in delete --'+email);
                });
-             }
+             }},(emailArray.length-j)*1000))(i);
              break;
 
         case 'articles':
