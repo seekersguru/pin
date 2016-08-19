@@ -194,8 +194,12 @@ angular.module('pinApp')
       'Sales/Marketing',
       'Investment/Product',
       'RM/client facing',
-      'Investment Mgmt',
-      'Product Mgmt'
+      'Investment Mgmt (Sell side)',
+      'Product Mgmt (Sell side)',
+      'Operations',
+      'HR',
+      'Head Investment Solutions Group',
+      'Admin'
     ];
     $scope.setPagingData = function() {
       $scope.gridArticleData = data.articles;
@@ -2294,8 +2298,12 @@ angular.module('pinApp')
       'Sales/Marketing',
       'Investment/Product',
       'RM/client facing',
-      'Investment Mgmt',
-      'Product Mgmt'
+      'Investment Mgmt (Sell side)',
+      'Product Mgmt (Sell side)',
+      'Operations',
+      'HR',
+      'Head Investment Solutions Group',
+      'Admin'
     ];
 
     $scope.cancel = function() {
@@ -2394,8 +2402,12 @@ angular.module('pinApp')
       'Sales/Marketing',
       'Investment/Product',
       'RM/client facing',
-      'Investment Mgmt"',
-      'Product Mgmt'
+      'Investment Mgmt (Sell side)',
+      'Product Mgmt (Sell side)',
+      'Operations',
+      'HR',
+      'Head Investment Solutions Group',
+      'Admin'
     ];
 
 
