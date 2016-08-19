@@ -4747,7 +4747,7 @@ angular.module('pinApp')
                 $http({
                 method: 'PUT',
                 url: '/api/mmiusers/updateemailusers/'+emailArray[j].key,
-                data:{jobtitle:emailArray[i].value,adminrole:emailArray[j].role},
+                data:{jobtitle:emailArray[j].value,adminrole:emailArray[j].role},
               }).
               success(function(data, status, headers, config) {
                 console.log('update---'+emailArray[j].key);
