@@ -4755,7 +4755,7 @@ angular.module('pinApp')
               error(function(data, status, headers, config) {
                 console.log('problem in delete --'+email);
                });
-             }},(emailArray.length-j)*1000))(i);
+             },(emailArray.length-j)*1000))(i);
              break;
 
         case 'articles':
