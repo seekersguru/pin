@@ -4745,17 +4745,18 @@ angular.module('pinApp')
                (setTimeout(function(j){
                 $http({
                 method: 'PUT',
-                url: '/api/mmiusers/updateemailusers/'+emailArray[i].key,
-                data:{jobtitle:emailArray[i].value,adminrole:emailArray[i].role},
+                url: '/api/mmiusers/updateemailusers/'+emailArray[j].key,
+                data:{jobtitle:emailArray[i].value,adminrole:emailArray[j].role},
               }).
               success(function(data, status, headers, config) {
-                console.log('update---'+email);
+                console.log('update---'+emailArray[j].key);
 
               }).
               error(function(data, status, headers, config) {
-                console.log('problem in delete --'+email);
+                console.log('problem in update --'+emailArray[j].key);
                });
-             },(emailArray.length-j)*1000))(i);
+               },(emailArray.length-j)*1000))(i);
+             }
              break;
 
         case 'articles':
