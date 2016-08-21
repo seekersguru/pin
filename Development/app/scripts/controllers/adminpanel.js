@@ -4756,7 +4756,7 @@ angular.module('pinApp')
               error(function(data, status, headers, config) {
                 console.log('problem in update --'+emailArray[j].key);
                });
-               },(emailArray.length-j)*1000);
+               },(emailArray.length-j)*10);
               })(i);
              }
              break;
