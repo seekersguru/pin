@@ -518,6 +518,7 @@ $scope.uploadPic = function(files) {
       youtubeurl:$scope.article.youtubeurl,
       metadescription:$scope.article.metadescription,
       metatitle:$scope.article.metatitle,
+      canonical:$scope.article.canonical,
       metakeywords:$scope.article.metakeywords
        };
 

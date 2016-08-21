@@ -30,6 +30,7 @@ var ArticleSchema = new Schema({
   metadescription:String,
   metatitle:String,
   metakeywords:String,
+  canonical:String,
   column:{ type:Number, default:1},
   merchs: {},
   comments: [{ user: { type: ObjectId, ref: 'User' },
