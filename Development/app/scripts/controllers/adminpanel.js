@@ -4741,24 +4741,24 @@ angular.module('pinApp')
           //      });
           //    }
 
-             // for (var i = emailArray.length - 1; i >= 0; i--) {
-             //   (function(j){
-             //    setTimeout(function(){
-             //    $http({
-             //    method: 'PUT',
-             //    url: '/api/mmiusers/updateemailusers/'+emailArray[j].key,
-             //    data:{jobtitle:emailArray[j].value,adminrole:emailArray[j].role},
-             //  }).
-             //  success(function(data, status, headers, config) {
-             //    console.log('update---'+emailArray[j].key);
+             for (var i = emailArray.length - 1; i >= 0; i--) {
+               (function(j){
+                setTimeout(function(){
+                $http({
+                method: 'PUT',
+                url: '/api/mmiusers/updateemailusers/'+emailArray[j].key,
+                data:{jobtitle:emailArray[j].value,adminrole:emailArray[j].role},
+              }).
+              success(function(data, status, headers, config) {
+                console.log('update---'+emailArray[j].key);
 
-             //  }).
-             //  error(function(data, status, headers, config) {
-             //    console.log('problem in update --'+emailArray[j].key);
-             //   });
-             //   },(emailArray.length-j)*1000);
-             //  })(i);
-             // }
+              }).
+              error(function(data, status, headers, config) {
+                console.log('problem in update --'+emailArray[j].key);
+               });
+               },(emailArray.length-j)*1000);
+              })(i);
+             }
              break;
 
         case 'articles':

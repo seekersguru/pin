@@ -531,6 +531,9 @@ exports.updateEmailWise = function(req, res) {
       console.log('notfound');
       return res.send(404);
     }
+    if (user) {
+      return res.send(200);
+    }
   });
 };
 
