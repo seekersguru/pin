@@ -21,6 +21,7 @@ var ArticleSchema = new Schema({
   metadescription:String,
   metatitle:String,
   metakeywords:String,
+  canonical:String,
   tags: [String],
   keywords: [String],
   category: String,
