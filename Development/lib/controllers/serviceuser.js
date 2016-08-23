@@ -194,13 +194,19 @@ exports.excel = function(req, res){
       return res.send(404);
     } else {
       var resultArray=[['EMAIL','COMPANY','USERNAME','FIRSTNAME','SURNAME','JOBTITLE','DATEREGISTRATION','MOBILE','CITY','AUTOLOGIN']];
-      var roleType=['CEO/business head',
+      var roleType=[
+       'CEO/business head',
       'Management',
       'Sales/Marketing',
       'Investment/Product',
       'RM/client facing',
-      'Investment Mgmt',
-      'Product Mgmt']
+      'Investment Mgmt (Sell side)',
+      'Product Mgmt (Sell side)',
+      'Operations',
+      'HR',
+      'Head Investment Solutions Group',
+      'Admin'
+      ];
       // if(req.user.role !== 'admin'){
         for(var i=0; i<users.length; i++){
           resultArray.push([users[i].email,users[i].company !== null ? users[i].company.title:null,users[i].username,users[i].firstname,users[i].lastname, users[i].adminrole ? roleType[users[i].adminrole -1]:null,new Date(users[i].createdAt),users[i].phone,users[i].address !== null ? users[i].address.city: null,'http://moneymanagementindia.net/api/session/autologin?email='+users[i]._id+'&token='+users[i]._id]);
@@ -288,13 +294,19 @@ exports.fullexcel = function(req, res){
       return res.send(404);
     } else {
       var resultArray=[['EMAIL','COMPANY','USERNAME','FIRSTNAME','SURNAME','JOBTITLE','DATEREGISTRATION','MOBILE','CITY','LINKEDIN.ID','LINKEDIN.PROFILEPICURL','LINKEDIN.PROFILEURL']];
-      var roleType=['CEO/business head',
+      var roleType=[
+       'CEO/business head',
       'Management',
       'Sales/Marketing',
       'Investment/Product',
       'RM/client facing',
-      'Investment Mgmt',
-      'Product Mgmt']
+      'Investment Mgmt (Sell side)',
+      'Product Mgmt (Sell side)',
+      'Operations',
+      'HR',
+      'Head Investment Solutions Group',
+      'Admin'
+      ];
       // if(req.user.role !== 'admin'){
         for(var i=0; i<users.length; i++){
 
