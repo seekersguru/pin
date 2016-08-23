@@ -20,6 +20,7 @@ var ArticleSchema = new Schema({
   tags: [String],
   keywords: [String],
   category: String,
+  canonical:String,
   mmicategory:String,
   mmisubcategory:String,
   merchs: {},
