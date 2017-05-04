@@ -359,6 +359,10 @@ angular.module('pinApp', [
       templateUrl: 'partials2/404',
       title: 'not Found'
     })
+    .when('/plan', {
+      templateUrl: 'partials2/plan',
+      title: 'Plan Your Wealth'
+    })
 
     .when('/notification', {
       templateUrl: 'partials2/notification',
