@@ -918,9 +918,8 @@ function calculate(){
   
   var calculated_percentage = {}
   if (all_diff_total==0){
-	  $.each(expected_percentage,function(key, val){
-	  	$(".image_"+key).css({"width":"0%"});
-	  )};
+	  $(".image_"+key).css({"width":"0%"});
+	  
   }else{
 	  $.each(data,function(key, record){
 	    calculated_percentage[key] = (data[key]["total"]/all_diff_total)*100
