@@ -894,8 +894,18 @@ function calculate(){
   // Validation is done lets look at the values.
   $.each(configuration,function(key,records){
     $.each(records, function (index, record){
-      var val = parseInt($("#"+record["key"]+"_value").val());
-      var owe = parseInt($("#"+record["key"]+"_owe").val());
+      var val = $("#"+record["key"]+"_value").val();
+      if(!val){
+    	  val = 0;
+      }else{
+    	  var val = parseInt(val);
+      }
+      var owe = $("#"+record["key"]+"_owe").val();
+      if(!owe){
+    	  owe = 0;
+      }else{
+    	  owe = parseInt(owe);
+      }     
       var diff =  parseInt(val - owe);
       data[key]["total"] = parseInt(data[key]["total"] + diff);
     });
