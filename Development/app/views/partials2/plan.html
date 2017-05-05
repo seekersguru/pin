@@ -443,6 +443,26 @@ top: 285px; width: 100%; text-align: center;
 													Accounts which have some lock-in
 												</p>
 											</div>
+												<div>
+													<label class="control-label" for="email">Gold/Jewelry</label>
+													<div class="row">
+
+														<div class="col-sm-6">
+															<input type="text" class="form-control val"
+																id="gold_jewel_value" placeholder="Value estimate">
+														</div>
+														<div class="col-sm-6 padl0">
+															<input type="text" class="form-control owe"
+																id="gold_jewel_owe" placeholder="Still owe on this">
+														</div>
+													</div>
+													<p class="help-text">
+														<i class="fa fa-question-circle" aria-hidden="true"></i>
+														Jewelry or gold biscuits
+													</p>
+												</div>
+											
+											
 										</div>
 									</div>
 									<div class="modal-footer text-center">
@@ -482,40 +502,23 @@ top: 285px; width: 100%; text-align: center;
 										</div>
 										<div class="modal-body">
 											<div class="claculate-form">
-												<div>
-													<label class="control-label" for="email">Gold/Jewelry</label>
-													<div class="row">
 
+												<div>
+													<label class="control-label" for="email">Balanced
+														portfolio - direct or mutual funds</label>
+													<div class="row">
 														<div class="col-sm-6">
 															<input type="text" class="form-control val"
-																id="gold_jewel_value" placeholder="Value estimate">
+																id="portfolio_value" placeholder="Value estimate">
 														</div>
 														<div class="col-sm-6 padl0">
 															<input type="text" class="form-control owe"
-																id="gold_jewel_owe" placeholder="Still owe on this">
+																id="portfolio_owe" placeholder="Still owe on this">
 														</div>
 													</div>
 													<p class="help-text">
 														<i class="fa fa-question-circle" aria-hidden="true"></i>
-														Jewelry or gold biscuits
-													</p>
-												</div>
-
-												<div>
-													<label class="control-label" for="email">Car:</label>
-													<div class="row">
-														<div class="col-sm-6">
-															<input type="text" class="form-control val"
-																id="car_value" placeholder="Value estimate">
-														</div>
-														<div class="col-sm-6 padl0">
-															<input type="text" class="form-control owe" id="car_owe"
-																placeholder="Still owe on this">
-														</div>
-													</div>
-													<p class="help-text">
-														<i class="fa fa-question-circle" aria-hidden="true"></i>
-														Value if you sold it
+														MFs that invest in equities and bonds
 													</p>
 												</div>
 
@@ -583,44 +586,6 @@ top: 285px; width: 100%; text-align: center;
 											<div class="claculate-form">
 
 												<div>
-													<label class="control-label" for="email">Bonds -
-														direct or mutual funds</label>
-													<div class="row">
-														<div class="col-sm-6">
-															<input type="text" class="form-control val"
-																id="bonds_value" placeholder="Value estimate">
-														</div>
-														<div class="col-sm-6 padl0">
-															<input type="text" class="form-control owe"
-																id="bonds_owe" placeholder="Still owe on this">
-														</div>
-													</div>
-													<p class="help-text">
-														<i class="fa fa-question-circle" aria-hidden="true"></i>
-														Direct bonds or bond mutual funds
-													</p>
-												</div>
-
-												<div>
-													<label class="control-label" for="email">Balanced
-														portfolio - direct or mutual funds</label>
-													<div class="row">
-														<div class="col-sm-6">
-															<input type="text" class="form-control val"
-																id="portfolio_value" placeholder="Value estimate">
-														</div>
-														<div class="col-sm-6 padl0">
-															<input type="text" class="form-control owe"
-																id="portfolio_owe" placeholder="Still owe on this">
-														</div>
-													</div>
-													<p class="help-text">
-														<i class="fa fa-question-circle" aria-hidden="true"></i>
-														MFs that invest in equities and bonds
-													</p>
-												</div>
-
-												<div>
 													<label class="control-label" for="email">Exotic
 														investments - hedge funds, private equity :</label>
 													<div class="row">
@@ -636,6 +601,57 @@ top: 285px; width: 100%; text-align: center;
 													<p class="help-text">
 														<i class="fa fa-question-circle" aria-hidden="true"></i>
 														Funds that are comlex or have lock-ins
+													</p>
+												</div>
+												<div>
+													<label class="control-label" for="email">Real
+														estate - still under construction, no rent</label>
+													<div class="row">
+														<div class="col-sm-6">
+															<input type="text" class="form-control val"
+																id="real_estate_no_rent_value"
+																placeholder="Value estimate">
+
+														</div>
+														<div class="col-sm-6 padl0">
+															<input type="text" class="form-control owe"
+																id="real_estate_no_rent_owe"
+																placeholder="Still owe on this">
+														</div>
+													</div>
+
+												</div>
+												<div>
+													<label class="control-label" for="email">ESOPs in
+														employer company:</label>
+													<div class="row">
+														<div class="col-sm-6">
+															<input type="text" class="form-control val"
+																id="esop_value" placeholder="Value estimate">
+														</div>
+														<div class="col-sm-6 padl0">
+															<input type="text" class="form-control owe" id="esop_owe"
+																placeholder="Still owe on this">
+														</div>
+													</div>
+
+												</div>												
+												<div>
+													<label class="control-label" for="email">Bonds -
+														direct or mutual funds</label>
+													<div class="row">
+														<div class="col-sm-6">
+															<input type="text" class="form-control val"
+																id="bonds_value" placeholder="Value estimate">
+														</div>
+														<div class="col-sm-6 padl0">
+															<input type="text" class="form-control owe"
+																id="bonds_owe" placeholder="Still owe on this">
+														</div>
+													</div>
+													<p class="help-text">
+														<i class="fa fa-question-circle" aria-hidden="true"></i>
+														Direct bonds or bond mutual funds
 													</p>
 												</div>
 
@@ -698,41 +714,6 @@ top: 285px; width: 100%; text-align: center;
 										</div>
 										<div class="modal-body">
 											<div class="claculate-form">
-
-												<div>
-													<label class="control-label" for="email">Real
-														estate - still under construction, no rent</label>
-													<div class="row">
-														<div class="col-sm-6">
-															<input type="text" class="form-control val"
-																id="real_estate_no_rent_value"
-																placeholder="Value estimate">
-
-														</div>
-														<div class="col-sm-6 padl0">
-															<input type="text" class="form-control owe"
-																id="real_estate_no_rent_owe"
-																placeholder="Still owe on this">
-														</div>
-													</div>
-
-												</div>
-
-												<div>
-													<label class="control-label" for="email">ESOPs in
-														employer company:</label>
-													<div class="row">
-														<div class="col-sm-6">
-															<input type="text" class="form-control val"
-																id="esop_value" placeholder="Value estimate">
-														</div>
-														<div class="col-sm-6 padl0">
-															<input type="text" class="form-control owe" id="esop_owe"
-																placeholder="Still owe on this">
-														</div>
-													</div>
-
-												</div>
 
 												<div>
 													<label class="control-label" for="email">Own
@@ -869,7 +850,7 @@ top: 285px; width: 100%; text-align: center;
     
   }
 function calculate(){
-  var errors = []
+  /*var errors = []
   $.each(configuration,function(key,records){
     // console.log(key);
     
@@ -919,7 +900,7 @@ function calculate(){
     $("#errorModal").modal();
     $("#errorModal").show();
     return;
-  }
+  }*/
   //    
   var data = {
       "foundation":{"total":0} ,
@@ -944,16 +925,20 @@ function calculate(){
   }); 
   
   var calculated_percentage = {}
-  $.each(data,function(key, record){
-    calculated_percentage[key] = (data[key]["total"]/all_diff_total)*100
-  });
-  var show_size = {}
-  $.each(expected_percentage,function(key, val){
-    show_size[key] = calculated_percentage[key]/val;
-    //debugger;
-    $(".image_"+key).css({"width":show_size[key]*80+"%"});
-
-  });
+  if (all_diff_total==0){
+	  $(".image_"+key).css({"width":"0%"})
+  }else{
+	  $.each(data,function(key, record){
+	    calculated_percentage[key] = (data[key]["total"]/all_diff_total)*100
+	  });
+	  var show_size = {}
+	  $.each(expected_percentage,function(key, val){
+	    show_size[key] = calculated_percentage[key]/val;
+	    //debugger;
+	    $(".image_"+key).css({"width":show_size[key]*80+"%"});
+	
+	  });
+  }
   //alert(JSON.stringify(show_size));
   //percentages = {"foundation":"20%","pillar":"30%","proof":"50%","slab":"80%"}
    $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -983,8 +968,8 @@ $(document).ready(function(){
   
   // Assign values so no need to type initially.
   // Can set some initial values.
-    $('input.val').val('111');
-    $('input.owe').val('11');
+    $('input.val').val('0');
+    $('input.owe').val('0');
     
     // Max length shhould not be greater than 15 for any amount
     $('input').attr('maxlength', 15);
