@@ -349,20 +349,21 @@ h2 {
     text-align: right;
 }
 #left-nav ul li + li + li a {
-    background-image: url("../images/learn-bt.png");
+    background-image: url(../images/meet-bt.png);
     background-position: right center;
     background-repeat: no-repeat;
     color: #000;
     display: block;
     font-size: 16px;
-    height: 48px;
+    height: 60px;
     letter-spacing: 0.9px;
-    line-height: 50px;
+    line-height: 60px;
     margin: 0;
-    padding-right: 43px;
+    padding-right: 28px;
     text-align: right;
     width: 100%;
 }
+
 #left-nav ul li + li a {
     background-image: url("../images/learn-bt.png");
     background-repeat: no-repeat;
