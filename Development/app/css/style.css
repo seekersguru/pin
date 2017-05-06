@@ -348,16 +348,31 @@ h2 {
     margin-top: 80px;
     text-align: right;
 }
-#left-nav ul li + li a {
-    background-image: url("../images/meet-bt.png");
+#left-nav ul li + li + li a {
+    background-image: url("../images/learn-bt.png");
+    background-position: right center;
     background-repeat: no-repeat;
+    color: #000;
     display: block;
-    height: 60px;
-    line-height: 60px;
-    padding-right: 28px;
+    font-size: 16px;
+    height: 48px;
+    letter-spacing: 0.9px;
+    line-height: 50px;
+    margin: 0;
+    padding-right: 43px;
+    text-align: right;
     width: 100%;
 }
-#left-nav ul li + li + li a {
+#left-nav ul li + li a {
+    background-image: url("../images/learn-bt.png");
+    background-repeat: no-repeat;
+    display: block;
+    height: 60px; 
+    line-height: 60px;
+    padding-right: 48px;
+    width: 100%;
+}
+#left-nav ul li + li + li + li a {
     background-image: url("../images/ask-hunsi.png");
     background-repeat: no-repeat;
     display: block;
@@ -372,15 +387,21 @@ h2 {
     text-decoration: none;
 }
 #left-nav ul li + li a:hover {
+    background-image: url("../images/learn-bt-hover.png");
+    display: block;
+    text-decoration: none;
+}
+#left-nav ul li + li+li a:hover {
     background-image: url("../images/meet-bt-hover.png");
     display: block;
     text-decoration: none;
 }
-#left-nav ul li + li + li a:hover {
+#left-nav ul li + li + li+li a:hover {
     background-image: url("../images/ask-hunsi-hover.png");
     display: block;
     text-decoration: none;
 }
+
 .arow-black {
     background-image: url("../images/arrow-right-menu.png");
     height: 141px;
