@@ -966,7 +966,7 @@ function calculate(){
 	  $.each(expected_percentage,function(key, val){
 	  	//debugger;
 	    show_size[key] = calculated_percentage[key]/val;
-	    //debugger;
+	    debugger;
 	    $(key+"_count").html(calculated_percentage[key] + " %");
 	    $(".image_"+key).css({"width":show_size[key]*80+"%"});
 	
