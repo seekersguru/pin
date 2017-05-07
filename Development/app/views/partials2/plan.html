@@ -99,6 +99,7 @@
 }
 
 .house-sec .calculate-house {
+	overflow:hidden;
      margin: 30px auto 0;
     max-width: 255px; position: relative;
     text-align: center; 
@@ -967,7 +968,7 @@ function calculate(){
 	  	//debugger;
 	    show_size[key] = calculated_percentage[key]/val;
 	    debugger;
-	    $("#"+key+"_count").html(calculated_percentage[key]+"%");
+	    $("#"+key+"_count").html(calculated_percentage[key].toFixed(2)+"%");
 	    $(".image_"+key).css({"width":(calculated_percentage[key]/expected_percentage[key])*100+"%"});
 	
 	  });
