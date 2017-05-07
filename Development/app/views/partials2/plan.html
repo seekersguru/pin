@@ -967,7 +967,7 @@ function calculate(){
 	  	//debugger;
 	    show_size[key] = calculated_percentage[key]/val;
 	    debugger;
-	    $(key+"_count").html(calculated_percentage[key] + " %");
+	    $("#"+key+"_count").html(calculated_percentage[key] + " %");
 	    $(".image_"+key).css({"width":show_size[key]*80+"%"});
 	
 	  });
