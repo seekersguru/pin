@@ -952,7 +952,7 @@ function calculate(){
   }); 
   
   var calculated_percentage = {}
-  $("total_count").html(all_diff_total);
+  $("#total_count").html(all_diff_total);
   if (all_diff_total==0){
 	  $.each(expected_percentage,function(key, val){
 	  	$(".image_"+key).css({"width":"0%"});
