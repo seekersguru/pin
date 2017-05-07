@@ -968,7 +968,7 @@ function calculate(){
 	    show_size[key] = calculated_percentage[key]/val;
 	    debugger;
 	    $("#"+key+"_count").html(calculated_percentage[key]+"%");
-	    $(".image_"+key).css({"width":calculated_percentage[key]/expected_percentage*100+"%"});
+	    $(".image_"+key).css({"width":(calculated_percentage[key]/expected_percentage[key])*100+"%"});
 	
 	  });
   }
