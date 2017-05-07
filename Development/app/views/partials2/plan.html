@@ -964,9 +964,10 @@ function calculate(){
 	  });
 	  var show_size = {}
 	  $.each(expected_percentage,function(key, val){
-	  	debugger;
+	  	//debugger;
 	    show_size[key] = calculated_percentage[key]/val;
 	    //debugger;
+	    $(key+"_count").html(calculated_percentage[key] + " %");
 	    $(".image_"+key).css({"width":show_size[key]*80+"%"});
 	
 	  });
@@ -975,6 +976,7 @@ function calculate(){
   //percentages = {"foundation":"20%","pillar":"30%","proof":"50%","slab":"80%"}
    $("html, body").animate({ scrollTop: 0 }, "slow");
    $(".close").click()
+   $(".totalpvalue").show();
 
 } 
 /* Reset the data value on page load and each time click calculate. At last*/
