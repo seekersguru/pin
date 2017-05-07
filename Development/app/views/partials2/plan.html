@@ -957,6 +957,11 @@ function calculate(){
 	  $(".image_slab").css({"width":"0%"});
 	  $(".image_pillar").css({"width":"0%"});
 	  $(".image_roof").css({"width":"0%"});
+
+	  $.each(expected_percentage,function(key, val){
+	  	$(".image_"+key).css({"width":"0%"});
+	    $("#"+key+"_count").html("0%");
+	  });
 	  
   }else{
 	  $.each(data,function(key, record){
