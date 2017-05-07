@@ -587,7 +587,7 @@ top: 285px; width: 100%; text-align: center;
 
 				<div class="col-sm-6">
 					<div class="green borderbox">
-						<h3>SSlab to provide INCOME for when you don’t work anymore –
+						<h3>Slab to provide INCOME for when you don’t work anymore –
 						</h3>
 						<ul>
 							<li>Property with rental income</li>
@@ -964,14 +964,30 @@ function calculate(){
 	    calculated_percentage[key] = (data[key]["total"]/all_diff_total)*100
 	  });
 	  var show_size = {}
+
+
+
+
+	  var finalised_percentage = {}
 	  $.each(expected_percentage,function(key, val){
 	  	//debugger;
 	    show_size[key] = calculated_percentage[key]/val;
 	    debugger;
 	    $("#"+key+"_count").html(calculated_percentage[key].toFixed(2)+"%");
-	    $(".image_"+key).css({"width":(calculated_percentage[key]/expected_percentage[key])*100+"%"});
+
+	    finalised_percentage[key] = (calculated_percentage[key]/expected_percentage[key])*100;
+	    //$(".image_"+key).css({"width":(calculated_percentage[key]/expected_percentage[key])*100+"%"});
 	
 	  });
+
+
+	  var maximum = Math.max(finalised_percentage["roof"],finalised_percentage["foundation"],finalised_percentage["pillar"],finalised_percentage["slab"],)
+	  $.each(finalised_percentage,function(key, val){
+		$(".image_"+key).css({"width":(val/maximum)*100+"%"});	  	
+	  });
+
+
+
   }
   //alert(JSON.stringify(show_size));
   //percentages = {"foundation":"20%","pillar":"30%","proof":"50%","slab":"80%"}
