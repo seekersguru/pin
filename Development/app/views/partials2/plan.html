@@ -304,7 +304,7 @@ top: 285px; width: 100%; text-align: center;
          <p>Pillar : <span id='pillar_count'>20%</span><p>
          <p>Foundation : <span id='foundation_count'>20%</span></p>
          <hr/>
-            <p><b>Net Calculation :  </b><span id='total_count'>1298127987</span></p>
+            <p><b>Net Worth :  </b><span id='total_count'>1298127987</span></p>
 
          <hr/>
          </div>
@@ -952,7 +952,6 @@ function calculate(){
   }); 
   
   var calculated_percentage = {}
-  alert(all_diff_total);
   $("#total_count").html(all_diff_total);
   if (all_diff_total==0){
 	  $.each(expected_percentage,function(key, val){
