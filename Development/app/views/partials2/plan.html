@@ -972,7 +972,6 @@ function calculate(){
 	  $.each(expected_percentage,function(key, val){
 	  	//debugger;
 	    show_size[key] = calculated_percentage[key]/val;
-	    debugger;
 	    $("#"+key+"_count").html(calculated_percentage[key].toFixed(2)+"%");
 
 	    finalised_percentage[key] = (calculated_percentage[key]/expected_percentage[key])*100;
