@@ -981,7 +981,8 @@ function calculate(){
 	  });
 
 
-	  var maximum = Math.max(finalised_percentage["roof"],finalised_percentage["foundation"],finalised_percentage["pillar"],finalised_percentage["slab"],)
+	  var maximum = Math.max(finalised_percentage["roof"],finalised_percentage["foundation"],finalised_percentage["pillar"],finalised_percentage["slab"]);
+
 	  $.each(finalised_percentage,function(key, val){
 		$(".image_"+key).css({"width":(val/maximum)*100+"%"});	  	
 	  });
